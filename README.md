@@ -107,6 +107,18 @@ Sprig Boot Application 설정 파일에 "bean.package.enums" 항목에 대한 �
      }
  }
  ```
+ 
+ 
+### Repository
+maven
+``` xml
+<dependency>
+  <groupId>open.commons</groupId>
+  <artifactId>open-commons-spring5</artifactId>
+  <version>0.0.1</version>
+</dependency>
+```
+ 
 
 
 
