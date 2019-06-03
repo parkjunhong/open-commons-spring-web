@@ -43,7 +43,7 @@ import open.commons.spring5.enums.EnumConverterFactory;
 /**
  * 사용자 정의 {@link Enum} 타입을 HTTP 요청 데이터로 사용하기 위해서 자동으로 변환기를 등록해주는 클래스.
  * 
- * <h1>{@link Enum} 클래스 정보가 있는 패키지 정의</h1>
+ * <h1>1. {@link Enum} 클래스 정보가 있는 패키지 정의</h1>
  * 
  * Sprig Boot Application 설정 파일에 "bean.package.enums" 항목에 대한 값으로 패키지 정보 설정.<br>
  * 
@@ -55,7 +55,7 @@ import open.commons.spring5.enums.EnumConverterFactory;
  * ...
  * </pre>
  * 
- * <h1>사용자 정의 {@link Enum} 작성법</h1>
+ * <h1>2. 사용자 정의 {@link Enum} 작성법</h1>
  * 
  * <pre>
  * import java.util.ArrayList;
@@ -116,6 +116,33 @@ import open.commons.spring5.enums.EnumConverterFactory;
  *         }
  * 
  *         return valuesStr;
+ *     }
+ * }
+ * </pre>
+ * 
+ * 
+ * <h1>3. 자동으로 등록하기</h1>
+ * 
+ * <pre>
+ * import org.springframework.boot.SpringApplication;
+ * import org.springframework.boot.autoconfigure.SpringBootApplication;
+ * import org.springframework.boot.web.servlet.ServletComponentScan;
+ * import org.springframework.context.annotation.Bean;
+ * 
+ * import open.commons.spring5.config.CustomEnumRegister;
+ * 
+ * &#64;ServletComponentScan
+ * &#64;SpringBootApplication
+ * public class SpringExampleApplication {
+ * 
+ *     &#64;Bean
+ *     public CustomEnumRegister registerCustomEnumRegister() {
+ *         return new CustomEnumRegister();
+ *     }
+ * 
+ *     public static void main(String[] args) {
+ *         SpringApplication app = new SpringApplication(SpringExampleApplication.class);
+ *         app.run(args);
  *     }
  * }
  * </pre>
