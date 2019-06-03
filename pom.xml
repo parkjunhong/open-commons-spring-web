@@ -160,6 +160,7 @@
 					<nohelp>true</nohelp>
 					<additionalOptions>
 						<additionalOption>-Xdoclint:none</additionalOption>
+						
 					</additionalOptions>
 					<charset>${encoding}</charset>
 					<docencoding>${encoding}</docencoding>
@@ -170,4 +171,8 @@
 		</plugins>
 	</build>
 
+	<scm>
+		<url>https://github.com/parkjunhong/open-commons-spring5</url>
+		<developerConnection>parkjunhong77@gmail.com</developerConnection>
+	</scm>
 </project>
