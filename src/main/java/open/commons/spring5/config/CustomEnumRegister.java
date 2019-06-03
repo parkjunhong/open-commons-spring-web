@@ -145,7 +145,10 @@ public class CustomEnumRegister implements WebMvcConfigurer {
         String enumPkg = env.getProperty("bean.package.enums");
 
         if (enumPkg == null) {
+            logger.debug("There is no configuration for 'bean.package.enums'.");
             return;
+        } else {
+            logger.info("Registered WebMvcConfigurere for 'Custom Enumeration' for HTTP Request/Response. configuration={}, Package={}.", "bean.package.enums", enumPkg);
         }
 
         Reflections r = new Reflections(enumPkg);
