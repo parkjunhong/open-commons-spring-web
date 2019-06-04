@@ -16,7 +16,7 @@ Sprig Boot Application 설정 파일에 "bean.package.enums" 항목에 대한 �
  ```
 
 
-- 사용자 정의 Enum 작성법\
+- 사용자 정의 Enum 작성법
   * __@RequestValueSupported__: HTTP 요청/응답에 사용할 Enum 임을 선언
   * __@RequestValueConverter__: 사용자 정의 Enum 객체를 제공하는 메소드 선언.
 
