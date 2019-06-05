@@ -1,11 +1,13 @@
-### open-commons-spring5
+# open-commons-spring5
 Open Commons for Spring5
 
-
-### open.commons.spring5.config.CustomEnuRegister
+---
+## open.commons.spring5.config.CustomEnuRegister
 사용자 정의 Enum 타입을 HTTP 요청 데이터로 사용하기 위해서 자동으로 변환기를 등록해주는 클래스. 
 
 
+---
+## HOWTO
 - Enum 클래스 정보가 있는 패키지 정의\
 Sprig Boot Application 설정 파일에 "bean.package.enums" 항목에 대한 값으로 패키지 정보 설정.
 예) application.yml 인 경우
@@ -108,8 +110,8 @@ Sprig Boot Application 설정 파일에 "bean.package.enums" 항목에 대한 �
  }
  ```
  
- 
-### Repository
+--- 
+## Repository
 maven
 ``` xml
 
