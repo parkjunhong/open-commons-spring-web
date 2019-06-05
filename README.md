@@ -8,8 +8,8 @@ Open Commons for Spring5
 
 ---
 ## HOWTO
-- Enum 클래스 정보가 있는 패키지 정의\
-Sprig Boot Application 설정 파일에 "bean.package.enums" 항목에 대한 값으로 패키지 정보 설정.
+- Enum 클래스 정보가 있는 패키지 정의 (spring-boot)\
+Sprig Boot Application 설정 파일에 "_**bean.package.enums**_" 항목에 대한 값으로 패키지 정보 설정.\
 예) application.yml 인 경우
 ``` yml
 ...
@@ -85,7 +85,7 @@ Sprig Boot Application 설정 파일에 "bean.package.enums" 항목에 대한 �
  }
  ```
  
-- 자동으로 등록하기
+- 자동으로 등록하기 (spring-boot)
 ``` java
  import org.springframework.boot.SpringApplication;
  import org.springframework.boot.autoconfigure.SpringBootApplication;
