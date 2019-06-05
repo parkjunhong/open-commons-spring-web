@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.spring5.config;
+package open.commons.spring.web.config;
 
 import org.reflections.Reflections;
 import org.slf4j.Logger;
@@ -36,9 +36,9 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import open.commons.spring5.annotation.RequestValueSupported;
-import open.commons.spring5.enums.EnumConverter;
-import open.commons.spring5.enums.EnumConverterFactory;
+import open.commons.spring.web.annotation.RequestValueSupported;
+import open.commons.spring.web.enums.EnumConverter;
+import open.commons.spring.web.enums.EnumConverterFactory;
 
 /**
  * 사용자 정의 {@link Enum} 타입을 HTTP 요청 데이터로 사용하기 위해서 자동으로 변환기를 등록해주는 클래스.

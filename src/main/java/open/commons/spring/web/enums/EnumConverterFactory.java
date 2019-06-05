@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.spring5.enums;
+package open.commons.spring.web.enums;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>open.commons</groupId>
-	<artifactId>open-commons-spring5</artifactId>
+	<artifactId>open-commons-spring-web</artifactId>
 	<version>0.0.1</version>
-	<name>Open Commons for Spring5</name>
+	<name>Open Commons for Spring Web</name>
 
 	<licenses>
 		<license>
@@ -16,7 +16,7 @@
 
 	<properties>
 		<!-- >>> begin: plugin dependencies -->
-		<build.finalName>open-commons-core-${project.version}</build.finalName>
+		<build.finalName>open-commons-spring-web-${project.version}</build.finalName>
 
 		<encoding>UTF-8</encoding>
 		<java.version>1.8</java.version>
@@ -177,7 +177,7 @@
 	</build>
 
 	<scm>
-		<url>https://github.com/parkjunhong/open-commons-spring5</url>
+		<url>https://github.com/parkjunhong/open-commons-spring-web</url>
 		<developerConnection>parkjunhong77@gmail.com</developerConnection>
 	</scm>
 </project>

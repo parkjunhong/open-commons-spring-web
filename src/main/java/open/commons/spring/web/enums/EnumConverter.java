@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.spring5.enums;
+package open.commons.spring.web.enums;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -39,7 +39,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
 
-import open.commons.spring5.annotation.RequestValueConverter;
+import open.commons.spring.web.annotation.RequestValueConverter;
 
 /**
  * 
