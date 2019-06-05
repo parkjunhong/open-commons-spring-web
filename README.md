@@ -125,7 +125,7 @@ maven
 <dependency>
   <groupId>open.commons</groupId>
   <artifactId>open-commons-spring5</artifactId>
-  <version>0.0.1</version>
+  <version>${open-commons-spring5.version}</version>
 </dependency>
 ```
  
