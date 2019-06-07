@@ -80,13 +80,13 @@ public class EnumConverter<E extends Enum> implements Converter<String, E> {
     @Override
     public E convert(String source) {
 
-        logger.trace("Try to convert {} to {}", source, this.enumType.toString());
+        logger.trace("Try to convert '{}' to '{}'", source, this.enumType.toString());
 
         List<Method> methods = getAnnotatedMethods(this.enumType, RequestValueConverter.class).stream() //
                 .filter(m -> Modifier.isStatic(m.getModifiers())) // filtering
                 .collect(Collectors.toList());
 
-        logger.trace("Found !!!! methods: {}", methods);
+        logger.trace("Found !!! methods: '{}'", methods);
 
         RequestValueConverter anno = null;
         for (Method m : methods) {
