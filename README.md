@@ -1,5 +1,5 @@
-# open-commons-spring5
-Open Commons for Spring5
+# open-commons-spring-web
+Open Commons for Spring Web 
 
 ---
 ## open.commons.spring5.config.CustomEnuRegister
@@ -9,8 +9,22 @@ Open Commons for Spring5
 ---
 ## HOWTO
 - Enum 클래스 정보가 있는 패키지 정의 (spring-boot)\
-Sprig Boot Application 설정 파일에 "_**bean.package.enums**_" 항목에 대한 값으로 패키지 정보 설정.\
+Sprig Boot Application 설정 파일에 아래 예시와 같이 ~~"_**bean.package.enums**_"~~ 항목에 대한 값으로 패키지 정보 설정.\
+
 예) application.yml 인 경우
+``` yml
+...
+open-commons:
+  spring:
+    web:
+      factory:
+        enum:
+          packages:
+            - package1
+            - package2
+```
+
+버전 0.0.1 까지
 ``` yml
 ...
  bean.package.name=a.b.c

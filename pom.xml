@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>open.commons</groupId>
 	<artifactId>open-commons-spring-web</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>Open Commons for Spring Web</name>
 
 	<licenses>
@@ -34,6 +34,7 @@
 		<log4j-slf4j.version>2.11.1</log4j-slf4j.version>
 
 		<spring-core.version>5.1.6.RELEASE</spring-core.version>
+		<spring-boot.version>2.1.4.RELEASE</spring-boot.version>
 	</properties>
 
 	<distributionManagement>
@@ -81,6 +82,23 @@
 		<!-- ********************** -->
 
 		<!-- ********************** -->
+		<!-- begin: spring boot -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<!-- end: spring boot -->
+		<!-- ********************** -->
+
+
+		<!-- ********************** -->
 		<!-- begin: slf4j -->
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>
@@ -101,7 +119,6 @@
 		</dependency>
 		<!-- end: reflections -->
 		<!-- ********************** -->
-
 	</dependencies>
 
 	<build>
@@ -165,7 +182,7 @@
 					<nohelp>true</nohelp>
 					<additionalOptions>
 						<additionalOption>-Xdoclint:none</additionalOption>
-						
+
 					</additionalOptions>
 					<charset>${encoding}</charset>
 					<docencoding>${encoding}</docencoding>

@@ -31,7 +31,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -45,14 +44,23 @@ import open.commons.spring.web.enums.EnumConverterFactory;
  * 
  * <h1>1. {@link Enum} 클래스 정보가 있는 패키지 정의</h1>
  * 
- * Sprig Boot Application 설정 파일에 "bean.package.enums" 항목에 대한 값으로 패키지 정보 설정.<br>
+ * Sprig Boot Application 설정 파일에 아래 예시처럼 항목에 대한 값으로 패키지 정보 설정.<br>
  * 
  * 예) application.yml 인 경우
  * 
  * <pre>
  * ...
- * bean.package.name=a.b.c
+ * open-commons:
+ *   spring:
+ *     web:
+ *       factory:
+ *         enum:
+ *           packages:
+ *             - packages1
+ *             - packages2
+ * 
  * ...
+ * 
  * </pre>
  * 
  * <h1>2. 사용자 정의 {@link Enum} 작성법</h1>
@@ -148,17 +156,20 @@ import open.commons.spring.web.enums.EnumConverterFactory;
  * </pre>
  * 
  * @since 2019. 6. 3.
- * @version
+ * @version 0.0.3
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
 @EnableWebMvc
 @Configuration
 public class CustomEnumRegister implements WebMvcConfigurer {
 
+    /** Prefix of a properties in appliation.yml(or .properteis, or ...) */
+    static final String APPLICATION_PROPERTIES_PREFIX = "open-commons.spring.web.factory.enum";
+
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private Environment env;
+    private CustomEnumPackages enumPkgs;
 
     /**
      * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addFormatters(org.springframework.format.FormatterRegistry)
@@ -169,24 +180,18 @@ public class CustomEnumRegister implements WebMvcConfigurer {
 
         EnumConverterFactory factory = new EnumConverterFactory();
 
-        String enumPkg = env.getProperty("bean.package.enums");
+        enumPkgs.getPackages().stream() //
+                .forEach(pkg -> {
+                    Reflections r = new Reflections(pkg);
+                    r.getSubTypesOf(Enum.class)//
+                            .stream() //
+                            .filter(type -> type.getAnnotation(RequestValueSupported.class) != null) //
+                            .forEach(type -> {
+                                EnumConverter c = new EnumConverter<>(type);
+                                factory.register(type, c);
 
-        if (enumPkg == null) {
-            logger.debug("There is no configuration for 'bean.package.enums'.");
-            return;
-        } else {
-            logger.info("Registered WebMvcConfigurere for 'Custom Enumeration' for HTTP Request/Response. configuration={}, Package={}.", "bean.package.enums", enumPkg);
-        }
-
-        Reflections r = new Reflections(enumPkg);
-        r.getSubTypesOf(Enum.class)//
-                .stream() //
-                .filter(type -> type.getAnnotation(RequestValueSupported.class) != null) //
-                .forEach(type -> {
-                    EnumConverter c = new EnumConverter<>(type);
-                    factory.register(type, c);
-
-                    logger.info("Register a Converter {}.", c);
+                                logger.info("Register a Converter {}.", c);
+                            });
                 });
 
         registry.addConverterFactory(factory);
