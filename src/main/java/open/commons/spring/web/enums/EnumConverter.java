@@ -40,8 +40,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
 
 import open.commons.spring.web.annotation.RequestValueConverter;
+import open.commons.spring.web.annotation.RequestValueSupported;
 
 /**
+ * {@link RequestValueSupported}, {@link RequestValueConverter} 가 적용된 {@link Enum}를 위한 {@link Converter} 클래스.
  * 
  * @since 2019. 6. 3.
  * @version
@@ -99,7 +101,7 @@ public class EnumConverter<E extends Enum> implements Converter<String, E> {
             }
         }
 
-        throw new UnsupportedOperationException(String.join("=", "해당 타입에 해당하는 컨버터가 없습니다. Type=", this.enumType.toString()));
+        throw new UnsupportedOperationException(String.join("", "There is not a converter (", Converter.class.toString(), ") for ", this.enumType.toString()));
     }
 
     private <T extends Annotation> List<Method> getAnnotatedMethods(Class<?> typeClass, Class<T> annotationClass) {
