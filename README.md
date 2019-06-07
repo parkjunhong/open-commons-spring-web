@@ -117,14 +117,8 @@ import open.commons.spring5.config.CustomEnumRegister;
 @SpringBootApplication
 public class SpringExampleApplication {
 
-
-
-    @Bean
-    public CustomEnumRegister registerCustomEnumRegister() {
-        return new CustomEnumRegister();
-    }
-
     public static void main(String[] args) {
+    
         SpringApplication app = new SpringApplication(SpringExampleApplication.class);
         app.run(args);
     }
