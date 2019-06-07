@@ -1,6 +1,9 @@
 # open-commons-spring-web
 Open Commons for Spring Web on Spring 5 & Spring Boot 
 
+# History
+See [history.md](./history.md).
+
 ---
 ## open.commons.spring.web.config.CustomEnuRegister
 사용자 정의 Enum 타입을 HTTP 요청 데이터로 사용하기 위해서 자동으로 변환기를 등록해주는 클래스. 
