@@ -163,7 +163,7 @@ import open.commons.spring.web.enums.EnumConverterFactory;
 @Configuration
 public class CustomEnumRegister implements WebMvcConfigurer {
 
-    /** Prefix of a properties in appliation.yml(or .properteis, or ...) */
+    /** Prefix of configurations in appliation.yml(or .properteis, or ...) */
     static final String APPLICATION_PROPERTIES_PREFIX = "open-commons.spring.web.factory.enum";
 
     private Logger logger = LoggerFactory.getLogger(getClass());
