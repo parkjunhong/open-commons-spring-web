@@ -5,13 +5,15 @@ Open Commons for Spring Web on Spring 5 & Spring Boot
 See [history.md](./history.md).
 
 ---
-## open.commons.spring.web.config.CustomEnuRegister
-사용자 정의 Enum 타입을 HTTP 요청 데이터로 사용하기 위해서 자동으로 변환기를 등록해주는 클래스. 
-
+## open.commons.spring.web.config.CustomWebMvcConfigurer
+사용자 정의 설정을 자동으로 등록해 주는 클래스.
+_**see org.springframework.web.servlet.config.annotation.WebMvcConfigurer**_
 
 ---
 ## HOWTO
-### Eum 클래스 정보가 있는 패키지 정의 (spring-boot)
+### 사용자 정의 Enum 변환기 등록
+**Eum 클래스 정보가 있는 패키지 정의 (spring-boot)**
+
 Sprig Boot Application 설정 파일에 아래 예시와 같이 항목에 대한 값으로 패키지 정보 설정.\
 
 예) application.yml 인 경우
@@ -33,9 +35,8 @@ open-commons:
  bean.package.name=a.b.c
  ...
  ```
+**사용자 정의 Enum 작성법**
 
-
-### 사용자 정의 Enum 작성법
 - __@RequestValueSupported__: HTTP 요청/응답에 사용할 Enum 임을 선언
 - __@RequestValueConverter__: 사용자 정의 Enum 객체를 제공하는 메소드 선언.
 
@@ -101,8 +102,50 @@ open-commons:
      }
  }
  ```
+### 사용자 정의 HandlerInterceptor 등록
+@CustomInterceptor 어노테이션을 HandlerInterceptor 인터페이스를 구현한 클래스에 명시한다.
+
+- @CustomInterceptor: 사용자 정의 HandlerInterceptor를 명시하는 어노테이션.
+
+예시)
+``` java
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import open.commons.spring.web.annotation.CustomInterceptor;
+
+@CustomInterceptor
+@Component
+public class GlobalInterceptor extends HandlerInterceptorAdapter {
+
+    public GlobalInterceptor() {
+    }
+
+    /**
+     * @see org.springframework.web.servlet.handler.HandlerInterceptorAdapter#postHandle(javax.servlet.http.HttpServletRequest,
+     *      javax.servlet.http.HttpServletResponse, java.lang.Object, org.springframework.web.servlet.ModelAndView)
+     */
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    }
+
+    /**
+     * @see org.springframework.web.servlet.handler.HandlerInterceptorAdapter#preHandle(javax.servlet.http.HttpServletRequest,
+     *      javax.servlet.http.HttpServletResponse, java.lang.Object)
+     */
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        return super.preHandle(request, response, handler);
+    }
+}
+
+```
  
-### 자동으로 등록하기 (spring-boot)
+## 자동으로 등록하기 (spring-boot)
 
 **1. @ComponentScan 사용하기**\
 @ComponentScan 어노테이션을 사용하여 패키지를 등록한다.
@@ -116,7 +159,7 @@ import org.springframework.context.annotation.ComponentScan;
 import open.commons.spring5.config.CustomEnumRegister;
 
 @ServletComponentScan
-@ComponentScan(basePackages = { "{your-own-bean-packages}", "open.commons.spring.web.config" })
+@ComponentScan(basePackages = { "{your-own-bean-packages}", "open.commons.spring.web" })
 @SpringBootApplication
 public class SpringExampleApplication {
 
@@ -144,19 +187,15 @@ import open.commons.spring5.config.CustomEnumRegister;
 public class SpringExampleApplication {
     /** 패키지 정보를 제공하는 Bean 생성 */
     @Bean
-    public CustomEnumPackages getCustomEnumPackages() {
-        return new CustomEnumPackages();
+    @ConfigurationProperties(CustomWebMvcConfigurer.APPLICATION_PROPERTIES_PREFIX)
+    public EnumPackages getEnumPackages() {
+        return new EnumPackages();
     }
 
     /** Converter 자동 등록을 위한 Bean 생성 */
     @Bean
-    public CustomEnumRegister registerCustomEnumRegister() {
-        return new CustomEnumRegister();
-    }
- 
-    @Bean
-    public CustomEnumRegister registerCustomEnumRegister() {
-        return new CustomEnumRegister();
+    public CustomWebMvcConfigurer getCustomWebMvcConfigurer() {
+        return new CustomWebMvcConfigurer();
     }
 
     public static void main(String[] args) {
@@ -167,7 +206,7 @@ public class SpringExampleApplication {
 ```
  
 --- 
-## Repository
+# Repository
 maven
 ``` xml
 
@@ -182,8 +221,8 @@ maven
 
 <dependency>
   <groupId>open.commons</groupId>
-  <artifactId>open-commons-spring5</artifactId>
-  <version>${open-commons-spring5.version}</version>
+  <artifactId>open-commons-spring-web</artifactId>
+  <version>${open-commons-spring-web.version}</version>
 </dependency>
 ```
  
