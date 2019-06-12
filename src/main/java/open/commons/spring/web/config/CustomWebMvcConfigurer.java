@@ -30,19 +30,27 @@ import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import open.commons.spring.web.annotation.CustomInterceptor;
 import open.commons.spring.web.annotation.RequestValueSupported;
 import open.commons.spring.web.enums.EnumConverter;
 import open.commons.spring.web.enums.EnumConverterFactory;
+import open.commons.spring.web.enums.EnumPackages;
 
 /**
- * 사용자 정의 {@link Enum} 타입을 HTTP 요청 데이터로 사용하기 위해서 자동으로 변환기를 등록해주는 클래스.
+ * 사용자 정의 설정을 자동으로 등록해주는 클래스.
  * 
- * <h1>1. {@link Enum} 클래스 정보가 있는 패키지 정의</h1>
+ * <h1>사용자 정의 Enum 클래스 등 import open.commons.spring.web.enums.EnumConverterFactory;록</h1>
+ * <h2>1. {@link Enum} 클래스 정보가 있는 패키지 정의</h2>
+ * 
+ * import open.commons.spring.web.enums.EnumPackages;
  * 
  * Sprig Boot Application 설정 파일에 아래 예시처럼 항목에 대한 값으로 패키지 정보 설정.<br>
  * 
@@ -63,7 +71,7 @@ import open.commons.spring.web.enums.EnumConverterFactory;
  * 
  * </pre>
  * 
- * <h1>2. 사용자 정의 {@link Enum} 작성법</h1>
+ * <h2>2. 사용자 정의 {@link Enum} 작성법</h2>
  * 
  * <pre>
  * import java.util.ArrayList;
@@ -129,7 +137,7 @@ import open.commons.spring.web.enums.EnumConverterFactory;
  * </pre>
  * 
  * 
- * <h1>3. 자동으로 등록하기</h1>
+ * <h2>3. 자동으로 등록하기</h2>
  * 
  * <pre>
  * import org.springframework.boot.SpringApplication;
@@ -137,14 +145,14 @@ import open.commons.spring.web.enums.EnumConverterFactory;
  * import org.springframework.boot.web.servlet.ServletComponentScan;
  * import org.springframework.context.annotation.Bean;
  * 
- * import open.commons.spring5.config.CustomEnumRegister;
+ * import open.commons.spring.web.config.CustomWebMvcConfigurer;
  * 
  * &#64;ServletComponentScan
  * &#64;SpringBootApplication
  * public class SpringExampleApplication {
  * 
  *     &#64;Bean
- *     public CustomEnumRegister registerCustomEnumRegister() {
+ *     public CustomWebMvcConfigurer registerCustomWebMvcConfigurer() {
  *         return new CustomEnumRegister();
  *     }
  * 
@@ -161,15 +169,18 @@ import open.commons.spring.web.enums.EnumConverterFactory;
  */
 @EnableWebMvc
 @Configuration
-public class CustomEnumRegister implements WebMvcConfigurer {
+public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
     /** Prefix of configurations in appliation.yml(or .properteis, or ...) */
-    static final String APPLICATION_PROPERTIES_PREFIX = "open-commons.spring.web.factory.enum";
+    public static final String APPLICATION_PROPERTIES_PREFIX = "open-commons.spring.web.factory.enum";
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private CustomEnumPackages enumPkgs;
+    private ApplicationContext context;
+
+    @Autowired
+    private EnumPackages enumPkgs;
 
     /**
      * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addFormatters(org.springframework.format.FormatterRegistry)
@@ -195,5 +206,23 @@ public class CustomEnumRegister implements WebMvcConfigurer {
                 });
 
         registry.addConverterFactory(factory);
+    }
+
+    /**
+     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addInterceptors(org.springframework.web.servlet.config.annotation.InterceptorRegistry)
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        context.getBeansOfType(HandlerInterceptor.class) // Bean 중에서 HandlerIntereceptor 를 구현한 객체를 찾아서.
+                .values() //
+                .stream() //
+                .filter(p -> p.getClass().getAnnotation(CustomInterceptor.class) != null) // 사용자 정의 HandlerInterceptor
+                .forEach(intcptr -> {
+                    registry.addInterceptor(intcptr);
+
+                    logger.info("Register a Interceptor. {}.", intcptr);
+                });
+
+        WebMvcConfigurer.super.addInterceptors(registry);
     }
 }

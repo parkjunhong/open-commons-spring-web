@@ -1,4 +1,8 @@
-[2019/06/07
+[2019/06/11]
+- Release: 0.0.3
+  + 사용자 정의 HandlerInterceptor 자동 등록 추가
+
+[2019/06/07]
 - Release: 0.0.2
   + 다중 패키지 지원
   + application.yml (.properties or ...) 항목명 수정.

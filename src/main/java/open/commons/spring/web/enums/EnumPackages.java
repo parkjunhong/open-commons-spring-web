@@ -24,13 +24,15 @@
  * 
  */
 
-package open.commons.spring.web.config;
+package open.commons.spring.web.enums;
 
 import java.util.List;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
+
+import open.commons.spring.web.config.CustomWebMvcConfigurer;
 
 /**
  * {@link Converter}를 이용하여 등록될 {@link Enum} 클래스가 있는 패키지 경로 정보를 제공하는 클래스.
@@ -40,8 +42,8 @@ import org.springframework.stereotype.Component;
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
 @Component
-@ConfigurationProperties(CustomEnumRegister.APPLICATION_PROPERTIES_PREFIX)
-public class CustomEnumPackages {
+@ConfigurationProperties(CustomWebMvcConfigurer.APPLICATION_PROPERTIES_PREFIX)
+public class EnumPackages {
 
     private List<String> packages;
 
@@ -58,7 +60,7 @@ public class CustomEnumPackages {
      * @since 2019. 6. 7.
      * @version
      */
-    public CustomEnumPackages() {
+    public EnumPackages() {
     }
 
     /**
