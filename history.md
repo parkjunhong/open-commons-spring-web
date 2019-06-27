@@ -1,3 +1,9 @@
+[2019/6/27[
+- Release: 0.1.0
+- Add
+	+ open.commons.spring.web.config.ResourceConfiguration
+	+ open.commons.spring.web.resources.RestTempalteReqeust
+
 [2019/06/11]
 - Release: 0.0.3
   + 사용자 정의 HandlerInterceptor 자동 등록 추가

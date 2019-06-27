@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>open.commons</groupId>
 	<artifactId>open-commons-spring-web</artifactId>
-	<version>0.0.3</version>
+	<version>0.1.0</version>
 	<name>Open Commons for Spring Web</name>
 
 	<licenses>
@@ -119,6 +119,18 @@
 		</dependency>
 		<!-- end: reflections -->
 		<!-- ********************** -->
+
+		<!-- ************** -->
+		<!-- begin: httpclient -->
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.9</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- end: httpclient -->
+		<!-- ************** -->
 	</dependencies>
 
 	<build>
