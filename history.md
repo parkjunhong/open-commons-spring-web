@@ -1,4 +1,4 @@
-[2019/6/27[
+[2019/6/27]
 - Release: 0.1.0
 - Add
 	+ open.commons.spring.web.config.ResourceConfiguration
