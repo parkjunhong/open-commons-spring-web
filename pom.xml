@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>open.commons</groupId>
 	<artifactId>open-commons-spring-web</artifactId>
-	<version>0.1.0</version>
+	<version>0.1.1</version>
 	<name>Open Commons for Spring Web</name>
 
 	<licenses>
@@ -35,6 +35,11 @@
 
 		<spring-core.version>5.1.6.RELEASE</spring-core.version>
 		<spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+		<slf4j-api.version>1.7.26</slf4j-api.version>
+		<reflections.version>0.9.11</reflections.version>
+		<servlet-api.version>2.5</servlet-api.version>
+		<httpclient.version>4.5.9</httpclient.version>
+		<open-commons-core.version>1.6.9</open-commons-core.version>
 	</properties>
 
 	<distributionManagement>
@@ -97,14 +102,13 @@
 		<!-- end: spring boot -->
 		<!-- ********************** -->
 
-
 		<!-- ********************** -->
 		<!-- begin: slf4j -->
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.26</version>
+			<version>${slf4j-api.version}</version>
 		</dependency>
 		<!-- end: slf4j -->
 		<!-- ********************** -->
@@ -115,7 +119,7 @@
 		<dependency>
 			<groupId>org.reflections</groupId>
 			<artifactId>reflections</artifactId>
-			<version>0.9.11</version>
+			<version>${reflections.version}</version>
 		</dependency>
 		<!-- end: reflections -->
 		<!-- ********************** -->
@@ -126,11 +130,33 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.5.9</version>
+			<version>${httpclient.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<!-- end: httpclient -->
 		<!-- ************** -->
+
+		<!-- ************** -->
+		<!-- begin: servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- end: servlet -->
+		<!-- ************** -->
+
+		<!-- ************** -->
+		<!-- begin: open.commons -->
+		<dependency>
+			<groupId>open.commons</groupId>
+			<artifactId>open-commons-core</artifactId>
+			<version>${open-commons-core.version}</version>
+		</dependency>
+		<!-- end: open.commons -->
+		<!-- ************** -->
+
 	</dependencies>
 
 	<build>

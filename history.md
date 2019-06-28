@@ -1,3 +1,13 @@
+[2019/6/28]
+- Release: 0.1.1
+- Add
+	+ open.commons.spring.web.servlet.mvn.support
+	+ open.commons.spring.web.utils.WebUtils
+	
+- Dependency
+	+ javax.servlet.servlet-api
+	+ open.commons.core
+
 [2019/6/27]
 - Release: 0.1.0
 - Add
