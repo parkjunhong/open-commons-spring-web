@@ -1,3 +1,7 @@
+[2019/7/1]
+- Bugfix
+  + open.commons.spring.web.config.CustomWebMvcConfigurer.addFormatters(FormatterRegistry)
+
 [2019/6/28]
 - Release: 0.1.1
 - Add

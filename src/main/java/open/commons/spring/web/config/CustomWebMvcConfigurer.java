@@ -26,6 +26,8 @@
 
 package open.commons.spring.web.config;
 
+import java.util.List;
+
 import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -189,9 +191,14 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
 
-        EnumConverterFactory factory = new EnumConverterFactory();
+        // enum package 를 설정하지 않은 경우.
+        List<String> pkgs = enumPkgs.getPackages();
+        if (pkgs == null) {
+            return;
+        }
 
-        enumPkgs.getPackages().stream() //
+        EnumConverterFactory factory = new EnumConverterFactory();
+        pkgs.stream() //
                 .forEach(pkg -> {
                     Reflections r = new Reflections(pkg);
                     r.getSubTypesOf(Enum.class)//

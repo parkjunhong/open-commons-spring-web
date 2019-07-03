@@ -28,18 +28,23 @@ package open.commons.spring.web.utils;
 
 import java.nio.charset.Charset;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.util.Base64Utils;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import open.commons.collection.FIFOMap;
 import open.commons.net.HttpStatusCode;
 import open.commons.spring.web.servlet.mvc.support.UrlInfo;
+import open.commons.utils.StringUtils;
 
 /**
  * 
@@ -50,6 +55,61 @@ import open.commons.spring.web.servlet.mvc.support.UrlInfo;
 public class WebUtils {
 
     private WebUtils() {
+    }
+
+    /**
+     * 요청 정보와 예외발생 정보를 이용하여 응답 메시지 를 생성한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2019. 6. 28.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param request
+     * @param ex
+     * @param status
+     * @return
+     *
+     * @since 2019. 6. 28.
+     * @version
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static FIFOMap<String, Object> createEntity(WebRequest request, Exception ex, HttpStatus status) {
+
+        FIFOMap<String, Object> entity = new FIFOMap<>();
+
+        entity.put("timestamp", System.currentTimeMillis());
+        entity.put("status", String.join("/", status.toString(), status.getReasonPhrase()));
+        entity.put("session", request.getSessionId());
+
+        // Set a URI
+        String uri = request.getDescription(false);
+        if (uri.contains("=")) {
+            uri = StringUtils.substringAfter(uri, "=");
+        }
+        entity.put("uri", uri);
+
+        // Set HEADERs
+        TreeMap<String, Object> headers = new TreeMap<>();
+        Iterator<String> headerNames = request.getHeaderNames();
+        String headerName = null;
+        while (headerNames.hasNext()) {
+            headers.put(headerName = headerNames.next(), request.getHeaderValues(headerName));
+        }
+        entity.put("headers", headers);
+
+        // Set REQUEST PARAMETERs
+        entity.put("parameters", request.getParameterMap());
+
+        // Set EXCEPTIONS
+        TreeMap<String, Object> exception = new TreeMap<>();
+        exception.put("type", ex.getClass().getName());
+        exception.put("cause", ex.getMessage());
+        entity.put("exception", exception);
+
+        return entity;
     }
 
     /**
