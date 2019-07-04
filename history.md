@@ -1,3 +1,8 @@
+[2019/7/4]
+- Dependency
+	+ open.commons.core: 1.6.10
+
+
 [2019/7/1]
 - Bugfix
   + open.commons.spring.web.config.CustomWebMvcConfigurer.addFormatters(FormatterRegistry)
