@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>open.commons</groupId>
 	<artifactId>open-commons-spring-web</artifactId>
-	<version>0.1.1</version>
+	<version>0.2</version>
 	<name>Open Commons for Spring Web</name>
 
 	<licenses>
@@ -39,7 +39,8 @@
 		<reflections.version>0.9.11</reflections.version>
 		<servlet-api.version>2.5</servlet-api.version>
 		<httpclient.version>4.5.9</httpclient.version>
-		<open-commons-core.version>1.6.10</open-commons-core.version>
+		
+		<open-commons-core.version>1.6.11</open-commons-core.version>
 	</properties>
 
 	<distributionManagement>

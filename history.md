@@ -1,3 +1,10 @@
+[2019/7/17]
+- Release: 0.2.0
+- Add
+	+ open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig
+- Dependency
+	+ open.commons.core: 1.6.11
+
 [2019/7/4]
 - Dependency
 	+ open.commons.core: 1.6.10

@@ -34,6 +34,7 @@ import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import open.commons.spring.web.resources.RestTemplateRequestFactoryResource;
+import open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig;
 
 /**
  * 
@@ -81,5 +82,12 @@ public class ResourceConfiguration {
     @ConfigurationProperties("open-commons.spring.web.resttemplate.requestfactory")
     public RestTemplateRequestFactoryResource getRestTemplateRequestFactoryResource() {
         return new RestTemplateRequestFactoryResource();
+    }
+
+    @Bean
+    @Primary
+    @ConfigurationProperties("open-commons.spring.async.threadPoolTaskExecutor")
+    public ThreadPoolTaskExecutorConfig getThreadPoolTaskExecutor() {
+        return new ThreadPoolTaskExecutorConfig();
     }
 }
