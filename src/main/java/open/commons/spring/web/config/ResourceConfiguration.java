@@ -86,8 +86,8 @@ public class ResourceConfiguration {
 
     @Bean
     @Primary
-    @ConfigurationProperties("open-commons.spring.async.threadPoolTaskExecutor")
-    public ThreadPoolTaskExecutorConfig getThreadPoolTaskExecutor() {
+    @ConfigurationProperties("open-commons.spring.async.thread-pool-task-executor")
+    public ThreadPoolTaskExecutorConfig getThreadPoolTaskExecutorConfig() {
         return new ThreadPoolTaskExecutorConfig();
     }
 }
