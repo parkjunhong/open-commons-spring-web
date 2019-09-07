@@ -1,3 +1,8 @@
+[2019/9/8]
+- Tag: 0.2.1-SNAPSHOT
+- Add
+  + open.commons.spring.web.config.CustomWebMvcConfigurer.extendMessageConverters(List<HttpMessageConverter<?>>)
+
 [2019/8/7]
 - Dependency
 	+ open.commons.core: 1.6.12

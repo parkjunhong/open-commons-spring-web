@@ -35,11 +35,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import open.commons.spring.web.annotation.CustomHttpMessageConverter;
 import open.commons.spring.web.annotation.CustomInterceptor;
 import open.commons.spring.web.annotation.RequestValueSupported;
 import open.commons.spring.web.enums.EnumConverter;
@@ -231,5 +233,24 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
                 });
 
         WebMvcConfigurer.super.addInterceptors(registry);
+    }
+
+    /**
+     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#extendMessageConverters(java.util.List)
+     */
+    @Override
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+        context.getBeansOfType(HttpMessageConverter.class) // Bean 중에서 HttpMessageConverter 를 구현한 객체를찾아서.
+                .values() //
+                .stream() //
+                .filter(p -> p.getClass().getAnnotation(CustomHttpMessageConverter.class) != null) // 사용자 정의
+                                                                                                   // CustomHttpMessageConverter
+                .forEach(converter -> {
+                    converters.add(converter);
+
+                    logger.info("Register a HttpMessageConverter. {}.", converter);
+                });
+
+        WebMvcConfigurer.super.extendMessageConverters(converters);
     }
 }
