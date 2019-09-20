@@ -1,5 +1,11 @@
+[2019/9/20]
+- Update
+ + open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig.maxPoolSize 기본값 변경
+  - 30 -> Integer.MAX_VALUE
+
 [2019/9/18]
 - Release: 0.2.1
+- Tag: 0.2.2-SNAPSHOT
 
 [2019/9/9]
 - Add

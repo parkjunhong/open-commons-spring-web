@@ -40,7 +40,7 @@ public class ThreadPoolTaskExecutorConfig {
     // --- org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor --- //
     private int corePoolSize = 1;
     private int keepAliveSeconds = 60;
-    private int maxPoolSize = 30;
+    private int maxPoolSize = Integer.MAX_VALUE;
     private int queueCapacity = Integer.MAX_VALUE;
     private boolean allowCoreThreadTimeOut = false;
     // --------------------------------------------- //
