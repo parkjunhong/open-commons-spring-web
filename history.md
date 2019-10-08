@@ -1,3 +1,8 @@
+[2019/10/08]
+- Release: 0.2.2-RELEASE
+- Add
+ + open.commons.spring.web.utils.ValidationUtils
+ 
 [2019/9/20]
 - Update
  + open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig.maxPoolSize 기본값 변경

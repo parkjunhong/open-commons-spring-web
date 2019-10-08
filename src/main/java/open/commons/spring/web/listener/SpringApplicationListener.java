@@ -147,7 +147,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
             onServletWebServerInitializedEvent((ServletWebServerInitializedEvent) event);
         } else {
 
-            logger.info("Unhandled event, event={}. Goto 'onOtherApplicationEvent(ApplicationEvent)' method!!!", event);
+            logger.debug("Unhandled event, event={}. Goto 'onOtherApplicationEvent(ApplicationEvent)' method!!!", event);
 
             onOtherApplicationEvent(event);
         }
@@ -172,7 +172,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      */
     public void onApplicationFailedEvent(ApplicationFailedEvent event) {
         logger.error("ApplicationFailed - {}", event.getException());
-        
+
     }
 
     /**
