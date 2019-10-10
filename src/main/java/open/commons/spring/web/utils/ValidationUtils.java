@@ -89,7 +89,7 @@ public class ValidationUtils {
      * @see Validator#validate(Object, Class...)
      */
     public static <T> Set<ConstraintViolation<T>> validate(T object, Class<?>... groups) {
-        return validator.validate(object);
+        return validator.validate(object, groups);
     }
 
     /**
@@ -216,4 +216,3 @@ public class ValidationUtils {
         return makeErrorMessage(validateValue(beanType, propertyName, value, groups));
     }
 }
-
