@@ -1,6 +1,15 @@
+[2019/10/23]
+- Add
+  + open.commons.spring.web.rest.RestUtils
+
+
+[2019/10/15]
+- Add
+  + open.commons.spring.web.validation.ValidationTarget
+
 [2019/10/10]
 - Add
-  + open.commons.spring.web.validation.Validational<C extends List<E>, E extends Validational<List<E>, E>>
+  + open.commons.spring.web.validation.Validational<C extends List\<E>, E extends Validational<List\<E>, E>>
 
 [2019/10/08]
 - Release: 0.2.2-RELEASE

@@ -146,9 +146,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
         } else if (event instanceof ServletWebServerInitializedEvent) {
             onServletWebServerInitializedEvent((ServletWebServerInitializedEvent) event);
         } else {
-
-            logger.debug("Unhandled event, event={}. Goto 'onOtherApplicationEvent(ApplicationEvent)' method!!!", event);
-
             onOtherApplicationEvent(event);
         }
     }

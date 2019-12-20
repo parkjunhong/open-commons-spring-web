@@ -73,6 +73,35 @@ public class ValidationUtils {
      * 
      * <pre>
      * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2019. 10. 15.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param object
+     * @param nested
+     *            내부 필드 검증 여부.
+     * @param groups
+     * @return
+     *
+     * @since 2019. 10. 15.
+     * @version
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static <T> Set<ConstraintViolation<T>> validate(T object, boolean nested, Class<?>... groups) {
+        return nested
+                // TODO [Park Jun-Hong]: 2019. 10. 15.: nested == true 인 경우 처리할 것.
+                ? validator.validate(object, groups)
+                : validator.validate(object, groups);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2019. 6. 18.     박준홍         최초 작성
@@ -90,6 +119,32 @@ public class ValidationUtils {
      */
     public static <T> Set<ConstraintViolation<T>> validate(T object, Class<?>... groups) {
         return validator.validate(object, groups);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2019. 10. 15.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param object
+     * @param nested
+     *            내부필드 검증 여부
+     * @param groups
+     * @return
+     *
+     * @since 2019. 10. 15.
+     * @version
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static <T> Collection<String> validateAndErrorMsg(T object, boolean nested, Class<?>... groups) {
+        return makeErrorMessage(validate(object, nested, groups));
     }
 
     /**
@@ -113,7 +168,6 @@ public class ValidationUtils {
      */
     public static <T> Collection<String> validateAndErrorMsg(T object, Class<?>... groups) {
         return makeErrorMessage(validate(object, groups));
-
     }
 
     /**
