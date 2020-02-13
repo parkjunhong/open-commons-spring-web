@@ -1,4 +1,7 @@
 [2020/02/13]
+- Tag: 0.2.4-SNAPSHOT
+
+[2020/02/13]
 - Release: 0.2.3
 - Add
   + open.commons.spring.web.BasePackageMarker
