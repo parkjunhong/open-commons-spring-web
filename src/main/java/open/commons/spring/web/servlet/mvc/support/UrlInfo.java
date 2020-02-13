@@ -30,6 +30,7 @@ import java.util.Map;
 
 /**
  * Generatl URL Information.
+ * 
  * @since 2019. 6. 28.
  * @version
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)

@@ -1,3 +1,18 @@
+[2020/02/13]
+- Release: 0.2.3
+- Add
+  + open.commons.spring.web.BasePackageMarker
+  + open.commons.spring.web.handler.DefaultGlobalInterceptor
+  + open.commons.spring.web.mvc.service.AbstractComponent
+  + open.commons.spring.web.mvc.service.AbstractGenericService
+  + open.commons.spring.web.servlet.method.annotation.DefaultGlobalExceptionHandler
+- Update
+  + open.commons.spring.web.OpenCommonsSpringWeb
+  + open.commons.spring.web.annotation.CustomHttpMessageconverter
+  + open.commons.spring.web.config.ResourceConfiguration
+  + open.commons.spring.web.mvc.support.UrlInfo  
+  + open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig
+
 [2019/10/23]
 - Add
   + open.commons.spring.web.rest.RestUtils

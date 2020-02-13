@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  *
  * This file is generated under this project, "open-commons-spring-web".
  *
- * Date  : 2019. 9. 9. 오후 4:24:02
+ * Date  : 2020. 1. 17. 오후 5:29:44
  *
  * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
  * 
@@ -26,22 +26,20 @@
 
 package open.commons.spring.web;
 
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
- * @since 2019. 9. 9.
+ * Base Package Marker Class.
+ * 
+ * @since 2020. 1. 17.
  * @version
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * 
+ * @see ComponentScan
+ * @see ServletComponentScan
  */
-public class OpenCommonsSpringWeb {
-
-    /**
-     * For {@link ComponentScan#basePackages()}.
-     * 
-     * @deprecated Use {@link BasePackageMarker} for {@link ComponentScan#basePackageClasses()}.
-     */
-    public static final String BASE_PACKAGE = "open.commons.spring.web";
-
-    private OpenCommonsSpringWeb() {
+public final class BasePackageMarker {
+    private BasePackageMarker() {
     }
 }

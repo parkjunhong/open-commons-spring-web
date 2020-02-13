@@ -44,14 +44,14 @@ public class ThreadPoolTaskExecutorConfig {
     private int queueCapacity = Integer.MAX_VALUE;
     private boolean allowCoreThreadTimeOut = false;
     // --------------------------------------------- //
-    
+
     // --- org.springframework.scheduling.concurrent.ExecutorConfigurationSupport --- //
     private int awaitTerminationSeconds = 0;
     private String beanName;
     private boolean waitForTasksToCompleteOnShutdown = false;
     // ---------------------------------------------------------- //
 
-    // ---  org.springframework.util.CustomizableThreadCreator --- //
+    // --- org.springframework.util.CustomizableThreadCreator --- //
     private boolean daemon = false;
     private String threadGroupName;
     private String threadNamePrefix;

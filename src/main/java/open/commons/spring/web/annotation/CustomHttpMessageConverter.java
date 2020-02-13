@@ -40,7 +40,7 @@ import java.lang.annotation.Target;
  * 사용자 정의 {@link HttpMessageConverter} 를 정의.
  * 
  * @since 2019. 9. 8.
- * @version 
+ * @version
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
 public @interface CustomHttpMessageConverter {

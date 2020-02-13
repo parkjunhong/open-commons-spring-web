@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,30 +18,35 @@
  *
  * This file is generated under this project, "open-commons-spring-web".
  *
- * Date  : 2019. 9. 9. 오후 4:24:02
+ * Date  : 2020. 1. 21. 오후 1:41:35
  *
  * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
  * 
  */
 
-package open.commons.spring.web;
-
-import org.springframework.context.annotation.ComponentScan;
+package open.commons.spring.web.mvc.service;
 
 /**
- * @since 2019. 9. 9.
+ * 
+ * @since 2020. 1. 21.
  * @version
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
-public class OpenCommonsSpringWeb {
+public abstract class AbstractGenericService extends AbstractComponent {
 
     /**
-     * For {@link ComponentScan#basePackages()}.
+     * <br>
      * 
-     * @deprecated Use {@link BasePackageMarker} for {@link ComponentScan#basePackageClasses()}.
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 1. 21.		박준홍			최초 작성
+     * </pre>
+     *
+     * @since 2020. 1. 21.
+     * @version
      */
-    public static final String BASE_PACKAGE = "open.commons.spring.web";
-
-    private OpenCommonsSpringWeb() {
+    public AbstractGenericService() {
     }
 }
