@@ -40,7 +40,7 @@
 		<servlet-api.version>2.5</servlet-api.version>
 		<httpclient.version>4.5.9</httpclient.version>
 
-		<open-commons-core.version>1.6.18</open-commons-core.version>
+		<open-commons-core.version>[1.6.18,)</open-commons-core.version>
 	</properties>
 
 	<distributionManagement>
