@@ -39,6 +39,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import open.commons.collection.FIFOMap;
+import open.commons.spring.web.servlet.BadRequestException;
+import open.commons.spring.web.servlet.InternalServerException;
 import open.commons.spring.web.utils.WebUtils;
 
 /**
@@ -99,6 +101,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2020. 1. 17.		박준홍			최초 작성
+     * 2020. 7. 30.     박준홍         {@link BadRequestException} 추가
      * </pre>
      *
      * @param ex
@@ -110,6 +113,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     @ExceptionHandler(value = { //
+            BadRequestException.class, //
             ConstraintViolationException.class, //
     })
     public ResponseEntity<Object> handle4xxException(Exception ex, WebRequest request) {
@@ -128,6 +132,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2020. 1. 17.		박준홍			최초 작성
+     * 2020. 7. 30.     박준홍         {@link InternalServerException} 추가
      * </pre>
      *
      * @param ex
@@ -142,9 +147,10 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
             NullPointerException.class, //
             IllegalArgumentException.class, //
             IllegalStateException.class, //
+            InternalServerException.class, //
             UnsupportedOperationException.class, //
             RuntimeException.class, //
-            Exception.class, //
+            Exception.class, //eclipse-javadoc:%E2%98%82=open-commons-spring-web/src%5C/main%5C/java%3Copen
     })
     public ResponseEntity<Object> handle5xxException(Exception ex, WebRequest request) {
 

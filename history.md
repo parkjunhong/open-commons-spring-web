@@ -1,3 +1,16 @@
+[2020/07/30]
+- Tag: 0.3.0-SNAPSHOT
+- Add
+  + open.commons.spring.web.servlet.BadRequestException
+  + open.commons.spring.web.servlet.InternalServerException
+- Update
+  + open.commons.spring.web.servlet.method.annotation.DefaultGlobalExceptionHandler
+    + handle4xxException(Exception, WebRequest): 대상 추가
+      + open.commons.spring.web.servlet.BadRequestException
+    + handle5xxException(Exception, WebRequest): 대상 추가
+      + open.commons.spring.web.servlet.InternalServerException
+
+
 [2020/02/13]
 - Tag: 0.2.4-SNAPSHOT
 
