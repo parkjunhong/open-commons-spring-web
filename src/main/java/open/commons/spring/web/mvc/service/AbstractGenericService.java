@@ -26,13 +26,16 @@
 
 package open.commons.spring.web.mvc.service;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
 /**
  * 
  * @since 2020. 1. 21.
  * @version
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
-public abstract class AbstractGenericService extends AbstractComponent {
+public abstract class AbstractGenericService extends AbstractComponent implements InitializingBean, DisposableBean {
 
     /**
      * <br>
@@ -48,5 +51,25 @@ public abstract class AbstractGenericService extends AbstractComponent {
      * @version
      */
     public AbstractGenericService() {
+    }
+
+    /**
+     * @since 2020. 8. 29.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
+     */
+    @Override
+    public void afterPropertiesSet() throws Exception {
+    }
+
+    /**
+     * @since 2020. 8. 29.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see org.springframework.beans.factory.DisposableBean#destroy()
+     */
+    @Override
+    public void destroy() throws Exception {
     }
 }

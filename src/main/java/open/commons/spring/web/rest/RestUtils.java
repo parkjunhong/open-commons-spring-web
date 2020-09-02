@@ -28,8 +28,8 @@ package open.commons.spring.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 
 import org.slf4j.Logger;
@@ -39,6 +39,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -79,27 +80,108 @@ public class RestUtils {
      * @since 2019. 10. 24.
      * @version
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * 
+     * @deprecated Use {@link #headers(MultiValueMap, String...)}.
      */
     public static HttpHeaders addHeaders(HttpHeaders headers, String... headerPairs) throws IllegalArgumentException {
-        AssertUtils.assertNull(headerPairs, IllegalArgumentException.class);
-        AssertUtils.assertNulls(IllegalArgumentException.class, (Object[]) headerPairs);
+        return headers(headers, headerPairs);
+    }
 
-        if (headers == null) {
-            headers = new HttpHeaders();
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2020. 8. 25.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param headers
+     *            HTTP Headers
+     * @param values
+     *            데이터. (키/값 으로 이루어진)
+     * @return
+     *
+     * @since 2020. 8. 25.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static HttpEntity<Map<String, Object>> buildHttpEntity(MultiValueMap<String, String> headers, Object... values) {
+
+        Map<String, Object> map = new HashMap<>();
+
+        for (int i = 0; (i + 1) < values.length; i++) {
+            map.put(String.valueOf(values[i++]), values[i]);
         }
 
-        if (headerPairs.length == 0 || headerPairs.length % 2 != 0) {
-            throw new IllegalArgumentException("Header 설정 정보가 올바르지 않습니다. 길이=" + headerPairs.length);
+        return new HttpEntity<Map<String, Object>>(map, headers);
+    }
+
+    /**
+     * 요청 URL 를 제공한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 8. 27.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param context
+     *            REST API Context
+     * @param url
+     *            REST API URL
+     * @param parameters
+     *            Query Parameters
+     * @return
+     *
+     * @since 2020. 8. 27.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static String createUrl(String context, String url, MultiValueMap<String, Object> parameters) {
+
+        StringBuffer requestUrl = new StringBuffer();
+
+        if (context != null && !context.trim().isEmpty()) {
+            requestUrl.append('/');
+            requestUrl.append(context);
+        }
+        requestUrl.append(url);
+
+        if (parameters == null || parameters.isEmpty()) {
+            return requestUrl.toString();
         }
 
-        Iterator<String> itr = Arrays.asList(headerPairs).iterator();
-        String name = null;
-        while (itr.hasNext()) {
-            name = itr.next();
-            headers.add(name, itr.next());
+        StringBuffer paramBuf = new StringBuffer();
+        parameters.entrySet().stream()//
+                .map(e -> {
+                    if (e.getValue() == null || e.getValue().isEmpty()) {
+                        return null;
+                    }
+
+                    StringBuffer param = new StringBuffer();
+                    String name = e.getKey();
+                    for (Object o : e.getValue()) {
+                        param.append('&');
+                        param.append(name);
+                        param.append('=');
+                        param.append(o);
+                    }
+                    return param.toString();
+                }) //
+                .filter(p -> p != null) //
+                .forEach(param -> paramBuf.append(param));
+
+        if (paramBuf.length() > 0) {
+            String paramStr = paramBuf.toString().substring(1);
+            if (!paramStr.isEmpty()) {
+                requestUrl.append('?');
+                requestUrl.append(paramStr);
+            }
         }
 
-        return headers;
+        return requestUrl.toString();
     }
 
     /**
@@ -364,11 +446,76 @@ public class RestUtils {
     ) {
         try {
             ResponseEntity<RES> response = restTemplate.exchange(uri, method, entity, responseType);
+
+            HttpStatus statusCode = response.getStatusCode();
+
+            // redirection
+            if (statusCode.is3xxRedirection()) {
+                logger.info("URL is redirectioned. status={}, information={}", statusCode, response.getBody());
+            } else
+            // success
+            if (statusCode.is2xxSuccessful()) {
+                logger.debug("Success to send information. target={}", uri.toString());
+            } else
+            // informational...
+            if (statusCode.is1xxInformational()) {
+                logger.debug("Information. status={}, information={}", statusCode, response.getBody());
+            }
+
             return onSuccess.apply(response);
         } catch (HttpClientErrorException e) {
-            logger.warn("method={}, uri={}, request.entity={}, response.type={}", method, uri, entity, responseType);
+
+            logger.warn("method={}, uri={}, req.entity={}, res.type={}", method, uri, entity, responseType);
+
+            HttpStatus statusCode = e.getStatusCode();
+
+            // remote server internal error
+            if (statusCode.is5xxServerError()) {
+                logger.warn("Remote Server Error. status={}", statusCode);
+            } else
+            // request error
+            if (statusCode.is4xxClientError()) {
+                logger.warn("Request Client Error. status={}", statusCode);
+            }
+
+            logger.warn("res.status={}, res.status.raw={}, res.status.text={}, res.body={}", e.getStatusCode(), e.getRawStatusCode(), e.getStatusText(),
+                    e.getResponseBodyAsString());
+
             return onError.apply(e);
         }
     }
 
+    /**
+     * 기본 헤더에 새로운 헤더를 추가하여 제공한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2020. 8. 28.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param headers
+     *            기존 header
+     * @param headerEntries
+     *            새로운 header 정보
+     * @return
+     *
+     * @since 2020. 8. 28.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static final HttpHeaders headers(MultiValueMap<String, String> headers, String... headerEntries) {
+        AssertUtils.assertNulls(IllegalArgumentException.class, (Object[]) headerEntries);
+
+        if (headerEntries == null) {
+            return new HttpHeaders(headers);
+        } else {
+            HttpHeaders newHeaders = new HttpHeaders();
+            for (int i = 0; (i + 1) < headerEntries.length; i++) {
+                newHeaders.add(String.valueOf(headerEntries[i++]), headerEntries[i]);
+            }
+            newHeaders.addAll(headers);
+            return newHeaders;
+        }
+    }
 }

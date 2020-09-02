@@ -40,7 +40,7 @@
 		<servlet-api.version>2.5</servlet-api.version>
 		<httpclient.version>4.5.9</httpclient.version>
 
-		<open-commons-core.version>[1.6.18,)</open-commons-core.version>
+		<open-commons-core.version>1.7.0-SNAPSHOT</open-commons-core.version>
 	</properties>
 
 	<distributionManagement>
@@ -57,18 +57,31 @@
 	</distributionManagement>
 
 	<repositories>
+		<!-- ===== -->
 		<repository>
-			<id>YMTECH Maven Repository</id>
-			<name>ymtech-maven-repo</name>
-			<url>http://nexus3.ymtech.co.kr/repository/maven-public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo1.maven.org/maven2/</url>
 			<snapshots>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>ymtech-maven-repo</id>
+			<name>YMTECH Maven Repository</name>
+			<url>http://nexus3.ymtech.co.kr/repository/maven-public/</url>
+			<layout>default</layout>
+		</repository>
 	</repositories>
+
+	<pluginRepositories>
+		<!-- >>> Maven Central -->
+		<pluginRepository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo1.maven.org/maven2</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 
 	<dependencies>
@@ -167,6 +180,22 @@
 			<version>${open-commons-core.version}</version>
 		</dependency>
 		<!-- end: open.commons -->
+		<!-- ************** -->
+
+		<!-- ************** -->
+		<!-- begin: swagger - API Automation -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<!-- end: swagger - API Automation -->
 		<!-- ************** -->
 
 	</dependencies>

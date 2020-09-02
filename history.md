@@ -1,3 +1,19 @@
+[2020/09/03
+- Add
+  + pom.xml: swagger2 적용
+- Update
+  + open.commons.spring.web.config
+    - swagger2 적용  
+
+[2020/08/27]
+- Add
+  + open.commons.spring.web.rest
+    - RestApiDecl.java
+    - RestApiServer.java
+- Update
+  + open.commons.spring.web.rest
+    - RestUtils.java
+        
 [2020/07/30]
 - Tag: 0.3.0-SNAPSHOT
 - Add

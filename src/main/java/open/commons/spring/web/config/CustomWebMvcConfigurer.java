@@ -38,7 +38,9 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import open.commons.spring.web.annotation.CustomHttpMessageConverter;
@@ -47,6 +49,8 @@ import open.commons.spring.web.annotation.RequestValueSupported;
 import open.commons.spring.web.enums.EnumConverter;
 import open.commons.spring.web.enums.EnumConverterFactory;
 import open.commons.spring.web.enums.EnumPackages;
+
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * 사용자 정의 설정을 자동으로 등록해주는 클래스.
@@ -173,6 +177,7 @@ import open.commons.spring.web.enums.EnumPackages;
  */
 @EnableWebMvc
 @Configuration
+@EnableSwagger2
 public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
     /** Prefix of configurations in appliation.yml(or .properteis, or ...) */
@@ -227,7 +232,12 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
                 .stream() //
                 .filter(p -> p.getClass().getAnnotation(CustomInterceptor.class) != null) // 사용자 정의 HandlerInterceptor
                 .forEach(intcptr -> {
-                    registry.addInterceptor(intcptr);
+                    InterceptorRegistration reg = registry.addInterceptor(intcptr);
+
+                    // swagger 예외 처리
+                    reg.excludePathPatterns("/swagger-ui.html");
+                    reg.excludePathPatterns("/swagger-resources/**");
+                    reg.excludePathPatterns("/webjars/**");
 
                     logger.info("Register a Interceptor. {}.", intcptr);
                 });
@@ -252,5 +262,17 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
                 });
 
         WebMvcConfigurer.super.extendMessageConverters(converters);
+    }
+
+    /**
+     * @since 2020. 9. 3.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addResourceHandlers(org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry)
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 }
