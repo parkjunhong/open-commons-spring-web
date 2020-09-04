@@ -26,6 +26,8 @@
 
 package open.commons.spring.web.config;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.reflections.Reflections;
@@ -36,19 +38,21 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import open.commons.spring.web.annotation.CustomHttpMessageConverter;
-import open.commons.spring.web.annotation.CustomInterceptor;
 import open.commons.spring.web.annotation.RequestValueSupported;
 import open.commons.spring.web.enums.EnumConverter;
 import open.commons.spring.web.enums.EnumConverterFactory;
 import open.commons.spring.web.enums.EnumPackages;
+import open.commons.utils.ArrayUtils;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -183,6 +187,13 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
     /** Prefix of configurations in appliation.yml(or .properteis, or ...) */
     public static final String APPLICATION_PROPERTIES_PREFIX = "open-commons.spring.web.factory.enum";
 
+    // start - Springfox Swagger URL : 2020. 9. 4. 오전 12:25:16
+    public static final String SWAGGER_URL_UI = "/swagger-ui";
+    public static final String SWAGGER_URL_HTML = "/swagger-ui.html";
+    public static final String SWAGGER_URL_RESOURCES = "/swagger-resources/**";
+    public static final String SWAGGER_URL_WEBJARS = "/webjars/**";
+    // end - Springfox Swagger URL : 2020. 9. 4. 오전 12:25:16
+
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
@@ -190,6 +201,29 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
     @Autowired
     private EnumPackages enumPkgs;
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 9. 3.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param registry
+     * @param patterns
+     *            URL 처리 예외 패턴
+     *
+     * @since 2020. 9. 3.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    private void addExcludePatternsToInterceptor(InterceptorRegistration registry, String... patterns) {
+        registry.excludePathPatterns(patterns);
+        logger.info("[ADD] exclude.path={}", Arrays.toString(patterns));
+    }
 
     /**
      * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addFormatters(org.springframework.format.FormatterRegistry)
@@ -227,41 +261,28 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        context.getBeansOfType(HandlerInterceptor.class) // Bean 중에서 HandlerIntereceptor 를 구현한 객체를 찾아서.
-                .values() //
-                .stream() //
-                .filter(p -> p.getClass().getAnnotation(CustomInterceptor.class) != null) // 사용자 정의 HandlerInterceptor
+        // Bean 중에서 HandlerIntereceptor 를 구현한 객체를 찾아서.
+        Collection<HandlerInterceptor> intcptrs = context.getBeansOfType(HandlerInterceptor.class).values();
+
+        if (intcptrs == null || intcptrs.size() < 1) {
+            InterceptorRegistration reg = registry.addInterceptor(new HandlerInterceptorAdapter() {
+            });
+            addSwagger2ExcludePatternsToInterceptor(reg);
+            return;
+        }
+
+        intcptrs.stream() //
                 .forEach(intcptr -> {
                     InterceptorRegistration reg = registry.addInterceptor(intcptr);
 
-                    // swagger 예외 처리
-                    reg.excludePathPatterns("/swagger-ui.html");
-                    reg.excludePathPatterns("/swagger-resources/**");
-                    reg.excludePathPatterns("/webjars/**");
+                    // start - support 'sprignfox-swagger-ui-2.9.2' : 2020. 9. 3. 오후 5:16:01
+                    addSwagger2ExcludePatternsToInterceptor(reg);
+                    // end - support 'sprignfox-swagger-ui-2.9.2' : 2020. 9. 3. 오후 5:16:01
 
                     logger.info("Register a Interceptor. {}.", intcptr);
                 });
 
         WebMvcConfigurer.super.addInterceptors(registry);
-    }
-
-    /**
-     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#extendMessageConverters(java.util.List)
-     */
-    @Override
-    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        context.getBeansOfType(HttpMessageConverter.class) // Bean 중에서 HttpMessageConverter 를 구현한 객체를찾아서.
-                .values() //
-                .stream() //
-                .filter(p -> p.getClass().getAnnotation(CustomHttpMessageConverter.class) != null) // 사용자 정의
-                                                                                                   // CustomHttpMessageConverter
-                .forEach(converter -> {
-                    converters.add(converter);
-
-                    logger.info("Register a HttpMessageConverter. {}.", converter);
-                });
-
-        WebMvcConfigurer.super.extendMessageConverters(converters);
     }
 
     /**
@@ -272,7 +293,96 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        addSwagger2ResourceHandlers(registry);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 9. 3.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param registry
+     * @param handlers
+     *            Resource Handler, {@link AntPathMatcher}
+     * @param locations
+     *            Resource Locations, {@link AntPathMatcher}
+     *
+     * @since 2020. 9. 3.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    private void addResourceHandlers(ResourceHandlerRegistry registry, String[] handlers, String[] locations) {
+        registry.addResourceHandler(handlers).addResourceLocations(locations);
+        logger.info("[ADD] resource.handler={}, resource.locations={}", Arrays.toString(handlers), Arrays.toString(locations));
+    }
+
+    /**
+     * Springfox-swagger-ui 지원을 위한 패턴 예외사항을 적용한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 9. 3.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param registry
+     *
+     * @since 2020. 9. 3.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    private void addSwagger2ExcludePatternsToInterceptor(InterceptorRegistration registry) {
+        addExcludePatternsToInterceptor(registry,
+                // swagger-ui
+                SWAGGER_URL_UI,
+                // swagger-ui.html
+                SWAGGER_URL_HTML,
+                // swagger-resources
+                SWAGGER_URL_RESOURCES,
+                // js, css, html, font, etc ...
+                SWAGGER_URL_WEBJARS);
+    }
+
+    private void addSwagger2ResourceHandlers(ResourceHandlerRegistry registry) {
+        // start - support 'sprignfox-swagger-ui-2.9.2' : 2020. 9. 3. 오후 5:15:51
+        addResourceHandlers(registry, ArrayUtils.add(null, SWAGGER_URL_HTML), ArrayUtils.add(null, "classpath:/META-INF/resources/"));
+        addResourceHandlers(registry, ArrayUtils.add(null, SWAGGER_URL_WEBJARS), ArrayUtils.add(null, "classpath:/META-INF/resources/webjars/"));
+        // end - support 'sprignfox-swagger-ui-2.9.2' : 2020. 9. 3. 오후 5:15:51
+    }
+
+    /**
+     * @since 2020. 9. 3.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry)
+     */
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addRedirectViewController(SWAGGER_URL_UI, SWAGGER_URL_HTML);
+        WebMvcConfigurer.super.addViewControllers(registry);
+    }
+
+    /**
+     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#extendMessageConverters(java.util.List)
+     */
+    @Override
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+        context.getBeansOfType(HttpMessageConverter.class) // Bean 중에서 HttpMessageConverter 를 구현한 객체를찾아서.
+                .values() //
+                .stream() //
+                // .filter(p -> p.getClass().getAnnotation(CustomHttpMessageConverter.class) != null) // 사용자 정의
+                // CustomHttpMessageConverter
+                .forEach(converter -> {
+                    converters.add(converter);
+
+                    logger.info("Register a HttpMessageConverter. {}.", converter);
+                });
+
+        WebMvcConfigurer.super.extendMessageConverters(converters);
     }
 }

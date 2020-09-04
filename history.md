@@ -1,4 +1,9 @@
-[2020/09/03
+[2020/09/04]
+- Add
+  + open.commons.spring.web.config.SpringfoxSwaggerWebSecurityCofigurer 
+
+
+[2020/09/03]
 - Add
   + pom.xml: swagger2 적용
 - Update

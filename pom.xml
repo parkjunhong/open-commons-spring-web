@@ -116,6 +116,17 @@
 		<!-- end: spring boot -->
 		<!-- ********************** -->
 
+		<!-- ********************** -->
+		<!-- begin: Spring Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<!-- end: Spring Security -->
+		<!-- ********************** -->
+
+
 		<!-- ************** -->
 		<!-- begin: validation -->
 		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
