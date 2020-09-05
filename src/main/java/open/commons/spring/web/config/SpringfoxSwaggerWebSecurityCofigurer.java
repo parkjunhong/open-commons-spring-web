@@ -10,6 +10,7 @@
 
 package open.commons.spring.web.config;
 
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -53,6 +54,17 @@ public abstract class SpringfoxSwaggerWebSecurityCofigurer extends WebSecurityCo
      */
     public SpringfoxSwaggerWebSecurityCofigurer(boolean disableDefaults) {
         super(disableDefaults);
+    }
+
+    /**
+     * @since 2020. 9. 6.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     *
+     * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.web.builders.HttpSecurity)
+     */
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers(SpringfoxSwagger.getUrlList()).permitAll();
     }
 
     /**

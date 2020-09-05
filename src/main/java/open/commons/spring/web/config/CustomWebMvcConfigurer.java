@@ -47,6 +47,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistration
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+//import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -182,8 +183,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @version 0.0.3
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
-@EnableWebMvc
 @Configuration
+@EnableWebMvc
 @EnableSwagger2
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class CustomWebMvcConfigurer implements WebMvcConfigurer {
