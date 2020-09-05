@@ -1,6 +1,14 @@
+[2020/09/05]
+- Add
+  + open.commons.spring.web.springfox.swagger.SpringfoxSwagger
+    - springfox-swagger, springfox-swagger-ui 를 위한 설정
+- Update
+  + open.commons.spring.web.config.CustomWebMvcConfigurer
+    - Spring Security 자동 설정 방지 추가: @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+
 [2020/09/04]
 - Add
-  + open.commons.spring.web.config.SpringfoxSwaggerWebSecurityCofigurer 
+  + open.commons.spring.web.config.SpringfoxSwaggerWebSecurityConfigurer 
 
 
 [2020/09/03]

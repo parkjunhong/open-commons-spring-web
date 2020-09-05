@@ -13,6 +13,8 @@ package open.commons.spring.web.config;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import open.commons.spring.web.springfox.swagger.SpringfoxSwagger;
+
 /**
  * 
  * @since 2020. 9. 4.
@@ -61,15 +63,6 @@ public abstract class SpringfoxSwaggerWebSecurityCofigurer extends WebSecurityCo
      */
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(
-                // swagger-ui
-                CustomWebMvcConfigurer.SWAGGER_URL_UI,
-                // swagger-ui.html
-                CustomWebMvcConfigurer.SWAGGER_URL_HTML,
-                // swagger-resources
-                CustomWebMvcConfigurer.SWAGGER_URL_RESOURCES,
-                // js, css, html, font, etc ...
-                CustomWebMvcConfigurer.SWAGGER_URL_WEBJARS) //
-        ;
+        web.ignoring().antMatchers(SpringfoxSwagger.getUrlList());
     }
 }

@@ -34,6 +34,8 @@ import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
@@ -52,6 +54,7 @@ import open.commons.spring.web.annotation.RequestValueSupported;
 import open.commons.spring.web.enums.EnumConverter;
 import open.commons.spring.web.enums.EnumConverterFactory;
 import open.commons.spring.web.enums.EnumPackages;
+import open.commons.spring.web.springfox.swagger.SpringfoxSwagger;
 import open.commons.utils.ArrayUtils;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -182,17 +185,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableWebMvc
 @Configuration
 @EnableSwagger2
+@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
     /** Prefix of configurations in appliation.yml(or .properteis, or ...) */
     public static final String APPLICATION_PROPERTIES_PREFIX = "open-commons.spring.web.factory.enum";
-
-    // start - Springfox Swagger URL : 2020. 9. 4. 오전 12:25:16
-    public static final String SWAGGER_URL_UI = "/swagger-ui";
-    public static final String SWAGGER_URL_HTML = "/swagger-ui.html";
-    public static final String SWAGGER_URL_RESOURCES = "/swagger-resources/**";
-    public static final String SWAGGER_URL_WEBJARS = "/webjars/**";
-    // end - Springfox Swagger URL : 2020. 9. 4. 오전 12:25:16
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -337,21 +334,13 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     private void addSwagger2ExcludePatternsToInterceptor(InterceptorRegistration registry) {
-        addExcludePatternsToInterceptor(registry,
-                // swagger-ui
-                SWAGGER_URL_UI,
-                // swagger-ui.html
-                SWAGGER_URL_HTML,
-                // swagger-resources
-                SWAGGER_URL_RESOURCES,
-                // js, css, html, font, etc ...
-                SWAGGER_URL_WEBJARS);
+        addExcludePatternsToInterceptor(registry, SpringfoxSwagger.getUrlList());
     }
 
     private void addSwagger2ResourceHandlers(ResourceHandlerRegistry registry) {
         // start - support 'sprignfox-swagger-ui-2.9.2' : 2020. 9. 3. 오후 5:15:51
-        addResourceHandlers(registry, ArrayUtils.add(null, SWAGGER_URL_HTML), ArrayUtils.add(null, "classpath:/META-INF/resources/"));
-        addResourceHandlers(registry, ArrayUtils.add(null, SWAGGER_URL_WEBJARS), ArrayUtils.add(null, "classpath:/META-INF/resources/webjars/"));
+        addResourceHandlers(registry, ArrayUtils.add(null, SpringfoxSwagger.URL_HTML), ArrayUtils.add(null, SpringfoxSwagger.RESOURCE_HTML));
+        addResourceHandlers(registry, ArrayUtils.add(null, SpringfoxSwagger.URL_WEBJARS), ArrayUtils.add(null, SpringfoxSwagger.RESOURCE_WEBJARS));
         // end - support 'sprignfox-swagger-ui-2.9.2' : 2020. 9. 3. 오후 5:15:51
     }
 
@@ -363,7 +352,7 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addRedirectViewController(SWAGGER_URL_UI, SWAGGER_URL_HTML);
+        registry.addRedirectViewController(SpringfoxSwagger.URL_UI, SpringfoxSwagger.URL_HTML);
         WebMvcConfigurer.super.addViewControllers(registry);
     }
 
