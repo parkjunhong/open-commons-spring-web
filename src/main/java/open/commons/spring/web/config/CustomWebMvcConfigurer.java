@@ -34,6 +34,7 @@ import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.ApplicationContext;
@@ -186,7 +187,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableWebMvc
 @EnableSwagger2
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+@SpringBootApplication(exclude = {
+        // Spring Security 자동 실행 방지
+        SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class
+        //
+})
 public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
     /** Prefix of configurations in appliation.yml(or .properteis, or ...) */
