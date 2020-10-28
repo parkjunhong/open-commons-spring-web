@@ -28,7 +28,10 @@ package open.commons.spring.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -39,12 +42,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import open.commons.Result;
 import open.commons.utils.AssertUtils;
+import open.commons.utils.ExceptionUtils;
 
 /**
  * {@link RestTemplate}을 이용하는 유틸리티 클래스.
@@ -517,5 +522,75 @@ public class RestUtils {
             newHeaders.addAll(headers);
             return newHeaders;
         }
+    }
+
+    /**
+     * 쿼리 파라미터 데이터를 하나의 문자열로 제공한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 21.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param parameters
+     * @return
+     *
+     * @since 2020. 10. 21.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static String queryParameters(MultiValueMap<String, Object> parameters) {
+        List<String> paramBuf = new ArrayList<>();
+        parameters.entrySet().stream()//
+                .map(e -> {
+                    if (e.getValue() == null || e.getValue().isEmpty()) {
+                        return null;
+                    }
+
+                    StringBuffer param = new StringBuffer();
+                    String name = e.getKey();
+                    for (Object o : e.getValue()) {
+                        param.append(name);
+                        param.append('=');
+                        param.append(o);
+                    }
+                    return param.toString();
+                }) //
+                .filter(p -> p != null) //
+                .forEach(param -> paramBuf.add(param));
+
+        return String.join("&", paramBuf);
+    }
+
+    /**
+     * 쿼리 파라미터 데이터를 하나의 문자열로 제공한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 10. 21.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param parameters
+     *            쿼리 파라미터. 반드시 <name=value>의 쌍을 이루어야 한다.
+     * @return
+     *
+     * @since 2020. 10. 21.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static String queryParameters(String... parameters) {
+        if (parameters == null) {
+            return "";
+        }
+        if (parameters.length % 2 != 0) {
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "올바르지 않은 파라미터 입니다. paramters=%s", Arrays.toString(parameters));
+        }
+        LinkedMultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<>();
+        for (int i = 0; i < parameters.length; i += 2) {
+            paramMap.add(parameters[i], parameters[i + 1]);
+        }
+        return queryParameters(paramMap);
     }
 }

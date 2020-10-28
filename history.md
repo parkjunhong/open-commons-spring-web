@@ -1,3 +1,9 @@
+[2020/10/21]
+- Add
+  + open.commons.spring.web.rest.RestUtils
+    - queryParameters(MultiValueMap&lt;String, Object&gt;)
+    - queryParameters(String...)    
+
 [2020/09/05]
 - Add
   + open.commons.spring.web.springfox.swagger.SpringfoxSwagger
