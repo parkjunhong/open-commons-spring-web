@@ -1,5 +1,11 @@
 [2020/10/21]
 - Add
+  + open.commons.spring.web.swagger
+    - SpringfoxSwaggerConfig: API 설정 클래스.
+    - SwaggerApiInfo: API 정의 클래스.
+
+[2020/10/21]
+- Add
   + open.commons.spring.web.rest.RestUtils
     - queryParameters(MultiValueMap&lt;String, Object&gt;)
     - queryParameters(String...)    
