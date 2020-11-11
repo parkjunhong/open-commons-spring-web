@@ -42,6 +42,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.servlet.AsyncHandlerInterceptor;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
@@ -50,7 +51,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 //import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import open.commons.spring.web.annotation.RequestValueSupported;
 import open.commons.spring.web.enums.EnumConverter;
@@ -268,7 +268,7 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
         Collection<HandlerInterceptor> intcptrs = context.getBeansOfType(HandlerInterceptor.class).values();
 
         if (intcptrs == null || intcptrs.size() < 1) {
-            InterceptorRegistration reg = registry.addInterceptor(new HandlerInterceptorAdapter() {
+            InterceptorRegistration reg = registry.addInterceptor(new AsyncHandlerInterceptor() {
             });
             addSwagger2ExcludePatternsToInterceptor(reg);
             return;
