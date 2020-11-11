@@ -11,8 +11,11 @@
 package open.commons.spring.web.swagger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -31,6 +34,8 @@ import springfox.documentation.service.Contact;
 public abstract class SpringfoxSwaggerConfig implements InitializingBean {
 
     public static final String SWAGGER_API_INFO = "open.commons.spring.web.swagger.SpringfoxSwaggerConfig#SWAGGER_API_INFO";
+
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     private Map<String, SwaggerApiInfo> swaggerApis;
 
@@ -62,6 +67,9 @@ public abstract class SpringfoxSwaggerConfig implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         this.swaggerApis = (Map<String, SwaggerApiInfo>) this.context.getBean(SWAGGER_API_INFO);
+        this.swaggerApis.forEach((k, v) -> {
+            logger.info("[loaded] swagger-apiinfo. {} = {}", k, v);
+        });
     }
 
     /**
@@ -109,7 +117,11 @@ public abstract class SpringfoxSwaggerConfig implements InitializingBean {
      * @since 2020. 10. 30.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    public abstract Map<String, SwaggerApiInfo> getSwaggerApiInfo();
+    @Bean(SWAGGER_API_INFO)
+    @ConfigurationProperties("springfox.swagger.api-config")
+    public Map<String, SwaggerApiInfo> getSwaggerApiInfo() {
+        return new HashMap<>();
+    }
 
     /**
      * {@link Contact} 를 제공한다. <br>

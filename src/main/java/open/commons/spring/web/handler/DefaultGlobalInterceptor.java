@@ -32,8 +32,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.ThreadContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.AsyncHandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import open.commons.spring.web.annotation.CustomInterceptor;
 import open.commons.utils.ThreadUtils;
@@ -45,7 +45,7 @@ import open.commons.utils.ThreadUtils;
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
 @CustomInterceptor
-public class DefaultGlobalInterceptor extends HandlerInterceptorAdapter {
+public class DefaultGlobalInterceptor implements AsyncHandlerInterceptor {
 
     public static final String BEAN_QUALIFIER = "open.commons.spring.web.handler.DefaultGlobalInterceptor";
 
@@ -83,9 +83,6 @@ public class DefaultGlobalInterceptor extends HandlerInterceptorAdapter {
             ThreadUtils.setThreadName(otn);
             ThreadContext.clearAll();
         }
-
-        super.postHandle(request, response, handler, modelAndView);
-
     }
 
     /**
@@ -113,7 +110,7 @@ public class DefaultGlobalInterceptor extends HandlerInterceptorAdapter {
             logger.trace("[Change thread-name] {} -> {}.", threadName, reqUri);
         }
 
-        return super.preHandle(request, response, handler);
+        return true;
     }
 
 }

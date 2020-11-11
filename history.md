@@ -1,3 +1,18 @@
+[2020/11/11]
+- Add
+  + open.commons.spring.web.mvc.service.AsyncHandlerService: 비동기(Future&lt;V&gt; 반환)로 수행하는 메소드를 제어하는 기능 제공
+- Modify
+  + open.commons.spring.web.handler.DefaultGlobalInterceptor: 상위 클래스 변경
+    - HandlerInterceptorAdapter(Deprecated) -> AsyncHandlerInterceptor
+- Update
+  + open.commons.spring.web.swagger.SpringfoxSwaggerConfig:
+    - getSwaggerApiInfo(): 직접 구현
+
+[2020/11/10]
+- Dependencies
+  + open.commons.core: 1.8.0-SNAPSHOT
+
+
 [2020/10/21]
 - Add
   + open.commons.spring.web.swagger
