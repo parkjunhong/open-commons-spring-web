@@ -28,6 +28,10 @@ package open.commons.spring.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -35,8 +39,30 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
+import javax.net.ssl.SSLContext;
+
+import org.apache.http.config.ConnectionConfig;
+import org.apache.http.config.RegistryBuilder;
+import org.apache.http.conn.DnsResolver;
+import org.apache.http.conn.HttpClientConnectionManager;
+import org.apache.http.conn.HttpConnectionFactory;
+import org.apache.http.conn.ManagedHttpClientConnection;
+import org.apache.http.conn.SchemePortResolver;
+import org.apache.http.conn.routing.HttpRoute;
+import org.apache.http.conn.socket.ConnectionSocketFactory;
+import org.apache.http.conn.socket.PlainConnectionSocketFactory;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
+import org.apache.http.impl.conn.DefaultSchemePortResolver;
+import org.apache.http.impl.conn.ManagedHttpClientConnectionFactory;
+import org.apache.http.impl.conn.SystemDefaultDnsResolver;
+import org.apache.http.ssl.SSLContextBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -121,6 +147,172 @@ public class RestUtils {
         }
 
         return new HttpEntity<Map<String, Object>>(map, headers);
+    }
+
+    /**
+     * 배열형태 응답 데이터를 정의한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 11. 23.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param type
+     * @return
+     *
+     * @since 2020. 11. 23.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static <T> ParameterizedTypeReference<List<T>> createArrayResponseType(Class<T> type) {
+        return new ParameterizedTypeReference<List<T>>() {
+        };
+    }
+
+    public static CloseableHttpClient createClient() {
+
+        // Lookup
+        RegistryBuilder<ConnectionSocketFactory> regBuilder = RegistryBuilder.create();
+        regBuilder.register("http", new PlainConnectionSocketFactory());
+
+        HttpConnectionFactory<HttpRoute, ManagedHttpClientConnection> connectionFactory = new ManagedHttpClientConnectionFactory();
+
+        // use org.apache.http.conn.SchemePortResolver for default port resolution and org.apache.http.config.Registry
+        // for socket factory lookups.
+        SchemePortResolver schemePortResolver = new DefaultSchemePortResolver();
+        DnsResolver dnsResolver = new SystemDefaultDnsResolver();
+
+        HttpClientConnectionManager manager = new BasicHttpClientConnectionManager(regBuilder.build(), connectionFactory, schemePortResolver, dnsResolver);
+
+        // connection config
+        ConnectionConfig.Builder conBuilder = ConnectionConfig.custom();
+        conBuilder.setCharset(Charset.forName("UTF-8"));
+
+        ConnectionConfig conConfig = conBuilder.build();
+
+        // client
+        HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
+        httpClientBuilder.setDefaultConnectionConfig(conConfig) //
+                .setConnectionManager(manager);
+
+        CloseableHttpClient client = httpClientBuilder.build();
+
+        return client;
+    }
+
+    /**
+     * 
+     * HTTPS 연결객체를 제공한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2016. 11. 21     박준홍         최초 작성
+     * 2019. 4. 9.      박준홍         최초 작성
+     * </pre>
+     *
+     * @param allowPrivateCA
+     * @return
+     * @throws KeyManagementException
+     * @throws KeyStoreException
+     * @throws NoSuchAlgorithmException
+     *
+     * @since 2019. 4. 9.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static CloseableHttpClient createHttpsClient(boolean allowPrivateCA) throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
+
+        // Lookup
+        RegistryBuilder<ConnectionSocketFactory> regBuilder = createRegistryBuilder(allowPrivateCA);
+
+        HttpConnectionFactory<HttpRoute, ManagedHttpClientConnection> connectionFactory = new ManagedHttpClientConnectionFactory();
+
+        // use org.apache.http.conn.SchemePortResolver for default port resolution and org.apache.http.config.Registry
+        // for socket factory lookups.
+        SchemePortResolver schemePortResolver = new DefaultSchemePortResolver();
+        DnsResolver dnsResolver = new SystemDefaultDnsResolver();
+
+        HttpClientConnectionManager manager = new BasicHttpClientConnectionManager(regBuilder.build(), connectionFactory, schemePortResolver, dnsResolver);
+
+        // connection config
+        ConnectionConfig.Builder conBuilder = ConnectionConfig.custom();
+        conBuilder.setCharset(Charset.forName("UTF-8"));
+
+        ConnectionConfig conConfig = conBuilder.build();
+
+        // client
+        HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
+        httpClientBuilder.setDefaultConnectionConfig(conConfig) //
+                .setConnectionManager(manager);
+
+        CloseableHttpClient client = httpClientBuilder.build();
+
+        return client;
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2019. 4. 9.      박준홍         최초 작성
+     * </pre>
+     *
+     * @param allowPrivateCA
+     *            사설인증서 자동 허용 여부
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     * @throws KeyStoreException
+     *
+     * @since 2019. 4. 9.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    private static RegistryBuilder<ConnectionSocketFactory> createRegistryBuilder(boolean allowPrivateCA)
+            throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
+        // Lookup
+        RegistryBuilder<ConnectionSocketFactory> regBuilder = RegistryBuilder.create();
+        if (allowPrivateCA) {
+            SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, (certificate, authType) -> true).build();
+            regBuilder.register("https", new SSLConnectionSocketFactory(sslContext, new NoopHostnameVerifier()));
+            regBuilder.register("http", new PlainConnectionSocketFactory());
+        } else {
+            SSLContext sslContext = SSLContext.getDefault();
+            regBuilder.register("https", new SSLConnectionSocketFactory(sslContext));
+            regBuilder.register("http", new PlainConnectionSocketFactory());
+        }
+
+        return regBuilder;
+    }
+
+    /**
+     * 단일 객체 형태 데이터를 정의한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 11. 23.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param type
+     * @return
+     *
+     * @since 2020. 11. 23.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static <T> ParameterizedTypeReference<T> createResponseType(Class<T> type) {
+        return new ParameterizedTypeReference<T>() {
+        };
     }
 
     /**
@@ -301,6 +493,112 @@ public class RestUtils {
      * 
      * <pre>
      * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 11. 20.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @return
+     *
+     * @since 2020. 11. 20.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
+            ParameterizedTypeReference<RES> responseType) {
+        return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, response -> {
+            Result<RES> result = null;
+            HttpStatus status = response.getStatusCode();
+            if (status.is2xxSuccessful()) {
+                result = new Result<>(response.getBody(), true);
+            } else {
+                result = new Result<>(response.getBody(), false);
+                result.setMessage(status.getReasonPhrase());
+            }
+            return result;
+        }, error -> {
+            Result<RES> result = new Result<RES>();
+            result.setMessage(error.getMessage());
+
+            return result;
+        });
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 11. 20.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2020. 11. 20.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
+            ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
+            , Function<Exception, Result<RES>> onError //
+    ) {
+        return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2019. 10. 24.        박준홍         최초 작성
@@ -418,6 +716,121 @@ public class RestUtils {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
+     * 2020. 11. 20.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param query
+     *            URL Query Parameters
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @return
+     *
+     * @since 2020. 11. 20.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
+            HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType) {
+        return exchange(restTemplate, method, scheme, host, port, path, query, entity, responseType, response -> {
+            Result<RES> result = null;
+            HttpStatus status = response.getStatusCode();
+            if (status.is2xxSuccessful()) {
+                result = new Result<>(response.getBody(), true);
+            } else {
+                result = new Result<>(response.getBody(), false);
+                result.setMessage(status.getReasonPhrase());
+            }
+            return result;
+        }, error -> {
+            Result<RES> result = new Result<RES>();
+            result.setMessage(error.getMessage());
+
+            return result;
+        });
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 11. 20.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param query
+     *            URL Query Parameters
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2020. 11. 20.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
+            HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
+            , Function<Exception, Result<RES>> onError//
+    ) {
+        try {
+            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, onError);
+        } catch (URISyntaxException e) {
+            logger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
      * 2019. 10. 24.		박준홍			최초 작성
      * </pre>
      *
@@ -446,6 +859,86 @@ public class RestUtils {
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
+            , Function<Exception, Result<RES>> onError//
+    ) {
+        try {
+            ResponseEntity<RES> response = restTemplate.exchange(uri, method, entity, responseType);
+
+            HttpStatus statusCode = response.getStatusCode();
+
+            // redirection
+            if (statusCode.is3xxRedirection()) {
+                logger.info("URL is redirectioned. status={}, information={}", statusCode, response.getBody());
+            } else
+            // success
+            if (statusCode.is2xxSuccessful()) {
+                logger.debug("Success to send information. target={}", uri.toString());
+            } else
+            // informational...
+            if (statusCode.is1xxInformational()) {
+                logger.debug("Information. status={}, information={}", statusCode, response.getBody());
+            }
+
+            return onSuccess.apply(response);
+        } catch (HttpClientErrorException e) {
+
+            logger.warn("method={}, uri={}, req.entity={}, res.type={}", method, uri, entity, responseType);
+
+            HttpStatus statusCode = e.getStatusCode();
+
+            // remote server internal error
+            if (statusCode.is5xxServerError()) {
+                logger.warn("Remote Server Error. status={}", statusCode);
+            } else
+            // request error
+            if (statusCode.is4xxClientError()) {
+                logger.warn("Request Client Error. status={}", statusCode);
+            }
+
+            logger.warn("res.status={}, res.status.raw={}, res.status.text={}, res.body={}", e.getStatusCode(), e.getRawStatusCode(), e.getStatusText(),
+                    e.getResponseBodyAsString());
+
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 11. 20.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param uri
+     *            대상 URI 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2020. 11. 20.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
             , Function<Exception, Result<RES>> onError//
     ) {

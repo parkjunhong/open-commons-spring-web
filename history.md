@@ -1,3 +1,31 @@
+[2020/11/23]
+- Add
+  + open.commons.spring.web.rest.RestUtils
+    - createArrayResponseType(Class&lt;T&gt;)
+    - createClient()
+    - createHttpsClient(boolean)
+    - createRegistryBuilder(boolean)
+    - createResponseType(Class&lt;T&gt;)
+- Update
+  + open.commons.spring.web.config.ResourceConfiguration
+    - getRestTemplateAllowPrivateCA() <- getRestTemplateIgnoreHostNameVerification(): 메소드 이름변경
+    
+[2020/11/21]
+- Add
+  + open.commons.spring.web.config.ResourceConfiguration
+    - getRequestFactory(HttpClient): ClientHttpRequestFactory  제공함수 별도 분리
+    - getRestTemplateIgnoreHostNameVerification(): 호스트명 확인 무시 RestTemplate 제공
+
+
+[2020/11/19]
+- Add
+  + open.commons.spring.web.rest.RestUtils
+    - exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;)
+    - exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
+    - exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;)
+    - exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
+    - exchange(RestTemplate, HttpMethod, URI, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
+
 [2020/11/11]
 - Add
   + open.commons.spring.web.mvc.service.AsyncHandlerService: 비동기(Future&lt;V&gt; 반환)로 수행하는 메소드를 제어하는 기능 제공

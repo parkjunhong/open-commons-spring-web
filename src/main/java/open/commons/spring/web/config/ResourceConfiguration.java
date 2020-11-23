@@ -26,6 +26,11 @@
 
 package open.commons.spring.web.config;
 
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+
+import org.apache.http.client.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -39,6 +44,7 @@ import org.springframework.web.client.RestTemplate;
 import open.commons.concurrent.DefaultThreadFactory;
 import open.commons.spring.web.resources.RestTemplateRequestFactoryResource;
 import open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig;
+import open.commons.spring.web.rest.RestUtils;
 
 /**
  * 
@@ -50,6 +56,7 @@ import open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig;
 public class ResourceConfiguration {
 
     public static final String BEAN_QUALIFIER_RESTTEMPLATE = "open.commons.spring.web.config.ResourceConfiguration#RESTTEMPLATE";
+    public static final String BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA = "open.commons.spring.web.config.ResourceConfiguration#RESTTEMPLATE_ALLOW_PRIVATE_CA";
     public static final String BEAN_QUALIFIER_THREAD_POOL = "open.commons.spring.web.config.ResourceConfiguration#THREADPOOL_TASK_EXECUTOR";
 
     @Autowired
@@ -74,15 +81,35 @@ public class ResourceConfiguration {
     public ResourceConfiguration() {
     }
 
-    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE)
-    public RestTemplate getRestTemplate() {
-        HttpComponentsClientHttpRequestFactory reqFactory = new HttpComponentsClientHttpRequestFactory();
+    private HttpComponentsClientHttpRequestFactory getRequestFactory(HttpClient httpClient) {
+        HttpComponentsClientHttpRequestFactory reqFactory = httpClient != null //
+                ? new HttpComponentsClientHttpRequestFactory(httpClient)//
+                : new HttpComponentsClientHttpRequestFactory();
         reqFactory.setBufferRequestBody(reqFactoryResource.isBufferRequestBody());
         reqFactory.setConnectionRequestTimeout(reqFactoryResource.getConnectionRequestTimeout());
         reqFactory.setConnectTimeout(reqFactoryResource.getConnectionTimeout());
         reqFactory.setReadTimeout(reqFactoryResource.getReadTimeout());
 
-        return new RestTemplate(reqFactory);
+        return reqFactory;
+    }
+
+    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE)
+    @Primary
+    public RestTemplate getRestTemplate() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
+        HttpClient httpClient = RestUtils.createHttpsClient(false);
+        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient);
+
+        RestTemplate tpl = new RestTemplate(reqFactory);
+        return tpl;
+    }
+
+    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA)
+    public RestTemplate getRestTemplateAllowPrivateCA() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
+        HttpClient httpClient = RestUtils.createHttpsClient(true);
+        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient);
+
+        RestTemplate tpl = new RestTemplate(reqFactory);
+        return tpl;
     }
 
     /**
@@ -168,4 +195,5 @@ public class ResourceConfiguration {
     public ThreadPoolTaskExecutorConfig getThreadPoolTaskExecutorConfig() {
         return new ThreadPoolTaskExecutorConfig();
     }
+
 }

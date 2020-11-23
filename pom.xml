@@ -172,7 +172,6 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>${httpclient.version}</version>
-			<scope>runtime</scope>
 		</dependency>
 		<!-- end: httpclient -->
 		<!-- ************** -->
