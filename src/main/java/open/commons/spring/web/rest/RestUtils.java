@@ -73,6 +73,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import open.commons.Result;
@@ -938,11 +939,13 @@ public class RestUtils {
 
                 return onError.apply(e);
             } catch (Exception e) {
-                logger.warn("{} Occured {}", "* * * * * ", e.getClass().getName());
                 unhandled = e;
-                if (NoHttpResponseException.class.isAssignableFrom(e.getClass())) {
+                logger.warn("{} Occured {}", "* * * * * ", e.getClass().getName());
+                if (NoHttpResponseException.class.isAssignableFrom(e.getClass()) //
+                        || ResourceAccessException.class.isAssignableFrom(e.getClass()) //
+                ) {
                     retrial++;
-                    logger.warn("{} Retry {} by {}", "* * * * * ", retrial, NoHttpResponseException.class.getName());
+                    logger.warn("{} Retry {} by {}", "* * * * * ", retrial, e.getClass().getName());
                     ThreadUtils.sleep(1000);
                 } else {
                     throw ExceptionUtils.newException(RuntimeException.class, e, "예상하지 못한 에러가 발생하였습니다. 원인=%s, parent=%s", e.getMessage(), e);
