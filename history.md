@@ -1,3 +1,16 @@
+[2020/11/26]
+- Add
+  + open.commons.spring.web.rest.RestUtils
+    - exchange(Supplier&lt;ResponseEntity&lt;RES&gt;&gt;, HttpMethod, URI, HttpEntity&lt;REQ&gt;, Object, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
+- Update
+  + open.commons.spring.web.rest.RestUtils 
+    - exchange(RestTemplate, HttpMethod, URI, HttpEntity&lt;REQ&gt;, Class&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
+    - exchange(RestTemplate, HttpMethod, URI, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
+- Delete
+  + open.commons.spring.web.rest.RestUtils
+    - createArrayResponseType(Class&lt;T&gt;)
+    - createResponseType(Class&lt;T&gt;)
+
 [2020/11/23]
 - Add
   + open.commons.spring.web.rest.RestUtils

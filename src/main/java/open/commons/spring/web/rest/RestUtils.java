@@ -38,9 +38,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import javax.net.ssl.SSLContext;
 
+import org.apache.http.NoHttpResponseException;
 import org.apache.http.config.ConnectionConfig;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.DnsResolver;
@@ -76,6 +78,7 @@ import org.springframework.web.client.RestTemplate;
 import open.commons.Result;
 import open.commons.utils.AssertUtils;
 import open.commons.utils.ExceptionUtils;
+import open.commons.utils.ThreadUtils;
 
 /**
  * {@link RestTemplate}을 이용하는 유틸리티 클래스.
@@ -147,29 +150,6 @@ public class RestUtils {
         }
 
         return new HttpEntity<Map<String, Object>>(map, headers);
-    }
-
-    /**
-     * 배열형태 응답 데이터를 정의한다. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜    	| 작성자	|	내용
-     * ------------------------------------------
-     * 2020. 11. 23.		박준홍			최초 작성
-     * </pre>
-     *
-     * @param <T>
-     * @param type
-     * @return
-     *
-     * @since 2020. 11. 23.
-     * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
-     */
-    public static <T> ParameterizedTypeReference<List<T>> createArrayResponseType(Class<T> type) {
-        return new ParameterizedTypeReference<List<T>>() {
-        };
     }
 
     public static CloseableHttpClient createClient() {
@@ -290,29 +270,6 @@ public class RestUtils {
         }
 
         return regBuilder;
-    }
-
-    /**
-     * 단일 객체 형태 데이터를 정의한다. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜    	| 작성자	|	내용
-     * ------------------------------------------
-     * 2020. 11. 23.		박준홍			최초 작성
-     * </pre>
-     *
-     * @param <T>
-     * @param type
-     * @return
-     *
-     * @since 2020. 11. 23.
-     * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
-     */
-    public static <T> ParameterizedTypeReference<T> createResponseType(Class<T> type) {
-        return new ParameterizedTypeReference<T>() {
-        };
     }
 
     /**
@@ -862,45 +819,8 @@ public class RestUtils {
             , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
             , Function<Exception, Result<RES>> onError//
     ) {
-        try {
-            ResponseEntity<RES> response = restTemplate.exchange(uri, method, entity, responseType);
-
-            HttpStatus statusCode = response.getStatusCode();
-
-            // redirection
-            if (statusCode.is3xxRedirection()) {
-                logger.info("URL is redirectioned. status={}, information={}", statusCode, response.getBody());
-            } else
-            // success
-            if (statusCode.is2xxSuccessful()) {
-                logger.debug("Success to send information. target={}", uri.toString());
-            } else
-            // informational...
-            if (statusCode.is1xxInformational()) {
-                logger.debug("Information. status={}, information={}", statusCode, response.getBody());
-            }
-
-            return onSuccess.apply(response);
-        } catch (HttpClientErrorException e) {
-
-            logger.warn("method={}, uri={}, req.entity={}, res.type={}", method, uri, entity, responseType);
-
-            HttpStatus statusCode = e.getStatusCode();
-
-            // remote server internal error
-            if (statusCode.is5xxServerError()) {
-                logger.warn("Remote Server Error. status={}", statusCode);
-            } else
-            // request error
-            if (statusCode.is4xxClientError()) {
-                logger.warn("Request Client Error. status={}", statusCode);
-            }
-
-            logger.warn("res.status={}, res.status.raw={}, res.status.text={}, res.body={}", e.getStatusCode(), e.getRawStatusCode(), e.getStatusText(),
-                    e.getResponseBodyAsString());
-
-            return onError.apply(e);
-        }
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
+        return exchange(sup, method, uri, entity, responseType, onSuccess, onError);
     }
 
     /**
@@ -942,45 +862,94 @@ public class RestUtils {
             , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
             , Function<Exception, Result<RES>> onError//
     ) {
-        try {
-            ResponseEntity<RES> response = restTemplate.exchange(uri, method, entity, responseType);
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
+        return exchange(sup, method, uri, entity, responseType, onSuccess, onError);
+    }
 
-            HttpStatus statusCode = response.getStatusCode();
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 11. 23.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     * @param <RES>
+     * @param sup
+     * @param method
+     * @param uri
+     * @param entity
+     * @param responseType
+     * @param onSuccess
+     * @param onError
+     * @return
+     *
+     * @since 2020. 11. 23.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    private static <REQ, RES> Result<RES> exchange(Supplier<ResponseEntity<RES>> sup, HttpMethod method, URI uri, HttpEntity<REQ> entity, Object responseType //
+            , Function<ResponseEntity<RES>, Result<RES>> onSuccess, Function<Exception, Result<RES>> onError) {
+        final int RETRY_MAX_COUNT = 5;
+        int retrial = 0;
 
-            // redirection
-            if (statusCode.is3xxRedirection()) {
-                logger.info("URL is redirectioned. status={}, information={}", statusCode, response.getBody());
-            } else
-            // success
-            if (statusCode.is2xxSuccessful()) {
-                logger.debug("Success to send information. target={}", uri.toString());
-            } else
-            // informational...
-            if (statusCode.is1xxInformational()) {
-                logger.debug("Information. status={}, information={}", statusCode, response.getBody());
+        Exception unhandled = null;
+        while (retrial < RETRY_MAX_COUNT) {
+            try {
+                ResponseEntity<RES> response = sup.get();
+
+                HttpStatus statusCode = response.getStatusCode();
+
+                // redirection
+                if (statusCode.is3xxRedirection()) {
+                    logger.info("URL is redirectioned. status={}, information={}", statusCode, response.getBody());
+                } else
+                // success
+                if (statusCode.is2xxSuccessful()) {
+                    logger.debug("Success to send information. target={}", uri.toString());
+                } else
+                // informational...
+                if (statusCode.is1xxInformational()) {
+                    logger.debug("Information. status={}, information={}", statusCode, response.getBody());
+                }
+
+                return onSuccess.apply(response);
+            } catch (HttpClientErrorException e) {
+
+                logger.warn("method={}, uri={}, req.entity={}, res.type={}", method, uri, entity, responseType);
+
+                HttpStatus statusCode = e.getStatusCode();
+
+                // remote server internal error
+                if (statusCode.is5xxServerError()) {
+                    logger.warn("Remote Server Error. status={}", statusCode);
+                } else
+                // request error
+                if (statusCode.is4xxClientError()) {
+                    logger.warn("Request Client Error. status={}", statusCode);
+                }
+
+                logger.warn("res.status={}, res.status.raw={}, res.status.text={}, res.body={}", e.getStatusCode(), e.getRawStatusCode(), e.getStatusText(),
+                        e.getResponseBodyAsString());
+
+                return onError.apply(e);
+            } catch (Exception e) {
+                logger.warn("{} Occured {}", "* * * * * ", e.getClass().getName());
+                unhandled = e;
+                if (NoHttpResponseException.class.isAssignableFrom(e.getClass())) {
+                    retrial++;
+                    logger.warn("{} Retry {} by {}", "* * * * * ", retrial, NoHttpResponseException.class.getName());
+                    ThreadUtils.sleep(1000);
+                } else {
+                    throw ExceptionUtils.newException(RuntimeException.class, e, "예상하지 못한 에러가 발생하였습니다. 원인=%s, parent=%s", e.getMessage(), e);
+                }
             }
-
-            return onSuccess.apply(response);
-        } catch (HttpClientErrorException e) {
-
-            logger.warn("method={}, uri={}, req.entity={}, res.type={}", method, uri, entity, responseType);
-
-            HttpStatus statusCode = e.getStatusCode();
-
-            // remote server internal error
-            if (statusCode.is5xxServerError()) {
-                logger.warn("Remote Server Error. status={}", statusCode);
-            } else
-            // request error
-            if (statusCode.is4xxClientError()) {
-                logger.warn("Request Client Error. status={}", statusCode);
-            }
-
-            logger.warn("res.status={}, res.status.raw={}, res.status.text={}, res.body={}", e.getStatusCode(), e.getRawStatusCode(), e.getStatusText(),
-                    e.getResponseBodyAsString());
-
-            return onError.apply(e);
         }
+        return onError.apply(unhandled);
     }
 
     /**
