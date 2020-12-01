@@ -41,6 +41,7 @@
 		<httpclient.version>4.5.9</httpclient.version>
 
 		<open-commons-core.version>1.8.0-SNAPSHOT</open-commons-core.version>
+		<open-commons-ssh.version>0.2.0-SNAPSHOT</open-commons-ssh.version>
 	</properties>
 
 	<distributionManagement>
@@ -193,6 +194,11 @@
 			<groupId>open.commons</groupId>
 			<artifactId>open-commons-core</artifactId>
 			<version>${open-commons-core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>open.commons</groupId>
+			<artifactId>open-commons-ssh</artifactId>
+			<version>${open-commons-ssh.version}</version>
 		</dependency>
 		<!-- end: open.commons -->
 		<!-- ************** -->

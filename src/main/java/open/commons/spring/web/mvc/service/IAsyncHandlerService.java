@@ -18,7 +18,7 @@
  *
  * This file is generated under this project, "open-commons-spring-web".
  *
- * Date  : 2020. 11. 10. 오후 8:47:46
+ * Date  : 2020. 11. 26. 오후 5:41:31
  *
  * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
  * 
@@ -30,24 +30,16 @@ import java.util.concurrent.Future;
 
 import org.springframework.scheduling.annotation.AsyncResult;
 
+import open.commons.Result;
 import open.commons.concurrent.AsyncJobManager;
 
 /**
  * 
- * @since 2020. 11. 10.
+ * @since 2020. 11. 26.
  * @version _._._
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
- * 
- * @deprecated Use {@link IAsyncHandlerService}
  */
-public abstract class AsyncHandlerService extends AbstractGenericService {
-
-    /**
-     * 
-     * @since 2020. 11. 10.
-     */
-    public AsyncHandlerService() {
-    }
+public interface IAsyncHandlerService {
 
     /**
      * 주어진 데이터를 가지고 {@link Future} 객체를 생성한다. <br>
@@ -66,8 +58,33 @@ public abstract class AsyncHandlerService extends AbstractGenericService {
      * @since 2020. 11. 10.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    protected <T> Future<T> future(T value) {
+    default <T> Future<T> future(T value) {
         return new AsyncResult<>(value);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 11. 26.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param value
+     * @param result
+     * @param msg
+     * @return
+     *
+     * @since 2020. 11. 26.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    default <T> Future<Result<T>> futureAsResult(T value, boolean result, String msg) {
+        return new AsyncResult<>(new Result<T>(value, result).setMessage(msg));
     }
 
     /**
@@ -88,11 +105,12 @@ public abstract class AsyncHandlerService extends AbstractGenericService {
      * @since 2020. 11. 10.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    protected final <H, K> void unregisterAsyncJob(H holder, K key) {
+    default <H, K> void unregisterAsyncJob(H holder, K key) {
         // 비동기 작업 제거
         AsyncJobManager<K, ?> manager = AsyncJobManager.Builder.getManager(holder);
         if (manager != null) {
             manager.unregister(key);
         }
     }
+
 }

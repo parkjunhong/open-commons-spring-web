@@ -1,4 +1,7 @@
 [2020/11/26]
+- New
+  + open.commons.spring.web.mvc.service.IAsyncHandlerService
+  + open.commons.spring.web.mvc.service.AbstractSshService
 - Add
   + open.commons.spring.web.rest.RestUtils
     - exchange(Supplier&lt;ResponseEntity&lt;RES&gt;&gt;, HttpMethod, URI, HttpEntity&lt;REQ&gt;, Object, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
@@ -9,7 +12,9 @@
 - Delete
   + open.commons.spring.web.rest.RestUtils
     - createArrayResponseType(Class&lt;T&gt;)
-    - createResponseType(Class&lt;T&gt;)
+    - createResponseType(Class&lt;T&gt;)    
+- Deprecated
+  + open.commons.spring.web.mvc.service.AsyncHandlerService
 
 [2020/11/23]
 - Add
