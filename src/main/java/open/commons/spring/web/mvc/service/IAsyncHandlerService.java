@@ -36,7 +36,7 @@ import open.commons.concurrent.AsyncJobManager;
 /**
  * 
  * @since 2020. 11. 26.
- * @version _._._
+ * @version 0.3.0
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
 public interface IAsyncHandlerService {
