@@ -1,5 +1,7 @@
 [2020/12/09]
 - Update
+  + open.commons.spring.web.config.ResourceConfiguration
+    - getRequestFactory(HttpClient, RestTemplateRequestFactoryResource): access modifier 변경 (private -> public static)
   + open.commons.spring.web.rest.RestUtils
     - createHttpsClient(boolean): HttpClientConnection을 Thread-Safe 하게 생성하기 위한  HttpClientConnectionManager 변경
       * BasicHttpClientConnectionManager -> PoolingHttpClientConnectionManager

@@ -81,23 +81,11 @@ public class ResourceConfiguration {
     public ResourceConfiguration() {
     }
 
-    private HttpComponentsClientHttpRequestFactory getRequestFactory(HttpClient httpClient) {
-        HttpComponentsClientHttpRequestFactory reqFactory = httpClient != null //
-                ? new HttpComponentsClientHttpRequestFactory(httpClient)//
-                : new HttpComponentsClientHttpRequestFactory();
-        reqFactory.setBufferRequestBody(reqFactoryResource.isBufferRequestBody());
-        reqFactory.setConnectionRequestTimeout(reqFactoryResource.getConnectionRequestTimeout());
-        reqFactory.setConnectTimeout(reqFactoryResource.getConnectionTimeout());
-        reqFactory.setReadTimeout(reqFactoryResource.getReadTimeout());
-
-        return reqFactory;
-    }
-
     @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE)
     @Primary
     public RestTemplate getRestTemplate() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
         HttpClient httpClient = RestUtils.createHttpsClient(false);
-        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient);
+        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient, reqFactoryResource);
 
         RestTemplate tpl = new RestTemplate(reqFactory);
         return tpl;
@@ -106,7 +94,7 @@ public class ResourceConfiguration {
     @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA)
     public RestTemplate getRestTemplateAllowPrivateCA() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
         HttpClient httpClient = RestUtils.createHttpsClient(true);
-        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient);
+        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient, reqFactoryResource);
 
         RestTemplate tpl = new RestTemplate(reqFactory);
         return tpl;
@@ -194,6 +182,38 @@ public class ResourceConfiguration {
     @ConfigurationProperties("open-commons.spring.async.thread-pool-task-executor")
     public ThreadPoolTaskExecutorConfig getThreadPoolTaskExecutorConfig() {
         return new ThreadPoolTaskExecutorConfig();
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2019. 6. 27.		박준홍			최초 작성
+     * 2020. 12. 9.		박준홍			access modifier 변경 (private -> public static)
+     * </pre>
+     *
+     * @param httpClient
+     * @param reqFactoryResource
+     * @return
+     *
+     * @since 2020. 12. 9.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static HttpComponentsClientHttpRequestFactory getRequestFactory(HttpClient httpClient, RestTemplateRequestFactoryResource reqFactoryResource) {
+        HttpComponentsClientHttpRequestFactory reqFactory = httpClient != null //
+                ? new HttpComponentsClientHttpRequestFactory(httpClient)//
+                : new HttpComponentsClientHttpRequestFactory();
+        reqFactory.setBufferRequestBody(reqFactoryResource.isBufferRequestBody());
+        reqFactory.setConnectionRequestTimeout(reqFactoryResource.getConnectionRequestTimeout());
+        reqFactory.setConnectTimeout(reqFactoryResource.getConnectionTimeout());
+        reqFactory.setReadTimeout(reqFactoryResource.getReadTimeout());
+
+        return reqFactory;
     }
 
 }
