@@ -1,3 +1,9 @@
+[2020/12/09]
+- Update
+  + open.commons.spring.web.rest.RestUtils
+    - createHttpsClient(boolean): HttpClientConnection을 Thread-Safe 하게 생성하기 위한  HttpClientConnectionManager 변경
+      * BasicHttpClientConnectionManager -> PoolingHttpClientConnectionManager
+
 [2020/11/26]
 - New
   + open.commons.spring.web.mvc.service.IAsyncHandlerService

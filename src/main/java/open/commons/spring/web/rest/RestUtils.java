@@ -60,6 +60,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 import org.apache.http.impl.conn.DefaultSchemePortResolver;
 import org.apache.http.impl.conn.ManagedHttpClientConnectionFactory;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.impl.conn.SystemDefaultDnsResolver;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.slf4j.Logger;
@@ -214,10 +215,13 @@ public class RestUtils {
 
         // use org.apache.http.conn.SchemePortResolver for default port resolution and org.apache.http.config.Registry
         // for socket factory lookups.
-        SchemePortResolver schemePortResolver = new DefaultSchemePortResolver();
         DnsResolver dnsResolver = new SystemDefaultDnsResolver();
 
-        HttpClientConnectionManager manager = new BasicHttpClientConnectionManager(regBuilder.build(), connectionFactory, schemePortResolver, dnsResolver);
+        // HttpClientConnectionManager manager = new BasicHttpClientConnectionManager(regBuilder.build(),
+        // connectionFactory, schemePortResolver, dnsResolver);
+        // begin - PATCH [2020. 12. 9.]: Thread Safe 지원 | Park_Jun_Hong_(fafanmama_at_naver_com)
+        HttpClientConnectionManager manager = new PoolingHttpClientConnectionManager(regBuilder.build(), connectionFactory, dnsResolver);
+        // end - Park_Jun_Hong_(fafanmama_at_naver_com), 2020. 12. 9.
 
         // connection config
         ConnectionConfig.Builder conBuilder = ConnectionConfig.custom();
