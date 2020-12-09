@@ -32,10 +32,13 @@ import java.security.NoSuchAlgorithmException;
 
 import org.apache.http.client.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -82,6 +85,7 @@ public class ResourceConfiguration {
     }
 
     @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE)
+    @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
     @Primary
     public RestTemplate getRestTemplate() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
         HttpClient httpClient = RestUtils.createHttpsClient(false);
@@ -92,6 +96,7 @@ public class ResourceConfiguration {
     }
 
     @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA)
+    @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
     public RestTemplate getRestTemplateAllowPrivateCA() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
         HttpClient httpClient = RestUtils.createHttpsClient(true);
         HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient, reqFactoryResource);

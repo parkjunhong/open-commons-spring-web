@@ -194,10 +194,11 @@ public class RestUtils {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2016. 11. 21     박준홍         최초 작성
-     * 2019. 4. 9.      박준홍         최초 작성
+     * 2019. 4. 9.      박준홍         기능 확장. (사설 인증서 지원)
      * </pre>
      *
      * @param allowPrivateCA
+     *            사설인증서 지원 여부
      * @return
      * @throws KeyManagementException
      * @throws KeyStoreException
@@ -217,8 +218,6 @@ public class RestUtils {
         // for socket factory lookups.
         DnsResolver dnsResolver = new SystemDefaultDnsResolver();
 
-        // HttpClientConnectionManager manager = new BasicHttpClientConnectionManager(regBuilder.build(),
-        // connectionFactory, schemePortResolver, dnsResolver);
         // begin - PATCH [2020. 12. 9.]: Thread Safe 지원 | Park_Jun_Hong_(fafanmama_at_naver_com)
         HttpClientConnectionManager manager = new PoolingHttpClientConnectionManager(regBuilder.build(), connectionFactory, dnsResolver);
         // end - Park_Jun_Hong_(fafanmama_at_naver_com), 2020. 12. 9.
