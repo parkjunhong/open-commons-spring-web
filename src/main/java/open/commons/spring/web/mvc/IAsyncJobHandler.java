@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.spring.web.mvc.service;
+package open.commons.spring.web.mvc;
 
 import java.util.concurrent.Future;
 
@@ -32,17 +32,25 @@ import org.springframework.scheduling.annotation.AsyncResult;
 
 import open.commons.Result;
 import open.commons.concurrent.AsyncJobManager;
-import open.commons.spring.web.mvc.IAsyncJobHandler;
 
 /**
+ *
+ * 
+ * <br>
+ * 
+ * <pre>
+ * [개정이력]
+ *      날짜    	| 작성자	|	내용
+ * ------------------------------------------
+ * 2020. 11. 26.        박준홍     최초 작성
+ * 2021. 1. 13.         박준홍     클래스 이관.
+ * </pre>
  * 
  * @since 2020. 11. 26.
  * @version 0.3.0
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
- * 
- * @deprecated Use {@link IAsyncJobHandler}.
  */
-public interface IAsyncHandlerService {
+public interface IAsyncJobHandler {
 
     /**
      * 주어진 데이터를 가지고 {@link Future} 객체를 생성한다. <br>
@@ -94,6 +102,36 @@ public interface IAsyncHandlerService {
     }
 
     /**
+     * 비동기 작업을 관리자에게 등록한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 1. 13.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <H>
+     * @param <K>
+     * @param <V>
+     * @param holder
+     *            context holder
+     * @param key
+     *            작업 식별정보
+     * @param job
+     *            작업
+     *
+     * @since 2021. 1. 13.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+//    default <H, K, V> void register(H holder, K key, Future<V> job) {
+    default <H, K> void register(H holder, K key, Future<?> job) {
+        AsyncJobManager<K, ?> manager = AsyncJobManager.Builder.getManager(holder);
+        manager.register(key, job);
+    }
+
+    /**
      * 
      * <br>
      * 
@@ -112,15 +150,12 @@ public interface IAsyncHandlerService {
      *
      * @since 2020. 11. 10.
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
-     * 
-     * @deprecated {@link IAsyncJobHandler#unregister(Object, Object)}
      */
-    default <H, K> void unregisterAsyncJob(H holder, K key) {
+    default <H, K> void unregister(H holder, K key) {
         // 비동기 작업 제거
         AsyncJobManager<K, ?> manager = AsyncJobManager.Builder.getManager(holder);
         if (manager != null) {
             manager.unregister(key);
         }
     }
-
 }

@@ -1,3 +1,10 @@
+[2021/01/13]
+- New
+  + open.commons.spring.web.mvc.IAsyncJobHanlder
+- Deprecated
+  + open.commons.spring.web.mvc.service.IAsyncHandlerService
+
+
 [2020/12/09]
 - Update
   + open.commons.spring.web.config.ResourceConfiguration
