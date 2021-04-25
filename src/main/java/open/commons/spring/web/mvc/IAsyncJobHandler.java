@@ -117,6 +117,8 @@ public interface IAsyncJobHandler {
      * @since 2021. 4. 23.
      * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @see #register(Object, Future)
+     * @see #unregister(Object)
      */
     public Object getAsyncManagerHolder();
 
@@ -168,10 +170,10 @@ public interface IAsyncJobHandler {
      * @since 2021. 4. 23.
      * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @see #register(Object, Future)
      */
     default <K> void register(K key, Future<?> job) {
-        AsyncJobManager<K, ?> manager = AsyncJobManager.Builder.getManager(getAsyncManagerHolder());
-        manager.register(key, job);
+        register(getAsyncManagerHolder(), key, job);
     }
 
     /**
@@ -213,10 +215,12 @@ public interface IAsyncJobHandler {
      *
      * @param <K>
      * @param key
+     *            비동기 작업 식별 정보
      *
      * @since 2021. 4. 23.
      * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @see #unregister(Object)
      */
     default <K> void unregister(K key) {
         unregister(getAsyncManagerHolder(), key);
