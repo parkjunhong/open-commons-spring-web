@@ -1,3 +1,11 @@
+[2021/04/23]
+- Add
+  + open.commons.spring.web.mvn.IAsyncJobHandler
+    - getAsyncManagerHolder()
+    - register(K, Future&lt;?&gt;)
+    - unregister(K) 
+
+    
 [2021/01/13]
 - New
   + open.commons.spring.web.mvc.IAsyncJobHanlder

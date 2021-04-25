@@ -102,6 +102,25 @@ public interface IAsyncJobHandler {
     }
 
     /**
+     * 비동기 작업관리자 식별정보를 제공한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 4. 23.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @return
+     *
+     * @since 2021. 4. 23.
+     * @version 0.3.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public Object getAsyncManagerHolder();
+
+    /**
      * 비동기 작업을 관리자에게 등록한다. <br>
      * 
      * <pre>
@@ -122,18 +141,41 @@ public interface IAsyncJobHandler {
      *            작업
      *
      * @since 2021. 1. 13.
-     * @version _._._
+     * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-//    default <H, K, V> void register(H holder, K key, Future<V> job) {
     default <H, K> void register(H holder, K key, Future<?> job) {
         AsyncJobManager<K, ?> manager = AsyncJobManager.Builder.getManager(holder);
         manager.register(key, job);
     }
 
     /**
+     * 비동기 작업을 관리자에 등록한다. <br>
      * 
-     * <br>
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 4. 23.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <K>
+     * @param key
+     *            비동기 작업 식별정보
+     * @param job
+     *            작업
+     *
+     * @since 2021. 4. 23.
+     * @version 0.3.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    default <K> void register(K key, Future<?> job) {
+        AsyncJobManager<K, ?> manager = AsyncJobManager.Builder.getManager(getAsyncManagerHolder());
+        manager.register(key, job);
+    }
+
+    /**
+     * 비동기 작업등록을 해제한다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -157,5 +199,26 @@ public interface IAsyncJobHandler {
         if (manager != null) {
             manager.unregister(key);
         }
+    }
+
+    /**
+     * 비동기 작업등록을 해제한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 4. 23.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <K>
+     * @param key
+     *
+     * @since 2021. 4. 23.
+     * @version 0.3.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    default <K> void unregister(K key) {
+        unregister(getAsyncManagerHolder(), key);
     }
 }
