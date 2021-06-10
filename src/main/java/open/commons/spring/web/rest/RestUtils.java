@@ -439,6 +439,9 @@ public class RestUtils {
      * @since 2019. 10. 24.
      * @version
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * 
+     * @deprecated Use
+     *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, Class, Function, Function)}
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
             Class<RES> responseType //
@@ -545,6 +548,9 @@ public class RestUtils {
      * @since 2020. 11. 20.
      * @version _._._
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * 
+     * @deprecated Use
+     *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, ParameterizedTypeReference, Function, Function)}
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
             ParameterizedTypeReference<RES> responseType //
@@ -655,6 +661,8 @@ public class RestUtils {
      * @since 2019. 10. 24.
      * @version
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @deprecated Use
+     *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, Class, Function, Function)}
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
             HttpEntity<REQ> entity, Class<RES> responseType //
@@ -770,6 +778,8 @@ public class RestUtils {
      * @since 2020. 11. 20.
      * @version _._._
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @deprecated Use
+     *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, ParameterizedTypeReference, Function, Function)}
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
             HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType //
@@ -818,6 +828,7 @@ public class RestUtils {
      * @since 2019. 10. 24.
      * @version
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @deprecated Use {@link RestUtils2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, Class, Function, Function)}
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, Class<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
@@ -861,6 +872,8 @@ public class RestUtils {
      * @since 2020. 11. 20.
      * @version _._._
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @deprecated Use
+     *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, ParameterizedTypeReference, Function, Function)}
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RES>> onSuccess //

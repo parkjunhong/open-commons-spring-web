@@ -62,7 +62,6 @@ public class RestUtils2 {
     }
 
     /**
-     * 
      * <br>
      * 
      * <pre>
@@ -76,6 +75,8 @@ public class RestUtils2 {
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
@@ -125,6 +126,8 @@ public class RestUtils2 {
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
@@ -174,6 +177,8 @@ public class RestUtils2 {
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
@@ -230,6 +235,8 @@ public class RestUtils2 {
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
@@ -286,6 +293,8 @@ public class RestUtils2 {
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
@@ -329,6 +338,8 @@ public class RestUtils2 {
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
