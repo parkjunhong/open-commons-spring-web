@@ -1,3 +1,11 @@
+[2021/06/11]
+- Add
+  + open.commons.spring.web.rest.RestUtils2 추가
+    - 기존 RestUtils의 메소드 정의 확장: REQ, RES -> REQ, RES, RET
+      - REQ: Http Reqeust Entity T ype 
+      - RES: Http Response Type
+      - RET: REST API를 연동한 메소드에거 제공할 데이타 타입.
+
 [2021/04/23]
 - Add
   + open.commons.spring.web.mvn.IAsyncJobHandler
