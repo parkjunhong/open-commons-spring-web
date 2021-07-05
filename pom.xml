@@ -38,7 +38,7 @@
 		<slf4j-api.version>1.7.26</slf4j-api.version>
 		<reflections.version>0.9.11</reflections.version>
 		<servlet-api.version>2.5</servlet-api.version>
-		<httpclient.version>4.5.9</httpclient.version>
+		<httpclient.version>[4.5.13,)</httpclient.version>
 
 		<open-commons-core.version>1.8.0-SNAPSHOT</open-commons-core.version>
 		<open-commons-ssh.version>0.2.0-SNAPSHOT</open-commons-ssh.version>

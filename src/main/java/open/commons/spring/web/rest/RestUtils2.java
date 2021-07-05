@@ -40,6 +40,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
@@ -420,22 +421,22 @@ public class RestUtils2 {
                 }
 
                 return onSuccess.apply(response);
-            } catch (HttpClientErrorException e) {
+            } catch (HttpClientErrorException | HttpServerErrorException e) {
 
-                logger.warn("method={}, uri={}, req.entity={}, res.type={}", method, uri, entity, responseType);
+                logger.warn("'Request' -> method={}, uri={}, req.entity={}, res.type={}", method, uri, entity, responseType);
 
                 HttpStatus statusCode = e.getStatusCode();
-
-                // remote server internal error
-                if (statusCode.is5xxServerError()) {
-                    logger.warn("Remote Server Error. status={}", statusCode);
-                } else
+                String occurs = null;
                 // request error
                 if (statusCode.is4xxClientError()) {
-                    logger.warn("Request Client Error. status={}", statusCode);
+                    occurs = "Request Client Error.";
+                } else
+                // remote server internal error
+                if (statusCode.is5xxServerError()) {
+                    occurs = "Remote Server Error.";
                 }
 
-                logger.warn("res.status={}, res.status.raw={}, res.status.text={}, res.body={}", e.getStatusCode(), e.getRawStatusCode(), e.getStatusText(),
+                logger.warn("'{}' -> res.status={}, res.status.raw={}, res.status.text={}, res.body={}", occurs, statusCode, e.getRawStatusCode(), e.getStatusText(),
                         e.getResponseBodyAsString());
 
                 return onError.apply(e);

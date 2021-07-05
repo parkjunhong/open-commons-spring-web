@@ -1,3 +1,25 @@
+[2021/07/05]
+- New
+  + open.commons.spring.web.validation.CustomConstraintValidator&lt;A extends Annotation, T&gt;
+- Modify
+  + open.commons.spring.web.rest.RestUtils2
+    - exchange(Supplier<ResponseEntity&lt;RES&gt;&gt;, HttpMethod, URI, HttpEntity&lt;REQ&gt;, Object, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
+- __CVE-2020-13956__ 
+  Vulnerable versions: &lt; 4.5.13  
+  Patched version: 4.5.13 
+  Apache HttpClient versions prior to version 4.5.13 and 5.0.3 can misinterpret malformed authority component in request URIs passed to the library as java.net.URI object and pick the wrong target host for request execution. 
+```
+   	<dependency>
+  		<groupId>org.apache.httpcomponents</groupId>
+  		<artifactId>httpclient</artifactId>
+  		<version>[4.5.13,)</version>
+	</dependency>
+```
+
+[2021/06/11]
+- New
+  + open.commons.spring.web.validation.CustomConstraintValidator&lt;A extends Annotation, T&gt;
+
 [2021/06/11]
 - Add
   + open.commons.spring.web.rest.RestUtils2 추가
