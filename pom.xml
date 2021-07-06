@@ -30,11 +30,9 @@
 		<maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
 		<!-- >>> end: plugin dependencies -->
 
-		<log4j.version>2.11.1</log4j.version>
-		<log4j-slf4j.version>2.11.1</log4j-slf4j.version>
-
-		<spring-core.version>[5.1.13,)</spring-core.version>
-		<spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+		<!-- >>> begin: dependencies -->
+		<spring-core.version>[5.3.8,)</spring-core.version>
+		<spring-boot.version>[2.5.2,)</spring-boot.version>
 		<slf4j-api.version>1.7.26</slf4j-api.version>
 		<reflections.version>0.9.11</reflections.version>
 		<servlet-api.version>2.5</servlet-api.version>
@@ -42,6 +40,7 @@
 
 		<open-commons-core.version>1.8.0-SNAPSHOT</open-commons-core.version>
 		<open-commons-ssh.version>0.2.0-SNAPSHOT</open-commons-ssh.version>
+		<!-- <<< end: dependencies -->
 	</properties>
 
 	<distributionManagement>
