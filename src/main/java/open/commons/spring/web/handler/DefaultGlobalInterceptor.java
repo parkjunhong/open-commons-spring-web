@@ -68,7 +68,7 @@ public class DefaultGlobalInterceptor implements AsyncHandlerInterceptor {
     }
 
     /**
-     * @see org.springframework.web.servlet.handler.HandlerInterceptorAdapter#postHandle(javax.servlet.http.HttpServletRequest,
+     * @see org.springframework.web.servlet.HandlerInterceptor#postHandle(javax.servlet.http.HttpServletRequest,
      *      javax.servlet.http.HttpServletResponse, java.lang.Object, org.springframework.web.servlet.ModelAndView)
      */
     @Override
@@ -86,7 +86,7 @@ public class DefaultGlobalInterceptor implements AsyncHandlerInterceptor {
     }
 
     /**
-     * @see org.springframework.web.servlet.handler.HandlerInterceptorAdapter#preHandle(javax.servlet.http.HttpServletRequest,
+     * @see org.springframework.web.servlet.HandlerInterceptor#preHandle(javax.servlet.http.HttpServletRequest,
      *      javax.servlet.http.HttpServletResponse, java.lang.Object)
      */
     @Override
