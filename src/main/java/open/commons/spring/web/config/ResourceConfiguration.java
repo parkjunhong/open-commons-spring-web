@@ -32,6 +32,7 @@ import java.security.NoSuchAlgorithmException;
 
 import org.apache.http.client.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -60,12 +61,16 @@ public class ResourceConfiguration {
 
     public static final String BEAN_QUALIFIER_RESTTEMPLATE = "open.commons.spring.web.config.ResourceConfiguration#RESTTEMPLATE";
     public static final String BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA = "open.commons.spring.web.config.ResourceConfiguration#RESTTEMPLATE_ALLOW_PRIVATE_CA";
+    public static final String BEAN_QUALIFIER_RESTTEMPLATE_REQUEST_SOURCE = "open.commons.spring.web.config.ResourceConfiguration#BEAN_QUALIFIER_RESTTEMPLATE_REQUEST_SOURCE";
     public static final String BEAN_QUALIFIER_THREAD_POOL = "open.commons.spring.web.config.ResourceConfiguration#THREADPOOL_TASK_EXECUTOR";
+    public static final String BEAN_QUALIFIER_THREAD_POOL_CONFIG = "open.commons.spring.web.config.ResourceConfiguration#BEAN_QUALIFIER_THREAD_POOL_CONFIG";
 
     @Autowired
+    @Qualifier(BEAN_QUALIFIER_RESTTEMPLATE_REQUEST_SOURCE)
     private RestTemplateRequestFactoryResource reqFactoryResource;
 
     @Autowired
+    @Qualifier(BEAN_QUALIFIER_THREAD_POOL_CONFIG)
     private ThreadPoolTaskExecutorConfig taskExecConfig;
 
     /**
@@ -121,7 +126,7 @@ public class ResourceConfiguration {
      * @version
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    @Bean
+    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_REQUEST_SOURCE)
     @Primary
     @ConfigurationProperties("open-commons.spring.web.resttemplate.requestfactory")
     public RestTemplateRequestFactoryResource getRestTemplateRequestFactoryResource() {
@@ -147,23 +152,7 @@ public class ResourceConfiguration {
     @Bean(name = BEAN_QUALIFIER_THREAD_POOL, destroyMethod = "destroy")
     @Primary
     public ThreadPoolTaskExecutor getThreadPoolTaskExecutor() {
-
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-
-        String threadPrefix = taskExecConfig.getThreadNamePrefix();
-        executor.setThreadFactory(new DefaultThreadFactory(threadPrefix == null ? "async-method" : threadPrefix));
-
-        executor.setCorePoolSize(taskExecConfig.getCorePoolSize());
-        executor.setKeepAliveSeconds(taskExecConfig.getKeepAliveSeconds());
-        executor.setMaxPoolSize(taskExecConfig.getMaxPoolSize());
-        executor.setQueueCapacity(taskExecConfig.getQueueCapacity());
-        executor.setAllowCoreThreadTimeOut(taskExecConfig.isAllowCoreThreadTimeOut());
-        executor.setAwaitTerminationSeconds(taskExecConfig.getAwaitTerminationSeconds());
-        executor.setWaitForTasksToCompleteOnShutdown(taskExecConfig.isWaitForTasksToCompleteOnShutdown());
-        executor.setDaemon(taskExecConfig.isDaemon());
-        executor.setThreadPriority(taskExecConfig.getThreadPriority());
-
-        return executor;
+        return createThreadPoolTaskExecutor(this.taskExecConfig, "async-method");
     }
 
     /**
@@ -182,11 +171,49 @@ public class ResourceConfiguration {
      * @version _._._
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    @Bean
+    @Bean(name = BEAN_QUALIFIER_THREAD_POOL_CONFIG)
     @Primary
     @ConfigurationProperties("open-commons.spring.async.thread-pool-task-executor")
     public ThreadPoolTaskExecutorConfig getThreadPoolTaskExecutorConfig() {
         return new ThreadPoolTaskExecutorConfig();
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 8. 19.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param config
+     * @param defaultThreadName
+     * @return
+     *
+     * @since 2021. 8. 19.
+     * @version _._._
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public static ThreadPoolTaskExecutor createThreadPoolTaskExecutor(ThreadPoolTaskExecutorConfig config, String defaultThreadName) {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+
+        String threadPrefix = config.getThreadNamePrefix();
+        executor.setThreadFactory(new DefaultThreadFactory(threadPrefix == null ? defaultThreadName : threadPrefix));
+
+        executor.setCorePoolSize(config.getCorePoolSize());
+        executor.setKeepAliveSeconds(config.getKeepAliveSeconds());
+        executor.setMaxPoolSize(config.getMaxPoolSize());
+        executor.setQueueCapacity(config.getQueueCapacity());
+        executor.setAllowCoreThreadTimeOut(config.isAllowCoreThreadTimeOut());
+        executor.setAwaitTerminationSeconds(config.getAwaitTerminationSeconds());
+        executor.setWaitForTasksToCompleteOnShutdown(config.isWaitForTasksToCompleteOnShutdown());
+        executor.setDaemon(config.isDaemon());
+        executor.setThreadPriority(config.getThreadPriority());
+
+        return executor;
     }
 
     /**

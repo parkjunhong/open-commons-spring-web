@@ -1,3 +1,16 @@
+[2021/08/20]
+- bugfix
+  + Bean Name 설정
+    + open.commons.spring.web.config.getRestTemplateRequestFactoryResource()
+    + open.commons.spring.web.config.getThreadPoolTaskExecutorConfig()
+  + Qualifier 설정
+    + open.commons.spring.web.config.RestTemplateRequestFactoryResource
+    + open.commons.spring.web.config.ThreadPoolTaskExecutorConfig
+
+[2021/08/19]
+- Add
+  + open.commons.spring.web.config.createThreadPoolTaskExecutor(ThreadPoolTaskExecutorConfig, String)
+
 [2021/07/05]
 - New
   + open.commons.spring.web.validation.CustomConstraintValidator&lt;A extends Annotation, T&gt;
