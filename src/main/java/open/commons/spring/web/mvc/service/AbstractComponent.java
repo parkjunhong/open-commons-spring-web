@@ -34,6 +34,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import open.commons.Result;
 import open.commons.spring.web.config.ResourceConfiguration;
 
 /**
@@ -74,5 +75,159 @@ public class AbstractComponent {
      * @version
      */
     public AbstractComponent() {
+    }
+
+    /**
+     * 에러 결과 객체를 반환한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 8. 24.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param msg
+     *            에러 메시지
+     * @return
+     *
+     * @since 2021. 8. 24.
+     * @version 1.8.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public final <T> Result<T> error(String msg) {
+        return Result.error(msg);
+    }
+
+    /**
+     * 에러 결과 객체를 반환한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 8. 24.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param format
+     *            에러 메시지 포맷
+     * @param args
+     *            메시지 데이터
+     * @return
+     *
+     * @since 2021. 8. 24.
+     * @version 1.8.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public final <T> Result<T> error(String format, Object... args) {
+        return Result.error(format, args);
+    }
+
+    /**
+     * 에러 결과 객체를 반환한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 8. 24.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param data
+     *            데이터
+     * @param data
+     *            메시지
+     * @return
+     *
+     * @since 2021. 8. 24.
+     * @version 1.8.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    @SuppressWarnings("unchecked")
+    public final <T> Result<T> error(T data, String msg) {
+        return (Result<T>) Result.error(msg).setData(data);
+    }
+
+    /**
+     * 에러 결과 객체를 반환한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 8. 24.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param data
+     *            데이터
+     * @param format
+     *            메시지 포맷
+     * @param args
+     *            메시지 데이터
+     * @return
+     *
+     * @since 2021. 8. 24.
+     * @version 1.8.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    @SuppressWarnings("unchecked")
+    public final <T> Result<T> error(T data, String format, Object... args) {
+        return (Result<T>) Result.error(format, args).setData(data);
+    }
+
+    /**
+     * 성공 결과 객체를 반환한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 8. 24.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param data
+     *            데이터
+     * @param message
+     *            메시지
+     * @return
+     *
+     * @since 2021. 8. 24.
+     * @version 1.8.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public final <T> Result<T> success(T data, String message) {
+        return Result.success(data).setMessage(message);
+    }
+
+    /**
+     * 성공 결과 객체를 반환한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 8. 24.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param data
+     *            데이터
+     * @param format
+     *            메시지 포맷
+     * @param args
+     *            메시지 데이터
+     * @return
+     *
+     * @since 2021. 8. 24.
+     * @version 1.8.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public final <T> Result<T> success(T data, String format, Object... args) {
+        return Result.success(data).setMessage(format, args);
     }
 }

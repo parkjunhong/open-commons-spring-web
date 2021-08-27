@@ -1,3 +1,13 @@
+[2021/08/24]
+- Add
+  + open.commons.spring.web.mvc.service.AbstractComponent
+    + error(String)
+    + error(String, Object...)
+    + error(T, String)
+    + error(T, String, Object...)
+    + success(T, String)
+    + success(T, String, Object...) 
+
 [2021/08/20]
 - bugfix
   + Bean Name 설정
