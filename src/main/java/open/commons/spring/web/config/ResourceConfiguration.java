@@ -35,6 +35,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -65,13 +66,15 @@ public class ResourceConfiguration {
     public static final String BEAN_QUALIFIER_THREAD_POOL = "open.commons.spring.web.config.ResourceConfiguration#THREADPOOL_TASK_EXECUTOR";
     public static final String BEAN_QUALIFIER_THREAD_POOL_CONFIG = "open.commons.spring.web.config.ResourceConfiguration#BEAN_QUALIFIER_THREAD_POOL_CONFIG";
 
+    private ApplicationContext context;
+
     @Autowired
     @Qualifier(BEAN_QUALIFIER_RESTTEMPLATE_REQUEST_SOURCE)
     private RestTemplateRequestFactoryResource reqFactoryResource;
 
-    @Autowired
-    @Qualifier(BEAN_QUALIFIER_THREAD_POOL_CONFIG)
-    private ThreadPoolTaskExecutorConfig taskExecConfig;
+    // @Autowired
+    // @Qualifier(BEAN_QUALIFIER_THREAD_POOL_CONFIG)
+    // private ThreadPoolTaskExecutorConfig taskExecConfig;
 
     /**
      * <br>
@@ -82,32 +85,16 @@ public class ResourceConfiguration {
      * ------------------------------------------
      * 2019. 6. 27.		박준홍			최초 작성
      * </pre>
+     * 
+     * @param context
+     *            TODO
      *
      * @since 2019. 6. 27.
      * @version
      */
-    public ResourceConfiguration() {
-    }
-
-    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE)
-    @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    @Primary
-    public RestTemplate getRestTemplate() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
-        HttpClient httpClient = RestUtils.createHttpsClient(false);
-        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient, reqFactoryResource);
-
-        RestTemplate tpl = new RestTemplate(reqFactory);
-        return tpl;
-    }
-
-    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA)
-    @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    public RestTemplate getRestTemplateAllowPrivateCA() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
-        HttpClient httpClient = RestUtils.createHttpsClient(true);
-        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient, reqFactoryResource);
-
-        RestTemplate tpl = new RestTemplate(reqFactory);
-        return tpl;
+    @Autowired
+    public ResourceConfiguration(ApplicationContext context) {
+        this.context = context;
     }
 
     /**
@@ -129,30 +116,8 @@ public class ResourceConfiguration {
     @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_REQUEST_SOURCE)
     @Primary
     @ConfigurationProperties("open-commons.spring.web.resttemplate.requestfactory")
-    public RestTemplateRequestFactoryResource getRestTemplateRequestFactoryResource() {
+    public RestTemplateRequestFactoryResource configureRestTemplateRequestFactoryResource() {
         return new RestTemplateRequestFactoryResource();
-    }
-
-    /**
-     * ThreadPool을 제공한다. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜    	| 작성자	|	내용
-     * ------------------------------------------
-     * 2020. 1. 20.		박준홍			최초 작성
-     * </pre>
-     *
-     * @return
-     *
-     * @since 2020. 1. 20.
-     * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
-     */
-    @Bean(name = BEAN_QUALIFIER_THREAD_POOL, destroyMethod = "destroy")
-    @Primary
-    public ThreadPoolTaskExecutor getThreadPoolTaskExecutor() {
-        return createThreadPoolTaskExecutor(this.taskExecConfig, "async-method");
     }
 
     /**
@@ -168,14 +133,60 @@ public class ResourceConfiguration {
      * @return
      *
      * @since 2019. 6. 27.
-     * @version _._._
+     * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     @Bean(name = BEAN_QUALIFIER_THREAD_POOL_CONFIG)
     @Primary
     @ConfigurationProperties("open-commons.spring.async.thread-pool-task-executor")
-    public ThreadPoolTaskExecutorConfig getThreadPoolTaskExecutorConfig() {
+    public ThreadPoolTaskExecutorConfig configureThreadPoolTaskExecutorConfig() {
         return new ThreadPoolTaskExecutorConfig();
+    }
+
+    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE)
+    @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
+    @Primary
+    public RestTemplate createBeanRestTemplate() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
+        HttpClient httpClient = RestUtils.createHttpsClient(false);
+        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient, reqFactoryResource);
+
+        RestTemplate tpl = new RestTemplate(reqFactory);
+        return tpl;
+    }
+
+    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA)
+    @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
+    public RestTemplate createBeanRestTemplateAllowPrivateCA() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
+        HttpClient httpClient = RestUtils.createHttpsClient(true);
+        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient, reqFactoryResource);
+
+        RestTemplate tpl = new RestTemplate(reqFactory);
+        return tpl;
+    }
+
+    /**
+     * ThreadPool을 제공한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2020. 1. 20.		박준홍			최초 작성
+     * </pre>
+     *
+     * @return
+     *
+     * @since 2020. 1. 20.
+     * @version 0.3.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    @Bean(name = BEAN_QUALIFIER_THREAD_POOL, destroyMethod = "destroy")
+    @Scope(scopeName = ConfigurableBeanFactory.SCOPE_SINGLETON, proxyMode = ScopedProxyMode.TARGET_CLASS)
+    @Primary
+    public ThreadPoolTaskExecutor createBeanThreadPoolTaskExecutor() {
+        ThreadPoolTaskExecutorConfig taskExecConfig = this.context.getBean(BEAN_QUALIFIER_THREAD_POOL_CONFIG, ThreadPoolTaskExecutorConfig.class);
+        return createThreadPoolTaskExecutor(taskExecConfig, "async-method");
+        // return createThreadPoolTaskExecutor(this.taskExecConfig, "async-method");
     }
 
     /**
@@ -194,7 +205,7 @@ public class ResourceConfiguration {
      * @return
      *
      * @since 2021. 8. 19.
-     * @version _._._
+     * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     public static ThreadPoolTaskExecutor createThreadPoolTaskExecutor(ThreadPoolTaskExecutorConfig config, String defaultThreadName) {
@@ -233,7 +244,7 @@ public class ResourceConfiguration {
      * @return
      *
      * @since 2020. 12. 9.
-     * @version _._._
+     * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     public static HttpComponentsClientHttpRequestFactory getRequestFactory(HttpClient httpClient, RestTemplateRequestFactoryResource reqFactoryResource) {
