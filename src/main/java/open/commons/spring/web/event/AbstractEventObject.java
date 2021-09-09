@@ -88,8 +88,9 @@ public abstract class AbstractEventObject<T, E extends IEventType> extends Appli
      * </pre>
      *
      * @param source
+     *            이벤트 발생 정보.
      * @param type
-     *            TODO
+     *            이벤트 상세 타입.
      * @param clock
      * @since 2021. 9. 9.
      * @version 0.4.0
