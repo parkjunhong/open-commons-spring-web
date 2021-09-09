@@ -1,3 +1,6 @@
+[2021/09/09]
+- Release: 0.3.0
+
 [2021/08/24]
 - Add
   + open.commons.spring.web.mvc.service.AbstractComponent
