@@ -39,12 +39,12 @@ import org.springframework.context.ApplicationEvent;
  * @param <T>
  *            이벤트 정보.
  * @param <E>
- *            이벤트 상세 타입.
+ *            이벤트 상태 정보.
  * @since 2021. 9. 9.
  * @version 0.4.0
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
-public abstract class AbstractEventObject<T, E extends IEventType> extends ApplicationEvent implements IEventObject<T, E> {
+public abstract class AbstractEventObject<T, E extends IEventStatus> extends ApplicationEvent implements IEventObject<T, E> {
 
     private static final long serialVersionUID = -1077392713769446688L;
 
@@ -66,7 +66,7 @@ public abstract class AbstractEventObject<T, E extends IEventType> extends Appli
      * @param source
      *            이벤트 발생 정보.
      * @param type
-     *            이벤트 상세 타입.
+     *            이벤트 상태 정보.
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
@@ -90,7 +90,7 @@ public abstract class AbstractEventObject<T, E extends IEventType> extends Appli
      * @param source
      *            이벤트 발생 정보.
      * @param type
-     *            이벤트 상세 타입.
+     *            이벤트 상태 정보.
      * @param clock
      * @since 2021. 9. 9.
      * @version 0.4.0

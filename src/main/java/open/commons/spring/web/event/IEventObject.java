@@ -32,11 +32,11 @@ package open.commons.spring.web.event;
  * @param <T>
  *            이벤트 정보.
  * @param <E>
- *            이벤트 상세 타입.
+ *            이벤트 상태 정보.
  * @version 0.4.0
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
-public interface IEventObject<T, E extends IEventType> extends Cloneable {
+public interface IEventObject<T, E extends IEventStatus> extends Cloneable {
 
     /**
      * 해당 객체와 동일한 정보를 가진 객체를 제공한다.

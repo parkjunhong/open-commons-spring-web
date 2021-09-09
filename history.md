@@ -1,4 +1,7 @@
 [2021/09/09]
+- Changed
+  + open.commons.spring.web.event.IEventStatus <- open.commons.spring.web.event.IEventType
+    + getStatus() <- getType()
 - Add
   + open.commons.spring.web.event
     + AbstractEventObject&lt;T, E extends IEventType&gt;

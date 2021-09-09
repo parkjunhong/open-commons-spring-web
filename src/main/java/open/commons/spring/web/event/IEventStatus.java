@@ -27,16 +27,16 @@
 package open.commons.spring.web.event;
 
 /**
- * 이벤트 상세 타입 관련 기능 정의.
+ * 이벤트 상태 관련 기능 정의.
  * 
  * @since 2021. 9. 9.
  * @version 0.4.0
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
-public interface IEventType {
+public interface IEventStatus {
 
     /**
-     * 이벤트 상세 타입을 제공한다. <br>
+     * 이벤트 상태 정보를 제공한다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -51,6 +51,6 @@ public interface IEventType {
      * @version 0.4.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
-    public String getType();
+    public String getStatus();
 
 }
