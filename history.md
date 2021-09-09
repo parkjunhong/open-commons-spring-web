@@ -1,8 +1,8 @@
 [2021/09/09]
 - Add
   + open.commons.spring.web.event
-    + AbstractEventObject
-    + IEventOBject
+    + AbstractEventObject&lt;T, E extends IEventType&gt;
+    + IEventObject&lt;T, E extends IEventType&gt;
     + IEventType
 - Release: 0.4.0-SNAPSHOT
 - Release: 0.3.0
