@@ -46,7 +46,6 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.client.RestTemplate;
 
-import open.commons.concurrent.DefaultThreadFactory;
 import open.commons.spring.web.resources.RestTemplateRequestFactoryResource;
 import open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig;
 import open.commons.spring.web.rest.RestUtils;
@@ -186,7 +185,6 @@ public class ResourceConfiguration {
     public ThreadPoolTaskExecutor createBeanThreadPoolTaskExecutor() {
         ThreadPoolTaskExecutorConfig taskExecConfig = this.context.getBean(BEAN_QUALIFIER_THREAD_POOL_CONFIG, ThreadPoolTaskExecutorConfig.class);
         return createThreadPoolTaskExecutor(taskExecConfig, "async-method");
-        // return createThreadPoolTaskExecutor(this.taskExecConfig, "async-method");
     }
 
     /**
@@ -211,17 +209,18 @@ public class ResourceConfiguration {
     public static ThreadPoolTaskExecutor createThreadPoolTaskExecutor(ThreadPoolTaskExecutorConfig config, String defaultThreadName) {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 
-        String threadPrefix = config.getThreadNamePrefix();
-        executor.setThreadFactory(new DefaultThreadFactory(threadPrefix == null ? defaultThreadName : threadPrefix));
-
         executor.setCorePoolSize(config.getCorePoolSize());
-        executor.setKeepAliveSeconds(config.getKeepAliveSeconds());
         executor.setMaxPoolSize(config.getMaxPoolSize());
         executor.setQueueCapacity(config.getQueueCapacity());
+        executor.setKeepAliveSeconds(config.getKeepAliveSeconds());
         executor.setAllowCoreThreadTimeOut(config.isAllowCoreThreadTimeOut());
         executor.setAwaitTerminationSeconds(config.getAwaitTerminationSeconds());
         executor.setWaitForTasksToCompleteOnShutdown(config.isWaitForTasksToCompleteOnShutdown());
         executor.setDaemon(config.isDaemon());
+        String threadPrefix = config.getThreadNamePrefix();
+        executor.setThreadNamePrefix(threadPrefix == null ? defaultThreadName : threadPrefix);
+        String threadGroupName = config.getThreadGroupName();
+        executor.setThreadGroupName(threadGroupName == null ? "execuor" : threadGroupName);
         executor.setThreadPriority(config.getThreadPriority());
 
         return executor;

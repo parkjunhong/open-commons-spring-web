@@ -1,4 +1,7 @@
 [2021/09/09]
+- Modify
+  + open.commons.spring.web.config.ResourceConfiguration.createThreadPoolTaskExecutor(ThreadPoolTaskExecutorConfig, String)
+    - 내부 구현 변경.
 - Changed
   + open.commons.spring.web.event.IEventStatus <- open.commons.spring.web.event.IEventType
     + getStatus() <- getType()
