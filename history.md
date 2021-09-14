@@ -1,4 +1,10 @@
 [2021/09/09]
+- Add
+  + open.common.spring.web.event
+    + AbstractEventDrivenMonitor
+    + IEventDrivenService
+
+[2021/09/09]
 - Modify
   + open.commons.spring.web.config.ResourceConfiguration.createThreadPoolTaskExecutor(ThreadPoolTaskExecutorConfig, String)
     - 내부 구현 변경.
