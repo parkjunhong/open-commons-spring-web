@@ -36,6 +36,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -68,6 +69,8 @@ import open.commons.utils.ThreadUtils;
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
 public abstract class AbstractEventDrivenMonitor extends AbstractComponent implements IEventDrivenService, InitializingBean, DisposableBean {
+
+    private static final Supplier<Set<Object>> SET_OBJECT = () -> new HashSet<>();
 
     /** 이벤트 분배 모듈 */
     private final ApplicationEventPublisher eventPub;
@@ -475,7 +478,7 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          */
         public void addParameter(@NotNull String eventTypeKey, @NotNull Object parameter) {
             synchronized (this.mutexParams) {
-                Set<Object> parameters = MapUtils.getOrDefault(this.eventParameters, eventTypeKey, () -> new HashSet<>(), true);
+                Set<Object> parameters = MapUtils.getOrDefault(this.eventParameters, eventTypeKey, SET_OBJECT, true);
                 parameters.add(parameter);
 
                 logger.trace("[async] (add) event={}, param={}, size={}", eventTypeKey, parameter, parameters.size());
@@ -555,7 +558,7 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          */
         public boolean remove(String eventTypeKey, Object parameter) {
             synchronized (this.mutexParams) {
-                Set<Object> set = MapUtils.getOrDefault(this.eventParameters, eventTypeKey, () -> new HashSet<>(), true);
+                Set<Object> set = MapUtils.getOrDefault(this.eventParameters, eventTypeKey, SET_OBJECT, true);
 
                 boolean removed = set.remove(parameter);
 
@@ -654,7 +657,7 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          */
         public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> boolean addParameter(@NotNull String eventTypeKey, @NotNull P parameter, boolean isNew) {
             synchronized (this.mutexParams) {
-                Set<Object> parameters = MapUtils.getOrDefault(this.eventParameters, eventTypeKey, () -> new HashSet<>(), true);
+                Set<Object> parameters = MapUtils.getOrDefault(this.eventParameters, eventTypeKey, SET_OBJECT, true);
                 boolean containsUnsubs = this.unsubsParamsClosure.contains(eventTypeKey, parameter);
 
                 boolean added = false;
@@ -742,7 +745,7 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          */
         public boolean remove(String eventTypeKey, Object parameter) {
             synchronized (this.mutexParams) {
-                Set<Object> parameters = MapUtils.getOrDefault(this.eventParameters, eventTypeKey, () -> new HashSet<>(), true);
+                Set<Object> parameters = MapUtils.getOrDefault(this.eventParameters, eventTypeKey, SET_OBJECT, true);
 
                 boolean removed = parameters.remove(parameter);
 
