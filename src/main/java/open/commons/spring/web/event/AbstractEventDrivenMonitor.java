@@ -994,6 +994,7 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          *      날짜      | 작성자   |   내용
          * ------------------------------------------
          * 2021. 9. 9.     박준홍         최초 작성
+         * 2021. 9. 16.    박준홍         포함 여부 변수의 혼용사용에 따른 버그 수정
          * </pre>
          *
          * @param eventTypeKey
@@ -1008,14 +1009,18 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
         public boolean contains(String eventTypeKey, Object parameter) {
             UnsubscribedParameter up = new UnsubscribedParameter(eventTypeKey, parameter);
 
-            boolean contains = this.investigated.contains(up);
-            if (contains) {
-                logger.trace("[unsubscribed] contains={} in 'investigated'. event={}, parameter={}", contains, eventTypeKey, parameter);
+            boolean inInvestigating = this.investigated.contains(up);
+            if (inInvestigating) {
+                logger.trace("[unsubscribed] contains={} in 'investigated'. event={}, parameter={}", inInvestigating, eventTypeKey, parameter);
             }
 
-            if (contains = contains(up)) {
-                logger.trace("[unsubscribed] contains={} in 'queue'. event={}, parameter={}", contains, eventTypeKey, parameter);
+            boolean inQueue = false;
+
+            if (inQueue = contains(up)) {
+                logger.trace("[unsubscribed] contains={} in 'queue'. event={}, parameter={}", inQueue, eventTypeKey, parameter);
             }
+
+            boolean contains = inInvestigating || inQueue;
 
             logger.trace("[unsubscribed] contains={}. event={}, parameter={}", contains, eventTypeKey, parameter);
 

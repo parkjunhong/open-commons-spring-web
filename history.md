@@ -1,3 +1,8 @@
+[2021/09/16]
+- Bugfix
+  + open.commons.spring.web.event.AbstractEventDrivenMonitor.UnsubscriedParametersClosure  
+    + contains(String, Object): 포함 여부 변수의 혼용사용에 따른 버그 수정
+
 [2021/09/09]
 - Add
   + open.common.spring.web.event
