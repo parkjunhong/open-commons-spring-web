@@ -219,12 +219,10 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      *
      *
      * @since 2021. 9. 9.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     public void execute() {
-
-        logger.trace("[begin] executing submit. provider={}", this.providers.size());
 
         synchronized (mutexProviders) {
             String eventTypeKey = null;
@@ -239,7 +237,7 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
                     continue;
                 }
 
-                logger.trace("[transfer] subscribed -> async. event={}, size={}", eventTypeKey, params.size());
+                logger.trace("[execute] subscribed -> async. event={}, size={}", eventTypeKey, params.size());
 
                 provider = entry.getValue();
 
@@ -260,8 +258,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
                 }
             }
         }
-
-        logger.trace("[end] submit");
     }
 
     /**
@@ -1015,7 +1011,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
             }
 
             boolean inQueue = false;
-
             if (inQueue = contains(up)) {
                 logger.trace("[unsubscribed] contains={} in 'queue'. event={}, parameter={}", inQueue, eventTypeKey, parameter);
             }
@@ -1027,9 +1022,29 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
             return contains;
         }
 
+        /**
+         * 관리 중이 파라미터를 강제로 삭제한다.<br>
+         * 동일한 이벤트 타입에 대해서 동일한 파라미터로 구독요청이 왔을 경우에 호출.
+         * 
+         * <pre>
+         * [개정이력]
+         *      날짜    	| 작성자	|	내용
+         * ------------------------------------------
+         * 2021. 9. 14.		박준홍			최초 작성
+         * </pre>
+         *
+         * @param eventTypeKey
+         * @param parameter
+         *
+         * @since 2021. 9. 14.
+         * @version 0.4.0
+         * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+         */
         public void removeForcely(String eventTypeKey, Object parameter) {
             UnsubscribedParameter up = new UnsubscribedParameter(eventTypeKey, parameter);
+            // #1. 현재 조사 대기목록에서 삭제
             remove(up);
+            // #2. 현재 조사 중인 목록에서 삭제
             this.investigated.remove(up);
         }
 
