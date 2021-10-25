@@ -26,6 +26,8 @@
 
 package open.commons.spring.web.mvc.service;
 
+import java.util.function.Supplier;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import open.commons.Result;
 import open.commons.spring.web.config.ResourceConfiguration;
+import open.commons.test.StopWatch;
 
 /**
  * 
@@ -93,7 +96,7 @@ public class AbstractComponent {
      * @return
      *
      * @since 2021. 8. 24.
-     * @version 1.8.0
+     * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     public final <T> Result<T> error(String msg) {
@@ -118,7 +121,7 @@ public class AbstractComponent {
      * @return
      *
      * @since 2021. 8. 24.
-     * @version 1.8.0
+     * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     public final <T> Result<T> error(String format, Object... args) {
@@ -143,7 +146,7 @@ public class AbstractComponent {
      * @return
      *
      * @since 2021. 8. 24.
-     * @version 1.8.0
+     * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     @SuppressWarnings("unchecked")
@@ -171,12 +174,46 @@ public class AbstractComponent {
      * @return
      *
      * @since 2021. 8. 24.
-     * @version 1.8.0
+     * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     @SuppressWarnings("unchecked")
     public final <T> Result<T> error(T data, String format, Object... args) {
         return (Result<T>) Result.error(format, args).setData(data);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 10. 4.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     *            반환 데이터 타입.
+     * @param action
+     *            실행할 작업
+     * @param job
+     *            작업명. (로그를 위해서)
+     * @return
+     *
+     * @since 2021. 10. 4.
+     * @version 0.4.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    public final <T> T execute(Supplier<T> action, String job) {
+        StopWatch watch = new StopWatch();
+        watch.start();
+        try {
+            return action.get();
+        } finally {
+            watch.stop();
+            logger.info("[{} 완료] elapsed={}", job, watch.getAsPretty());
+        }
     }
 
     /**
@@ -197,7 +234,7 @@ public class AbstractComponent {
      * @return
      *
      * @since 2021. 8. 24.
-     * @version 1.8.0
+     * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     public final <T> Result<T> success(T data, String message) {
@@ -224,7 +261,7 @@ public class AbstractComponent {
      * @return
      *
      * @since 2021. 8. 24.
-     * @version 1.8.0
+     * @version 0.3.0
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     public final <T> Result<T> success(T data, String format, Object... args) {

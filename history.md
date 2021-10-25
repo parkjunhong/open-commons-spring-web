@@ -1,3 +1,8 @@
+[2021/10/04]
+- Add
+  + open.commonad.spring.web.mvc.service.AbstractComponent
+    - execute(Supplier&lt;T&gt;, String)
+
 [2021/09/16]
 - Bugfix
   + open.commons.spring.web.event.AbstractEventDrivenMonitor.UnsubscriedParametersClosure  
