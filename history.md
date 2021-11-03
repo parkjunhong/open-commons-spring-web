@@ -1,4 +1,12 @@
 [2021/10/04]
+- Updated
+  + open.common.spring.web.rest.RestApiDecl: 설정 데이터 변경을 막기 위한 조치.
+    + getHeaders()
+    + getMethod()
+    + setBody(MultiValueMap&lt;String, Object&gt;)
+    + setHeaders(MultiValueMap&lt;String, String&gt;)
+  
+[2021/10/04]
 - Add
   + open.commonad.spring.web.mvc.service.AbstractComponent
     - execute(Supplier&lt;T&gt;, String)

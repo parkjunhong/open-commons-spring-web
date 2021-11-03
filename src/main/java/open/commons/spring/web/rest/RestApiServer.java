@@ -12,10 +12,10 @@ package open.commons.spring.web.rest;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.validation.annotation.Validated;
 
 /**
  * 
@@ -23,22 +23,22 @@ import org.springframework.validation.annotation.Validated;
  * @version
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
-@Validated
 public class RestApiServer {
 
     /** 통신 프로포콜 */
-    @NotNull
     @NotEmpty
     private String scheme;
     /** 서버 IP */
-    @NotNull
     @NotEmpty
     private String host;
     /** 서버 포트 */
+    @Min(1)
+    @Max(65535)
     private int port;
     /** REST API Context */
     private String context;
     /** REST API 목록 */
+    @Valid
     private Map<String, RestApiDecl> apiList;
 
     /**
@@ -199,7 +199,7 @@ public class RestApiServer {
      * 
      * @see #apiList
      */
-    public void setApiList(Map<String, RestApiDecl> apiList) {
+    public void setApiList(@Valid Map<String, RestApiDecl> apiList) {
         this.apiList = apiList;
     }
 
@@ -241,7 +241,7 @@ public class RestApiServer {
      * 
      * @see #host
      */
-    public void setHost(@NotNull @NotEmpty String host) {
+    public void setHost(@NotEmpty String host) {
         this.host = host;
     }
 
@@ -262,7 +262,7 @@ public class RestApiServer {
      * 
      * @see #port
      */
-    public void setPort(int port) {
+    public void setPort(@Min(1) @Max(65535) int port) {
         this.port = port;
     }
 
@@ -283,7 +283,7 @@ public class RestApiServer {
      * 
      * @see #scheme
      */
-    public void setScheme(@NotNull @NotEmpty String scheme) {
+    public void setScheme(@NotEmpty String scheme) {
         this.scheme = scheme;
     }
 

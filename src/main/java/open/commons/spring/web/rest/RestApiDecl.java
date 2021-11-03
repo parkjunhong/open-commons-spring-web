@@ -14,8 +14,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.http.HttpMethod;
+import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.validation.annotation.Validated;
 
 import open.commons.text.NamedTemplate;
 
@@ -26,13 +26,14 @@ import open.commons.text.NamedTemplate;
  * @version
  * @author Park_Jun_Hong_(fafanmama_at_naver_com)
  */
-@Validated
 public class RestApiDecl {
 
+    @NotNull
     private HttpMethod method;
+    @NotEmpty
     private String url;
-    private MultiValueMap<String, String> headers;
-    private MultiValueMap<String, Object> body;
+    private LinkedMultiValueMap<String, String> headers;
+    private LinkedMultiValueMap<String, Object> body;
 
     /**
      * <br>
@@ -67,7 +68,7 @@ public class RestApiDecl {
      * @see #body
      */
     public MultiValueMap<String, Object> getBody() {
-        return body;
+        return this.body.deepCopy();
     }
 
     /**
@@ -88,7 +89,7 @@ public class RestApiDecl {
      * @see #headers
      */
     public MultiValueMap<String, String> getHeaders() {
-        return headers;
+        return this.headers.deepCopy();
     }
 
     /**
@@ -151,7 +152,9 @@ public class RestApiDecl {
      * @see #body
      */
     public void setBody(MultiValueMap<String, Object> body) {
-        this.body = body;
+        this.body = body == null //
+                ? new LinkedMultiValueMap<>(body) //
+                : new LinkedMultiValueMap<>();
     }
 
     /**
@@ -172,7 +175,9 @@ public class RestApiDecl {
      * @see #headers
      */
     public void setHeaders(MultiValueMap<String, String> headers) {
-        this.headers = headers;
+        this.headers = headers != null//
+                ? new LinkedMultiValueMap<>(headers) //
+                : new LinkedMultiValueMap<>();
     }
 
     /**
