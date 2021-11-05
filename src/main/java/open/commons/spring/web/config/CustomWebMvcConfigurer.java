@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2019 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2019. 6. 3. 오후 5:44:34
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -182,7 +182,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * 
  * @since 2019. 6. 3.
  * @version 0.0.3
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 @Configuration
 @EnableWebMvc
@@ -221,7 +221,7 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *            URL 처리 예외 패턴
      *
      * @since 2020. 9. 3.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private void addExcludePatternsToInterceptor(InterceptorRegistration registry, String... patterns) {
         registry.excludePathPatterns(patterns);
@@ -290,7 +290,7 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * @since 2020. 9. 3.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addResourceHandlers(org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry)
      */
@@ -317,7 +317,7 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *            Resource Locations, {@link AntPathMatcher}
      *
      * @since 2020. 9. 3.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private void addResourceHandlers(ResourceHandlerRegistry registry, String[] handlers, String[] locations) {
         registry.addResourceHandler(handlers).addResourceLocations(locations);
@@ -337,7 +337,7 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      * @param registry
      *
      * @since 2020. 9. 3.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private void addSwagger2ExcludePatternsToInterceptor(InterceptorRegistration registry) {
         addExcludePatternsToInterceptor(registry, SpringfoxSwagger.getUrlList());
@@ -352,7 +352,7 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * @since 2020. 9. 3.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry)
      */

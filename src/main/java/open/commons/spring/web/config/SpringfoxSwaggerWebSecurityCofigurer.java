@@ -4,7 +4,7 @@
  *
  * Date  : 2020. 9. 4. 오전 12:44:49
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -20,7 +20,7 @@ import open.commons.spring.web.springfox.swagger.SpringfoxSwagger;
  * 
  * @since 2020. 9. 4.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public abstract class SpringfoxSwaggerWebSecurityCofigurer extends WebSecurityConfigurerAdapter {
 
@@ -58,7 +58,7 @@ public abstract class SpringfoxSwaggerWebSecurityCofigurer extends WebSecurityCo
 
     /**
      * @since 2020. 9. 6.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.web.builders.HttpSecurity)
      */
@@ -69,7 +69,7 @@ public abstract class SpringfoxSwaggerWebSecurityCofigurer extends WebSecurityCo
 
     /**
      * @since 2020. 9. 4.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.web.builders.WebSecurity)
      */

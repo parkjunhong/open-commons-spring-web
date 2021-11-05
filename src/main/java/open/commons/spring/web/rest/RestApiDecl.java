@@ -4,7 +4,7 @@
  *
  * Date  : 2020. 8. 27. 오후 7:00:03
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -24,7 +24,7 @@ import open.commons.text.NamedTemplate;
  * 
  * @since 2020. 8. 21.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class RestApiDecl {
 
@@ -225,7 +225,7 @@ public class RestApiDecl {
 
     /**
      * @since 2020. 8. 27.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

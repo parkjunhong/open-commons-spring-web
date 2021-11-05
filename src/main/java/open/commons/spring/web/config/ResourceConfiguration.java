@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2019 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2019. 6. 27. 오후 1:16:53
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -54,7 +54,7 @@ import open.commons.spring.web.rest.RestUtils;
  * 
  * @since 2019. 6. 27.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 @Configuration
 public class ResourceConfiguration {
@@ -110,7 +110,7 @@ public class ResourceConfiguration {
      *
      * @since 2019. 6. 27.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_REQUEST_SOURCE)
     @Primary
@@ -133,7 +133,7 @@ public class ResourceConfiguration {
      *
      * @since 2019. 6. 27.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @Bean(name = BEAN_QUALIFIER_THREAD_POOL_CONFIG)
     @Primary
@@ -177,7 +177,7 @@ public class ResourceConfiguration {
      *
      * @since 2020. 1. 20.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @Bean(name = BEAN_QUALIFIER_THREAD_POOL, destroyMethod = "destroy")
     @Scope(scopeName = ConfigurableBeanFactory.SCOPE_SINGLETON, proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -204,7 +204,7 @@ public class ResourceConfiguration {
      *
      * @since 2021. 8. 19.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static ThreadPoolTaskExecutor createThreadPoolTaskExecutor(ThreadPoolTaskExecutorConfig config, String defaultThreadName) {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
@@ -244,7 +244,7 @@ public class ResourceConfiguration {
      *
      * @since 2020. 12. 9.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static HttpComponentsClientHttpRequestFactory getRequestFactory(HttpClient httpClient, RestTemplateRequestFactoryResource reqFactoryResource) {
         HttpComponentsClientHttpRequestFactory reqFactory = httpClient != null //

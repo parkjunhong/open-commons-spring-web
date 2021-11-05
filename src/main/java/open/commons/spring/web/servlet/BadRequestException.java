@@ -4,7 +4,7 @@
  *
  * Date  : 2020. 7. 30. 오후 7:54:55
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Controller;
  * 
  * @since 2020. 7. 30.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class BadRequestException extends RuntimeException {
 

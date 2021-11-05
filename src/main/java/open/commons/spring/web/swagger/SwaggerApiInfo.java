@@ -4,7 +4,7 @@
  *
  * Date  : 2020. 10. 30. 오후 4:22:51
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -21,7 +21,7 @@ import springfox.documentation.service.ApiInfo;
  * 
  * @since 2020. 10. 30.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class SwaggerApiInfo {
 
@@ -357,7 +357,7 @@ public class SwaggerApiInfo {
 
     /**
      * @since 2020. 10. 30.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

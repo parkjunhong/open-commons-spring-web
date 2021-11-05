@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 11. 26. 오후 5:41:31
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -38,7 +38,7 @@ import open.commons.spring.web.mvc.IAsyncJobHandler;
  * 
  * @since 2020. 11. 26.
  * @version 0.3.0
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  * @deprecated Use {@link IAsyncJobHandler}.
  */
@@ -59,7 +59,7 @@ public interface IAsyncHandlerService {
      * @return
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <T> Future<T> future(T value) {
         return new AsyncResult<>(value);
@@ -87,7 +87,7 @@ public interface IAsyncHandlerService {
      *
      * @since 2020. 11. 26.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <T> Future<Result<T>> futureAsResult(T value, boolean result, String msg) {
         return new AsyncResult<>(new Result<T>(value, result).setMessage(msg));
@@ -111,7 +111,7 @@ public interface IAsyncHandlerService {
      *            비동기 작업 식별정보
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @deprecated {@link IAsyncJobHandler#unregister(Object, Object)}
      */

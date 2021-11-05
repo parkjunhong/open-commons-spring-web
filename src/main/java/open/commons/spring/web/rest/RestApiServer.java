@@ -4,7 +4,7 @@
  *
  * Date  : 2020. 8. 27. 오후 7:01:11
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -21,7 +21,7 @@ import javax.validation.constraints.NotEmpty;
  * 
  * @since 2020. 8. 27.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class RestApiServer {
 
@@ -155,7 +155,7 @@ public class RestApiServer {
      * @return
      *
      * @since 2020. 8. 25.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public RestApiDecl getRestApiDecl(String name) {
         return this.apiList.get(name);
@@ -289,7 +289,7 @@ public class RestApiServer {
 
     /**
      * @since 2020. 8. 21.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

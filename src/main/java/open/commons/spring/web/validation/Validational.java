@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2019 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2019. 10. 10. 오후 2:21:43
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -42,7 +42,7 @@ import open.commons.spring.web.utils.ValidationUtils;
  * 
  * @since 2019. 10. 10.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  * @see Validation
  * @see Validator
@@ -68,7 +68,7 @@ public abstract class Validational<C extends List<E>, E extends Validational<Lis
      *
      * @since 2019. 10. 10.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private void aggregate(Collection<String> buf, Collection<String> errors, int index, StringBuffer builder) {
         for (String error : errors) {
@@ -98,7 +98,7 @@ public abstract class Validational<C extends List<E>, E extends Validational<Lis
      *
      * @since 2019. 10. 10.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public abstract C getSubObjects();
 
@@ -118,7 +118,7 @@ public abstract class Validational<C extends List<E>, E extends Validational<Lis
      *
      * @since 2019. 10. 10.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Collection<String> validate(Function<Object, Collection<String>> validator) {
 

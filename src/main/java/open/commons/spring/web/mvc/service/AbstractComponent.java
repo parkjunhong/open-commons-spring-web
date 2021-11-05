@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 1. 21. 오후 1:20:51
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -44,7 +44,7 @@ import open.commons.test.StopWatch;
  * 
  * @since 2020. 1. 21.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class AbstractComponent {
 
@@ -97,7 +97,7 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public final <T> Result<T> error(String msg) {
         return Result.error(msg);
@@ -122,7 +122,7 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public final <T> Result<T> error(String format, Object... args) {
         return Result.error(format, args);
@@ -147,7 +147,7 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @SuppressWarnings("unchecked")
     public final <T> Result<T> error(T data, String msg) {
@@ -175,7 +175,7 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @SuppressWarnings("unchecked")
     public final <T> Result<T> error(T data, String format, Object... args) {
@@ -203,7 +203,7 @@ public class AbstractComponent {
      *
      * @since 2021. 10. 4.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public final <T> T execute(Supplier<T> action, String job) {
         StopWatch watch = new StopWatch();
@@ -235,7 +235,7 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public final <T> Result<T> success(T data, String message) {
         return Result.success(data).setMessage(message);
@@ -262,7 +262,7 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public final <T> Result<T> success(T data, String format, Object... args) {
         return Result.success(data).setMessage(format, args);

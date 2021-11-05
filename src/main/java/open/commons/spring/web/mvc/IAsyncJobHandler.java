@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 11. 26. 오후 5:41:31
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -48,7 +48,7 @@ import open.commons.concurrent.AsyncJobManager;
  * 
  * @since 2020. 11. 26.
  * @version 0.3.0
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public interface IAsyncJobHandler {
 
@@ -67,7 +67,7 @@ public interface IAsyncJobHandler {
      * @return
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <T> Future<T> future(T value) {
         return new AsyncResult<>(value);
@@ -95,7 +95,7 @@ public interface IAsyncJobHandler {
      *
      * @since 2020. 11. 26.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <T> Future<Result<T>> futureAsResult(T value, boolean result, String msg) {
         return new AsyncResult<>(new Result<T>(value, result).setMessage(msg));
@@ -116,7 +116,7 @@ public interface IAsyncJobHandler {
      *
      * @since 2021. 4. 23.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see #register(Object, Future)
      * @see #unregister(Object)
      */
@@ -144,7 +144,7 @@ public interface IAsyncJobHandler {
      *
      * @since 2021. 1. 13.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <H, K> void register(H holder, K key, Future<?> job) {
         AsyncJobManager<K, ?> manager = AsyncJobManager.Builder.getManager(holder);
@@ -169,7 +169,7 @@ public interface IAsyncJobHandler {
      *
      * @since 2021. 4. 23.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see #register(Object, Future)
      */
     default <K> void register(K key, Future<?> job) {
@@ -193,7 +193,7 @@ public interface IAsyncJobHandler {
      *            비동기 작업 식별정보
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <H, K> void unregister(H holder, K key) {
         // 비동기 작업 제거
@@ -219,7 +219,7 @@ public interface IAsyncJobHandler {
      *
      * @since 2021. 4. 23.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see #unregister(Object)
      */
     default <K> void unregister(K key) {

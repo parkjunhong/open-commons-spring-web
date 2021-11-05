@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 11. 10. 오후 8:47:46
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -36,7 +36,7 @@ import open.commons.concurrent.AsyncJobManager;
  * 
  * @since 2020. 11. 10.
  * @version _._._
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  * @deprecated Use {@link IAsyncHandlerService}
  */
@@ -64,7 +64,7 @@ public abstract class AsyncHandlerService extends AbstractGenericService {
      * @return
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected <T> Future<T> future(T value) {
         return new AsyncResult<>(value);
@@ -86,7 +86,7 @@ public abstract class AsyncHandlerService extends AbstractGenericService {
      * @param key
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected final <H, K> void unregisterAsyncJob(H holder, K key) {
         // 비동기 작업 제거

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2019 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2019. 6. 3. 오후 5:26:16
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -47,7 +47,7 @@ import open.commons.spring.web.annotation.RequestValueSupported;
  * 
  * @since 2019. 6. 3.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 @SuppressWarnings("rawtypes")
 public class EnumConverter<E extends Enum> implements Converter<String, E> {
@@ -141,7 +141,7 @@ public class EnumConverter<E extends Enum> implements Converter<String, E> {
      *
      * @since 2019. 6. 3.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public String getType() {
         return this.enumType != null ? this.enumType.getName() : null;

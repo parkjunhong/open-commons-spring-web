@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2019 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2019. 10. 24. 오후 1:04:31
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -87,7 +87,7 @@ import open.commons.utils.ThreadUtils;
  * 
  * @since 2019. 10. 24.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class RestUtils {
 
@@ -115,7 +115,7 @@ public class RestUtils {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @deprecated Use {@link #headers(MultiValueMap, String...)}.
      */
@@ -141,7 +141,7 @@ public class RestUtils {
      * @return
      *
      * @since 2020. 8. 25.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static HttpEntity<Map<String, Object>> buildHttpEntity(MultiValueMap<String, String> headers, Object... values) {
 
@@ -205,7 +205,7 @@ public class RestUtils {
      * @throws NoSuchAlgorithmException
      *
      * @since 2019. 4. 9.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static CloseableHttpClient createHttpsClient(boolean allowPrivateCA) throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
 
@@ -218,9 +218,9 @@ public class RestUtils {
         // for socket factory lookups.
         DnsResolver dnsResolver = new SystemDefaultDnsResolver();
 
-        // begin - PATCH [2020. 12. 9.]: Thread Safe 지원 | Park_Jun_Hong_(fafanmama_at_naver_com)
+        // begin - PATCH [2020. 12. 9.]: Thread Safe 지원 | Park_Jun_Hong_(parkjunhong77@gmail.com)
         HttpClientConnectionManager manager = new PoolingHttpClientConnectionManager(regBuilder.build(), connectionFactory, dnsResolver);
-        // end - Park_Jun_Hong_(fafanmama_at_naver_com), 2020. 12. 9.
+        // end - Park_Jun_Hong_(parkjunhong77@gmail.com), 2020. 12. 9.
 
         // connection config
         ConnectionConfig.Builder conBuilder = ConnectionConfig.custom();
@@ -257,7 +257,7 @@ public class RestUtils {
      * @throws KeyStoreException
      *
      * @since 2019. 4. 9.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private static RegistryBuilder<ConnectionSocketFactory> createRegistryBuilder(boolean allowPrivateCA)
             throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
@@ -295,7 +295,7 @@ public class RestUtils {
      * @return
      *
      * @since 2020. 8. 27.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static String createUrl(String context, String url, MultiValueMap<String, Object> parameters) {
 
@@ -377,7 +377,7 @@ public class RestUtils {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
             Class<RES> responseType) {
@@ -438,7 +438,7 @@ public class RestUtils {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @deprecated Use
      *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, Class, Function, Function)}
@@ -486,7 +486,7 @@ public class RestUtils {
      *
      * @since 2020. 11. 20.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
             ParameterizedTypeReference<RES> responseType) {
@@ -547,7 +547,7 @@ public class RestUtils {
      *
      * @since 2020. 11. 20.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @deprecated Use
      *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, ParameterizedTypeReference, Function, Function)}
@@ -597,7 +597,7 @@ public class RestUtils {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
             HttpEntity<REQ> entity, Class<RES> responseType) {
@@ -660,7 +660,7 @@ public class RestUtils {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @deprecated Use
      *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, Class, Function, Function)}
      */
@@ -714,7 +714,7 @@ public class RestUtils {
      *
      * @since 2020. 11. 20.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
             HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType) {
@@ -777,7 +777,7 @@ public class RestUtils {
      *
      * @since 2020. 11. 20.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @deprecated Use
      *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, ParameterizedTypeReference, Function, Function)}
      */
@@ -827,7 +827,7 @@ public class RestUtils {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @deprecated Use {@link RestUtils2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, Class, Function, Function)}
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, Class<RES> responseType //
@@ -871,7 +871,7 @@ public class RestUtils {
      *
      * @since 2020. 11. 20.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @deprecated Use
      *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, ParameterizedTypeReference, Function, Function)}
      */
@@ -907,7 +907,7 @@ public class RestUtils {
      *
      * @since 2020. 11. 23.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private static <REQ, RES> Result<RES> exchange(Supplier<ResponseEntity<RES>> sup, HttpMethod method, URI uri, HttpEntity<REQ> entity, Object responseType //
             , Function<ResponseEntity<RES>, Result<RES>> onSuccess, Function<Exception, Result<RES>> onError) {
@@ -988,7 +988,7 @@ public class RestUtils {
      * @return
      *
      * @since 2020. 8. 28.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static final HttpHeaders headers(MultiValueMap<String, String> headers, String... headerEntries) {
         AssertUtils.assertNulls(IllegalArgumentException.class, (Object[]) headerEntries);
@@ -1019,7 +1019,7 @@ public class RestUtils {
      * @return
      *
      * @since 2020. 10. 21.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static String queryParameters(MultiValueMap<String, Object> parameters) {
         List<String> paramBuf = new ArrayList<>();
@@ -1059,7 +1059,7 @@ public class RestUtils {
      * @return
      *
      * @since 2020. 10. 21.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static String queryParameters(String... parameters) {
         if (parameters == null) {

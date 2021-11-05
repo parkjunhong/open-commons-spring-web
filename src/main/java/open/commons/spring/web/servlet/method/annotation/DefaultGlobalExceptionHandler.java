@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 1. 17. 오후 2:55:32
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -47,7 +47,7 @@ import open.commons.spring.web.utils.WebUtils;
  * 
  * @since 2020. 1. 17.
  * @version 0.2.3
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 @ControllerAdvice
 @Order(Ordered.LOWEST_PRECEDENCE)
@@ -86,7 +86,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *
      * @since 2020. 1. 17.
      * @version 0.2.3
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected ResponseEntity<Object> createEntity(HttpStatus status, Exception ex, WebRequest request) {
         FIFOMap<String, Object> entity = WebUtils.createEntity(request, ex, status);
@@ -110,7 +110,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *
      * @since 2020. 1. 17.
      * @version 0.2.3
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @ExceptionHandler(value = { //
             BadRequestException.class, //
@@ -141,7 +141,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *
      * @since 2020. 1. 17.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @ExceptionHandler(value = { //
             NullPointerException.class, //

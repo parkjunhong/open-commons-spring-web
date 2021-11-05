@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2019 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2019. 6. 11. 오후 4:23:03
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -51,7 +51,7 @@ import org.springframework.web.context.support.ServletRequestHandledEvent;
  * 
  * @since 2019. 6. 11.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class SpringApplicationListener implements ApplicationListener<ApplicationEvent> {
 
@@ -87,7 +87,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationContextInitializedEvent(ApplicationContextInitializedEvent event) {
         logger.trace("ApplicationContextInitialized - {}", event);
@@ -108,7 +108,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationEnvironmentPreparedEvent(ApplicationEnvironmentPreparedEvent event) {
         logger.trace("ApplicationEnvironmentPrepared - {}", event);
@@ -165,7 +165,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationFailedEvent(ApplicationFailedEvent event) {
         logger.error("ApplicationFailed - {}", event.getException());
@@ -187,7 +187,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationPreparedEvent(ApplicationPreparedEvent event) {
         logger.trace("ApplicationPrepared - {}", event);
@@ -208,7 +208,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationReadyEvent(ApplicationReadyEvent event) {
         logger.trace("ApplicationReady - {}", event);
@@ -229,7 +229,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationStartedEvent(ApplicationStartedEvent event) {
         logger.trace("ApplicationStarted - {}", event);
@@ -250,7 +250,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationStartingEvent(ApplicationStartingEvent event) {
         logger.trace("ApplicationStarting - {}", event);
@@ -271,7 +271,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onContextClosedEvent(ContextClosedEvent event) {
         logger.trace("ContextClosed - {}", event);
@@ -292,7 +292,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onContextRefreshedEvent(ContextRefreshedEvent event) {
         logger.trace("ContextRefreshed - {}", event);
@@ -313,7 +313,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onContextStartedEvent(ContextStartedEvent event) {
         logger.trace("ContextStarted - {}", event);
@@ -334,7 +334,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onContextStoppedEvent(ContextStoppedEvent event) {
         logger.trace("ContextStopped - {}", event);
@@ -355,7 +355,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onOtherApplicationEvent(ApplicationEvent event) {
         logger.trace("ApplicationEvent - {}", event);
@@ -376,7 +376,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onServletRequestHandledEvent(ServletRequestHandledEvent event) {
     }
@@ -396,7 +396,7 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onServletWebServerInitializedEvent(ServletWebServerInitializedEvent event) {
         logger.trace("ServletWebServerInitialized - {}", event);

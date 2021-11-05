@@ -4,7 +4,7 @@
  *
  * Date  : 2020. 10. 30. 오후 4:54:58
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -29,7 +29,7 @@ import springfox.documentation.service.Contact;
  * 
  * @since 2020. 10. 30.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public abstract class SpringfoxSwaggerConfig implements InitializingBean {
 
@@ -59,7 +59,7 @@ public abstract class SpringfoxSwaggerConfig implements InitializingBean {
 
     /**
      * @since 2020. 10. 30.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
      */
@@ -86,7 +86,7 @@ public abstract class SpringfoxSwaggerConfig implements InitializingBean {
      * @return
      *
      * @since 2020. 10. 30.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected ApiInfo api(String groupName) {
         SwaggerApiInfo conf = this.swaggerApis.get(groupName);
@@ -115,7 +115,7 @@ public abstract class SpringfoxSwaggerConfig implements InitializingBean {
      * @return
      *
      * @since 2020. 10. 30.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @Bean(SWAGGER_API_INFO)
     @ConfigurationProperties("springfox.swagger.api-config")
@@ -137,7 +137,7 @@ public abstract class SpringfoxSwaggerConfig implements InitializingBean {
      * @return
      *
      * @since 2020. 10. 30.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private Contact toContact(io.swagger.models.Contact contact) {
         return new Contact(contact.getName(), contact.getUrl(), contact.getEmail());

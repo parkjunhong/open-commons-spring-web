@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2019 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2019. 10. 8. 오후 1:26:57
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -40,7 +40,7 @@ import javax.validation.ValidatorFactory;
  * 
  * @since 2019. 6. 18.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class ValidationUtils {
 
@@ -87,7 +87,7 @@ public class ValidationUtils {
      *
      * @since 2019. 10. 15.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <T> Set<ConstraintViolation<T>> validate(T object, boolean nested, Class<?>... groups) {
         return nested
@@ -113,7 +113,7 @@ public class ValidationUtils {
      *
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @see Validator#validate(Object, Class...)
      */
@@ -141,7 +141,7 @@ public class ValidationUtils {
      *
      * @since 2019. 10. 15.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <T> Collection<String> validateAndErrorMsg(T object, boolean nested, Class<?>... groups) {
         return makeErrorMessage(validate(object, nested, groups));
@@ -163,7 +163,7 @@ public class ValidationUtils {
      *
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see Validator#validate(Object, Class...)
      */
     public static <T> Collection<String> validateAndErrorMsg(T object, Class<?>... groups) {
@@ -187,7 +187,7 @@ public class ValidationUtils {
      *
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see Validator#validateProperty(Object, String, Class...)
      */
     public static <T> Set<ConstraintViolation<T>> validateProperty(T object, String propertyName, Class<?>... groups) {
@@ -211,7 +211,7 @@ public class ValidationUtils {
      * 
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see Validator#validateProperty(Object, String, Class...)
      */
     public static <T> Collection<String> validatePropertyAndErrorMsg(T object, String propertyName, Class<?>... groups) {
@@ -237,7 +237,7 @@ public class ValidationUtils {
      *
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see Validator#validateValue(Class, String, Object, Class...)
      */
     public static <T> Set<ConstraintViolation<T>> validateValue(Class<T> beanType, String propertyName, Object value, Class<?>... groups) {
@@ -263,7 +263,7 @@ public class ValidationUtils {
      *
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see Validator#validateValue(Class, String, Object, Class...)
      */
     public static <T> Collection<String> validateValueAndErrorMsg(Class<T> beanType, String propertyName, Object value, Class<?>... groups) {

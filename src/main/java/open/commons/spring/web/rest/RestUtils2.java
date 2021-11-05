@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2019 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2021. 06. 11. 오전 12:04:31
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -53,7 +53,7 @@ import open.commons.utils.ThreadUtils;
  * 
  * @since 2021. 06. 11.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class RestUtils2 {
 
@@ -102,7 +102,7 @@ public class RestUtils2 {
      *
      * @since 2021. 06. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
             Class<RES> responseType //
@@ -153,7 +153,7 @@ public class RestUtils2 {
      *
      * @since 2021. 06. 11.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
             ParameterizedTypeReference<RES> responseType //
@@ -206,7 +206,7 @@ public class RestUtils2 {
      *
      * @since 2021. 06. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
             HttpEntity<REQ> entity, Class<RES> responseType //
@@ -264,7 +264,7 @@ public class RestUtils2 {
      *
      * @since 2021. 06. 11.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
             HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType //
@@ -314,7 +314,7 @@ public class RestUtils2 {
      *
      * @since 2021. 06. 11.
      * @version
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, Class<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -359,7 +359,7 @@ public class RestUtils2 {
      *
      * @since 2021. 06. 11.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -393,7 +393,7 @@ public class RestUtils2 {
      *
      * @since 2021. 06. 11.
      * @version _._._
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private static <REQ, RES, RET> Result<RET> exchange(Supplier<ResponseEntity<RES>> sup, HttpMethod method, URI uri, HttpEntity<REQ> entity, Object responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess, Function<Exception, Result<RET>> onError) {

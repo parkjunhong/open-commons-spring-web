@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Park Jun-Hong_(parkjunhong77/google/com)
+ * Copyright 2020 Park Jun-Hong_(parkjunhong77@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
  *
  * Date  : 2020. 1. 21. 오후 1:41:35
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -33,7 +33,7 @@ import org.springframework.beans.factory.InitializingBean;
  * 
  * @since 2020. 1. 21.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public abstract class AbstractGenericService extends AbstractComponent implements InitializingBean, DisposableBean {
 
@@ -55,7 +55,7 @@ public abstract class AbstractGenericService extends AbstractComponent implement
 
     /**
      * @since 2020. 8. 29.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
      */
@@ -65,7 +65,7 @@ public abstract class AbstractGenericService extends AbstractComponent implement
 
     /**
      * @since 2020. 8. 29.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.beans.factory.DisposableBean#destroy()
      */

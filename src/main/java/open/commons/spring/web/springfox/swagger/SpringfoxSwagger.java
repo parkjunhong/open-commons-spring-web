@@ -4,7 +4,7 @@
  *
  * Date  : 2020. 9. 5. 오후 11:52:59
  *
- * Author: Park_Jun_Hong_(fafanmama_at_naver_com)
+ * Author: Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  */
 
@@ -15,7 +15,7 @@ package open.commons.spring.web.springfox.swagger;
  * 
  * @since 2020. 9. 5.
  * @version
- * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class SpringfoxSwagger {
     /** /v2/api-docs */
@@ -55,7 +55,7 @@ public class SpringfoxSwagger {
      * @return
      *
      * @since 2020. 9. 5.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static final String[] getUrlList() {
         return new String[] { URL_V2_API_DOCS, //
