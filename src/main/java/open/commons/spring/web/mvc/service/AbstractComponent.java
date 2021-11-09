@@ -26,6 +26,8 @@
 
 package open.commons.spring.web.mvc.service;
 
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import org.slf4j.Logger;
@@ -37,6 +39,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import open.commons.Result;
+import open.commons.function.Runner;
 import open.commons.spring.web.config.ResourceConfiguration;
 import open.commons.test.StopWatch;
 
@@ -180,6 +183,111 @@ public class AbstractComponent {
     @SuppressWarnings("unchecked")
     public final <T> Result<T> error(T data, String format, Object... args) {
         return (Result<T>) Result.error(format, args).setData(data);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 11. 9.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     *            작업용 파라미터 타입.
+     * @param action
+     *            실행할 작업
+     * @param param
+     *            작업용 파라미터
+     * @param job
+     *            작업명 (로그용)
+     *
+     * @since 2021. 11. 9.
+     * @version 0.3.0
+     * @author parkjunhong77@gmail.com
+     */
+    public final <T> void execute(Consumer<T> action, T param, String job) {
+        StopWatch watch = new StopWatch();
+        watch.start();
+        try {
+            action.accept(param);
+        } finally {
+            watch.stop();
+            logger.info("[{} 완료] elapsed={}", job, watch.getAsPretty());
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 11. 9.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <R>
+     *            반환할 데이터 타입.
+     * @param <T>
+     *            작업용 파라미터 타입.
+     * @param action
+     *            실행할 작업
+     * @param param
+     *            작업용 파라미터
+     * @param job
+     *            작업명 (로그용)
+     * @return
+     *
+     * @since 2021. 11. 9.
+     * @version 0.3.0
+     * @author parkjunhong77@gmail.com
+     */
+    public final <R, T> R execute(Function<T, R> action, T param, String job) {
+        StopWatch watch = new StopWatch();
+        watch.start();
+        try {
+            return action.apply(param);
+        } finally {
+            watch.stop();
+            logger.info("[{} 완료] elapsed={}", job, watch.getAsPretty());
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 10. 4.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param action
+     *            실행할 작업
+     * @param job
+     *            작업명. (로그를 위해서)
+     * @return
+     *
+     * @since 2021. 11. 9.
+     * @version 0.4.0
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+     */
+    public final void execute(Runner action, String job) {
+        StopWatch watch = new StopWatch();
+        watch.start();
+        try {
+            action.run();
+        } finally {
+            watch.stop();
+            logger.info("[{} 완료] elapsed={}", job, watch.getAsPretty());
+        }
     }
 
     /**

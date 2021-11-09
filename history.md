@@ -1,3 +1,10 @@
+[2021/11/09]
+- Add
+  + open.commons.spring.web.mvn.service.AbstractComponent
+    + execute(Consumer&lt;T&gt;, T, String)
+    + execute(Function&lt;T, R&gt;, T, String)
+    + execute(Runner, String)
+
 [2021/10/04]
 - Updated
   + open.common.spring.web.rest.RestApiDecl: 설정 데이터 변경을 막기 위한 조치.
