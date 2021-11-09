@@ -206,7 +206,7 @@ public class AbstractComponent {
      *            작업명 (로그용)
      *
      * @since 2021. 11. 9.
-     * @version 0.3.0
+     * @version 0.4.0
      * @author parkjunhong77@gmail.com
      */
     public final <T> void execute(Consumer<T> action, T param, String job) {
@@ -244,7 +244,7 @@ public class AbstractComponent {
      * @return
      *
      * @since 2021. 11. 9.
-     * @version 0.3.0
+     * @version 0.4.0
      * @author parkjunhong77@gmail.com
      */
     public final <R, T> R execute(Function<T, R> action, T param, String job) {
