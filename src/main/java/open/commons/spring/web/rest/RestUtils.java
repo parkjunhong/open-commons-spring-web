@@ -485,7 +485,7 @@ public class RestUtils {
      * @return
      *
      * @since 2020. 11. 20.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
@@ -546,7 +546,7 @@ public class RestUtils {
      * @return
      *
      * @since 2020. 11. 20.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @deprecated Use
@@ -713,7 +713,7 @@ public class RestUtils {
      * @return
      *
      * @since 2020. 11. 20.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
@@ -776,7 +776,7 @@ public class RestUtils {
      * @return
      *
      * @since 2020. 11. 20.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @deprecated Use
      *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, ParameterizedTypeReference, Function, Function)}
@@ -870,7 +870,7 @@ public class RestUtils {
      * @return
      *
      * @since 2020. 11. 20.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @deprecated Use
      *             {@link RestUtils2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, ParameterizedTypeReference, Function, Function)}
@@ -906,7 +906,7 @@ public class RestUtils {
      * @return
      *
      * @since 2020. 11. 23.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private static <REQ, RES> Result<RES> exchange(Supplier<ResponseEntity<RES>> sup, HttpMethod method, URI uri, HttpEntity<REQ> entity, Object responseType //

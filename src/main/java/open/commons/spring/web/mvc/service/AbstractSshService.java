@@ -43,7 +43,7 @@ import com.jcraft.jsch.Session;
  * SSH기반의 통신 기능을 제공한다.
  * 
  * @since 2020. 11. 26.
- * @version _._._
+ * @version 0.4.0
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class AbstractSshService extends AbstractGenericService {

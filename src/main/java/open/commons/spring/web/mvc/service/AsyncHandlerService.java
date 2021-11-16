@@ -35,7 +35,7 @@ import open.commons.concurrent.AsyncJobManager;
 /**
  * 
  * @since 2020. 11. 10.
- * @version _._._
+ * @version 0.4.0
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  * 
  * @deprecated Use {@link IAsyncHandlerService}

@@ -152,7 +152,7 @@ public class RestUtils2 {
      * @return
      *
      * @since 2021. 06. 11.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
@@ -263,7 +263,7 @@ public class RestUtils2 {
      * @return
      *
      * @since 2021. 06. 11.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
@@ -358,7 +358,7 @@ public class RestUtils2 {
      * @return
      *
      * @since 2021. 06. 11.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType //
@@ -392,7 +392,7 @@ public class RestUtils2 {
      * @return
      *
      * @since 2021. 06. 11.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private static <REQ, RES, RET> Result<RET> exchange(Supplier<ResponseEntity<RES>> sup, HttpMethod method, URI uri, HttpEntity<REQ> entity, Object responseType //

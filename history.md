@@ -1,3 +1,7 @@
+[2021/11/16]
+- Add
+  + open.commons.spring.web.mv.service.CliExecutionComponent
+
 [2021/11/09]
 - Add
   + open.commons.spring.web.mvn.service.AbstractComponent

@@ -86,7 +86,7 @@ public interface IAsyncHandlerService {
      * @return
      *
      * @since 2020. 11. 26.
-     * @version _._._
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <T> Future<Result<T>> futureAsResult(T value, boolean result, String msg) {
