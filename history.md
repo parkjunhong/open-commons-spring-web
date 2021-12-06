@@ -1,4 +1,10 @@
 [2021/12/06]
+- Update
+  + open.commons.spring.web.mv.service.AbstractGenericService
+    + implements open.commons.spring.web.mv.service.IConvertingService
+    + selectMulti(SearchResultType, Function&lt;P, Result&lt;List&lt;E&gt;&gt;&gt;, P, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Class&lt;D&gt;, Function&lt;E, D&gt;)
+  
+  
 - New
   + open.commons.spring.web.mv.service.IConvertingService
     + convertMultiResultAsStream(List&lt;S&gt;, Class&lt;T&gt;, Function&lt;S, T&gt;)
