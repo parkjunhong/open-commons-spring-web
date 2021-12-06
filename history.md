@@ -1,6 +1,11 @@
-[2021/11/16]
+[2021/12/06]
 - New
-  + open.commons.spring.web.mv.service.IConvertService
+  + open.commons.spring.web.mv.service.IConvertingService
+    + convertMultiResultAsStream(List&lt;S&gt;, Class&lt;T&gt;, Function&lt;S, T&gt;)
+  
+[2021/12/03]
+- New
+  + open.commons.spring.web.mv.service.IConvertingService
 
 [2021/11/16]
 - Add

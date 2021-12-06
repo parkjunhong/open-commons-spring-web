@@ -29,6 +29,7 @@ package open.commons.spring.web.mvc.service;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.validation.constraints.NotNull;
 
@@ -69,7 +70,7 @@ public interface IConvertingService {
      * @author Park_Jun_Hong_(fafanmama_at_naver_com)
      */
     default <S, T> List<T> convertMultiResult(@NotNull List<S> source, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
-        return source.stream().map(converter).collect(Collectors.toList());
+        return convertMultiResultAsStream(source, target, converter).collect(Collectors.toList());
     }
 
     /**
@@ -106,6 +107,35 @@ public interface IConvertingService {
     }
 
     /**
+     * 여러 개의 데이터 변환을 지원합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 12. 6.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param <S>
+     *            변환 이전 데이터 타입
+     * @param <T>
+     *            변환 이후 데이터 타입
+     * @param source
+     *            변환 이전 데이터
+     * @param target
+     *            변환 이후 데이터
+     * @param converter
+     *            변환 함수
+     * @return
+     *
+     * @since 2021. 12. 6.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    default <S, T> Stream<T> convertMultiResultAsStream(@NotNull List<S> source, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
+        return source.stream().map(converter);
+    }
+
+    /**
      * 단일 데이터 변환을 지원합니다. <br>
      * 
      * <pre>
@@ -137,5 +167,4 @@ public interface IConvertingService {
             return Result.error(resultSrc.getMessage());
         }
     }
-
 }
