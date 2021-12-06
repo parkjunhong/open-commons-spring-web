@@ -3,6 +3,7 @@
   + open.commons.spring.web.mv.service.AbstractGenericService
     + implements open.commons.spring.web.mv.service.IConvertingService
     + selectMulti(SearchResultType, Function&lt;P, Result&lt;List&lt;E&gt;&gt;&gt;, P, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Class&lt;D&gt;, Function&lt;E, D&gt;)
+    + selectMulti(SearchResultType, Function&lt;Result&lt;List&lt;E&gt;&gt;&gt;, P, BiFunction&lt;Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Class&lt;D&gt;, Function&lt;E, D&gt;)
   
   
 - New

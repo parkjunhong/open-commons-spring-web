@@ -27,7 +27,9 @@
 package open.commons.spring.web.mvc.service;
 
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -128,6 +130,54 @@ public abstract class AbstractGenericService extends AbstractComponent implement
                 return convertMultiResult(funcAll.apply(param), dtoType, converter);
             case PAGINATION:
                 return convertMultiResult(funcPagination.apply(param, (page - 1) * pageSize, pageSize), dtoType, converter);
+            default:
+                throw new UnsupportedOperationException(String.format("지원하지 않음. type=%s", type.get()));
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 12. 6.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param type
+     *            검색 유형.
+     * @param funcAll
+     *            전체 검색 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param page
+     *            볼 페이지 번호 (1부터 시작)
+     * @param pageSize
+     *            1 페이지당 데이터 개수
+     * @param dtoType
+     *            DTO class
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2021. 12. 6.
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    protected <E, D> Result<List<D>> selectMulti(SearchResultType type //
+            , Supplier<Result<List<E>>> funcAll //
+            , BiFunction<Integer, Integer, Result<List<E>>> funcPagination, int page, int pageSize //
+            , Class<D> dtoType, Function<E, D> converter) {
+        switch (type) {
+            case ALL:
+                return convertMultiResult(funcAll.get(), dtoType, converter);
+            case PAGINATION:
+                return convertMultiResult(funcPagination.apply((page - 1) * pageSize, pageSize), dtoType, converter);
             default:
                 throw new UnsupportedOperationException(String.format("지원하지 않음. type=%s", type.get()));
         }
