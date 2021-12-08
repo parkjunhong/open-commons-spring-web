@@ -1,4 +1,8 @@
-[2021/12/07]
+[2021/12/08]
+- Add
+  + open.commons.spring.web.mvc.service.AbstractGenericService
+    + selectMulti(SearchResultType, Function&lt;P, Result&lt;List&lt;E&gt;&gt;&gt;, P, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int)
+    + selectMulti(SearchResultType, Supplier&lt;Result&lt;List&lt;E&gt;&gt;&gt;, BiFunction&lt;Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int)
 - Update
   + open.commons.spring.web.config.CustomWebMvcConfigurer
     + addFormatters(FormatterRegistry): Enum 검색 패키지 확장.
