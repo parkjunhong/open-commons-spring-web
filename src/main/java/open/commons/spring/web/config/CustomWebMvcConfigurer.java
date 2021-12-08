@@ -26,6 +26,7 @@
 
 package open.commons.spring.web.config;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -235,11 +236,11 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
 
-        // enum package 를 설정하지 않은 경우.
-        List<String> pkgs = enumPkgs.getPackages();
-        if (pkgs == null) {
-            return;
-        }
+        List<String> pkgs = new ArrayList<>();
+        // default package.
+        pkgs.add("open.commons");
+        // 사용자 정의 package
+        pkgs.addAll(enumPkgs.getPackages());
 
         EnumConverterFactory factory = new EnumConverterFactory();
         pkgs.stream() //

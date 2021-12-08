@@ -26,6 +26,7 @@
 
 package open.commons.spring.web.enums;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -45,7 +46,7 @@ import open.commons.spring.web.config.CustomWebMvcConfigurer;
 @ConfigurationProperties(CustomWebMvcConfigurer.APPLICATION_PROPERTIES_PREFIX)
 public class EnumPackages {
 
-    private List<String> packages;
+    private List<String> packages = new ArrayList<>();
 
     /**
      * <br>
@@ -103,7 +104,9 @@ public class EnumPackages {
      * @see #packages
      */
     public void setPackages(List<String> packages) {
-        this.packages = packages;
+        this.packages = packages != null //
+                ? packages //
+                : new ArrayList<>();
     }
 
     /**

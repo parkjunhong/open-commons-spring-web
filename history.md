@@ -1,3 +1,9 @@
+[2021/12/07]
+- Update
+  + open.commons.spring.web.config.CustomWebMvcConfigurer
+    + addFormatters(FormatterRegistry): Enum 검색 패키지 확장.
+      - 'open.commons' 기본값으로 설정.
+
 [2021/12/06]
 - Update
   + open.commons.spring.web.mv.service.AbstractGenericService
