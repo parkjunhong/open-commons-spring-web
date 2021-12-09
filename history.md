@@ -1,3 +1,10 @@
+[2021/12/09]
+- Add
+  + open.commons.spring.web.mvc.service.AbstractGenericService
+    + selectMulti(SearchResultType, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, P, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String...)
+    + selectMulti(SearchResultType, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, P, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Class&lt;D&gt;, Function&lt;E, D&gt;)
+    + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String...)
+  
 [2021/12/08]
 - Add
   + open.commons.spring.web.mvc.service.AbstractGenericService
