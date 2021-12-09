@@ -97,211 +97,6 @@ public abstract class AbstractGenericService extends AbstractComponent implement
      *            Table Entity 타입
      * @param <D>
      *            DTO 타입
-     * @param <P>
-     *            파라미터 타입
-     * @param type
-     *            검색 유형.
-     * @param funcAll
-     *            전체 검색 함수
-     * @param param
-     *            검색 파라미터
-     * @param funcPagination
-     *            Pagination 검색 함수
-     * @param offset
-     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
-     * @param limit
-     *            읽을 데이터 개수
-     * @param orderByArgs
-     *            정렬 기준.<br>
-     *            <b>데이터 정의</b><br>
-     *            <li>포맷: {column} {direction}<br>
-     *            <li>예: name asc
-     * @return
-     *
-     * @since 2021. 12. 9.
-     * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
-     */
-    protected <E, P> Result<List<E>> selectMulti(SearchResultType type //
-            , BiFunction<P, String[], Result<List<E>>> funcAll //
-            , P param //
-            , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
-            , String... orderByArgs) {
-        switch (type) {
-            case ALL:
-                return funcAll.apply(param, orderByArgs);
-            case PAGINATION:
-                return funcPagination.apply(param, offset, limit, orderByArgs);
-            default:
-                throw new UnsupportedOperationException(String.format("지원하지 않음. type=%s", type.get()));
-        }
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2021. 12. 6.     박준홍         최초 작성
-     * </pre>
-     *
-     * @param <E>
-     *            Table Entity 타입
-     * @param <D>
-     *            DTO 타입
-     * @param <P>
-     *            파라미터 타입
-     * @param type
-     *            검색 유형.
-     * @param funcAll
-     *            전체 검색 함수
-     * @param param
-     *            검색 파라미터
-     * @param funcPagination
-     *            Pagination 검색 함수
-     * @param offset
-     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
-     * @param limit
-     *            읽을 데이터 개수
-     * @param orderByArgs
-     *            정렬 기준.<br>
-     *            <b>데이터 정의</b><br>
-     *            <li>포맷: {column} {direction}<br>
-     *            <li>예: name asc
-     * @param dtoType
-     *            DTO class
-     * @param converter
-     *            Entity -> DTO 변환 함수
-     * @return
-     *
-     * @since 2021. 12. 6.
-     * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
-     */
-    protected <E, D, P> Result<List<D>> selectMulti(SearchResultType type //
-            , BiFunction<P, String[], Result<List<E>>> funcAll //
-            , P param //
-            , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
-            , String[] orderByArgs //
-            , Class<D> dtoType, Function<E, D> converter) {
-        return convertMultiResult(selectMulti(type, funcAll, param, funcPagination, offset, limit, orderByArgs), dtoType, converter);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2021. 12. 8.     박준홍         최초 작성
-     * </pre>
-     *
-     * @param <E>
-     *            Table Entity 타입
-     * @param <D>
-     *            DTO 타입
-     * @param <P>
-     *            파라미터 타입
-     * @param type
-     *            검색 유형.
-     * @param funcAll
-     *            전체 검색 함수
-     * @param param
-     *            검색 파라미터
-     * @param funcPagination
-     *            Pagination 검색 함수
-     * @param offset
-     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
-     * @param limit
-     *            읽을 데이터 개수
-     * @return
-     *
-     * @since 2021. 12. 8.
-     * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
-     */
-    protected <E, P> Result<List<E>> selectMulti(SearchResultType type //
-            , Function<P, Result<List<E>>> funcAll //
-            , P param //
-            , TripleFunction<P, Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
-    ) {
-        switch (type) {
-            case ALL:
-                return funcAll.apply(param);
-            case PAGINATION:
-                return funcPagination.apply(param, offset, limit);
-            default:
-                throw new UnsupportedOperationException(String.format("지원하지 않음. type=%s", type.get()));
-        }
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2021. 12. 6.     박준홍         최초 작성
-     * </pre>
-     *
-     * @param <E>
-     *            Table Entity 타입
-     * @param <D>
-     *            DTO 타입
-     * @param <P>
-     *            파라미터 타입
-     * @param type
-     *            검색 유형.
-     * @param funcAll
-     *            전체 검색 함수
-     * @param param
-     *            검색 파라미터
-     * @param funcPagination
-     *            Pagination 검색 함수
-     * @param offset
-     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
-     * @param limit
-     *            읽을 데이터 개수
-     * @param dtoType
-     *            DTO class
-     * @param converter
-     *            Entity -> DTO 변환 함수
-     * @return
-     *
-     * @since 2021. 12. 6.
-     * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
-     */
-    protected <E, D, P> Result<List<D>> selectMulti(SearchResultType type //
-            , Function<P, Result<List<E>>> funcAll //
-            , P param //
-            , TripleFunction<P, Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
-            , Class<D> dtoType, Function<E, D> converter) {
-        return convertMultiResult(selectMulti(type, funcAll, param, funcPagination, offset, limit), dtoType, converter);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2021. 12. 9.     박준홍         최초 작성
-     * </pre>
-     *
-     * @param <E>
-     *            Table Entity 타입
-     * @param <D>
-     *            DTO 타입
      * @param type
      *            검색 유형.
      * @param funcAll
@@ -383,6 +178,211 @@ public abstract class AbstractGenericService extends AbstractComponent implement
             , String[] orderByArgs //
             , Class<D> dtoType, Function<E, D> converter) {
         return convertMultiResult(selectMulti(type, funcAll, funcPagination, offset, limit, orderByArgs), dtoType, converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 12. 9.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param type
+     *            검색 유형.
+     * @param param
+     *            검색 파라미터
+     * @param funcAll
+     *            전체 검색 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @param orderByArgs
+     *            정렬 기준.<br>
+     *            <b>데이터 정의</b><br>
+     *            <li>포맷: {column} {direction}<br>
+     *            <li>예: name asc
+     * @return
+     *
+     * @since 2021. 12. 9.
+     * @version 0.4.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    protected <E, P> Result<List<E>> selectMulti(SearchResultType type //
+            , P param //
+            , BiFunction<P, String[], Result<List<E>>> funcAll //
+            , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
+            , String... orderByArgs) {
+        switch (type) {
+            case ALL:
+                return funcAll.apply(param, orderByArgs);
+            case PAGINATION:
+                return funcPagination.apply(param, offset, limit, orderByArgs);
+            default:
+                throw new UnsupportedOperationException(String.format("지원하지 않음. type=%s", type.get()));
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 12. 6.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param type
+     *            검색 유형.
+     * @param param
+     *            검색 파라미터
+     * @param funcAll
+     *            전체 검색 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @param orderByArgs
+     *            정렬 기준.<br>
+     *            <b>데이터 정의</b><br>
+     *            <li>포맷: {column} {direction}<br>
+     *            <li>예: name asc
+     * @param dtoType
+     *            DTO class
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2021. 12. 6.
+     * @version 0.4.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    protected <E, D, P> Result<List<D>> selectMulti(SearchResultType type //
+            , P param //
+            , BiFunction<P, String[], Result<List<E>>> funcAll //
+            , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
+            , String[] orderByArgs //
+            , Class<D> dtoType, Function<E, D> converter) {
+        return convertMultiResult(selectMulti(type, param, funcAll, funcPagination, offset, limit, orderByArgs), dtoType, converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 12. 8.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param type
+     *            검색 유형.
+     * @param param
+     *            검색 파라미터
+     * @param funcAll
+     *            전체 검색 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @return
+     *
+     * @since 2021. 12. 8.
+     * @version 0.4.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    protected <E, P> Result<List<E>> selectMulti(SearchResultType type //
+            , P param //
+            , Function<P, Result<List<E>>> funcAll //
+            , TripleFunction<P, Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
+    ) {
+        switch (type) {
+            case ALL:
+                return funcAll.apply(param);
+            case PAGINATION:
+                return funcPagination.apply(param, offset, limit);
+            default:
+                throw new UnsupportedOperationException(String.format("지원하지 않음. type=%s", type.get()));
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 12. 6.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param type
+     *            검색 유형.
+     * @param param
+     *            검색 파라미터
+     * @param funcAll
+     *            전체 검색 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @param dtoType
+     *            DTO class
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2021. 12. 6.
+     * @version 0.4.0
+     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     */
+    protected <E, D, P> Result<List<D>> selectMulti(SearchResultType type //
+            , P param //
+            , Function<P, Result<List<E>>> funcAll //
+            , TripleFunction<P, Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
+            , Class<D> dtoType, Function<E, D> converter) {
+        return convertMultiResult(selectMulti(type, param, funcAll, funcPagination, offset, limit), dtoType, converter);
     }
 
     /**
