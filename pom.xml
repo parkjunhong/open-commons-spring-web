@@ -130,7 +130,17 @@
 		</dependency>
 		<!-- end: Spring Security -->
 		<!-- ********************** -->
-
+		
+		<!-- ************** -->
+		<!-- begin: Pagination -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<!-- end: Pagination -->
+		<!-- ************** -->
 
 		<!-- ************** -->
 		<!-- begin: validation -->

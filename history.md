@@ -1,3 +1,17 @@
+[2021/12/10]
+- Add
+  + open.commons.spring.web.mvc.service.AbstractMvcService
+- Delete
+  + open.commons.spring.web.mvc.service.AbstractGenericService: 아래 메소드를 'open.commons.spring.web.mvc.service.AbstractMvcService'로 이관. 
+    + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String...)
+    + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Class&lt;D&gt;, Function&lt;E, D&gt;)
+    + selectMulti(SearchResultType, P, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String...)
+    + selectMulti(SearchResultType, P, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Class&lt;D&gt;, Function&lt;E, D&gt;)
+    + selectMulti(SearchResultType, P, Function&lt;P, Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int)
+    + selectMulti(SearchResultType, P, Function&lt;P, Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Class&lt;D&gt;, Function&lt;E, D&gt;)
+    + selectMulti(SearchResultType, Supplier&lt;Result&lt;List&lt;E&gt;&gt;&gt;, BiFunction&lt;Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int)
+    + selectMulti(SearchResultType, Supplier&lt;Result&lt;List&lt;E&gt;&gt;&gt;, BiFunction&lt;Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Class&lt;D&gt;, Function&lt;E, D&gt;)
+
 [2021/12/09]
 - Modify
   + open.commons.spring.web.mvc.service.AbstractGenericService: 파라미터 순서 변경
