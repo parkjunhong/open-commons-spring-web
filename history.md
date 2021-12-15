@@ -1,8 +1,12 @@
 [2021/12/15]
 - Add
-  + open.commons.spring.web.mvc.service.AbstractMvcService
+  + open.commons.spring.web.mvc.service.AbstractComponent
     + streamOf(boolean, T...)
     + streamOf(String, String, T...)
+- <strike>Add
+  + open.commons.spring.web.mvc.service.AbstractMvcService
+    + streamOf(boolean, T...)
+    + streamOf(String, String, T...)</strike>
 
 [2021/12/10]
 - Add

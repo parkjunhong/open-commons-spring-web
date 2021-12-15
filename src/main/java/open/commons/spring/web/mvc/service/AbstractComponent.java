@@ -29,6 +29,10 @@ package open.commons.spring.web.mvc.service;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
+
+import javax.annotation.PostConstruct;
+import javax.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,6 +70,9 @@ public class AbstractComponent {
     /** Context */
     @Autowired
     protected ApplicationContext context;
+
+    /** Active profiles */
+    protected String[] profile;
 
     /**
      * <br>
@@ -324,6 +331,11 @@ public class AbstractComponent {
         }
     }
 
+    @PostConstruct
+    public void init() {
+        this.profile = this.env.getActiveProfiles();
+    }
+
     /**
      * 성공 결과 객체를 반환한다. <br>
      * 
@@ -374,5 +386,66 @@ public class AbstractComponent {
      */
     public final <T> Result<T> success(T data, String format, Object... args) {
         return Result.success(data).setMessage(format, args);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 12. 15.        박준홍         최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param isParallel
+     *            Parallel {@link Stream} 생성 여부
+     * @param values
+     *            데이터
+     * @return
+     *
+     * @since 2021. 12. 15.
+     * @version 0.4.0
+     * @author parkjunhong77@gmail.com
+     * 
+     * @see Stream#of(Object...)
+     * @see Stream#parallel()
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Supplier<Stream<T>> streamOf(boolean isParallel, T... values) {
+        return () -> isParallel ? Stream.of(values).parallel() : Stream.of(values);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 12. 15.        박준홍         최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param parallelProfile
+     *            Parallel {@link Stream}을 요구하는 'Profile'
+     * @param currentProfile
+     *            현재 'Profile'
+     * @param values
+     *            데이터
+     * @return
+     *
+     * @since 2021. 12. 15.
+     * @version 0.4.0
+     * @author parkjunhong77@gmail.com
+     * 
+     * @see #streamOf(boolean, Object...)
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Supplier<Stream<T>> streamOf(@NotNull String parallelProfile, String currentProfile, T... values) {
+        return streamOf(parallelProfile.equalsIgnoreCase(currentProfile), values);
     }
 }
