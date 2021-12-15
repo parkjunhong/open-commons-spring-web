@@ -31,6 +31,9 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.domain.Pageable;
 
@@ -550,6 +553,67 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , BiFunction<Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
             , Class<D> dtoType, Function<E, D> converter) {
         return convertMultiResult(selectMulti(type, funcAll, funcPagination, offset, limit), dtoType, converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 12. 15.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param isParallel
+     *            Parallel {@link Stream} 생성 여부
+     * @param values
+     *            데이터
+     * @return
+     *
+     * @since 2021. 12. 15.
+     * @version 0.4.0
+     * @author parkjunhong77@gmail.com
+     * 
+     * @see Stream#of(Object...)
+     * @see Stream#parallel()
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Supplier<Stream<T>> streamOf(boolean isParallel, T... values) {
+        return () -> isParallel ? Stream.of(values).parallel() : Stream.of(values);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 12. 15.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     * @param parallelProfile
+     *            Parallel {@link Stream}을 요구하는 'Profile'
+     * @param currentProfile
+     *            현재 'Profile'
+     * @param values
+     *            데이터
+     * @return
+     *
+     * @since 2021. 12. 15.
+     * @version 0.4.0
+     * @author parkjunhong77@gmail.com
+     * 
+     * @see #streamOf(boolean, Object...)
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> Supplier<Stream<T>> streamOf(@NotNull String parallelProfile, String currentProfile, T... values) {
+        return streamOf(parallelProfile.equalsIgnoreCase(currentProfile), values);
     }
 
 }

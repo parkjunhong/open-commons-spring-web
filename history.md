@@ -1,3 +1,9 @@
+[2021/12/15]
+- Add
+  + open.commons.spring.web.mvc.service.AbstractMvcService
+    + streamOf(boolean, T...)
+    + streamOf(String, String, T...)
+
 [2021/12/10]
 - Add
   + open.commons.spring.web.mvc.service.AbstractMvcService
