@@ -1,3 +1,7 @@
+[2021/12/16]
+- Add
+  + open.commons.spring.web.validation.EnumConstraintValidator&lt;C extends Annotation, T extends Enum&lt;T&gt;&gt;: Enum&lt;T&gt; 데이터를 검증하는 상위 클래스 정의
+
 [2021/12/15]
 - Add
   + open.commons.spring.web.mvc.service.AbstractComponent
