@@ -152,7 +152,7 @@ public class RestApiDecl {
      * @see #body
      */
     public void setBody(MultiValueMap<String, Object> body) {
-        this.body = body == null //
+        this.body = body != null //
                 ? new LinkedMultiValueMap<>(body) //
                 : new LinkedMultiValueMap<>();
     }
