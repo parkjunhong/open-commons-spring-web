@@ -68,7 +68,7 @@ public class RestApiDecl {
      * @see #body
      */
     public MultiValueMap<String, Object> getBody() {
-        return this.body.deepCopy();
+        return this.body != null ? this.body.deepCopy() : new LinkedMultiValueMap<>();
     }
 
     /**
@@ -89,7 +89,7 @@ public class RestApiDecl {
      * @see #headers
      */
     public MultiValueMap<String, String> getHeaders() {
-        return this.headers.deepCopy();
+        return this.headers != null ? this.headers.deepCopy() : new LinkedMultiValueMap<>();
     }
 
     /**
