@@ -114,7 +114,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected int limit(Pageable pageable) {
         return pageable.getPageSize();
@@ -135,7 +135,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected int offset(Pageable pageable) {
         return (pageable.getPageNumber() - 1) * pageable.getPageSize();
@@ -156,7 +156,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected String[] orderBy(Pageable pageable) {
         return pageable.getSort().stream() //
@@ -199,7 +199,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E> Result<List<E>> selectMulti(SearchResultType type //
             , Function<String[], Result<List<E>>> funcAll //
@@ -253,7 +253,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 6.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, D> Result<List<D>> selectMulti(SearchResultType type //
             , Function<String[], Result<List<E>>> funcAll //
@@ -301,7 +301,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, P> Result<List<E>> selectMulti(SearchResultType type //
             , P param //
@@ -360,7 +360,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 6.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, D, P> Result<List<D>> selectMulti(SearchResultType type //
             , P param //
@@ -404,7 +404,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 8.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, P> Result<List<E>> selectMulti(SearchResultType type //
             , P param //
@@ -458,7 +458,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 6.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, D, P> Result<List<D>> selectMulti(SearchResultType type //
             , P param //
@@ -497,7 +497,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 6.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E> Result<List<E>> selectMulti(SearchResultType type //
             , Supplier<Result<List<E>>> funcAll //
@@ -546,7 +546,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 6.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, D> Result<List<D>> selectMulti(SearchResultType type //
             , Supplier<Result<List<E>>> funcAll //

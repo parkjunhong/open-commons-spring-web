@@ -67,7 +67,7 @@ public interface IConvertingService {
      * @return
      *
      * @since 2021. 12. 3.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> List<T> convertMultiResult(@NotNull List<S> source, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
         return convertMultiResultAsStream(source, target, converter).collect(Collectors.toList());
@@ -96,7 +96,7 @@ public interface IConvertingService {
      * @return
      *
      * @since 2021. 12. 3.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> Result<List<T>> convertMultiResult(@NotNull Result<List<S>> resultSrc, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
         if (resultSrc.isSuccess()) {
@@ -129,7 +129,7 @@ public interface IConvertingService {
      * @return
      *
      * @since 2021. 12. 6.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> Stream<T> convertMultiResultAsStream(@NotNull List<S> source, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
         return source.stream().map(converter);
@@ -158,7 +158,7 @@ public interface IConvertingService {
      * @return
      *
      * @since 2021. 12. 3.
-     * @author Park_Jun_Hong_(fafanmama_at_naver_com)
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> Result<T> convertSingleResult(@NotNull Result<S> resultSrc, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
         if (resultSrc.isSuccess()) {
