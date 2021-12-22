@@ -31,15 +31,15 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import javax.validation.constraints.NotNull;
 
 import org.springframework.data.domain.Pageable;
 
 import open.commons.Result;
+import open.commons.annotation.Getter;
+import open.commons.annotation.Setter;
 import open.commons.function.QuadFunction;
 import open.commons.function.TripleFunction;
+import open.commons.utils.ObjectUtils;
 
 /**
  * 
@@ -553,5 +553,65 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , BiFunction<Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
             , Class<D> dtoType, Function<E, D> converter) {
         return convertMultiResult(selectMulti(type, funcAll, funcPagination, offset, limit), dtoType, converter);
+    }
+
+    /**
+     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 12. 22.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <S>
+     *            입력 데이터 타입 정의.
+     * @param <T>
+     *            신규 데이터 타입 정의.
+     * @param srcObj
+     *            입력 데이타
+     * @param lookupSrcSuper
+     *            입력 데이타 클래스 상위 인터페이스/클래스 확장 여부
+     * @param targetType
+     *            데이터를 전달받은 객체.
+     * @param lookupTargetSuper
+     *            대상 객체 상위 인터페이스/클래스 확장 여부
+     * @return
+     *
+     * @since 2021. 12. 22.
+     * @version 0.4.0
+     * @author parkjunhong77@gmail.com
+     */
+    protected static <S, T> T transform(S srcObj, boolean lookupSrcSupper, Class<T> targetType, boolean lookupTargetSupper) {
+        return ObjectUtils.getTransformer(srcObj, lookupSrcSupper, targetType, lookupTargetSupper).apply(srcObj);
+    }
+
+    /**
+     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 12. 22.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <S>
+     *            입력 데이터 타입 정의.
+     * @param <T>
+     *            신규 데이터 타입 정의.
+     * @param srcObj
+     *            입력 데이타
+     * @param targetType
+     *            데이터를 전달받은 객체.
+     * @return
+     *
+     * @since 2021. 12. 22.
+     * @version 0.4.0
+     * @author parkjunhong77@gmail.com
+     */
+    protected static <S, T> T transform(S srcObj, Class<T> targetType) {
+        return transform(srcObj, true, targetType, true);
     }
 }

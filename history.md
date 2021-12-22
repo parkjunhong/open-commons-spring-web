@@ -1,3 +1,9 @@
+[2021/12/22]
+- Add
+  + open.commons.spring.web.mvc.service.AbstractMvcService
+    + transform(S, boolean, Class&lt;T&gt;, boolean)
+    + transform(S, Class&lt;T&gt;)
+
 [2021/12/20]
 - Bugfix
   + open.commons.spring.web.rest.RestApiDecl
