@@ -1,3 +1,8 @@
+[2021/12/24]
+- Add
+  + open.commons.spring.web.mvc.service.AbstractMvcService
+    + save(List&lt;D&gt;, Class&lt;E&gt;, Function&lt;D, E&gt;, Function&lt;List&lt;E&gt;, Result&lt;Integer&gt;&gt;): DTO -> Entity로 저장하는 함수.
+
 [2021/12/22]
 - Add
   + open.commons.spring.web.mvc.service.AbstractMvcService

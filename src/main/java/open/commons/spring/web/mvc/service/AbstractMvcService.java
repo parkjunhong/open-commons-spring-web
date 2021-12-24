@@ -166,6 +166,38 @@ public abstract class AbstractMvcService extends AbstractGenericService {
     }
 
     /**
+     * DTO 데이터를 Entity로 변환하여 DB에 저장한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 12. 24.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <D>
+     *            DTO 데이터 타입.
+     * @param <E>
+     *            Entity 데이터 타입.
+     * @param data
+     *            DB에 추가할 데이터.
+     * @param entityType
+     *            DB Table 데이터 타입.
+     * @param transformer
+     *            DTO -> Entity 변환 함수.
+     * @param action
+     *            DB Table 추가 함수.
+     * @return
+     *
+     * @since 2021. 12. 24.
+     * @version 0.4.0
+     * @author parkjunhong77@gmail.com
+     */
+    protected <D, E> Result<Integer> save(List<D> data, Class<E> entityType, Function<D, E> transformer, Function<List<E>, Result<Integer>> action) {
+        return action.apply(convertMultiResult(data, entityType, transformer));
+    }
+
+    /**
      * 
      * <br>
      * 
