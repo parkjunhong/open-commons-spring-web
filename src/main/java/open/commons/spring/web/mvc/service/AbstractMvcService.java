@@ -183,8 +183,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *            DB에 추가할 데이터.
      * @param entityType
      *            DB Table 데이터 타입.
-     * @param transformer
-     *            DTO -> Entity 변환 함수.
      * @param action
      *            DB Table 추가 함수.
      * @return
@@ -193,8 +191,12 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @version 0.4.0
      * @author parkjunhong77@gmail.com
      */
-    protected <D, E> Result<Integer> save(List<D> data, Class<E> entityType, Function<D, E> transformer, Function<List<E>, Result<Integer>> action) {
-        return action.apply(convertMultiResult(data, entityType, transformer));
+    @SuppressWarnings("unchecked")
+    protected <D, E> Result<Integer> save(List<D> data, Class<E> entityType, Function<List<E>, Result<Integer>> action) {
+        if (data == null || data.size() < 1) {
+            return Result.success(0);
+        }
+        return action.apply(convertMultiResult(data, entityType, ObjectUtils.getTransformer((Class<D>) data.get(0).getClass(), true, entityType, true)));
     }
 
     /**
