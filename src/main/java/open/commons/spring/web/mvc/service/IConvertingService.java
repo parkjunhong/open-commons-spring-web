@@ -33,6 +33,9 @@ import java.util.stream.Stream;
 
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+
 import open.commons.Result;
 
 /**
@@ -43,6 +46,44 @@ import open.commons.Result;
  * @author parkjunhong77@gmail.com
  */
 public interface IConvertingService {
+
+    /**
+     * 여러 개의 데이터 변환을 지원합니다. <br>
+     *
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 12. 28.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <S>
+     *            변환 이전 데이터 타입
+     * @param <T>
+     *            변환 이후 데이터 타입
+     * @param resultSrc
+     *            변환 이전 데이터 조회 결과
+     * @param target
+     *            변환 이후 데이터
+     * @param converter
+     *            변환 함수
+     * @return
+     *
+     * @since 2021. 12. 28.
+     * @version 0.4.0
+     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
+     */
+    default <S, T> Result<Page<T>> convertMultiPaginationResult(@NotNull Result<Page<S>> resultSrc, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
+        if (resultSrc.isSuccess()) {
+            Page<S> page = resultSrc.getData();
+            List<S> srcContent = page.getContent();
+            List<T> targetContent = convertMultiResult(srcContent, target, converter);
+
+            return Result.success(new PageImpl<T>(targetContent, page.getPageable(), page.getTotalElements()));
+        } else {
+            return Result.error(resultSrc.getMessage());
+        }
+    }
 
     /**
      * 여러 개의 데이터 변환을 지원합니다. <br>
@@ -67,6 +108,7 @@ public interface IConvertingService {
      * @return
      *
      * @since 2021. 12. 3.
+     * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> List<T> convertMultiResult(@NotNull List<S> source, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
@@ -96,6 +138,7 @@ public interface IConvertingService {
      * @return
      *
      * @since 2021. 12. 3.
+     * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> Result<List<T>> convertMultiResult(@NotNull Result<List<S>> resultSrc, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
@@ -129,6 +172,7 @@ public interface IConvertingService {
      * @return
      *
      * @since 2021. 12. 6.
+     * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> Stream<T> convertMultiResultAsStream(@NotNull List<S> source, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
@@ -158,6 +202,7 @@ public interface IConvertingService {
      * @return
      *
      * @since 2021. 12. 3.
+     * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> Result<T> convertSingleResult(@NotNull Result<S> resultSrc, @NotNull Class<T> target, @NotNull Function<S, T> converter) {

@@ -1,3 +1,19 @@
+[2021/12/29]
+- Add
+  + open.commons.spring.web.mvc.service.AbstractMvcService
+    + executePagination(Supplier&lt;Result&lt;List&lt;E&gt;&gt;&gt;, Supplier&lt;Result&lt;Integer&gt;&gt;, int, int, String[])
+    + orderBy(String...)
+    + selectMultiPagination(SearchResultType, P, Function&lt;P, Result&lt;Integer&gt;&gt;, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String...)
+    + selectMultiPagination(SearchResultType, P, Function&lt;P, Result&lt;Integer&gt;&gt;, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Class&lt;D&gt;, Function&lt;E, D&gt;)
+    + selectMultiPagination(SearchResultType, P, Supplier&lt;Result&lt;Integer&gt;&gt;, Function&lt;P, Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int)
+    + selectMultiPagination(SearchResultType, P, Supplier&lt;Result&lt;Integer&gt;&gt;, Function&lt;P, Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Class&lt;D&gt;, Function&lt;E, D&gt;)
+    + selectMultiPagination(SearchResultType, Supplier&lt;Result&lt;Integer&gt;&gt;, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String...)
+    + selectMultiPagination(SearchResultType, Supplier&lt;Result&lt;Integer&gt;&gt;, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Class&lt;D&gt;, Function&lt;E, D&gt;)
+    + selectMultiPagination(SearchResultType, Supplier&lt;Result&lt;Integer&gt;&gt;, Supplier&lt;Result&lt;List&lt;E&gt;&gt;&gt;, BiFunction&lt;Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int)
+    + selectMultiPagination(SearchResultType, Supplier&lt;Result&lt;Integer&gt;&gt;, Supplier&lt;Result&lt;List&lt;E&gt;&gt;&gt;, BiFunction&lt;Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Class&lt;D&gt;, Function&lt;E, D&gt;)
+  + open.commons.spring.web.mvc.service.IConvertingService
+    + convertMultiPaginationResult(Result&lt;Page&lt;S&gt;&gt;, Class&lt;T&gt;, Function&lt;S, T&gt;)
+  
 [2021/12/24]
 - Add
   + open.commons.spring.web.mvc.service.AbstractMvcService
