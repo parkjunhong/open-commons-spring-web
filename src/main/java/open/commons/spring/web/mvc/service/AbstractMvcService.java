@@ -263,7 +263,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *            DB에 추가할 데이터.
      * @param entityType
      *            DB Table 데이터 타입.
-     * @param action
+     * @param funcSave
      *            DB Table 추가 함수.
      * @return
      *
@@ -272,11 +272,11 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @author parkjunhong77@gmail.com
      */
     @SuppressWarnings("unchecked")
-    protected <D, E> Result<Integer> save(List<D> data, Class<E> entityType, Function<List<E>, Result<Integer>> action) {
+    protected <D, E> Result<Integer> save(List<D> data, Class<E> entityType, Function<List<E>, Result<Integer>> funcSave) {
         if (data == null || data.size() < 1) {
             return Result.success(0);
         }
-        return action.apply(convertMultiResult(data, entityType, ObjectUtils.getTransformer((Class<D>) data.get(0).getClass(), true, entityType, true)));
+        return funcSave.apply(convertMultiResult(data, entityType, ObjectUtils.getTransformer((Class<D>) data.get(0).getClass(), true, entityType, true)));
     }
 
     /**
@@ -1002,7 +1002,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @return
      *
      * @since 2021. 12. 28.
-     * @version _._._
+     * @version 0.4.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D> Result<Page<D>> selectMultiPagination(SearchResultType type //
@@ -1042,7 +1042,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @return
      *
      * @since 2021. 12. 28.
-     * @version _._._
+     * @version 0.4.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E> Result<Page<E>> selectMultiPagination(SearchResultType type //
