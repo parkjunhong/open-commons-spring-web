@@ -90,7 +90,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
         Runner rCount = () -> map.put(propCount, count.get());
 
         // #1. 실행
-        Stream.of(rData, rCount).parallel().forEach(r -> r.run());
+        Stream.of(rData, rCount).forEach(r -> r.run());
 
         // #2. 데이터 생성
         Result<List<E>> r = (Result<List<E>>) map.get(propData);
@@ -195,6 +195,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @since 2021. 12. 9.
      * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
+     * 
+     * @see #orderBy(String...)
      */
     protected String[] orderBy(Pageable pageable) {
         return pageable.getSort().stream() //
@@ -219,6 +221,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @since 2021. 12. 28.
      * @version 0.4.0
      * @author parkjunhong77@gmail.com
+     * 
+     * @see #orderBy(Pageable)
      */
     protected List<Order> orderBy(String... orderByArgs) {
         return orderByArgs != null //
