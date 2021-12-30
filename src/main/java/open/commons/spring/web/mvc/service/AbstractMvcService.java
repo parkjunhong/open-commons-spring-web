@@ -100,7 +100,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
         int totalCount = ((Result<Integer>) map.get(propCount)).getData();
 
         // #3. Pagination 정보 생성
-        Pageable p = PageRequest.of(offset, limit, orderByArgs != null ? Sort.by(orderBy(orderByArgs)) : Sort.unsorted());
+        Pageable p = PageRequest.of(offset / limit, limit, orderByArgs != null ? Sort.by(orderBy(orderByArgs)) : Sort.unsorted());
 
         return Result.success(new PageImpl<E>(r.getData(), p, totalCount));
     }
