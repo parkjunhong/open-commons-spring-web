@@ -55,6 +55,7 @@ public interface IConvertingService {
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2021. 12. 28.		박준홍			최초 작성
+     * 2021. 12. 30.    박준홍     변환 이후 Class<?> 파라미터 삭제.
      * </pre>
      *
      * @param <S>
@@ -63,8 +64,6 @@ public interface IConvertingService {
      *            변환 이후 데이터 타입
      * @param resultSrc
      *            변환 이전 데이터 조회 결과
-     * @param target
-     *            변환 이후 데이터
      * @param converter
      *            변환 함수
      * @return
@@ -73,11 +72,11 @@ public interface IConvertingService {
      * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    default <S, T> Result<Page<T>> convertMultiPaginationResult(@NotNull Result<Page<S>> resultSrc, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
+    default <S, T> Result<Page<T>> convertMultiPaginationResult(@NotNull Result<Page<S>> resultSrc, @NotNull Function<S, T> converter) {
         if (resultSrc.isSuccess()) {
             Page<S> page = resultSrc.getData();
             List<S> srcContent = page.getContent();
-            List<T> targetContent = convertMultiResult(srcContent, target, converter);
+            List<T> targetContent = convertMultiResult(srcContent, converter);
 
             return Result.success(new PageImpl<T>(targetContent, page.getPageable(), page.getTotalElements()));
         } else {
@@ -93,6 +92,7 @@ public interface IConvertingService {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 3.     박준홍         최초 작성
+     * 2021. 12. 30.    박준홍     변환 이후 Class<?> 파라미터 삭제.
      * </pre>
      *
      * @param <S>
@@ -101,8 +101,6 @@ public interface IConvertingService {
      *            변환 이후 데이터 타입
      * @param source
      *            변환 이전 데이터
-     * @param target
-     *            변환 이후 데이터
      * @param converter
      *            변환 함수
      * @return
@@ -111,8 +109,8 @@ public interface IConvertingService {
      * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    default <S, T> List<T> convertMultiResult(@NotNull List<S> source, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
-        return convertMultiResultAsStream(source, target, converter).collect(Collectors.toList());
+    default <S, T> List<T> convertMultiResult(@NotNull List<S> source, @NotNull Function<S, T> converter) {
+        return convertMultiResultAsStream(source, converter).collect(Collectors.toList());
     }
 
     /**
@@ -123,6 +121,7 @@ public interface IConvertingService {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 3.     박준홍         최초 작성
+     * 2021. 12. 30.    박준홍     변환 이후 Class<?> 파라미터 삭제.
      * </pre>
      *
      * @param <S>
@@ -131,8 +130,6 @@ public interface IConvertingService {
      *            변환 이후 데이터 타입
      * @param resultSrc
      *            변환 이전 데이터 조회 결과
-     * @param target
-     *            변환 이후 데이터
      * @param converter
      *            변환 함수
      * @return
@@ -141,9 +138,9 @@ public interface IConvertingService {
      * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    default <S, T> Result<List<T>> convertMultiResult(@NotNull Result<List<S>> resultSrc, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
+    default <S, T> Result<List<T>> convertMultiResult(@NotNull Result<List<S>> resultSrc, @NotNull Function<S, T> converter) {
         if (resultSrc.isSuccess()) {
-            return Result.success(convertMultiResult(resultSrc.getData(), target, converter));
+            return Result.success(convertMultiResult(resultSrc.getData(), converter));
         } else {
             return Result.error(resultSrc.getMessage());
         }
@@ -157,6 +154,7 @@ public interface IConvertingService {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 6.     박준홍         최초 작성
+     * 2021. 12. 30.    박준홍     변환 이후 Class<?> 파라미터 삭제.
      * </pre>
      *
      * @param <S>
@@ -165,8 +163,6 @@ public interface IConvertingService {
      *            변환 이후 데이터 타입
      * @param source
      *            변환 이전 데이터
-     * @param target
-     *            변환 이후 데이터
      * @param converter
      *            변환 함수
      * @return
@@ -175,7 +171,7 @@ public interface IConvertingService {
      * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    default <S, T> Stream<T> convertMultiResultAsStream(@NotNull List<S> source, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
+    default <S, T> Stream<T> convertMultiResultAsStream(@NotNull List<S> source, @NotNull Function<S, T> converter) {
         return source.stream().map(converter);
     }
 
@@ -187,6 +183,7 @@ public interface IConvertingService {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 3.     박준홍         최초 작성
+     * 2021. 12. 30.    박준홍     변환 이후 Class<?> 파라미터 삭제.
      * </pre>
      *
      * @param <S>
@@ -195,8 +192,6 @@ public interface IConvertingService {
      *            변환 이후 데이터 타입
      * @param resultSrc
      *            변환 이전 데이터 조회 결과
-     * @param target
-     *            변환 이후 데이터
      * @param converter
      *            변환 함수
      * @return
@@ -205,7 +200,7 @@ public interface IConvertingService {
      * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
-    default <S, T> Result<T> convertSingleResult(@NotNull Result<S> resultSrc, @NotNull Class<T> target, @NotNull Function<S, T> converter) {
+    default <S, T> Result<T> convertSingleResult(@NotNull Result<S> resultSrc, @NotNull Function<S, T> converter) {
         if (resultSrc.isSuccess()) {
             return Result.success(converter.apply(resultSrc.getData()));
         } else {

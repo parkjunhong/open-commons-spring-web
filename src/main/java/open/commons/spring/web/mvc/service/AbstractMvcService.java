@@ -276,7 +276,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
         if (data == null || data.size() < 1) {
             return Result.success(0);
         }
-        return funcSave.apply(convertMultiResult(data, entityType, ObjectUtils.getTransformer((Class<D>) data.get(0).getClass(), true, entityType, true)));
+        return funcSave.apply(convertMultiResult(data, ObjectUtils.getTransformer((Class<D>) data.get(0).getClass(), true, entityType, true)));
     }
 
     /**
@@ -292,8 +292,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @param <E>
      *            Table Entity 타입
-     * @param <D>
-     *            DTO 타입
      * @param type
      *            검색 유형.
      * @param funcAll
@@ -338,6 +336,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 6.     박준홍         최초 작성
+     * 2021. 12. 30.    박준홍     DTO Class<?> 파라미터 삭제.
      * </pre>
      *
      * @param <E>
@@ -359,8 +358,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *            <b>데이터 정의</b><br>
      *            <li>포맷: {column} {direction}<br>
      *            <li>예: name asc
-     * @param dtoType
-     *            DTO class
      * @param converter
      *            Entity -> DTO 변환 함수
      * @return
@@ -373,8 +370,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , Function<String[], Result<List<E>>> funcAll //
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
             , String[] orderByArgs //
-            , Class<D> dtoType, Function<E, D> converter) {
-        return convertMultiResult(selectMulti(type, funcAll, funcPagination, offset, limit, orderByArgs), dtoType, converter);
+            , Function<E, D> converter) {
+        return convertMultiResult(selectMulti(type, funcAll, funcPagination, offset, limit, orderByArgs), converter);
     }
 
     /**
@@ -390,8 +387,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @param <E>
      *            Table Entity 타입
-     * @param <D>
-     *            DTO 타입
      * @param <P>
      *            파라미터 타입
      * @param type
@@ -441,6 +436,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 6.     박준홍         최초 작성
+     * 2021. 12. 30.    박준홍     DTO Class<?> 파라미터 삭제.
      * </pre>
      *
      * @param <E>
@@ -466,8 +462,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *            <b>데이터 정의</b><br>
      *            <li>포맷: {column} {direction}<br>
      *            <li>예: name asc
-     * @param dtoType
-     *            DTO class
      * @param converter
      *            Entity -> DTO 변환 함수
      * @return
@@ -481,8 +475,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , BiFunction<P, String[], Result<List<E>>> funcAll //
             , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
             , String[] orderByArgs //
-            , Class<D> dtoType, Function<E, D> converter) {
-        return convertMultiResult(selectMulti(type, param, funcAll, funcPagination, offset, limit, orderByArgs), dtoType, converter);
+            , Function<E, D> converter) {
+        return convertMultiResult(selectMulti(type, param, funcAll, funcPagination, offset, limit, orderByArgs), converter);
     }
 
     /**
@@ -498,8 +492,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @param <E>
      *            Table Entity 타입
-     * @param <D>
-     *            DTO 타입
      * @param <P>
      *            파라미터 타입
      * @param type
@@ -544,6 +536,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 6.     박준홍         최초 작성
+     * 2021. 12. 30.    박준홍     DTO Class<?> 파라미터 삭제.
      * </pre>
      *
      * @param <E>
@@ -564,8 +557,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *            데이터를 읽기 위한 시작 위치 (0부터 시작)
      * @param limit
      *            읽을 데이터 개수
-     * @param dtoType
-     *            DTO class
      * @param converter
      *            Entity -> DTO 변환 함수
      * @return
@@ -578,8 +569,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , P param //
             , Function<P, Result<List<E>>> funcAll //
             , TripleFunction<P, Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
-            , Class<D> dtoType, Function<E, D> converter) {
-        return convertMultiResult(selectMulti(type, param, funcAll, funcPagination, offset, limit), dtoType, converter);
+            , Function<E, D> converter) {
+        return convertMultiResult(selectMulti(type, param, funcAll, funcPagination, offset, limit), converter);
     }
 
     /**
@@ -595,8 +586,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @param <E>
      *            Table Entity 타입
-     * @param <D>
-     *            DTO 타입
      * @param type
      *            검색 유형.
      * @param funcAll
@@ -652,8 +641,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *            데이터를 읽기 위한 시작 위치 (0부터 시작)
      * @param limit
      *            읽을 데이터 개수
-     * @param dtoType
-     *            DTO class
      * @param converter
      *            Entity -> DTO 변환 함수
      * @return
@@ -665,8 +652,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
     protected <E, D> Result<List<D>> selectMulti(SearchResultType type //
             , Supplier<Result<List<E>>> funcAll //
             , BiFunction<Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
-            , Class<D> dtoType, Function<E, D> converter) {
-        return convertMultiResult(selectMulti(type, funcAll, funcPagination, offset, limit), dtoType, converter);
+            , Function<E, D> converter) {
+        return convertMultiResult(selectMulti(type, funcAll, funcPagination, offset, limit), converter);
     }
 
     /**
@@ -682,8 +669,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @param <E>
      *            Table Entity 타입
-     * @param <D>
-     *            DTO 타입
      * @param <P>
      *            파라미터 타입
      * @param type
@@ -772,8 +757,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *            <b>데이터 정의</b><br>
      *            <li>포맷: {column} {direction}<br>
      *            <li>예: name asc
-     * @param dtoType
-     *            DTO class
      * @param converter
      *            Entity -> DTO 변환 함수
      * @return
@@ -788,8 +771,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , BiFunction<P, String[], Result<List<E>>> funcAll //
             , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
             , String[] orderByArgs //
-            , Class<D> dtoType, Function<E, D> converter) {
-        return convertMultiPaginationResult(selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset, limit, orderByArgs), dtoType, converter);
+            , Function<E, D> converter) {
+        return convertMultiPaginationResult(selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset, limit, orderByArgs), converter);
     }
 
     /**
@@ -882,8 +865,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *            데이터를 읽기 위한 시작 위치 (0부터 시작)
      * @param limit
      *            읽을 데이터 개수
-     * @param dtoType
-     *            DTO class
      * @param converter
      *            Entity -> DTO 변환 함수
      * @return
@@ -897,8 +878,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , Supplier<Result<Integer>> funcCount //
             , Function<P, Result<List<E>>> funcAll //
             , TripleFunction<P, Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
-            , Class<D> dtoType, Function<E, D> converter) {
-        return convertMultiPaginationResult(selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset, limit), dtoType, converter);
+            , Function<E, D> converter) {
+        return convertMultiPaginationResult(selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset, limit), converter);
     }
 
     /**
@@ -914,8 +895,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @param <E>
      *            Table Entity 타입
-     * @param <D>
-     *            DTO 타입
      * @param type
      *            검색 유형.
      * @param funcCount
@@ -974,7 +953,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 2021. 12. 28.		박준홍			최초 작성
      * </pre>
      *
-     * * @param <E> Table Entity 타입
+     * @param <E>
+     *            Table Entity 타입
      * 
      * @param <D>
      *            DTO 타입
@@ -995,8 +975,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *            <b>데이터 정의</b><br>
      *            <li>포맷: {column} {direction}<br>
      *            <li>예: name asc
-     * @param dtoType
-     *            DTO class
      * @param converter
      *            Entity -> DTO 변환 함수
      * @return
@@ -1010,8 +988,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , Function<String[], Result<List<E>>> funcAll //
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
             , String[] orderByArgs //
-            , Class<D> dtoType, Function<E, D> converter) {
-        return convertMultiPaginationResult(selectMultiPagination(type, funcCount, funcAll, funcPagination, offset, limit, orderByArgs), dtoType, converter);
+            , Function<E, D> converter) {
+        return convertMultiPaginationResult(selectMultiPagination(type, funcCount, funcAll, funcPagination, offset, limit, orderByArgs), converter);
     }
 
     /**
@@ -1096,8 +1074,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *            데이터를 읽기 위한 시작 위치 (0부터 시작)
      * @param limit
      *            읽을 데이터 개수
-     * @param dtoType
-     *            DTO class
      * @param converter
      *            Entity -> DTO 변환 함수
      * @return
@@ -1110,8 +1086,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , Supplier<Result<Integer>> funcCount //
             , Supplier<Result<List<E>>> funcAll //
             , BiFunction<Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
-            , Class<D> dtoType, Function<E, D> converter) {
-        return convertMultiPaginationResult(selectMultiPagination(type, funcCount, funcAll, funcPagination, offset, limit), dtoType, converter);
+            , Function<E, D> converter) {
+        return convertMultiPaginationResult(selectMultiPagination(type, funcCount, funcAll, funcPagination, offset, limit), converter);
     }
 
     /**
