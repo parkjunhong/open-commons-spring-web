@@ -78,6 +78,38 @@ public abstract class AbstractMvcService extends AbstractGenericService {
     public AbstractMvcService() {
     }
 
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 12. 28.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            DTO 타입
+     * @param data
+     *            데이터 제공 함수
+     * @param count
+     *            데이터 개수 제공 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @param orderByArgs
+     *            정렬 기준.<br>
+     *            <b>데이터 정의</b><br>
+     *            <li>포맷: {column} {direction}<br>
+     *            <li>예: name asc
+     * @return
+     *
+     * @since 2021. 12. 28.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
     @SuppressWarnings("unchecked")
     private <E> Result<Page<E>> executePagination(Supplier<Result<List<E>>> data, Supplier<Result<Integer>> count, int offset, int limit, String[] orderByArgs) {
 
@@ -380,6 +412,80 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param type
+     *            검색 유형.
+     * @param funcAll
+     *            전체 검색 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param pageable
+     *            데이터 결과 Pagination 정보
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E> Result<List<E>> selectMulti(SearchResultType type //
+            , Function<String[], Result<List<E>>> funcAll //
+            , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
+            , Pageable pageable //
+    ) {
+        return selectMulti(type, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable));
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param type
+     *            검색 유형.
+     * @param funcAll
+     *            전체 검색 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param pageable
+     *            데이터 결과 Pagination 설정
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, D> Result<List<D>> selectMulti(SearchResultType type //
+            , Function<String[], Result<List<E>>> funcAll //
+            , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
+            , Pageable pageable //
+            , Function<E, D> converter) {
+        return selectMulti(type, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 9.     박준홍         최초 작성
@@ -477,6 +583,89 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , String[] orderByArgs //
             , Function<E, D> converter) {
         return convertMultiResult(selectMulti(type, param, funcAll, funcPagination, offset, limit, orderByArgs), converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param type
+     *            검색 유형.
+     * @param param
+     *            검색 파라미터
+     * @param funcAll
+     *            전체 검색 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param pageable
+     *            데이터 결과 Pagination 설정
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, P> Result<List<E>> selectMulti(SearchResultType type //
+            , P param //
+            , BiFunction<P, String[], Result<List<E>>> funcAll //
+            , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
+            , Pageable pageable) {
+        return selectMulti(type, param, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable));
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param type
+     *            검색 유형.
+     * @param param
+     *            검색 파라미터
+     * @param funcAll
+     *            전체 검색 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param pageable
+     *            데이터 결과 Pagination 설정
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, D, P> Result<List<D>> selectMulti(SearchResultType type //
+            , P param //
+            , BiFunction<P, String[], Result<List<E>>> funcAll //
+            , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
+            , Pageable pageable//
+            , Function<E, D> converter) {
+        return selectMulti(type, param, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
     }
 
     /**
@@ -771,6 +960,81 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @param param
      *            검색 파라미터
      * @param funcCount
+     *            데이터 개수 제공 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param pageable
+     *            데이터 결과 Pagination 설정
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, P> Result<Page<E>> selectMultiPagination(P param //
+            , Function<P, Result<Integer>> funcCount //
+            , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
+            , Pageable pageable) {
+        return selectMultiPagination(param, funcCount, funcPagination, offset(pageable), limit(pageable), orderBy(pageable));
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param param
+     *            검색 파라미터
+     * @param funcCount
+     *            데이터 개수 제공 함수.
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param pageable
+     *            데이터 결과 Pagination 설정
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, D, P> Result<Page<D>> selectMultiPagination(P param //
+            , Function<P, Result<Integer>> funcCount //
+            , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
+            , Pageable pageable //
+            , Function<E, D> converter) {
+        return selectMultiPagination(param, funcCount, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param param
+     *            검색 파라미터
+     * @param funcCount
      *            데이터 개수 제공 함수.
      * @param funcPagination
      *            Pagination 검색 함수
@@ -955,6 +1219,53 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , String[] orderByArgs //
             , Function<E, D> converter) {
         return convertMultiPaginationResult(selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset, limit, orderByArgs), converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param type
+     *            검색 유형.
+     * @param param
+     *            검색 파라미터
+     * @param funcCount
+     *            데이터 개수 제공 함수.
+     * @param funcAll
+     *            전체 검색 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param pageable
+     *            데이터 결과 Pagination 설정
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, D, P> Result<Page<D>> selectMultiPagination(SearchResultType type //
+            , P param //
+            , Function<P, Result<Integer>> funcCount //
+            , BiFunction<P, String[], Result<List<E>>> funcAll //
+            , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
+            , Pageable pageable //
+            , Function<E, D> converter) {
+        return selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
     }
 
     /**
@@ -1171,6 +1482,48 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , String[] orderByArgs //
             , Function<E, D> converter) {
         return convertMultiPaginationResult(selectMultiPagination(type, funcCount, funcAll, funcPagination, offset, limit, orderByArgs), converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param type
+     *            검색 유형.
+     * @param funcCount
+     *            데이터 개수 제공 함수.
+     * @param funcAll
+     *            전체 검색 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param pageable
+     *            데이터 결과 Pagination 설정
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, D> Result<Page<D>> selectMultiPagination(SearchResultType type //
+            , Supplier<Result<Integer>> funcCount //
+            , Function<String[], Result<List<E>>> funcAll //
+            , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
+            , Pageable pageable //
+            , Function<E, D> converter) {
+        return selectMultiPagination(type, funcCount, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
     }
 
     /**
@@ -1433,6 +1786,42 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , String[] orderByArgs //
             , Function<E, D> converter) {
         return convertMultiPaginationResult(selectMultiPagination(funcCount, funcPagination, offset, limit, orderByArgs), converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param funcCount
+     *            데이터 개수 제공 함수.
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param pageable
+     *            데이터 결과 Pagination 설정
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, D> Result<Page<D>> selectMultiPagination(Supplier<Result<Integer>> funcCount //
+            , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
+            , Pageable pageable //
+            , Function<E, D> converter) {
+        return selectMultiPagination(funcCount, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
     }
 
     /**
