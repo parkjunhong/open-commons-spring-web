@@ -1,3 +1,15 @@
+[2022/01/10]
+- Add
+  + + open.commons.spring.web.mvc.service.AbstractMvcService
+    + selectMultiPagination(P, Function&lt;P, Result&lt;Integer&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String...)
+    + selectMultiPagination(P, Function&lt;P, Result&lt;Integer&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Function&lt;E, D&gt;)
+    + selectMultiPagination(P, Supplier&lt;Result&lt;Integer&gt;&gt;, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int)
+    + selectMultiPagination(P, Supplier&lt;Result&lt;Integer&gt;&gt;, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Function&lt;E, D&gt;)
+    + selectMultiPagination(Supplier&lt;Result&lt;Integer&gt;&gt;, BiFunction&lt;Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int)
+    + selectMultiPagination(Supplier&lt;Result&lt;Integer&gt;&gt;, BiFunction&lt;Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Function&lt;E, D&gt;)
+    + selectMultiPagination(Supplier&lt;Result&lt;Integer&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String...)
+    + selectMultiPagination(Supplier&lt;Result&lt;Integer&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Function&lt;E, D&gt;)
+
 [2021/12/29]
 - Modify
   + open.commons.spring.web.mvc.service.AbstractMvcService: DTO Class<?> 파라미터 제거

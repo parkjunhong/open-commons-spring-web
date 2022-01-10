@@ -662,6 +662,188 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param param
+     *            검색 파라미터
+     * @param funcCount
+     *            데이터 개수 제공 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @param orderByArgs
+     *            정렬 기준.<br>
+     *            <b>데이터 정의</b><br>
+     *            <li>포맷: {column} {direction}<br>
+     *            <li>예: name asc
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 1.8.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, P> Result<Page<E>> selectMultiPagination(P param //
+            , Function<P, Result<Integer>> funcCount //
+            , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
+            , String... orderByArgs) {
+
+        // #1-1. 데이터 조회
+        Supplier<Result<List<E>>> data = () -> funcPagination.apply(param, offset, limit, orderByArgs);
+        // #1-2. 개수 조회
+        Supplier<Result<Integer>> count = () -> funcCount.apply(param);
+
+        return executePagination(data, count, offset, limit, orderByArgs);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param param
+     *            검색 파라미터
+     * @param funcCount
+     *            데이터 개수 제공 함수.
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @param orderByArgs
+     *            정렬 기준.<br>
+     *            <b>데이터 정의</b><br>
+     *            <li>포맷: {column} {direction}<br>
+     *            <li>예: name asc
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 1.8.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, D, P> Result<Page<D>> selectMultiPagination(P param //
+            , Function<P, Result<Integer>> funcCount //
+            , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
+            , String[] orderByArgs //
+            , Function<E, D> converter) {
+        return convertMultiPaginationResult(selectMultiPagination(param, funcCount, funcPagination, offset, limit, orderByArgs), converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param param
+     *            검색 파라미터
+     * @param funcCount
+     *            데이터 개수 제공 함수.
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 1.8.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, P> Result<Page<E>> selectMultiPagination(P param //
+            , Supplier<Result<Integer>> funcCount //
+            , TripleFunction<P, Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
+    ) {
+        // #1-1. 데이터 조회
+        Supplier<Result<List<E>>> data = () -> funcPagination.apply(param, offset, limit);
+        // #1-2. 개수 조회
+        Supplier<Result<Integer>> count = () -> funcCount.get();
+
+        return executePagination(data, count, offset, limit, null);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param <P>
+     *            파라미터 타입
+     * @param param
+     *            검색 파라미터
+     * @param funcCount
+     *            데이터 개수 제공 함수.
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 1.8.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, D, P> Result<Page<D>> selectMultiPagination(P param //
+            , Supplier<Result<Integer>> funcCount //
+            , TripleFunction<P, Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
+            , Function<E, D> converter) {
+        return convertMultiPaginationResult(selectMultiPagination(param, funcCount, funcPagination, offset, limit), converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 28.     박준홍         최초 작성
@@ -955,7 +1137,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @param <E>
      *            Table Entity 타입
-     * 
      * @param <D>
      *            DTO 타입
      * @param type
@@ -1091,6 +1272,170 @@ public abstract class AbstractMvcService extends AbstractGenericService {
     }
 
     /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param funcCount
+     *            데이터 개수 제공 함수.
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 1.8.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E> Result<Page<E>> selectMultiPagination( //
+            Supplier<Result<Integer>> funcCount //
+            , BiFunction<Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
+    ) {
+
+        // #1-1. 데이터 조회
+        Supplier<Result<List<E>>> data = () -> funcPagination.apply(offset, limit);
+        // #1-2. 개수 조회
+        Supplier<Result<Integer>> count = () -> funcCount.get();
+
+        return executePagination(data, count, offset, limit, null);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param funcCount
+     *            데이터 개수 제공 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 1.8.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, D> Result<Page<D>> selectMultiPagination(Supplier<Result<Integer>> funcCount //
+            , BiFunction<Integer, Integer, Result<List<E>>> funcPagination, int offset, int limit //
+            , Function<E, D> converter) {
+        return convertMultiPaginationResult(selectMultiPagination(funcCount, funcPagination, offset, limit), converter);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param funcCount
+     *            데이터 개수 제공 함수
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @param orderByArgs
+     *            정렬 기준.<br>
+     *            <b>데이터 정의</b><br>
+     *            <li>포맷: {column} {direction}<br>
+     *            <li>예: name asc
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 1.8.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E> Result<Page<E>> selectMultiPagination(Supplier<Result<Integer>> funcCount //
+            , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
+            , String... orderByArgs) {
+
+        // #1-1. 데이터 조회
+        Supplier<Result<List<E>>> data = () -> funcPagination.apply(offset, limit, orderByArgs);
+        // #1-2. 개수 조회
+        Supplier<Result<Integer>> count = () -> funcCount.get();
+
+        return executePagination(data, count, offset, limit, orderByArgs);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 10.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <E>
+     *            Table Entity 타입
+     * @param <D>
+     *            DTO 타입
+     * @param funcCount
+     *            데이터 개수 제공 함수.
+     * @param funcPagination
+     *            Pagination 검색 함수
+     * @param offset
+     *            데이터를 읽기 위한 시작 위치 (0부터 시작)
+     * @param limit
+     *            읽을 데이터 개수
+     * @param orderByArgs
+     *            정렬 기준.<br>
+     *            <b>데이터 정의</b><br>
+     *            <li>포맷: {column} {direction}<br>
+     *            <li>예: name asc
+     * @param converter
+     *            Entity -> DTO 변환 함수
+     * @return
+     *
+     * @since 2022. 1. 10.
+     * @version 1.8.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <E, D> Result<Page<D>> selectMultiPagination(Supplier<Result<Integer>> funcCount //
+            , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination, int offset, int limit //
+            , String[] orderByArgs //
+            , Function<E, D> converter) {
+        return convertMultiPaginationResult(selectMultiPagination(funcCount, funcPagination, offset, limit, orderByArgs), converter);
+    }
+
+    /**
      * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다. <br>
      * 
      * <pre>
@@ -1117,6 +1462,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @since 2021. 12. 22.
      * @version 0.4.0
      * @author parkjunhong77@gmail.com
+     * 
+     * @see ObjectUtils#getTransformer(Object, boolean, Class, boolean)
      */
     protected static <S, T> T transform(S srcObj, boolean lookupSrcSupper, Class<T> targetType, boolean lookupTargetSupper) {
         return ObjectUtils.getTransformer(srcObj, lookupSrcSupper, targetType, lookupTargetSupper).apply(srcObj);
@@ -1145,6 +1492,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @since 2021. 12. 22.
      * @version 0.4.0
      * @author parkjunhong77@gmail.com
+     * 
+     * @see #transform(Object, boolean, Class, boolean)
      */
     protected static <S, T> T transform(S srcObj, Class<T> targetType) {
         return transform(srcObj, true, targetType, true);
