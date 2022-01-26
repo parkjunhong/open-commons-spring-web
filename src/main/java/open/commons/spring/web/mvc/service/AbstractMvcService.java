@@ -1843,7 +1843,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @param lookupSrcSuper
      *            입력 데이타 클래스 상위 인터페이스/클래스 확장 여부
      * @param targetType
-     *            데이터를 전달받은 객체.
+     *            데이터를 전달받은 객체 타입
      * @param lookupTargetSuper
      *            대상 객체 상위 인터페이스/클래스 확장 여부
      * @return
@@ -1865,6 +1865,38 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
+     * 2022. 1. 26.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <S>
+     *            입력 데이터 타입 정의.
+     * @param <T>
+     *            신규 데이터 타입 정의.
+     * @param srcObj
+     *            입력 데이타
+     * @param lookupSrcSuper
+     *            입력 데이타 클래스 상위 인터페이스/클래스 확장 여부
+     * @param targetObj
+     *            데이터를 전달받은 객체 타입
+     * @param lookupTargetSuper
+     *            대상 객체 상위 인터페이스/클래스 확장 여부
+     * @return
+     *
+     * @since 2022. 1. 26.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected static <S, T> T transform(S srcObj, boolean lookupSrcSupper, T targetObj, boolean lookupTargetSupper) {
+        return ObjectUtils.getTransformer(srcObj, lookupSrcSupper, targetObj, lookupTargetSupper).apply(srcObj);
+    }
+
+    /**
+     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
      * 2021. 12. 22.		박준홍			최초 작성
      * </pre>
      *
@@ -1875,7 +1907,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @param srcObj
      *            입력 데이타
      * @param targetType
-     *            데이터를 전달받은 객체.
+     *            데이터를 전달받은 객체 타입.
      * @return
      *
      * @since 2021. 12. 22.
@@ -1886,5 +1918,33 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      */
     protected static <S, T> T transform(S srcObj, Class<T> targetType) {
         return transform(srcObj, true, targetType, true);
+    }
+
+    /**
+     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 1. 26.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <S>
+     *            입력 데이터 타입 정의.
+     * @param <T>
+     *            신규 데이터 타입 정의.
+     * @param srcObj
+     *            입력 데이타
+     * @param targetObj
+     *            데이터를 전달받은 객체.
+     * @return
+     *
+     * @since 2022. 1. 26.
+     * @version 0.4.0
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected static <S, T> T transform(S srcObj, T targetObj) {
+        return transform(srcObj, true, targetObj, true);
     }
 }
