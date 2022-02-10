@@ -1,3 +1,7 @@
+[2022/02/10]
+- Add
+  + open.commons.spring.web.utils.PaginationUtils
+  
 [2022/01/26]
 - Add
   + open.commons.spring.web.mvn.service.AbstractMvcService

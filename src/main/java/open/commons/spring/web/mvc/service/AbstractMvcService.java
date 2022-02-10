@@ -26,14 +26,12 @@
 
 package open.commons.spring.web.mvc.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.data.domain.Page;
@@ -49,7 +47,7 @@ import open.commons.annotation.Setter;
 import open.commons.function.QuadFunction;
 import open.commons.function.Runner;
 import open.commons.function.TripleFunction;
-import open.commons.utils.ExceptionUtils;
+import open.commons.spring.web.utils.PaginationUtils;
 import open.commons.utils.ObjectUtils;
 
 /**
@@ -177,6 +175,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 9.     박준홍         최초 작성
+     * 2022. 2. 10.     박준홍     구현부를 {@link PaginationUtils#limit(Pageable)} 로 이관.
      * </pre>
      *
      * @param pageable
@@ -185,9 +184,11 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @since 2021. 12. 9.
      * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
+     * 
+     * @see PaginationUtils#limit(Pageable)
      */
     protected int limit(Pageable pageable) {
-        return pageable.getPageSize();
+        return PaginationUtils.limit(pageable);
     }
 
     /**
@@ -198,6 +199,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 9.     박준홍         최초 작성
+     * 2022. 2. 10.     박준홍     구현부를 {@link PaginationUtils#offset(Pageable)} 로 이관.
      * </pre>
      *
      * @param pageable
@@ -206,9 +208,11 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @since 2021. 12. 9.
      * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
+     * 
+     * @see PaginationUtils#offset(Pageable)
      */
     protected int offset(Pageable pageable) {
-        return pageable.getPageNumber() * pageable.getPageSize();
+        return PaginationUtils.offset(pageable);
     }
 
     /**
@@ -219,6 +223,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2021. 12. 9.     박준홍         최초 작성
+     * 2022. 2. 10.     박준홍     구현부를 {@link PaginationUtils#orderBy(Pageable)} 로 이관.
      * </pre>
      *
      * @param pageable
@@ -228,13 +233,10 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @version 0.4.0
      * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      * 
-     * @see #orderBy(String...)
+     * @see PaginationUtils#orderBy(Pageable)
      */
     protected String[] orderBy(Pageable pageable) {
-        return pageable.getSort().stream() //
-                .map(sort -> String.join(" ", sort.getProperty(), sort.getDirection().toString())) //
-                .collect(Collectors.toList())//
-                .toArray(new String[0]);
+        return PaginationUtils.orderBy(pageable);
     }
 
     /**
@@ -245,6 +247,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2021. 12. 28.		박준홍			최초 작성
+     * 2022. 2. 10.     박준홍     구현부를 {@link PaginationUtils#orderBy(String...)} 로 이관.
      * </pre>
      *
      * @param orderByArgs
@@ -254,27 +257,10 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @version 0.4.0
      * @author parkjunhong77@gmail.com
      * 
-     * @see #orderBy(Pageable)
+     * @see PaginationUtils#orderBy(String...)
      */
     protected List<Order> orderBy(String... orderByArgs) {
-        return orderByArgs != null //
-                ? Stream.of(orderByArgs).map(orderBy -> {
-                    String[] strs = orderBy.split(" ");
-                    if (strs.length == 1) {
-                        return Order.asc(strs[0]);
-                    } else {
-                        switch (strs[1].toLowerCase()) {
-                            case "asc":
-                                return Order.asc(strs[0]);
-                            case "desc":
-                                return Order.desc(strs[0]);
-                            default:
-                                throw ExceptionUtils.newException(UnsupportedOperationException.class, "지원하지 않는 정보입니다. 허용=(asc,desc), 입력=%s", strs[1]);
-                        }
-                    }
-                }).collect(Collectors.toList()) //
-                : new ArrayList<>() //
-        ;
+        return PaginationUtils.orderBy(orderByArgs);
     }
 
     /**
