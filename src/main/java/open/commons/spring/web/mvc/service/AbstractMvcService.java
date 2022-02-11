@@ -123,16 +123,22 @@ public abstract class AbstractMvcService extends AbstractGenericService {
         Stream.of(rData, rCount).forEach(r -> r.run());
 
         // #2. 데이터 생성
-        Result<List<E>> r = (Result<List<E>>) map.get(propData);
-        if (r.isError()) {
-            return Result.error(r.getMessage());
+        Result<List<E>> resultData = (Result<List<E>>) map.get(propData);
+        if (resultData.isError()) {
+            return Result.error(resultData.getMessage());
         }
-        int totalCount = ((Result<Integer>) map.get(propCount)).getData();
+
+        Result<Integer> resultCount = (Result<Integer>) map.get(propCount);
+        if (resultCount.isError()) {
+            return Result.error(resultCount.getMessage());
+        }
+
+        int totalCount = resultCount.getData();
 
         // #3. Pagination 정보 생성
         Pageable p = PageRequest.of(offset / limit, limit, orderByArgs != null ? Sort.by(orderBy(orderByArgs)) : Sort.unsorted());
 
-        return Result.success(new PageImpl<E>(r.getData(), p, totalCount));
+        return Result.success(new PageImpl<E>(resultData.getData(), p, totalCount));
     }
 
     /**
