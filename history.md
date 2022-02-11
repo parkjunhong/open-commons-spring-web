@@ -1,3 +1,13 @@
+[2022/02/11]
+- Modify
+  + open.commons.spring.web.mvc.service.AbstractMvcService: SearchResultType에 따라서 Pageable 값 자동 조정
+    + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, Pageable)
+    + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, Pageable, Function&lt;E, D&gt;)
+    + selectMulti(SearchResultType, P, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, Pageable)
+    + selectMulti(SearchResultType, P, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, Pageable, Function&lt;E, D&gt;)
+    + selectMultiPagination(SearchResultType, P, Function&lt;P, Result&lt;Integer&gt;&gt;, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, Pageable, Function&lt;E, D&gt;)
+    + selectMultiPagination(SearchResultType, Supplier&lt;Result&lt;Integer&gt;&gt;, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, Pageable, Function&lt;E, D&gt;)
+
 [2022/02/10]
 - Add
   + open.commons.spring.web.utils.PaginationUtils

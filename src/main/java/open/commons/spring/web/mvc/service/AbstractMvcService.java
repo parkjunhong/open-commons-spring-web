@@ -424,6 +424,10 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable //
     ) {
+        if (SearchResultType.ALL.equals(type)) {
+            pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
+        }
+
         return selectMulti(type, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable));
     }
 
@@ -463,6 +467,11 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable //
             , Function<E, D> converter) {
+
+        if (SearchResultType.ALL.equals(type)) {
+            pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
+        }
+
         return selectMulti(type, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
     }
 
@@ -607,6 +616,11 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , BiFunction<P, String[], Result<List<E>>> funcAll //
             , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable) {
+
+        if (SearchResultType.ALL.equals(type)) {
+            pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
+        }
+
         return selectMulti(type, param, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable));
     }
 
@@ -651,6 +665,11 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable//
             , Function<E, D> converter) {
+
+        if (SearchResultType.ALL.equals(type)) {
+            pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
+        }
+
         return selectMulti(type, param, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
     }
 
@@ -1251,6 +1270,11 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable //
             , Function<E, D> converter) {
+
+        if (SearchResultType.ALL.equals(type)) {
+            pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
+        }
+
         return selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
     }
 
@@ -1509,6 +1533,11 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable //
             , Function<E, D> converter) {
+
+        if (SearchResultType.ALL.equals(type)) {
+            pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
+        }
+
         return selectMultiPagination(type, funcCount, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
     }
 
