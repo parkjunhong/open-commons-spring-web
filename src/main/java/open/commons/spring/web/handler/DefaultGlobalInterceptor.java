@@ -35,8 +35,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.AsyncHandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import open.commons.core.utils.ThreadUtils;
 import open.commons.spring.web.annotation.CustomInterceptor;
-import open.commons.utils.ThreadUtils;
 
 /**
  * 

@@ -42,10 +42,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import open.commons.Result;
-import open.commons.function.Runner;
+import open.commons.core.Result;
+import open.commons.core.function.Runner;
+import open.commons.core.test.StopWatch;
 import open.commons.spring.web.config.ResourceConfiguration;
-import open.commons.test.StopWatch;
 
 /**
  * 
@@ -80,7 +80,7 @@ public class AbstractComponent {
      * <pre>
      * [개정이력]
      *      날짜    	| 작성자	|	내용
-     * ------------------------------------------
+     * ------------------------------------------   
      * 2020. 1. 21.		박준홍			최초 작성
      * </pre>
      *

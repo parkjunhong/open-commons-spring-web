@@ -36,7 +36,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
-import open.commons.Result;
+import open.commons.core.Result;
 
 /**
  * DTO 와 Entity 간 데이터 변환을 지원하는 기능 정의.

@@ -32,10 +32,10 @@ import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Value;
 
-import open.commons.function.TripleFunction;
+import open.commons.core.function.TripleFunction;
+import open.commons.core.utils.MapUtils;
 import open.commons.spring.web.servlet.InternalServerException;
 import open.commons.ssh.SshConnection;
-import open.commons.utils.MapUtils;
 
 import com.jcraft.jsch.Session;
 

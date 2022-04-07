@@ -29,7 +29,7 @@ package open.commons.spring.web.mvc.service;
 import java.io.IOException;
 import java.util.Arrays;
 
-import open.commons.Result;
+import open.commons.core.Result;
 
 /**
  * CLI(Command Line Interface) 관련 기능을 제공하는 콤포넌드.

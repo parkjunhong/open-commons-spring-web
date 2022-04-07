@@ -36,8 +36,8 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Order;
 
+import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.mvc.service.AbstractMvcService;
-import open.commons.utils.ExceptionUtils;
 
 /**
  * 검색결과 Pagination 기능 제공 클래스.

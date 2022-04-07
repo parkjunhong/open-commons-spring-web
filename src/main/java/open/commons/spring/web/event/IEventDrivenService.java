@@ -32,7 +32,7 @@ import java.util.function.Function;
 
 import javax.validation.constraints.NotNull;
 
-import open.commons.Result;
+import open.commons.core.Result;
 
 /**
  * 모니터링에 필요한 기능을 정의.

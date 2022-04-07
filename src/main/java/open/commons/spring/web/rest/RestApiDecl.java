@@ -17,7 +17,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-import open.commons.text.NamedTemplate;
+import open.commons.core.text.NamedTemplate;
 
 /**
  * REST API 정보를 제공하는 클래스.

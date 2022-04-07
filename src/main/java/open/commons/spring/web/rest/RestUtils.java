@@ -77,10 +77,10 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
-import open.commons.Result;
-import open.commons.utils.AssertUtils;
-import open.commons.utils.ExceptionUtils;
-import open.commons.utils.ThreadUtils;
+import open.commons.core.Result;
+import open.commons.core.utils.AssertUtils;
+import open.commons.core.utils.ExceptionUtils;
+import open.commons.core.utils.ThreadUtils;
 
 /**
  * {@link RestTemplate}을 이용하는 유틸리티 클래스.

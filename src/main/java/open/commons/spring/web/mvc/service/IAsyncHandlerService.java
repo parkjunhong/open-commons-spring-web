@@ -30,8 +30,8 @@ import java.util.concurrent.Future;
 
 import org.springframework.scheduling.annotation.AsyncResult;
 
-import open.commons.Result;
-import open.commons.concurrent.AsyncJobManager;
+import open.commons.core.Result;
+import open.commons.core.concurrent.AsyncJobManager;
 import open.commons.spring.web.mvc.IAsyncJobHandler;
 
 /**

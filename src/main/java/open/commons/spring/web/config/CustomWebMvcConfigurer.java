@@ -53,12 +53,12 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 //import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import open.commons.core.utils.ArrayUtils;
 import open.commons.spring.web.annotation.RequestValueSupported;
 import open.commons.spring.web.enums.EnumConverter;
 import open.commons.spring.web.enums.EnumConverterFactory;
 import open.commons.spring.web.enums.EnumPackages;
 import open.commons.spring.web.springfox.swagger.SpringfoxSwagger;
-import open.commons.utils.ArrayUtils;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 

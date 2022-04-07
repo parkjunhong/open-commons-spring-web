@@ -36,8 +36,8 @@ import java.util.Set;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.Validator;
 
+import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.servlet.InternalServerException;
-import open.commons.utils.ExceptionUtils;
 
 /**
  * 
