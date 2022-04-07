@@ -1,3 +1,6 @@
+[2022/04/07]
+- Release: 0.4.0
+
 [2022/02/11]
 - Modify
   + open.commons.spring.web.mvc.service.AbstractMvcService: SearchResultType에 따라서 Pageable 값 자동 조정
