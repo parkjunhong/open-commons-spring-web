@@ -1,3 +1,10 @@
+[2022/05/04]
+- Add
+  + getMultiValuesArgument(ApplicationArguments, String, Class&lt;T&gt;)
+  + getMultiValuesArguments(ApplicationArguments, Map&lt;String, Class&lt;?&gt;&gt;)
+  + getSingleValueArgument(ApplicationArguments, String, Class&lt;T&gt;)
+  + getSingleValueArguments(ApplicationArguments, Map&lt;String, Class&lt;?&gt;&gt;)
+
 [2022/04/07]
 - Release: 0.5.0-SNAPSHOT
 - Tag: 0.4.0

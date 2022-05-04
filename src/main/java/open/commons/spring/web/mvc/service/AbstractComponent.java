@@ -26,9 +26,12 @@
 
 package open.commons.spring.web.mvc.service;
 
+import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.annotation.PostConstruct;
@@ -38,13 +41,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import open.commons.core.Result;
+import open.commons.core.TwoValueObject;
 import open.commons.core.function.Runner;
 import open.commons.core.test.StopWatch;
+import open.commons.core.utils.ConvertUtils;
+import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.config.ResourceConfiguration;
 
 /**
@@ -329,6 +337,150 @@ public class AbstractComponent {
             watch.stop();
             logger.info("[{} 완료] elapsed={}", job, watch.getAsPretty());
         }
+    }
+
+    /**
+     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 5. 4.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     *            파라미터 타입.
+     * @param mainArgs
+     *            파라미터를 포함하고 있는 객체
+     * @param argName
+     *            파라미터 이름
+     * @param valueType
+     *            파라미터 데이터 Class
+     * @return
+     *
+     * @since 2022. 5. 4.
+     * @version _._._
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected <T> List<T> getMultiValuesArgument(ApplicationArguments mainArgs, String argName, Class<T> valueType) {
+        if (mainArgs == null) {
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class);
+        }
+
+        List<String> argValues = mainArgs.getOptionValues(argName);
+        if (argValues == null || argValues.size() < 1 || argValues.get(0) == null || argValues.get(0).trim().isEmpty()) {
+            return null;
+        }
+
+        return argValues.stream() //
+                .filter(argValue -> argValue != null && !argValue.trim().isEmpty()) //
+                .map(argValue -> ConvertUtils.toPrimitiveTypeValue(valueType, argValue)) //
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 5. 4.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     *            파라미터 타입.
+     * @param mainArgs
+     *            파라미터를 포함하고 있는 객체
+     * @param argNameTypes
+     *            TODO
+     * @return
+     *
+     * @since 2022. 5. 4.
+     * @version _._._
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    @SuppressWarnings("unchecked")
+    protected Map<String, List<Object>> getMultiValuesArguments(ApplicationArguments mainArgs, Map<String, Class<?>> argNameTypes) {
+        if (mainArgs == null) {
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class);
+        }
+
+        return argNameTypes.entrySet().stream() //
+                .map(nt -> new TwoValueObject<String, List<?>>(nt.getKey(), getMultiValuesArgument(mainArgs, nt.getKey(), nt.getValue()))) //
+                .collect(Collectors.toMap(o -> o.first, o -> (List<Object>) o.second));
+    }
+
+    /**
+     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 5. 4.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     *            파라미터 타입.
+     * @param mainArgs
+     *            파라미터를 포함하고 있는 객체
+     * @param argName
+     *            파라미터 이름
+     * @param valueType
+     *            파라미터 데이터 Class
+     * @return
+     *
+     * @since 2022. 5. 4.
+     * @version _._._
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    @SuppressWarnings("unchecked")
+    protected <T> T getSingleValueArgument(ApplicationArguments mainArgs, String argName, Class<T> valueType) {
+        if (mainArgs == null) {
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class);
+        }
+
+        List<String> argValues = mainArgs.getOptionValues(argName);
+        if (argValues == null || argValues.size() < 1 || argValues.get(0) == null || argValues.get(0).trim().isEmpty()) {
+            return null;
+        }
+
+        String argValue = argValues.get(0);
+        return String.class.equals(valueType) ? (T) argValue : ConvertUtils.toPrimitiveTypeValue(valueType, argValue);
+    }
+
+    /**
+     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2022. 5. 4.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <T>
+     *            파라미터 타입.
+     * @param mainArgs
+     *            파라미터를 포함하고 있는 객체
+     * @param argNameTypes
+     *            TODO
+     * @return
+     *
+     * @since 2022. 5. 4.
+     * @version _._._
+     * @author Park, Jun-Hong parkjunhong77@gmail.com
+     */
+    protected Map<String, Object> getSingleValueArguments(ApplicationArguments mainArgs, Map<String, Class<?>> argNameTypes) {
+        if (mainArgs == null) {
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class);
+        }
+
+        return argNameTypes.entrySet().stream() //
+                .map(nt -> new TwoValueObject<String, Object>(nt.getKey(), getSingleValueArgument(mainArgs, nt.getKey(), nt.getValue()))) //
+                .collect(Collectors.toMap(o -> o.first, o -> o.second));
     }
 
     @PostConstruct
