@@ -99,10 +99,10 @@ public class ArgumentsUtils {
      * @version 0.5.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static Logger setLoggerContextUsingApplicationExternalConfiguration(Class<?> loggerName, String argName, String[] args) {
+    public Logger setLoggerContextUsingApplicationExternalConfiguration(Class<?> loggerName, String argName, String[] args) {
 
         DefaultApplicationArguments argObj = new DefaultApplicationArguments(args);
-        String context = ArgumentsUtils.INSTANCE.getOptionValue(argObj, argName);
+        String context = getOptionValue(argObj, argName);
         ThreadContext.put(ProcessRollingFileAppender.PROCESS_CONTEXT, context);
 
         Logger logger = LoggerFactory.getLogger(loggerName);
