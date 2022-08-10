@@ -85,17 +85,21 @@ public class ArgumentsUtils {
      * ------------------------------------------
      * 2022. 8. 10.		박준홍			최초 작성
      * </pre>
-     *
-     * @param argName
+     * 
      * @param loggerName
+     *            {@link Logger} 이름.
+     * @param argName
+     *            파라미터 이름
      * @param args
+     *            외부 파라미터
+     *
      * @return
      *
      * @since 2022. 8. 10.
      * @version 0.5.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static Logger setLoggerContextUsingApplicationExternalConfiguration(String argName, Class<?> loggerName, String[] args) {
+    public static Logger setLoggerContextUsingApplicationExternalConfiguration(Class<?> loggerName, String argName, String[] args) {
 
         DefaultApplicationArguments argObj = new DefaultApplicationArguments(args);
         String context = ArgumentsUtils.INSTANCE.getOptionValue(argObj, argName);
