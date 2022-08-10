@@ -1,4 +1,8 @@
 [2022/05/04]
+- New
+  + open.commons.spring.web.utils.ArgumentsUtils: Application Argument에 대한 지원 기능을 제공.
+
+[2022/05/04]
 - Add
   + open.commons.spring.web.mvc.service.AbstractComponent
     + getMultiValuesArgument(ApplicationArguments, String, Class&lt;T&gt;)
