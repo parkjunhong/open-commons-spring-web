@@ -1,3 +1,7 @@
+[2022/11/17]
+- Dependencies
+	+ spring-core.version: 5.3.23 고정
+	
 [2022/05/04]
 - New
   + open.commons.spring.web.utils.ArgumentsUtils: Application Argument에 대한 지원 기능을 제공.
