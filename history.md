@@ -1,3 +1,10 @@
+[2022/11/25]
+- Add
+  + open.commons.spring.web.mvc.service.IConvertingService
+    + convertMultiResult(Result&lt;List&lt;S&gt;&gt;, Class&lt;T&gt;)
+    + convertSingleResult(Result&lt;S&gt;, Class&lt;T&gt;)
+    + transferAll(S, Class&lt;T&gt;)
+
 [2022/11/17]
 - Dependencies
 	+ spring-core.version: 5.3.23 고정

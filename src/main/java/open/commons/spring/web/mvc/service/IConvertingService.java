@@ -37,6 +37,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
 import open.commons.core.Result;
+import open.commons.core.utils.ObjectUtils;
 
 /**
  * DTO 와 Entity 간 데이터 변환을 지원하는 기능 정의.
@@ -114,6 +115,37 @@ public interface IConvertingService {
     }
 
     /**
+     * 소스 객체에서 정보를 이용하서 대상 객체를 생성해서 제공합니다.<br>
+     * 소스 및 대상 객체와 상위 객체에서 제공하는 모든 정보를 이용합니다. <br>
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2022. 11. 9.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param <S>
+     *            원본 데이터 타입
+     * @param <T>
+     *            대상 데이터 타입
+     * @param resultSrc
+     *            원본 데이터
+     * @param returnType
+     *            대상 데이터 타입
+     * @return
+     *
+     * @since 2022. 11. 9.
+     * @version 0.4.0 *
+     * @author Park_Jun_Hong (jhpark@ymtech.co.kr)
+     */
+    default <S, T> Result<List<T>> convertMultiResult(@NotNull Result<List<S>> resultSrc, @NotNull Class<T> returnType) {
+        return convertMultiResult(resultSrc, srcObj -> ObjectUtils.transform(srcObj, true, returnType, true));
+    }
+
+    /**
      * 여러 개의 데이터 변환을 지원합니다. <br>
      * 
      * <pre>
@@ -176,6 +208,37 @@ public interface IConvertingService {
     }
 
     /**
+     * 소스 객체에서 정보를 이용하서 대상 객체를 생성해서 제공합니다.<br>
+     * 소스 및 대상 객체와 상위 객체에서 제공하는 모든 정보를 이용합니다. <br>
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2022. 11. 9.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param <S>
+     *            원본 데이터 타입
+     * @param <T>
+     *            대상 데이터 타입
+     * @param resultSrc
+     *            원본 데이터
+     * @param returnType
+     *            대상 데이터 타입
+     * @return
+     *
+     * @since 2022. 11. 9.
+     * @version 0.4.0 *
+     * @author Park_Jun_Hong (jhpark@ymtech.co.kr)
+     */
+    default <S, T> Result<T> convertSingleResult(@NotNull Result<S> resultSrc, @NotNull Class<T> returnType) {
+        return convertSingleResult(resultSrc, srcObj -> ObjectUtils.transform(srcObj, true, returnType, true));
+    }
+
+    /**
      * 단일 데이터 변환을 지원합니다. <br>
      * 
      * <pre>
@@ -206,5 +269,35 @@ public interface IConvertingService {
         } else {
             return Result.error(resultSrc.getMessage());
         }
+    }
+
+    /**
+     * 소스 객체에서 정보를 이용하서 대상 객체를 생성해서 제공합니다.<br>
+     * 소스 및 대상 객체와 상위 객체에서 제공하는 모든 정보를 이용합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2022. 11. 2.     박준홍         최초 작성
+     * </pre>
+     *
+     * @param <S>
+     *            원본 데이터 타입
+     * @param <T>
+     *            대상 데이터 타입
+     * 
+     * @param srcObj
+     *            원본 객체
+     * @param targetClass
+     *            대상 클래스
+     * @return
+     *
+     * @since 2022. 11. 2.
+     * @version 0.4.0 *
+     * @author Park_Jun_Hong (jhpark@ymtech.co.kr)
+     */
+    default <S, T> T transferAll(S srcObj, Class<T> targetClass) {
+        return ObjectUtils.transform(srcObj, true, targetClass, true);
     }
 }
