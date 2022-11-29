@@ -1,3 +1,9 @@
+[2022/11/29]
+- Add
+  + open.commons.spring.web.mvc.service.IConvertingService.transformAll(S, Class&lt;T&gt;): 
+- Delete
+  + open.commons.spring.web.mvc.service.IConvertingService.transferAll(S, Class&lt;T&gt;):  
+
 [2022/11/25]
 - Add
   + open.commons.spring.web.mvc.service.IConvertingService

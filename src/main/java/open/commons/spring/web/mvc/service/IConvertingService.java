@@ -138,7 +138,7 @@ public interface IConvertingService {
      * @return
      *
      * @since 2022. 11. 9.
-     * @version 0.4.0 *
+     * @version 0.4.0
      * @author Park_Jun_Hong (jhpark@ymtech.co.kr)
      */
     default <S, T> Result<List<T>> convertMultiResult(@NotNull Result<List<S>> resultSrc, @NotNull Class<T> returnType) {
@@ -231,7 +231,7 @@ public interface IConvertingService {
      * @return
      *
      * @since 2022. 11. 9.
-     * @version 0.4.0 *
+     * @version 0.4.0
      * @author Park_Jun_Hong (jhpark@ymtech.co.kr)
      */
     default <S, T> Result<T> convertSingleResult(@NotNull Result<S> resultSrc, @NotNull Class<T> returnType) {
@@ -294,10 +294,10 @@ public interface IConvertingService {
      * @return
      *
      * @since 2022. 11. 2.
-     * @version 0.4.0 *
+     * @version 0.4.0
      * @author Park_Jun_Hong (jhpark@ymtech.co.kr)
      */
-    default <S, T> T transferAll(S srcObj, Class<T> targetClass) {
+    default <S, T> T transformAll(S srcObj, Class<T> targetClass) {
         return ObjectUtils.transform(srcObj, true, targetClass, true);
     }
 }
