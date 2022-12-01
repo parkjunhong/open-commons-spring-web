@@ -41,6 +41,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import open.commons.core.collection.FIFOMap;
 import open.commons.spring.web.servlet.BadRequestException;
 import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.NotFoundException;
 import open.commons.spring.web.utils.WebUtils;
 
 /**
@@ -102,6 +103,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * ------------------------------------------
      * 2020. 1. 17.		박준홍			최초 작성
      * 2020. 7. 30.     박준홍         {@link BadRequestException} 추가
+     * 2022. 12. 01.    박준홍         {@link NotFoundException} 추가.
      * </pre>
      *
      * @param ex
@@ -115,10 +117,21 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
     @ExceptionHandler(value = { //
             BadRequestException.class, //
             ConstraintViolationException.class, //
+            NotFoundException.class, //
     })
     public ResponseEntity<Object> handle4xxException(Exception ex, WebRequest request) {
 
-        HttpStatus status = HttpStatus.BAD_REQUEST;
+        HttpStatus status = null;
+
+        Class<?> exClass = ex.getClass();
+        if (BadRequestException.class.equals(exClass) //
+                || ConstraintViolationException.class.equals(exClass) //
+        ) {
+            status = HttpStatus.BAD_REQUEST;
+        } else if (NotFoundException.class.equals(exClass)) {
+            status = HttpStatus.NOT_FOUND;
+        }
+
         FIFOMap<String, Object> entity = WebUtils.createEntity(request, ex, status);
 
         return handleExceptionInternal(ex, entity, new HttpHeaders(), status, request);
@@ -150,7 +163,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
             InternalServerException.class, //
             UnsupportedOperationException.class, //
             RuntimeException.class, //
-            Exception.class, //eclipse-javadoc:%E2%98%82=open-commons-spring-web/src%5C/main%5C/java%3Copen
+            Exception.class, // eclipse-javadoc:%E2%98%82=open-commons-spring-web/src%5C/main%5C/java%3Copen
     })
     public ResponseEntity<Object> handle5xxException(Exception ex, WebRequest request) {
 
