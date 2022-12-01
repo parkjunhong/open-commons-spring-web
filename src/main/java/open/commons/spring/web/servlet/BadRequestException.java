@@ -10,6 +10,7 @@
 
 package open.commons.spring.web.servlet;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
  * @since 2020. 7. 30.
  * @version
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+ * @see HttpStatus#BAD_REQUEST
  */
 public class BadRequestException extends RuntimeException {
 

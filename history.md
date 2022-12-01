@@ -1,3 +1,7 @@
+[2022/12/01]
+- Add
+  + open.commons.spring.web.servlet.NotFoundException
+
 [2022/11/29]
 - Add
   + open.commons.spring.web.mvc.service.IConvertingService.transformAll(S, Class&lt;T&gt;): 
