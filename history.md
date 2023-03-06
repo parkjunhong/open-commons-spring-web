@@ -1,3 +1,14 @@
+[2023/03/06]
+- Add
+  + open.commons.spring.web.rest.RestUtils2
+    + exchange(RestTemplate, HttpMethod, String, String, int, String, int, HttpEntity&lt;REQ&gt;, Class&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
+    + exchange(RestTemplate, HttpMethod, String, String, int, String, int, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
+    + exchange(RestTemplate, HttpMethod, String, String, int, String, String, int, HttpEntity&lt;REQ&gt;, Class&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
+    + exchange(RestTemplate, HttpMethod, String, String, int, String, String, int, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
+    + exchange(RestTemplate, HttpMethod, URI, int, HttpEntity&lt;REQ&gt;, Class&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
+    + exchange(RestTemplate, HttpMethod, URI, int, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
+    + exchange(Supplier&lt;ResponseEntity&lt;RES&gt;&gt;, HttpMethod, URI, int, HttpEntity&lt;REQ&gt;, Object, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
+
 [2022/12/01]
 - Add
   + open.commons.spring.web.servlet.NotFoundException

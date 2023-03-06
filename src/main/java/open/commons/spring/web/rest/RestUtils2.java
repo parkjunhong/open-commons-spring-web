@@ -101,7 +101,7 @@ public class RestUtils2 {
      * @return
      *
      * @since 2021. 06. 11.
-     * @version
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
@@ -164,6 +164,111 @@ public class RestUtils2 {
     }
 
     /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2023. 03. 06.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param retryCount
+     *            재시도 횟수
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, int retryCount,
+            HttpEntity<REQ> entity, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError //
+    ) {
+        return exchange(restTemplate, method, scheme, host, port, path, null, retryCount, entity, responseType, onSuccess, onError);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2023. 03. 06.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param retryCount
+     *            재시도 횟수
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, int retryCount,
+            HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError //
+    ) {
+        return exchange(restTemplate, method, scheme, host, port, path, null, retryCount, entity, responseType, onSuccess, onError);
+    }
+
+    /**
      * 
      * <br>
      * 
@@ -205,7 +310,7 @@ public class RestUtils2 {
      * @return
      *
      * @since 2021. 06. 11.
-     * @version
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
@@ -287,6 +392,126 @@ public class RestUtils2 {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
+     * 2023. 03. 06.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param query
+     *            URL Query Parameters
+     * @param retryCount
+     *            재시도 횟수
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
+            int retryCount, HttpEntity<REQ> entity, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
+    ) {
+        try {
+            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), retryCount, entity, responseType, onSuccess, onError);
+        } catch (URISyntaxException e) {
+            logger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2023. 03. 06.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param query
+     *            URL Query Parameters
+     * @param retryCount
+     *            재시도 횟수
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
+            int retryCount, HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
+    ) {
+        try {
+            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), retryCount, entity, responseType, onSuccess, onError);
+        } catch (URISyntaxException e) {
+            logger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
      * 2021. 06. 11.		박준홍			최초 작성
      * </pre>
      *
@@ -313,7 +538,7 @@ public class RestUtils2 {
      * @return
      *
      * @since 2021. 06. 11.
-     * @version
+     * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, Class<RES> responseType //
@@ -377,7 +602,103 @@ public class RestUtils2 {
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2021. 06. 11.		박준홍			최초 작성
+     * 2023. 03. 06.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param uri
+     *            대상 URI 정보
+     * @param retryCount
+     *            재시도 횟수
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, int retryCount, HttpEntity<REQ> entity, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
+        return exchange(sup, method, uri, retryCount, entity, responseType, onSuccess, onError);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2023. 03. 06.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param uri
+     *            대상 URI 정보
+     * @param retryCount
+     *            재시도 횟수
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, int retryCount, HttpEntity<REQ> entity,
+            ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
+        return exchange(sup, method, uri, retryCount, entity, responseType, onSuccess, onError);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2021. 06. 11.    박준홍     최초 작성
+     * 2023. 03. 06.    박준홍     접속 재시도 횟수 메소드로 연동 적용 
      * </pre>
      *
      * @param <REQ>
@@ -394,10 +715,52 @@ public class RestUtils2 {
      * @since 2021. 06. 11.
      * @version 0.4.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+     * 
+     * @deprecated Use {@link #exchange(Supplier, HttpMethod, URI, int, HttpEntity, Object, Function, Function)}
      */
     private static <REQ, RES, RET> Result<RET> exchange(Supplier<ResponseEntity<RES>> sup, HttpMethod method, URI uri, HttpEntity<REQ> entity, Object responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess, Function<Exception, Result<RET>> onError) {
-        final int RETRY_MAX_COUNT = 5;
+        return exchange(sup, method, uri, 5, entity, responseType, onSuccess, onError);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2023. 03. 06.		박준홍			최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     * @param <RES>
+     * @param sup
+     *            요청 처리 함수
+     * @param method
+     *            HTTP 메소드
+     * @param uri
+     *            접속 정보
+     * @param retryCount
+     *            접속 재시도 횟수
+     * @param entity
+     *            접속 데이터
+     * @param responseType
+     *            응답 데이터 타입
+     * @param onSuccess
+     *            성공 처리 함수
+     * @param onError
+     *            실패 처리 함수
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+     */
+    private static <REQ, RES, RET> Result<RET> exchange(Supplier<ResponseEntity<RES>> sup, HttpMethod method, URI uri, int retryCount, HttpEntity<REQ> entity, Object responseType,
+            Function<ResponseEntity<RES>, Result<RET>> onSuccess, Function<Exception, Result<RET>> onError) {
+        final int RETRY_MAX_COUNT = retryCount;
         int retrial = 0;
 
         Exception unhandled = null;
