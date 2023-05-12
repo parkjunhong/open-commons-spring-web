@@ -811,6 +811,7 @@ public class RestUtils2 {
                 ) {
                     retrial++;
                     logger.warn("{} Retry {} by {}", "* * * * * ", retrial, e.getClass().getName());
+                    logger.warn("{} Request -> method={}, uri={}, req.entity={}, res.type={}", "* * * * * ", method, uri, entity, responseType);
                     ThreadUtils.sleep(1000);
                 } else {
                     throw ExceptionUtils.newException(RuntimeException.class, e, "예상하지 못한 에러가 발생하였습니다. 원인=%s, parent=%s", e.getMessage(), e);
