@@ -1,3 +1,6 @@
+[2023/05/18]
+- Release: 0.5.0
+
 [2023/05/12]
 - Update
   + open.commons.spring.web.rest.RestUtils2
