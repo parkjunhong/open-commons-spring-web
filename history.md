@@ -1,3 +1,7 @@
+[2023/05/19]
+- Remove
+  + Springfox Swagger2 제거
+
 [2023/05/18]
 - Release: 0.6.0-SNAPSHOT
 - Tag: 0.5.0

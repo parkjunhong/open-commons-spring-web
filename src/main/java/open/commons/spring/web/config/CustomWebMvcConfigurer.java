@@ -28,7 +28,6 @@ package open.commons.spring.web.config;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import org.reflections.Reflections;
@@ -43,24 +42,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.util.AntPathMatcher;
-import org.springframework.web.servlet.AsyncHandlerInterceptor;
-import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 //import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import open.commons.core.utils.ArrayUtils;
 import open.commons.spring.web.annotation.RequestValueSupported;
 import open.commons.spring.web.enums.EnumConverter;
 import open.commons.spring.web.enums.EnumConverterFactory;
 import open.commons.spring.web.enums.EnumPackages;
-import open.commons.spring.web.springfox.swagger.SpringfoxSwagger;
-
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * 사용자 정의 설정을 자동으로 등록해주는 클래스.
@@ -183,15 +174,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * 
  * @since 2019. 6. 3.
  * @version 0.0.3
- * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+ * @author Park_Jun_Hong_(parkjunhong77@gmail.com)S
  */
 @Configuration
 @EnableWebMvc
-@EnableSwagger2
 @SpringBootApplication(exclude = {
         // Spring Security 자동 실행 방지
         SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class
-        //
+//
 })
 public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
@@ -224,7 +214,7 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      * @since 2020. 9. 3.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    private void addExcludePatternsToInterceptor(InterceptorRegistration registry, String... patterns) {
+    protected void addExcludePatternsToInterceptor(InterceptorRegistration registry, String... patterns) {
         registry.excludePathPatterns(patterns);
         logger.info("[ADD] exclude.path={}", Arrays.toString(patterns));
     }
@@ -261,35 +251,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     /**
-     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addInterceptors(org.springframework.web.servlet.config.annotation.InterceptorRegistry)
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        // Bean 중에서 HandlerIntereceptor 를 구현한 객체를 찾아서.
-        Collection<HandlerInterceptor> intcptrs = context.getBeansOfType(HandlerInterceptor.class).values();
-
-        if (intcptrs == null || intcptrs.size() < 1) {
-            InterceptorRegistration reg = registry.addInterceptor(new AsyncHandlerInterceptor() {
-            });
-            addSwagger2ExcludePatternsToInterceptor(reg);
-            return;
-        }
-
-        intcptrs.stream() //
-                .forEach(intcptr -> {
-                    InterceptorRegistration reg = registry.addInterceptor(intcptr);
-
-                    // start - support 'sprignfox-swagger-ui-2.9.2' : 2020. 9. 3. 오후 5:16:01
-                    addSwagger2ExcludePatternsToInterceptor(reg);
-                    // end - support 'sprignfox-swagger-ui-2.9.2' : 2020. 9. 3. 오후 5:16:01
-
-                    logger.info("Register a Interceptor. {}.", intcptr);
-                });
-
-        WebMvcConfigurer.super.addInterceptors(registry);
-    }
-
-    /**
      * @since 2020. 9. 3.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
@@ -297,7 +258,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        addSwagger2ResourceHandlers(registry);
     }
 
     /**
@@ -320,47 +280,9 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      * @since 2020. 9. 3.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    private void addResourceHandlers(ResourceHandlerRegistry registry, String[] handlers, String[] locations) {
+    protected void addResourceHandlers(ResourceHandlerRegistry registry, String[] handlers, String[] locations) {
         registry.addResourceHandler(handlers).addResourceLocations(locations);
         logger.info("[ADD] resource.handler={}, resource.locations={}", Arrays.toString(handlers), Arrays.toString(locations));
-    }
-
-    /**
-     * Springfox-swagger-ui 지원을 위한 패턴 예외사항을 적용한다. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜    	| 작성자	|	내용
-     * ------------------------------------------
-     * 2020. 9. 3.		박준홍			최초 작성
-     * </pre>
-     *
-     * @param registry
-     *
-     * @since 2020. 9. 3.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
-     */
-    private void addSwagger2ExcludePatternsToInterceptor(InterceptorRegistration registry) {
-        addExcludePatternsToInterceptor(registry, SpringfoxSwagger.getUrlList());
-    }
-
-    private void addSwagger2ResourceHandlers(ResourceHandlerRegistry registry) {
-        // start - support 'sprignfox-swagger-ui-2.9.2' : 2020. 9. 3. 오후 5:15:51
-        addResourceHandlers(registry, ArrayUtils.add(null, SpringfoxSwagger.URL_HTML), ArrayUtils.add(null, SpringfoxSwagger.RESOURCE_HTML));
-        addResourceHandlers(registry, ArrayUtils.add(null, SpringfoxSwagger.URL_WEBJARS), ArrayUtils.add(null, SpringfoxSwagger.RESOURCE_WEBJARS));
-        // end - support 'sprignfox-swagger-ui-2.9.2' : 2020. 9. 3. 오후 5:15:51
-    }
-
-    /**
-     * @since 2020. 9. 3.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
-     *
-     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry)
-     */
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addRedirectViewController(SpringfoxSwagger.URL_UI, SpringfoxSwagger.URL_HTML);
-        WebMvcConfigurer.super.addViewControllers(registry);
     }
 
     /**

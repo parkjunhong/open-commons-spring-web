@@ -36,6 +36,7 @@
 		<reflections.version>0.9.11</reflections.version>
 		<servlet-api.version>2.5</servlet-api.version>
 		<httpclient.version>[4.5.13,)</httpclient.version>
+		<fasterxml-jackson-core.version>2.12.4</fasterxml-jackson-core.version>
 
 		<open-commons-core.version>2.0.0-SNAPSHOT</open-commons-core.version>
 		<open-commons-ssh.version>0.3.0-SNAPSHOT</open-commons-ssh.version>
@@ -197,6 +198,17 @@
 		<!-- ************** -->
 
 		<!-- ************** -->
+		<!-- begin: jackson -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${fasterxml-jackson-core.version}</version>
+		</dependency>
+		<!-- end: jackson -->
+		<!-- ************** -->
+
+		<!-- ************** -->
 		<!-- begin: open.commons -->
 		<dependency>
 			<groupId>open.commons</groupId>
@@ -209,22 +221,6 @@
 			<version>${open-commons-ssh.version}</version>
 		</dependency>
 		<!-- end: open.commons -->
-		<!-- ************** -->
-
-		<!-- ************** -->
-		<!-- begin: swagger - API Automation -->
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.9.2</version>
-		</dependency>
-		<!-- end: swagger - API Automation -->
 		<!-- ************** -->
 
 	</dependencies>
