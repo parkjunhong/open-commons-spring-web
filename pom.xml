@@ -37,6 +37,7 @@
 		<servlet-api.version>2.5</servlet-api.version>
 		<httpclient.version>[4.5.13,)</httpclient.version>
 		<fasterxml-jackson-core.version>2.12.4</fasterxml-jackson-core.version>
+		<springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
 
 		<open-commons-core.version>2.0.0-SNAPSHOT</open-commons-core.version>
 		<open-commons-ssh.version>0.3.0-SNAPSHOT</open-commons-ssh.version>
@@ -221,6 +222,20 @@
 			<version>${open-commons-ssh.version}</version>
 		</dependency>
 		<!-- end: open.commons -->
+		<!-- ************** -->
+
+
+		<!-- ************** -->
+		<!-- begin: REST API Documentation -->
+
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${springdoc-openapi-ui.version}</version>
+		</dependency>
+
+		<!-- end: REST API Documentation -->
 		<!-- ************** -->
 
 	</dependencies>

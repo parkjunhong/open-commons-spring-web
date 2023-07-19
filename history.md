@@ -1,3 +1,13 @@
+[2023/07/19]
+- Add
+  + Sprinngdoc Open API 지원
+    + dependency 추가
+      + org.springdoc:springdoc-openapi-ui:1.7.0
+    + open.commons.spring.web.oas.OpenApiConfig
+    + application.yml에 Open API를 위한 속성 추가.
+      + open-commons.springdocs.open-api.info
+      + open-commons.springdocs.open-api.external-docs
+
 [2023/05/19]
 - Remove
   + Springfox Swagger2 제거
