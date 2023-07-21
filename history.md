@@ -1,3 +1,8 @@
+[2023/07/21]
+- Bugs Fix
+  + open.commons.spring.web.config.CustomWebMvcConfigurer
+    + 사용자 정의 Interceptor 등록 메소드 추가
+
 [2023/07/19]
 - Add
   + Sprinngdoc Open API 지원

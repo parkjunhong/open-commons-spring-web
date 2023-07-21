@@ -28,6 +28,7 @@ package open.commons.spring.web.config;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.reflections.Reflections;
@@ -42,8 +43,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.web.servlet.AsyncHandlerInterceptor;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 //import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -248,6 +252,35 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
                 });
 
         registry.addConverterFactory(factory);
+    }
+
+    /**
+     *
+     * @since 2023. 7. 21.
+     * @version _._._
+     * @author parkjunhong77@gmail.com
+     *
+     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addInterceptors(org.springframework.web.servlet.config.annotation.InterceptorRegistry)
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+
+        // Bean 중에서 HandlerIntereceptor 를 구현한 객체를 찾아서.
+        Collection<HandlerInterceptor> intcptrs = context.getBeansOfType(HandlerInterceptor.class).values();
+
+        if (intcptrs == null || intcptrs.size() < 1) {
+            registry.addInterceptor(new AsyncHandlerInterceptor() {
+            });
+            return;
+        }
+
+        intcptrs.stream() //
+                .forEach(intcptr -> {
+                    registry.addInterceptor(intcptr);
+                    logger.info("Register a Interceptor. {}.", intcptr);
+                });
+
+        WebMvcConfigurer.super.addInterceptors(registry);
     }
 
     /**
