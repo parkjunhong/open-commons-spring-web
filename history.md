@@ -1,3 +1,9 @@
+[2023/09/05]
+- Dependencies
+  + spring-core:: 5.3.29
+  + spring-boot: 2.7.15
+  + sl4jf-api: 2.0.9
+
 [2023/07/21]
 - Bugs Fix
   + open.commons.spring.web.config.CustomWebMvcConfigurer
