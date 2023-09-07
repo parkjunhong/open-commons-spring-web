@@ -1,3 +1,9 @@
+[2023/09/07]
+- Dependencies 
+  + spring-core: 5.3.23 (rollback)
+  + spring-boot: 2.5.3 (rollback)
+  + sl4jf-api: 1.7.32 (rollback)
+  
 [2023/09/05]
 - Dependencies
   + spring-core:: 5.3.29
