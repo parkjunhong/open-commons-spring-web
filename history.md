@@ -3,6 +3,14 @@
   + open.commons.spring.web.mvc.IAsyncJobHandler
     + unregister(H, K): 반환 데이터 추가
     + unregister(K): 반환 데이터 추가
+  + open.commons.spring.web.mvc.service.CliExecutionComponent
+    + executeNoWait(String[], File, String)
+    + executeNoWait(String[], String[], File, String)
+    + executeNoWait(String[], String[], String)
+    + executeWaitFor(String[], File, String)
+    + executeWaitFor(String[], String)
+    + executeWaitFor(String[], String[], File, String)
+    + executeWaitFor(String[], String[], String)
 
 [2023/09/07]
 - Release: 0.7.0-SNAPSHOT
