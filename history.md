@@ -1,3 +1,9 @@
+[2023/11/02]
+- Add
+  + open.commons.spring.web.mvc.IAsyncJobHandler
+    + unregister(H, K): 반환 데이터 추가
+    + unregister(K): 반환 데이터 추가
+
 [2023/09/07]
 - Release: 0.7.0-SNAPSHOT
 - Dependencies

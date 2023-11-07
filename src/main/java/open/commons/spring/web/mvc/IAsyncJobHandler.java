@@ -184,6 +184,7 @@ public interface IAsyncJobHandler {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2020. 11. 10.        박준홍         최초 작성
+     * 2023. 11. 02.        박준홍         데이터 반환 추가
      * </pre>
      *
      * @param <H>
@@ -191,15 +192,18 @@ public interface IAsyncJobHandler {
      *            비동기 작업을 요청한 대상
      * @param key
      *            비동기 작업 식별정보
+     * @return 기존에 등록된 작업.
      *
      * @since 2020. 11. 10.
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    default <H, K> void unregister(H holder, K key) {
+    default <H, K> Object unregister(H holder, K key) {
         // 비동기 작업 제거
         AsyncJobManager<K, ?> manager = AsyncJobManager.Builder.getManager(holder);
         if (manager != null) {
-            manager.unregister(key);
+            return manager.unregister(key);
+        } else {
+            return null;
         }
     }
 
@@ -211,18 +215,20 @@ public interface IAsyncJobHandler {
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2021. 4. 23.		박준홍			최초 작성
+     * 2023. 11. 02.        박준홍         데이터 반환 추가
      * </pre>
      *
      * @param <K>
      * @param key
      *            비동기 작업 식별 정보
+     * @return 기존에 등록된 작업.
      *
      * @since 2021. 4. 23.
      * @version 0.3.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see #unregister(Object)
      */
-    default <K> void unregister(K key) {
-        unregister(getAsyncManagerHolder(), key);
+    default <K> Object unregister(K key) {
+        return unregister(getAsyncManagerHolder(), key);
     }
 }
