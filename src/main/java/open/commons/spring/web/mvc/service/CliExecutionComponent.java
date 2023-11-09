@@ -84,7 +84,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * @version 0.7.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    protected Result<Boolean> executeNoWait(String[] cmdarray, File workingDir, String job) throws IOException {
+    protected Result<Boolean> executeNoWait(String[] cmdarray, File workingDir, String job) {
         return executeNoWait(cmdarray, null, workingDir, job);
     }
 
@@ -141,12 +141,12 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see #executeNoWait(String[], String[], File, String)
      */
-    protected Result<Boolean> executeNoWait(String[] cmdarray, String[] env, File workingDir, String job) throws IOException {
+    protected Result<Boolean> executeNoWait(String[] cmdarray, String[] env, File workingDir, String job) {
         return execute(() -> {
             try {
                 Runtime.getRuntime().exec(cmdarray, env, workingDir);
                 return Result.success(true);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 String errMsg = String.format("작업('%s')을/를 실패하였습니다. 명령어=%s, 환경변수=%s, 작업디렉톨=%s, 원인=%s", job, Arrays.toString(cmdarray), Arrays.toString(env), workingDir,
                         e.getMessage());
                 logger.error(errMsg, e);
@@ -180,7 +180,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see #executeNoWait(String[], String[], File, String)
      */
-    protected Result<Boolean> executeNoWait(String[] cmdarray, String[] env, String job) throws IOException {
+    protected Result<Boolean> executeNoWait(String[] cmdarray, String[] env, String job) {
         return executeNoWait(cmdarray, env, null, job);
     }
 
@@ -209,7 +209,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see #executeWaitFor(String[], String[], File, String)
      */
-    protected Result<Integer> executeWaitFor(String[] cmdarray, File workingDir, String job) throws IOException {
+    protected Result<Integer> executeWaitFor(String[] cmdarray, File workingDir, String job) {
         return executeWaitFor(cmdarray, null, workingDir, job);
     }
 
@@ -236,7 +236,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see #executeWaitFor(String[], String[], File, String)
      */
-    protected Result<Integer> executeWaitFor(String[] cmdarray, String job) throws IOException {
+    protected Result<Integer> executeWaitFor(String[] cmdarray, String job) {
         return executeWaitFor(cmdarray, null, null, job);
     }
 
@@ -267,7 +267,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see Runtime#exec(String[], String[], File)
      */
-    protected Result<Integer> executeWaitFor(String[] cmdarray, String[] env, File workingDir, String job) throws IOException {
+    protected Result<Integer> executeWaitFor(String[] cmdarray, String[] env, File workingDir, String job) {
         return execute(() -> {
             Process proc = null;
             BufferedReader reader = null;
@@ -322,7 +322,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see #executeWaitFor(String[], String[], File, String)
      */
-    protected Result<Integer> executeWaitFor(String[] cmdarray, String[] env, String job) throws IOException {
+    protected Result<Integer> executeWaitFor(String[] cmdarray, String[] env, String job) {
         return executeWaitFor(cmdarray, env, null, job);
     }
 }
