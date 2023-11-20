@@ -1,4 +1,11 @@
 [2023/11/02]
+- Modify
+  + open.commons.spring.web.mvc.service.AbstractSshService.connectTimeout @Value 기본값 설정: 100
+  + open.commons.spring.web.mvc.IAsyncJobHandler
+    + register(H, K, Future<?>): 반환 데이터 추가
+    + register(K, Future<?>): 반환 데이터 추가
+
+[2023/11/02]
 - Add
   + open.commons.spring.web.mvc.IAsyncJobHandler
     + unregister(H, K): 반환 데이터 추가

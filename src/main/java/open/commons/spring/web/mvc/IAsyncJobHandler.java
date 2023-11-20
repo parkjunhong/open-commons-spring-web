@@ -141,14 +141,16 @@ public interface IAsyncJobHandler {
      *            작업 식별정보
      * @param job
      *            작업
+     * @return 작업 소유 객체
      *
      * @since 2021. 1. 13.
      * @version 0.3.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    default <H, K> void register(H holder, K key, Future<?> job) {
+    default <H, K> H register(H holder, K key, Future<?> job) {
         AsyncJobManager<K, ?> manager = AsyncJobManager.Builder.getManager(holder);
         manager.register(key, job);
+        return holder;
     }
 
     /**
@@ -166,14 +168,15 @@ public interface IAsyncJobHandler {
      *            비동기 작업 식별정보
      * @param job
      *            작업
+     * @return 작업 소유 객체
      *
      * @since 2021. 4. 23.
      * @version 0.3.0
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see #register(Object, Future)
      */
-    default <K> void register(K key, Future<?> job) {
-        register(getAsyncManagerHolder(), key, job);
+    default <K> Object register(K key, Future<?> job) {
+        return register(getAsyncManagerHolder(), key, job);
     }
 
     /**

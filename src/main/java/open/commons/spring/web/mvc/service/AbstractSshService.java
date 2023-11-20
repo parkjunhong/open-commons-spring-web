@@ -75,7 +75,7 @@ public class AbstractSshService extends AbstractGenericService {
     /**
      * SSH 접속대기 제한시간. 단위: ms
      */
-    @Value("${application.ssh.connect-timeout}")
+    @Value("${application.ssh.connect-timeout:10000}")
     protected int connectTimeout;
 
     /**
