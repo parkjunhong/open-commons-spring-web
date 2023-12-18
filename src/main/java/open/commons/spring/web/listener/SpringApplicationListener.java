@@ -168,7 +168,8 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationFailedEvent(ApplicationFailedEvent event) {
-        logger.error("ApplicationFailed - {}", event.getException());
+        Throwable t = event.getException();
+        logger.error("ApplicationFailed - cause={}", t.getMessage(), t);
 
     }
 
