@@ -66,7 +66,7 @@ public class DelegatingExecutorSupportor {
      * @version 0.8.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static ExecutorService executorService(ExecutorService delegate) {
+    public static ExecutorService executorService(@Nonnull ExecutorService delegate) {
         return executorService(delegate, "executor");
     }
 
@@ -91,7 +91,7 @@ public class DelegatingExecutorSupportor {
      * @version 0.8.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static ExecutorService executorService(ExecutorService delegate, @Nonnull String threadSymbol) {
+    public static ExecutorService executorService(@Nonnull ExecutorService delegate, @Nonnull String threadSymbol) {
         return new DelegatingExecutorService<ExecutorService>(delegate, threadSymbol);
     }
 
@@ -114,7 +114,7 @@ public class DelegatingExecutorSupportor {
      * @version 0.8.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static ScheduledExecutorService scheduledExecutorService(ScheduledExecutorService delegate) {
+    public static ScheduledExecutorService scheduledExecutorService(@Nonnull ScheduledExecutorService delegate) {
         return scheduledExecutorService(delegate, "scheduled");
     }
 
@@ -139,7 +139,7 @@ public class DelegatingExecutorSupportor {
      * @version 0.8.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static ScheduledExecutorService scheduledExecutorService(ScheduledExecutorService delegate, @Nonnull String threadSymbol) {
+    public static ScheduledExecutorService scheduledExecutorService(@Nonnull ScheduledExecutorService delegate, @Nonnull String threadSymbol) {
         return new DelegatingScheduledExecutorService(delegate, threadSymbol);
     }
 
@@ -162,7 +162,7 @@ public class DelegatingExecutorSupportor {
      * @version 0.8.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static AsyncListenableTaskExecutor taskExecutor(AsyncListenableTaskExecutor delegate) {
+    public static AsyncListenableTaskExecutor taskExecutor(@Nonnull AsyncListenableTaskExecutor delegate) {
         return taskExecutor(delegate, "executor");
     }
 
@@ -187,7 +187,7 @@ public class DelegatingExecutorSupportor {
      * @version 0.8.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static AsyncListenableTaskExecutor taskExecutor(AsyncListenableTaskExecutor delegate, @Nonnull String threadSymbol) {
+    public static AsyncListenableTaskExecutor taskExecutor(@Nonnull AsyncListenableTaskExecutor delegate, @Nonnull String threadSymbol) {
         return new DelegatingTaskExecutor<AsyncListenableTaskExecutor>(delegate, threadSymbol);
     }
 
@@ -210,7 +210,7 @@ public class DelegatingExecutorSupportor {
      * @version 0.8.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static <S extends TaskScheduler & AsyncListenableTaskExecutor> TaskScheduler taskScheduler(S delegate) {
+    public static <S extends TaskScheduler & AsyncListenableTaskExecutor> TaskScheduler taskScheduler(@Nonnull S delegate) {
         return taskScheduler(delegate, "scheduled");
     }
 
@@ -235,7 +235,7 @@ public class DelegatingExecutorSupportor {
      * @version 0.8.0
      * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static <S extends TaskScheduler & AsyncListenableTaskExecutor> TaskScheduler taskScheduler(S delegate, @Nonnull String threadSymbol) {
+    public static <S extends TaskScheduler & AsyncListenableTaskExecutor> TaskScheduler taskScheduler(@Nonnull S delegate, @Nonnull String threadSymbol) {
         return new DelegatingTaskScheduler<S>(delegate, threadSymbol);
     }
 

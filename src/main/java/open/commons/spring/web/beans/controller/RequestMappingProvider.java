@@ -181,7 +181,7 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
         // 여기서 groups 를 로깅하거나, Bean 으로 등록하거나, 별도 API 로 제공 가능
         apiGroup.forEach(g -> {
             String tagDesc = null;
-            this.logger.trace("Group: {}{}", g.getName(), StringUtils.isNullOrEmptyString(tagDesc = g.getDescription()) ? "" : String.join(tagDesc, " (", ")"));
+            this.logger.info("Group: {}{}", g.getName(), StringUtils.isNullOrEmptyString(tagDesc = g.getDescription()) ? "" : String.join(tagDesc, " (", ")"));
             g.getRestApis().forEach(api -> {
                 String opDesc = null;
                 this.logger.trace("  - {} {}, {}{}", String.format("%-8s", String.join(api.getMethod().toString(), "[", "]")), api.getPath(), api.getName(),
