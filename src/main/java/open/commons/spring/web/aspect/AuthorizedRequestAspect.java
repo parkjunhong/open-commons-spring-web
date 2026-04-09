@@ -31,7 +31,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.stream.Stream;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -82,7 +82,6 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedRequestAspect(@NotNull ApplicationContext context) {
         super(context, IRequestAccessAuthorityProvider.class);
@@ -105,7 +104,6 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @SuppressWarnings("unchecked")
     private <A extends Annotation> TwoValueObject<RequestMethod, String> mappingOnMethod(Method method) {
@@ -159,7 +157,6 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private <A extends Annotation> String mappingOnType(Class<?> type) {
         RequestMapping anno = AnnotationUtils.getAnnotation(type, RequestMapping.class);
@@ -188,7 +185,6 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see AbstractAuthorizedResourceAspect#withinAllControllerStereotypeComponent()
      * @see AbstractAuthorizedResourceAspect#annotationAuthorizedRequest()

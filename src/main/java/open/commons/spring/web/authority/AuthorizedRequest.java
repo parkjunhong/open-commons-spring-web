@@ -65,7 +65,6 @@ public @interface AuthorizedRequest {
      *
      * @since 2025. 5. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see IRequestAccessAuthorityProvider
      */
@@ -86,7 +85,6 @@ public @interface AuthorizedRequest {
      *
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String descr() default "";
 
@@ -104,7 +102,6 @@ public @interface AuthorizedRequest {
      *
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String name() default "";
 
@@ -123,7 +120,6 @@ public @interface AuthorizedRequest {
      *
      * @since 2025. 5. 20.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @AliasFor("authorityBean")
     String value() default "";

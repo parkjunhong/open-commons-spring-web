@@ -52,7 +52,6 @@ public class InvalidBeanNameException extends BeansException {
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidBeanNameException(String msg) {
         super(msg);
@@ -73,7 +72,6 @@ public class InvalidBeanNameException extends BeansException {
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidBeanNameException(String msg, Throwable cause) {
         super(msg, cause);

@@ -70,7 +70,6 @@ public @interface AuthorizedObject {
      *
      * @since 2025. 5. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see IFieldAccessAuthorityProvider
      */
@@ -90,7 +89,6 @@ public @interface AuthorizedObject {
      *
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String descr() default "";
 
@@ -112,7 +110,6 @@ public @interface AuthorizedObject {
      *
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String fieldHandleBean() default AuthorizedResourceHandler.BEAN_QUALIFIER;
 
@@ -130,7 +127,6 @@ public @interface AuthorizedObject {
      *
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String name() default "";
 

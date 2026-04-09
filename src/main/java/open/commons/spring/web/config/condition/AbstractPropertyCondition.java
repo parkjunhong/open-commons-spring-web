@@ -26,8 +26,7 @@
 
 package open.commons.spring.web.config.condition;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
 import org.springframework.boot.autoconfigure.condition.SpringBootCondition;
@@ -65,9 +64,8 @@ public abstract class AbstractPropertyCondition<T> extends SpringBootCondition {
      *            설정 경로
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AbstractPropertyCondition(@NotBlank @Nonnull String prefix) {
+    public AbstractPropertyCondition(@NotBlank String prefix) {
         this.prefix = prefix;
         this.bindable = bindable();
     }
@@ -86,16 +84,14 @@ public abstract class AbstractPropertyCondition<T> extends SpringBootCondition {
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    @Nonnull
+
     protected abstract Bindable<T> bindable();
 
     /**
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.boot.autoconfigure.condition.SpringBootCondition#getMatchOutcome(org.springframework.context.annotation.ConditionContext,
      *      org.springframework.core.type.AnnotatedTypeMetadata)
@@ -127,7 +123,6 @@ public abstract class AbstractPropertyCondition<T> extends SpringBootCondition {
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
 
     protected String messageOnMatch() {
@@ -148,7 +143,6 @@ public abstract class AbstractPropertyCondition<T> extends SpringBootCondition {
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected String messageOnNomatch() {
         return "nomatched";
@@ -169,7 +163,6 @@ public abstract class AbstractPropertyCondition<T> extends SpringBootCondition {
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected abstract boolean validate(T bound);
 

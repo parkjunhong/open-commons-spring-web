@@ -141,7 +141,6 @@ public class EnumConverter<E extends Enum> implements Converter<String, E> {
      *
      * @since 2019. 6. 3.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public String getType() {
         return this.enumType != null ? this.enumType.getName() : null;

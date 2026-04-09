@@ -40,10 +40,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import javax.annotation.Nonnull;
-import javax.annotation.PostConstruct;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.annotation.PostConstruct;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -92,10 +91,8 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      * 2025. 9. 22.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedRequestDataMetadata() {
     }
@@ -104,13 +101,12 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata#getFieldMetadat(java.lang.Class,
      *      java.lang.String)
      */
     @Override
-    public AuthorizedRequestDataFieldMetadata getFieldMetadat(@NotNull @Nonnull Class<?> targetClass, @NotBlank String fieldName) {
+    public AuthorizedRequestDataFieldMetadata getFieldMetadat(@NotNull Class<?> targetClass, @NotBlank String fieldName) {
         Class<?> supportingClass = supporingAuthorizedRequestDataObjectType(targetClass);
         if (supportingClass != null) {
             Optional<AuthorizedRequestDataFieldMetadata> opt = this.authorizedRequestFields.get(supportingClass).stream() //
@@ -126,13 +122,12 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata#getHandleBeanName(java.lang.Class,
      *      java.lang.String)
      */
     @Override
-    public String getHandleBeanName(@NotNull @Nonnull Class<?> targetClass, @NotBlank String fieldName) {
+    public String getHandleBeanName(@NotNull Class<?> targetClass, @NotBlank String fieldName) {
         AuthorizedRequestDataObjectMetadata om = getObjectMetadata(targetClass);
         if (om == null) {
             return null;
@@ -147,13 +142,12 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata#getHandleType(java.lang.Class,
      *      java.lang.String)
      */
     @Override
-    public String getHandleType(@NotNull @Nonnull Class<?> targetClass, @NotBlank String fieldName) {
+    public String getHandleType(@NotNull Class<?> targetClass, @NotBlank String fieldName) {
         AuthorizedRequestDataFieldMetadata fm = getFieldMetadat(targetClass, fieldName);
         return fm != null ? fm.getHandleType() : AuthorizedRequestData.NO_ASSINGED_HANDLE_TYPE;
     }
@@ -162,12 +156,11 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata#getObjectMetadata(java.lang.Class)
      */
     @Override
-    public AuthorizedRequestDataObjectMetadata getObjectMetadata(@NotNull @Nonnull Class<?> targetClass) {
+    public AuthorizedRequestDataObjectMetadata getObjectMetadata(@NotNull Class<?> targetClass) {
         AssertUtils2.notNull(targetClass);
 
         // 일치하는 클래스 조회
@@ -189,12 +182,11 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata#isAuthorizedRequestDataObject(java.lang.Class)
      */
     @Override
-    public boolean isAuthorizedRequestDataObject(@NotNull @Nonnull Class<?> targetClass) {
+    public boolean isAuthorizedRequestDataObject(@NotNull Class<?> targetClass) {
         return getObjectMetadata(targetClass) != null;
     }
 
@@ -266,7 +258,6 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #authorizedRequestObjectMetadata
      */
@@ -290,7 +281,6 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private Class<?> supporingAuthorizedRequestDataObjectType(Class<?> targetClass) {
         AuthorizedRequestDataObjectMetadata om = getObjectMetadata(targetClass);

@@ -28,7 +28,7 @@ package open.commons.spring.web.config;
 
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -64,7 +64,6 @@ public class AuthorizedObjectMessageConfigure implements WebMvcConfigurer {
      * 
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedObjectMessageConfigure(@NotNull AuthorizedObjectJackson2HttpMessageConverter authorizeObjectMessageConverter //
     ) {
@@ -102,7 +101,6 @@ public class AuthorizedObjectMessageConfigure implements WebMvcConfigurer {
      * 
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#configureMessageConverters(java.util.List)
      */

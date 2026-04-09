@@ -28,12 +28,12 @@ package open.commons.spring.web.oas;
 
 import java.util.Map;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springdoc.core.GroupedOpenApi;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -41,12 +41,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import open.commons.core.collection.FIFOMap;
-import open.commons.core.utils.StringUtils;
-
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+
+import open.commons.core.collection.FIFOMap;
+import open.commons.core.utils.StringUtils;
 
 /**
  * <a href="https://springdoc.org/">Spring Docs</a> {@link OpenAPI}를 사용하기 위한 설정.<br>
@@ -140,7 +140,6 @@ public class OpenApiConfig {
      *
      * @since 2023. 7. 19.
      * @version 0.6.0
-     * @author parkjunhong77@gmail.com
      */
     public OpenApiConfig(@Autowired ApplicationContext context) {
         this.context = context;
@@ -160,7 +159,6 @@ public class OpenApiConfig {
      *
      * @since 2023. 7. 19.
      * @version 0.6.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean
     @ConditionalOnProperty(prefix = PROPERTIES_OPEN_API_INFO, name = { "contact.email", "contact.name" })
@@ -197,7 +195,6 @@ public class OpenApiConfig {
      *
      * @since 2023. 7. 19.
      * @version 0.6.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = BEAN_QUALIFIER_OPEN_API_EXT_DOCS)
     @ConditionalOnProperty(prefix = PROPERTIES_OPEN_API_EXT_DOCS, name = "url")
@@ -220,7 +217,6 @@ public class OpenApiConfig {
      *
      * @since 2023. 7. 19.
      * @version 0.6.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #getOpenAPIInfo()
      * @see #getOpenAPIExternalDocumentation()
@@ -247,7 +243,6 @@ public class OpenApiConfig {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(BEAN_QUALIFIER_GROUPED_OPEN_API_PROPERTIES)
     @ConfigurationProperties(PROPERTIES_GROUPED_OPEN_API)
@@ -293,7 +288,6 @@ public class OpenApiConfig {
      *
      * @since 2025. 4. 29.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static GroupedOpenApi loadGroupedOpenApi(@NotNull Map<String, GroupedOpenApiProperties> props, @NotEmpty String apiName) {
         GroupedOpenApiProperties prop = props.get(apiName);
@@ -323,7 +317,6 @@ public class OpenApiConfig {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static GroupedOpenApi transform(@NotNull GroupedOpenApiProperties prop, String name) {
         GroupedOpenApi api = GroupedOpenApi.builder()//
@@ -336,7 +329,7 @@ public class OpenApiConfig {
                 .pathsToExclude(prop.getPathsToExclude())//
                 .pathsToMatch(prop.getPathsToMatch())//
                 .producesToMatch(prop.getProducesToMatch()) //
-                .addOpenApiCustomiser(openapi -> {
+                .addOpenApiCustomizer(openapi -> {
                     openapi.setInfo(prop.getInfo());
                     openapi.setExternalDocs(prop.getExternalDocs());
                 }) //

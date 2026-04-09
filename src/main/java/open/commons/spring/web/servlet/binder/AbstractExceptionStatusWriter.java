@@ -26,8 +26,6 @@
 
 package open.commons.spring.web.servlet.binder;
 
-import javax.annotation.Nonnull;
-
 import org.springframework.http.HttpStatus;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -64,9 +62,8 @@ public abstract class AbstractExceptionStatusWriter implements IExceptionRespons
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public AbstractExceptionStatusWriter(@Nonnull ExceptionHttpStatusBinder binder) {
+    public AbstractExceptionStatusWriter(ExceptionHttpStatusBinder binder) {
         this(binder, OM);
     }
 
@@ -85,7 +82,6 @@ public abstract class AbstractExceptionStatusWriter implements IExceptionRespons
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public AbstractExceptionStatusWriter(ExceptionHttpStatusBinder binder, ObjectMapper objectMapper) {
         this.binder = binder;
@@ -96,7 +92,6 @@ public abstract class AbstractExceptionStatusWriter implements IExceptionRespons
      *
      * @since 2025. 10. 30.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.web.servlet.binder.IExceptionResponseWriter#getBinder()
      */
@@ -109,7 +104,6 @@ public abstract class AbstractExceptionStatusWriter implements IExceptionRespons
      *
      * @since 2025. 10. 30.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.web.servlet.binder.IExceptionResponseWriter#writeAsString(java.lang.Object)
      */

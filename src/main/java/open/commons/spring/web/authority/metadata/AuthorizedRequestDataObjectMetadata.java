@@ -29,7 +29,7 @@ package open.commons.spring.web.authority.metadata;
 import java.lang.reflect.Field;
 import java.util.List;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import org.springframework.context.annotation.Bean;
 
@@ -69,10 +69,8 @@ public class AuthorizedRequestDataObjectMetadata extends AuthorizedMetadata {
      * 2025. 9. 20.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedRequestDataObjectMetadata() {
     }
@@ -91,7 +89,6 @@ public class AuthorizedRequestDataObjectMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #fields
      */
@@ -114,7 +111,6 @@ public class AuthorizedRequestDataObjectMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #handleBean
      */
@@ -137,7 +133,6 @@ public class AuthorizedRequestDataObjectMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #type
      */
@@ -161,7 +156,6 @@ public class AuthorizedRequestDataObjectMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #fields
      */
@@ -184,7 +178,6 @@ public class AuthorizedRequestDataObjectMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #handleBean
      */
@@ -207,7 +200,6 @@ public class AuthorizedRequestDataObjectMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #type
      */
@@ -219,7 +211,6 @@ public class AuthorizedRequestDataObjectMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

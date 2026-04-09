@@ -53,10 +53,8 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 2021. 11. 16.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2021. 11. 16.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      */
     public CliExecutionComponent() {
     }
@@ -82,7 +80,6 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      *
      * @since 2023. 11. 7.
      * @version 0.7.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected Result<Boolean> executeNoWait(String[] cmdarray, File workingDir, String job) {
         return executeNoWait(cmdarray, null, workingDir, job);
@@ -106,7 +103,6 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      *
      * @since 2021. 11. 16.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      * 
      * @see #executeNoWait(String[], String[], File, String)
      */
@@ -137,7 +133,6 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      *
      * @since 2023. 11. 7.
      * @version 0.7.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #executeNoWait(String[], String[], File, String)
      */
@@ -176,7 +171,6 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      *
      * @since 2023. 11. 7.
      * @version 0.7.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #executeNoWait(String[], String[], File, String)
      */
@@ -205,7 +199,6 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      *
      * @since 2023. 11. 7.
      * @version 0.7.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #executeWaitFor(String[], String[], File, String)
      */
@@ -232,7 +225,6 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      *
      * @since 2023. 11. 7.
      * @version 0.7.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #executeWaitFor(String[], String[], File, String)
      */
@@ -263,7 +255,6 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      *
      * @since 2023. 11. 7.
      * @version 0.7.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see Runtime#exec(String[], String[], File)
      */
@@ -318,7 +309,6 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      *
      * @since 2023. 11. 7.
      * @version 0.7.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #executeWaitFor(String[], String[], File, String)
      */

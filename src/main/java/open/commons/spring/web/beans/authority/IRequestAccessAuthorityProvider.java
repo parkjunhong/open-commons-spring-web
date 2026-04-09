@@ -26,8 +26,8 @@
 
 package open.commons.spring.web.beans.authority;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,7 +70,6 @@ public interface IRequestAccessAuthorityProvider extends IResourceAccessAuthorit
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     Result<Boolean> isAllowed(@NotNull RequestMethod requestMethod, @NotEmpty String path);
 

@@ -36,14 +36,14 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import javax.annotation.Nonnull;
-import javax.annotation.PreDestroy;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.annotation.PreDestroy;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
-import org.apache.http.NoHttpResponseException;
+import org.apache.hc.core5.http.NoHttpResponseException;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.ParameterizedTypeReference;
@@ -52,7 +52,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestFactory;
-import org.springframework.lang.Nullable;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
@@ -103,13 +102,11 @@ public abstract class AbstractRestApiClient {
      * 2025. 7. 2.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 2.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AbstractRestApiClient(@NotNull @Nonnull RestTemplate restTemplate) {
-        AssertUtils2.notNull("RestTemplate 객체는 반드시 존재해야 합니다", restTemplate);
+    public AbstractRestApiClient(@NotNull RestTemplate restTemplate) {
+        AssertUtils2.notNull(restTemplate, "RestTemplate 객체는 반드시 존재해야 합니다");
         this.restTemplate = restTemplate;
         this.retryCount = getRetryCount();
         setUriBuilderFactory(restTemplate);
@@ -125,10 +122,8 @@ public abstract class AbstractRestApiClient {
      * 2025. 8. 26.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 8. 25.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @PreDestroy
     public void close() {
@@ -154,7 +149,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 8. 28.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
@@ -207,7 +201,6 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 8. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final URI createURI(@NotBlank String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment) {
         return createURI(getBaseUrl(), path, pathVariables, convertToMultiValueMap(query), fragment);
@@ -238,7 +231,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected final URI createURI(@NotBlank String scheme, @NotBlank String host, @Min(1) int port, String path, @Nullable MultiValueMap<String, String> query, String fragment) {
         return createURI(StringUtils.concatenate("", scheme, "://", host, ":", port), path, null, query, fragment);
@@ -267,7 +259,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected URI createURI(@NotBlank String baseHttpUrl, @NotBlank String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, String> queryVariables,
             String fragment) {
@@ -338,7 +329,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 8. 28.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
@@ -387,7 +377,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 8. 28.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
@@ -433,7 +422,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 8. 28.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
@@ -489,7 +477,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 8. 28.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
@@ -543,7 +530,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 8. 28.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
@@ -599,7 +585,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 8. 28.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
@@ -653,7 +638,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query//
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -705,7 +689,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -754,7 +737,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -813,7 +795,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -871,7 +852,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -926,7 +906,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -979,7 +958,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
@@ -1039,7 +1017,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
@@ -1095,7 +1072,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1149,7 +1125,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1200,7 +1175,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1261,7 +1235,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1321,7 +1294,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1378,7 +1350,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1429,7 +1400,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query//
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1479,7 +1449,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1526,7 +1495,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1583,7 +1551,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1639,7 +1606,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1692,7 +1658,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1743,7 +1708,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
@@ -1801,7 +1765,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
@@ -1855,7 +1818,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1907,7 +1869,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -1956,7 +1917,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2014,7 +1974,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2072,7 +2031,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2127,7 +2085,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2172,7 +2129,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 8. 28.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
@@ -2218,7 +2174,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 8. 28.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
@@ -2272,7 +2227,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 8. 28.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
@@ -2325,7 +2279,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 8. 28.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
@@ -2377,7 +2330,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query//
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2426,7 +2378,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2483,7 +2434,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2538,7 +2488,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2589,7 +2538,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
@@ -2646,7 +2594,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
@@ -2699,7 +2646,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2750,7 +2696,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2808,7 +2753,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2865,7 +2809,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2913,7 +2856,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query//
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -2960,7 +2902,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -3014,7 +2955,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -3067,7 +3007,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -3115,7 +3054,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
@@ -3170,7 +3108,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
@@ -3221,7 +3158,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -3270,7 +3206,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -3326,7 +3261,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -3381,7 +3315,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
@@ -3394,7 +3327,7 @@ public abstract class AbstractRestApiClient {
     @SuppressWarnings("unused")
     private TemplateUriEncoder fragmentEncoder() {
         Encoding enc = fragmentEncoding();
-        AssertUtils2.notNull("'Query' encoding 정보가 설정되지 않았습니다.", enc);
+        AssertUtils2.notNull(enc, "'Query' encoding 정보가 설정되지 않았습니다.");
         return UriEncodingHelper.encoder(enc);
     }
 
@@ -3412,7 +3345,6 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 8. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected Encoding fragmentEncoding() {
         return Encoding.VALUES_ONLY_STRICT;
@@ -3436,7 +3368,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     @NotEmpty
     protected abstract String getBaseUrl();
@@ -3455,13 +3386,11 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 1.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      * 
      * @see NoHttpResponseException
      * @see ResourceAccessException
      * @see HttpClientErrorException
      * @see HttpServerErrorException
-     * 
      */
     protected int getRetryCount() {
         return 3;
@@ -3469,7 +3398,7 @@ public abstract class AbstractRestApiClient {
 
     private TemplateUriEncoder pathEncoder() {
         Encoding enc = pathEncoding();
-        AssertUtils2.notNull("'Path' encoding 정보가 설정되지 않았습니다.", enc);
+        AssertUtils2.notNull(enc, "'Path' encoding 정보가 설정되지 않았습니다.");
         return UriEncodingHelper.encoder(enc);
     }
 
@@ -3487,7 +3416,6 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 8. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected Encoding pathEncoding() {
         return Encoding.VALUES_ONLY_RESERVED;
@@ -3495,7 +3423,7 @@ public abstract class AbstractRestApiClient {
 
     private TemplateUriEncoder queryEncoder() {
         Encoding enc = queryEncoding();
-        AssertUtils2.notNull("'Query' encoding 정보가 설정되지 않았습니다.", enc);
+        AssertUtils2.notNull(enc, "'Query' encoding 정보가 설정되지 않았습니다.");
         return UriEncodingHelper.encoder(enc);
     }
 
@@ -3513,7 +3441,6 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 8. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected Encoding queryEncoding() {
         return Encoding.VALUES_ONLY_STRICT;
@@ -3533,7 +3460,6 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 8. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected void setUriBuilderFactory(RestTemplate restTemplate) {
         DefaultUriBuilderFactory factory = new DefaultUriBuilderFactory();
@@ -3556,7 +3482,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static final HttpHeaders convertToHeaders(@Nullable MultiValueMap<String, Object> data) {
         return new HttpHeaders(convertToMultiValueMap(data));
@@ -3577,7 +3502,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static final MultiValueMap<String, String> convertToMultiValueMap(@Nullable List<Object> data) {
         return toMultiValueMap(data.toArray(new Object[0]));
@@ -3598,7 +3522,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static final MultiValueMap<String, String> convertToMultiValueMap(@Nullable MultiValueMap<String, ?> data) {
 
@@ -3632,7 +3555,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static final <REQ> HttpEntity<REQ> createHttpEntity(REQ requestBody, MultiValueMap<String, String> headers) {
         return new HttpEntity<REQ>(requestBody, headers);
@@ -3654,7 +3576,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static final <REQ> HttpEntity<REQ> createHttpEntity(REQ requestBody, String... headers) {
         return new HttpEntity<REQ>(requestBody, toMultiValueMap(headers));
@@ -3675,7 +3596,6 @@ public abstract class AbstractRestApiClient {
      * @param action
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static <P> void ifNotNull(P param, Consumer<P> action) {
         if (param != null) {
@@ -3699,7 +3619,6 @@ public abstract class AbstractRestApiClient {
      * @param action
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static <P, R> void ifNotNull(P param, Function<P, R> action) {
         if (param != null) {
@@ -3721,7 +3640,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static final HttpHeaders toHeaders(@NotNull List<String> headerValues) {
         return toHeaders(headerValues.toArray(new String[0]));
@@ -3741,7 +3659,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static final HttpHeaders toHeaders(@NotNull MultiValueMap<String, String> data) {
         return new HttpHeaders(data);
@@ -3761,7 +3678,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static final HttpHeaders toHeaders(@NotNull String... headerValues) {
         return new HttpHeaders(toMultiValueMap(headerValues));
@@ -3782,7 +3698,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static final MultiValueMap<String, String> toMultiValueMap(Object... data) {
         if (data == null) {
@@ -3809,7 +3724,6 @@ public abstract class AbstractRestApiClient {
      * @return
      *
      * @since 2025. 7. 2.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     protected static final MultiValueMap<String, String> toMultiValueMap(String... data) {
         if (data == null) {

@@ -39,11 +39,10 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-import org.apache.http.client.HttpClient;
+import org.apache.hc.client5.http.classic.HttpClient;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -282,7 +281,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = BEAN_QUALIFIER_DEFAULT_SCHEDULED_THREAD_POOL_EXECUTOR)
     @Primary
@@ -305,7 +303,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = BEAN_QUALIFIER_DEFAULT_THREAD_POOL_EXECUTOR)
     @Primary
@@ -331,7 +328,6 @@ public class ResourceConfiguration {
      *
      * @since 2020. 1. 20.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @Bean(name = BEAN_QUALIFIER_DEFAULT_THREAD_POOL_TASK_EXECUTOR, destroyMethod = "destroy")
     @Scope(scopeName = ConfigurableBeanFactory.SCOPE_SINGLETON, proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -355,7 +351,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = BEAN_QUALIFIER_DEFAULT_THREAD_POOL_TASK_SCHEDULER)
     @Primary
@@ -380,9 +375,8 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    <T> T bind(@NotBlank @Nonnull String prefix, @NotNull @Nonnull T target) {
+    <T> T bind(@NotBlank String prefix, @NotNull T target) {
         Binder binder = Binder.get(this.environment);
         return binder.bind(prefix, Bindable.ofInstance(target)).get();
     }
@@ -424,7 +418,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = CONFIGURATION_DEFAULT_SCHEDULED_THREAD_POOL_EXECUTOR_CONFIG)
     @ConfigurationProperties(prefix = PROPERTIES_DEFAULT_SCHEDULED_THREAD_POOL_EXECUTOR_CONFIG)
@@ -460,7 +453,6 @@ public class ResourceConfiguration {
      * 
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = CONFIGURATION_SCHEDULED_THREAD_POOL_EXECUTOR_CONFIG_ON_MDC)
     @ConditionalOnMissingBean(name = { CONFIGURATION_SCHEDULED_THREAD_POOL_EXECUTOR_CONFIG_ON_MDC })
@@ -483,7 +475,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = CONFIGURATION_DEFAULT_THREAD_POOL_EXECUTOR_CONFIG)
     @ConfigurationProperties(prefix = PROPERTIES_DEFAULT_THREAD_POOL_EXECUTOR_CONFIG)
@@ -513,7 +504,6 @@ public class ResourceConfiguration {
      * 
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = CONFIGURATION_THREAD_POOL_EXECUTOR_CONFIG_ON_MDC)
     @ConditionalOnMissingBean(name = { CONFIGURATION_THREAD_POOL_EXECUTOR_CONFIG_ON_MDC })
@@ -536,7 +526,6 @@ public class ResourceConfiguration {
      *
      * @since 2019. 6. 27.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @Bean(name = CONFIGURATION_DEFAULT_THREAD_POOL_TASK_EXECUTOR_CONFIG)
     @ConfigurationProperties(prefix = PROPERTIES_DEFAULT_THREAD_POOL_TASK_EXECUTOR_CONFIG)
@@ -575,7 +564,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com @
      */
     @Bean(name = CONFIGURATION_THREAD_POOL_TASK_EXECUTOR_CONFIG_ON_ASYNC)
     @ConditionalOnMissingBean(name = { CONFIGURATION_THREAD_POOL_TASK_EXECUTOR_CONFIG_ON_ASYNC })
@@ -602,7 +590,6 @@ public class ResourceConfiguration {
      * 
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = CONFIGURATION_THREAD_POOL_TASK_EXECUTOR_CONFIG_ON_MDC)
     @ConditionalOnMissingBean(name = { CONFIGURATION_THREAD_POOL_TASK_EXECUTOR_CONFIG_ON_MDC })
@@ -624,7 +611,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = CONFIGURATION_DEFAULT_THREAD_POOL_TASK_SCHEDULER_CONFIG)
     @ConfigurationProperties(prefix = PROPERTIES_DEFAULT_THREAD_POOL_TASK_SCHEDULER_CONFIG)
@@ -668,7 +654,6 @@ public class ResourceConfiguration {
      * 
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = CONFIGURATION_THREAD_POOL_TASK_SCHEDULER_CONFIG_ON_MDC)
     @ConditionalOnMissingBean(name = { CONFIGURATION_THREAD_POOL_TASK_SCHEDULER_CONFIG_ON_MDC })
@@ -693,7 +678,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     boolean hasPrefix(String prefix) {
         return environment.getProperty(prefix) != null;
@@ -713,7 +697,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean
     @ConfigurationProperties(prefix = PROPERTIES_DEFAULT_INTERCEPTOR_IGNORE_URL_PATTERNS)
@@ -735,7 +718,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean
     @ConfigurationProperties(prefix = PROPERTIES_DEFAULT_ONCE_PER_REQUEST_SHOULD_NOT_FILTERS)
@@ -758,7 +740,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static ScheduledThreadPoolExecutor createScheduledThreadPoolExecutor(ScheduledThreadPoolExecutorConfig config) {
         ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(config.getCorePoolSize());
@@ -790,7 +771,6 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static ThreadPoolExecutor createThreadPoolExecutor(ThreadPoolExecutorConfig config) {
         ThreadPoolExecutor executor = new ThreadPoolExecutor( //
@@ -822,9 +802,8 @@ public class ResourceConfiguration {
      *
      * @since 2021. 8. 19.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    public static ThreadPoolTaskExecutor createThreadPoolTaskExecutor(@Nonnull ThreadPoolTaskExecutorConfig config, String threadNameSymbol) {
+    public static ThreadPoolTaskExecutor createThreadPoolTaskExecutor(ThreadPoolTaskExecutorConfig config, String threadNameSymbol) {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 
         // --- org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor --- //
@@ -867,9 +846,8 @@ public class ResourceConfiguration {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static ThreadPoolTaskScheduler createThreadPoolTaskScheduler(@Nonnull ThreadPoolTaskSchedulerConfig config) {
+    public static ThreadPoolTaskScheduler createThreadPoolTaskScheduler(ThreadPoolTaskSchedulerConfig config) {
         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
 
         // -- org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler --//
@@ -912,7 +890,6 @@ public class ResourceConfiguration {
      *
      * @since 2020. 12. 9.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static HttpComponentsClientHttpRequestFactory getRequestFactory(HttpClient httpClient, RestTemplateRequestFactoryResource reqFactoryResource) {
         HttpComponentsClientHttpRequestFactory reqFactory = httpClient != null //

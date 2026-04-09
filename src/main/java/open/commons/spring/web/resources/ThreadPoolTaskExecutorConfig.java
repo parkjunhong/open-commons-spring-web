@@ -26,9 +26,8 @@
 
 package open.commons.spring.web.resources;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
@@ -97,9 +96,8 @@ public class ThreadPoolTaskExecutorConfig {
      *
      * @since 2025. 8. 11.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public ThreadPoolTaskExecutorConfig(@NotNull @Nonnull ThreadPoolTaskExecutorConfig config) {
+    public ThreadPoolTaskExecutorConfig(@NotNull ThreadPoolTaskExecutorConfig config) {
         this.corePoolSize = config.corePoolSize;
         this.keepAliveSeconds = config.keepAliveSeconds;
         this.maxPoolSize = config.maxPoolSize;
@@ -129,7 +127,6 @@ public class ThreadPoolTaskExecutorConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #awaitTerminationMillis
      */
@@ -370,7 +367,6 @@ public class ThreadPoolTaskExecutorConfig {
      *
      * @since 2025. 8. 11.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #initialized
      */
@@ -393,7 +389,6 @@ public class ThreadPoolTaskExecutorConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #prestartAllCoreThreads
      */
@@ -463,7 +458,6 @@ public class ThreadPoolTaskExecutorConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #awaitTerminationMillis
      */
@@ -632,7 +626,6 @@ public class ThreadPoolTaskExecutorConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #prestartAllCoreThreads
      */
@@ -766,7 +759,6 @@ public class ThreadPoolTaskExecutorConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

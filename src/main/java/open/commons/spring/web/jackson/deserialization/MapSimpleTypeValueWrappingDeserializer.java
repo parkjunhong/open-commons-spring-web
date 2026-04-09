@@ -29,8 +29,7 @@ package open.commons.spring.web.jackson.deserialization;
 import java.io.IOException;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 
@@ -78,9 +77,8 @@ public class MapSimpleTypeValueWrappingDeserializer extends JsonDeserializer<Obj
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler, @NotEmpty @Nonnull String handleType) {
+    public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType) {
         this(mapType, handler, handleType, null);
     }
 
@@ -104,9 +102,8 @@ public class MapSimpleTypeValueWrappingDeserializer extends JsonDeserializer<Obj
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler, @NotEmpty @Nonnull String handleType, JsonDeserializer<?> delegate) {
+    public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType, JsonDeserializer<?> delegate) {
         this.mapType = mapType;
         this.handler = handler;
         this.handleType = handleType;
@@ -117,7 +114,6 @@ public class MapSimpleTypeValueWrappingDeserializer extends JsonDeserializer<Obj
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.deser.ContextualDeserializer#createContextual(com.fasterxml.jackson.databind.DeserializationContext,
      *      com.fasterxml.jackson.databind.BeanProperty)
@@ -139,7 +135,6 @@ public class MapSimpleTypeValueWrappingDeserializer extends JsonDeserializer<Obj
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.deser.std.DelegatingDeserializer#deserialize(com.fasterxml.jackson.core.JsonParser,
      *      com.fasterxml.jackson.databind.DeserializationContext)

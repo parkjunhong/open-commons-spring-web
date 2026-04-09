@@ -73,7 +73,6 @@ public @interface AuthorizedField {
      *
      * @since 2025. 5. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see IFieldAccessAuthorityProvider
      */
@@ -93,7 +92,6 @@ public @interface AuthorizedField {
      *
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String descr() default "";
 
@@ -115,7 +113,6 @@ public @interface AuthorizedField {
      *
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String fieldHandleBean() default AuthorizedResourceHandler.BEAN_QUALIFIER;
 
@@ -134,7 +131,6 @@ public @interface AuthorizedField {
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String handleType() default NO_ASSINGED_HANDLE_TYPE;
 
@@ -152,7 +148,6 @@ public @interface AuthorizedField {
      *
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String name() default "";
 }

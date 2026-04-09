@@ -26,8 +26,6 @@
 
 package open.commons.spring.web.jackson.serialization;
 
-import javax.annotation.Nonnull;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -88,10 +86,9 @@ public abstract class AbstractWrappingSerializer extends JsonSerializer<Object> 
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AbstractWrappingSerializer(ApplicationContext context, @Nonnull Class<?> serializedType, @Nonnull AnnotatedField annotatedField,
-            IFieldAccessAuthorityProvider fieldAccessor, @Nonnull IUnauthorizedFieldHandler fieldHandler, IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
+    public AbstractWrappingSerializer(ApplicationContext context, Class<?> serializedType, AnnotatedField annotatedField, IFieldAccessAuthorityProvider fieldAccessor,
+            IUnauthorizedFieldHandler fieldHandler, IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
         this.context = context;
         this.serializedType = serializedType;
         this.annotatedField = annotatedField;
@@ -121,7 +118,6 @@ public abstract class AbstractWrappingSerializer extends JsonSerializer<Object> 
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected Object handleValue(Object value, FieldAccessAuthorityDecision decision) {
         return decision.accessible ? value : resolveFieldHandler(decision.handleBean).handleObject(decision.handleType, value);

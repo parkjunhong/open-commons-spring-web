@@ -59,7 +59,6 @@ public @interface RequestValueConverter {
      *
      * @since 2019. 5. 29.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     boolean hasIgnoreCase() default false;
 

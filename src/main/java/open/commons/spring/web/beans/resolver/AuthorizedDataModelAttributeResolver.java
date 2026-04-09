@@ -38,10 +38,9 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-import javax.annotation.Nonnull;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -135,7 +134,6 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
      *
      * @since 2025. 9. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private List<Field> getProcessableFields(Class<?> clazz) {
         return this.authorizedDataFieldCache.computeIfAbsent(clazz, ClassInspector::getAllFields);
@@ -164,7 +162,6 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private TwoValueObject<String, String> resolveAnnotatedContext(Class<?> targetClass, String fieldName, AuthorizedRequestData anno) {
         if (anno != null) {
@@ -201,7 +198,6 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
      *            {@link Field}를 스캔할 객체.
      * @since 2025. 9. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private void resolvePojo(Object targetValue, Set<Object> visited) {
         if (targetValue == null || visited.contains(targetValue)) {
@@ -245,7 +241,7 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
         }
     }
 
-    private Object resolveRawValue(Object rawValue, String handleBean, @NotEmpty @Nonnull String handleType, Set<Object> visited) {
+    private Object resolveRawValue(Object rawValue, String handleBean, @NotEmpty String handleType, Set<Object> visited) {
         if (rawValue == null || visited.contains(rawValue)) {
             return rawValue;
         }
@@ -305,7 +301,6 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
      *
      * @since 2025. 9. 18.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.method.annotation.ModelAttributeMethodProcessor#supportsParameter(org.springframework.core.MethodParameter)
      */
@@ -318,7 +313,6 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.method.annotation.ModelAttributeMethodProcessor#supportsReturnType(org.springframework.core.MethodParameter)
      */

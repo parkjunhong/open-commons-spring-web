@@ -51,7 +51,6 @@ public interface IAuthorizedResourceAuthenticationPause {
      *
      * @since 2025. 6. 24.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public Result<Boolean> pause();
 

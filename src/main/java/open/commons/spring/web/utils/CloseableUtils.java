@@ -63,7 +63,6 @@ public class CloseableUtils {
      *
      * @since 2025. 8. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static void close(ClientHttpRequestFactory chrf) {
         close(chrf, Collections.newSetFromMap(new IdentityHashMap<>()));
@@ -86,7 +85,6 @@ public class CloseableUtils {
      *
      * @since 2025. 8. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static void close(ClientHttpRequestFactory chrf, Set<Object> visited) {
         // 이미 포함하고 있는 경우.
@@ -134,7 +132,6 @@ public class CloseableUtils {
      *
      * @since 2025. 8. 26.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static void close(RestTemplate restTemplate) {
         if (restTemplate instanceof CloseableRestTemplate) {

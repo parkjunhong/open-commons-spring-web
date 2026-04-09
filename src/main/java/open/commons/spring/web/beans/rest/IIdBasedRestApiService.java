@@ -30,14 +30,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.lang.Nullable;
 import org.springframework.util.MultiValueMap;
 
 import open.commons.core.Result;
@@ -72,7 +72,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, Class<RES> responseType) {
         return execute(id, null, null, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
@@ -101,7 +100,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -133,7 +131,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -164,7 +161,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -196,7 +192,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -231,7 +226,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -265,7 +259,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -300,7 +293,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -338,7 +330,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -375,7 +366,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -412,7 +402,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -452,7 +441,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -487,7 +475,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -522,7 +509,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -560,7 +546,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -593,7 +578,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -625,7 +609,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -660,7 +643,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -694,7 +676,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -728,7 +709,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -765,7 +745,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -797,7 +776,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable String fragment) {
@@ -829,7 +807,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -864,7 +841,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -896,7 +872,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType) {
         return execute(id, pathVariables, null, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
@@ -927,7 +902,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -961,7 +935,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -994,7 +967,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -1028,7 +1000,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1065,7 +1036,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1101,7 +1071,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1138,7 +1107,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1178,7 +1146,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1217,7 +1184,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1256,7 +1222,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1298,7 +1263,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1335,7 +1299,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1372,7 +1335,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1412,7 +1374,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1447,7 +1408,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -1481,7 +1441,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -1518,7 +1477,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -1554,7 +1512,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -1590,7 +1547,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -1629,7 +1585,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -1663,7 +1618,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable String fragment) {
@@ -1697,7 +1651,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -1734,7 +1687,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -1772,7 +1724,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType) {
         return execute(id, pathVariables, null, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
@@ -1809,7 +1760,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -1849,7 +1799,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1888,7 +1837,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -1928,7 +1876,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -1971,7 +1918,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -2013,7 +1959,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -2056,7 +2001,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -2102,7 +2046,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -2147,7 +2090,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -2192,7 +2134,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -2240,7 +2181,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -2283,7 +2223,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -2326,7 +2265,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -2372,7 +2310,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -2413,7 +2350,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -2453,7 +2389,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -2496,7 +2431,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -2538,7 +2472,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -2580,7 +2513,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -2625,7 +2557,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -2665,7 +2596,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
@@ -2705,7 +2635,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
@@ -2748,7 +2677,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
@@ -2783,7 +2711,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType) {
         return execute(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
@@ -2817,7 +2744,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -2854,7 +2780,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -2890,7 +2815,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -2927,7 +2851,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -2967,7 +2890,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -3006,7 +2928,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -3046,7 +2967,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -3089,7 +3009,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -3131,7 +3050,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -3173,7 +3091,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -3219,7 +3136,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     public <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -3257,7 +3173,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
@@ -3296,7 +3211,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
@@ -3338,7 +3252,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
@@ -3377,7 +3290,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -3416,7 +3328,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -3458,7 +3369,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -3499,7 +3409,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -3540,7 +3449,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -3584,7 +3492,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -3621,7 +3528,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable String fragment) {
@@ -3658,7 +3564,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -3698,7 +3603,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -3739,7 +3643,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType) {
@@ -3780,7 +3683,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -3824,7 +3726,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -3867,7 +3768,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -3911,7 +3811,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -3958,7 +3857,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4004,7 +3902,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4051,7 +3948,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4101,7 +3997,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4150,7 +4045,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4199,7 +4093,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4252,7 +4145,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     public <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4297,7 +4189,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4343,7 +4234,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4392,7 +4282,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4438,7 +4327,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4484,7 +4372,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4533,7 +4420,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4581,7 +4467,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4629,7 +4514,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4680,7 +4564,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4724,7 +4607,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4768,7 +4650,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4815,7 +4696,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -4852,7 +4732,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType) {
         return execute(id, null, null, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
@@ -4887,7 +4766,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -4925,7 +4803,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -4962,7 +4839,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -5000,7 +4876,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5041,7 +4916,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5081,7 +4955,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5122,7 +4995,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5166,7 +5038,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5209,7 +5080,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5252,7 +5122,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5298,7 +5167,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5339,7 +5207,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5380,7 +5247,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5424,7 +5290,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5463,7 +5328,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -5501,7 +5365,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -5542,7 +5405,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -5582,7 +5444,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -5622,7 +5483,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -5665,7 +5525,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -5703,7 +5562,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
@@ -5741,7 +5599,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
@@ -5782,7 +5639,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
@@ -5815,7 +5671,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, Class<RES> responseType) {
         return execute(id, null, requestBody, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
@@ -5847,7 +5702,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -5882,7 +5736,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -5916,7 +5769,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -5951,7 +5803,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -5989,7 +5840,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -6026,7 +5876,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -6064,7 +5913,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -6105,7 +5953,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -6145,7 +5992,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -6185,7 +6031,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -6229,7 +6074,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -6267,7 +6111,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
@@ -6304,7 +6147,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
@@ -6344,7 +6186,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
@@ -6381,7 +6222,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -6421,7 +6261,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -6461,7 +6300,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -6500,7 +6338,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -6539,7 +6376,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -6581,7 +6417,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -6616,7 +6451,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable String fragment) {
@@ -6651,7 +6485,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -6689,7 +6522,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -6728,7 +6560,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType) {
         return execute(id, null, requestBody, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
@@ -6766,7 +6597,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -6807,7 +6637,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -6847,7 +6676,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -6888,7 +6716,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -6932,7 +6759,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -6975,7 +6801,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -7019,7 +6844,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -7066,7 +6890,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -7112,7 +6935,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -7158,7 +6980,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -7208,7 +7029,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -7252,7 +7072,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
@@ -7295,7 +7114,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
@@ -7341,7 +7159,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
@@ -7384,7 +7201,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -7427,7 +7243,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -7473,7 +7288,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -7518,7 +7332,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -7563,7 +7376,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -7611,7 +7423,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -7652,7 +7463,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
@@ -7693,7 +7503,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
@@ -7737,7 +7546,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 3.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
@@ -7767,7 +7575,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, Class<RES> responseType) {
         return executeAsRaw(id, null, null, responseType, null, null, null, CallbackOn.successAsRaw(null));
@@ -7796,7 +7603,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -7826,7 +7632,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -7858,7 +7663,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -7891,7 +7695,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -7926,7 +7729,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -7962,7 +7764,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -7999,7 +7800,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -8033,7 +7833,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -8068,7 +7867,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -8100,7 +7898,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -8132,7 +7929,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -8165,7 +7961,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -8199,7 +7994,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -8230,7 +8024,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable String fragment) {
@@ -8262,7 +8055,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -8293,7 +8085,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, null, CallbackOn.successAsRaw(null));
@@ -8324,7 +8115,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -8356,7 +8146,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -8390,7 +8179,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -8425,7 +8213,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -8462,7 +8249,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -8500,7 +8286,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -8539,7 +8324,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -8575,7 +8359,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -8612,7 +8395,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -8646,7 +8428,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -8680,7 +8461,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -8715,7 +8495,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -8751,7 +8530,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -8784,7 +8562,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable String fragment) {
@@ -8818,7 +8595,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -8855,7 +8631,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, null, CallbackOn.successAsRaw(null));
@@ -8892,7 +8667,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -8930,7 +8704,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -8970,7 +8743,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9011,7 +8783,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9054,7 +8825,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9098,7 +8868,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9143,7 +8912,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9185,7 +8953,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9228,7 +8995,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9268,7 +9034,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -9308,7 +9073,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -9349,7 +9113,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -9391,7 +9154,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -9430,7 +9192,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
@@ -9470,7 +9231,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
@@ -9504,7 +9264,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.successAsRaw(null));
@@ -9538,7 +9297,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -9573,7 +9331,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -9610,7 +9367,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9648,7 +9404,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9688,7 +9443,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9729,7 +9483,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9772,7 +9525,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     public <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -9810,7 +9562,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
@@ -9849,7 +9600,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
@@ -9887,7 +9637,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -9926,7 +9675,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -9966,7 +9714,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -10007,7 +9754,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -10043,7 +9789,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable String fragment) {
@@ -10080,7 +9825,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -10120,7 +9864,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType) {
@@ -10161,7 +9904,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10203,7 +9945,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10247,7 +9988,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10292,7 +10032,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10339,7 +10078,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10387,7 +10125,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10437,7 +10174,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     public <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10482,7 +10218,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10528,7 +10263,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10573,7 +10307,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10619,7 +10352,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10666,7 +10398,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10714,7 +10445,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10757,7 +10487,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10801,7 +10530,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 8. 8..
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
             @NotNull ParameterizedTypeReference<RES> responseType //
@@ -10837,7 +10565,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType) {
         return executeAsRaw(id, null, null, responseType, null, null, null, CallbackOn.successAsRaw(null));
@@ -10872,7 +10599,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -10908,7 +10634,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -10946,7 +10671,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -10985,7 +10709,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -11026,7 +10749,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -11068,7 +10790,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -11111,7 +10832,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -11151,7 +10871,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -11192,7 +10911,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -11230,7 +10948,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -11268,7 +10985,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -11307,7 +11023,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -11347,7 +11062,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -11384,7 +11098,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
@@ -11422,7 +11135,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
@@ -11454,7 +11166,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, Class<RES> responseType) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, null, CallbackOn.successAsRaw(null));
@@ -11486,7 +11197,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -11519,7 +11229,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -11554,7 +11263,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -11590,7 +11298,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -11628,7 +11335,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -11667,7 +11373,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -11708,7 +11413,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -11746,7 +11450,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
@@ -11783,7 +11486,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
@@ -11819,7 +11521,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -11856,7 +11557,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -11894,7 +11594,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -11933,7 +11632,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -11967,7 +11665,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable String fragment) {
@@ -12002,7 +11699,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
             , @Nullable String fragment //
@@ -12040,7 +11736,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, null, CallbackOn.successAsRaw(null));
@@ -12078,7 +11773,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -12117,7 +11811,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
@@ -12158,7 +11851,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -12200,7 +11892,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -12244,7 +11935,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -12289,7 +11979,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -12336,7 +12025,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
@@ -12380,7 +12068,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
@@ -12423,7 +12110,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
@@ -12465,7 +12151,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
@@ -12508,7 +12193,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
@@ -12552,7 +12236,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
@@ -12597,7 +12280,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
@@ -12637,7 +12319,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
@@ -12678,7 +12359,6 @@ public interface IIdBasedRestApiService {
      * @return
      *
      * @since 2025. 7. 14.
-     * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
      */
     default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //

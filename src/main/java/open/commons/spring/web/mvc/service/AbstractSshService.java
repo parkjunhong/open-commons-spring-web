@@ -38,8 +38,8 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 import org.springframework.beans.factory.annotation.Value;
 
@@ -135,7 +135,6 @@ public class AbstractSshService extends AbstractGenericService {
      *
      * @since 2025. 7. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final Result<Boolean> download(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String srcPath,
             OutputStream dstOutput, boolean autoClose) {
@@ -189,7 +188,6 @@ public class AbstractSshService extends AbstractGenericService {
      *
      * @since 2023. 11. 20.
      * @version 0.7.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final Result<Boolean> download(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String srcPath,
             @NotBlank String dstPath) {
@@ -227,7 +225,6 @@ public class AbstractSshService extends AbstractGenericService {
      *
      * @since 2025. 7. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final <T> Result<T> execute(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, Function<FileTransfer, Result<T>> action,
             String job) {
@@ -267,7 +264,6 @@ public class AbstractSshService extends AbstractGenericService {
      *
      * @since 2025. 7. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final Result<Boolean> existFile(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String srcFile) {
         try {
@@ -315,7 +311,6 @@ public class AbstractSshService extends AbstractGenericService {
      *
      * @since 2023. 11. 20.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final SshConnection getConnection(String username, String password, String host, int port) {
         ReentrantLock lock = this.mutexSession;
@@ -355,7 +350,6 @@ public class AbstractSshService extends AbstractGenericService {
      *
      * @since 2025. 7. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final Result<List<LsEntry>> list(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String dir) {
         try ( //
@@ -399,7 +393,6 @@ public class AbstractSshService extends AbstractGenericService {
      *
      * @since 2025. 7. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final Result<Boolean> upload(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, InputStream srcInput,
             @NotBlank String dstPath, boolean autoClose) {
@@ -434,7 +427,6 @@ public class AbstractSshService extends AbstractGenericService {
      *
      * @since 2023. 11. 20.
      * @version 0.7.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final Result<Boolean> upload(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, String srcPath,
             @NotBlank String dstPath) {

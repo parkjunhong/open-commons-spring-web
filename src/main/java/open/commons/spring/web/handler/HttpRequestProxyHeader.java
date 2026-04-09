@@ -113,10 +113,8 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      * 2025. 7. 18.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 18.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public HttpRequestProxyHeader() {
     }
@@ -135,7 +133,6 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      *
      * @since 2025. 7. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #clientPort
      */
@@ -158,7 +155,6 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      *
      * @since 2025. 7. 18.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #forwardedFor
      */
@@ -181,7 +177,6 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      *
      * @since 2025. 7. 18.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #forwardedHost
      */
@@ -204,7 +199,6 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      *
      * @since 2025. 7. 18.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #forwardedPort
      */
@@ -227,7 +221,6 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      *
      * @since 2025. 7. 18.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #forwardedProto
      */
@@ -250,7 +243,6 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      *
      * @since 2025. 7. 18.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #realIp
      */

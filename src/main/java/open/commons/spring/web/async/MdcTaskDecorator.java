@@ -64,7 +64,6 @@ public class MdcTaskDecorator implements TaskDecorator {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.core.task.TaskDecorator#decorate(java.lang.Runnable)
      */

@@ -28,7 +28,7 @@ package open.commons.spring.web.security;
 
 import java.lang.reflect.Method;
 
-import javax.servlet.Filter;
+import jakarta.servlet.Filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -157,10 +157,8 @@ public abstract class AbstractHttpSecurityConfig {
      * 2025. 10. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public AbstractHttpSecurityConfig() {
     }
@@ -182,7 +180,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#anonymous(org.springframework.security.config.Customizer)
      */
@@ -204,7 +201,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#authenticationManager(org.springframework.security.authentication.AuthenticationManager)
      * @see HttpSecurity#authenticationProvider(org.springframework.security.authentication.AuthenticationProvider)
@@ -229,7 +225,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#authorizeHttpRequests(org.springframework.security.config.Customizer)
      */
@@ -255,7 +250,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#authorizedRequests(org.springframework.security.config.Customizer)
      */
@@ -351,7 +345,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#cors(org.springframework.security.config.Customizer)
      */
@@ -375,7 +368,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#csrf(org.springframework.security.config.Customizer)
      */
@@ -399,7 +391,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#exceptionHandling(org.springframework.security.config.Customizer)
      */
@@ -436,7 +427,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#addFilter(javax.servlet.Filter)
      * @see HttpSecurity#addFilterAfter(javax.servlet.Filter, Class)
@@ -464,7 +454,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#formLogin(org.springframework.security.config.Customizer)
      */
@@ -487,7 +476,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private final Method getMethod(String methodName, Class<?>... argTypes) {
         Class<?> userClass = ClassUtils.getUserClass(this);
@@ -515,7 +503,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#headers(org.springframework.security.config.Customizer)
      */
@@ -540,7 +527,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#httpBasic(org.springframework.security.config.Customizer)
      */
@@ -565,7 +551,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private final boolean isOverrided(String methodName, Class<?>... argTypes) {
         return getMethod(methodName, argTypes).getDeclaringClass() != AbstractHttpSecurityConfig.class;
@@ -589,7 +574,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#jee(org.springframework.security.config.Customizer)
      */
@@ -613,7 +597,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#logout(org.springframework.security.config.Customizer)
      */
@@ -638,7 +621,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#oauth2Client(org.springframework.security.config.Customizer)
      */
@@ -663,7 +645,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#oauth2Login(org.springframework.security.config.Customizer)
      */
@@ -689,7 +670,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#oauth2ResourceServer(org.springframework.security.config.Customizer)
      */
@@ -715,7 +695,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#passwordManagement(org.springframework.security.config.Customizer)
      */
@@ -739,7 +718,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#portMapper(org.springframework.security.config.Customizer)
      */
@@ -764,7 +742,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#rememberMe(org.springframework.security.config.Customizer)
      */
@@ -788,7 +765,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#requestCache(org.springframework.security.config.Customizer)
      */
@@ -812,7 +788,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#requestMatchers(org.springframework.security.config.Customizer)
      */
@@ -836,7 +811,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#requiresChannel(org.springframework.security.config.Customizer)
      */
@@ -861,7 +835,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#saml2Login(org.springframework.security.config.Customizer)
      */
@@ -886,7 +859,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#saml2Logout(org.springframework.security.config.Customizer)
      */
@@ -910,7 +882,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#securityContext(org.springframework.security.config.Customizer)
      */
@@ -934,7 +905,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#servletApi(org.springframework.security.config.Customizer)
      */
@@ -958,7 +928,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#sessionManagement(org.springframework.security.config.Customizer)
      */
@@ -983,7 +952,6 @@ public abstract class AbstractHttpSecurityConfig {
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see HttpSecurity#x509(org.springframework.security.config.Customizer)
      */

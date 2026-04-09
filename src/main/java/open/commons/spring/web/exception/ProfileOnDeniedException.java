@@ -74,7 +74,6 @@ public class ProfileOnDeniedException extends RuntimeException {
      * 
      * @since 2025. 11. 24.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public ProfileOnDeniedException(ProfilesOn profilesOn, Collection<String> activeProfiles, Method method) {
         super(buildMessage(profilesOn, activeProfiles, method));

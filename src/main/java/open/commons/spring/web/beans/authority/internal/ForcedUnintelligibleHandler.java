@@ -26,8 +26,7 @@
 
 package open.commons.spring.web.beans.authority.internal;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
 
@@ -51,10 +50,8 @@ public class ForcedUnintelligibleHandler implements IUnauthorizedFieldHandler {
      * 2025. 6. 12.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public ForcedUnintelligibleHandler() {
     }
@@ -63,12 +60,11 @@ public class ForcedUnintelligibleHandler implements IUnauthorizedFieldHandler {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler#handleObject(String, java.lang.Object)
      */
     @Override
-    public Object handleObject(@NotEmpty @Nonnull String handle, Object data) {
+    public Object handleObject(@NotEmpty String handle, Object data) {
         if (data == null) {
             return null;
         }

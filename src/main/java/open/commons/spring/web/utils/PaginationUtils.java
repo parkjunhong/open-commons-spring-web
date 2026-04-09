@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Order;
@@ -67,7 +67,6 @@ public class PaginationUtils {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public static int limit(@NotNull Pageable pageable) {
         return pageable.getPageSize();
@@ -89,7 +88,6 @@ public class PaginationUtils {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     public static int offset(@NotNull Pageable pageable) {
         return pageable.getPageNumber() * pageable.getPageSize();
@@ -111,7 +109,6 @@ public class PaginationUtils {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      * 
      * @see #orderBy(String...)
      */
@@ -138,7 +135,6 @@ public class PaginationUtils {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      * 
      * @see #orderBy(Pageable)
      */

@@ -64,10 +64,8 @@ public class LogFeatureDecorationConfiguration {
      * 2025. 7. 29.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public LogFeatureDecorationConfiguration() {
     }
@@ -94,7 +92,6 @@ public class LogFeatureDecorationConfiguration {
      *
      * @since 2025. 7. 29.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean
     @Primary

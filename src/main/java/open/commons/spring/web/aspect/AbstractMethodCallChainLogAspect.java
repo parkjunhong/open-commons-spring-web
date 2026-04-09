@@ -28,6 +28,7 @@ package open.commons.spring.web.aspect;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -37,6 +38,8 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Pointcut;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.MDC;
 import org.springframework.context.ApplicationContext;
@@ -103,12 +106,10 @@ import open.commons.spring.web.thread.MethodLogContext;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  * 
- * 
  * @see Controller
  * @see RestController
  * @see Service
  * @see Repository
- * 
  */
 public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPointcuts {
 
@@ -142,7 +143,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AbstractMethodCallChainLogAspect(ApplicationContext context) {
         this(context, false, false, false, false, true, true);
@@ -164,7 +164,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AbstractMethodCallChainLogAspect(ApplicationContext context, boolean disableRepository) {
         this(context, false, false, disableRepository, false, true, true);
@@ -187,7 +186,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *            메소드 호출이 {@link Controller}에서부터 시작된 경우에만 AOP 적용 여부
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AbstractMethodCallChainLogAspect(ApplicationContext context, boolean disableRepository, boolean handleIfOriginatedFromController) {
         this(context, false, false, disableRepository, handleIfOriginatedFromController, true, true);
@@ -214,7 +212,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 8. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AbstractMethodCallChainLogAspect(ApplicationContext context, boolean disableRepository, boolean handleIfOriginatedFromController, boolean enableLogRouting) {
         this(context, false, false, disableRepository, handleIfOriginatedFromController, enableLogRouting, true);
@@ -244,7 +241,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 8. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AbstractMethodCallChainLogAspect(ApplicationContext context, boolean disableRepository, boolean handleIfOriginatedFromController, boolean enableLogRouting,
             boolean enableIndentation) {
@@ -276,7 +272,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *            들여쓰기 적용 여부
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AbstractMethodCallChainLogAspect(ApplicationContext context, boolean disableController, boolean disableService, boolean disableRepository,
             boolean handleIfOriginatedFromController, boolean enableLogRouting, boolean enableIndentation) {
@@ -308,7 +303,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public void afterController(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
         defaultAfterController(logger, pjp);
@@ -333,7 +327,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public void afterRepository(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
         defaultAfterRepository(logger, pjp);
@@ -358,7 +351,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public void afterService(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
         defaultAfterService(logger, pjp);
@@ -383,7 +375,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public void beforeController(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
         defaultBeforeController(logger, pjp);
@@ -408,7 +399,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public void beforeRepository(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
         defaultBeforeRepository(logger, pjp);
@@ -433,7 +423,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public void beforeService(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
         defaultBeforeService(logger, pjp);
@@ -469,19 +458,22 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
         logger.log(msg);
     }
 
+    @SuppressWarnings("null")
     protected String getClassName(JoinPoint joinPoint) {
         return joinPoint.getTarget().getClass().getSimpleName();
     }
 
+    @SuppressWarnings("null")
     protected final String getPackage(JoinPoint joinPoint) {
         String[] pkg = joinPoint.getTarget().getClass().getName().split("\\.");
         if (pkg.length < 2) {
             return "";
         } else {
-            return String.join(".", ArrayUtils.copyOf(pkg, pkg.length - 1));
+            return String.join(".", Arrays.copyOf(pkg, pkg.length - 1));
         }
     }
 
+    @SuppressWarnings("null")
     protected String getShortPackage(Class<?> clazz) {
         String[] pkg = clazz.getName().split("\\.");
         if (pkg.length < 2) {
@@ -501,6 +493,7 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
         return getShortPackage(joinPoint.getTarget().getClass());
     }
 
+    @SuppressWarnings("null")
     protected final String getShortSignature(JoinPoint joinPoint) {
         return joinPoint.getSignature().toShortString();
     }
@@ -521,13 +514,13 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #withinAllControllerStereotypeComponent()
      * @see #pointcutRootPackage()
      */
+    @SuppressWarnings("null")
     @Around("pointcutRootPackage() && withinAllControllerStereotypeComponent()")
-    public Object handleController(ProceedingJoinPoint pjp) throws Throwable {
+    public @Nullable Object handleController(ProceedingJoinPoint pjp) throws Throwable {
         if (this.disableController) {
             return pjp.proceed();
         }
@@ -565,13 +558,12 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #withinRepositoryStereotypeComponent()
      * @see #pointcutRootPackage()
      */
     @Around("pointcutRootPackage() && withinRepositoryStereotypeComponent()")
-    public Object handleRespository(ProceedingJoinPoint pjp) throws Throwable {
+    public @Nullable Object handleRespository(ProceedingJoinPoint pjp) throws Throwable {
         if (this.disableRepository) {
             return pjp.proceed();
         }
@@ -580,8 +572,10 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
             return pjp.proceed();
         }
 
-        String aspectSign = UUID.randomUUID().toString();
-        final String holder = HOLDER_GEN.get();
+        @NonNull
+        String aspectSign = Objects.requireNonNull(UUID.randomUUID().toString());
+        @NonNull
+        final String holder = Objects.requireNonNull(HOLDER_GEN.get());
         try {
             // 메소드 실행 전
             beforeRepository(aspectSign, logger(MethodLogContext.getBeforeIncrement(holder, Repository.class)), pjp);
@@ -613,13 +607,12 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #withinServiceStereotypeComponent()
      * @see #pointcutRootPackage()
      */
     @Around("pointcutRootPackage() && withinServiceStereotypeComponent()")
-    public Object handleServicve(ProceedingJoinPoint pjp) throws Throwable {
+    public @Nullable Object handleServicve(ProceedingJoinPoint pjp) throws Throwable {
 
         if (this.disableService) {
             return pjp.proceed();
@@ -630,8 +623,10 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
             return pjp.proceed();
         }
 
-        String aspectSign = UUID.randomUUID().toString();
-        final String holder = HOLDER_GEN.get();
+        @NonNull
+        String aspectSign = Objects.requireNonNull(UUID.randomUUID().toString());
+        @NonNull
+        final String holder = Objects.requireNonNull(HOLDER_GEN.get());
         try {
             // 메소드 실행 전
             beforeService(aspectSign, logger(MethodLogContext.getBeforeIncrement(holder, Service.class)), pjp);
@@ -662,10 +657,9 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private final String indent(int indent) {
-        return this.enableIndentation ? StringUtils.nTimesString(indentString(), indent) : "";
+        return this.enableIndentation ? new StringBuilder().repeat(indentString(), indent).toString() : "";
     }
 
     /**
@@ -682,7 +676,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected String indentString() {
         return "  ";
@@ -702,7 +695,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 8. 12.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected String loadCallChainFeature() {
         return "callchain";
@@ -724,7 +716,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final Object[] log(JoinPoint joinPoint, String msg) {
         String pkg = getShortPackage(joinPoint.getTarget().getClass());
@@ -749,7 +740,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private final Log logger(int indent) {
         Consumer<Object[]> logger = msgData -> {
@@ -783,7 +773,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
     /**
      * 응용 프로그램의 최상의 패키지 경로를 {@link Pointcut} 으로 제공합니다. <br>
      * 
-     * 
      * <pre>
      * &#64;Component
      * &#64;Aspect
@@ -806,10 +795,8 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      * 2025. 6. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public abstract void pointcutRootPackage();
 
@@ -851,7 +838,6 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
          *
          * @since 2025. 6. 23.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          * 
          * @see Logger#info(String, Object...)
          */

@@ -68,10 +68,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 2021. 12. 9.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      */
     public AbstractMvcService() {
     }
@@ -106,7 +104,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @SuppressWarnings("unchecked")
     private <E> Result<Page<E>> executePagination(Supplier<Result<List<E>>> data, Supplier<Result<Integer>> count, int offset, int limit, String[] orderByArgs) {
@@ -158,7 +155,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      */
     protected <D> Result<Boolean> exists(Result<?> resultDao, D data) {
         if (resultDao.isError()) {
@@ -189,7 +185,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      * 
      * @see PaginationUtils#limit(Pageable)
      */
@@ -213,7 +208,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      * 
      * @see PaginationUtils#offset(Pageable)
      */
@@ -237,7 +231,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      * 
      * @see PaginationUtils#orderBy(Pageable)
      */
@@ -261,7 +254,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      * 
      * @see PaginationUtils#orderBy(String...)
      */
@@ -293,7 +285,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 24.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      */
     @SuppressWarnings("unchecked")
     protected <D, E> Result<Integer> save(List<D> data, Class<E> entityType, Function<List<E>, Result<Integer>> funcSave) {
@@ -335,7 +326,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E> Result<List<E>> selectMulti(SearchResultType type //
             , Function<String[], Result<List<E>>> funcAll //
@@ -390,7 +380,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 6.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, D> Result<List<D>> selectMulti(SearchResultType type //
             , Function<String[], Result<List<E>>> funcAll //
@@ -427,7 +416,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E> Result<List<E>> selectMulti(SearchResultType type //
             , Function<String[], Result<List<E>>> funcAll //
@@ -470,7 +458,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D> Result<List<D>> selectMulti(SearchResultType type //
             , Function<String[], Result<List<E>>> funcAll //
@@ -521,7 +508,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, P> Result<List<E>> selectMulti(SearchResultType type //
             , P param //
@@ -581,7 +567,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 6.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, D, P> Result<List<D>> selectMulti(SearchResultType type //
             , P param //
@@ -623,7 +608,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, P> Result<List<E>> selectMulti(SearchResultType type //
             , P param //
@@ -671,7 +655,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D, P> Result<List<D>> selectMulti(SearchResultType type //
             , P param //
@@ -718,7 +701,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 8.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, P> Result<List<E>> selectMulti(SearchResultType type //
             , P param //
@@ -773,7 +755,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 6.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, D, P> Result<List<D>> selectMulti(SearchResultType type //
             , P param //
@@ -812,7 +793,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 6.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E> Result<List<E>> selectMulti(SearchResultType type //
             , Supplier<Result<List<E>>> funcAll //
@@ -861,7 +841,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 6.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, D> Result<List<D>> selectMulti(SearchResultType type //
             , Supplier<Result<List<E>>> funcAll //
@@ -906,7 +885,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 1.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, P> Result<Page<E>> selectMultiPagination(P param //
             , Function<P, Result<Integer>> funcCount //
@@ -961,7 +939,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 1.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D, P> Result<Page<D>> selectMultiPagination(P param //
             , Function<P, Result<Integer>> funcCount //
@@ -1000,7 +977,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, P> Result<Page<E>> selectMultiPagination(P param //
             , Function<P, Result<Integer>> funcCount //
@@ -1038,7 +1014,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D, P> Result<Page<D>> selectMultiPagination(P param //
             , Function<P, Result<Integer>> funcCount //
@@ -1077,7 +1052,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 1.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, P> Result<Page<E>> selectMultiPagination(P param //
             , Supplier<Result<Integer>> funcCount //
@@ -1126,7 +1100,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 1.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D, P> Result<Page<D>> selectMultiPagination(P param //
             , Supplier<Result<Integer>> funcCount //
@@ -1175,7 +1148,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, P> Result<Page<E>> selectMultiPagination(SearchResultType type //
             , P param //
@@ -1246,7 +1218,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, D, P> Result<Page<D>> selectMultiPagination(SearchResultType type //
             , P param //
@@ -1295,7 +1266,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D, P> Result<Page<D>> selectMultiPagination(SearchResultType type //
             , P param //
@@ -1345,7 +1315,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, P> Result<Page<E>> selectMultiPagination(SearchResultType type //
             , P param //
@@ -1410,7 +1379,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, D, P> Result<Page<D>> selectMultiPagination(SearchResultType type //
             , P param //
@@ -1457,7 +1425,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E> Result<Page<E>> selectMultiPagination(SearchResultType type //
             , Supplier<Result<Integer>> funcCount //
@@ -1523,7 +1490,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D> Result<Page<D>> selectMultiPagination(SearchResultType type //
             , Supplier<Result<Integer>> funcCount //
@@ -1567,7 +1533,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D> Result<Page<D>> selectMultiPagination(SearchResultType type //
             , Supplier<Result<Integer>> funcCount //
@@ -1612,7 +1577,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E> Result<Page<E>> selectMultiPagination(SearchResultType type //
             , Supplier<Result<Integer>> funcCount //
@@ -1673,7 +1637,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     protected <E, D> Result<Page<D>> selectMultiPagination(SearchResultType type //
             , Supplier<Result<Integer>> funcCount //
@@ -1710,7 +1673,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 1.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E> Result<Page<E>> selectMultiPagination( //
             Supplier<Result<Integer>> funcCount //
@@ -1756,7 +1718,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 1.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D> Result<Page<D>> selectMultiPagination(Supplier<Result<Integer>> funcCount //
             , BiFunction<Integer, Integer, Result<List<E>>> funcPagination //
@@ -1796,7 +1757,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 1.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E> Result<Page<E>> selectMultiPagination(Supplier<Result<Integer>> funcCount //
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
@@ -1846,7 +1806,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 1.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D> Result<Page<D>> selectMultiPagination(Supplier<Result<Integer>> funcCount //
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
@@ -1884,7 +1843,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 10.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <E, D> Result<Page<D>> selectMultiPagination(Supplier<Result<Integer>> funcCount //
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
@@ -1919,7 +1877,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 22.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      * 
      * @see ObjectUtils#getTransformer(Object, boolean, Class, boolean)
      */
@@ -1953,7 +1910,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 26.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected static <S, T> T transform(S srcObj, boolean lookupSrcSupper, T targetObj, boolean lookupTargetSupper) {
         return ObjectUtils.getTransformer(srcObj, lookupSrcSupper, targetObj, lookupTargetSupper).apply(srcObj);
@@ -1981,7 +1937,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2021. 12. 22.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      * 
      * @see #transform(Object, boolean, Class, boolean)
      */
@@ -2011,7 +1966,6 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      *
      * @since 2022. 1. 26.
      * @version 0.4.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected static <S, T> T transform(S srcObj, T targetObj) {
         return transform(srcObj, true, targetObj, true);

@@ -28,8 +28,8 @@ package open.commons.spring.web.thread;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.util.Assert;
 

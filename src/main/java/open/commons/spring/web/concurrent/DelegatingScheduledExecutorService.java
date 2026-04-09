@@ -40,9 +40,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
+import org.jspecify.annotations.Nullable;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.scheduling.support.DelegatingErrorHandlingRunnable;
 
@@ -77,9 +75,8 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public DelegatingScheduledExecutorService(@Nonnull ScheduledExecutorService delegate, @Nullable String symbol) {
+    public DelegatingScheduledExecutorService(ScheduledExecutorService delegate, @Nullable String symbol) {
         super(delegate, symbol);
     }
 
@@ -87,7 +84,6 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.Executor#execute(java.lang.Runnable)
      */
@@ -100,7 +96,6 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ScheduledExecutorService#schedule(java.util.concurrent.Callable, long,
      *      java.util.concurrent.TimeUnit)
@@ -119,7 +114,6 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ScheduledExecutorService#schedule(java.lang.Runnable, long,
      *      java.util.concurrent.TimeUnit)
@@ -138,7 +132,6 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ScheduledExecutorService#scheduleAtFixedRate(java.lang.Runnable, long, long,
      *      java.util.concurrent.TimeUnit)
@@ -156,7 +149,6 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ScheduledExecutorService#scheduleWithFixedDelay(java.lang.Runnable, long, long,
      *      java.util.concurrent.TimeUnit)
@@ -175,7 +167,6 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ExecutorService#submit(java.util.concurrent.Callable)
      */
@@ -188,7 +179,6 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ExecutorService#submit(java.lang.Runnable)
      */
@@ -201,7 +191,6 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ExecutorService#submit(java.lang.Runnable, java.lang.Object)
      */
@@ -214,7 +203,6 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.concurrent.DelegatingExecutorService#wrap(java.lang.Runnable)
      */
@@ -251,7 +239,6 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected static String findSpecifiedThreadName(Runnable runnable) {
         // ReschedulingRunnable: @SCheduled#cron() 이 아닌 다른 설정인 경우

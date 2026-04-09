@@ -34,8 +34,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UriUtils;
@@ -65,7 +64,6 @@ public class UriEncodingHelper {
      * <li>value: 템플릿에 사용될 정보
      * </ul>
      * </ul>
-     * 
      */
     private static final Map<Encoding, TemplateUriEncoder> ENCODERS = new HashMap<>();
 
@@ -159,9 +157,8 @@ public class UriEncodingHelper {
      *
      * @since 2025. 8. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static TemplateUriEncoder encoder(@NotBlank @Nonnull Encoding encoding) {
+    public static TemplateUriEncoder encoder(@NotBlank Encoding encoding) {
         AssertUtils2.notNull(encoding);
         TemplateUriEncoder encoder = ENCODERS.get(encoding);
         return encoder != null ? encoder : ENCODERS.get(Encoding.NONE);
@@ -170,7 +167,6 @@ public class UriEncodingHelper {
     /**
      * @since 2025. 8. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private static String encodeVariable(UriComponent uriComponent, Encoding encoding, String value) {
         switch (encoding) {
@@ -226,9 +222,8 @@ public class UriEncodingHelper {
      *
      * @since 2025. 8. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    private static Map<String, Object> encodeVariables(UriComponent uriComponent, @Nonnull Encoding encoding, @Nonnull Map<String, ?> variables) {
+    private static Map<String, Object> encodeVariables(UriComponent uriComponent, Encoding encoding, Map<String, ?> variables) {
         Map<String, Object> encoded = new LinkedHashMap<>();
         String varName = null;
         Object value = null;

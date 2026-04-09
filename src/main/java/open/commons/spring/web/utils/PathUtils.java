@@ -32,8 +32,6 @@ import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import javax.annotation.Nonnull;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
@@ -68,9 +66,8 @@ public class PathUtils {
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static void addEnvironmentProperty(@Nonnull Environment env, String propName, @Nonnull Consumer<String> actor) {
+    public static void addEnvironmentProperty(Environment env, String propName, Consumer<String> actor) {
         String value = env.getProperty(propName);
         if (value == null) {
             logger.debug("'{}' 에 해당하는 설정이 존재하지 않습니다.", propName);
@@ -103,9 +100,8 @@ public class PathUtils {
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static <V> void addEnvironmentProperty(@Nonnull Environment env, String propName, Function<String, V> converter, @Nonnull Consumer<V> actor) {
+    public static <V> void addEnvironmentProperty(Environment env, String propName, Function<String, V> converter, Consumer<V> actor) {
         String value = env.getProperty(propName);
         if (value == null) {
             logger.debug("'{}' 에 해당하는 설정이 존재하지 않습니다.", propName);
@@ -129,9 +125,8 @@ public class PathUtils {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static boolean isValidAntPath(@Nonnull Collection<String> patterns) {
+    public static boolean isValidAntPath(Collection<String> patterns) {
         for (String pattern : patterns) {
             if (!isValidAntPath(pattern)) {
                 return false;
@@ -156,9 +151,8 @@ public class PathUtils {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static boolean isValidAntPath(@Nonnull String pattern) {
+    public static boolean isValidAntPath(String pattern) {
         return pattern != null && pattern.startsWith("/");
     }
 
@@ -178,9 +172,8 @@ public class PathUtils {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static boolean isValidFqcn(@Nonnull String fqcn) {
+    public static boolean isValidFqcn(String fqcn) {
         try {
             Pattern.compile(fqcn.replace(".", "\\.").replace("*", ".*"));
             return true;

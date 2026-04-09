@@ -30,12 +30,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.constraints.NotNull;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -72,10 +71,8 @@ public class RequestHeaderFilter extends AbstractOncePerRequestFilter {
      * 2025. 8. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 8. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public RequestHeaderFilter() {
     }
@@ -84,7 +81,6 @@ public class RequestHeaderFilter extends AbstractOncePerRequestFilter {
      *
      * @since 2025. 8. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.filter.OncePerRequestFilter#doFilterInternal(javax.servlet.http.HttpServletRequest,
      *      javax.servlet.http.HttpServletResponse, javax.servlet.FilterChain)
@@ -120,7 +116,7 @@ public class RequestHeaderFilter extends AbstractOncePerRequestFilter {
     }
 
     @Autowired
-    public void setSharedHeaders(@Qualifier(GlobalServletConfiguration.BEAN_QUALIFIER_PRIMARY_SHARED_HEADERS) @NotNull @Nonnull List<SharedHeader> headers) {
+    public void setSharedHeaders(@Qualifier(GlobalServletConfiguration.BEAN_QUALIFIER_PRIMARY_SHARED_HEADERS) @NotNull List<SharedHeader> headers) {
         this.sharedHeaders.addAll(headers);
     }
 }

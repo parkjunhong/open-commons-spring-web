@@ -70,10 +70,8 @@ public class AuthorizedRequestDataFieldMetadata extends AuthorizedMetadata {
      * 2025. 9. 20.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedRequestDataFieldMetadata() {
     }
@@ -82,7 +80,6 @@ public class AuthorizedRequestDataFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -112,7 +109,6 @@ public class AuthorizedRequestDataFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #handleBean
      */
@@ -135,7 +131,6 @@ public class AuthorizedRequestDataFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #handleType
      */
@@ -158,7 +153,6 @@ public class AuthorizedRequestDataFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #name
      */
@@ -171,7 +165,6 @@ public class AuthorizedRequestDataFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#hashCode()
      */
@@ -195,7 +188,6 @@ public class AuthorizedRequestDataFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #handleBean
      */
@@ -218,7 +210,6 @@ public class AuthorizedRequestDataFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #handleType
      */
@@ -241,7 +232,6 @@ public class AuthorizedRequestDataFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #name
      */
@@ -253,7 +243,6 @@ public class AuthorizedRequestDataFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 9. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

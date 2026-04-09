@@ -36,7 +36,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * 
- * 
  * @since 2021. 12. 6.
  * @version 0.4.0
  * @author parkjunhong77@gmail.com
@@ -61,7 +60,6 @@ public enum SearchResultType {
      * @return a string of an instance of {@link SearchResultType}
      *
      * @since 2021. 12. 6.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     @JsonValue
     public String get() {
@@ -70,7 +68,6 @@ public enum SearchResultType {
 
     /**
      * @since 2021. 12. 6.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      *
      * @see java.lang.Enum#toString()
      */
@@ -87,7 +84,6 @@ public enum SearchResultType {
      * @return an instance of {@link SearchResultType}
      *
      * @since 2021. 12. 6.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      *
      * @see #get(String, boolean)
      */
@@ -105,7 +101,6 @@ public enum SearchResultType {
      * @return an instance of {@link SearchResultType}
      *
      * @since 2021. 12. 6.
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     @RequestValueConverter(hasIgnoreCase = true)
     public static SearchResultType get(String type, boolean ignoreCase) {

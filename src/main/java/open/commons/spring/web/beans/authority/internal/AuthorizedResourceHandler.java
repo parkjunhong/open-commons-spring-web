@@ -30,9 +30,8 @@ import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.authority.AuthorizedField;
@@ -68,10 +67,8 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
      * 2025. 9. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedResourceHandler() {
     }
@@ -80,12 +77,11 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler#handleObject(String, java.lang.Object)
      */
     @Override
-    public Object handleObject(@NotEmpty @Nonnull String handle, Object data) throws UnsupportedOperationException {
+    public Object handleObject(@NotEmpty String handle, Object data) throws UnsupportedOperationException {
         @SuppressWarnings("unchecked")
         Function<Object, Object> handler = (Function<Object, Object>) this.unauthorizedFieldHandlers.get(handle);
         if (handler == null) {
@@ -98,12 +94,11 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler#restoreValue(String, java.lang.Object)
      */
     @Override
-    public Object restoreValue(@NotEmpty @Nonnull String handle, Object value) throws UnsupportedOperationException {
+    public Object restoreValue(@NotEmpty String handle, Object value) throws UnsupportedOperationException {
         @SuppressWarnings("unchecked")
         Function<Object, Object> handler = (Function<Object, Object>) this.authorizedDataHandlers.get(handle);
         if (handler == null) {
@@ -127,7 +122,6 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see AuthorizedRequestData
      * @see IAuthorizedRequestDataHandler
@@ -138,7 +132,7 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
      * @see Target#UNAUTHORIZED
      */
     // @auto
-    public void setAuthorizedResourceHandlers(@NotNull @Nonnull Collection<ResourceHandle> handlers) {
+    public void setAuthorizedResourceHandlers(@NotNull Collection<ResourceHandle> handlers) {
         handlers.forEach(h -> {
             if (Target.AUTHORIZED == h.target()) {
                 this.authorizedDataHandlers.put(h.handleType(), h.handle());

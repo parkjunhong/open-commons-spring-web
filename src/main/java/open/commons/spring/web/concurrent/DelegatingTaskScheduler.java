@@ -32,9 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
+import org.jspecify.annotations.Nullable;
 import org.slf4j.MDC;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.task.AsyncListenableTaskExecutor;
@@ -70,12 +68,10 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncListenableTa
      * @param symbol
      *            {@link Thread} 이름 뒤에 붙여서 식별정보로 활용
      *
-     *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public DelegatingTaskScheduler(@Nonnull S delegate, @Nullable String symbol) {
+    public DelegatingTaskScheduler(S delegate, @Nullable String symbol) {
         super(delegate, symbol);
     }
 
@@ -83,7 +79,6 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncListenableTa
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.scheduling.TaskScheduler#schedule(java.lang.Runnable, java.util.Date)
      */
@@ -96,7 +91,6 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncListenableTa
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.scheduling.TaskScheduler#schedule(java.lang.Runnable,
      *      org.springframework.scheduling.Trigger)
@@ -110,7 +104,6 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncListenableTa
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.scheduling.TaskScheduler#scheduleAtFixedRate(java.lang.Runnable, java.util.Date, long)
      */
@@ -123,7 +116,6 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncListenableTa
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.scheduling.TaskScheduler#scheduleAtFixedRate(java.lang.Runnable, long)
      */
@@ -136,7 +128,6 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncListenableTa
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable, java.util.Date,
      *      long)
@@ -150,7 +141,6 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncListenableTa
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable, long)
      */
@@ -174,7 +164,6 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncListenableTa
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected Runnable wrap(Runnable runnable) {
         if (!isAnnotatedByLogFeature(runnable, LogFeature.class)) {
@@ -209,7 +198,7 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncListenableTa
         }
     }
 
-    protected static <A extends Annotation> boolean isAnnotatedByLogFeature(@Nonnull Runnable runnable, @Nonnull Class<A> annotation) {
+    protected static <A extends Annotation> boolean isAnnotatedByLogFeature(Runnable runnable, Class<A> annotation) {
         // ScheduledMethodRunnable
         if (runnable instanceof ScheduledMethodRunnable) {
             ScheduledMethodRunnable r = (ScheduledMethodRunnable) runnable;

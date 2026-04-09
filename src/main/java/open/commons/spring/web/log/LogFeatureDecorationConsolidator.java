@@ -31,9 +31,8 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import javax.annotation.Nonnull;
-import javax.annotation.PostConstruct;
-import javax.validation.constraints.NotBlank;
+import jakarta.annotation.PostConstruct;
+import jakarta.validation.constraints.NotBlank;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,10 +71,8 @@ public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationCo
      * 2025. 7. 29.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public LogFeatureDecorationConsolidator() {
     }
@@ -84,14 +81,12 @@ public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationCo
      *
      * @since 2025. 7. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
-     * @see open.commons.spring.web.log.ILogFeatureDecorationConsolidator#decorator(java.lang.String,
-     *      java.lang.String)
+     * @see open.commons.spring.web.log.ILogFeatureDecorationConsolidator#decorator(java.lang.String, java.lang.String)
      */
     @Override
-    @Nonnull
-    public Function<String, String> decorator(@NotBlank @Nonnull String feature, String marker) {
+
+    public Function<String, String> decorator(@NotBlank String feature, String marker) {
         Function<String, String> f = decorators.get(DECORATOR_KEY.apply(feature, marker));
         return f != null ? f : ILogFeatureDecorationConsolidator::decorate;
     }

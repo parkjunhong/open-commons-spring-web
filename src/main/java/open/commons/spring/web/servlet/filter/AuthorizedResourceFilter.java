@@ -28,12 +28,12 @@ package open.commons.spring.web.servlet.filter;
 
 import java.io.IOException;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,7 +70,6 @@ public class AuthorizedResourceFilter implements Filter {
      *
      * @since 2025. 6. 24.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedResourceFilter(IAuthorizedResourceAuthenticationPause auth) {
         this.auth = auth;
@@ -80,7 +79,6 @@ public class AuthorizedResourceFilter implements Filter {
      *
      * @since 2025. 6. 24.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse,
      *      javax.servlet.FilterChain)

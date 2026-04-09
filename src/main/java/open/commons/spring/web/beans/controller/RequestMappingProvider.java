@@ -63,13 +63,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import open.commons.core.utils.CollectionUtils;
 import open.commons.core.utils.StreamUtils;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.authority.AuthorizedRequest;
-
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
  * Spring기반 어플리케이션이 제공하는 REST API 정보를 제공합니다.<br>
@@ -170,7 +170,6 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public RequestMappingProvider(ApplicationContext context) {
         this.context = context;
@@ -204,7 +203,6 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private List<RestApiGroup> _buildRestApiGroup(Class<?> clazz, Class<? extends Annotation> controllerType) {
 
@@ -315,7 +313,6 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private String _findConfigurationValue(String input) {
         Matcher matcher = PLACEHOLDER_PATTERN.matcher(input);
@@ -398,7 +395,6 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      *
      * @since 2025. 10. 20.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private RestApiMetadataDTO createRestApiMetadata(Comparator<RestApiGroup> groupOrder, Comparator<RestApiDecl> apiOrder) {
 
@@ -440,7 +436,6 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
 
     /**
@@ -460,7 +455,6 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      *
      * @since 2025. 10. 20.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Operation(summary = "REST API Metadata 제공", description = "")
     @GetMapping(path = "${open-commons.spring.web.beans.controller.request-mapping-provider.get-all:}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -473,7 +467,6 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.context.ApplicationListener#onApplicationEvent(org.springframework.context.ApplicationEvent)
      */
@@ -512,7 +505,6 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
          *
          * @since 2025. 9. 29.
          * @version 0.8.0
-         * @author parkjunhong77@gmail.com
          */
         public RestApiMetadataDTO(List<RestApiGroup> controller, List<RestApiGroup> restController) {
             this.controller = controller;
@@ -610,7 +602,6 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
         /**
          * @version 0.1.0
          * @since 2025. 9. 29.
-         * @author parkjunhong77@gmail.com(jhpark@ymtech.co.kr)
          *
          * @see java.lang.Object#toString()
          */

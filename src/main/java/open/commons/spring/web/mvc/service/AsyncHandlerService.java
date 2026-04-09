@@ -64,7 +64,6 @@ public abstract class AsyncHandlerService extends AbstractGenericService {
      * @return
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected <T> Future<T> future(T value) {
         return new AsyncResult<>(value);
@@ -86,7 +85,6 @@ public abstract class AsyncHandlerService extends AbstractGenericService {
      * @param key
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected final <H, K> void unregisterAsyncJob(H holder, K key) {
         // 비동기 작업 제거

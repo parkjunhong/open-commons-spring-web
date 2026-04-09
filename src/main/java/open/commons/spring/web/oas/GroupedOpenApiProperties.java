@@ -28,9 +28,9 @@ package open.commons.spring.web.oas;
 
 import java.util.List;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
-import org.springdoc.core.GroupedOpenApi;
+import org.springdoc.core.models.GroupedOpenApi;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.info.Info;
@@ -122,10 +122,8 @@ public class GroupedOpenApiProperties {
      * 2025. 4. 8.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public GroupedOpenApiProperties() {
     }
@@ -144,7 +142,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #consumesToMatch
      */
@@ -169,7 +166,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #displayName
      */
@@ -192,7 +188,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #externalDocs
      */
@@ -215,7 +210,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #group
      */
@@ -238,7 +232,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #headersToMatch
      */
@@ -263,7 +256,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #info
      */
@@ -286,7 +278,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #packagesToExclude
      */
@@ -311,7 +302,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #packagesToScan
      */
@@ -336,7 +326,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #pathsToExclude
      */
@@ -361,7 +350,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #pathsToMatch
      */
@@ -386,7 +374,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #producesToMatch
      */
@@ -412,7 +399,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #consumesToMatch
      */
@@ -435,7 +421,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #displayName
      */
@@ -458,7 +443,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #externalDocs
      */
@@ -481,7 +465,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #group
      */
@@ -504,7 +487,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #headersToMatch
      */
@@ -527,7 +509,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #info
      */
@@ -550,7 +531,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #packagesToExclude
      */
@@ -573,7 +553,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #packagesToScan
      */
@@ -596,7 +575,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #pathsToExclude
      */
@@ -619,7 +597,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #pathsToMatch
      */
@@ -642,7 +619,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #producesToMatch
      */
@@ -654,7 +630,6 @@ public class GroupedOpenApiProperties {
      *
      * @since 2025. 4. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

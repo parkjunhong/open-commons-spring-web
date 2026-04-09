@@ -34,8 +34,8 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.annotation.PostConstruct;
-import javax.validation.constraints.NotNull;
+import jakarta.annotation.PostConstruct;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -115,7 +115,6 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public final <T> Result<T> error(String msg) {
         return Result.error(msg);
@@ -140,7 +139,6 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public final <T> Result<T> error(String format, Object... args) {
         return Result.error(format, args);
@@ -165,7 +163,6 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @SuppressWarnings("unchecked")
     public final <T> Result<T> error(T data, String msg) {
@@ -193,7 +190,6 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     @SuppressWarnings("unchecked")
     public final <T> Result<T> error(T data, String format, Object... args) {
@@ -222,7 +218,6 @@ public class AbstractComponent {
      *
      * @since 2021. 11. 9.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      */
     public final <T> void execute(Consumer<T> action, T param, String job) {
         StopWatch watch = new StopWatch();
@@ -260,7 +255,6 @@ public class AbstractComponent {
      *
      * @since 2021. 11. 9.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      */
     public final <R, T> R execute(Function<T, R> action, T param, String job) {
         StopWatch watch = new StopWatch();
@@ -292,7 +286,6 @@ public class AbstractComponent {
      *
      * @since 2021. 11. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public final void execute(Runner action, String job) {
         StopWatch watch = new StopWatch();
@@ -326,7 +319,6 @@ public class AbstractComponent {
      *
      * @since 2021. 10. 4.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public final <T> T execute(Supplier<T> action, String job) {
         StopWatch watch = new StopWatch();
@@ -361,7 +353,6 @@ public class AbstractComponent {
      *
      * @since 2022. 5. 4.
      * @version 0.5.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <T> List<T> getMultiValuesArgument(@NotNull ApplicationArguments mainArgs, @NotNull String argName, @NotNull Class<T> valueType) {
         if (mainArgs == null) {
@@ -402,7 +393,6 @@ public class AbstractComponent {
      *
      * @since 2022. 5. 4.
      * @version 0.5.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @SuppressWarnings("unchecked")
     protected Map<String, List<Object>> getMultiValuesArguments(@NotNull ApplicationArguments mainArgs, @NotNull Map<String, Class<?>> argNameTypes) {
@@ -437,7 +427,6 @@ public class AbstractComponent {
      *
      * @since 2022. 5. 4.
      * @version 0.5.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @SuppressWarnings("unchecked")
     protected <T> T getSingleValueArgument(@NotNull ApplicationArguments mainArgs, @NotNull String argName, @NotNull Class<T> valueType) {
@@ -477,7 +466,6 @@ public class AbstractComponent {
      *
      * @since 2022. 5. 4.
      * @version 0.5.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected Map<String, Object> getSingleValueArguments(@NotNull ApplicationArguments mainArgs, @NotNull Map<String, Class<?>> argNameTypes) {
         if (mainArgs == null) {
@@ -513,7 +501,6 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public final <T> Result<T> success(T data, String message) {
         return Result.success(data).setMessage(message);
@@ -540,7 +527,6 @@ public class AbstractComponent {
      *
      * @since 2021. 8. 24.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public final <T> Result<T> success(T data, String format, Object... args) {
         return Result.success(data).setMessage(format, args);
@@ -566,7 +552,6 @@ public class AbstractComponent {
      *
      * @since 2021. 12. 15.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      * 
      * @see Stream#of(Object...)
      * @see Stream#parallel()
@@ -598,7 +583,6 @@ public class AbstractComponent {
      *
      * @since 2021. 12. 15.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      * 
      * @see #streamOf(boolean, Object...)
      */

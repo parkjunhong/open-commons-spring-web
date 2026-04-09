@@ -45,27 +45,27 @@ import java.util.function.Supplier;
 
 import javax.net.ssl.SSLContext;
 
-import org.apache.http.NoHttpResponseException;
-import org.apache.http.config.ConnectionConfig;
-import org.apache.http.config.RegistryBuilder;
-import org.apache.http.conn.DnsResolver;
-import org.apache.http.conn.HttpClientConnectionManager;
-import org.apache.http.conn.HttpConnectionFactory;
-import org.apache.http.conn.ManagedHttpClientConnection;
-import org.apache.http.conn.SchemePortResolver;
-import org.apache.http.conn.routing.HttpRoute;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.conn.ssl.NoopHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
-import org.apache.http.impl.conn.DefaultSchemePortResolver;
-import org.apache.http.impl.conn.ManagedHttpClientConnectionFactory;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.impl.conn.SystemDefaultDnsResolver;
-import org.apache.http.ssl.SSLContextBuilder;
+import org.apache.hc.client5.http.DnsResolver;
+import org.apache.hc.client5.http.HttpRoute;
+import org.apache.hc.client5.http.SchemePortResolver;
+import org.apache.hc.client5.http.SystemDefaultDnsResolver;
+import org.apache.hc.client5.http.config.ConnectionConfig;
+import org.apache.hc.client5.http.impl.DefaultSchemePortResolver;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.ManagedHttpClientConnectionFactory;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.io.HttpClientConnectionManager;
+import org.apache.hc.client5.http.io.ManagedHttpClientConnection;
+import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
+import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
+import org.apache.hc.client5.http.ssl.NoopHostnameVerifier;
+import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
+import org.apache.hc.core5.http.NoHttpResponseException;
+import org.apache.hc.core5.http.config.RegistryBuilder;
+import org.apache.hc.core5.http.io.HttpConnectionFactory;
+import org.apache.hc.core5.ssl.SSLContextBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.ParameterizedTypeReference;
@@ -118,7 +118,6 @@ public class RestFacade {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @deprecated Use {@link #headers(MultiValueMap, String...)}.
      */
@@ -144,7 +143,6 @@ public class RestFacade {
      * @return
      *
      * @since 2020. 8. 25.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static HttpEntity<Map<String, Object>> buildHttpEntity(MultiValueMap<String, String> headers, Object... values) {
 
@@ -208,7 +206,6 @@ public class RestFacade {
      * @throws NoSuchAlgorithmException
      *
      * @since 2019. 4. 9.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static CloseableHttpClient createHttpsClient(boolean allowPrivateCA) throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
 
@@ -260,7 +257,6 @@ public class RestFacade {
      * @throws KeyStoreException
      *
      * @since 2019. 4. 9.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private static RegistryBuilder<ConnectionSocketFactory> createRegistryBuilder(boolean allowPrivateCA)
             throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
@@ -298,7 +294,6 @@ public class RestFacade {
      * @return
      *
      * @since 2020. 8. 27.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static String createUrl(String context, String url, MultiValueMap<String, Object> parameters) {
 
@@ -380,7 +375,6 @@ public class RestFacade {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
             Class<RES> responseType) {
@@ -441,7 +435,6 @@ public class RestFacade {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @deprecated Use
      *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, Class, Function, Function)}
@@ -489,7 +482,6 @@ public class RestFacade {
      *
      * @since 2020. 11. 20.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
             ParameterizedTypeReference<RES> responseType) {
@@ -550,7 +542,6 @@ public class RestFacade {
      *
      * @since 2020. 11. 20.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @deprecated Use
      *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, ParameterizedTypeReference, Function, Function)}
@@ -600,7 +591,6 @@ public class RestFacade {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
             HttpEntity<REQ> entity, Class<RES> responseType) {
@@ -663,7 +653,6 @@ public class RestFacade {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @deprecated Use
      *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, Class, Function, Function)}
      */
@@ -717,7 +706,6 @@ public class RestFacade {
      *
      * @since 2020. 11. 20.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
             HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType) {
@@ -780,7 +768,6 @@ public class RestFacade {
      *
      * @since 2020. 11. 20.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @deprecated Use
      *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, ParameterizedTypeReference, Function, Function)}
      */
@@ -830,8 +817,8 @@ public class RestFacade {
      *
      * @since 2019. 10. 24.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
-     * @deprecated Use {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, Class, Function, Function)}
+     * @deprecated Use
+     *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, Class, Function, Function)}
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, Class<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
@@ -874,7 +861,6 @@ public class RestFacade {
      *
      * @since 2020. 11. 20.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @deprecated Use
      *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, ParameterizedTypeReference, Function, Function)}
      */
@@ -910,7 +896,6 @@ public class RestFacade {
      *
      * @since 2020. 11. 23.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private static <REQ, RES> Result<RES> exchange(Supplier<ResponseEntity<RES>> sup, HttpMethod method, URI uri, HttpEntity<REQ> entity, Object responseType //
             , Function<ResponseEntity<RES>, Result<RES>> onSuccess, Function<Exception, Result<RES>> onError) {
@@ -991,7 +976,6 @@ public class RestFacade {
      * @return
      *
      * @since 2020. 8. 28.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static final HttpHeaders headers(MultiValueMap<String, String> headers, String... headerEntries) {
         AssertUtils2.notNulls(IllegalArgumentException.class, (Object[]) headerEntries);
@@ -1023,7 +1007,6 @@ public class RestFacade {
      * @return
      *
      * @since 2020. 10. 21.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static String queryParameters(MultiValueMap<String, Object> parameters) {
         List<String> paramBuf = new ArrayList<>();
@@ -1066,7 +1049,6 @@ public class RestFacade {
      *
      * @since 2025. 7. 2.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private static String encode(String value) {
         try {
@@ -1092,7 +1074,6 @@ public class RestFacade {
      * @return
      *
      * @since 2020. 10. 21.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static String queryParameters(String... parameters) {
         if (parameters == null) {

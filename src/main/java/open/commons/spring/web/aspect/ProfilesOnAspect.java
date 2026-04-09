@@ -35,8 +35,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.annotation.Nonnull;
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -81,7 +80,6 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      *
      * @since 2025. 11. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public ProfilesOnAspect(ApplicationContext context) {
         super(context);
@@ -99,10 +97,8 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      * 2025. 11. 21.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 11. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @Pointcut("@annotation(open.commons.spring.web.context.annotation.ProfilesOn)")
     public final void annotationProfilesOn() {
@@ -124,7 +120,6 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      *
      * @since 2025. 11. 24.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private ProfileOnDeniedException createProfileOnDeniedException(ProfilesOn profilesOn, Method method) {
         throw new ProfileOnDeniedException(profilesOn, Arrays.asList(getProfilesAndMore()), method);
@@ -148,9 +143,8 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      *
      * @since 2025. 11. 24.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    private boolean decideByRule(@Nonnull String[] standards, @Nonnull DecisionRule rule) {
+    private boolean decideByRule(String[] standards, DecisionRule rule) {
         Set<String> filteredStandards = Stream.of(standards).filter(std -> std != null && !std.trim().isEmpty()).collect(Collectors.toSet());
         // 조건에 부합하는 'standard'가 없는 경우 모두 '매칭 성공' 처리.
         if (filteredStandards.isEmpty()) {
@@ -222,7 +216,6 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      *
      * @since 2025. 11. 24.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private String[] getProfilesAndMore() {
         return ObjectUtils.getOrDefault(this.currentProfiles, new String[] {});
@@ -244,7 +237,6 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      *
      * @since 2025. 11. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      * 
      * @see #withinAllControllerStereotypeComponent()
      * @see #annotationAllRequestMapping()

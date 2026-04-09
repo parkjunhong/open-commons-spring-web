@@ -65,10 +65,8 @@ public class AuthorizedResourceAnnotationValidator implements BeanFactoryPostPro
      * 2025. 5. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedResourceAnnotationValidator() {
     }
@@ -77,7 +75,6 @@ public class AuthorizedResourceAnnotationValidator implements BeanFactoryPostPro
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.beans.factory.config.BeanFactoryPostProcessor#postProcessBeanFactory(org.springframework.beans.factory.config.ConfigurableListableBeanFactory)
      */

@@ -64,7 +64,6 @@ public class ArgumentsUtils {
      * @return
      *
      * @since 2022. 8. 10.
-     * @author Park_Jun_Hong (jhpark@ymtech.co.kr)
      */
     public String getOptionValue(DefaultApplicationArguments args, String name) {
         List<String> values = args.getOptionValues(name);
@@ -97,7 +96,6 @@ public class ArgumentsUtils {
      *
      * @since 2022. 8. 10.
      * @version 0.5.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public Logger setLoggerContextUsingApplicationExternalConfiguration(Class<?> loggerName, String argName, String[] args) {
 

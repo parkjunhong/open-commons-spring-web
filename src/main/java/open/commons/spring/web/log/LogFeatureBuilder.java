@@ -31,9 +31,8 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * {@link ILogFeatureDecorator} 객체를 생성하는 "계층형 Builder"
@@ -68,7 +67,6 @@ public class LogFeatureBuilder {
          *
          * @since 2025. 7. 29.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         public ObjectBuilder object();
 
@@ -86,7 +84,6 @@ public class LogFeatureBuilder {
          *
          * @since 2025. 7. 29.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         public ObjectsBuilder objects();
 
@@ -98,7 +95,6 @@ public class LogFeatureBuilder {
          *
          * @since 2025. 7. 29.
          * @version 0.8.0
-         * @author parkjunhong77@gmail.com
          *
          * @see open.commons.spring.web.log.LogFeatureBuilder.Builder#object()
          */
@@ -111,7 +107,6 @@ public class LogFeatureBuilder {
          *
          * @since 2025. 7. 29.
          * @version 0.8.0
-         * @author parkjunhong77@gmail.com
          *
          * @see open.commons.spring.web.log.LogFeatureBuilder.Builder#objects()
          */
@@ -139,7 +134,6 @@ public class LogFeatureBuilder {
              *
              * @since 2025. 7. 29.
              * @version 0.8.0
-             * @author Park, Jun-Hong parkjunhong77@gmail.com
              */
             public ILogFeatureDecorator build() {
                 return new ILogFeatureDecorator() {
@@ -175,9 +169,8 @@ public class LogFeatureBuilder {
              *
              * @since 2025. 7. 29.
              * @version 0.8.0
-             * @author Park, Jun-Hong parkjunhong77@gmail.com
              */
-            public void decorator(@NotNull @Nonnull Function<String, String> decorator) {
+            public void decorator(@NotNull Function<String, String> decorator) {
                 this.decorator = decorator;
             }
 
@@ -195,9 +188,8 @@ public class LogFeatureBuilder {
              *
              * @since 2025. 7. 29.
              * @version 0.8.0
-             * @author Park, Jun-Hong parkjunhong77@gmail.com
              */
-            public void feature(@NotBlank @Nonnull String feature) {
+            public void feature(@NotBlank String feature) {
                 this.feature = feature;
             }
 
@@ -215,7 +207,6 @@ public class LogFeatureBuilder {
              *
              * @since 2025. 7. 29.
              * @version 0.8.0
-             * @author Park, Jun-Hong parkjunhong77@gmail.com
              */
             public void marker(String marker) {
                 this.marker = marker;
@@ -231,7 +222,6 @@ public class LogFeatureBuilder {
              *
              * @since 2025. 7. 29.
              * @version 0.8.0
-             * @author parkjunhong77@gmail.com
              *
              * @see open.commons.spring.web.log.LogFeatureBuilder.ObjectBuilder#build()
              */
@@ -244,7 +234,6 @@ public class LogFeatureBuilder {
              *
              * @since 2025. 7. 29.
              * @version 0.8.0
-             * @author parkjunhong77@gmail.com
              *
              * @see open.commons.spring.web.log.LogFeatureBuilder.ObjectBuilder#decorator(java.util.function.Function)
              */
@@ -258,7 +247,6 @@ public class LogFeatureBuilder {
              *
              * @since 2025. 7. 29.
              * @version 0.8.0
-             * @author parkjunhong77@gmail.com
              *
              * @see open.commons.spring.web.log.LogFeatureBuilder.ObjectBuilder#feature(java.lang.String)
              */
@@ -272,7 +260,6 @@ public class LogFeatureBuilder {
              *
              * @since 2025. 7. 29.
              * @version 0.8.0
-             * @author parkjunhong77@gmail.com
              *
              * @see open.commons.spring.web.log.LogFeatureBuilder.ObjectBuilder#marker(java.lang.String)
              */
@@ -292,7 +279,6 @@ public class LogFeatureBuilder {
              *
              * @since 2025. 7. 29.
              * @version 0.8.0
-             * @author parkjunhong77@gmail.com
              *
              * @see open.commons.spring.web.log.LogFeatureBuilder.ObjectsBuilder#build()
              */
@@ -305,7 +291,6 @@ public class LogFeatureBuilder {
              *
              * @since 2025. 7. 29.
              * @version 0.8.0
-             * @author parkjunhong77@gmail.com
              *
              * @see open.commons.spring.web.log.LogFeatureBuilder.ObjectsBuilder#object(java.util.function.Function)
              */
@@ -335,7 +320,6 @@ public class LogFeatureBuilder {
          *
          * @since 2025. 7. 29.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         ILogFeatureDecorator build();
 
@@ -355,9 +339,8 @@ public class LogFeatureBuilder {
          *
          * @since 2025. 7. 29.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
-        ObjectBuilder decorator(@NotNull @Nonnull Function<String, String> decorator);
+        ObjectBuilder decorator(@NotNull Function<String, String> decorator);
 
         /**
          * 'feature'({@link LogFeature#feature()}) 항목에 해당하는 값을 설정합니다. <br>
@@ -374,9 +357,8 @@ public class LogFeatureBuilder {
          *
          * @since 2025. 7. 29.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
-        ObjectBuilder feature(@NotBlank @Nonnull String feature);
+        ObjectBuilder feature(@NotBlank String feature);
 
         /**
          * 'marker'({@link LogFeature#marker()}) 항목에 해당하는 값을 설정합니다. <br>
@@ -393,9 +375,8 @@ public class LogFeatureBuilder {
          *
          * @since 2025. 7. 29.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
-        ObjectBuilder marker(@NotNull @Nonnull String marker);
+        ObjectBuilder marker(@NotNull String marker);
 
     }
 
@@ -403,7 +384,7 @@ public class LogFeatureBuilder {
 
         List<ILogFeatureDecorator> build();
 
-        ObjectsBuilder object(@NotNull @Nonnull Function<ObjectBuilder, ObjectBuilder> consumer);
+        ObjectsBuilder object(@NotNull Function<ObjectBuilder, ObjectBuilder> consumer);
 
     }
 

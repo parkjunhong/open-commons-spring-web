@@ -28,8 +28,7 @@ package open.commons.spring.web.log;
 
 import java.util.function.Function;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 import open.commons.core.utils.StringUtils;
 
@@ -59,10 +58,9 @@ public interface ILogFeatureDecorationConsolidator {
      *
      * @since 2025. 7. 29.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    @Nonnull
-    public Function<String, String> decorator(@NotBlank @Nonnull String feature, String marker);
+
+    public Function<String, String> decorator(@NotBlank String feature, String marker);
 
     /**
      * 
@@ -81,9 +79,8 @@ public interface ILogFeatureDecorationConsolidator {
      *
      * @since 2025. 7. 29.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    @Nonnull
+
     public static String decorate(String propertyValue) {
         return StringUtils.isNullOrEmptyString(propertyValue = sanitize(propertyValue)) //
                 ? "" //
@@ -105,9 +102,8 @@ public interface ILogFeatureDecorationConsolidator {
      *
      * @since 2025. 7. 29.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    @Nonnull
+
     public static String sanitize(String propertyValue) {
         return StringUtils.isNullOrEmptyString(propertyValue) ? "" : propertyValue.trim();
     }

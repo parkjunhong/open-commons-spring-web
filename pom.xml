@@ -5,10 +5,11 @@
   <parent>
     <groupId>io.github.open-commons</groupId>
     <artifactId>open-commons-spring-web-dependencies</artifactId>
-    <version>0.8.0-SNAPSHOT</version>
+    <version>4.0.0-SNAPSHOT</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <artifactId>open-commons-spring-web</artifactId>
+  <packaging>pom</packaging>
   <name>Open Commons for Spring Web</name>
   <description>Open Commons Spring Web Project</description>
   <url>https://github.com/open-commons/open-commons-spring-web</url>
@@ -39,15 +40,7 @@
   </developers>
 
   <properties>
-    <!-- >>> begin: plugin dependencies -->
     <build.finalName>open-commons-spring-web-${project.version}</build.finalName>
-
-    <encoding>UTF-8</encoding>
-    <java.version>1.8</java.version>
-
-    <compile.encoding>UTF-8</compile.encoding>
-    <compile.source.version>1.8</compile.source.version>
-    <compile.target.version>1.8</compile.target.version>
   </properties>
 
   <distributionManagement>
@@ -92,32 +85,17 @@
 
   <dependencies>
     <!-- ********************** -->
-    <!-- begin: spring-framework -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-    </dependency>
-    <!-- end: spring-framework -->
-    <!-- ********************** -->
-
-    <!-- ********************** -->
     <!-- begin: spring boot -->
-    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
+    <!-- Spring Boot Web Starter: 버전은 BOM(parent 경유) 관리 -->
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
+    <!-- `@ConfigurationProperties` 메타데이터 생성용 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
     <!-- end: spring boot -->
     <!-- ********************** -->
@@ -127,9 +105,19 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
+      <optional>true</optional>
     </dependency>
     <!-- end: Spring Security -->
     <!-- ********************** -->
+    
+    <!-- ************** -->
+    <!-- begin: servlet -->
+    <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+    </dependency>
+    <!-- end: servlet -->
+    <!-- ************** -->
 
     <!-- ************** -->
     <!-- begin: Pagination -->
@@ -150,10 +138,10 @@
       <groupId>jakarta.validation</groupId>
       <artifactId>jakarta.validation-api</artifactId>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/com.google.code.findbugs/jsr305 -->
+    
     <dependency>
-      <groupId>com.google.code.findbugs</groupId>
-      <artifactId>jsr305</artifactId>
+      <groupId>org.jspecify</groupId>
+      <artifactId>jspecify</artifactId>
     </dependency>
     <!-- <<< end: Validation -->
     <!-- ************** -->
@@ -180,33 +168,12 @@
 
     <!-- ************** -->
     <!-- begin: httpclient -->
-    <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+    <!-- Source: https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5 -->
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
+        <groupId>org.apache.httpcomponents.client5</groupId>
+        <artifactId>httpclient5</artifactId>
     </dependency>
     <!-- end: httpclient -->
-    <!-- ************** -->
-
-    <!-- ************** -->
-    <!-- begin: servlet -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <!-- end: servlet -->
-    <!-- ************** -->
-
-    <!-- ************** -->
-    <!-- begin: jackson -->
-    <!--
-    https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-    </dependency>
-    <!-- end: jackson -->
     <!-- ************** -->
 
     <!-- ************** -->
@@ -222,30 +189,37 @@
     <!-- end: open.commons -->
     <!-- ************** -->
 
-    <!-- ************** -->
-    <!-- begin: REST API Documentation -->
-
-    <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
-    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-ui</artifactId>
-    </dependency>
-
-    <!-- end: REST API Documentation -->
-    <!-- ************** -->
+        <!-- ************** -->
+      <!-- begin: REST API Documentation -->
+      <!-- Source: https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+      <dependency>
+          <groupId>org.springdoc</groupId>
+          <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-api -->
+      <dependency>
+          <groupId>org.springdoc</groupId>
+          <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webflux-ui -->
+      <dependency>
+          <groupId>org.springdoc</groupId>
+          <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webflux-api -->
+      <dependency>
+          <groupId>org.springdoc</groupId>
+          <artifactId>springdoc-openapi-starter-webflux-api</artifactId>
+      </dependency>
+      <!-- end: REST API Documentation -->
+      <!-- ************** -->
 
     <!-- ************** -->
     <!-- begin: Aspect -->
     <dependency>
-      <groupId>org.aspectj</groupId>
-      <artifactId>aspectjweaver</artifactId>
-    </dependency>
-
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-aop</artifactId>
     </dependency>
-
     <!-- end: Aspect -->
     <!-- ************** -->
 
@@ -286,70 +260,23 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <configuration>
-          <encoding>UTF-8</encoding>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <!-- <<< end: source -->
       <!-- >>> begin: javadoc -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <goal>deploy</goal>
-          <show>private</show>
-          <nohelp>true</nohelp>
-          <additionalOptions>
-            <additionalOption>-Xdoclint:none</additionalOption>
-          </additionalOptions>
-          <charset>${encoding}</charset>
-          <docencoding>${encoding}</docencoding>
-          <encoding>${encoding}</encoding>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <!-- <<< end: javadoc -->
       <!-- Maven Central Deployment plugin -->
       <plugin>
         <groupId>org.sonatype.central</groupId>
         <artifactId>central-publishing-maven-plugin</artifactId>
-        <version>0.7.0</version>
-        <extensions>true</extensions>
-        <configuration>
-          <publishingServerId>maven-central</publishingServerId>
-          <!-- autoPublish>true</autoPublish>
-             		<waitUntil>published</waitUntil -->
-        </configuration>
       </plugin>
       <!-- GPG signature plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
-        <version>1.5</version>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

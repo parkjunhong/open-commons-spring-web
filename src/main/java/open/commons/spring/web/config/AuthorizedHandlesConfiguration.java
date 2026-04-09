@@ -52,10 +52,8 @@ public class AuthorizedHandlesConfiguration {
      * 2025. 9. 29.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedHandlesConfiguration() {
     }

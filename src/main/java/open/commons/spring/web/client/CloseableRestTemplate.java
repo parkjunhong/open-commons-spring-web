@@ -29,7 +29,7 @@ package open.commons.spring.web.client;
 import java.io.Closeable;
 import java.util.List;
 
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PreDestroy;
 
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -60,10 +60,8 @@ public class CloseableRestTemplate extends RestTemplate implements Closeable {
      * 2025. 8. 26.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 8. 26.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public CloseableRestTemplate() {
         super();
@@ -83,7 +81,6 @@ public class CloseableRestTemplate extends RestTemplate implements Closeable {
      *
      * @since 2025. 8. 26.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public CloseableRestTemplate(ClientHttpRequestFactory requestFactory) {
         super(requestFactory);
@@ -103,7 +100,6 @@ public class CloseableRestTemplate extends RestTemplate implements Closeable {
      *
      * @since 2025. 8. 26.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public CloseableRestTemplate(List<HttpMessageConverter<?>> messageConverters) {
         super(messageConverters);
@@ -113,7 +109,6 @@ public class CloseableRestTemplate extends RestTemplate implements Closeable {
      *
      * @since 2025. 8. 26.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.comk
      *
      * @see java.io.Closeable#close()
      */

@@ -58,7 +58,6 @@ public class ByPassUriTemplateVariables implements MapUriTemplateVariables {
      *
      * @since 2025. 8. 27.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.util.UriComponents.UriTemplateVariables#getValue(java.lang.String)
      */
@@ -77,7 +76,6 @@ public class ByPassUriTemplateVariables implements MapUriTemplateVariables {
      *
      * @since 2025. 8. 27.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.rest.service.MapUriTemplateVariables#getVariables()
      */
@@ -100,7 +98,6 @@ public class ByPassUriTemplateVariables implements MapUriTemplateVariables {
      *
      * @since 2025. 8. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static ByPassUriTemplateVariables emptyVariables() {
         return new ByPassUriTemplateVariables();

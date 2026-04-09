@@ -56,7 +56,6 @@ public class UnauthenticationException extends AuthenticationException {
      *
      * @since 2025. 10. 24.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public UnauthenticationException(String message) {
         super(message);
@@ -77,7 +76,6 @@ public class UnauthenticationException extends AuthenticationException {
      *
      * @since 2025. 10. 24.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public UnauthenticationException(String message, Throwable cause) {
         super(message, cause);

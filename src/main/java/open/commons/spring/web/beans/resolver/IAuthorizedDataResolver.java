@@ -26,8 +26,7 @@
 
 package open.commons.spring.web.beans.resolver;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -69,9 +68,8 @@ public interface IAuthorizedDataResolver extends HandlerMethodArgumentResolver {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    default Object restoreValue(@Nonnull ApplicationContext context, String handleBean, @NotEmpty @Nonnull String handleType, Object rawValue) throws BeansException {
+    default Object restoreValue(ApplicationContext context, String handleBean, @NotEmpty String handleType, Object rawValue) throws BeansException {
         if (rawValue == null) {
             return null;
         }

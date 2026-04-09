@@ -32,27 +32,39 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotBlank;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.constraints.NotBlank;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.util.Base64Utils;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import open.commons.core.collection.FIFOMap;
-import open.commons.core.net.HttpStatusCode;
+import open.commons.core.utils.Base64Utils;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.servlet.mvc.support.UrlInfo;
 
 /**
  * 
+ * 
+ * 
+ * <br>
+ * 
+ * <pre>
+ * [개정이력]
+ *      날짜    	| 작성자			|	내용
+ * ------------------------------------------
+ * 2019. 6. 28.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 9.      parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5
+ * </pre>
+ * 
  * @since 2019. 6. 28.
- * @version
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class WebUtils {
@@ -78,7 +90,7 @@ public class WebUtils {
      * @see Base64Utils#decodeFromUrlSafeString(String)
      */
     public static final String base64DecodeFromUrlSafeString(String base64EncodeString) {
-        return new String(Base64Utils.decodeFromUrlSafeString(base64EncodeString));
+        return Base64Utils.decodeFromUrlSafeString(base64EncodeString);
     }
 
     /**
@@ -99,7 +111,7 @@ public class WebUtils {
      * @see Base64Utils#encodeToUrlSafeString(byte[])
      */
     public static final String base64EncodeToUrlSafeString(String plainString) {
-        return Base64Utils.encodeToUrlSafeString(plainString.getBytes());
+        return Base64Utils.encodeToUrlSafeString(plainString);
     }
 
     /**
@@ -110,6 +122,7 @@ public class WebUtils {
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2025. 10. 22.		parkjunhong77@gmail.com			최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @param request
@@ -119,14 +132,13 @@ public class WebUtils {
      *
      * @since 2025. 10. 22.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public static FIFOMap<String, Object> createEntity(HttpServletRequest request, Exception ex, HttpStatus status) {
+    public static FIFOMap<String, Object> createEntity(HttpServletRequest request, Exception ex, HttpStatusCode status) {
 
         FIFOMap<String, Object> entity = new FIFOMap<>();
 
         entity.put("timestamp", System.currentTimeMillis());
-        entity.put("status", String.join("/", status.toString(), status.getReasonPhrase()));
+        entity.put("status", String.join("/", status.toString(), status.toString(), status instanceof HttpStatus hs ? hs.getReasonPhrase() : ""));
         entity.put("session", request.getRequestedSessionId());
 
         // Set a URI
@@ -165,6 +177,7 @@ public class WebUtils {
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2019. 6. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5 
      * </pre>
      *
      * @param request
@@ -173,15 +186,14 @@ public class WebUtils {
      * @return
      *
      * @since 2019. 6. 28.
-     * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
+     * @version 3.0.0
      */
-    public static FIFOMap<String, Object> createEntity(WebRequest request, Exception ex, HttpStatus status) {
+    public static FIFOMap<String, Object> createEntity(WebRequest request, Exception ex, HttpStatusCode status) {
 
         FIFOMap<String, Object> entity = new FIFOMap<>();
 
         entity.put("timestamp", System.currentTimeMillis());
-        entity.put("status", String.join("/", status.toString(), status.getReasonPhrase()));
+        entity.put("status", String.join("/", status.toString(), status instanceof HttpStatus hs ? hs.getReasonPhrase() : ""));
         entity.put("session", request.getSessionId());
 
         // Set a URI
@@ -220,6 +232,7 @@ public class WebUtils {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2018. 8. 22.     parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @param view
@@ -228,12 +241,14 @@ public class WebUtils {
      * @param request
      *
      * @since 2018. 8. 22.
+     * @version 3.0.0
      */
-    public static void createThrowableResponse(ModelAndView view, HttpStatus status, Throwable ex, HttpServletRequest request) {
+    public static void createThrowableResponse(ModelAndView view, HttpStatusCode status, Throwable ex, HttpServletRequest request) {
 
         view.setStatus(status);
 
-        HttpStatusCode httpStatusCode = HttpStatusCode.code(status.value());
+        open.commons.core.net.HttpStatusCode httpStatusCode = open.commons.core.net.HttpStatusCode.code(status.value());
+
         view.addObject("code", httpStatusCode.getStatusCode());
         view.addObject("status", httpStatusCode.getStatus());
         view.addObject("desc", httpStatusCode.getDesc());
@@ -383,7 +398,6 @@ public class WebUtils {
      *
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static Map<String, String> getParameters(String urlLocation) {
         String[] url_param = urlLocation.split("[?]");
@@ -496,10 +510,13 @@ public class WebUtils {
      *
      * @since 2025. 8. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static TemplateUrlSplit splitUrlTemplate(@NotBlank String url) {
-        url = StringUtils.notBlank(url);
+        Objects.requireNonNull(url);
+
+        if (url.isBlank()) {
+            throw new IllegalArgumentException("'url'이 비어 있거나 whitespace로 이루어져 있습니다. url='" + url + "'");
+        }
 
         int n = url.length();
         int brace = 0;
@@ -548,7 +565,6 @@ public class WebUtils {
      * 
      * @since 2025. 8. 27.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public static class TemplateUrlSplit {
         /** ({scheme}://)?({authority}@)?{host}:{port} 정보 ({query}, {fragment} 제외) */

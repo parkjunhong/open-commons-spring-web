@@ -28,8 +28,7 @@ package open.commons.spring.web.beans.resolver;
 
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,12 +77,10 @@ public class AuthorizedDataArgumentResolver implements IAuthorizedDataResolver {
      * 
      * @param context
      *
-     *
      * @since 2025. 9. 18.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AuthorizedDataArgumentResolver(@NotNull @Nonnull ApplicationContext context) {
+    public AuthorizedDataArgumentResolver(@NotNull ApplicationContext context) {
         this.context = context;
     }
 
@@ -91,7 +88,6 @@ public class AuthorizedDataArgumentResolver implements IAuthorizedDataResolver {
      *
      * @since 2025. 9. 18.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.method.support.HandlerMethodArgumentResolver#resolveArgument(org.springframework.core.MethodParameter,
      *      org.springframework.web.method.support.ModelAndViewContainer,
@@ -147,7 +143,6 @@ public class AuthorizedDataArgumentResolver implements IAuthorizedDataResolver {
      * 
      * @since 2025. 9. 18.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.method.support.HandlerMethodArgumentResolver#supportsParameter(org.springframework.core.MethodParameter)
      */

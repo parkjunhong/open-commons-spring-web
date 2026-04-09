@@ -40,11 +40,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import javax.annotation.Nonnull;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -111,9 +110,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      *
      * @since 2025. 9. 24.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AuthorizedModelAndViewHandlerInterceptor(@NotNull @Nonnull ApplicationContext context, @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
+    public AuthorizedModelAndViewHandlerInterceptor(@NotNull ApplicationContext context, @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
         this.BEANS = BeanUtils.context(context);
         this.authorizedResourcesMetadata = authorizedResourcesMetadata;
     }
@@ -122,7 +120,6 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.handler.PostProcessingHandlerInterceptor#afterRegistered(org.springframework.web.servlet.config.annotation.InterceptorRegistration)
      */
@@ -161,7 +158,6 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      *
      * @since 2025. 9. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private List<Field> getProcessableFields(Class<?> clazz) {
         return this.authorizedDataFieldCache.computeIfAbsent(clazz, c -> {
@@ -191,7 +187,6 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      *
      * @since 2025. 9. 24.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private Object handleObject(AnnotatedContext annoCtx, Object rawValue) {
         if (rawValue == null || annoCtx == null) {
@@ -241,7 +236,6 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private FieldAccessAuthorityDecision isAllowed(IFieldAccessAuthorityProvider authority, String fqcn, String fieldName) {
         Result<FieldAccessAuthorityDecision> resultFieldAccessible = authority.isAllowed(fqcn, fieldName);
@@ -261,7 +255,6 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      *
      * @since 2025. 9. 24.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.servlet.HandlerInterceptor#postHandle(javax.servlet.http.HttpServletRequest,
      *      javax.servlet.http.HttpServletResponse, java.lang.Object, org.springframework.web.servlet.ModelAndView)
@@ -306,7 +299,6 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private AnnotatedContext resolveAnnotatedContext(Class<?> objectClass, Field field) {
         return this.authorizedContextCache.computeIfAbsent(
@@ -390,7 +382,6 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private Object resolvePojo(Object targetValue, Set<Object> visited) {
         if (targetValue == null || visited.contains(targetValue)) {
@@ -453,7 +444,6 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private Object resolveRawValue(Object rawValue, AnnotatedContext annoCtx, Set<Object> visited, boolean fromRoot) {
         if (rawValue == null || visited.contains(rawValue)) {
@@ -553,9 +543,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
          * 
          * @since 2025. 9. 25.
          * @version 0.8.0
-         * @author parkjunhong77@gmail.com
          */
-        public AnnotatedContext(Class<?> targetClass, IFieldAccessAuthorityProvider authority, IUnauthorizedFieldHandler unauthorized, @NotEmpty @Nonnull String handleType) {
+        public AnnotatedContext(Class<?> targetClass, IFieldAccessAuthorityProvider authority, IUnauthorizedFieldHandler unauthorized, @NotEmpty String handleType) {
             this.targetClass = targetClass;
             this.authority = authority;
             this.unauthorized = unauthorized;
@@ -566,7 +555,6 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
          *
          * @since 2025. 9. 25.
          * @version 0.8.0
-         * @author parkjunhong77@gmail.com
          *
          * @see java.lang.Object#toString()
          */

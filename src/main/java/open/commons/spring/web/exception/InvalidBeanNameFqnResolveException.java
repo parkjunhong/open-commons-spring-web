@@ -52,7 +52,6 @@ public class InvalidBeanNameFqnResolveException extends BeansException {
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidBeanNameFqnResolveException(String message) {
         super(message);
@@ -73,7 +72,6 @@ public class InvalidBeanNameFqnResolveException extends BeansException {
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidBeanNameFqnResolveException(String message, Throwable cause) {
         super(message, cause);

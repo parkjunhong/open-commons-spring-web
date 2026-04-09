@@ -26,8 +26,7 @@
 
 package open.commons.spring.web.resources;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * 
@@ -71,10 +70,8 @@ public class ThreadPoolTaskSchedulerConfig {
      * 2025. 8. 3.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public ThreadPoolTaskSchedulerConfig() {
     }
@@ -94,9 +91,8 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 11.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public ThreadPoolTaskSchedulerConfig(@NotNull @Nonnull ThreadPoolTaskSchedulerConfig config) {
+    public ThreadPoolTaskSchedulerConfig(@NotNull ThreadPoolTaskSchedulerConfig config) {
         this.poolSize = config.poolSize;
         this.removeOnCancelPolicy = config.removeOnCancelPolicy;
         this.continueExistingPeriodicTasksAfterShutdownPolicy = config.continueExistingPeriodicTasksAfterShutdownPolicy;
@@ -126,7 +122,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #awaitTerminationMillis
      */
@@ -149,7 +144,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #beanName
      */
@@ -172,7 +166,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #poolSize
      */
@@ -195,7 +188,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #threadGroupName
      */
@@ -218,7 +210,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #threadNamePrefix
      */
@@ -241,7 +232,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #threadPriority
      */
@@ -264,7 +254,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #continueExistingPeriodicTasksAfterShutdownPolicy
      */
@@ -287,7 +276,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #daemon
      */
@@ -310,7 +298,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #executeExistingDelayedTasksAfterShutdownPolicy
      */
@@ -333,7 +320,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #initialized
      */
@@ -356,7 +342,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #removeOnCancelPolicy
      */
@@ -379,7 +364,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #waitForTasksToCompleteOnShutdown
      */
@@ -403,7 +387,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #awaitTerminationMillis
      */
@@ -428,7 +411,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #awaitTerminationSeconds
      */
@@ -453,7 +435,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #beanName
      */
@@ -478,7 +459,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #continueExistingPeriodicTasksAfterShutdownPolicy
      */
@@ -503,7 +483,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #daemon
      */
@@ -528,7 +507,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #executeExistingDelayedTasksAfterShutdownPolicy
      */
@@ -553,7 +531,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #poolSize
      */
@@ -578,7 +555,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #removeOnCancelPolicy
      */
@@ -603,7 +579,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #threadGroupName
      */
@@ -628,7 +603,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #threadNamePrefix
      */
@@ -653,7 +627,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #threadPriority
      */
@@ -678,7 +651,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #waitForTasksToCompleteOnShutdown
      */
@@ -692,7 +664,6 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

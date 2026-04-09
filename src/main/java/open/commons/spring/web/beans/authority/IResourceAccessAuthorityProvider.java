@@ -53,7 +53,6 @@ public interface IResourceAccessAuthorityProvider {
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     default Result<String> getCurrentUserId() {
         String principal = SecurityUtils.getCurrentPrincipal();

@@ -51,10 +51,8 @@ public class MapTypedProperty<K, V> {
      * 2025. 8. 8.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public MapTypedProperty() {
     }

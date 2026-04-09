@@ -29,8 +29,7 @@ package open.commons.spring.web.jackson.deserialization;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import open.commons.spring.web.authority.AuthorizedRequestData;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
@@ -65,12 +64,10 @@ public class AuthorizedFieldDeserializer extends JsonDeserializer<Object> implem
      * 2025. 9. 22.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AuthorizedFieldDeserializer(IAuthorizedRequestDataHandler handle, @NotEmpty @Nonnull String handleType) {
+    public AuthorizedFieldDeserializer(IAuthorizedRequestDataHandler handle, @NotEmpty String handleType) {
         this.handle = handle;
         this.handleType = handleType;
     }
@@ -79,7 +76,6 @@ public class AuthorizedFieldDeserializer extends JsonDeserializer<Object> implem
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.deser.ContextualDeserializer#createContextual(com.fasterxml.jackson.databind.DeserializationContext,
      *      com.fasterxml.jackson.databind.BeanProperty)
@@ -93,7 +89,6 @@ public class AuthorizedFieldDeserializer extends JsonDeserializer<Object> implem
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.JsonDeserializer#deserialize(com.fasterxml.jackson.core.JsonParser,
      *      com.fasterxml.jackson.databind.DeserializationContext)

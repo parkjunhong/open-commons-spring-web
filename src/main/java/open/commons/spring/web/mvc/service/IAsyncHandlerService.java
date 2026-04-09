@@ -59,7 +59,6 @@ public interface IAsyncHandlerService {
      * @return
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <T> Future<T> future(T value) {
         return new AsyncResult<>(value);
@@ -87,7 +86,6 @@ public interface IAsyncHandlerService {
      *
      * @since 2020. 11. 26.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <T> Future<Result<T>> futureAsResult(T value, boolean result, String msg) {
         return new AsyncResult<>(new Result<T>(value, result).setMessage(msg));
@@ -111,7 +109,6 @@ public interface IAsyncHandlerService {
      *            비동기 작업 식별정보
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @deprecated {@link IAsyncJobHandler#unregister(Object, Object)}
      */

@@ -35,7 +35,6 @@ import open.commons.core.concurrent.AsyncJobManager;
 
 /**
  *
- * 
  * <br>
  * 
  * <pre>
@@ -67,7 +66,6 @@ public interface IAsyncJobHandler {
      * @return
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <T> Future<T> future(T value) {
         return new AsyncResult<>(value);
@@ -95,7 +93,6 @@ public interface IAsyncJobHandler {
      *
      * @since 2020. 11. 26.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <T> Future<Result<T>> futureAsResult(T value, boolean result, String msg) {
         return new AsyncResult<>(new Result<T>(value, result).setMessage(msg));
@@ -116,7 +113,6 @@ public interface IAsyncJobHandler {
      *
      * @since 2021. 4. 23.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see #register(Object, Future)
      * @see #unregister(Object)
      */
@@ -145,7 +141,6 @@ public interface IAsyncJobHandler {
      *
      * @since 2021. 1. 13.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <H, K> H register(H holder, K key, Future<?> job) {
         AsyncJobManager<K, ?> manager = AsyncJobManager.Builder.getManager(holder);
@@ -172,7 +167,6 @@ public interface IAsyncJobHandler {
      *
      * @since 2021. 4. 23.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see #register(Object, Future)
      */
     default <K> Object register(K key, Future<?> job) {
@@ -198,7 +192,6 @@ public interface IAsyncJobHandler {
      * @return 기존에 등록된 작업.
      *
      * @since 2020. 11. 10.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     default <H, K> Object unregister(H holder, K key) {
         // 비동기 작업 제거
@@ -228,7 +221,6 @@ public interface IAsyncJobHandler {
      *
      * @since 2021. 4. 23.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see #unregister(Object)
      */
     default <K> Object unregister(K key) {

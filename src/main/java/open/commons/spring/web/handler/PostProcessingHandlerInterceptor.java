@@ -50,7 +50,6 @@ public interface PostProcessingHandlerInterceptor extends HandlerInterceptor {
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     default void afterRegistered(InterceptorRegistration registry) {
     }

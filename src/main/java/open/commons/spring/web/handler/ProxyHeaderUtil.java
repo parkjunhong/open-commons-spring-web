@@ -29,8 +29,8 @@ package open.commons.spring.web.handler;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotNull;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.constraints.NotNull;
 
 import open.commons.core.utils.StringUtils;
 
@@ -66,7 +66,6 @@ public class ProxyHeaderUtil {
      *
      * @since 2025. 7. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private static String get(Supplier<String> value, Function<String, String> header, String headerName) {
 
@@ -98,7 +97,6 @@ public class ProxyHeaderUtil {
      *
      * @since 2025. 7. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String getClientRealIP(@NotNull HttpServletRequest request, HttpRequestProxyHeader header) {
         if (header == null) {
@@ -124,7 +122,6 @@ public class ProxyHeaderUtil {
      *
      * @since 2025. 7. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String getClientRealPort(@NotNull HttpServletRequest request, HttpRequestProxyHeader header) {
         if (header == null) {
@@ -150,7 +147,6 @@ public class ProxyHeaderUtil {
      *
      * @since 2025. 7. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String getRequestedHost(@NotNull HttpServletRequest request, HttpRequestProxyHeader header) {
         if (header == null) {
@@ -176,7 +172,6 @@ public class ProxyHeaderUtil {
      *
      * @since 2025. 7. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String getRequestedScheme(@NotNull HttpServletRequest request, HttpRequestProxyHeader header) {
         if (header == null) {

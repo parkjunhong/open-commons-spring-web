@@ -26,14 +26,16 @@
 
 package open.commons.spring.web.servlet.method.annotation;
 
-import javax.validation.ConstraintViolationException;
+import jakarta.validation.ConstraintViolationException;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -44,10 +46,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import open.commons.core.collection.FIFOMap;
 import open.commons.core.function.TripleFunction;
-import open.commons.spring.web.servlet.BadRequestException;
-import open.commons.spring.web.servlet.InternalServerException;
-import open.commons.spring.web.servlet.NotFoundException;
-import open.commons.spring.web.servlet.UnauthorizedAccessException;
 import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
 import open.commons.spring.web.utils.ExceptionHttpStatusUtils;
 import open.commons.spring.web.utils.WebUtils;
@@ -55,6 +53,13 @@ import open.commons.spring.web.utils.WebUtils;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 /**
+ * <pre>
+ * [개정이력]
+ *      날짜    	| 작성자			|	내용
+ * ------------------------------------------
+ * 2020. 1. 17.     parkjunohng77@gmail.com     최초 작성
+ * 2026. 4. 9.      parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5
+ * </pre>
  * 
  * @since 2020. 1. 17.
  * @version 0.2.3
@@ -66,13 +71,13 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
 
     public static final String BEAN_QUALIFIER = "open.commons.spring.web.servlet.method.annotation.DefaultGlobalExceptionHandler";
 
-    public static final TripleFunction<WebRequest, Exception, HttpStatus, FIFOMap<String, Object>> FN_CREATE_ENTITY_DEFAULT = WebUtils::createEntity;
+    public static final TripleFunction<WebRequest, Exception, HttpStatusCode, FIFOMap<String, Object>> FN_CREATE_ENTITY_DEFAULT = WebUtils::createEntity;
 
     /** {@link RequestBody} 정보 생성 함수 */
-    private final TripleFunction<WebRequest, Exception, HttpStatus, FIFOMap<String, Object>> FN_CREATE_ENTITY;
+    private final TripleFunction<WebRequest, Exception, HttpStatusCode, FIFOMap<String, Object>> FN_CREATE_ENTITY;
 
     /** {@link Throwable}과 {@link HttpStatus} 매핑 정보 */
-    private ExceptionHttpStatusBinder exceptionHttpStatusBinder;
+    private @Nullable ExceptionHttpStatusBinder exceptionHttpStatusBinder;
 
     /**
      * <br>
@@ -107,7 +112,6 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *
      * @since 2025. 5. 28.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public DefaultGlobalExceptionHandler(@Qualifier(ExceptionHttpStatusBinder.BEAN_QUALIFIER) ExceptionHttpStatusBinder exceptionHttpStatusBinder) {
         this(exceptionHttpStatusBinder, FN_CREATE_ENTITY_DEFAULT);
@@ -119,6 +123,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2025. 4. 17.     parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      * 
      * @param exceptionHttpStatusBinder
@@ -128,10 +133,9 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *
      * @since 2025. 4. 17.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public DefaultGlobalExceptionHandler(ExceptionHttpStatusBinder exceptionHttpStatusBinder,
-            TripleFunction<WebRequest, Exception, HttpStatus, FIFOMap<String, Object>> funcCreateEntity) {
+            TripleFunction<WebRequest, Exception, HttpStatusCode, FIFOMap<String, Object>> funcCreateEntity) {
         this.exceptionHttpStatusBinder = exceptionHttpStatusBinder;
         this.FN_CREATE_ENTITY = funcCreateEntity != null ? funcCreateEntity : FN_CREATE_ENTITY_DEFAULT;
     }
@@ -144,6 +148,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2020. 1. 17.		parkjunhong77@gmail.com			최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @param status
@@ -153,96 +158,9 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *
      * @since 2020. 1. 17.
      * @version 0.2.3
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
-    protected ResponseEntity<Object> createEntity(HttpStatus status, Exception ex, WebRequest request) {
+    protected ResponseEntity<Object> createEntity(HttpStatusCode status, Exception ex, WebRequest request) {
         FIFOMap<String, Object> entity = this.FN_CREATE_ENTITY.apply(request, ex, status);
-        return handleExceptionInternal(ex, entity, new HttpHeaders(), status, request);
-    }
-
-    /**
-     * 4xx 로 처리되는 클래스를 정의 및 처리. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜    	| 작성자	|	내용
-     * ------------------------------------------
-     * 2020. 1. 17.		parkjunhong77@gmail.com			최초 작성
-     * 2020. 7. 30.     parkjunhong77@gmail.com         {@link BadRequestException} 추가
-     * 2022. 12. 01.    parkjunhong77@gmail.com         {@link NotFoundException} 추가.
-     * 2025. 5. 19.     parkjunhong77@gmail.com         {@link UnauthorizedAccessException} 추가.
-     * 2025. 5. 28      parkjunhong77@gmail.com         {@link #resolveAnnotatedResponseStatus(Exception, HttpStatus)} 적용
-     * 2025. 5. 28      parkjunhong77@gmail.com         deprecated 처리됨.
-     * </pre>
-     *
-     * @param ex
-     * @param request
-     * @return
-     *
-     * @since 2020. 1. 17.
-     * @version 0.2.3
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
-     * 
-     * @deprecated {@link #handleAllExceptions(Exception, WebRequest)} 일괄적으로 {@link Throwable}를 처리함. 다음 버전에서 삭제될 예정.
-     */
-    // @ExceptionHandler(value = { //
-    // BadRequestException.class, //
-    // ConstraintViolationException.class, //
-    // NotFoundException.class, //
-    // UnauthorizedAccessException.class //
-    // })
-    public ResponseEntity<Object> handle4xxException(Exception ex, WebRequest request) {
-
-        HttpStatus status = resolveAnnotatedResponseStatus(ex, HttpStatus.BAD_REQUEST);
-        FIFOMap<String, Object> entity = this.FN_CREATE_ENTITY.apply(request, ex, status);
-
-        return handleExceptionInternal(ex, entity, new HttpHeaders(), status, request);
-    }
-
-    /**
-     * 5xx 로 처리되는 클래스 정의 및 처리 <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜    	| 작성자	|	내용
-     * ------------------------------------------
-     * 2020. 1. 17.		parkjunhong77@gmail.com			최초 작성
-     * 2020. 7. 30.     parkjunhong77@gmail.com         {@link InternalServerException} 추가
-     * 2025. 5. 28      parkjunhong77@gmail.com         {@link UnsupportedOperationException} 처리 분리
-     * 2025. 5. 28      parkjunhong77@gmail.com         {@link #resolveAnnotatedResponseStatus(Exception, HttpStatus)} 적용
-     * 2025. 5. 28      parkjunhong77@gmail.com         deprecated 처리됨.
-     * </pre>
-     * 
-     * @param ex
-     * @param request
-     * @return
-     *
-     * @since 2020. 1. 17.
-     * @version 0.2.3
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
-     * 
-     * @deprecated {@link #handleAllExceptions(Exception, WebRequest)} 일괄적으로 {@link Throwable}를 처리함. 다음 버전에서 삭제될 예정.
-     */
-    // @ExceptionHandler(value = { //
-    // NullPointerException.class, //
-    // IllegalArgumentException.class, //
-    // IllegalStateException.class, //
-    // InternalServerException.class, //
-    // UnsupportedOperationException.class, //
-    // RuntimeException.class, //
-    // Exception.class, // eclipse-javadoc:%E2%98%82=open-commons-spring-web/src%5C/main%5C/java%3Copen
-    // })
-    public ResponseEntity<Object> handle5xxException(Exception ex, WebRequest request) {
-
-        HttpStatus status = null;
-        if (UnsupportedOperationException.class.equals(ex.getClass())) {
-            status = HttpStatus.SERVICE_UNAVAILABLE;
-        } else {
-            status = resolveAnnotatedResponseStatus(ex, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-        FIFOMap<String, Object> entity = this.FN_CREATE_ENTITY.apply(request, ex, status);
-
         return handleExceptionInternal(ex, entity, new HttpHeaders(), status, request);
     }
 
@@ -254,7 +172,8 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * [개정이력]
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
-     * 2025. 5. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 28.		parkjunhong77@gmail.com		최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @param ex
@@ -263,15 +182,13 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *
      * @since 2025. 5. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #resolveAnnotatedResponseStatus
-     * 
      */
     @ExceptionHandler(value = { Throwable.class })
     public ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
 
-        HttpStatus status = resolveAnnotatedResponseStatus(ex, HttpStatus.INTERNAL_SERVER_ERROR);
+        HttpStatusCode status = resolveAnnotatedResponseStatus(ex, HttpStatus.INTERNAL_SERVER_ERROR);
         if (status == null) {
             // start - 기존에 CaseByCase로 처리되던 예외클래스 지원. : 2025. 5. 28. 오후 4:46:04
             // 4xx:
@@ -292,17 +209,15 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
 
     /**
      * 
-     *
      * @since 2020. 1. 17.
      * @version 0.2.3
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler#handleExceptionInternal(java.lang.Exception,
      *      java.lang.Object, org.springframework.http.HttpHeaders, org.springframework.http.HttpStatus,
      *      org.springframework.web.context.request.WebRequest)
      */
     @Override
-    protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
         if (body == null) {
             body = this.FN_CREATE_ENTITY.apply(request, ex, status);
@@ -325,6 +240,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2025. 5. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @param ex
@@ -335,11 +251,10 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *
      * @since 2025. 5. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see ResponseStatus
      */
-    protected HttpStatus resolveAnnotatedResponseStatus(Exception ex, HttpStatus defaultStatus) {
+    protected HttpStatusCode resolveAnnotatedResponseStatus(Exception ex, HttpStatusCode defaultStatus) {
         return ExceptionHttpStatusUtils.resolveResponseStatus(this.exceptionHttpStatusBinder, ex, defaultStatus);
     }
 
@@ -358,7 +273,6 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *
      * @since 2025. 5. 28.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #exceptionHttpStatusBinder
      */

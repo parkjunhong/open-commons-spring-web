@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.context.ApplicationContext;
 
@@ -82,10 +82,8 @@ public class AuthorizedFieldSerializerModifier extends BeanSerializerModifier {
      * @param authorizedResourcesMetadata
      *            {@link AuthorizedObject}, {@link AuthorizedField} 설정 정보 제공 서비스
      *
-     *
      * @since 2025. 5. 25.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedFieldSerializerModifier(@NotNull ApplicationContext context, IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
         this.BEANS = BeanUtils.context(context);
@@ -96,7 +94,6 @@ public class AuthorizedFieldSerializerModifier extends BeanSerializerModifier {
      *
      * @since 2025. 5. 25.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.ser.BeanSerializerModifier#changeProperties(com.fasterxml.jackson.databind.SerializationConfig,
      *      com.fasterxml.jackson.databind.BeanDescription, java.util.List)
@@ -196,7 +193,6 @@ public class AuthorizedFieldSerializerModifier extends BeanSerializerModifier {
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.ser.BeanSerializerModifier#updateBuilder(com.fasterxml.jackson.databind.SerializationConfig,
      *      com.fasterxml.jackson.databind.BeanDescription, com.fasterxml.jackson.databind.ser.BeanSerializerBuilder)

@@ -26,8 +26,8 @@
 
 package open.commons.spring.web.handler;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +40,6 @@ import open.commons.spring.web.servlet.filter.RequestThreadNameFilter;
 
 /**
  * Http 요청 정보를 {@link Thread} 이름으로 적용하고 응답완료시 기존 {@link Thread}이름으로 반환하는 기능을 제공.<br>
- * 
- * 
  * 
  * <br>
  * 
@@ -87,7 +85,6 @@ public class DefaultGlobalInterceptor implements AsyncHandlerInterceptor {
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.servlet.HandlerInterceptor#afterCompletion(javax.servlet.http.HttpServletRequest,
      *      javax.servlet.http.HttpServletResponse, java.lang.Object, java.lang.Exception)

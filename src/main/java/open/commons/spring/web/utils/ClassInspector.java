@@ -33,8 +33,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.servlet.InternalServerException;
@@ -72,7 +72,6 @@ public class ClassInspector {
      *
      * @since 2025. 6. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static List<Field> getAllFields(Class<?> clazz) {
         return getAll(clazz, Class::getDeclaredFields);
@@ -93,7 +92,6 @@ public class ClassInspector {
      *
      * @since 2025. 6. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static List<Method> getAllMethods(Class<?> clazz) {
         return getAll(clazz, Class::getDeclaredMethods);
@@ -115,7 +113,6 @@ public class ClassInspector {
      *
      * @since 2025. 6. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see Class#getDeclaredField(String)
      */
@@ -145,7 +142,6 @@ public class ClassInspector {
      *
      * @since 2025. 6. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see Class#getField(String)
      */
@@ -175,7 +171,6 @@ public class ClassInspector {
      *
      * @since 2025. 6. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see Class#getDeclaredField(String)
      */
@@ -199,7 +194,6 @@ public class ClassInspector {
      *
      * @since 2025. 6. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see Class#getField(String)
      */

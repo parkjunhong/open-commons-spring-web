@@ -33,8 +33,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
@@ -134,7 +133,7 @@ public class AuthorizedRequestDataContainerWalker {
      *            핸들 타입(전략 식별자)
      * @return 변환된 객체(가능하면 원본 컬렉션/맵은 제자리 갱신, 배열은 새 배열 반환)
      */
-    public static Object processRecursively(Object rawValue, JavaType type, IAuthorizedRequestDataHandler handler, @NotEmpty @Nonnull String handleType) {
+    public static Object processRecursively(Object rawValue, JavaType type, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType) {
         AssertUtils2.isFalse("데이터 처리 식별정보는 반드시 설정되어야 합니다. handleType=" + handleType, StringUtils.isNullOrEmptyString(handleType));
 
         if (rawValue == null || type == null) {

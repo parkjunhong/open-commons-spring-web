@@ -28,8 +28,8 @@ package open.commons.spring.web.beans.controller;
 
 import java.util.List;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,10 +76,8 @@ public class RestApiGroup {
      * 2025. 9. 29.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public RestApiGroup() {
     }
@@ -98,7 +96,6 @@ public class RestApiGroup {
      *
      * @since 2025. 10. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #groupPath
      */
@@ -121,7 +118,6 @@ public class RestApiGroup {
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #description
      */
@@ -144,7 +140,6 @@ public class RestApiGroup {
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #name
      */
@@ -167,7 +162,6 @@ public class RestApiGroup {
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #restApis
      */
@@ -191,7 +185,6 @@ public class RestApiGroup {
      *
      * @since 2025. 10. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #groupPath
      */
@@ -214,7 +207,6 @@ public class RestApiGroup {
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #description
      */
@@ -237,7 +229,6 @@ public class RestApiGroup {
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #name
      */
@@ -260,7 +251,6 @@ public class RestApiGroup {
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #restApis
      */
@@ -272,7 +262,6 @@ public class RestApiGroup {
      *
      * @since 2025. 10. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

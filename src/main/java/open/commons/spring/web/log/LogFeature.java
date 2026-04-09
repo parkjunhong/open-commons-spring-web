@@ -86,7 +86,6 @@ public @interface LogFeature {
      *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @AliasFor("value")
     String feature() default VALUE_FEATURE_NULL;
@@ -105,7 +104,6 @@ public @interface LogFeature {
      *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String marker() default "";
 
@@ -125,7 +123,6 @@ public @interface LogFeature {
      *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     Target target() default Target.ALL;
 
@@ -143,7 +140,6 @@ public @interface LogFeature {
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String thread() default VALUE_THREAD_NULL;
 

@@ -31,7 +31,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -71,7 +71,6 @@ public interface IConvertingService {
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> Result<Page<T>> convertMultiPaginationResult(@NotNull Result<Page<S>> resultSrc, @NotNull Function<S, T> converter) {
         if (resultSrc.isSuccess()) {
@@ -108,7 +107,6 @@ public interface IConvertingService {
      *
      * @since 2021. 12. 3.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> List<T> convertMultiResult(@NotNull List<S> source, @NotNull Function<S, T> converter) {
         return convertMultiResultAsStream(source, converter).collect(Collectors.toList());
@@ -139,7 +137,6 @@ public interface IConvertingService {
      *
      * @since 2022. 11. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong (jhpark@ymtech.co.kr)
      */
     default <S, T> Result<List<T>> convertMultiResult(@NotNull Result<List<S>> resultSrc, @NotNull Class<T> returnType) {
         return convertMultiResult(resultSrc, srcObj -> ObjectUtils.transform(srcObj, true, returnType, true));
@@ -168,7 +165,6 @@ public interface IConvertingService {
      *
      * @since 2021. 12. 3.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> Result<List<T>> convertMultiResult(@NotNull Result<List<S>> resultSrc, @NotNull Function<S, T> converter) {
         if (resultSrc.isSuccess()) {
@@ -201,7 +197,6 @@ public interface IConvertingService {
      *
      * @since 2021. 12. 6.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> Stream<T> convertMultiResultAsStream(@NotNull List<S> source, @NotNull Function<S, T> converter) {
         return source.stream().map(converter);
@@ -232,7 +227,6 @@ public interface IConvertingService {
      *
      * @since 2022. 11. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong (jhpark@ymtech.co.kr)
      */
     default <S, T> Result<T> convertSingleResult(@NotNull Result<S> resultSrc, @NotNull Class<T> returnType) {
         return convertSingleResult(resultSrc, srcObj -> ObjectUtils.transform(srcObj, true, returnType, true));
@@ -261,7 +255,6 @@ public interface IConvertingService {
      *
      * @since 2021. 12. 3.
      * @version 0.4.0
-     * @author Park_Jun_Hong (parkjunhong77@gmail.com)
      */
     default <S, T> Result<T> convertSingleResult(@NotNull Result<S> resultSrc, @NotNull Function<S, T> converter) {
         if (resultSrc.isSuccess()) {
@@ -297,7 +290,6 @@ public interface IConvertingService {
      *
      * @since 2022. 11. 2.
      * @version 0.4.0
-     * @author Park_Jun_Hong (jhpark@ymtech.co.kr)
      */
     default <S, T> T transformAll(S srcObj, Class<T> targetClass) {
         return ObjectUtils.transform(srcObj, true, targetClass, true);

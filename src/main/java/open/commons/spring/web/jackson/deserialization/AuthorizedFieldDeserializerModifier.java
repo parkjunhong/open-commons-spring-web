@@ -33,8 +33,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.annotation.Nonnull;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -92,10 +90,8 @@ public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifie
      * @param authorizedRequestDataMetadata
      *            메타데이터 형태로 기술된 {@link AuthorizedRequestData} 정보를 제공하는 서비스.
      *
-     *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedFieldDeserializerModifier(ApplicationContext context, IAuthorizedRequestDataMetadata authorizedRequestDataMetadata) {
         this.BEANS = BeanUtils.context(context);
@@ -109,11 +105,10 @@ public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifie
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see org.springframework.beans.BeanUtils#isSimpleValueType(Class)
      */
-    private boolean isSimpleType(@Nonnull Class<?> type) {
+    private boolean isSimpleType(Class<?> type) {
         return org.springframework.beans.BeanUtils.isSimpleValueType(type) //
                 || UUID.class.equals(type);
     }
@@ -136,7 +131,6 @@ public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifie
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private IAuthorizedRequestDataHandler resolveHandler(String handleBean) throws NoSuchBeanDefinitionException {
         return BEANS.findBean(handleBean, IAuthorizedRequestDataHandler.class, null, true);
@@ -146,7 +140,6 @@ public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifie
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.deser.BeanDeserializerModifier#updateBuilder(com.fasterxml.jackson.databind.DeserializationConfig,
      *      com.fasterxml.jackson.databind.BeanDescription,
@@ -251,7 +244,6 @@ public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifie
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private boolean validateBeanNameAndHandleType(String beanName, String beanType) {
         return !StringUtils.isNullOrEmptyString(beanName) && !AuthorizedRequestData.NO_ASSINGED_HANDLE_TYPE.equals(beanType);

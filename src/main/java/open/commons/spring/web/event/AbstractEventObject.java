@@ -30,7 +30,7 @@ import java.text.SimpleDateFormat;
 import java.time.Clock;
 import java.util.Date;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.context.ApplicationEvent;
 
@@ -70,7 +70,6 @@ public abstract class AbstractEventObject<T, E extends IEventStatus> extends App
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public AbstractEventObject(@NotNull Object source, @NotNull E type) {
         super(source);
@@ -94,7 +93,6 @@ public abstract class AbstractEventObject<T, E extends IEventStatus> extends App
      * @param clock
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public AbstractEventObject(@NotNull Object source, @NotNull E type, @NotNull Clock clock) {
         super(source, clock);
@@ -116,7 +114,6 @@ public abstract class AbstractEventObject<T, E extends IEventStatus> extends App
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#clone()
      */
@@ -136,7 +133,6 @@ public abstract class AbstractEventObject<T, E extends IEventStatus> extends App
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.util.EventObject#getSource()
      */
@@ -160,7 +156,6 @@ public abstract class AbstractEventObject<T, E extends IEventStatus> extends App
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.web.event.IEventObject#getType()
      */
@@ -183,7 +178,6 @@ public abstract class AbstractEventObject<T, E extends IEventStatus> extends App
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

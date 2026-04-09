@@ -31,9 +31,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.function.Function;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
 import open.commons.spring.web.utils.ValidationUtils;
 
@@ -68,7 +68,6 @@ public abstract class Validational<C extends List<E>, E extends Validational<Lis
      *
      * @since 2019. 10. 10.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private void aggregate(Collection<String> buf, Collection<String> errors, int index, StringBuffer builder) {
         for (String error : errors) {
@@ -98,7 +97,6 @@ public abstract class Validational<C extends List<E>, E extends Validational<Lis
      *
      * @since 2019. 10. 10.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public abstract C getSubObjects();
 
@@ -118,7 +116,6 @@ public abstract class Validational<C extends List<E>, E extends Validational<Lis
      *
      * @since 2019. 10. 10.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Collection<String> validate(Function<Object, Collection<String>> validator) {
 

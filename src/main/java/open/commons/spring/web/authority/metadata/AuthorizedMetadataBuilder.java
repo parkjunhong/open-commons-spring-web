@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -92,7 +92,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 18.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         ObjectBuilder object();
 
@@ -111,7 +110,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 20.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         ObjectsBuilder objects();
     }
@@ -153,7 +151,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 20.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         private static <T> T newObject(Class<T> targetClass, Object builder) {
             return newObject(targetClass, builder, null);
@@ -180,7 +177,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 19.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         private static <T> T newObject(Class<T> targetClass, Object builder, Map<String, Function<Object, Object>> postprocessors) {
             T newObject = null;
@@ -393,7 +389,6 @@ public class AuthorizedMetadataBuilder {
              *
              * @since 2025. 6. 20.
              * @version 0.8.0
-             * @author parkjunhong77@gmail.com
              *
              * @see open.commons.spring.web.authority.metadata.AuthorizedMetadataBuilder.ObjectsBuilder#build()
              */
@@ -406,7 +401,6 @@ public class AuthorizedMetadataBuilder {
              *
              * @since 2025. 6. 20.
              * @version 0.8.0
-             * @author parkjunhong77@gmail.com
              *
              * @see open.commons.spring.web.authority.metadata.AuthorizedMetadataBuilder.ObjectsBuilder#object(java.util.function.Function)
              */
@@ -439,7 +433,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 18.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          * 
          * @see AuthorizedFieldMetadata#setAuthorityBean(String)
          */
@@ -459,7 +452,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 18.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         AuthorizedFieldMetadata build();
 
@@ -479,7 +471,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 18.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         FieldBuilder fieldHandleBean(String fieldHandleBean);
 
@@ -499,7 +490,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 18.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         FieldBuilder handleType(String handleType);
 
@@ -518,7 +508,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 18.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         FieldBuilder name(String name);
     }
@@ -544,7 +533,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 18.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         ObjectBuilder authorityBean(String authorityBean);
 
@@ -562,7 +550,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 18.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         AuthorizedObjectMetadata build();
 
@@ -581,7 +568,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 19.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         ObjectBuilder field(Function<FieldBuilder, FieldBuilder> function);
 
@@ -601,7 +587,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 18.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         ObjectBuilder fieldHandleBean(String fieldHandleBean);
 
@@ -621,7 +606,6 @@ public class AuthorizedMetadataBuilder {
          *
          * @since 2025. 6. 18.
          * @version 0.8.0
-         * @author Park, Jun-Hong parkjunhong77@gmail.com
          */
         ObjectBuilder type(@NotNull Class<?> type);
     }

@@ -28,8 +28,6 @@ package open.commons.spring.web.jackson.serialization;
 
 import java.io.IOException;
 
-import javax.annotation.Nonnull;
-
 import org.springframework.context.ApplicationContext;
 
 import open.commons.spring.web.authority.AuthorizedField;
@@ -63,7 +61,9 @@ public class AuthorizedFieldSerializer extends AbstractWrappingSerializer {
      * ------------------------------------------
      * 2025. 5. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
-     * @param context TODO
+     * 
+     * @param context
+     *            TODO
      * @param serializedType
      *            데이터 유형
      * @param authority
@@ -75,10 +75,9 @@ public class AuthorizedFieldSerializer extends AbstractWrappingSerializer {
      * 
      * @since 2025. 5. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AuthorizedFieldSerializer(ApplicationContext context, @Nonnull Class<?> serializedType, @Nonnull AnnotatedField field,
-            IFieldAccessAuthorityProvider authority, @Nonnull IUnauthorizedFieldHandler fieldHandler, IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
+    public AuthorizedFieldSerializer(ApplicationContext context, Class<?> serializedType, AnnotatedField field, IFieldAccessAuthorityProvider authority,
+            IUnauthorizedFieldHandler fieldHandler, IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
         super(context, serializedType, field, authority, fieldHandler, authorizedResourcesMetadata);
     }
 
@@ -86,7 +85,6 @@ public class AuthorizedFieldSerializer extends AbstractWrappingSerializer {
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.ser.ContextualSerializer#createContextual(com.fasterxml.jackson.databind.SerializerProvider,
      *      com.fasterxml.jackson.databind.BeanProperty)
@@ -100,7 +98,6 @@ public class AuthorizedFieldSerializer extends AbstractWrappingSerializer {
      *
      * @since 2025. 5. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.JsonSerializer#serialize(java.lang.Object,
      *      com.fasterxml.jackson.core.JsonGenerator, com.fasterxml.jackson.databind.SerializerProvider)

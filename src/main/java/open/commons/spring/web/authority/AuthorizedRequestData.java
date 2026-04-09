@@ -74,7 +74,6 @@ public @interface AuthorizedRequestData {
      *
      * @since 2025. 9. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String handleBean() default AuthorizedResourceHandler.BEAN_QUALIFIER;
 
@@ -93,7 +92,6 @@ public @interface AuthorizedRequestData {
      *
      * @since 2025. 9. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     String handleType() default NO_ASSINGED_HANDLE_TYPE;
 

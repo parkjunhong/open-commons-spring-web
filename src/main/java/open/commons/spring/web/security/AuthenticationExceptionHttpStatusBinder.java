@@ -28,10 +28,9 @@ package open.commons.spring.web.security;
 
 import java.io.IOException;
 
-import javax.annotation.Nonnull;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
@@ -64,9 +63,8 @@ public class AuthenticationExceptionHttpStatusBinder extends AbstractExceptionSt
      *
      * @since 2025. 10. 22.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    public AuthenticationExceptionHttpStatusBinder(@Nonnull ExceptionHttpStatusBinder binder) {
+    public AuthenticationExceptionHttpStatusBinder(ExceptionHttpStatusBinder binder) {
         super(binder);
     }
 
@@ -74,7 +72,6 @@ public class AuthenticationExceptionHttpStatusBinder extends AbstractExceptionSt
      *
      * @since 2025. 10. 22.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see org.springframework.security.web.AuthenticationEntryPoint#commence(javax.servlet.http.HttpServletRequest,
      *      javax.servlet.http.HttpServletResponse, org.springframework.security.core.AuthenticationException)
@@ -88,7 +85,6 @@ public class AuthenticationExceptionHttpStatusBinder extends AbstractExceptionSt
      *
      * @since 2025. 10. 30.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.web.servlet.binder.IExceptionResponseWriter#defaultHttpStatus()
      */

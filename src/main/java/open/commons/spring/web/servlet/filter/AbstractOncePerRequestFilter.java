@@ -30,8 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,10 +64,8 @@ public abstract class AbstractOncePerRequestFilter extends OncePerRequestFilter 
      * 2025. 8. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 8. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AbstractOncePerRequestFilter() {
     }
@@ -87,7 +85,6 @@ public abstract class AbstractOncePerRequestFilter extends OncePerRequestFilter 
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #ignoredUrl
      */
@@ -102,7 +99,6 @@ public abstract class AbstractOncePerRequestFilter extends OncePerRequestFilter 
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.filter.OncePerRequestFilter#shouldNotFilter(javax.servlet.http.HttpServletRequest)
      */

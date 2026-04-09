@@ -28,7 +28,7 @@ package open.commons.spring.web.beans.authority.internal;
 
 import java.lang.reflect.Field;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import open.commons.core.Result;
 import open.commons.core.utils.ExceptionUtils;
@@ -57,10 +57,8 @@ public class ForcedUnintelligibleJudge implements IFieldAccessAuthorityProvider 
      * 2025. 6. 12.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public ForcedUnintelligibleJudge() {
     }
@@ -69,7 +67,6 @@ public class ForcedUnintelligibleJudge implements IFieldAccessAuthorityProvider 
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider#isAllowed(java.lang.String,
      *      java.lang.String)

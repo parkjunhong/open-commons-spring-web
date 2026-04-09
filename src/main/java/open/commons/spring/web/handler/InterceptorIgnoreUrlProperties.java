@@ -32,9 +32,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -129,7 +128,6 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public InterceptorIgnoreUrlProperties addExcludePathPattern(String excludePathPattern) {
         if (PathUtils.isValidAntPath(excludePathPattern)) {
@@ -156,9 +154,8 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public InterceptorIgnoreUrlProperties addExcludePathPatterns(@NotNull @Nonnull Set<String> excludePathPatterns) {
+    public InterceptorIgnoreUrlProperties addExcludePathPatterns(@NotNull Set<String> excludePathPatterns) {
         if (PathUtils.isValidAntPath(excludePathPatterns)) {
             this.excludePathPatterns.addAll(excludePathPatterns);
         } else {
@@ -183,7 +180,6 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public InterceptorIgnoreUrlProperties addIncludePathPattern(String includePathPattern) {
         if (PathUtils.isValidAntPath(includePathPattern)) {
@@ -210,9 +206,8 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public InterceptorIgnoreUrlProperties addIncludePathPatterns(@NotNull @Nonnull Set<String> includePathPatterns) {
+    public InterceptorIgnoreUrlProperties addIncludePathPatterns(@NotNull Set<String> includePathPatterns) {
         if (PathUtils.isValidAntPath(includePathPatterns)) {
             this.includePathPatterns.addAll(includePathPatterns);
         } else {
@@ -225,7 +220,6 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 8. 7.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -255,7 +249,6 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #excludePathPatterns
      */
@@ -277,7 +270,6 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #fqcn
      */
@@ -299,7 +291,6 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #includePathPatterns
      */
@@ -321,7 +312,6 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 8. 7.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #scheme
      */
@@ -344,7 +334,6 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 8. 7.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public String getTarget() {
         return String.join(":", this.scheme.get(), this.fqcn);
@@ -365,11 +354,10 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #excludePathPatterns
      */
-    public InterceptorIgnoreUrlProperties setExcludePathPatterns(@NotNull @Nonnull Set<String> excludePathPatterns) {
+    public InterceptorIgnoreUrlProperties setExcludePathPatterns(@NotNull Set<String> excludePathPatterns) {
         if (!PathUtils.isValidAntPath(excludePathPatterns)) {
             throw ExceptionUtils.newException(InvalidAntPathUrlPatternException.class, "fqcn=%s, exclude.invalid=%s", this.fqcn, excludePathPatterns.toString());
         }
@@ -393,11 +381,10 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #includePathPatterns
      */
-    public InterceptorIgnoreUrlProperties setIncludePathPatterns(@NotNull @Nonnull Set<String> includePathPatterns) {
+    public InterceptorIgnoreUrlProperties setIncludePathPatterns(@NotNull Set<String> includePathPatterns) {
         if (!PathUtils.isValidAntPath(includePathPatterns)) {
             throw ExceptionUtils.newException(InvalidAntPathUrlPatternException.class, "fqcn=%s, include.invalid=%s", this.fqcn, includePathPatterns.toString());
         }
@@ -421,11 +408,10 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #fqcn
      */
-    public InterceptorIgnoreUrlProperties setTarget(@NotBlank @Nonnull String target) {
+    public InterceptorIgnoreUrlProperties setTarget(@NotBlank String target) {
 
         if ("*".equals(target) || "package:*".equalsIgnoreCase(target)) {
             this.scheme = Scheme.Package;
@@ -468,7 +454,6 @@ public class InterceptorIgnoreUrlProperties {
      *
      * @since 2025. 8. 7.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

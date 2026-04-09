@@ -70,7 +70,6 @@ public class AuthorizedResourceUtils {
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static <T> T getBean(BeanUtils beanUtils, Class<T> beanType, Supplier<String> o, Supplier<String> f, boolean required) {
         String beanName = null;

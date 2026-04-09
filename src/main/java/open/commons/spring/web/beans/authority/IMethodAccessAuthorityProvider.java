@@ -26,8 +26,8 @@
 
 package open.commons.spring.web.beans.authority;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import open.commons.core.Result;
 import open.commons.spring.web.authority.AuthorizedMethod;
@@ -60,7 +60,6 @@ public interface IMethodAccessAuthorityProvider extends IResourceAccessAuthority
      *
      * @since 2025. 5. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     Result<Boolean> isAllowed(@NotNull Operator operator, @NotEmpty String... authorities);
 

@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import open.commons.core.Result;
 
@@ -57,7 +57,6 @@ public interface IEventDrivenService {
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public Map<String, Set<Object>> getParameters();
 
@@ -86,7 +85,6 @@ public interface IEventDrivenService {
      *            이벤트 제공 함수.
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> void registerEventProvider(@NotNull Class<C> eventType, @NotNull Function<P, C> provider);
 
@@ -116,7 +114,6 @@ public interface IEventDrivenService {
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> Result<Boolean> subscribe(@NotNull Class<C> eventType, @NotNull P parameter);
 
@@ -146,7 +143,6 @@ public interface IEventDrivenService {
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> Result<Boolean> unsubscribe(@NotNull Class<C> eventType, @NotNull P parameter);
 }

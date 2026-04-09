@@ -38,10 +38,11 @@ import java.util.function.Function;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -51,7 +52,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import open.commons.core.utils.EncryptUtils;
 import open.commons.core.utils.ExceptionUtils;
-import open.commons.core.utils.ObjectUtils;
+import open.commons.core.utils.ObjectTransformer;
 import open.commons.spring.web.servlet.BadRequestException;
 import open.commons.spring.web.servlet.InternalServerException;
 
@@ -108,7 +109,6 @@ public class SecurityUtils {
      * 
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static void clearAuthentication() {
         SecurityContextHolder.getContext().setAuthentication(null);
@@ -128,7 +128,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static void clearSession() {
 
@@ -160,7 +159,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static void clearSession(HttpServletRequest request) {
 
@@ -192,7 +190,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * @deprecated {@link #decryptBySessionUUID(String)}를 사용하세요. 다음 버전에서 삭제될 예정입니다.
      */
     public static String decryptBySessionId(@NotNull String encText) throws InternalServerException {
@@ -219,7 +216,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * @deprecated {@link #decryptBySessionUUID(String, String)}를 사용하세요. 다음 버전에서 삭제될 예정입니다.
      */
     public static String decryptBySessionId(@NotNull String encText, @NotEmpty String encTextCharset) throws InternalServerException {
@@ -244,7 +240,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String decryptBySessionUUID(@NotNull String encText) throws InternalServerException {
         return decryptBySessionUUID(encText, PLAIN_TEXT_CHARSET);
@@ -270,7 +265,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String decryptBySessionUUID(@NotNull String encText, @NotEmpty String encTextCharset) throws InternalServerException {
         try {
@@ -321,7 +315,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * @deprecated {@link #encryptBySessionUUID(String)}를 사용하세요. 다음 버전에서 삭제될 예정입니다.
      */
     public static String encryptBySessionId(@NotNull String plainText) throws InternalServerException {
@@ -348,7 +341,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * @deprecated {@link #encryptBySessionUUID(String, String)}를 사용하세요. 다음 버전에서 삭제될 예정입니다.
      */
     public static String encryptBySessionId(@NotNull String plainText, @NotEmpty String plainTextCharset) throws InternalServerException {
@@ -374,7 +366,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String encryptBySessionUUID(@NotNull String plainText) throws InternalServerException {
         return encryptBySessionUUID(plainText, PLAIN_TEXT_CHARSET);
@@ -400,7 +391,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String encryptBySessionUUID(@NotNull String plainText, @NotEmpty String plainTextCharset) throws InternalServerException {
         try {
@@ -436,7 +426,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static Authentication getAuthentication() {
         return SecurityContextHolder.getContext().getAuthentication();
@@ -456,7 +445,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
 
     public static String getCurrentPrincipal() {
@@ -480,7 +468,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static HttpSession getHttpSession() {
         return getHttpSession(false);
@@ -505,7 +492,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static HttpSession getHttpSession(boolean create) {
 
@@ -533,7 +519,6 @@ public class SecurityUtils {
      * 
      * @since 2025. 4. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static HttpSession getHttpSession(HttpServletRequest request, boolean create) {
         return request != null ? request.getSession(create) : null;
@@ -554,7 +539,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static HttpServletRequest getRequest() {
 
@@ -581,7 +565,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #getHttpSession(boolean)
      * @see #getRequest()
@@ -607,7 +590,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String getSessionId(boolean create) {
         HttpSession session = getHttpSession(create);
@@ -631,7 +613,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String getSessionId(HttpServletRequest request) {
         return getSessionId(request, false);
@@ -655,7 +636,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String getSessionId(HttpServletRequest request, boolean create) {
         if (request == null) {
@@ -682,7 +662,6 @@ public class SecurityUtils {
      *
      * @since 2025. 4. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String getSessionUUID() throws NullPointerException {
         return getSessionUUID(getHttpSession());
@@ -705,10 +684,8 @@ public class SecurityUtils {
      * @throws NullPointerException
      *             {@link HttpSession}이 <code>null</code>인 경우
      * 
-     *
      * @since 2025. 4. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String getSessionUUID(@NotNull HttpSession session) throws NullPointerException {
         synchronized (session) {
@@ -740,10 +717,9 @@ public class SecurityUtils {
      *
      * @since 2025. 5. 9.
      * @version 0.1.0
-     * @author Park Jun-Hong (jhpark@ymtech.co.kr)
      */
     public static void registerDecryptionConverter(Class<?> srcClass, Class<?> targetClass, String property) {
-        ObjectUtils.registerPropertyConverter(srcClass, String.class, property, targetClass, String.class, DEC_BY_SESSION_UUID);
+        ObjectTransformer.registerPropertyConverter(srcClass, String.class, property, targetClass, String.class, DEC_BY_SESSION_UUID);
     }
 
     /**
@@ -765,9 +741,8 @@ public class SecurityUtils {
      *
      * @since 2025. 5. 9.
      * @version 0.1.0
-     * @author Park Jun-Hong (jhpark@ymtech.co.kr)
      */
     public static void registerEncryptionConverter(Class<?> srcClass, Class<?> targetClass, String property) {
-        ObjectUtils.registerPropertyConverter(srcClass, String.class, property, targetClass, String.class, ENC_BY_SESSION_UUID);
+        ObjectTransformer.registerPropertyConverter(srcClass, String.class, property, targetClass, String.class, ENC_BY_SESSION_UUID);
     }
 }

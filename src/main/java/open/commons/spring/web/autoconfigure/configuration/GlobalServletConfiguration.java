@@ -34,9 +34,8 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import javax.annotation.Nonnull;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotNull;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -119,7 +118,6 @@ public class GlobalServletConfiguration {
      *
      * @since 2025. 6. 5.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public GlobalServletConfiguration(ApplicationContext context, Environment environment) {
         this.context = context;
@@ -162,7 +160,6 @@ public class GlobalServletConfiguration {
      *
      * @since 2025. 8. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean
     FilterRegistrationBean<RequestHeaderFilter> beanFilterRegistrationRequestHeaderFilter(RequestHeaderFilter filter) {
@@ -188,7 +185,6 @@ public class GlobalServletConfiguration {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean
     FilterRegistrationBean<RequestThreadNameFilter> beanFilterRegistrationThreadNamingFilter(RequestThreadNameFilter filter) {
@@ -214,11 +210,10 @@ public class GlobalServletConfiguration {
      *
      * @since 2025. 8. 7.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = BEAN_QUALIFIER_PRIMARY_HTTP_REQUEST_PROXY_HEADER)
     @Primary
-    HttpRequestProxyHeader beanPrimaryForwardedProxyHeader(@Nonnull Map<String, HttpRequestProxyHeader> headers) {
+    HttpRequestProxyHeader beanPrimaryForwardedProxyHeader(Map<String, HttpRequestProxyHeader> headers) {
 
         // #0. 내부 설정값을 마지막에 적용하기 위해 추출
         HttpRequestProxyHeader builtin = headers.remove(CONFIGURATION_BUILTIN_HTTP_REQUEST_PROXY_HEADER);
@@ -248,14 +243,14 @@ public class GlobalServletConfiguration {
     @Bean(name = BEAN_QUALIFIER_PRIMARY_INTERCEPTOR_IGNORE_URL_PATTERNS)
     @Primary
     Set<InterceptorIgnoreUrlProperties> beanPrimaryInterceptorIgnoreUrlPatterns( //
-            @NotNull @Nonnull Map<String, InterceptorIgnoreUrlProperties> single //
-            , @NotNull @Nonnull Map<String, List<InterceptorIgnoreUrlProperties>> multi) {
+            @NotNull Map<String, InterceptorIgnoreUrlProperties> single //
+            , @NotNull Map<String, List<InterceptorIgnoreUrlProperties>> multi) {
 
         List<InterceptorIgnoreUrlProperties> merged = MapUtils.toList(single, multi);
 
         // 중복 검증
         // key: FQCN 기반의 target 정보, value: 동일한 target 정보인 InterceptorIgnoreUrlProperties 객체들
-        MultiValueMap<String, InterceptorIgnoreUrlProperties> mayBeDuplicated = StreamUtils.toMap(merged.stream(), InterceptorIgnoreUrlProperties::getTarget, Function.identity(),
+        MultiValueMap<String, InterceptorIgnoreUrlProperties> mayBeDuplicated = StreamUtils.toMap(merged.stream(), InterceptorIgnoreUrlProperties::getTarget, StreamUtils.identity(),
                 LinkedMultiValueMap::new);
 
         mayBeDuplicated.forEach((k, v) -> {
@@ -289,16 +284,16 @@ public class GlobalServletConfiguration {
     @Bean(name = BEAN_QUALIFIER_PRIMARY_ONCE_PER_REQUEST_SHOULD_NOT_PATTERNS)
     @Primary
     List<AntPathRequest> beanPrimaryOncePerRequestShouldNotFilters( //
-            @NotNull @Nonnull Map<String, AntPathRequest> single//
-            , @NotNull @Nonnull Map<String, List<AntPathRequest>> multi) {
+            @NotNull Map<String, AntPathRequest> single//
+            , @NotNull Map<String, List<AntPathRequest>> multi) {
         return MapUtils.toList(single, multi);
     }
 
     @Bean(name = BEAN_QUALIFIER_PRIMARY_SHARED_HEADERS)
     @Primary
     List<SharedHeader> beanPrimarySharedHeaders( //
-            @NotNull @Nonnull Map<String, SharedHeader> single //
-            , @NotNull @Nonnull Map<String, List<SharedHeader>> multi //
+            @NotNull Map<String, SharedHeader> single //
+            , @NotNull Map<String, List<SharedHeader>> multi //
     ) {
         return MapUtils.toList(single, multi);
     }
@@ -324,7 +319,6 @@ public class GlobalServletConfiguration {
      *
      * @since 2025. 8. 7.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = CONFIGURATION_BUILTIN_HTTP_REQUEST_PROXY_HEADER)
     HttpRequestProxyHeader configBuiltinForwardedProxyHeader() {
@@ -366,7 +360,6 @@ public class GlobalServletConfiguration {
      *
      * @since 2025. 8. 7.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean
     InterceptorIgnoreUrlProperties configBuiltinInterceptorIgnoreUrlProperties() {
@@ -420,7 +413,6 @@ public class GlobalServletConfiguration {
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean
     List<AntPathRequest> configBuiltinOncePerRequestShouldNotFilters() {
@@ -459,7 +451,6 @@ public class GlobalServletConfiguration {
      *
      * @since 2025. 8. 20.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean
     List<SharedHeader> configBuiltinSharedHeaders() {

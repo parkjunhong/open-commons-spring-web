@@ -29,9 +29,8 @@ package open.commons.spring.web.aspect;
 import java.lang.annotation.Annotation;
 import java.util.function.Predicate;
 
-import javax.validation.constraints.NotEmpty;
-
 import org.aspectj.lang.annotation.Pointcut;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -79,10 +78,8 @@ public abstract class AbstractAspectPointcuts {
      * 2025. 6. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AbstractAspectPointcuts(ApplicationContext context) {
         this.context = context;
@@ -101,10 +98,8 @@ public abstract class AbstractAspectPointcuts {
      * 2025. 6. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("(" //
             + "@annotation(org.springframework.web.bind.annotation.DeleteMapping)" //
@@ -141,19 +136,17 @@ public abstract class AbstractAspectPointcuts {
      *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @SuppressWarnings("unchecked")
-    protected final <A extends Annotation, V> V getAttribute(A first, A second, String attributeName, Predicate<V> rule) {
-        V v = null;
+    protected final <A extends Annotation, V> @Nullable V getAttribute(A first, A second, String attributeName, Predicate<V> rule) {
         if (first != null) {
-            v = (V) AnnotationUtils.getValue(first, attributeName);
+            V v = (V) AnnotationUtils.getValue(first, attributeName);
+            if (v != null && rule.test(v)) {
+                return v;
+            }
         }
-        if (rule.test(v)) {
-            return v;
-        } else {
-            return (V) AnnotationUtils.getValue(second, attributeName);
-        }
+
+        return (V) AnnotationUtils.getValue(second, attributeName);
     }
 
     /**
@@ -188,9 +181,8 @@ public abstract class AbstractAspectPointcuts {
      * 
      * @since 2025. 5. 20.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    protected final <B> B getBean(@NotEmpty String beanName, Class<B> beanType, B defaultBean, boolean required) throws BeansException {
+    protected final <@Nullable B> B getBean(String beanName, Class<B> beanType, B defaultBean, boolean required) throws BeansException {
         return BEAN_UTILS.getBean(beanName, beanType, defaultBean, required);
     }
 
@@ -227,9 +219,8 @@ public abstract class AbstractAspectPointcuts {
      *
      * @since 2025. 5. 21.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    protected final <I, E extends I> I getBean(@NotEmpty String beanName, Class<I> beanType, Class<E> beanImplType, boolean required) throws BeansException {
+    protected final <@Nullable I, E extends I> I getBean(String beanName, Class<I> beanType, Class<E> beanImplType, boolean required) throws BeansException {
         return BEAN_UTILS.findBean(beanName, beanType, beanImplType, required);
     }
 
@@ -243,10 +234,8 @@ public abstract class AbstractAspectPointcuts {
      * 2025. 6. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("(" //
             + "@within(org.springframework.stereotype.Controller)" //
@@ -266,10 +255,8 @@ public abstract class AbstractAspectPointcuts {
      * 2025. 6. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("(" //
             + "@within(org.springframework.stereotype.Controller)" //
@@ -291,10 +278,8 @@ public abstract class AbstractAspectPointcuts {
      * 2025. 6. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("(" //
             + " @within(org.springframework.stereotype.Component)" //
@@ -314,10 +299,8 @@ public abstract class AbstractAspectPointcuts {
      * 2025. 6. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@within(org.springframework.stereotype.Component)")
     public final void withinComponentStereotypeComponent() {
@@ -333,10 +316,8 @@ public abstract class AbstractAspectPointcuts {
      * 2025. 6. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@within(org.springframework.stereotype.Repository)")
     public final void withinRepositoryStereotypeComponent() {
@@ -352,10 +333,8 @@ public abstract class AbstractAspectPointcuts {
      * 2025. 6. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@within(org.springframework.web.bind.annotation.RequestMapping)")
     public final void withinRequestMapping() {
@@ -371,10 +350,8 @@ public abstract class AbstractAspectPointcuts {
      * 2025. 6. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@within(org.springframework.web.bind.annotation.RestController)")
     public final void withinRestControllerComponent() {
@@ -390,10 +367,8 @@ public abstract class AbstractAspectPointcuts {
      * 2025. 6. 23.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@within(org.springframework.stereotype.Service)")
     public final void withinServiceStereotypeComponent() {

@@ -38,9 +38,7 @@ import java.util.concurrent.RunnableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -79,9 +77,8 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *            {@link Thread} 이름 뒤에 붙여서 식별정보로 활용
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public DelegatingExecutorService(@Nonnull S delegate, @Nullable String symbol) {
+    public DelegatingExecutorService(S delegate, @Nullable String symbol) {
         this.delegate = delegate;
         this.symbol = symbol;
     }
@@ -90,7 +87,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ExecutorService#awaitTermination(long, java.util.concurrent.TimeUnit)
      */
@@ -103,7 +99,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.Executor#execute(java.lang.Runnable)
      */
@@ -133,7 +128,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 8. 2.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final Map<String, String> getCopyOfContextMap(String symbol) {
         Map<String, String> copiedMDC = MDC.getCopyOfContextMap();
@@ -148,7 +142,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.AbstractExecutorService#invokeAny(java.util.Collection)
      */
@@ -161,7 +154,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.AbstractExecutorService#invokeAny(java.util.Collection, long,
      *      java.util.concurrent.TimeUnit)
@@ -175,7 +167,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ExecutorService#isShutdown()
      */
@@ -188,7 +179,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ExecutorService#isTerminated()
      */
@@ -201,7 +191,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.AbstractExecutorService#newTaskFor(java.util.concurrent.Callable)
      */
@@ -214,7 +203,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.AbstractExecutorService#newTaskFor(java.lang.Runnable, java.lang.Object)
      */
@@ -227,7 +215,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ExecutorService#shutdown()
      */
@@ -240,7 +227,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.util.concurrent.ExecutorService#shutdownNow()
      */
@@ -265,7 +251,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <T> Callable<T> wrap(Callable<T> callable) {
         return MdcWrappedJob.wrap(getCopyOfContextMap(this.symbol), callable);
@@ -287,7 +272,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <T> Collection<? extends Callable<T>> wrap(Collection<? extends Callable<T>> tasks) {
         return MdcWrappedJob.wrap(getCopyOfContextMap(this.symbol), tasks);
@@ -308,7 +292,6 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected Runnable wrap(Runnable runnable) {
         return MdcWrappedJob.wrap(getCopyOfContextMap(this.symbol), runnable, false);

@@ -40,10 +40,9 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -109,7 +108,6 @@ public abstract class MdcWrappedJob<V> {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     protected MdcWrappedJob(@Nullable Map<String, String> mdc, boolean byScheduler) {
         this.forwardedMDC = mdc;
@@ -150,10 +148,8 @@ public abstract class MdcWrappedJob<V> {
      * 2025. 8. 1.      parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
-     *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final void beforeExecute() {
         // 동작하는 시점의 Thread MDC 백업
@@ -201,7 +197,6 @@ public abstract class MdcWrappedJob<V> {
      *
      * @since 2025. 8. 3.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static final Map<String, String> getCopyOfContextMap(String symbol) {
         Map<String, String> copiedMDC = MDC.getCopyOfContextMap();
@@ -231,7 +226,6 @@ public abstract class MdcWrappedJob<V> {
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static <T> Callable<T> wrap(Map<String, String> context, Callable<T> callable) {
         return new MdcWrappedCallable<T>(context != null ? new HashMap<>(context) : null, callable);
@@ -257,7 +251,6 @@ public abstract class MdcWrappedJob<V> {
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static <T> Collection<? extends Callable<T>> wrap(Map<String, String> context, Collection<? extends Callable<T>> tasks) {
         return tasks.stream().map(task -> MdcWrappedJob.wrap(context, task)).collect(Collectors.toList());
@@ -283,14 +276,13 @@ public abstract class MdcWrappedJob<V> {
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static Runnable wrap(Map<String, String> context, Runnable runnable, boolean byScheduler) {
         return new MdcWrappedRunnable(context != null ? new HashMap<>(context) : null, runnable, byScheduler);
     }
 
     private static class MdcWrappedCallable<V> extends MdcWrappedJob<V> implements Callable<V> {
-        @Nonnull
+
         private final Callable<V> callable;
 
         /**
@@ -309,9 +301,8 @@ public abstract class MdcWrappedJob<V> {
          *            작업 객체
          * @since 2025. 8. 1.
          * @version 0.8.0
-         * @author parkjunhong77@gmail.com
          */
-        MdcWrappedCallable(Map<String, String> mdc, @NotNull @Nonnull Callable<V> callable) {
+        MdcWrappedCallable(Map<String, String> mdc, @NotNull Callable<V> callable) {
             super(mdc, false);
             this.callable = callable;
         }
@@ -320,7 +311,6 @@ public abstract class MdcWrappedJob<V> {
          *
          * @since 2025. 8. 1.
          * @version 0.8.0
-         * @author parkjunhong77@gmail.com
          *
          * @see java.util.concurrent.Callable#call()
          */
@@ -331,7 +321,7 @@ public abstract class MdcWrappedJob<V> {
     }
 
     private static class MdcWrappedRunnable extends MdcWrappedJob<Void> implements Runnable {
-        @Nonnull
+
         private final Runnable runnable;
 
         /**
@@ -353,9 +343,8 @@ public abstract class MdcWrappedJob<V> {
          *            {@link TaskScheduler} 또는 {@link ScheduledExecutorService}에 의해서 실행되는지 여부
          * @since 2025. 8. 1.
          * @version 0.8.0
-         * @author parkjunhong77@gmail.com
          */
-        public MdcWrappedRunnable(@Nullable Map<String, String> mdc, @Nonnull Runnable runnable, boolean byScheduler) {
+        public MdcWrappedRunnable(@Nullable Map<String, String> mdc, Runnable runnable, boolean byScheduler) {
             super(mdc, byScheduler);
             this.runnable = runnable;
         }
@@ -364,7 +353,6 @@ public abstract class MdcWrappedJob<V> {
          *
          * @since 2025. 8. 1.
          * @version 0.8.0
-         * @author parkjunhong77@gmail.com
          *
          * @see java.lang.Runnable#run()
          */

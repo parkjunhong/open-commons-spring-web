@@ -28,8 +28,8 @@ package open.commons.spring.web.beans.authority;
 
 import java.lang.reflect.Field;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.context.annotation.Bean;
 
@@ -63,7 +63,6 @@ public interface IAuthorizedResourcesMetadata {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public String getAuthorityBeanName(@NotNull Class<?> clazz);
 
@@ -85,7 +84,6 @@ public interface IAuthorizedResourcesMetadata {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public String getAuthorityBeanName(@NotNull Class<?> clazz, String fieldName);
 
@@ -107,7 +105,6 @@ public interface IAuthorizedResourcesMetadata {
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public AuthorizedFieldMetadata getAuthorizedFieldMetadata(@NotNull Class<?> clazz, String fieldName);
 
@@ -127,7 +124,6 @@ public interface IAuthorizedResourcesMetadata {
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public AuthorizedObjectMetadata getAuthorizedObjectMetadata(@NotNull Class<?> clazz);
 
@@ -148,7 +144,6 @@ public interface IAuthorizedResourcesMetadata {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public String getFieldHandleBeanName(@NotNull Class<?> clazz);
 
@@ -170,7 +165,6 @@ public interface IAuthorizedResourcesMetadata {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public String getFieldHandleBeanName(@NotNull Class<?> clazz, String fieldName);
 
@@ -193,7 +187,6 @@ public interface IAuthorizedResourcesMetadata {
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public boolean isAuthorizedField(@NotNull Class<?> clazz, @NotEmpty String fieldName);
 
@@ -213,7 +206,6 @@ public interface IAuthorizedResourcesMetadata {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public boolean isAuthorizedObject(@NotNull Class<?> clazz);
 

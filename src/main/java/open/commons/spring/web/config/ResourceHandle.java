@@ -28,9 +28,8 @@ package open.commons.spring.web.config;
 
 import java.util.function.Function;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.authority.AuthorizedRequestData;
@@ -64,10 +63,9 @@ public interface ResourceHandle {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @NotNull
-    @Nonnull
+
     public Function<?, ?> handle();
 
     /**
@@ -84,10 +82,9 @@ public interface ResourceHandle {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @NotEmpty
-    @Nonnull
+
     public String handleType();
 
     /**
@@ -104,7 +101,6 @@ public interface ResourceHandle {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public boolean preemptive();
 
@@ -122,10 +118,9 @@ public interface ResourceHandle {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @NotNull
-    @Nonnull
+
     public Target target();
 
     /** 데이터 적용 대상 유형 정보 */

@@ -29,9 +29,8 @@ package open.commons.spring.web.handler;
 import java.util.Collection;
 import java.util.regex.Pattern;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,9 +72,8 @@ public class InterceptorIgnoreValidator {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static boolean isAcceptable(@NotBlank @Nonnull String fqcn, @NotNull @Nonnull HandlerInterceptor interceptor) {
+    public static boolean isAcceptable(@NotBlank String fqcn, @NotNull HandlerInterceptor interceptor) {
         return Pattern.matches(fqcn.replace(".", "\\.").replace("*", ".*"), interceptor.getClass().getName());
     }
 
@@ -95,9 +93,8 @@ public class InterceptorIgnoreValidator {
      *
      * @since 2025. 8. 7.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static boolean isAvailable(@Nonnull InterceptorIgnoreUrlProperties prop, @Nonnull HandlerInterceptor interceptor) {
+    public static boolean isAvailable(InterceptorIgnoreUrlProperties prop, HandlerInterceptor interceptor) {
         try {
             switch (prop.getScheme()) {
                 case Class:
@@ -129,9 +126,8 @@ public class InterceptorIgnoreValidator {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static boolean isValidAntPath(@Nonnull Collection<String> patterns) {
+    public static boolean isValidAntPath(Collection<String> patterns) {
         return PathUtils.isValidAntPath(patterns);
     }
 
@@ -151,9 +147,8 @@ public class InterceptorIgnoreValidator {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static boolean isValidFqcn(@Nonnull String fqcn) {
+    public static boolean isValidFqcn(String fqcn) {
         return PathUtils.isValidFqcn(fqcn);
     }
 }

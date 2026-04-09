@@ -30,8 +30,7 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Collection;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 
@@ -79,9 +78,8 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends JsonDeserial
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public ContainerSimpleTypeElementWrappingDeserializer(JavaType containerType, IAuthorizedRequestDataHandler handler, @NotEmpty @Nonnull String handleType) {
+    public ContainerSimpleTypeElementWrappingDeserializer(JavaType containerType, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType) {
         this(containerType, handler, handleType, null);
     }
 
@@ -105,9 +103,8 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends JsonDeserial
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public ContainerSimpleTypeElementWrappingDeserializer(JavaType containerType, IAuthorizedRequestDataHandler handler, @NotEmpty @Nonnull String handleType,
+    public ContainerSimpleTypeElementWrappingDeserializer(JavaType containerType, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType,
             JsonDeserializer<?> delegate) {
         this.containerType = containerType;
         this.handler = handler;
@@ -119,7 +116,6 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends JsonDeserial
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.deser.ContextualDeserializer#createContextual(com.fasterxml.jackson.databind.DeserializationContext,
      *      com.fasterxml.jackson.databind.BeanProperty)
@@ -141,7 +137,6 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends JsonDeserial
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.deser.std.DelegatingDeserializer#deserialize(com.fasterxml.jackson.core.JsonParser,
      *      com.fasterxml.jackson.databind.DeserializationContext)

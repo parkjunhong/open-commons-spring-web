@@ -29,7 +29,7 @@ package open.commons.spring.web.servlet.filter.header;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * 'frond-end' 또는 외부에서 전달한 'header' 정보 중에 공유하기 위한 설정 기능.
@@ -54,7 +54,6 @@ public interface SharedHeader {
      *
      * @since 2025. 8. 20.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public String header();
 
@@ -72,7 +71,6 @@ public interface SharedHeader {
      *
      * @since 2025. 11. 7.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     @NotNull
     default BiConsumer<String, String> postAction() {
@@ -94,7 +92,6 @@ public interface SharedHeader {
      *
      * @since 2025. 8. 20.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @NotNull
     default BiPredicate<String, String> validator() {

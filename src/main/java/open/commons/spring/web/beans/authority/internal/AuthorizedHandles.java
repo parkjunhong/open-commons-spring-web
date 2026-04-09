@@ -36,8 +36,7 @@ import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -129,9 +128,8 @@ public class AuthorizedHandles {
      *
      * @since 2025. 9. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static void assertUsableHandleType(@NotEmpty @Nonnull String handleType, @Nonnull Target targetType, boolean preemptive) {
+    public static void assertUsableHandleType(@NotEmpty String handleType, Target targetType, boolean preemptive) {
         AssertUtils2.notNull(targetType);
         AssertUtils2.isFalse("데이터 처리 방식은 반드시 설정되어야 합니다.", StringUtils.isNullOrEmptyString(handleType));
         if (preemptive //
@@ -159,7 +157,6 @@ public class AuthorizedHandles {
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see Collections#unmodifiableList(List)
      */
@@ -191,10 +188,8 @@ public class AuthorizedHandles {
      *
      * @since 2025. 10. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static ResourceHandle createResourceHandle(boolean isBuiltin, @Nonnull Target target, @NotEmpty @Nonnull String handleType, @Nonnull Function<?, ?> handle,
-            boolean preemptive) {
+    public static ResourceHandle createResourceHandle(boolean isBuiltin, Target target, @NotEmpty String handleType, Function<?, ?> handle, boolean preemptive) {
         assertUsableHandleType(handleType, target, preemptive);
         return new ResourceHandleImpl(target, handleType, handle, preemptive);
     }
@@ -219,9 +214,8 @@ public class AuthorizedHandles {
      *
      * @since 2025. 10. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static ResourceHandle createResourceHandle(@Nonnull Target target, @NotEmpty @Nonnull String handleType, @Nonnull Function<?, ?> handle) {
+    public static ResourceHandle createResourceHandle(Target target, @NotEmpty String handleType, Function<?, ?> handle) {
         return createResourceHandle(false, target, handleType, handle, false);
     }
 
@@ -249,9 +243,8 @@ public class AuthorizedHandles {
      *
      * @since 2025. 10. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static ResourceHandle createResourceHandle(@Nonnull Target target, @NotEmpty @Nonnull String handleType, @Nonnull Function<?, ?> handle, boolean preemptive) {
+    public static ResourceHandle createResourceHandle(Target target, @NotEmpty String handleType, Function<?, ?> handle, boolean preemptive) {
         return createResourceHandle(false, target, handleType, handle, preemptive);
     }
 
@@ -279,10 +272,9 @@ public class AuthorizedHandles {
      *
      * @since 2025. 10. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    static Collection<ResourceHandle> createResourceHandles(boolean isBuiltin, @NotEmpty @Nonnull String handleType, @Nonnull Function<?, ?> unauthorizedHandle,
-            @Nonnull Function<?, ?> authorizedHandle, boolean preemptive) {
+    static Collection<ResourceHandle> createResourceHandles(boolean isBuiltin, @NotEmpty String handleType, Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle,
+            boolean preemptive) {
 
         assertUsableHandleType(handleType, Target.UNAUTHORIZED, preemptive);
         assertUsableHandleType(handleType, Target.AUTHORIZED, preemptive);
@@ -314,10 +306,8 @@ public class AuthorizedHandles {
      *
      * @since 2025. 10. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static Collection<ResourceHandle> createResourceHandles(@NotEmpty @Nonnull String handleType, @Nonnull Function<?, ?> unauthorizedHandle,
-            @Nonnull Function<?, ?> authorizedHandle) {
+    public static Collection<ResourceHandle> createResourceHandles(@NotEmpty String handleType, Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle) {
         return createResourceHandles(false, handleType, unauthorizedHandle, authorizedHandle, false);
     }
 
@@ -343,10 +333,9 @@ public class AuthorizedHandles {
      *
      * @since 2025. 10. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static Collection<ResourceHandle> createResourceHandles(@NotEmpty @Nonnull String handleType, @Nonnull Function<?, ?> unauthorizedHandle,
-            @Nonnull Function<?, ?> authorizedHandle, boolean preemptive) {
+    public static Collection<ResourceHandle> createResourceHandles(@NotEmpty String handleType, Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle,
+            boolean preemptive) {
         return createResourceHandles(false, handleType, unauthorizedHandle, authorizedHandle, preemptive);
     }
 
@@ -679,7 +668,6 @@ public class AuthorizedHandles {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private static String maskString(String str, int allowed, int max, char padChar, boolean dir) {
         if (allowed > max) {
@@ -710,9 +698,8 @@ public class AuthorizedHandles {
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    private static void registerResourceHandle(@Nonnull String handleType, Target targetType, Function<?, ?> function, boolean preemptive) {
+    private static void registerResourceHandle(String handleType, Target targetType, Function<?, ?> function, boolean preemptive) {
         assertUsableHandleType(handleType, targetType, preemptive);
         BUILTIN_HANDLES.add(new ResourceHandleImpl(true, targetType, handleType, function, preemptive));
     }
@@ -739,9 +726,8 @@ public class AuthorizedHandles {
      *
      * @since 2025. 10. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    private static void registerResourceHandles(@Nonnull String handleType, Function<?, ?> unuathorizedHandle, Function<?, ?> authorizedHandle, boolean preemptive) {
+    private static void registerResourceHandles(String handleType, Function<?, ?> unuathorizedHandle, Function<?, ?> authorizedHandle, boolean preemptive) {
         registerResourceHandle(handleType, Target.UNAUTHORIZED, unuathorizedHandle, preemptive);
         registerResourceHandle(handleType, Target.AUTHORIZED, authorizedHandle, preemptive);
     }
@@ -761,9 +747,8 @@ public class AuthorizedHandles {
      *
      * @since 2025. 9. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    private static void update(@NotEmpty @Nonnull String handleType, Target targetType) {
+    private static void update(@NotEmpty String handleType, Target targetType) {
         List<Target> targets = MapUtils.getOrDefault(HANDLE_TYPES, handleType, (Supplier<List<Target>>) () -> {
             return new ArrayList<>();
         }, true);

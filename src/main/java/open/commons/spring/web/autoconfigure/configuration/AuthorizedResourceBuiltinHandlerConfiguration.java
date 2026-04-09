@@ -32,8 +32,7 @@ import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,18 +74,16 @@ public class AuthorizedResourceBuiltinHandlerConfiguration {
      * 2025. 6. 12.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedResourceBuiltinHandlerConfiguration() {
     }
 
     @Bean(BEAN_QUALIFIER_AUTHORIZED_RESOURCE_HANDLERS)
     @Primary
-    List<ResourceHandle> authorizedResourceHandlerConfigurations(@NotNull @Nonnull Map<String, ResourceHandle> single //
-            , @NotNull @Nonnull Map<String, List<ResourceHandle>> multi) {
+    List<ResourceHandle> authorizedResourceHandlerConfigurations(@NotNull Map<String, ResourceHandle> single //
+            , @NotNull Map<String, List<ResourceHandle>> multi) {
 
         // #1. 데이터 병합
         List<ResourceHandle> merged = MapUtils.toList(single, multi, h -> String.format("%s#%s", h.target(), h.handleType()), (h1, h2) -> {
@@ -104,7 +101,7 @@ public class AuthorizedResourceBuiltinHandlerConfiguration {
         });
         // #2. 중복 '데이터 처리 식별정보' 검증
         MultiValueMap<String, ResourceHandle> mayBeDuplicated = StreamUtils.toMap(merged.stream(),
-                (Function<ResourceHandle, String>) h -> String.format("%s#%s", h.target(), h.handleType()), Function.identity(), LinkedMultiValueMap::new);
+                (Function<ResourceHandle, String>) h -> String.format("%s#%s", h.target(), h.handleType()), StreamUtils.identity(), LinkedMultiValueMap::new);
 
         boolean duplicated = false;
         for (Entry<String, List<ResourceHandle>> entry : mayBeDuplicated.entrySet()) {

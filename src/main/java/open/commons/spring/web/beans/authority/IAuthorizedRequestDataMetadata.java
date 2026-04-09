@@ -28,9 +28,8 @@ package open.commons.spring.web.beans.authority;
 
 import java.lang.reflect.Field;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.context.annotation.Bean;
 
@@ -65,9 +64,8 @@ public interface IAuthorizedRequestDataMetadata {
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public AuthorizedRequestDataFieldMetadata getFieldMetadat(@NotNull @Nonnull Class<?> targetClass, @NotBlank String fieldName);
+    public AuthorizedRequestDataFieldMetadata getFieldMetadat(@NotNull Class<?> targetClass, @NotBlank String fieldName);
 
     /**
      * 주어진 클래스의 {@link Field}에 선언된 {@link IAuthorizedRequestDataHandler}를 구현한 {@link Bean} 이름을 제공합니다.<br>
@@ -88,15 +86,14 @@ public interface IAuthorizedRequestDataMetadata {
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see AuthorizedRequestData#handleBean()
      */
-    public String getHandleBeanName(@NotNull @Nonnull Class<?> targetClass, @NotBlank String fieldName);
+    public String getHandleBeanName(@NotNull Class<?> targetClass, @NotBlank String fieldName);
 
     /**
-     * 주어진 클래스의 {@link Field}에 선언된 {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}에 사용될 '데이터 처리방식 식별정보'를
-     * 제공합니다.<br>
+     * 주어진 클래스의 {@link Field}에 선언된 {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}에 사용될 '데이터 처리방식
+     * 식별정보'를 제공합니다.<br>
      * {@link AuthorizedRequestData#handleType()} 값과 매칭됩니다.
      * 
      * <pre>
@@ -114,11 +111,10 @@ public interface IAuthorizedRequestDataMetadata {
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see AuthorizedRequestData#handleType()
      */
-    public String getHandleType(@NotNull @Nonnull Class<?> targetClass, @NotBlank String fieldName);
+    public String getHandleType(@NotNull Class<?> targetClass, @NotBlank String fieldName);
 
     /**
      * 주어진 클래스에 적용될 {@link AuthorizedRequestDataObjectMetadata} 정보를 제공합니다. <br>
@@ -136,9 +132,8 @@ public interface IAuthorizedRequestDataMetadata {
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public AuthorizedRequestDataObjectMetadata getObjectMetadata(@NotNull @Nonnull Class<?> targetClass);
+    public AuthorizedRequestDataObjectMetadata getObjectMetadata(@NotNull Class<?> targetClass);
 
     /**
      * 주어진 클래스가 '권한제어' 해제 대상인지 여부를 제공합니다.<br>
@@ -156,8 +151,7 @@ public interface IAuthorizedRequestDataMetadata {
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public boolean isAuthorizedRequestDataObject(@NotNull @Nonnull Class<?> targetClass);
+    public boolean isAuthorizedRequestDataObject(@NotNull Class<?> targetClass);
 
 }

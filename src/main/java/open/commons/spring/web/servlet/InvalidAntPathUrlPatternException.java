@@ -49,10 +49,8 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidAntPathUrlPatternException() {
     }
@@ -71,7 +69,6 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidAntPathUrlPatternException(String message) {
         super(message);
@@ -92,7 +89,6 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidAntPathUrlPatternException(String message, Throwable cause) {
         super(message, cause);
@@ -115,7 +111,6 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidAntPathUrlPatternException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
@@ -135,7 +130,6 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidAntPathUrlPatternException(Throwable cause) {
         super(cause);

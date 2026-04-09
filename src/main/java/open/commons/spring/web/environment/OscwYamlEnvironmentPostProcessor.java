@@ -34,8 +34,8 @@ import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.EnvironmentPostProcessor;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.boot.env.YamlPropertySourceLoader;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -68,7 +68,6 @@ import org.springframework.core.io.Resource;
  *   open.commons.spring.web.oas.OcswYamlEnvironmentPostProcessor
  * </pre>
  * 
- * 
  * @since 2025. 10. 21.
  * @version 2.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
@@ -99,10 +98,8 @@ public class OscwYamlEnvironmentPostProcessor implements EnvironmentPostProcesso
      * 2025. 10. 21.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 10. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public OscwYamlEnvironmentPostProcessor() {
     }
@@ -111,7 +108,6 @@ public class OscwYamlEnvironmentPostProcessor implements EnvironmentPostProcesso
      *
      * @since 2025. 10. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see org.springframework.core.Ordered#getOrder()
      */
@@ -124,7 +120,6 @@ public class OscwYamlEnvironmentPostProcessor implements EnvironmentPostProcesso
      *
      * @since 2025. 10. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see org.springframework.boot.env.EnvironmentPostProcessor#postProcessEnvironment(org.springframework.core.env.ConfigurableEnvironment,
      *      org.springframework.boot.SpringApplication)

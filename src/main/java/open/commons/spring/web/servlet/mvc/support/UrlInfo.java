@@ -28,7 +28,7 @@ package open.commons.spring.web.servlet.mvc.support;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Generatl URL Information.

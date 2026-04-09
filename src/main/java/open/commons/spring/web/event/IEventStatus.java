@@ -49,7 +49,6 @@ public interface IEventStatus {
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public String getStatus();
 

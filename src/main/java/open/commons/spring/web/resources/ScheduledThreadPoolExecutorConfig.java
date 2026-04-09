@@ -30,8 +30,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * {@link ThreadPoolExecutor} 설정 정보 클래스.
@@ -113,10 +112,8 @@ public class ScheduledThreadPoolExecutorConfig {
      * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public ScheduledThreadPoolExecutorConfig() {
     }
@@ -136,9 +133,8 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 11.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public ScheduledThreadPoolExecutorConfig(@NotNull @Nonnull ScheduledThreadPoolExecutorConfig config) {
+    public ScheduledThreadPoolExecutorConfig(@NotNull ScheduledThreadPoolExecutorConfig config) {
         this.corePoolSize = config.corePoolSize;
         this.maximumPoolSize = config.maximumPoolSize;
         this.keepAliveTime = config.keepAliveTime;
@@ -163,7 +159,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #corePoolSize
      */
@@ -186,7 +181,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #keepAliveTime
      */
@@ -209,7 +203,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #maximumPoolSize
      */
@@ -232,7 +225,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #timeUnit
      */
@@ -255,7 +247,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #allowCoreThreadTimeOut
      */
@@ -278,7 +269,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #continueExistingPeriodicTasksAfterShutdown
      */
@@ -301,7 +291,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #executeExistingDelayedTasksAfterShutdown
      */
@@ -324,7 +313,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 11.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #initialized
      */
@@ -347,7 +335,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #removeOnCancel
      */
@@ -371,7 +358,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #allowCoreThreadTimeOut
      */
@@ -396,7 +382,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #continueExistingPeriodicTasksAfterShutdown
      */
@@ -421,7 +406,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #corePoolSize
      */
@@ -446,7 +430,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #executeExistingDelayedTasksAfterShutdown
      */
@@ -471,7 +454,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #keepAliveTime
      */
@@ -496,7 +478,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #maximumPoolSize
      */
@@ -521,7 +502,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #removeOnCancel
      */
@@ -546,7 +526,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #timeUnit
      */
@@ -560,7 +539,6 @@ public class ScheduledThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

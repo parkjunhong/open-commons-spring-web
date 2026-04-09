@@ -53,10 +53,8 @@ public class UnauthorizedAccessException extends RuntimeException {
      * 2025. 5. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public UnauthorizedAccessException() {
     }
@@ -75,7 +73,6 @@ public class UnauthorizedAccessException extends RuntimeException {
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public UnauthorizedAccessException(String message) {
         super(message);
@@ -96,7 +93,6 @@ public class UnauthorizedAccessException extends RuntimeException {
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public UnauthorizedAccessException(String message, Throwable cause) {
         super(message, cause);
@@ -119,7 +115,6 @@ public class UnauthorizedAccessException extends RuntimeException {
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public UnauthorizedAccessException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
@@ -139,7 +134,6 @@ public class UnauthorizedAccessException extends RuntimeException {
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public UnauthorizedAccessException(Throwable cause) {
         super(cause);

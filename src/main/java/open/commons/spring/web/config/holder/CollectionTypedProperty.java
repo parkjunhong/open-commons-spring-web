@@ -51,10 +51,8 @@ public class CollectionTypedProperty<C extends Collection<T>, T> {
      * 2025. 8. 8.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public CollectionTypedProperty(C defaultValue) {
         this.properties = defaultValue;
@@ -74,7 +72,6 @@ public class CollectionTypedProperty<C extends Collection<T>, T> {
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #properies
      */
@@ -98,7 +95,6 @@ public class CollectionTypedProperty<C extends Collection<T>, T> {
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #properies
      */
@@ -110,7 +106,6 @@ public class CollectionTypedProperty<C extends Collection<T>, T> {
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

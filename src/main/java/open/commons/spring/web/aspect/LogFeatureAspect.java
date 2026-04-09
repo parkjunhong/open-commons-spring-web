@@ -28,15 +28,15 @@ package open.commons.spring.web.aspect;
 
 import java.lang.reflect.Method;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.MDC;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -59,8 +59,6 @@ import open.commons.spring.web.log.LogFeature.Target;
 import open.commons.spring.web.servlet.filter.RequestHeaderFilter;
 import open.commons.spring.web.servlet.filter.RequestThreadNameFilter;
 import open.commons.spring.web.servlet.filter.header.SharedHeadersBuiltinProvider;
-
-import io.micrometer.core.lang.Nullable;
 
 /**
  * 
@@ -99,9 +97,8 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public LogFeatureAspect(ApplicationContext context, @NotNull @Nonnull ILogFeatureDecorationConsolidator logDecorator) {
+    public LogFeatureAspect(ApplicationContext context, @NotNull ILogFeatureDecorationConsolidator logDecorator) {
         super(context);
         this.logDecorator = logDecorator;
     }
@@ -116,10 +113,8 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 2025. 7. 28.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@annotation(open.commons.spring.web.log.LogFeature)")
     public final void annotationLogFeature() {
@@ -135,10 +130,8 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 2025. 7. 31.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@annotation(org.springframework.scheduling.annotation.Scheduled)")
     public final void annotationScheduled() {
@@ -162,7 +155,6 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #withinAllControllerStereotypeComponent()
      * @see #withinComponentStereotypeComponent()
@@ -225,7 +217,6 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      *
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #withinComponentStereotypeComponent()
      * @see #annotationScheduled()
@@ -272,9 +263,8 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * @param featureNotBlankAsserMsg
      * @since 2025. 7. 31.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    private void setLogFeature(@NotBlank @Nonnull String feature, @Nullable String marker, String thread, String featureNotBlankAsserMsg) {
+    private void setLogFeature(@NotBlank String feature, @Nullable String marker, String thread, String featureNotBlankAsserMsg) {
 
         // 'feature' 설정
         if (LogFeature.VALUE_THREAD_NULL.equals(feature) || (feature = feature.trim()).isEmpty()) {
@@ -306,10 +296,8 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 2025. 7. 28.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@within(open.commons.spring.web.log.LogFeature)")
     public final void withinLogFeature() {

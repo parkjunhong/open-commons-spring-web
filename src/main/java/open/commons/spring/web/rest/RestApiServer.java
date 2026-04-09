@@ -12,10 +12,10 @@ package open.commons.spring.web.rest;
 
 import java.util.Map;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 
 /**
  * 
@@ -155,7 +155,6 @@ public class RestApiServer {
      * @return
      *
      * @since 2020. 8. 25.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public RestApiDecl getRestApiDecl(String name) {
         return this.apiList.get(name);
@@ -289,7 +288,6 @@ public class RestApiServer {
 
     /**
      * @since 2020. 8. 21.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#toString()
      */

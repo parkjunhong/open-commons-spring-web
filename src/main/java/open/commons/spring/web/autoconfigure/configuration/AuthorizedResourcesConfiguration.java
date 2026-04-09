@@ -28,8 +28,7 @@ package open.commons.spring.web.autoconfigure.configuration;
 
 import java.util.List;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -91,9 +90,9 @@ public class AuthorizedResourcesConfiguration {
     @Bean(name = BEAN_QUALIFIER_AUTHORIZED_OBJECT_MAPPER)
     @ConditionalOnBean({ IFieldAccessAuthorityProvider.class, IUnauthorizedFieldHandler.class })
     ObjectMapper authorizedObjectMapper(ApplicationContext context //
-            , @NotNull @Nonnull IAuthorizedResourcesMetadata authorizedResourcesMetadata //
-            , @NotNull @Nonnull IAuthorizedRequestDataMetadata authorizedRequestDataMetadata //
-            , @NotNull @Nonnull Jackson2ObjectMapperBuilder objectMapperBuilder) {
+            , @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata //
+            , @NotNull IAuthorizedRequestDataMetadata authorizedRequestDataMetadata //
+            , @NotNull Jackson2ObjectMapperBuilder objectMapperBuilder) {
         // #1. ObjectMapper 생성
         ObjectMapper mapper = objectMapperBuilder.build();
         // #2. AuthorizedObject 처리 모듈 등록
@@ -144,7 +143,7 @@ public class AuthorizedResourcesConfiguration {
     @Primary
     @ConditionalOnBean({ IFieldAccessAuthorityProvider.class, IUnauthorizedFieldHandler.class })
     AuthorizedModelAndViewHandlerInterceptor authorizedModelAndViewHandlerInterceptor(ApplicationContext context //
-            , @NotNull @Nonnull IAuthorizedResourcesMetadata authorizedResourcesMetadata //
+            , @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata //
     ) {
         AuthorizedModelAndViewHandlerInterceptor h = new AuthorizedModelAndViewHandlerInterceptor(context, authorizedResourcesMetadata);
         logger.info("[authorized-resources] authorized-model_and_view-handler-interceptor={}", h);

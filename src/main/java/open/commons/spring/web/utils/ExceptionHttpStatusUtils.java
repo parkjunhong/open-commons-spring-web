@@ -26,10 +26,9 @@
 
 package open.commons.spring.web.utils;
 
-import javax.annotation.Nonnull;
-
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import open.commons.core.utils.AssertUtils2;
@@ -37,6 +36,16 @@ import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
 
 /**
  * 발생한 예외 클래스(<code> ? extends {@link Throwable})과 {@link HttpStatus} 매핑에 관한 기능을 제공
+ * 
+ * 
+ * <br>
+ * <pre>
+ * [개정이력]
+ *      날짜    	| 작성자			|	내용
+ * ------------------------------------------
+ * 2025. 10. 22.    parkjunohng77@gmail.com     최초 작성
+ * 2026. 4. 9.      parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5
+ * </pre>
  * 
  * @since 2025. 10. 22.
  * @version 2.1.0
@@ -54,6 +63,7 @@ public class ExceptionHttpStatusUtils {
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2025. 5. 28.     parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경 및 반환타입. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      * 
      * @param binder
@@ -67,14 +77,13 @@ public class ExceptionHttpStatusUtils {
      *
      * @since 2025. 5. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see ResponseStatus
      */
-    public static HttpStatus resolveResponseStatus(ExceptionHttpStatusBinder binder, @Nonnull Exception ex, @Nonnull HttpStatus defaultStatus) {
+    public static HttpStatusCode resolveResponseStatus(ExceptionHttpStatusBinder binder, Exception ex, HttpStatusCode defaultStatus) {
         AssertUtils2.notNulls(ex, defaultStatus);
 
-        HttpStatus status = binder != null ? binder.resolveHttpStatus(ex.getClass(), defaultStatus) : null;
+        HttpStatusCode status = binder != null ? binder.resolveHttpStatus(ex.getClass(), defaultStatus) : null;
         if (status != null) {
             return status;
         } else {

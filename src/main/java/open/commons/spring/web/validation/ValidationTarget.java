@@ -36,7 +36,7 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import javax.validation.Validation;
+import jakarta.validation.Validation;
 
 /**
  * {@link Validation} 대상임을 정의하는 어노테이션.

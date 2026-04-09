@@ -28,7 +28,7 @@ package open.commons.spring.web.jackson.decoration;
 
 import java.util.Collection;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;

@@ -39,9 +39,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import javax.annotation.PostConstruct;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.annotation.PostConstruct;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -83,7 +83,6 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#getAuthorityBeanName(java.lang.Class)
      */
@@ -96,7 +95,6 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#getAuthorityBeanName(java.lang.Class,
      *      java.lang.String)
@@ -118,7 +116,6 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#getAuthorizedFieldMetadata(java.lang.Class,
      *      java.lang.String)
@@ -139,7 +136,6 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#getAuthorizedObjectMetadata(java.lang.Class)
      */
@@ -152,7 +148,6 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#getFieldHandleBeanName(java.lang.Class)
      */
@@ -165,7 +160,6 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#getFieldHandleBeanName(java.lang.Class,
      *      java.lang.String)
@@ -187,7 +181,6 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#isAuthorizedField(java.lang.Class,
      *      java.lang.String)
@@ -208,7 +201,6 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#isAuthorizedObject(java.lang.Class)
      */
@@ -284,7 +276,6 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #authorizedObjectMetadata
      */

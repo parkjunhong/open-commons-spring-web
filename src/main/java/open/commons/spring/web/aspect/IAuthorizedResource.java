@@ -55,7 +55,6 @@ public interface IAuthorizedResource<T> {
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     Object validateAuthorizedResource(ProceedingJoinPoint pjp) throws Throwable;
 

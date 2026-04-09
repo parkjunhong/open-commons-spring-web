@@ -37,19 +37,30 @@ import org.springframework.context.annotation.Import;
 
 import open.commons.spring.web.autoconfigure.configuration.AuthorizedObjectMessageConfigureConfiguration;
 import open.commons.spring.web.autoconfigure.configuration.AuthorizedObjectMessageConverterConfiguration;
+import open.commons.spring.web.autoconfigure.configuration.AuthorizedResourceBuiltinHandlerConfiguration;
+import open.commons.spring.web.autoconfigure.configuration.AuthorizedResourcesConfiguration;
 import open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration;
-import open.commons.spring.web.config.AuthorizedResourcesMetadataConfiguration;
+import open.commons.spring.web.autoconfigure.configuration.LogFeatureConfiguration;
 
 /**
- * Open-Commons Spring Web에서 제공하는 기능을 활성화하는 어노테이션.
- * 
+ * Open-Commons Spring Web에서 제공하는 기능을 활성화합니다.
+ *
+ * <pre>
+ * [개정이력]
+ * 날짜        | 작성자                    | 내용
+ * ----------------------------------------------------------------------
+ * 2026. 4. 9.      parkjunhong77@gmail.com     JDK 25 및 Spring 7 Javadoc 현행화
+ * </pre>
+ *
  * @since 2025. 6. 5.
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  * 
- * @see AuthorizedResourcesMetadataConfiguration
+ * @see AuthorizedResourceBuiltinHandlerConfiguration
  * @see AuthorizedObjectMessageConfigureConfiguration
  * @see AuthorizedObjectMessageConverterConfiguration
+ * @see AuthorizedResourcesConfiguration
+ * @see LogFeatureConfiguration
  * @see GlobalServletConfiguration
  */
 @Documented
@@ -60,20 +71,19 @@ import open.commons.spring.web.config.AuthorizedResourcesMetadataConfiguration;
 public @interface EnableOpenCommonsSpringWeb {
 
     /**
-     * 제외시키고자 하는 Configuration 클래스. <br>
-     * 
+     * 자동 설정에서 제외할 설정 클래스 목록을 지정합니다.
+     *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
-     * ------------------------------------------
-     * 2025. 6. 5.		parkjunhong77@gmail.com			최초 작성
+     * 날짜        | 작성자                    | 내용
+     * ----------------------------------------------------------------------
+     * 2025. 6. 5.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
-     * @return
+     * @return 제외할 클래스들의 배열 (기본값: 빈 배열)
      *
      * @since 2025. 6. 5.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     Class<?>[] exclude() default {};
 }

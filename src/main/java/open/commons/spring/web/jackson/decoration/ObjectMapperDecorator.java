@@ -59,10 +59,8 @@ public class ObjectMapperDecorator implements IObjectMapperDecorator {
      * 2025. 6. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public ObjectMapperDecorator() {
     }
@@ -71,7 +69,6 @@ public class ObjectMapperDecorator implements IObjectMapperDecorator {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.jackson. decoration.IObjectMapperDecorator#disables()
      */
@@ -84,7 +81,6 @@ public class ObjectMapperDecorator implements IObjectMapperDecorator {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.jackson. decoration.IObjectMapperDecorator#enables()
      */
@@ -97,7 +93,6 @@ public class ObjectMapperDecorator implements IObjectMapperDecorator {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.jackson. decoration.IObjectMapperDecorator#modules()
      */
@@ -110,7 +105,6 @@ public class ObjectMapperDecorator implements IObjectMapperDecorator {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.jackson. decoration.IObjectMapperDecorator#namedTypes()
      */
@@ -123,7 +117,6 @@ public class ObjectMapperDecorator implements IObjectMapperDecorator {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.jackson. decoration.IObjectMapperDecorator#subtypes()
      */

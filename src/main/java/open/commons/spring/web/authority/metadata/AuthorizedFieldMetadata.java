@@ -29,9 +29,8 @@ package open.commons.spring.web.authority.metadata;
 import java.lang.reflect.Field;
 import java.util.Objects;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.context.annotation.Bean;
 
@@ -70,10 +69,8 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 2025. 6. 12.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedFieldMetadata() {
     }
@@ -84,7 +81,6 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -116,7 +112,6 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #authorityBean
      */
@@ -141,7 +136,6 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #fieldHandleBean
      */
@@ -164,7 +158,6 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #handleType
      */
@@ -187,7 +180,6 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #name
      */
@@ -202,7 +194,6 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#hashCode()
      */
@@ -226,7 +217,6 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #authorityBean
      * @see IFieldAccessAuthorityProvider
@@ -250,7 +240,6 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #fieldHandleBean
      * @see IUnauthorizedFieldHandler
@@ -274,11 +263,10 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #handleType
      */
-    public void setHandleType(@NotNull @Nonnull String handleType) {
+    public void setHandleType(@NotNull String handleType) {
         this.handleType = handleType;
     }
 
@@ -297,7 +285,6 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #name
      */
@@ -309,7 +296,6 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

@@ -43,9 +43,10 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 
-import javax.annotation.PostConstruct;
-import javax.validation.constraints.NotNull;
+import jakarta.annotation.PostConstruct;
+import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -60,7 +61,6 @@ import org.springframework.http.converter.json.AbstractJackson2HttpMessageConver
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJacksonInputMessage;
 import org.springframework.http.converter.json.MappingJacksonValue;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
@@ -151,7 +151,6 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      *
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedObjectJackson2HttpMessageConverter(ObjectMapper objectMapper, @NotNull Map<String, ObjectMapper> allObjectMappers,
             @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
@@ -179,7 +178,6 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected boolean annotatedOnMetadata(Class<?> clazz) {
         while (!Object.class.equals(clazz)) {
@@ -208,7 +206,6 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      *
      * @since 2025. 5. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private Map<Class<?>, Map<MediaType, ObjectMapper>> getObjectMapperRegistrations() {
         return (this.objectMapperRegistrations != null ? this.objectMapperRegistrations : Collections.emptyMap());
@@ -244,7 +241,6 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @SuppressWarnings("null")
     private Object readJavaType(JavaType javaType, HttpInputMessage inputMessage) throws IOException {
@@ -295,7 +291,6 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      *
      * @since 2025. 5. 27.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter#registerObjectMappersForType(java.lang.Class,
      *      java.util.function.Consumer)
@@ -315,7 +310,6 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      * {@link #selectObjectMapper(Class, MediaType)}로 이관하였고 이를 통해서 {@link AbstractJackson2HttpMessageConverter}에서
      * {@link ObjectMapper}를 선택하는 메커니즘을 최대한 따르게 되었습니다.
      * 
-     * 
      * <pre>
      * [개정이력]
      *      날짜    	| 작성자	|	내용
@@ -330,7 +324,6 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      *
      * @since 2025. 5. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private ObjectMapper resolveMapper(Object object, Class<?> targetType, @Nullable MediaType targetMediaType) {
         ObjectMapper om = null;
@@ -362,7 +355,6 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      *
      * @since 2025. 5. 27.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see #registerObjectMappersForType(Class, Consumer)
      */
@@ -400,7 +392,6 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      * 
      * @since 2025. 5. 26.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter#writeInternal(java.lang.Object,
      *      java.lang.reflect.Type, org.springframework.http.HttpOutputMessage)

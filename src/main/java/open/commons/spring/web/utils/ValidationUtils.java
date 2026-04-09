@@ -30,10 +30,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
 /**
  * {@link Validator} 기능 지원 클래스.
@@ -87,7 +87,6 @@ public class ValidationUtils {
      *
      * @since 2019. 10. 15.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <T> Set<ConstraintViolation<T>> validate(T object, boolean nested, Class<?>... groups) {
         return nested
@@ -113,7 +112,6 @@ public class ValidationUtils {
      *
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * 
      * @see Validator#validate(Object, Class...)
      */
@@ -141,7 +139,6 @@ public class ValidationUtils {
      *
      * @since 2019. 10. 15.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <T> Collection<String> validateAndErrorMsg(T object, boolean nested, Class<?>... groups) {
         return makeErrorMessage(validate(object, nested, groups));
@@ -163,7 +160,6 @@ public class ValidationUtils {
      *
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see Validator#validate(Object, Class...)
      */
     public static <T> Collection<String> validateAndErrorMsg(T object, Class<?>... groups) {
@@ -187,7 +183,6 @@ public class ValidationUtils {
      *
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see Validator#validateProperty(Object, String, Class...)
      */
     public static <T> Set<ConstraintViolation<T>> validateProperty(T object, String propertyName, Class<?>... groups) {
@@ -211,7 +206,6 @@ public class ValidationUtils {
      * 
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see Validator#validateProperty(Object, String, Class...)
      */
     public static <T> Collection<String> validatePropertyAndErrorMsg(T object, String propertyName, Class<?>... groups) {
@@ -237,7 +231,6 @@ public class ValidationUtils {
      *
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see Validator#validateValue(Class, String, Object, Class...)
      */
     public static <T> Set<ConstraintViolation<T>> validateValue(Class<T> beanType, String propertyName, Object value, Class<?>... groups) {
@@ -263,7 +256,6 @@ public class ValidationUtils {
      *
      * @since 2019. 6. 18.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @see Validator#validateValue(Class, String, Object, Class...)
      */
     public static <T> Collection<String> validateValueAndErrorMsg(Class<T> beanType, String propertyName, Object value, Class<?>... groups) {

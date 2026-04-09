@@ -35,14 +35,14 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.lang.Nullable;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -84,7 +84,6 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AbstractIdBasedRestApiService(@NotNull RestTemplate restTemplate, @NotNull List<IdBasedRestApiDecl> restApis) {
         super(restTemplate);
@@ -158,7 +157,6 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#execute(java.lang.String, java.util.Map,
      *      java.lang.Object, java.lang.Class, org.springframework.http.HttpHeaders,
@@ -183,7 +181,6 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#execute(java.lang.String, java.util.Map,
      *      java.lang.Object, org.springframework.core.ParameterizedTypeReference, org.springframework.http.HttpHeaders,
@@ -208,7 +205,6 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#executeAsRaw(java.lang.String, java.util.Map,
      *      java.lang.Object, java.lang.Class, org.springframework.http.HttpHeaders,
@@ -231,7 +227,6 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#executeAsRaw(java.lang.String, java.util.Map,
      *      java.lang.Object, org.springframework.core.ParameterizedTypeReference, org.springframework.http.HttpHeaders,

@@ -57,10 +57,8 @@ public class NotFoundException extends RuntimeException {
      * 2022. 12. 1.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2022. 12. 1.
      * @version 0.5.0
-     * @author parkjunhong77@gmail.com
      */
     public NotFoundException() {
     }
@@ -79,7 +77,6 @@ public class NotFoundException extends RuntimeException {
      *
      * @since 2022. 12. 1.
      * @version 0.5.0
-     * @author parkjunhong77@gmail.com
      */
     public NotFoundException(String message) {
         super(message);
@@ -100,7 +97,6 @@ public class NotFoundException extends RuntimeException {
      *
      * @since 2022. 12. 1.
      * @version 0.5.0
-     * @author parkjunhong77@gmail.com
      */
     public NotFoundException(String message, Throwable cause) {
         super(message, cause);
@@ -123,7 +119,6 @@ public class NotFoundException extends RuntimeException {
      *
      * @since 2022. 12. 1.
      * @version 0.5.0
-     * @author parkjunhong77@gmail.com
      */
     public NotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
@@ -143,7 +138,6 @@ public class NotFoundException extends RuntimeException {
      *
      * @since 2022. 12. 1.
      * @version 0.5.0
-     * @author parkjunhong77@gmail.com
      */
     public NotFoundException(Throwable cause) {
         super(cause);

@@ -28,7 +28,7 @@ package open.commons.spring.web.aspect;
 
 import java.lang.reflect.Method;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -71,7 +71,6 @@ public class AuthorizedMethodAspect extends AbstractAuthorizedResourceAspect<IMe
      *
      * @since 2025. 5. 16.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedMethodAspect(@NotNull ApplicationContext context) {
         super(context, IMethodAccessAuthorityProvider.class);
@@ -93,7 +92,6 @@ public class AuthorizedMethodAspect extends AbstractAuthorizedResourceAspect<IMe
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see AbstractAuthorizedResourceAspect#withinAllStereotypeComponent()
      * @see AbstractAuthorizedResourceAspect#annotationAuthorizedMethod()

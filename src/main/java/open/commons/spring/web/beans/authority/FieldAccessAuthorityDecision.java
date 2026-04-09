@@ -26,8 +26,7 @@
 
 package open.commons.spring.web.beans.authority;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 /**
  * 
@@ -68,9 +67,8 @@ public class FieldAccessAuthorityDecision {
      *
      * @since 2025. 10. 1.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public FieldAccessAuthorityDecision(boolean accessible, @NotEmpty @Nonnull String handleType, String handleBean) {
+    public FieldAccessAuthorityDecision(boolean accessible, @NotEmpty String handleType, String handleBean) {
         this.accessible = accessible;
         this.handleType = handleType;
         this.handleBean = handleBean;

@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
@@ -76,10 +76,8 @@ public class DatabaseInitResources {
      * 2025. 4. 3.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 4. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public DatabaseInitResources() {
     }
@@ -100,7 +98,6 @@ public class DatabaseInitResources {
      *
      * @since 2025. 4. 3.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private List<Resource> getAsResources(List<String> sqlList) {
 
@@ -138,7 +135,6 @@ public class DatabaseInitResources {
      *
      * @since 2025. 4. 3.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public List<Resource> getDataResources() {
         return getAsResources(this.data);
@@ -158,7 +154,6 @@ public class DatabaseInitResources {
      *
      * @since 2025. 4. 3.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public List<Resource> getSchemaResources() {
         return getAsResources(this.schema);
@@ -179,7 +174,6 @@ public class DatabaseInitResources {
      *
      * @since 2025. 4. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #data
      */
@@ -205,7 +199,6 @@ public class DatabaseInitResources {
      *
      * @since 2025. 4. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #schema
      */
@@ -220,7 +213,6 @@ public class DatabaseInitResources {
      *
      * @since 2025. 4. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

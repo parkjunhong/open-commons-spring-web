@@ -55,7 +55,6 @@ public abstract class AbstractGenericService extends AbstractComponent implement
 
     /**
      * @since 2020. 8. 29.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
      */
@@ -65,7 +64,6 @@ public abstract class AbstractGenericService extends AbstractComponent implement
 
     /**
      * @since 2020. 8. 29.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.beans.factory.DisposableBean#destroy()
      */

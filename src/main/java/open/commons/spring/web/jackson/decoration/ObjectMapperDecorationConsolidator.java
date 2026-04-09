@@ -39,8 +39,8 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.annotation.PostConstruct;
-import javax.validation.constraints.NotNull;
+import jakarta.annotation.PostConstruct;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -93,10 +93,8 @@ public class ObjectMapperDecorationConsolidator implements IObjectMapperDecorati
      * 2025. 6. 17.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public ObjectMapperDecorationConsolidator() {
     }
@@ -105,14 +103,14 @@ public class ObjectMapperDecorationConsolidator implements IObjectMapperDecorati
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
-     * @see open.commons.spring.web.jackson. decoration.IObjectMapperDecorationConsolidator#addObjectMapperDecorator(java.util.Collection)
+     * @see open.commons.spring.web.jackson.
+     *      decoration.IObjectMapperDecorationConsolidator#addObjectMapperDecorator(java.util.Collection)
      */
     @SuppressWarnings("unchecked")
     @Override
     public void addObjectMapperDecorator(@NotNull Collection<IObjectMapperDecorator> decorators) {
-        CollectionUtils.addAllIfNotNull(this.decorators, Vector.class, decorators);
+        CollectionUtils.addAllIfNotNull((Vector<IObjectMapperDecorator>)this.decorators, Vector.class, decorators);
         this.resolved = false;
     }
 
@@ -120,9 +118,10 @@ public class ObjectMapperDecorationConsolidator implements IObjectMapperDecorati
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
-     * @see open.commons.spring.web.jackson. decoration.IObjectMapperDecorationConsolidator#addObjectMapperDecorator(open.commons.spring.web.jackson. decoration.IObjectMapperDecorator[])
+     * @see open.commons.spring.web.jackson.
+     *      decoration.IObjectMapperDecorationConsolidator#addObjectMapperDecorator(open.commons.spring.web.jackson.
+     *      decoration.IObjectMapperDecorator[])
      */
     @Override
     public void addObjectMapperDecorator(@NotNull IObjectMapperDecorator... decorators) {
@@ -133,9 +132,9 @@ public class ObjectMapperDecorationConsolidator implements IObjectMapperDecorati
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
-     * @see open.commons.spring.web.jackson. decoration.IObjectMapperDecorationConsolidator#configureFeature(com.fasterxml.jackson.databind.ObjectMapper)
+     * @see open.commons.spring.web.jackson.
+     *      decoration.IObjectMapperDecorationConsolidator#configureFeature(com.fasterxml.jackson.databind.ObjectMapper)
      */
     @Override
     public void configureFeature(@NotNull ObjectMapper objectMapper) {
@@ -174,7 +173,6 @@ public class ObjectMapperDecorationConsolidator implements IObjectMapperDecorati
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @SuppressWarnings("deprecation") // on Jackson 2.13: configure(MapperFeature, boolean)
     private void configureFeature(ObjectMapper objectMapper, Object feature, boolean enabled) {

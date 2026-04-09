@@ -56,10 +56,8 @@ public class LogFeatureConfiguration {
      * 2025. 7. 28.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public LogFeatureConfiguration() {
     }

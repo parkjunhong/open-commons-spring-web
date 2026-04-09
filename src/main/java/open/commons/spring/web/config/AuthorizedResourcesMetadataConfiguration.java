@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,10 +75,8 @@ public class AuthorizedResourcesMetadataConfiguration {
      * 2025. 6. 12.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 12.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedResourcesMetadataConfiguration() {
     }
@@ -106,7 +104,6 @@ public class AuthorizedResourcesMetadataConfiguration {
      *
      * @since 2025. 9. 22.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = AuthorizedRequestDataMetadata.BEAN_QUALIFIER)
     @Primary
@@ -146,7 +143,6 @@ public class AuthorizedResourcesMetadataConfiguration {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean(name = AuthorizedResourcesMetadata.BEAN_QUALIFIER)
     @Primary
@@ -185,7 +181,6 @@ public class AuthorizedResourcesMetadataConfiguration {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Bean
     @ConditionalOnProperty(prefix = PREFIX_OPEN_COMMONS_APPLICATION, name = NAME_AUTHORIZED_OBJECT_METADATA)

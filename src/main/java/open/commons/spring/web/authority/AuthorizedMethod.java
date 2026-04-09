@@ -69,7 +69,6 @@ public @interface AuthorizedMethod {
      *
      * @since 2025. 5. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see IMethodAccessAuthorityProvider
      */
@@ -89,7 +88,6 @@ public @interface AuthorizedMethod {
      *
      * @since 2025. 5. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     Operator op() default Operator.OR;
 
@@ -108,7 +106,6 @@ public @interface AuthorizedMethod {
      *
      * @since 2025. 5. 16.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see AuthorizationManager
      * @see Authentication
@@ -121,7 +118,6 @@ public @interface AuthorizedMethod {
      * 
      * @since 2025. 5. 16.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     enum Operator {
         /** 모든 'ROLE'이 권한이 허용되어야 하는 경우. */

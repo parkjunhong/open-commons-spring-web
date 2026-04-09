@@ -72,7 +72,6 @@ public @interface ProfilesOn {
      * 
      * @since 2025. 11. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public static enum DecisionRule {
         /** {@link Environment#getActiveProfiles()}(+추가설정) 중 하나와 {@link ProfilesOn#standards()} 중 하나가 정확히 일치하는지 */
@@ -91,7 +90,6 @@ public @interface ProfilesOn {
      * 
      * @since 2025. 11. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public static enum Strategy {
         /** 허용 */

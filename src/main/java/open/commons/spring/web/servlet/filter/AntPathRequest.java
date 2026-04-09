@@ -26,9 +26,8 @@
 
 package open.commons.spring.web.servlet.filter;
 
-import javax.annotation.Nonnull;
-import javax.servlet.Filter;
-import javax.validation.constraints.NotNull;
+import jakarta.servlet.Filter;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.http.HttpMethod;
 
@@ -48,7 +47,7 @@ public class AntPathRequest {
 
     /** URL 패턴 */
     @NotNull
-    @Nonnull
+
     private String pattern;
     /** HTTP 요청 메소드 */
     private HttpMethod httpMethod;
@@ -70,10 +69,8 @@ public class AntPathRequest {
      * 2025. 8. 4.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AntPathRequest() {
     }
@@ -93,9 +90,8 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AntPathRequest(@NotNull @Nonnull String pattern) {
+    public AntPathRequest(@NotNull String pattern) {
         this(pattern, null, false, null, null);
     }
 
@@ -116,9 +112,8 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AntPathRequest(@NotNull @Nonnull String pattern, HttpMethod httpMethod) {
+    public AntPathRequest(@NotNull String pattern, HttpMethod httpMethod) {
         this(pattern, httpMethod, false, null, null);
     }
 
@@ -141,9 +136,8 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AntPathRequest(@NotNull @Nonnull String pattern, HttpMethod httpMethod, boolean caseSensitive) {
+    public AntPathRequest(@NotNull String pattern, HttpMethod httpMethod, boolean caseSensitive) {
         this(pattern, httpMethod, caseSensitive, null, null);
     }
 
@@ -170,9 +164,8 @@ public class AntPathRequest {
      *            {@link Filter} 구현 클래스
      * @since 2025. 8. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AntPathRequest(@NotNull @Nonnull String pattern, HttpMethod httpMethod, boolean caseSensitive, Scheme targetType, Class<? extends Filter> filterClass) {
+    public AntPathRequest(@NotNull String pattern, HttpMethod httpMethod, boolean caseSensitive, Scheme targetType, Class<? extends Filter> filterClass) {
         this.pattern = pattern;
         this.httpMethod = httpMethod;
         this.caseSensitive = caseSensitive;
@@ -200,9 +193,8 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public AntPathRequest(@NotNull @Nonnull String pattern, Scheme targetType, Class<? extends Filter> filterClass) {
+    public AntPathRequest(@NotNull String pattern, Scheme targetType, Class<? extends Filter> filterClass) {
         this(pattern, null, false, targetType, filterClass);
     }
 
@@ -220,7 +212,6 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #filterClass
      */
@@ -243,7 +234,6 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #httpMethod
      */
@@ -269,12 +259,11 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #pattern
      */
     @NotNull
-    @Nonnull
+
     public String getPattern() {
         if (this.pattern == null) {
             throw ExceptionUtils.newException(IllegalStateException.class, "'pattern'값이 설정이 되지 않았습니다. this=%s", this);
@@ -296,7 +285,6 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #targetType
      */
@@ -319,7 +307,6 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #caseSensitive
      */
@@ -344,9 +331,8 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public <T extends Filter> boolean matches(@Nonnull Class<T> filterClass) {
+    public <T extends Filter> boolean matches(Class<T> filterClass) {
         if (this.filterClass == null) {
             return true;
         } else {
@@ -376,7 +362,6 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #caseSensitive
      */
@@ -399,7 +384,6 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #filterClass
      */
@@ -422,7 +406,6 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #httpMethod
      */
@@ -445,11 +428,10 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 4.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #pattern
      */
-    public void setPattern(@NotNull @Nonnull String pattern) {
+    public void setPattern(@NotNull String pattern) {
         if (!PathUtils.isValidAntPath(pattern)) {
             throw ExceptionUtils.newException(InvalidAntPathUrlPatternException.class, "exclude.invalid=%s", pattern);
         }
@@ -471,11 +453,10 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #targetType
      */
-    public void setTargetType(@NotNull @Nonnull Scheme targetType) {
+    public void setTargetType(@NotNull Scheme targetType) {
         this.targetType = (Scheme) AssertUtils2.notNull(targetType);
     }
 
@@ -483,7 +464,6 @@ public class AntPathRequest {
      *
      * @since 2025. 8. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */
@@ -509,7 +489,6 @@ public class AntPathRequest {
      * 
      * @since 2025. 8. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public static enum Scheme {
         /** {@link Class} 값이 일치 */

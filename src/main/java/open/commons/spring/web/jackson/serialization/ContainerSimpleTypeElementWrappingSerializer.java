@@ -80,7 +80,6 @@ public class ContainerSimpleTypeElementWrappingSerializer extends AbstractWrappi
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public ContainerSimpleTypeElementWrappingSerializer(ApplicationContext context, Class<?> serializedType, AnnotatedField annotatedField,
             IFieldAccessAuthorityProvider fieldAccessor, IUnauthorizedFieldHandler fieldHandler, IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
@@ -91,7 +90,6 @@ public class ContainerSimpleTypeElementWrappingSerializer extends AbstractWrappi
      *
      * @since 2025. 9. 25.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see com.fasterxml.jackson.databind.JsonSerializer#serialize(java.lang.Object,
      *      com.fasterxml.jackson.core.JsonGenerator, com.fasterxml.jackson.databind.SerializerProvider)

@@ -47,10 +47,8 @@ public class InvalidLogFeatureException extends RuntimeException {
      * 2025. 7. 28.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidLogFeatureException() {
     }
@@ -69,7 +67,6 @@ public class InvalidLogFeatureException extends RuntimeException {
      *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidLogFeatureException(String message) {
         super(message);
@@ -90,7 +87,6 @@ public class InvalidLogFeatureException extends RuntimeException {
      *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidLogFeatureException(String message, Throwable cause) {
         super(message, cause);
@@ -113,7 +109,6 @@ public class InvalidLogFeatureException extends RuntimeException {
      *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidLogFeatureException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
@@ -133,7 +128,6 @@ public class InvalidLogFeatureException extends RuntimeException {
      *
      * @since 2025. 7. 28.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public InvalidLogFeatureException(Throwable cause) {
         super(cause);

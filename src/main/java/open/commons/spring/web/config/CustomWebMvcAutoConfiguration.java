@@ -32,8 +32,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -90,7 +89,6 @@ public class CustomWebMvcAutoConfiguration {
      *
      * @since 2025. 8. 11.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public CustomWebMvcAutoConfiguration(ApplicationContext context, Environment environment) {
         super();
@@ -119,8 +117,8 @@ public class CustomWebMvcAutoConfiguration {
 
     @Bean(BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS)
     @Primary
-    List<IAuthorizedDataResolver> authorizedDataResolver(@NotNull @Nonnull Map<String, IAuthorizedDataResolver> single //
-            , @NotNull @Nonnull Map<String, List<IAuthorizedDataResolver>> multi) {
+    List<IAuthorizedDataResolver> authorizedDataResolver(@NotNull Map<String, IAuthorizedDataResolver> single //
+            , @NotNull Map<String, List<IAuthorizedDataResolver>> multi) {
         List<IAuthorizedDataResolver> resolvers = MapUtils.toList(single, multi);
         logger.info("[authorized-resources] authorized-data-resolvers={}", resolvers);
         return resolvers;

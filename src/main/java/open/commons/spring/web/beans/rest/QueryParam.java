@@ -28,7 +28,7 @@ package open.commons.spring.web.beans.rest;
 
 import java.util.Objects;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import org.springframework.util.Assert;
 
@@ -55,10 +55,8 @@ public class QueryParam implements Comparable<QueryParam> {
      * 2025. 7. 10.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 10.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public QueryParam() {
     }
@@ -67,7 +65,6 @@ public class QueryParam implements Comparable<QueryParam> {
      *
      * @since 2025. 7. 10.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
@@ -91,7 +88,6 @@ public class QueryParam implements Comparable<QueryParam> {
      *
      * @since 2025. 7. 10.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public QueryParam(@NotEmpty String name, boolean required) {
         super();
@@ -103,7 +99,6 @@ public class QueryParam implements Comparable<QueryParam> {
      *
      * @since 2025. 7. 10.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -133,7 +128,6 @@ public class QueryParam implements Comparable<QueryParam> {
      *
      * @since 2025. 7. 10.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #name
      */
@@ -147,7 +141,6 @@ public class QueryParam implements Comparable<QueryParam> {
      *
      * @since 2025. 7. 10.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#hashCode()
      */
@@ -170,7 +163,6 @@ public class QueryParam implements Comparable<QueryParam> {
      *
      * @since 2025. 7. 10.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #required
      */
@@ -194,7 +186,6 @@ public class QueryParam implements Comparable<QueryParam> {
      *
      * @since 2025. 7. 10.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #name
      */
@@ -217,7 +208,6 @@ public class QueryParam implements Comparable<QueryParam> {
      *
      * @since 2025. 7. 10.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #required
      */
@@ -229,7 +219,6 @@ public class QueryParam implements Comparable<QueryParam> {
      *
      * @since 2025. 7. 10.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

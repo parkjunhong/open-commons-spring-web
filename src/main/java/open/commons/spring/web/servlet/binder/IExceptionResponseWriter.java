@@ -28,18 +28,26 @@ package open.commons.spring.web.servlet.binder;
 
 import java.io.IOException;
 
-import javax.annotation.Nonnull;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 
 import open.commons.spring.web.utils.WebUtils;
 
 /**
  * 예외 클래스를 응답 데이터로 제공하는 기능을 정의.
+ * 
+ * <pre>
+ * [개정이력]
+ * 날짜           | 작성자                   |   내용
+ * ------------------------------------------------------
+ * 2025. 10. 30.	parkjunohng77@gmail.com		최초 작성
+ * 2026. 4. 9.      parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5
+ * </pre>
  * 
  * @since 2025. 10. 30.
  * @version 2.1.0
@@ -55,6 +63,7 @@ public interface IExceptionResponseWriter {
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2025. 10. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     반환타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      * 
      * @param ex
@@ -64,9 +73,8 @@ public interface IExceptionResponseWriter {
      *
      * @since 2025. 10. 30.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    default HttpStatus bind(@Nonnull Exception ex) {
+    default HttpStatusCode bind(Exception ex) {
         return getBinder().resolveHttpStatus(ex.getClass(), defaultHttpStatus());
     }
 
@@ -88,7 +96,6 @@ public interface IExceptionResponseWriter {
      *
      * @since 2025. 10. 30.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     default Object createResponseEntity(HttpServletRequest req, Exception ex) {
         return WebUtils.createEntity(req, ex, bind(ex));
@@ -102,15 +109,15 @@ public interface IExceptionResponseWriter {
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2025. 10. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     반환타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @return
      *
      * @since 2025. 10. 30.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
-    default HttpStatus defaultHttpStatus() {
+    default HttpStatusCode defaultHttpStatus() {
         return HttpStatus.INTERNAL_SERVER_ERROR;
     }
 
@@ -128,7 +135,6 @@ public interface IExceptionResponseWriter {
      *
      * @since 2025. 10. 30.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     ExceptionHttpStatusBinder getBinder();
 
@@ -148,7 +154,6 @@ public interface IExceptionResponseWriter {
      *
      * @since 2025. 10. 30.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     String writeAsString(Object o);
 
@@ -161,6 +166,7 @@ public interface IExceptionResponseWriter {
      *      날짜    	| 작성자	|	내용
      * ------------------------------------------
      * 2025. 10. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @param request
@@ -171,10 +177,9 @@ public interface IExceptionResponseWriter {
      *
      * @since 2025. 10. 30.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     default void writeExceptionResponse(HttpServletRequest request, HttpServletResponse response, Exception exception) throws IOException, ServletException {
-        HttpStatus status = bind(exception);
+        HttpStatusCode status = bind(exception);
         response.setStatus(status.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding("UTF-8");

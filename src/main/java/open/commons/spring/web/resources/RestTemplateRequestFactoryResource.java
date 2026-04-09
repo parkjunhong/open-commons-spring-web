@@ -26,7 +26,7 @@
 
 package open.commons.spring.web.resources;
 
-import javax.validation.constraints.Min;
+import jakarta.validation.constraints.Min;
 
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -170,7 +170,6 @@ public class RestTemplateRequestFactoryResource {
      *
      * @since 2025. 8. 11.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #initialized
      */

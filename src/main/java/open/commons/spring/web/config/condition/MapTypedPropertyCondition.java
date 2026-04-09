@@ -28,8 +28,7 @@ package open.commons.spring.web.config.condition;
 
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import open.commons.core.utils.MapUtils;
 
@@ -57,9 +56,8 @@ public abstract class MapTypedPropertyCondition<K, V> extends AbstractPropertyCo
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public MapTypedPropertyCondition(@NotNull @Nonnull String prefix) {
+    public MapTypedPropertyCondition(@NotNull String prefix) {
         super(prefix);
     }
 
@@ -67,7 +65,6 @@ public abstract class MapTypedPropertyCondition<K, V> extends AbstractPropertyCo
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.config.condition.AbstractPropertyCondition#validate(java.lang.Object)
      */

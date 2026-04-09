@@ -1,3 +1,13 @@
+[2026/04/09]
+- Patch
+  + JSpecify 스펙 적용 
+    + 패키지에 'org.jspecify.annotations.NullMarked' 어노테이션 적용
+  + Migration ( Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5 )
+    + org.springframework.http.HttpStatus -> org.springframework.http.HttpStatusCode
+    + OpenCommonsSpringWebAutoConfiguration 방식 변경
+      + 옵트인(Opt-In) 기반 (open.commons.spring.web.autoconfigure.EnableOpenCommonsSpringWeb.imports)
+          -> 순수 자동 설정 (org.springframework.boot.autoconfigure.AutoConfiguration.imports)
+
 [2025/11/24]
 - New
   + open.commons.spring.web.aspect.AspectOrder: 'OCSW'에서 제공하는 Bean 우선순위 관리 클래스.

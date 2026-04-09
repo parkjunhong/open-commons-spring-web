@@ -53,7 +53,6 @@ public interface IEventObject<T, E extends IEventStatus> extends Cloneable {
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see java.lang.Object#clone()
      */
@@ -73,7 +72,6 @@ public interface IEventObject<T, E extends IEventStatus> extends Cloneable {
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public T getSource();
 
@@ -91,7 +89,6 @@ public interface IEventObject<T, E extends IEventStatus> extends Cloneable {
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public E getType();
 

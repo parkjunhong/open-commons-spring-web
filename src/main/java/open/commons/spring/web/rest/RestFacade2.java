@@ -32,16 +32,17 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
-import org.apache.http.NoHttpResponseException;
+import org.apache.hc.core5.http.NoHttpResponseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
@@ -69,6 +70,216 @@ public class RestFacade2 {
     }
 
     /**
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
+    ) {
+        try {
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
+            , int retryCount //
+    ) {
+        try {
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, retryCount);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
+    ) {
+        try {
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
+            , int retryCount //
+    ) {
+        try {
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, retryCount);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
+    }
+
+    /**
      * <br>
      * 
      * <pre>
@@ -108,7 +319,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
@@ -162,7 +372,6 @@ public class RestFacade2 {
      *
      * @since 2023. 03. 06.
      * @version 0.5.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
@@ -216,7 +425,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
@@ -271,7 +479,6 @@ public class RestFacade2 {
      *
      * @since 2023. 03. 06.
      * @version 0.5.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
@@ -327,7 +534,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
@@ -389,7 +595,6 @@ public class RestFacade2 {
      *
      * @since 2023. 03. 06.
      * @version 0.5.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
@@ -450,7 +655,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
@@ -512,7 +716,6 @@ public class RestFacade2 {
      *
      * @since 2023. 03. 06.
      * @version 0.5.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
@@ -565,7 +768,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotNull URI uri //
@@ -618,7 +820,6 @@ public class RestFacade2 {
      *
      * @since 2023. 03. 06.
      * @version 0.5.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotNull URI uri //
@@ -670,7 +871,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotNull URI uri //
@@ -723,7 +923,6 @@ public class RestFacade2 {
      *
      * @since 2023. 03. 06.
      * @version 0.5.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotNull URI uri //
@@ -738,6 +937,192 @@ public class RestFacade2 {
         } catch (Exception e) {
             return onError.apply(e);
         }
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, retryCount);
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, retryCount);
     }
 
     /**
@@ -779,7 +1164,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
@@ -832,7 +1216,6 @@ public class RestFacade2 {
      *
      * @since 2025. 7. 14.
      * @version 0.8.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
@@ -884,7 +1267,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
@@ -938,7 +1320,6 @@ public class RestFacade2 {
      *
      * @since 2025. 7. 14.
      * @version 0.8.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
@@ -992,7 +1373,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
@@ -1053,7 +1433,6 @@ public class RestFacade2 {
      *
      * @since 2025. 7. 14.
      * @version 0.8.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
@@ -1112,7 +1491,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
@@ -1172,7 +1550,6 @@ public class RestFacade2 {
      *
      * @since 2025. 7. 14.
      * @version 0.8.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
@@ -1223,7 +1600,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotNull URI uri //
@@ -1271,7 +1647,6 @@ public class RestFacade2 {
      *
      * @since 2025. 7. 14.
      * @version 0.8.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotNull URI uri //
@@ -1318,7 +1693,6 @@ public class RestFacade2 {
      *
      * @since 2021. 06. 11.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotNull URI uri //
@@ -1366,7 +1740,6 @@ public class RestFacade2 {
      *
      * @since 2025. 7. 14.
      * @version 0.8.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
             , @NotNull HttpMethod method, @NotNull URI uri //
@@ -1379,6 +1752,14 @@ public class RestFacade2 {
         return exchangeAsRaw(sup, method, uri, entity, responseType, onSuccess, retryCount);
     }
 
+    /**
+     * <pre>
+     * [개정이력]
+     *      날짜    	| 작성자	|	내용
+     * ------------------------------------------
+     * 2026. 4. 9.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
+     * </pre>
+     */
     private static <REQ, RES, RET> RET exchangeAsRaw(@NotNull Supplier<ResponseEntity<RES>> sup //
             , @NotNull HttpMethod method, Object url //
             , Object entity, Object responseType //
@@ -1393,19 +1774,19 @@ public class RestFacade2 {
             try {
                 ResponseEntity<RES> response = sup.get();
 
-                HttpStatus statusCode = response.getStatusCode();
+                HttpStatusCode resStatusCode = response.getStatusCode();
 
                 // redirection
-                if (statusCode.is3xxRedirection()) {
-                    logger.info("URL is redirectioned. status={}, information={}", statusCode, response.getBody());
+                if (resStatusCode.is3xxRedirection()) {
+                    logger.info("URL is redirectioned. status={}, information={}", resStatusCode, response.getBody());
                 } else
                 // success
-                if (statusCode.is2xxSuccessful()) {
+                if (resStatusCode.is2xxSuccessful()) {
                     logger.debug("Success to send information. target={}", url.toString());
                 } else
                 // informational...
-                if (statusCode.is1xxInformational()) {
-                    logger.debug("Information. status={}, information={}", statusCode, response.getBody());
+                if (resStatusCode.is1xxInformational()) {
+                    logger.debug("Information. status={}, information={}", resStatusCode, response.getBody());
                 }
 
                 return onSuccess.apply(response);
@@ -1413,18 +1794,18 @@ public class RestFacade2 {
 
                 logger.warn("'Request' -> method={}, uri={}, req.entity={}, res.type={}", method, url, entity, responseType);
 
-                HttpStatus statusCode = e.getStatusCode();
+                HttpStatusCode exStatusCode = e.getStatusCode();
                 String occurs = null;
                 // request error
-                if (statusCode.is4xxClientError()) {
+                if (exStatusCode.is4xxClientError()) {
                     occurs = "Request Client Error.";
                 } else
                 // remote server internal error
-                if (statusCode.is5xxServerError()) {
+                if (exStatusCode.is5xxServerError()) {
                     occurs = "Remote Server Error.";
                 }
 
-                logger.warn("'{}' -> res.status={}, res.status.raw={}, res.status.text={}, res.body={}", occurs, statusCode, e.getRawStatusCode(), e.getStatusText(),
+                logger.warn("'{}' -> res.status={}, res.status.raw={}, res.status.text={}, res.body={}", occurs, exStatusCode, exStatusCode.value(), e.getStatusText(),
                         e.getResponseBodyAsString());
 
                 throw e;
@@ -1453,409 +1834,5 @@ public class RestFacade2 {
         } else {
             throw ExceptionUtils.newException(UnsupportedOperationException.class, "예상하지 못한 에러가 발생하였습니다.");
         }
-    }
-
-    /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 타입
-     * @param <RES>
-     *            수신 데이터 타입
-     * @param <RET>
-     *            메소드가 제공하는 데이터 타입
-     * @param restTemplate
-     *            {@link RestTemplate} 객체
-     * @param method
-     *            Http 메소드
-     * @param httpUrl
-     *            Fully Qualified URL 패턴을 만족하는 정보
-     * @param uriVariables
-     *            URL 을 구성하는 정보
-     * @param entity
-     *            요청 데이터
-     * @param responseType
-     *            수신 데이터 타입
-     * @param onSuccess
-     *            요청 성공 처리자
-     * @param onError
-     *            요청 실패 처리자
-     * @return
-     *
-     * @since 2025. 8. 26.
-     * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
-     */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
-            , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
-    ) {
-        try {
-            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
-        } catch (Exception e) {
-            return onError.apply(e);
-        }
-    }
-
-    /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 타입
-     * @param <RES>
-     *            수신 데이터 타입
-     * @param <RET>
-     *            메소드가 제공하는 데이터 타입
-     * @param restTemplate
-     *            {@link RestTemplate} 객체
-     * @param method
-     *            Http 메소드
-     * @param httpUrl
-     *            Fully Qualified URL 패턴을 만족하는 정보
-     * @param uriVariables
-     *            URL 을 구성하는 정보
-     * @param entity
-     *            요청 데이터
-     * @param responseType
-     *            수신 데이터 타입
-     * @param onSuccess
-     *            요청 성공 처리자
-     * @param onError
-     *            요청 실패 처리자
-     * @param retryCount
-     *            재시도 횟수
-     * @return
-     *
-     * @since 2025. 8. 26.
-     * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
-     */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
-            , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
-            , int retryCount //
-    ) {
-        try {
-            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, retryCount);
-        } catch (Exception e) {
-            return onError.apply(e);
-        }
-    }
-
-    /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 타입
-     * @param <RES>
-     *            수신 데이터 타입
-     * @param <RET>
-     *            메소드가 제공하는 데이터 타입
-     * @param restTemplate
-     *            {@link RestTemplate} 객체
-     * @param method
-     *            Http 메소드
-     * @param httpUrl
-     *            Fully Qualified URL 패턴을 만족하는 정보
-     * @param uriVariables
-     *            URL 을 구성하는 정보
-     * @param entity
-     *            요청 데이터
-     * @param responseType
-     *            수신 데이터 타입
-     * @param onSuccess
-     *            요청 성공 처리자
-     * @param onError
-     *            요청 실패 처리자
-     * @return
-     *
-     * @since 2025. 8. 26.
-     * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
-     */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
-            , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
-    ) {
-        try {
-            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
-        } catch (Exception e) {
-            return onError.apply(e);
-        }
-    }
-
-    /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 타입
-     * @param <RES>
-     *            수신 데이터 타입
-     * @param <RET>
-     *            메소드가 제공하는 데이터 타입
-     * @param restTemplate
-     *            {@link RestTemplate} 객체
-     * @param method
-     *            Http 메소드
-     * @param httpUrl
-     *            Fully Qualified URL 패턴을 만족하는 정보
-     * @param uriVariables
-     *            URL 을 구성하는 정보
-     * @param entity
-     *            요청 데이터
-     * @param responseType
-     *            수신 데이터 타입
-     * @param onSuccess
-     *            요청 성공 처리자
-     * @param onError
-     *            요청 실패 처리자
-     * @param retryCount
-     *            재시도 횟수
-     * @return
-     *
-     * @since 2025. 8. 26.
-     * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
-     */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
-            , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
-            , int retryCount //
-    ) {
-        try {
-            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, retryCount);
-        } catch (Exception e) {
-            return onError.apply(e);
-        }
-    }
-
-    /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 타입
-     * @param <RES>
-     *            수신 데이터 타입
-     * @param <RET>
-     *            메소드가 제공하는 데이터 타입
-     * @param restTemplate
-     *            {@link RestTemplate} 객체
-     * @param method
-     *            Http 메소드
-     * @param httpUrl
-     *            Fully Qualified URL 패턴을 만족하는 정보
-     * @param uriVariables
-     *            URL 을 구성하는 정보
-     * @param entity
-     *            요청 데이터
-     * @param responseType
-     *            수신 데이터 타입
-     * @param onSuccess
-     *            요청 성공 처리자
-     * @return
-     *
-     * @since 2025. 8. 26.
-     * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
-     */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
-            , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
-    ) {
-        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
-        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
-    }
-
-    /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 타입
-     * @param <RES>
-     *            수신 데이터 타입
-     * @param <RET>
-     *            메소드가 제공하는 데이터 타입
-     * @param restTemplate
-     *            {@link RestTemplate} 객체
-     * @param method
-     *            Http 메소드
-     * @param httpUrl
-     *            Fully Qualified URL 패턴을 만족하는 정보
-     * @param uriVariables
-     *            URL 을 구성하는 정보
-     * @param entity
-     *            요청 데이터
-     * @param responseType
-     *            수신 데이터 타입
-     * @param onSuccess
-     *            요청 성공 처리자
-     * @param retryCount
-     *            재시도 횟수
-     * @return
-     *
-     * @since 2025. 8. 26.
-     * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
-     */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
-            , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
-            , int retryCount //
-    ) {
-        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
-        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, retryCount);
-    }
-
-    /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 타입
-     * @param <RES>
-     *            수신 데이터 타입
-     * @param <RET>
-     *            메소드가 제공하는 데이터 타입
-     * @param restTemplate
-     *            {@link RestTemplate} 객체
-     * @param method
-     *            Http 메소드
-     * @param httpUrl
-     *            Fully Qualified URL 패턴을 만족하는 정보
-     * @param uriVariables
-     *            URL 을 구성하는 정보
-     * @param entity
-     *            요청 데이터
-     * @param responseType
-     *            수신 데이터 타입
-     * @param onSuccess
-     *            요청 성공 처리자
-     * @return
-     *
-     * @since 2025. 8. 26.
-     * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
-     */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
-            , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
-    ) {
-        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
-        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
-    }
-
-    /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 타입
-     * @param <RES>
-     *            수신 데이터 타입
-     * @param <RET>
-     *            메소드가 제공하는 데이터 타입
-     * @param restTemplate
-     *            {@link RestTemplate} 객체
-     * @param method
-     *            Http 메소드
-     * @param httpUrl
-     *            Fully Qualified URL 패턴을 만족하는 정보
-     * @param uriVariables
-     *            URL 을 구성하는 정보
-     * @param entity
-     *            요청 데이터
-     * @param responseType
-     *            수신 데이터 타입
-     * @param onSuccess
-     *            요청 성공 처리자
-     * @param retryCount
-     *            재시도 횟수
-     * @return
-     *
-     * @since 2025. 8. 26.
-     * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
-     */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
-            , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
-            , int retryCount //
-    ) {
-        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
-        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, retryCount);
     }
 }

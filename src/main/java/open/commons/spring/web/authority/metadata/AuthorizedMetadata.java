@@ -26,7 +26,7 @@
 
 package open.commons.spring.web.authority.metadata;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import open.commons.spring.web.utils.BeanUtils;
 

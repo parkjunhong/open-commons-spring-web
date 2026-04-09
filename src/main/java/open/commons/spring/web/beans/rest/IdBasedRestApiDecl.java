@@ -31,8 +31,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -119,10 +119,8 @@ public class IdBasedRestApiDecl {
      * 2025. 7. 3.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public IdBasedRestApiDecl() {
     }
@@ -141,7 +139,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #headers
      */
@@ -166,7 +163,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #id
      */
@@ -189,7 +185,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #method
      */
@@ -212,7 +207,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #path
      */
@@ -235,7 +229,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #queries
      */
@@ -258,7 +251,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #title
      */
@@ -281,7 +273,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #headers
      */
@@ -314,7 +305,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #id
      */
@@ -337,7 +327,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #method
      */
@@ -360,7 +349,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #path
      */
@@ -383,7 +371,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #queries
      */
@@ -413,7 +400,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #title
      */
@@ -425,7 +411,6 @@ public class IdBasedRestApiDecl {
      *
      * @since 2025. 7. 3.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

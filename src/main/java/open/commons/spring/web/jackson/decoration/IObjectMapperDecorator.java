@@ -68,14 +68,12 @@ public interface IObjectMapperDecorator {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see JsonGenerator.Feature
      * @see JsonParser.Feature
      * @see SerializationFeature
      * @see DeserializationFeature
      * @see MapperFeature
-     * 
      */
     public Set<Object> disables();
 
@@ -93,7 +91,6 @@ public interface IObjectMapperDecorator {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see JsonGenerator.Feature
      * @see JsonParser.Feature
@@ -117,7 +114,6 @@ public interface IObjectMapperDecorator {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see ObjectMapper#registerModule(Module)
      * @see ObjectMapper#registerModules(Iterable)
@@ -139,7 +135,6 @@ public interface IObjectMapperDecorator {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      *
      * @see NamedType
      * @see ObjectMapper#registerSubtypes(NamedType...)
@@ -160,7 +155,6 @@ public interface IObjectMapperDecorator {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      *
      * @see NamedType
      * @see ObjectMapper#registerSubtypes(Class...)

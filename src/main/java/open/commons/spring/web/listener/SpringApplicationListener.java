@@ -35,7 +35,7 @@ import org.springframework.boot.context.event.ApplicationPreparedEvent;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.boot.context.event.ApplicationStartingEvent;
-import org.springframework.boot.web.servlet.context.ServletWebServerInitializedEvent;
+import org.springframework.boot.web.server.servlet.context.ServletWebServerInitializedEvent;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextClosedEvent;
@@ -87,7 +87,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationContextInitializedEvent(ApplicationContextInitializedEvent event) {
         logger.trace("ApplicationContextInitialized - {}", event);
@@ -108,7 +107,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationEnvironmentPreparedEvent(ApplicationEnvironmentPreparedEvent event) {
         logger.trace("ApplicationEnvironmentPrepared - {}", event);
@@ -165,7 +163,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationFailedEvent(ApplicationFailedEvent event) {
         Throwable t = event.getException();
@@ -188,7 +185,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationPreparedEvent(ApplicationPreparedEvent event) {
         logger.trace("ApplicationPrepared - {}", event);
@@ -209,7 +205,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationReadyEvent(ApplicationReadyEvent event) {
         logger.trace("ApplicationReady - {}", event);
@@ -230,7 +225,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationStartedEvent(ApplicationStartedEvent event) {
         logger.trace("ApplicationStarted - {}", event);
@@ -251,7 +245,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onApplicationStartingEvent(ApplicationStartingEvent event) {
         logger.trace("ApplicationStarting - {}", event);
@@ -272,7 +265,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onContextClosedEvent(ContextClosedEvent event) {
         logger.trace("ContextClosed - {}", event);
@@ -293,7 +285,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onContextRefreshedEvent(ContextRefreshedEvent event) {
         logger.trace("ContextRefreshed - {}", event);
@@ -314,7 +305,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onContextStartedEvent(ContextStartedEvent event) {
         logger.trace("ContextStarted - {}", event);
@@ -335,7 +325,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onContextStoppedEvent(ContextStoppedEvent event) {
         logger.trace("ContextStopped - {}", event);
@@ -356,7 +345,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onOtherApplicationEvent(ApplicationEvent event) {
         logger.trace("ApplicationEvent - {}", event);
@@ -377,7 +365,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onServletRequestHandledEvent(ServletRequestHandledEvent event) {
         logger.trace("ServletRequestHandled - {}", event);
@@ -398,7 +385,6 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      *
      * @since 2019. 6. 11.
      * @version
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void onServletWebServerInitializedEvent(ServletWebServerInitializedEvent event) {
         logger.trace("ServletWebServerInitialized - {}", event);

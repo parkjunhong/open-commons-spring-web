@@ -158,7 +158,6 @@ import open.commons.spring.web.handler.PostProcessingHandlerInterceptor;
  * }
  * </pre>
  * 
- * 
  * <h2>3. 자동으로 등록하기</h2>
  * 
  * <pre>
@@ -207,7 +206,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      * @deprecated {@link #setEnumPkgs(EnumPackages)} 메소드 내부에서 {@link AutoConfigurationPackages}를 이용해서 BasePackage 정보를
      *             추출해서 사용함.<br>
      *             <font color="RED">추후 삭제됨.</font>
-     * 
      */
     public static final String APPLICATION_PROPERTIES_PREFIX = "open-commons.spring.web.factory.enum";
 
@@ -256,7 +254,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2025. 9. 18.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addArgumentResolvers(java.util.List)
      */
@@ -283,7 +280,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected void addExcludePatternsToInterceptor(InterceptorRegistration registry, List<String> patterns) {
         registry.excludePathPatterns(patterns);
@@ -305,7 +301,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *            URL 패턴
      *
      * @since 2020. 9. 3.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected void addExcludePatternsToInterceptor(InterceptorRegistration registry, String... patterns) {
         addExcludePatternsToInterceptor(registry, Arrays.asList(patterns));
@@ -360,7 +355,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected void addIncludePatternsToInterceptor(InterceptorRegistration registry, List<String> patterns) {
         registry.addPathPatterns(patterns);
@@ -383,7 +377,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected void addIncludePatternsToInterceptor(InterceptorRegistration registry, String... patterns) {
         addIncludePatternsToInterceptor(registry, Arrays.asList(patterns));
@@ -393,7 +386,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2023. 7. 21.
      * @version _._._
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addInterceptors(org.springframework.web.servlet.config.annotation.InterceptorRegistry)
      */
@@ -423,7 +415,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * @since 2020. 9. 3.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addResourceHandlers(org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry)
      */
@@ -452,7 +443,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2025. 8. 11.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected void addResourceHandlers(ResourceHandlerRegistry registry, String handler, String[] locations) {
         registry.addResourceHandler(handler).addResourceLocations(locations);
@@ -477,7 +467,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *            Resource Locations, {@link AntPathMatcher}
      *
      * @since 2020. 9. 3.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected void addResourceHandlers(ResourceHandlerRegistry registry, String[] handlers, String[] locations) {
         registry.addResourceHandler(handlers).addResourceLocations(locations);
@@ -499,7 +488,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2025. 8. 11.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected void addStaticResourceHandlers(ResourceHandlerRegistry registry) {
         String springMvcStaticPathPattern = bindProperties(this.environment, SPRING_MVC_STATIC_PATH_PATTERN, String.class, "/static/**");
@@ -518,7 +506,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2025. 8. 11.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry)
      */
@@ -565,7 +552,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2025. 9. 18.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Autowired
     public void setAuthorizedDataResolver(@Qualifier(CustomWebMvcAutoConfiguration.BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS) List<IAuthorizedDataResolver> resolvers) {
@@ -587,7 +573,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #enumPkgs
      * 
@@ -616,7 +601,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #interceptorIgnoreUrlConfigurations
      */
@@ -649,7 +633,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
      *
      * @since 2025. 11. 12.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private static <T> T bindProperties(Environment env, String property, Class<T> propClass, T defaultValue) {
         return Binder.get(env).bind(property, propClass).orElse(defaultValue);

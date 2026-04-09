@@ -28,11 +28,12 @@ package open.commons.spring.web.security;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 
@@ -40,6 +41,14 @@ import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
 
 /**
  * 'Spring Security' 인증절차에서 발생하는 예외상황을 'url'로 처리하는 기능을 제공.
+ * 
+ * <pre>
+ * [개정이력]
+ * 날짜            | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 10. 24.	parkjunohng77@gmail.com     최초 작성
+ * 2026. 4. 9.      parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5
+ * </pre>
  * 
  * @since 2025. 10. 24.
  * @version 2.1.0
@@ -66,7 +75,6 @@ public class SimpleUrlAuthenticationFailureHttpStatusBinder extends SimpleUrlAut
      * 
      * @since 2025. 10. 24.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public SimpleUrlAuthenticationFailureHttpStatusBinder(String defaultFailureUrl, ExceptionHttpStatusBinder binder) {
         super(defaultFailureUrl);
@@ -74,15 +82,21 @@ public class SimpleUrlAuthenticationFailureHttpStatusBinder extends SimpleUrlAut
         setUseForward(true);
     }
 
-    private HttpStatus getStatus(AuthenticationException exception) {
+    private HttpStatusCode getStatus(AuthenticationException exception) {
         return this.binder.resolveHttpStatus(exception.getClass(), HttpStatus.UNAUTHORIZED);
     }
 
     /**
-     *
+     * <pre>
+     * [개정이력]
+     * 날짜            | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 24     parkjunohng77@gmail.com     최초 작성
+     * 2026. 4. 9.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
+     * </pre>
+     * 
      * @since 2025. 10. 24.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler#onAuthenticationFailure(javax.servlet.http.HttpServletRequest,
      *      javax.servlet.http.HttpServletResponse, org.springframework.security.core.AuthenticationException)
@@ -90,7 +104,7 @@ public class SimpleUrlAuthenticationFailureHttpStatusBinder extends SimpleUrlAut
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         // AuthenticationException 클래스에 연결된 HttpStatus 설정
-        HttpStatus status = getStatus(exception);
+        HttpStatusCode status = getStatus(exception);
         response.setStatus(status.value());
         super.onAuthenticationFailure(request, response, exception);
     }

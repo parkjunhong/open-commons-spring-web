@@ -28,13 +28,14 @@ package open.commons.spring.web.aspect;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.aspectj.lang.annotation.Pointcut;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNotOfRequiredTypeException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -53,7 +54,7 @@ import open.commons.spring.web.authority.AuthorizedRequest;
  */
 public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspectPointcuts implements IAuthorizedResource<T> {
 
-    private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("^\\$\\{\\s*([^:}]+)(?::([^}]*))?\\s*}$");
+    private static final Pattern PLACEHOLDER_PATTERN = Objects.requireNonNull(Pattern.compile("^\\$\\{\\s*([^:}]+)(?::([^}]*))?\\s*}$"));
 
     protected final Class<T> providerType;
 
@@ -74,7 +75,6 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AbstractAuthorizedResourceAspect(@NotNull ApplicationContext context, Class<T> providerType) {
         super(context);
@@ -91,10 +91,8 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * 2025. 5. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@annotation(open.commons.spring.web.authority.AuthorizedMethod)")
     public final void annotationAuthorizedMethod() {
@@ -110,10 +108,8 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * 2025. 5. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@annotation(open.commons.spring.web.authority.AuthorizedRequest)")
     public final void annotationAuthorizedRequest() {
@@ -140,10 +136,10 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    protected final <A extends Annotation> A decideAnnotation(Class<A> annoType, Class<?> o, Method m) {
-        A annoM = (A) AnnotationUtils.getAnnotation(m, annoType);
+    protected final <A extends Annotation> @Nullable A decideAnnotation(Class<A> annoType, Class<?> o, Method m) {
+        @Nullable
+        A annoM = AnnotationUtils.getAnnotation(m, annoType);
         return annoM != null //
                 ? annoM //
                 : AnnotationUtils.getAnnotation(o, annoType);
@@ -164,14 +160,14 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    protected final String findConfigurationValue(String input) {
+    protected final @Nullable String findConfigurationValue(String input) {
         Matcher matcher = PLACEHOLDER_PATTERN.matcher(input);
         if (matcher.matches()) {
             String propertyName = matcher.group(1); // 속성 이름
             String defaultValue = matcher.group(2); // 기본값 (없으면 null)
 
+            @SuppressWarnings("null")
             String configValue = this.env.getProperty(propertyName);
             if (StringUtils.isNullOrEmptyString(configValue)) {
                 return defaultValue;
@@ -207,9 +203,9 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * 
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    protected final T getAuthorityBean(@NotEmpty String beanName) throws BeansException {
+    @SuppressWarnings("null")
+    protected final T getAuthorityBean(String beanName) throws BeansException {
         return BEAN_UTILS.getBean(beanName, providerType, null, true);
     }
 
@@ -223,10 +219,8 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * 2025. 5. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@within(open.commons.spring.web.authority.AuthorizedMethod)")
     public final void withinAuthorizedMethod() {
@@ -242,10 +236,8 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * 2025. 5. 19.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 5. 19.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @Pointcut("@within(open.commons.spring.web.authority.AuthorizedRequest)")
     public final void withinAuthorizedRequest() {

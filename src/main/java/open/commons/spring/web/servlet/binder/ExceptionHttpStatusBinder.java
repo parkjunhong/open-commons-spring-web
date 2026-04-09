@@ -31,19 +31,27 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import javax.annotation.PostConstruct;
-import javax.validation.constraints.NotNull;
+import jakarta.annotation.PostConstruct;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.core.utils.StringUtils;
 
 /**
+ * <pre>
+ * [개정이력]
+ *      날짜    	| 작성자			|	내용
+ * ------------------------------------------
+ * 2025. 5. 28.     parkjunohng77@gmail.com     최초 작성
+ * 2026. 4. 9.      parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5
+ * </pre>
  * 
  * @since 2025. 5. 28.
  * @version 0.8.0
@@ -58,7 +66,7 @@ public class ExceptionHttpStatusBinder {
     /**
      * {@link Exception}과 {@link HttpStatus}의 매핑 정보
      */
-    private final Map<Class<? extends Throwable>, HttpStatus> mappings = new HashMap<>();
+    private final Map<Class<? extends Throwable>, HttpStatusCode> mappings = new HashMap<>();
 
     /**
      * 읽어들인 설정 정보. (검증 대상).<br>
@@ -80,7 +88,6 @@ public class ExceptionHttpStatusBinder {
      *
      * @since 2025. 5. 28.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public ExceptionHttpStatusBinder(Map<String, String> properties) {
         this.properties = properties != null ? properties : new HashMap<>();
@@ -102,7 +109,6 @@ public class ExceptionHttpStatusBinder {
      *
      * @since 2025. 5. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     private void loggingAndClear(AtomicBoolean valid, String logFormat, Object... logArgs) {
         logger.error(logFormat, logArgs);
@@ -120,6 +126,7 @@ public class ExceptionHttpStatusBinder {
      * ------------------------------------------
      * 2025. 5. 28.		parkjunhong77@gmail.com		최초 작성
      * 2025. 10. 22.    parkjunhong77@gmail.com     기본 상태 추가 및 {@link ResponseStatus} 적용 확인 추가
+     * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경 및 반환타입. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @param exClass
@@ -130,15 +137,14 @@ public class ExceptionHttpStatusBinder {
      *
      * @since 2025. 5. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public <EX extends Throwable> HttpStatus resolveHttpStatus(@NotNull Class<EX> exClass, HttpStatus defaultStatus) {
+    public <EX extends Throwable> HttpStatusCode resolveHttpStatus(@NotNull Class<EX> exClass, HttpStatusCode defaultStatus) {
 
         if (exClass == null) {
             throw ExceptionUtils.newException(IllegalArgumentException.class, new NullPointerException("an instance of Throwable is null."), "예외클래스 정보는 반드시 존재해야 합니다.");
         }
 
-        HttpStatus status = this.mappings.get(exClass);
+        HttpStatusCode status = this.mappings.get(exClass);
         if (status == null) {
             ResponseStatus resStatus = AnnotatedElementUtils.findMergedAnnotation(exClass, ResponseStatus.class);
             status = resStatus != null ? resStatus.code() : defaultStatus;
@@ -157,10 +163,8 @@ public class ExceptionHttpStatusBinder {
      * 2025. 5. 28.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 5. 28.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     @SuppressWarnings("unchecked")
     @PostConstruct
@@ -169,8 +173,8 @@ public class ExceptionHttpStatusBinder {
         String exceptionClassName = null;
         Class<? extends Throwable> exceptionClass = null;
         String httpStatusName = null;
-        HttpStatus httpStatus = null;
-        HttpStatus oldHttpStatus = null;
+        HttpStatusCode httpStatus = null;
+        HttpStatusCode oldHttpStatus = null;
 
         AtomicBoolean valid = new AtomicBoolean(true);
         for (Entry<String, String> entry : this.properties.entrySet()) {

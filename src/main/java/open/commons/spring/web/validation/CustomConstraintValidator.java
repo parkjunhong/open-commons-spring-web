@@ -31,10 +31,10 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.function.BiFunction;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -72,7 +72,6 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      *
      * @since 2021. 7. 5.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public CustomConstraintValidator(Validator validator) {
         super();
@@ -94,7 +93,6 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      *
      * @since 2021. 7. 5.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected void buildViolationMessage(ConstraintValidatorContext context, ConstraintViolation<T> v) {
         context.buildConstraintViolationWithTemplate(v.getMessageTemplate()) //
@@ -117,7 +115,6 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      * @return
      *
      * @since 2021. 7. 5.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected ConstraintViolation<T> getViolation(T value, Class<?>... groups) {
         Set<ConstraintViolation<T>> vs = validator.validate(value, groups);
@@ -143,7 +140,6 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      * @return
      *
      * @since 2021. 7. 5.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected Set<ConstraintViolation<T>> getViolations(T value, Class<?>... groups) {
 
@@ -175,7 +171,6 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      *
      * @since 2021. 7. 5.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected boolean validateMultiNodes(ConstraintValidatorContext context, BiFunction<T, Class<?>[], Set<ConstraintViolation<T>>> provider, T value, Class<?>... groups) {
 
@@ -209,7 +204,6 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      *
      * @since 2021. 7. 5.
      * @version 0.3.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected boolean validateSingleNode(ConstraintValidatorContext context, BiFunction<T, Class<?>[], ConstraintViolation<T>> provider, T value, Class<?>... groups) {
 

@@ -69,7 +69,6 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
      *
      * @since 2025. 8. 6.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public DelegatingTaskExecutor(S delegate, String symbol) {
         this.delegate = delegate;
@@ -80,7 +79,6 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
      *
      * @since 2025. 8. 6.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.core.task.TaskExecutor#execute(java.lang.Runnable)
      */
@@ -93,7 +91,6 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
      *
      * @since 2025. 8. 6.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.core.task.AsyncTaskExecutor#execute(java.lang.Runnable, long)
      */
@@ -118,7 +115,6 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
      *
      * @since 2025. 8. 6.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected final Map<String, String> getCopyOfContextMap(String symbol) {
         Map<String, String> copiedMDC = MDC.getCopyOfContextMap();
@@ -133,7 +129,6 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
      *
      * @since 2025. 8. 6.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.core.task.AsyncTaskExecutor#submit(java.util.concurrent.Callable)
      */
@@ -146,7 +141,6 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
      *
      * @since 2025. 8. 6.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.core.task.AsyncTaskExecutor#submit(java.lang.Runnable)
      */
@@ -159,7 +153,6 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
      *
      * @since 2025. 8. 6.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.core.task.AsyncListenableTaskExecutor#submitListenable(java.util.concurrent.Callable)
      */
@@ -172,7 +165,6 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
      *
      * @since 2025. 8. 6.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.core.task.AsyncListenableTaskExecutor#submitListenable(java.lang.Runnable)
      */
@@ -197,7 +189,6 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
      *
      * @since 2025. 8. 6.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected <T> Callable<T> wrap(Callable<T> callable) {
         return MdcWrappedJob.wrap(getCopyOfContextMap(this.symbol), callable);
@@ -218,7 +209,6 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
      *
      * @since 2025. 8. 6.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     protected Runnable wrap(Runnable runnable) {
         return MdcWrappedJob.wrap(getCopyOfContextMap(this.symbol), runnable, false);

@@ -28,8 +28,7 @@ package open.commons.spring.web.beans.authority.internal;
 
 import java.util.function.Function;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.authority.AuthorizedField;
@@ -90,9 +89,8 @@ public class ResourceHandleImpl implements ResourceHandle {
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    ResourceHandleImpl(boolean isBuiltin, @Nonnull Target target, @NotEmpty @Nonnull String handleType, @Nonnull Function<?, ?> handle, boolean preemptive) {
+    ResourceHandleImpl(boolean isBuiltin, Target target, @NotEmpty String handleType, Function<?, ?> handle, boolean preemptive) {
         AssertUtils2.notNulls(target, handle);
         this.isBuiltin = isBuiltin;
         this.target = target;
@@ -118,9 +116,8 @@ public class ResourceHandleImpl implements ResourceHandle {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    ResourceHandleImpl(@Nonnull Target target, @NotEmpty @Nonnull String handleType, @Nonnull Function<?, ?> handle) {
+    ResourceHandleImpl(Target target, @NotEmpty String handleType, Function<?, ?> handle) {
         this(false, target, handleType, handle, false);
     }
 
@@ -143,9 +140,8 @@ public class ResourceHandleImpl implements ResourceHandle {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public ResourceHandleImpl(@Nonnull Target target, @NotEmpty @Nonnull String handleType, @Nonnull Function<?, ?> handle, boolean preemptive) {
+    public ResourceHandleImpl(Target target, @NotEmpty String handleType, Function<?, ?> handle, boolean preemptive) {
         this(false, target, handleType, handle, preemptive);
     }
 
@@ -153,7 +149,6 @@ public class ResourceHandleImpl implements ResourceHandle {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.config.ResourceHandle#handle()
      */
@@ -166,13 +161,12 @@ public class ResourceHandleImpl implements ResourceHandle {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.config.ResourceHandle#handleType()
      */
     @Override
     @NotEmpty
-    @Nonnull
+
     public String handleType() {
         return this.handleType;
     }
@@ -191,7 +185,6 @@ public class ResourceHandleImpl implements ResourceHandle {
      *
      * @since 2025. 9. 29.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #isBuiltin
      */
@@ -204,7 +197,6 @@ public class ResourceHandleImpl implements ResourceHandle {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.config.ResourceHandle#preemptive()
      */
@@ -217,7 +209,6 @@ public class ResourceHandleImpl implements ResourceHandle {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.config.ResourceHandle#target()
      */

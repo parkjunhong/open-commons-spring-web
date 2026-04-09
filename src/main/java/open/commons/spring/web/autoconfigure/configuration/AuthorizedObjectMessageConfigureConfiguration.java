@@ -26,7 +26,7 @@
 
 package open.commons.spring.web.autoconfigure.configuration;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,10 +62,8 @@ public class AuthorizedObjectMessageConfigureConfiguration {
      * 2025. 6. 10.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 10.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AuthorizedObjectMessageConfigureConfiguration() {
     }

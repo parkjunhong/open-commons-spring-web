@@ -87,10 +87,8 @@ public class ThreadPoolExecutorConfig {
      * 2025. 8. 13.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public ThreadPoolExecutorConfig() {
     }
@@ -110,7 +108,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public ThreadPoolExecutorConfig(ThreadPoolExecutorConfig config) {
         this.corePoolSize = config.corePoolSize;
@@ -134,7 +131,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #corePoolSize
      */
@@ -157,7 +153,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #keepAliveTime
      */
@@ -180,7 +175,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #maximumPoolSize
      */
@@ -203,7 +197,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #timeUnit
      */
@@ -226,7 +219,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #allowCoreThreadTimeOut
      */
@@ -249,7 +241,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #initialized
      */
@@ -273,7 +264,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #allowCoreThreadTimeOut
      */
@@ -298,7 +288,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #corePoolSize
      */
@@ -323,7 +312,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #keepAliveTime
      */
@@ -348,7 +336,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #maximumPoolSize
      */
@@ -373,7 +360,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see #timeUnit
      */
@@ -387,7 +373,6 @@ public class ThreadPoolExecutorConfig {
      *
      * @since 2025. 8. 13.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */

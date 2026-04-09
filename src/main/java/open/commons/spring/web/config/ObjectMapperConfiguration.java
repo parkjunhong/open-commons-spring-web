@@ -26,8 +26,7 @@
 
 package open.commons.spring.web.config;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +52,7 @@ public class ObjectMapperConfiguration {
 
     @Bean(name = BEAN_QUALIFIER_DEFAULT_OBJECT_MAPPER)
     @Primary
-    ObjectMapper objectMapper(@NotNull @Nonnull Jackson2ObjectMapperBuilder objectMapperBuilder) {
+    ObjectMapper objectMapper(@NotNull Jackson2ObjectMapperBuilder objectMapperBuilder) {
         ObjectMapper mapper = objectMapperBuilder.build();
 
         logger.info("[object-mapper] default-object-mapper={}", mapper);

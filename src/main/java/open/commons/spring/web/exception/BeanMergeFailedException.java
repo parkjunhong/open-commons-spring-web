@@ -26,8 +26,6 @@
 
 package open.commons.spring.web.exception;
 
-import javax.annotation.Nonnull;
-
 import org.springframework.beans.BeansException;
 import org.springframework.context.annotation.Bean;
 
@@ -57,9 +55,8 @@ public class BeanMergeFailedException extends BeansException {
      *
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public BeanMergeFailedException(@Nonnull String format, @Nonnull Class<?> configurationType) {
+    public BeanMergeFailedException(String format, Class<?> configurationType) {
         this(format, configurationType, null);
     }
 
@@ -78,9 +75,8 @@ public class BeanMergeFailedException extends BeansException {
      * @param cause
      * @since 2025. 9. 19.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public BeanMergeFailedException(@Nonnull String format, @Nonnull Class<?> configurationType, Throwable cause) {
+    public BeanMergeFailedException(String format, Class<?> configurationType, Throwable cause) {
         super(String.format(format, configurationType.getName()), cause);
     }
 }

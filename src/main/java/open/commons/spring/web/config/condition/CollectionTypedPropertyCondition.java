@@ -28,8 +28,7 @@ package open.commons.spring.web.config.condition;
 
 import java.util.Collection;
 
-import javax.annotation.Nonnull;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import open.commons.core.utils.CollectionUtils;
 
@@ -56,9 +55,8 @@ public abstract class CollectionTypedPropertyCondition<E> extends AbstractProper
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
-    public CollectionTypedPropertyCondition(@NotNull @Nonnull String prefix) {
+    public CollectionTypedPropertyCondition(@NotNull String prefix) {
         super(prefix);
     }
 
@@ -66,7 +64,6 @@ public abstract class CollectionTypedPropertyCondition<E> extends AbstractProper
      *
      * @since 2025. 8. 8.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.config.condition.AbstractPropertyCondition#validate(java.lang.Object)
      */

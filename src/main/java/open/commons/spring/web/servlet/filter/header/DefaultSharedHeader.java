@@ -29,7 +29,7 @@ package open.commons.spring.web.servlet.filter.header;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * 'frond-end' 또는 외부에서 전달한 'header' 정보 중에 공유하기 위한 설정 기능.
@@ -62,7 +62,6 @@ public class DefaultSharedHeader implements SharedHeader {
      *
      * @since 2025. 8. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public DefaultSharedHeader(String headerName, BiPredicate<String, String> validator) {
         this(headerName, validator, (name, value) -> {
@@ -85,7 +84,6 @@ public class DefaultSharedHeader implements SharedHeader {
      *
      * @since 2025. 11. 7.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public DefaultSharedHeader(String header, BiPredicate<String, String> validator, BiConsumer<String, String> postAction) {
         this.header = header;
@@ -97,7 +95,6 @@ public class DefaultSharedHeader implements SharedHeader {
      *
      * @since 2025. 8. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.servlet.filter.header.SharedHeader#header()
      */
@@ -110,7 +107,6 @@ public class DefaultSharedHeader implements SharedHeader {
      *
      * @since 2025. 11. 7.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.web.servlet.filter.header.SharedHeader#postAction()
      */
@@ -124,7 +120,6 @@ public class DefaultSharedHeader implements SharedHeader {
      *
      * @since 2025. 8. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see java.lang.Object#toString()
      */
@@ -143,7 +138,6 @@ public class DefaultSharedHeader implements SharedHeader {
      *
      * @since 2025. 8. 20.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see open.commons.spring.web.servlet.filter.header.SharedHeader#validator()
      */

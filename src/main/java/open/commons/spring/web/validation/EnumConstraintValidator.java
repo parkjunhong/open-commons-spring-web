@@ -33,8 +33,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.validation.ConstraintValidatorContext;
-import javax.validation.Validator;
+import jakarta.validation.ConstraintValidatorContext;
+import jakarta.validation.Validator;
 
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.servlet.InternalServerException;
@@ -69,10 +69,8 @@ public class EnumConstraintValidator<C extends Annotation, T extends Enum<T>> ex
      * 2021. 12. 16.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2021. 12. 16.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      */
     public EnumConstraintValidator(Validator validator) {
         super(validator);
@@ -100,7 +98,6 @@ public class EnumConstraintValidator<C extends Annotation, T extends Enum<T>> ex
      *
      * @since 2021. 12. 16.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      */
     @SuppressWarnings("unchecked")
     private <R> R getProperty(C constraint, String method)
@@ -113,7 +110,6 @@ public class EnumConstraintValidator<C extends Annotation, T extends Enum<T>> ex
      *
      * @since 2021. 12. 16.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      *
      * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
      */
@@ -138,7 +134,6 @@ public class EnumConstraintValidator<C extends Annotation, T extends Enum<T>> ex
      *
      * @since 2021. 12. 16.
      * @version 0.4.0
-     * @author parkjunhong77@gmail.com
      *
      * @see javax.validation.ConstraintValidator#isValid(java.lang.Object, javax.validation.ConstraintValidatorContext)
      */

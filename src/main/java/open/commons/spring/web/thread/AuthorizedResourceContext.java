@@ -60,10 +60,8 @@ public class AuthorizedResourceContext {
      * 2025. 6. 24.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 24.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static void clear() {
         CONTEXT.clear();
@@ -84,7 +82,6 @@ public class AuthorizedResourceContext {
      *
      * @since 2025. 6. 24.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static boolean isDisableAuthentication() {
         return !isEnableAuthentication();
@@ -104,7 +101,6 @@ public class AuthorizedResourceContext {
      *
      * @since 2025. 6. 24.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static boolean isEnableAuthentication() {
         return CONTEXT.containsNot(DISABLE_AUTHORIZED_RESOURCES) || !(boolean) CONTEXT.get(DISABLE_AUTHORIZED_RESOURCES);
@@ -120,10 +116,8 @@ public class AuthorizedResourceContext {
      * 2025. 6. 24.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 6. 24.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see AuthorizedObject
      * @see AuthorizedObjectMetadata

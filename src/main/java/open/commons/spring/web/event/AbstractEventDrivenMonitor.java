@@ -38,8 +38,8 @@ import java.util.concurrent.Future;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -141,7 +141,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      *            '구독해제' 파라미터 감시 간격. 단위: ms
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public AbstractEventDrivenMonitor(@NotNull ApplicationEventPublisher eventPub, @NotNull ThreadPoolTaskExecutor mtrExecutor, @Min(1) long unsubsTtl,
             @Min(1) long unsubsInterval) {
@@ -165,7 +164,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
      */
@@ -193,7 +191,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see org.springframework.beans.factory.DisposableBean#destroy()
      */
@@ -217,10 +214,8 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 2021. 9. 9.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     public void execute() {
 
@@ -274,7 +269,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * @return
      *
      * @since 2021. 9. 9.
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     private String getEventTypeKey(Class<?> eventType) {
         String eventTypeStr = eventType.toGenericString();
@@ -285,7 +279,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
     /**
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.web.event.IEventDrivenService#getParameters()
      */
@@ -297,7 +290,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
     /**
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.web.event.IEventDrivenService#registerEventProvider(java.lang.Class,
      *      java.util.function.Function)
@@ -317,7 +309,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
     /**
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.web.event.IEventDrivenService#subscribe(java.lang.Class, java.lang.Object)
      * @see {@link HashSet#add(Object)}: 파라미터 저장 객체
@@ -351,7 +342,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
     /**
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      *
      * @see open.commons.spring.web.event.IEventDrivenService#unsubscribe(java.lang.Class, java.lang.Object)
      */
@@ -383,7 +373,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * @param <C>
      * @since 2021. 9. 14.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected class AsyncJobWaiter implements Runnable {
 
@@ -417,7 +406,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
 
         /**
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          *
          * @see java.lang.Runnable#run()
          */
@@ -441,7 +429,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * @since 2021. 9. 14.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected class AsyncParameterManager {
 
@@ -470,7 +457,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * @param parameter
          *
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          */
         public void addParameter(@NotNull String eventTypeKey, @NotNull Object parameter) {
             synchronized (this.mutexParams) {
@@ -491,9 +477,7 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * 2021. 9. 9.     parkjunhong77@gmail.com         최초 작성
          * </pre>
          *
-         *
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          */
         public void clear() {
             synchronized (this.mutexParams) {
@@ -518,8 +502,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * @return
          *
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
-         * 
          */
         public boolean contains(String eventTypeKey, Object parameter) {
             synchronized (this.mutexParams) {
@@ -550,7 +532,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * @return
          *
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          */
         public boolean remove(String eventTypeKey, Object parameter) {
             synchronized (this.mutexParams) {
@@ -566,7 +547,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
 
         /**
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          *
          * @see java.lang.Object#toString()
          */
@@ -588,7 +568,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * @since 2021. 9. 14.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected class SubscribedParameterManager {
 
@@ -649,7 +628,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * @param isNew
          *            신규 구독신청 여부
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          */
         public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> boolean addParameter(@NotNull String eventTypeKey, @NotNull P parameter, boolean isNew) {
             synchronized (this.mutexParams) {
@@ -689,7 +667,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * @return
          *
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          */
         public Map<String, Set<Object>> getEventParameters() {
             synchronized (this.mutexParams) {
@@ -712,7 +689,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * @return
          *
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          * 
          * @see ConcurrentSkipListMap#remove(Object)
          */
@@ -737,7 +713,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * @return
          *
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          */
         public boolean remove(String eventTypeKey, Object parameter) {
             synchronized (this.mutexParams) {
@@ -757,7 +732,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * @since 2021. 9. 14.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected class UnsubscribedParameter {
         private final String eventTypeKey;
@@ -788,7 +762,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
 
         /**
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          *
          * @see java.lang.Object#equals(java.lang.Object)
          */
@@ -834,7 +807,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * @return
          *
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          */
         public boolean equals(String eventTypeKey, Object parameter) {
             return this.eventTypeKey.equals(eventTypeKey) && this.parameter.equals(parameter);
@@ -888,7 +860,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
 
         /**
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          *
          * @see java.lang.Object#hashCode()
          */
@@ -917,7 +888,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * @return
          *
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          */
         public boolean isTimeout(long ms) {
             return System.currentTimeMillis() - this.timestamp > ms;
@@ -925,7 +895,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
 
         /**
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          *
          * @see java.lang.Object#toString()
          */
@@ -948,7 +917,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * @since 2021. 9. 14.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected class UnsubscriedParametersClosure extends ConcurrentWorker<UnsubscribedParameter> {
 
@@ -1000,7 +968,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * @return
          *
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          */
         public boolean contains(String eventTypeKey, Object parameter) {
             UnsubscribedParameter up = new UnsubscribedParameter(eventTypeKey, parameter);
@@ -1038,7 +1005,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          *
          * @since 2021. 9. 14.
          * @version 0.4.0
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          */
         public void removeForcely(String eventTypeKey, Object parameter) {
             UnsubscribedParameter up = new UnsubscribedParameter(eventTypeKey, parameter);
@@ -1050,7 +1016,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
 
         /**
          * @since 2021. 9. 14.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          *
          * @see open.commons.concurrent.ConcurrentWorker#runInternal()
          */
@@ -1084,7 +1049,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * @param <T>
      * @since 2021. 9. 9.
      * @version 0.4.0
-     * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
      */
     protected class Worker<T extends IEventObject<?, ? extends IEventStatus>> extends DefaultRunnable {
 
@@ -1117,7 +1081,6 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
 
         /**
          * @since 2021. 9. 9.
-         * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
          *
          * @see open.commons.lang.DefaultRunnable#runInternal()
          */

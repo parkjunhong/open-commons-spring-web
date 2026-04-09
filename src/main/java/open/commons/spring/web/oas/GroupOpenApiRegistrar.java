@@ -35,9 +35,9 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
-import org.springdoc.core.GroupedOpenApi;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.boot.context.properties.bind.BindResult;
@@ -93,10 +93,8 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      * 2025. 10. 21.		parkjunhong77@gmail.com			최초 작성
      * </pre>
      *
-     *
      * @since 2025. 10. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     public GroupOpenApiRegistrar() {
     }
@@ -105,7 +103,6 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      *
      * @since 2025. 10. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see org.springframework.context.annotation.ImportBeanDefinitionRegistrar#registerBeanDefinitions(org.springframework.core.type.AnnotationMetadata,
      *      org.springframework.beans.factory.support.BeanDefinitionRegistry)
@@ -141,7 +138,6 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      *
      * @since 2025. 10. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      *
      * @see org.springframework.context.EnvironmentAware#setEnvironment(org.springframework.core.env.Environment)
      */
@@ -165,7 +161,6 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      *
      * @since 2025. 10. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private static Map<String, GroupedOpenApiProperties> bindProperties(Environment env) {
         // Map<String, GroupedOpenApiProperties> 데이터 유형을 지정
@@ -190,7 +185,6 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      *
      * @since 2025. 10. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private static Map<String, String> builtinRestApiClassPathOcswSupported() {
         Map<String, String> info = new HashMap<>();
@@ -218,7 +212,6 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      *
      * @since 2025. 10. 21.
      * @version 2.1.0
-     * @author Park Jun-Hong (parkjunhong77@gmail.com)
      */
     private static GroupedOpenApi createGroupedOpenApi(Environment env, @NotNull GroupedOpenApiProperties prop, String group) {
         // 내부 제공 REST API 그룹 정보 설정. 대상: pathsToMatch

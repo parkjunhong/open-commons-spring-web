@@ -32,8 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.validation.constraints.NotNull;
-
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNotOfRequiredTypeException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -100,14 +99,14 @@ public class BeanUtils {
      *
      * @since 2025. 5. 21.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see ApplicationContext#getBean(String)
      * @see ApplicationContext#getBean(String, Class)
      * @see ApplicationContext#getBeansOfType(Class)
      * @see #findExplicitBean(Class)
      */
-    public final <T, E extends T> T findBean(@NotNull String beanName, @NotNull Class<T> beanType, @NotNull Class<E> beanImplType, boolean required) throws BeansException {
+    @SuppressWarnings("null")
+    public final <T, E extends T> T findBean(String beanName, Class<T> beanType, Class<E> beanImplType, boolean required) throws BeansException {
         T bean = null;
         try {
             if (StringUtils.isNullOrEmptyString(beanName)) {
@@ -116,7 +115,7 @@ public class BeanUtils {
                 int count = 0;
                 for (T candidate : beanTypeCandidates.values()) {
                     // Bean 구현 클래스 타입과 일치하지 않는 경우
-                    if (beanImplType == null || beanImplType.equals(candidate.getClass())) {
+                    if (beanImplType == null || (candidate != null && beanImplType.equals(candidate.getClass()))) {
                         if (bean == null) {
                             bean = candidate;
                         }
@@ -164,16 +163,15 @@ public class BeanUtils {
      *
      * @since 2025. 5. 21.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see ApplicationContext#getBeansOfType(Class)
      */
-    private <T> T findExplicitBean(@NotNull Class<T> beanExplicitImplType) throws BeansException {
+    private <@Nullable T> T findExplicitBean(Class<T> beanExplicitImplType) throws BeansException {
         Map<String, T> candidates = this.context.getBeansOfType(beanExplicitImplType);
         T bean = null;
         int count = 0;
         for (T candidate : candidates.values()) {
-            if (beanExplicitImplType.equals(candidate.getClass())) {
+            if (candidate != null && beanExplicitImplType.equals(candidate.getClass())) {
                 bean = candidate;
                 count++;
             }
@@ -218,12 +216,12 @@ public class BeanUtils {
      *
      * @since 2025. 5. 21.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see ApplicationContext#getBean(String)
      * @see ApplicationContext#getBean(String, Class)
      */
-    public final <T> T getBean(@NotNull String beanName, @NotNull Class<T> beanType, @NotNull T defaultBean, boolean required) throws BeansException {
+    @SuppressWarnings("null")
+    public final <T> T getBean(String beanName, Class<T> beanType, T defaultBean, boolean required) throws BeansException {
         T bean = null;
         try {
             if (StringUtils.isNullOrEmptyString(beanName)) {
@@ -260,9 +258,8 @@ public class BeanUtils {
      *
      * @since 2025. 5. 21.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
-    public static BeanUtils context(@NotNull ApplicationContext context) {
+    public static BeanUtils context(ApplicationContext context) {
         Assert.notNull(context, "컨텍스트 정보는 반드시 설정되어야 합니다.");
         return new BeanUtils(context);
     }
@@ -282,7 +279,6 @@ public class BeanUtils {
      *
      * @since 2025. 9. 24.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      * 
      * @see org.springframework.beans.BeanUtils#isSimpleValueType(Class)
      */
@@ -314,7 +310,6 @@ public class BeanUtils {
      *
      * @since 2025. 6. 17.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static <E> List<E> listOf(Environment environment, String property, Class<E> type) {
         return Binder.get(environment).bind(property, Bindable.listOf(type)).orElse(Collections.emptyList());
@@ -336,7 +331,6 @@ public class BeanUtils {
      *
      * @since 2025. 6. 13.
      * @version 0.8.0
-     * @author Park, Jun-Hong parkjunhong77@gmail.com
      */
     public static String resolveBeanNameFromFqn(String fqn) {
         try {

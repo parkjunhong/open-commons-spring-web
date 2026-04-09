@@ -67,7 +67,6 @@ public class AsyncTaskConfig implements AsyncConfigurer {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      */
     public AsyncTaskConfig(@Qualifier(ResourceConfiguration.CONFIGURATION_THREAD_POOL_TASK_EXECUTOR_CONFIG_ON_ASYNC) ThreadPoolTaskExecutorConfig config) {
         this.config = config;
@@ -77,7 +76,6 @@ public class AsyncTaskConfig implements AsyncConfigurer {
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
-     * @author parkjunhong77@gmail.com
      *
      * @see org.springframework.scheduling.annotation.AsyncConfigurer#getAsyncExecutor()
      */
