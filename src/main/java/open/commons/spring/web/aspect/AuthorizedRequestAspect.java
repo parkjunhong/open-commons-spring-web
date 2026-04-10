@@ -73,9 +73,9 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 19.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 19.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param context
@@ -93,9 +93,9 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 19.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 19.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <A>
@@ -146,9 +146,9 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 19.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 19.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <A>
@@ -174,9 +174,9 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 19.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 19.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param pjp

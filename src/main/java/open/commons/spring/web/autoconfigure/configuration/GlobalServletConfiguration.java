@@ -61,7 +61,7 @@ import open.commons.spring.web.config.ResourceConfiguration;
 import open.commons.spring.web.handler.DefaultGlobalInterceptor;
 import open.commons.spring.web.handler.HttpRequestProxyHeader;
 import open.commons.spring.web.handler.InterceptorIgnoreUrlProperties;
-import open.commons.spring.web.servlet.filter.AntPathRequest;
+import open.commons.spring.web.servlet.filter.PathPatternRequest;
 import open.commons.spring.web.servlet.filter.RequestHeaderFilter;
 import open.commons.spring.web.servlet.filter.RequestThreadNameFilter;
 import open.commons.spring.web.servlet.filter.header.SharedHeader;
@@ -108,9 +108,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 6. 5.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 6. 5.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param context
@@ -150,9 +150,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 19.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 19.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param filter
@@ -175,9 +175,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 4.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param filter
@@ -200,9 +200,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 7.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 7.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param headers
@@ -250,8 +250,8 @@ public class GlobalServletConfiguration {
 
         // 중복 검증
         // key: FQCN 기반의 target 정보, value: 동일한 target 정보인 InterceptorIgnoreUrlProperties 객체들
-        MultiValueMap<String, InterceptorIgnoreUrlProperties> mayBeDuplicated = StreamUtils.toMap(merged.stream(), InterceptorIgnoreUrlProperties::getTarget, StreamUtils.identity(),
-                LinkedMultiValueMap::new);
+        MultiValueMap<String, InterceptorIgnoreUrlProperties> mayBeDuplicated = StreamUtils.toMap(merged.stream(), InterceptorIgnoreUrlProperties::getTarget,
+                StreamUtils.identity(), LinkedMultiValueMap::new);
 
         mayBeDuplicated.forEach((k, v) -> {
             if (v.size() > 1) {
@@ -283,9 +283,9 @@ public class GlobalServletConfiguration {
 
     @Bean(name = BEAN_QUALIFIER_PRIMARY_ONCE_PER_REQUEST_SHOULD_NOT_PATTERNS)
     @Primary
-    List<AntPathRequest> beanPrimaryOncePerRequestShouldNotFilters( //
-            @NotNull Map<String, AntPathRequest> single//
-            , @NotNull Map<String, List<AntPathRequest>> multi) {
+    List<PathPatternRequest> beanPrimaryOncePerRequestShouldNotFilters( //
+            @NotNull Map<String, PathPatternRequest> single//
+            , @NotNull Map<String, List<PathPatternRequest>> multi) {
         return MapUtils.toList(single, multi);
     }
 
@@ -303,9 +303,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 18.        parkjunhong77@gmail.com            최초 작성
      * 2025. 8. 7.      parkjunhong77@gmail.com         기본적으로 지원하는 헤더를 내부 코드로 강제화 시킴.
      *                                  - real-ip: X-Real-IP
      *                                  - client-port: X-Client-Port
@@ -351,9 +351,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 7.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 7.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return
@@ -404,9 +404,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 8.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 8.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return
@@ -415,24 +415,24 @@ public class GlobalServletConfiguration {
      * @version 0.8.0
      */
     @Bean
-    List<AntPathRequest> configBuiltinOncePerRequestShouldNotFilters() {
+    List<PathPatternRequest> configBuiltinOncePerRequestShouldNotFilters() {
 
-        List<AntPathRequest> paths = new ArrayList<>();
+        List<PathPatternRequest> paths = new ArrayList<>();
 
         // 웹서비스 개발시 정적 자원 경로: ${spring.mvc.static-path-pattern}
-        PathUtils.addEnvironmentProperty(this.environment, "spring.mvc.static-path-pattern", AntPathRequest::new, paths::add);
+        PathUtils.addEnvironmentProperty(this.environment, "spring.mvc.static-path-pattern", PathPatternRequest::new, paths::add);
         // --> begin: Swagger API
         // Swager Doc. API 경로: ${springdoc.api-docs.path}
         PathUtils.addEnvironmentProperty(this.environment, "springdoc.api-docs.path", v -> {
             if (v.endsWith("/**")) {
-                paths.add(new AntPathRequest(v));
+                paths.add(new PathPatternRequest(v));
             } else {
-                paths.add(new AntPathRequest(String.join("", v, "/**")));
+                paths.add(new PathPatternRequest(String.join("", v, "/**")));
             }
         });
         // Swagger 웹 페이지 자원 경로
-        paths.add(new AntPathRequest("/swagger/**", HttpMethod.GET));
-        paths.add(new AntPathRequest("/swagger-ui/**", HttpMethod.GET));
+        paths.add(new PathPatternRequest("/swagger/**", HttpMethod.GET));
+        paths.add(new PathPatternRequest("/swagger-ui/**", HttpMethod.GET));
 
         return paths;
     }
@@ -442,9 +442,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 20.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 20.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return

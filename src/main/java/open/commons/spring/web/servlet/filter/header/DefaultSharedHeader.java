@@ -52,9 +52,9 @@ public class DefaultSharedHeader implements SharedHeader {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 20.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 20.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param header
@@ -73,9 +73,9 @@ public class DefaultSharedHeader implements SharedHeader {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 11. 7.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 11. 7.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param header

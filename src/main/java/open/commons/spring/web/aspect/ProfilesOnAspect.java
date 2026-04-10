@@ -71,9 +71,9 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 11. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 11. 21.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param context
@@ -92,9 +92,9 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 11. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 11. 21.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2025. 11. 21.
@@ -109,9 +109,9 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 11. 24.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 11. 24.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param profilesOn
@@ -131,9 +131,9 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 11. 24.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 11. 24.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param standards
@@ -207,9 +207,9 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 11. 24.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 11. 24.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return
@@ -226,9 +226,9 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 11. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 11. 21.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param pjp

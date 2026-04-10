@@ -88,9 +88,9 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 10. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 10. 21.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2025. 10. 21.
@@ -151,9 +151,9 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 10. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 10. 21.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param env
@@ -176,9 +176,9 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 10. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 10. 21.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return
@@ -197,9 +197,9 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 10. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 10. 21.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @param env

@@ -63,9 +63,9 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param delegate
@@ -227,9 +227,9 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 3.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param runnable

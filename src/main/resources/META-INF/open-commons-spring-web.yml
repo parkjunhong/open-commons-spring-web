@@ -4,9 +4,7 @@ open-commons:
       resttemplate:
         # RestTemplate Http 연결 설정      
         requestfactory:
-          bufferRequestBody: true
           connectionRequestTimeout: 300000
-          connectionTimeout: 300000
           readTimeout: 300000
       proxy-header:
         real-ip: X-Real-IP

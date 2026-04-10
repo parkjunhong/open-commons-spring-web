@@ -70,9 +70,9 @@ public class AuthorizedResourcesMetadataConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 6. 12.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2025. 6. 12.
@@ -87,9 +87,9 @@ public class AuthorizedResourcesMetadataConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 9. 22.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 9. 22.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param singleAuthorizedObjectMetadata
@@ -126,9 +126,9 @@ public class AuthorizedResourcesMetadataConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 6. 17.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 6. 17.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param single
@@ -171,9 +171,9 @@ public class AuthorizedResourcesMetadataConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 6. 17.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 6. 17.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param environment

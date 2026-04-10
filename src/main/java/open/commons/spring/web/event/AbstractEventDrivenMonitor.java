@@ -126,9 +126,9 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 9. 9.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 9. 9.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @param eventPub
@@ -155,9 +155,9 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 9. 9.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 9. 9.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @throws Exception
@@ -182,9 +182,9 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 9. 9.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 9. 9.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @throws Exception
@@ -209,9 +209,9 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 9. 9.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 9. 9.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2021. 9. 9.
@@ -995,9 +995,9 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2021. 9. 14.		parkjunhong77@gmail.com			최초 작성
+         * 2021. 9. 14.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @param eventTypeKey

@@ -45,7 +45,7 @@ import open.commons.spring.web.servlet.filter.RequestThreadNameFilter;
  * 
  * <pre>
  * [개정이력]
- *      날짜      | 작성자		         	   |	내용
+ *      날짜      | 작성자                        |    내용
  * ------------------------------------------
  * 2020. 1. 17.     parkjunhong77@gmail.com                         최초 작성
  * 2025. 6. 23.     parkjunhong77@gmail.com(jhpark@ymtech.co.kr)    {@link #postHandle(HttpServletRequest, HttpServletResponse, Object, ModelAndView)}을 제거하고 {@link #afterCompletion(HttpServletRequest, HttpServletResponse, Object, Exception)}로 변경.
@@ -70,9 +70,9 @@ public class DefaultGlobalInterceptor implements AsyncHandlerInterceptor {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2020. 1. 17.		parkjunhong77@gmail.com			최초 작성
+     * 2020. 1. 17.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2020. 1. 17.

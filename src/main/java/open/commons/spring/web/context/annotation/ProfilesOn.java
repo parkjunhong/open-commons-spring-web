@@ -42,9 +42,9 @@ import org.springframework.web.bind.annotation.RestController;
  * 
  * <pre>
  * [개정이력]
- *      날짜    	| 작성자			|	내용
+ *      날짜        | 작성자            |    내용
  * ------------------------------------------
- * 2025. 11. 21.	박준홍(jhpark@ymtech.co.kr)  {@link Environment#getActiveProfiles()} 연동만 지원			
+ * 2025. 11. 21.    박준홍(jhpark@ymtech.co.kr)  {@link Environment#getActiveProfiles()} 연동만 지원            
  * </pre>
  * 
  * @since 2025. 11. 21.

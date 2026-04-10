@@ -87,9 +87,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 28.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param context
@@ -108,9 +108,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 28.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2025. 7. 28.
@@ -125,9 +125,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 31.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 31.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2025. 7. 31.
@@ -144,9 +144,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 28.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param pjp
@@ -206,9 +206,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 31.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 31.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param pjp
@@ -252,9 +252,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 31.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 31.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param feature
@@ -291,9 +291,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 28.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2025. 7. 28.

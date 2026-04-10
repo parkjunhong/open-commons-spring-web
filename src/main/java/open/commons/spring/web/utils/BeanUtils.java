@@ -72,9 +72,9 @@ public class BeanUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 21.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <T>
@@ -151,9 +151,9 @@ public class BeanUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 21.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <T>
@@ -248,9 +248,9 @@ public class BeanUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 21.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param context
@@ -269,9 +269,9 @@ public class BeanUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 9. 24.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 9. 24.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param type
@@ -293,9 +293,9 @@ public class BeanUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 6. 17.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 6. 17.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -320,9 +320,9 @@ public class BeanUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 6. 13.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 6. 13.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param fqn

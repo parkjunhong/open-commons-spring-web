@@ -47,7 +47,7 @@ import open.commons.core.utils.StringUtils;
 /**
  * <pre>
  * [개정이력]
- *      날짜    	| 작성자			|	내용
+ *      날짜        | 작성자            |    내용
  * ------------------------------------------
  * 2025. 5. 28.     parkjunohng77@gmail.com     최초 작성
  * 2026. 4. 9.      parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5
@@ -79,9 +79,9 @@ public class ExceptionHttpStatusBinder {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 28.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param properties
@@ -98,9 +98,9 @@ public class ExceptionHttpStatusBinder {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 28.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param valid
@@ -122,9 +122,9 @@ public class ExceptionHttpStatusBinder {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 28.		parkjunhong77@gmail.com		최초 작성
+     * 2025. 5. 28.        parkjunhong77@gmail.com        최초 작성
      * 2025. 10. 22.    parkjunhong77@gmail.com     기본 상태 추가 및 {@link ResponseStatus} 적용 확인 추가
      * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경 및 반환타입. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
@@ -158,9 +158,9 @@ public class ExceptionHttpStatusBinder {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 28.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2025. 5. 28.

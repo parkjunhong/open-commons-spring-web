@@ -27,6 +27,7 @@
 package open.commons.spring.web.utils;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.regex.Pattern;
@@ -52,9 +53,9 @@ public class PathUtils {
     /**
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 9. 25.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 9. 25.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param env
@@ -82,9 +83,9 @@ public class PathUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 9. 25.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 9. 25.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <V>
@@ -108,52 +109,6 @@ public class PathUtils {
             return;
         }
         actor.accept(converter.apply(value));
-    }
-
-    /**
-     * pattern (URL) AntPath 유효성 검증 <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2025. 8. 4.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
-     * @param patterns
-     * @return
-     *
-     * @since 2025. 8. 4.
-     * @version 0.8.0
-     */
-    public static boolean isValidAntPath(Collection<String> patterns) {
-        for (String pattern : patterns) {
-            if (!isValidAntPath(pattern)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * pattern (URL) AntPath 유효성 검증 <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2025. 8. 4.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
-     * @param pattern
-     *            URL 패턴
-     * @return
-     *
-     * @since 2025. 8. 4.
-     * @version 0.8.0
-     */
-    public static boolean isValidAntPath(String pattern) {
-        return pattern != null && pattern.startsWith("/");
     }
 
     /**
@@ -181,5 +136,55 @@ public class PathUtils {
             logger.warn("올바르지 않은 FQCN 패턴입니다. fqcn={}", fqcn);
             return false;
         }
+    }
+
+    /**
+     * pattern (URL) Path 유효성 검증 <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 4.      parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 10.     parkjunohng77@gmail.com     메소드 이름 변경 (isValidAntPath -> isValidPathPattern)
+     * </pre>
+     *
+     * @param patterns
+     * @return
+     *
+     * @since 2025. 8. 4.
+     * @version 0.8.0
+     */
+    public static boolean isValidPathPattern(Collection<String> patterns) {
+        Objects.requireNonNull(patterns);
+
+        for (String pattern : patterns) {
+            if (!isValidPathPattern(pattern)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * pattern (URL) Path 유효성 검증 <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 4.     parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 10.     parkjunohng77@gmail.com     메소드 이름 변경 (isValidAntPath -> isValidPathPattern)
+     * </pre>
+     *
+     * @param pattern
+     *            URL 패턴
+     * @return
+     *
+     * @since 2025. 8. 4.
+     * @version 0.8.0
+     */
+    public static boolean isValidPathPattern(String pattern) {
+        return pattern != null && pattern.startsWith("/");
     }
 }

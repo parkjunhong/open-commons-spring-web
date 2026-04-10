@@ -107,9 +107,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2025. 8. 1.
@@ -124,9 +124,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 11.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 11.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param config
@@ -150,9 +150,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the corePoolSize
@@ -172,9 +172,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the keepAliveTime
@@ -194,9 +194,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the maximumPoolSize
@@ -216,9 +216,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the timeUnit
@@ -238,9 +238,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the allowCoreThreadTimeOut
@@ -260,9 +260,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the continueExistingPeriodicTasksAfterShutdown
@@ -282,9 +282,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the executeExistingDelayedTasksAfterShutdown
@@ -304,9 +304,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 11.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 11.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the initialized
@@ -326,9 +326,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the removeOnCancel
@@ -348,9 +348,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param allowCoreThreadTimeOut
@@ -372,9 +372,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param continueExistingPeriodicTasksAfterShutdown
@@ -396,9 +396,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param corePoolSize
@@ -420,9 +420,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param executeExistingDelayedTasksAfterShutdown
@@ -444,9 +444,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param keepAliveTime
@@ -468,9 +468,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param maximumPoolSize
@@ -492,9 +492,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param removeOnCancel
@@ -516,9 +516,9 @@ public class ScheduledThreadPoolExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 1.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param timeUnit

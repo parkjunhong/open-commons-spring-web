@@ -35,7 +35,7 @@ import open.commons.spring.web.handler.InterceptorIgnoreUrlProperties;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-public class InvalidAntPathUrlPatternException extends RuntimeException {
+public class InvalidPathPatternUrlException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,15 +44,15 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2025. 7. 30.
      * @version 0.8.0
      */
-    public InvalidAntPathUrlPatternException() {
+    public InvalidPathPatternUrlException() {
     }
 
     /**
@@ -60,9 +60,9 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param message
@@ -70,7 +70,7 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      * @since 2025. 7. 30.
      * @version 0.8.0
      */
-    public InvalidAntPathUrlPatternException(String message) {
+    public InvalidPathPatternUrlException(String message) {
         super(message);
     }
 
@@ -79,9 +79,9 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param message
@@ -90,7 +90,7 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      * @since 2025. 7. 30.
      * @version 0.8.0
      */
-    public InvalidAntPathUrlPatternException(String message, Throwable cause) {
+    public InvalidPathPatternUrlException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -99,9 +99,9 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param message
@@ -112,7 +112,7 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      * @since 2025. 7. 30.
      * @version 0.8.0
      */
-    public InvalidAntPathUrlPatternException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public InvalidPathPatternUrlException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 
@@ -121,9 +121,9 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param cause
@@ -131,7 +131,7 @@ public class InvalidAntPathUrlPatternException extends RuntimeException {
      * @since 2025. 7. 30.
      * @version 0.8.0
      */
-    public InvalidAntPathUrlPatternException(Throwable cause) {
+    public InvalidPathPatternUrlException(Throwable cause) {
         super(cause);
     }
 }

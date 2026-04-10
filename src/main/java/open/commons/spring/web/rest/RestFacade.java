@@ -30,7 +30,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
@@ -45,27 +44,30 @@ import java.util.function.Supplier;
 
 import javax.net.ssl.SSLContext;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 import org.apache.hc.client5.http.DnsResolver;
-import org.apache.hc.client5.http.HttpRoute;
 import org.apache.hc.client5.http.SchemePortResolver;
-import org.apache.hc.client5.http.SystemDefaultDnsResolver;
-import org.apache.hc.client5.http.config.ConnectionConfig;
-import org.apache.hc.client5.http.impl.DefaultSchemePortResolver;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator;
 import org.apache.hc.client5.http.impl.io.ManagedHttpClientConnectionFactory;
-import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
 import org.apache.hc.client5.http.io.HttpClientConnectionManager;
 import org.apache.hc.client5.http.io.ManagedHttpClientConnection;
-import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
-import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
+import org.apache.hc.client5.http.ssl.DefaultClientTlsStrategy;
 import org.apache.hc.client5.http.ssl.NoopHostnameVerifier;
-import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
+import org.apache.hc.client5.http.ssl.TlsSocketStrategy;
 import org.apache.hc.core5.http.NoHttpResponseException;
+import org.apache.hc.core5.http.config.CharCodingConfig;
+import org.apache.hc.core5.http.config.Http1Config;
+import org.apache.hc.core5.http.config.Lookup;
 import org.apache.hc.core5.http.config.RegistryBuilder;
 import org.apache.hc.core5.http.io.HttpConnectionFactory;
 import org.apache.hc.core5.ssl.SSLContextBuilder;
+import org.apache.hc.core5.ssl.TrustStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.ParameterizedTypeReference;
@@ -73,10 +75,12 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
@@ -93,40 +97,43 @@ import open.commons.core.utils.ThreadUtils;
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class RestFacade {
+    private static final int DEFAULT_RETRY_COUNT = 5;
 
-    private static final Logger logger = LoggerFactory.getLogger(RestFacade.class);
+    @SuppressWarnings("unused")
+    private static final Logger sLogger = LoggerFactory.getLogger(RestFacade.class);
 
     private RestFacade() {
     }
 
     /**
-     * 헤더에 새로운 정보를 추가한다. <br>
+     * <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2019. 10. 24.		parkjunhong77@gmail.com			최초 작성
+     * 2026. 4. 10.     parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param headers
-     *            기존 헤더 객체
-     * @param headerPairs
-     *            헤더 정보
+     * @param values
      * @return
-     * @throws IllegalArgumentException
      *
-     * @since 2019. 10. 24.
-     * @version
-     * 
-     * @deprecated Use {@link #headers(MultiValueMap, String...)}.
+     * @since 2026. 4. 10.
+     * @version 4.0.0
      */
-    public static HttpHeaders addHeaders(HttpHeaders headers, String... headerPairs) throws IllegalArgumentException {
-        return headers(headers, headerPairs);
+    public static HttpEntity<Map<String, Object>> buildHttpEntity(HttpHeaders headers, Object... values) {
+
+        Map<String, Object> map = new HashMap<>();
+
+        for (int i = 0; (i + 1) < values.length; i++) {
+            map.put(String.valueOf(values[i++]), values[i]);
+        }
+
+        return new HttpEntity<Map<String, Object>>(map, headers);
     }
 
     /**
-     * 
      * <br>
      * 
      * <pre>
@@ -152,127 +159,120 @@ public class RestFacade {
             map.put(String.valueOf(values[i++]), values[i]);
         }
 
-        return new HttpEntity<Map<String, Object>>(map, headers);
-    }
-
-    public static CloseableHttpClient createClient() {
-
-        // Lookup
-        RegistryBuilder<ConnectionSocketFactory> regBuilder = RegistryBuilder.create();
-        regBuilder.register("http", new PlainConnectionSocketFactory());
-
-        HttpConnectionFactory<HttpRoute, ManagedHttpClientConnection> connectionFactory = new ManagedHttpClientConnectionFactory();
-
-        // use org.apache.http.conn.SchemePortResolver for default port resolution and org.apache.http.config.Registry
-        // for socket factory lookups.
-        SchemePortResolver schemePortResolver = new DefaultSchemePortResolver();
-        DnsResolver dnsResolver = new SystemDefaultDnsResolver();
-
-        HttpClientConnectionManager manager = new BasicHttpClientConnectionManager(regBuilder.build(), connectionFactory, schemePortResolver, dnsResolver);
-
-        // connection config
-        ConnectionConfig.Builder conBuilder = ConnectionConfig.custom();
-        conBuilder.setCharset(Charset.forName("UTF-8"));
-
-        ConnectionConfig conConfig = conBuilder.build();
-
-        // client
-        HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
-        httpClientBuilder.setDefaultConnectionConfig(conConfig) //
-                .setConnectionManager(manager);
-
-        CloseableHttpClient client = httpClientBuilder.build();
-
-        return client;
+        return new HttpEntity<Map<String, Object>>(map, new HttpHeaders(headers));
     }
 
     /**
-     * 
-     * HTTPS 연결객체를 제공한다. <br>
-     * 
+     * 기본 HTTP 연결 객체를 제공합니다. (단일 연결 및 Non-Pooling 방식)
+     *
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2016. 11. 21     parkjunhong77@gmail.com         최초 작성
-     * 2019. 4. 9.      parkjunhong77@gmail.com         기능 확장. (사설 인증서 지원)
+     * 날짜        | 작성자                    | 내용
+     * ----------------------------------------------------------------------
+     * 2016. 11. 21.    parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 10.     parkjunhong77@gmail.com     HC 5.4 정적 팩토리 및 DefaultHttpClientConnectionOperator 적용
+     * </pre>
+     *
+     * @return {@link CloseableHttpClient} 객체
+     *
+     * @since 2016. 11. 21.
+     * @version 4.0.0
+     * @author parkjunhong77@gmail.com
+     */
+    public static CloseableHttpClient createClient() {
+        // [PATCH] [오류-1] Args.notNull 통과를 위한 빈 Registry 생성
+        Lookup<TlsSocketStrategy> emptyTlsStrategyLookup = RegistryBuilder.<TlsSocketStrategy> create().build();
+
+        // [PATCH] [오류-1] 명시적 캐스팅을 통해 생성자 모호성 제거
+        DefaultHttpClientConnectionOperator connectionOperator = new DefaultHttpClientConnectionOperator((SchemePortResolver) null, (DnsResolver) null, emptyTlsStrategyLookup);
+
+        // [PATCH] [오류-2] 캐릭터셋 설정을 위해 ConnectionFactory 사용
+        CharCodingConfig charCodingConfig = CharCodingConfig.custom().setCharset(StandardCharsets.UTF_8).build();
+
+        HttpConnectionFactory<ManagedHttpClientConnection> connectionFactory = new ManagedHttpClientConnectionFactory(Http1Config.DEFAULT, charCodingConfig, null);
+
+        BasicHttpClientConnectionManager manager = new BasicHttpClientConnectionManager(connectionOperator, connectionFactory);
+
+        return HttpClientBuilder.create().setConnectionManager(manager).build();
+    }
+
+    /**
+     * HTTPS 연결 객체를 제공합니다. 멀티스레드 환경을 지원하기 위해 Pooling 방식을 사용합니다.
+     *
+     * <pre>
+     * [개정이력]
+     * 날짜        | 작성자                    | 내용
+     * ----------------------------------------------------------------------
+     * 2016. 11. 21.    parkjunhong77@gmail.com     최초 작성
+     * 2019. 4. 9.      parkjunhong77@gmail.com     사설 인증서(Private CA) 지원 확장
+     * 2020. 12. 9.     parkjunhong77@gmail.com     Thread-Safe 지원 (Pooling 매니저 적용)
+     * 2026. 4. 10.     parkjunhong77@gmail.com     HC 5.4 TlsSocketStrategy 및 Builder 패턴 현행화
      * </pre>
      *
      * @param allowPrivateCA
-     *            사설인증서 지원 여부
-     * @return
+     *            사설 인증서 허용 여부
+     * @return {@link CloseableHttpClient} 객체
      * @throws KeyManagementException
+     *             키 관리 오류 시 발생
      * @throws KeyStoreException
+     *             키 저장소 오류 시 발생
      * @throws NoSuchAlgorithmException
+     *             암호화 알고리즘 부재 시 발생
      *
      * @since 2019. 4. 9.
+     * @version 4.0.0
+     * @author parkjunhong77@gmail.com
      */
     public static CloseableHttpClient createHttpsClient(boolean allowPrivateCA) throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
 
-        // Lookup
-        RegistryBuilder<ConnectionSocketFactory> regBuilder = createRegistryBuilder(allowPrivateCA);
+        TlsSocketStrategy tlsStrategy = createTlsSocketStrategy(allowPrivateCA);
 
-        HttpConnectionFactory<HttpRoute, ManagedHttpClientConnection> connectionFactory = new ManagedHttpClientConnectionFactory();
+        CharCodingConfig charCodingConfig = CharCodingConfig.custom().setCharset(StandardCharsets.UTF_8).build();
 
-        // use org.apache.http.conn.SchemePortResolver for default port resolution and org.apache.http.config.Registry
-        // for socket factory lookups.
-        DnsResolver dnsResolver = new SystemDefaultDnsResolver();
+        // [CHECK] 확인된 3개 인자 생성자 사용
+        HttpConnectionFactory<ManagedHttpClientConnection> connectionFactory = new ManagedHttpClientConnectionFactory(Http1Config.DEFAULT, charCodingConfig, null);
 
-        // begin - PATCH [2020. 12. 9.]: Thread Safe 지원 | Park_Jun_Hong_(parkjunhong77@gmail.com)
-        HttpClientConnectionManager manager = new PoolingHttpClientConnectionManager(regBuilder.build(), connectionFactory, dnsResolver);
-        // end - Park_Jun_Hong_(parkjunhong77@gmail.com), 2020. 12. 9.
+        // PoolingBuilder에 팩토리 주입
+        HttpClientConnectionManager manager = PoolingHttpClientConnectionManagerBuilder.create().setTlsSocketStrategy(tlsStrategy).setConnectionFactory(connectionFactory).build();
 
-        // connection config
-        ConnectionConfig.Builder conBuilder = ConnectionConfig.custom();
-        conBuilder.setCharset(Charset.forName("UTF-8"));
-
-        ConnectionConfig conConfig = conBuilder.build();
-
-        // client
-        HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
-        httpClientBuilder.setDefaultConnectionConfig(conConfig) //
-                .setConnectionManager(manager);
-
-        CloseableHttpClient client = httpClientBuilder.build();
-
-        return client;
+        return HttpClientBuilder.create().setConnectionManager(manager).build();
     }
 
     /**
-     * 
-     * <br>
-     * 
+     * Apache HttpClient 5.4 최신 스펙인 {@link TlsSocketStrategy}를 생성합니다. 기존의 SSLConnectionSocketFactory를 대체합니다.
+     *
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2019. 4. 9.      parkjunhong77@gmail.com         최초 작성
+     * 날짜        | 작성자                    | 내용
+     * ----------------------------------------------------------------------
+     * 2019. 4. 9.      parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 10.     parkjunhong77@gmail.com     HC 5.4 DefaultClientTlsStrategy 및 정적 인스턴스 최적화
      * </pre>
      *
      * @param allowPrivateCA
-     *            사설인증서 자동 허용 여부
-     * @return
+     *            사설 인증서 자동 허용 여부
+     * @return 설정된 {@link TlsSocketStrategy} 객체
      * @throws NoSuchAlgorithmException
      * @throws KeyManagementException
      * @throws KeyStoreException
      *
      * @since 2019. 4. 9.
+     * @version 4.0.0
+     * @author parkjunhong77@gmail.com
      */
-    private static RegistryBuilder<ConnectionSocketFactory> createRegistryBuilder(boolean allowPrivateCA)
-            throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
-        // Lookup
-        RegistryBuilder<ConnectionSocketFactory> regBuilder = RegistryBuilder.create();
-        if (allowPrivateCA) {
-            SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, (certificate, authType) -> true).build();
-            regBuilder.register("https", new SSLConnectionSocketFactory(sslContext, new NoopHostnameVerifier()));
-            regBuilder.register("http", new PlainConnectionSocketFactory());
-        } else {
-            SSLContext sslContext = SSLContext.getDefault();
-            regBuilder.register("https", new SSLConnectionSocketFactory(sslContext));
-            regBuilder.register("http", new PlainConnectionSocketFactory());
-        }
+    private static TlsSocketStrategy createTlsSocketStrategy(boolean allowPrivateCA) throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
 
-        return regBuilder;
+        if (allowPrivateCA) {
+            TrustStrategy trustStrategy = (_, _) -> true;
+            SSLContext sslContext = SSLContextBuilder.create() //
+                    .loadTrustMaterial(null, trustStrategy) //
+                    .build();
+
+            // [PATCH] [Design-Null] NoopHostnameVerifier.INSTANCE 싱글톤 적용
+            return new DefaultClientTlsStrategy(sslContext, NoopHostnameVerifier.INSTANCE);
+        } else {
+            return new DefaultClientTlsStrategy(SSLContext.getDefault());
+        }
     }
 
     /**
@@ -280,9 +280,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2020. 8. 27.		parkjunhong77@gmail.com			최초 작성
+     * 2020. 8. 27.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param context
@@ -341,6 +341,240 @@ public class RestFacade {
     }
 
     /**
+     * URI 쿼리 파라미터 데이터를 인코딩합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜        | 작성자    |    내용
+     * ------------------------------------------
+     * 2025. 7. 2.        parkjunhong77@gmail.com            최초 작성
+     * </pre>
+     *
+     * @param value
+     * @return
+     *
+     * @since 2025. 7. 2.
+     * @version 0.8.0
+     */
+    private static String encode(String value) {
+        try {
+            return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalArgumentException("Encoding failed for: " + value, e);
+        }
+    }
+
+    /**
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
+    ) {
+        try {
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
+            , int retryCount //
+    ) {
+        try {
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, retryCount);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
+    ) {
+        try {
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
+            , int retryCount //
+    ) {
+        try {
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, retryCount);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
+    }
+
+    /**
      * 
      * <br>
      * 
@@ -348,7 +582,8 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2019. 10. 24.        parkjunhong77@gmail.com         최초 작성
+     * 2019. 10. 24.    parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 10.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @param <REQ>
@@ -374,18 +609,17 @@ public class RestFacade {
      * @return
      *
      * @since 2019. 10. 24.
-     * @version
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
             Class<RES> responseType) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, response -> {
             Result<RES> result = null;
-            HttpStatus status = response.getStatusCode();
+            HttpStatusCode status = response.getStatusCode();
             if (status.is2xxSuccessful()) {
                 result = new Result<>(response.getBody(), true);
             } else {
                 result = new Result<>(response.getBody(), false);
-                result.setMessage(status.getReasonPhrase());
+                result.setMessage(status instanceof HttpStatus hs ? hs.getReasonPhrase() : null);
             }
             return result;
         }, error -> {
@@ -397,20 +631,40 @@ public class RestFacade {
     }
 
     /**
+     * 기본 헤더에 새로운 헤더를 추가하여 제공한다. <br>
      * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2020. 8. 28.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param headers
+     *            기존 header
+     * @param headerEntries
+     *            새로운 header 정보
+     * @return
+     *
+     * @since 2020. 8. 28.
+     */
+
+    /**
      * <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2019. 10. 24.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <REQ>
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
@@ -433,18 +687,71 @@ public class RestFacade {
      *            요청 실패 처리자
      * @return
      *
-     * @since 2019. 10. 24.
-     * @version
-     * 
-     * @deprecated Use
-     *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, Class, Function, Function)}
+     * @since 2021. 06. 11.
+     * @version 0.4.0
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
-            Class<RES> responseType //
-            , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
-            , Function<Exception, Result<RES>> onError //
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError //
     ) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError);
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜        | 작성자    |    내용
+     * ------------------------------------------
+     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError //
+            , int retryCount //
+    ) {
+        return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError, retryCount);
     }
 
     /**
@@ -453,9 +760,10 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2020. 11. 20.		parkjunhong77@gmail.com			최초 작성
+     * 2020. 11. 20.        parkjunhong77@gmail.com            최초 작성
+     * 2026. 4. 10.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @param <REQ>
@@ -487,12 +795,12 @@ public class RestFacade {
             ParameterizedTypeReference<RES> responseType) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, response -> {
             Result<RES> result = null;
-            HttpStatus status = response.getStatusCode();
+            HttpStatusCode status = response.getStatusCode();
             if (status.is2xxSuccessful()) {
                 result = new Result<>(response.getBody(), true);
             } else {
                 result = new Result<>(response.getBody(), false);
-                result.setMessage(status.getReasonPhrase());
+                result.setMessage(status instanceof HttpStatus hs ? hs.getReasonPhrase() : null);
             }
             return result;
         }, error -> {
@@ -509,15 +817,17 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2020. 11. 20.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <REQ>
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
@@ -540,16 +850,15 @@ public class RestFacade {
      *            요청 실패 처리자
      * @return
      *
-     * @since 2020. 11. 20.
+     * @since 2021. 06. 11.
      * @version 0.4.0
-     * 
-     * @deprecated Use
-     *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, ParameterizedTypeReference, Function, Function)}
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
-            ParameterizedTypeReference<RES> responseType //
-            , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
-            , Function<Exception, Result<RES>> onError //
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError //
     ) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError);
     }
@@ -560,9 +869,65 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
+     *      날짜        | 작성자    |    내용
+     * ------------------------------------------
+     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError //
+            , int retryCount //
+    ) {
+        return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError, retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2019. 10. 24.        parkjunhong77@gmail.com         최초 작성
+     * 2019. 10. 24.    parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 10.     parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @param <REQ>
@@ -596,12 +961,12 @@ public class RestFacade {
             HttpEntity<REQ> entity, Class<RES> responseType) {
         return exchange(restTemplate, method, scheme, host, port, path, query, entity, responseType, response -> {
             Result<RES> result = null;
-            HttpStatus status = response.getStatusCode();
+            HttpStatusCode status = response.getStatusCode();
             if (status.is2xxSuccessful()) {
                 result = new Result<>(response.getBody(), true);
             } else {
                 result = new Result<>(response.getBody(), false);
-                result.setMessage(status.getReasonPhrase());
+                result.setMessage(status instanceof HttpStatus hs ? hs.getReasonPhrase() : null);
             }
             return result;
         }, error -> {
@@ -618,15 +983,17 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2019. 10. 24.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <REQ>
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
@@ -651,20 +1018,20 @@ public class RestFacade {
      *            요청 실패 처리자
      * @return
      *
-     * @since 2019. 10. 24.
-     * @version
-     * @deprecated Use
-     *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, Class, Function, Function)}
+     * @since 2021. 06. 11.
+     * @version 0.4.0
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
-            HttpEntity<REQ> entity, Class<RES> responseType //
-            , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
-            , Function<Exception, Result<RES>> onError//
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
     ) {
         try {
             return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, onError);
         } catch (URISyntaxException e) {
-            logger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
             return onError.apply(e);
         }
     }
@@ -675,9 +1042,72 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2020. 11. 20.		parkjunhong77@gmail.com			최초 작성
+     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param query
+     *            URL Query Parameters
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError //
+            , int retryCount //
+    ) {
+        try {
+            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, onError, retryCount);
+        } catch (URISyntaxException e) {
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜        | 작성자    |    내용
+     * ------------------------------------------
+     * 2020. 11. 20.    parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 10.     parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
      * @param <REQ>
@@ -711,12 +1141,12 @@ public class RestFacade {
             HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType) {
         return exchange(restTemplate, method, scheme, host, port, path, query, entity, responseType, response -> {
             Result<RES> result = null;
-            HttpStatus status = response.getStatusCode();
+            HttpStatusCode status = response.getStatusCode();
             if (status.is2xxSuccessful()) {
                 result = new Result<>(response.getBody(), true);
             } else {
                 result = new Result<>(response.getBody(), false);
-                result.setMessage(status.getReasonPhrase());
+                result.setMessage(status instanceof HttpStatus hs ? hs.getReasonPhrase() : null);
             }
             return result;
         }, error -> {
@@ -733,15 +1163,17 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2020. 11. 20.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <REQ>
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
@@ -766,20 +1198,20 @@ public class RestFacade {
      *            요청 실패 처리자
      * @return
      *
-     * @since 2020. 11. 20.
+     * @since 2021. 06. 11.
      * @version 0.4.0
-     * @deprecated Use
-     *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, ParameterizedTypeReference, Function, Function)}
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
-            HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType //
-            , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
-            , Function<Exception, Result<RES>> onError//
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
     ) {
         try {
             return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, onError);
         } catch (URISyntaxException e) {
-            logger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
             return onError.apply(e);
         }
     }
@@ -790,15 +1222,79 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2019. 10. 24.		parkjunhong77@gmail.com			최초 작성
+     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <REQ>
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param query
+     *            URL Query Parameters
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
+            , int retryCount //
+    ) {
+        try {
+            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, onError, retryCount);
+        } catch (URISyntaxException e) {
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜        | 작성자    |    내용
+     * ------------------------------------------
+     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
@@ -815,17 +1311,21 @@ public class RestFacade {
      *            요청 실패 처리자
      * @return
      *
-     * @since 2019. 10. 24.
-     * @version
-     * @deprecated Use
-     *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, Class, Function, Function)}
+     * @since 2021. 06. 11.
+     * @version 0.4.0
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, Class<RES> responseType //
-            , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
-            , Function<Exception, Result<RES>> onError//
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull URI uri //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
     ) {
-        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
-        return exchange(sup, method, uri, entity, responseType, onSuccess, onError);
+        try {
+            return exchangeAsRaw(restTemplate, method, uri, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
     }
 
     /**
@@ -834,15 +1334,70 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2020. 11. 20.		parkjunhong77@gmail.com			최초 작성
+     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <REQ>
      *            요청 데이터 타입
      * @param <RES>
      *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param uri
+     *            대상 URI 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param onError
+     *            요청 실패 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull URI uri //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
+            , int retryCount //
+    ) {
+        try {
+            return exchangeAsRaw(restTemplate, method, uri, entity, responseType, onSuccess, retryCount);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜        | 작성자    |    내용
+     * ------------------------------------------
+     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
      * @param restTemplate
      *            {@link RestTemplate} 객체
      * @param method
@@ -859,17 +1414,21 @@ public class RestFacade {
      *            요청 실패 처리자
      * @return
      *
-     * @since 2020. 11. 20.
+     * @since 2021. 06. 11.
      * @version 0.4.0
-     * @deprecated Use
-     *             {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, ParameterizedTypeReference, Function, Function)}
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, URI uri, HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType //
-            , Function<ResponseEntity<RES>, Result<RES>> onSuccess //
-            , Function<Exception, Result<RES>> onError//
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull URI uri //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
     ) {
-        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
-        return exchange(sup, method, uri, entity, responseType, onSuccess, onError);
+        try {
+            return exchangeAsRaw(restTemplate, method, uri, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
     }
 
     /**
@@ -878,28 +1437,881 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2020. 11. 23.		parkjunhong77@gmail.com			최초 작성
+     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <REQ>
+     *            요청 데이터 타입
      * @param <RES>
-     * @param sup
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
      * @param method
+     *            Http 메소드
      * @param uri
+     *            대상 URI 정보
      * @param entity
+     *            요청 데이터
      * @param responseType
+     *            수신 데이터 타입
      * @param onSuccess
+     *            요청 성공 처리자
      * @param onError
+     *            요청 실패 처리자
+     * @param retryCount
+     *            재시도 횟수
      * @return
      *
-     * @since 2020. 11. 23.
+     * @since 2023. 03. 06.
+     * @version 0.5.0
+     */
+    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull URI uri //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , @NotNull Function<Exception, Result<RET>> onError//
+            , int retryCount //
+    ) {
+        try {
+            return exchangeAsRaw(restTemplate, method, uri, entity, responseType, onSuccess, retryCount);
+        } catch (Exception e) {
+            return onError.apply(e);
+        }
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, retryCount);
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2025. 8. 26.     parkjunhong77@gmail.com         최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param httpUrl
+     *            Fully Qualified URL 패턴을 만족하는 정보
+     * @param uriVariables
+     *            URL 을 구성하는 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 26.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, retryCount);
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 06. 11.        parkjunhong77@gmail.com         최초 작성
+     * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, Class, Function, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @return
+     *
+     * @since 2021. 06. 11.
+     * @version 0.4.0
+     * @throws URISyntaxException
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+    ) throws URISyntaxException {
+        return exchangeAsRaw(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess);
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2023. 03. 06.        parkjunhong77@gmail.com         최초 작성
+     * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, Class, Function, Result, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     * @version 0.8.0
+     * @throws URISyntaxException
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount) throws URISyntaxException {
+        return exchangeAsRaw(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 06. 11.        parkjunhong77@gmail.com         최초 작성
+     * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, ParameterizedTypeReference, Function, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @return
+     *
+     * @since 2021. 06. 11.
+     * @version 0.4.0
+     * @throws URISyntaxException
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+    ) throws URISyntaxException {
+        return exchangeAsRaw(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2023. 03. 06.        parkjunhong77@gmail.com         최초 작성
+     * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, ParameterizedTypeReference, Function, Function, int)} 메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     * @version 0.8.0
+     * @throws URISyntaxException
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount) throws URISyntaxException {
+        return exchangeAsRaw(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 06. 11.        parkjunhong77@gmail.com         최초 작성
+     * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, Class, Function, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param query
+     *            URL Query Parameters
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @return
+     *
+     * @since 2021. 06. 11.
+     * @version 0.4.0
+     * @throws URISyntaxException
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+    ) throws URISyntaxException {
+        try {
+            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess);
+        } catch (URISyntaxException e) {
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            throw e;
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2023. 03. 06.        parkjunhong77@gmail.com         최초 작성
+     * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, Class, Function, Function, int)} 메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param query
+     *            URL Query Parameters
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     * @version 0.8.0
+     * @throws URISyntaxException
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount) throws URISyntaxException {
+        try {
+            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, retryCount);
+        } catch (URISyntaxException e) {
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            throw e;
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 06. 11.    parkjunhong77@gmail.com     최초 작성
+     * 2025. 7. 15.     parkjunhong77@gmail.com    {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, ParameterizedTypeReference, Function, Function)}  메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param query
+     *            URL Query Parameters
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @return
+     *
+     * @since 2021. 06. 11.
+     * @version 0.4.0
+     * @throws URISyntaxException
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+    ) throws URISyntaxException {
+        try {
+            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess);
+        } catch (URISyntaxException e) {
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            throw e;
+        }
+    }
+
+    /**
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2023. 03. 06.        parkjunhong77@gmail.com     최초 작성
+     * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, ParameterizedTypeReference, Function, Function, int)} 메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param scheme
+     *            Connection Protocol
+     * @param host
+     *            Target Service IP or Hostname
+     * @param port
+     *            Target Service Port
+     * @param path
+     *            URL Path
+     * @param query
+     *            URL Query Parameters
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     * @version 0.8.0
+     * @throws URISyntaxException
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount) throws URISyntaxException {
+        try {
+            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess);
+        } catch (URISyntaxException e) {
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            throw e;
+        }
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 06. 11.        parkjunhong77@gmail.com         최초 작성
+     * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, Class, Function, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param uri
+     *            대상 URI 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @return
+     *
+     * @since 2021. 06. 11.
      * @version 0.4.0
      */
-    private static <REQ, RES> Result<RES> exchange(Supplier<ResponseEntity<RES>> sup, HttpMethod method, URI uri, HttpEntity<REQ> entity, Object responseType //
-            , Function<ResponseEntity<RES>, Result<RES>> onSuccess, Function<Exception, Result<RES>> onError) {
-        final int RETRY_MAX_COUNT = 5;
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull URI uri //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
+        return exchangeAsRaw(sup, method, uri, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2023. 03. 06.        parkjunhong77@gmail.com         최초 작성
+     * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, Class, Function, Function, int)} 메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param uri
+     *            대상 URI 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull URI uri //
+            , HttpEntity<REQ> entity //
+            , Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
+        return exchangeAsRaw(sup, method, uri, entity, responseType, onSuccess, retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2021. 06. 11.        parkjunhong77@gmail.com         최초 작성
+     * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, ParameterizedTypeReference, Function, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param uri
+     *            대상 URI 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @return
+     *
+     * @since 2021. 06. 11.
+     * @version 0.4.0
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull URI uri //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
+        return exchangeAsRaw(sup, method, uri, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2023. 03. 06.        parkjunhong77@gmail.com         최초 작성
+     * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, ParameterizedTypeReference, Function, Function, int)} 메소드의 반환데이터에서 {@link Result}를 제거함.
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 타입
+     * @param <RES>
+     *            수신 데이터 타입
+     * @param <RET>
+     *            메소드가 제공하는 데이터 타입
+     * @param restTemplate
+     *            {@link RestTemplate} 객체
+     * @param method
+     *            Http 메소드
+     * @param uri
+     *            대상 URI 정보
+     * @param entity
+     *            요청 데이터
+     * @param responseType
+     *            수신 데이터 타입
+     * @param onSuccess
+     *            요청 성공 처리자
+     * @param retryCount
+     *            재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     * @version 0.8.0
+     */
+    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
+            , @NotNull HttpMethod method, @NotNull URI uri //
+            , HttpEntity<REQ> entity //
+            , ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
+        return exchangeAsRaw(sup, method, uri, entity, responseType, onSuccess, retryCount);
+    }
+
+    /**
+     * <pre>
+     * [개정이력]
+     *      날짜        | 작성자    |    내용
+     * ------------------------------------------
+     * 2026. 4. 9.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
+     * </pre>
+     */
+    private static <REQ, RES, RET> RET exchangeAsRaw(@NotNull Supplier<ResponseEntity<RES>> sup //
+            , @NotNull HttpMethod method, Object url //
+            , Object entity, Object responseType //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        final int RETRY_MAX_COUNT = retryCount;
         int retrial = 0;
 
         Exception unhandled = null;
@@ -907,56 +2319,66 @@ public class RestFacade {
             try {
                 ResponseEntity<RES> response = sup.get();
 
-                HttpStatus statusCode = response.getStatusCode();
+                HttpStatusCode resStatusCode = response.getStatusCode();
 
                 // redirection
-                if (statusCode.is3xxRedirection()) {
-                    logger.info("URL is redirectioned. status={}, information={}", statusCode, response.getBody());
+                if (resStatusCode.is3xxRedirection()) {
+                    sLogger.info("URL is redirectioned. status={}, information={}", resStatusCode, response.getBody());
                 } else
                 // success
-                if (statusCode.is2xxSuccessful()) {
-                    logger.debug("Success to send information. target={}", uri.toString());
+                if (resStatusCode.is2xxSuccessful()) {
+                    sLogger.debug("Success to send information. target={}", url.toString());
                 } else
                 // informational...
-                if (statusCode.is1xxInformational()) {
-                    logger.debug("Information. status={}, information={}", statusCode, response.getBody());
+                if (resStatusCode.is1xxInformational()) {
+                    sLogger.debug("Information. status={}, information={}", resStatusCode, response.getBody());
                 }
 
                 return onSuccess.apply(response);
-            } catch (HttpClientErrorException e) {
+            } catch (HttpClientErrorException | HttpServerErrorException e) {
 
-                logger.warn("method={}, uri={}, req.entity={}, res.type={}", method, uri, entity, responseType);
+                sLogger.warn("'Request' -> method={}, uri={}, req.entity={}, res.type={}", method, url, entity, responseType);
 
-                HttpStatus statusCode = e.getStatusCode();
-
-                // remote server internal error
-                if (statusCode.is5xxServerError()) {
-                    logger.warn("Remote Server Error. status={}", statusCode);
-                } else
+                HttpStatusCode exStatusCode = e.getStatusCode();
+                String occurs = null;
                 // request error
-                if (statusCode.is4xxClientError()) {
-                    logger.warn("Request Client Error. status={}", statusCode);
+                if (exStatusCode.is4xxClientError()) {
+                    occurs = "Request Client Error.";
+                } else
+                // remote server internal error
+                if (exStatusCode.is5xxServerError()) {
+                    occurs = "Remote Server Error.";
                 }
 
-                logger.warn("res.status={}, res.status.raw={}, res.status.text={}, res.body={}", e.getStatusCode(), e.getRawStatusCode(), e.getStatusText(),
+                sLogger.warn("'{}' -> res.status={}, res.status.raw={}, res.status.text={}, res.body={}", occurs, exStatusCode, exStatusCode.value(), e.getStatusText(),
                         e.getResponseBodyAsString());
 
-                return onError.apply(e);
+                throw e;
             } catch (Exception e) {
                 unhandled = e;
-                logger.warn("{} Occured {}", "* * * * * ", e.getClass().getName());
+                sLogger.warn("{} Occured {}", "* * * * * ", e.getClass().getName());
                 if (NoHttpResponseException.class.isAssignableFrom(e.getClass()) //
                         || ResourceAccessException.class.isAssignableFrom(e.getClass()) //
                 ) {
                     retrial++;
-                    logger.warn("{} Retry {} by {}", "* * * * * ", retrial, e.getClass().getName());
+                    sLogger.warn("{} Retry {} by {}", "* * * * * ", retrial, e.getClass().getName());
+                    sLogger.warn("{} Request -> method={}, uri={}, req.entity={}, res.type={}", "* * * * * ", method, url, entity, responseType);
                     ThreadUtils.sleep(1000);
                 } else {
                     throw ExceptionUtils.newException(RuntimeException.class, e, "예상하지 못한 에러가 발생하였습니다. 원인=%s, parent=%s", e.getMessage(), e);
                 }
             }
         }
-        return onError.apply(unhandled);
+
+        if (unhandled != null) {
+            if (RuntimeException.class.isAssignableFrom(unhandled.getClass())) {
+                throw (RuntimeException) unhandled;
+            } else {
+                throw ExceptionUtils.newException(RuntimeException.class, unhandled, "서비스연동에 실패했습니다. 원인=%s, parent=%s", unhandled.getMessage(), unhandled);
+            }
+        } else {
+            throw ExceptionUtils.newException(UnsupportedOperationException.class, "예상하지 못한 에러가 발생하였습니다.");
+        }
     }
 
     /**
@@ -964,9 +2386,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2020. 8. 28.     parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 10.     parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param headers
@@ -975,9 +2397,10 @@ public class RestFacade {
      *            새로운 header 정보
      * @return
      *
-     * @since 2020. 8. 28.
+     * @since 2026. 4. 10.
+     * @version 4.0.0
      */
-    public static final HttpHeaders headers(MultiValueMap<String, String> headers, String... headerEntries) {
+    public static final HttpHeaders headers(HttpHeaders headers, String... headerEntries) {
         AssertUtils2.notNulls(IllegalArgumentException.class, (Object[]) headerEntries);
 
         if (headerEntries == null) {
@@ -993,13 +2416,37 @@ public class RestFacade {
     }
 
     /**
+     * 기본 헤더에 새로운 헤더를 추가하여 제공한다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜      | 작성자   |   내용
+     * ------------------------------------------
+     * 2020. 8. 28.     parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 10.     parkjunhong77@gmail.com     {@link HttpHeaders}::7.0.5 상속관계 변경({@link MultiValueMap<K,V>}을 상속받지 않음)에 따른 수정
+     * </pre>
+     *
+     * @param headers
+     *            기존 header
+     * @param headerEntries
+     *            새로운 header 정보
+     * @return
+     *
+     * @since 2020. 8. 28.
+     */
+    public static final HttpHeaders headers(MultiValueMap<String, String> headers, String... headerEntries) {
+        AssertUtils2.notNulls(IllegalArgumentException.class, (Object[]) headerEntries);
+        return headers(new HttpHeaders(headers), headerEntries);
+    }
+
+    /**
      * 쿼리 파라미터 데이터를 하나의 문자열로 제공한다. <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2020. 10. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2020. 10. 21.        parkjunhong77@gmail.com            최초 작성
      * 2025. 7. 2.          parkjunhong77@gmail.com     key=value에 {@link URLEncoder#encode(String)} 적용
      * </pre>
      *
@@ -1035,37 +2482,13 @@ public class RestFacade {
     }
 
     /**
-     * URI 쿼리 파라미터 데이터를 인코딩합니다. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜    	| 작성자	|	내용
-     * ------------------------------------------
-     * 2025. 7. 2.		parkjunhong77@gmail.com			최초 작성
-     * </pre>
-     *
-     * @param value
-     * @return
-     *
-     * @since 2025. 7. 2.
-     * @version 0.8.0
-     */
-    private static String encode(String value) {
-        try {
-            return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
-        } catch (UnsupportedEncodingException e) {
-            throw new IllegalArgumentException("Encoding failed for: " + value, e);
-        }
-    }
-
-    /**
      * 쿼리 파라미터 데이터를 하나의 문자열로 제공한다. <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2020. 10. 21.		parkjunhong77@gmail.com			최초 작성
+     * 2020. 10. 21.        parkjunhong77@gmail.com            최초 작성
      * 2025. 7. 2.          parkjunhong77@gmail.com     key=value에서 key 의 <code>null</code> 여부 확인.
      * </pre>
      *

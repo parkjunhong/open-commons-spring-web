@@ -39,9 +39,10 @@ import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
  * 
  * 
  * <br>
+ * 
  * <pre>
  * [개정이력]
- *      날짜    	| 작성자			|	내용
+ *      날짜        | 작성자            |    내용
  * ------------------------------------------
  * 2025. 10. 22.    parkjunohng77@gmail.com     최초 작성
  * 2026. 4. 9.      parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5

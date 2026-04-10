@@ -83,9 +83,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 20.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 20.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @return
@@ -101,9 +101,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 20.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 20.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @return
@@ -141,9 +141,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 20.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 20.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @param targetClass
@@ -162,9 +162,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 19.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 19.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          * 
          * @param targetClass
@@ -422,9 +422,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 18.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 18.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @param authorityBean
@@ -443,9 +443,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 18.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 18.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @return
@@ -460,9 +460,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 18.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 18.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @param fieldHandleBean
@@ -479,9 +479,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 18.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 18.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @param handleType
@@ -498,9 +498,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 18.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 18.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @param name
@@ -541,9 +541,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 18.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 18.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @return
@@ -558,9 +558,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 19.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 19.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @param function
@@ -595,9 +595,9 @@ public class AuthorizedMetadataBuilder {
          * 
          * <pre>
          * [개정이력]
-         *      날짜    	| 작성자	|	내용
+         *      날짜        | 작성자    |    내용
          * ------------------------------------------
-         * 2025. 6. 18.		parkjunhong77@gmail.com			최초 작성
+         * 2025. 6. 18.        parkjunhong77@gmail.com            최초 작성
          * </pre>
          *
          * @param type

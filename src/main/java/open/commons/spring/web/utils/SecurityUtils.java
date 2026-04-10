@@ -101,7 +101,7 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
      * 2017. 9. 14.     parkjunhong77@gmail.com        최초 작성
      * 2025. 4. 16.     parkjunhong77@gmail.com         이관
@@ -119,9 +119,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 17.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 17.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param request
@@ -148,10 +148,10 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
      * 2017. 9. 14.     parkjunhong77@gmail.com        최초 작성
-     * 2025. 4. 16.		parkjunhong77@gmail.com		  이관
+     * 2025. 4. 16.        parkjunhong77@gmail.com          이관
      * </pre>
      *
      * @param request
@@ -177,9 +177,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 16.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 16.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param encText
@@ -201,9 +201,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 16.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 16.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param encText
@@ -227,9 +227,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param encText
@@ -250,9 +250,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param encText
@@ -302,9 +302,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 16.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 16.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param plainText
@@ -326,9 +326,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 16.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 16.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param plainText
@@ -353,9 +353,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param plainText
@@ -376,9 +376,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param plainText
@@ -417,9 +417,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 16.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 16.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return {@link Authentication} 또는 <code>null</code>.
@@ -436,9 +436,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 16.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 16.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return
@@ -459,9 +459,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 17.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 17.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return
@@ -506,9 +506,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 17.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 17.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param request
@@ -530,9 +530,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 16.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 16.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return {@link HttpServletRequest} 또는 <code>null</code>.
@@ -556,9 +556,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 16.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 16.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return {@link HttpServletRequest} ID 또는 <code>null</code>.
@@ -579,9 +579,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 17.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 17.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param create
@@ -601,9 +601,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 17.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 17.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param request
@@ -623,9 +623,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 17.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 17.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param request
@@ -651,9 +651,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return
@@ -673,9 +673,9 @@ public class SecurityUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 4. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 4. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param session

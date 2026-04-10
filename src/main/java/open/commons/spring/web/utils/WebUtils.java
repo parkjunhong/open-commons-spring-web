@@ -58,7 +58,7 @@ import open.commons.spring.web.servlet.mvc.support.UrlInfo;
  * 
  * <pre>
  * [개정이력]
- *      날짜    	| 작성자			|	내용
+ *      날짜        | 작성자            |    내용
  * ------------------------------------------
  * 2019. 6. 28.     parkjunhong77@gmail.com     최초 작성
  * 2026. 4. 9.      parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5
@@ -119,9 +119,9 @@ public class WebUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 10. 22.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 10. 22.        parkjunhong77@gmail.com            최초 작성
      * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
@@ -174,9 +174,9 @@ public class WebUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2019. 6. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2019. 6. 28.        parkjunhong77@gmail.com            최초 작성
      * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5 
      * </pre>
      *
@@ -384,7 +384,7 @@ public class WebUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
      * 2012. 1. 4.      parkjunhong77@gmail.com        최초 작성
      * 2025. 4. 16.     parkjunhong77@gmail.com        이관 및 이름 변경
@@ -499,9 +499,9 @@ public class WebUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 27.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 27.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param url

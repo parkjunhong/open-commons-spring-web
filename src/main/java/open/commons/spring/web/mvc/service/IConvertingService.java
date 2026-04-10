@@ -53,9 +53,9 @@ public interface IConvertingService {
      *
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 12. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 12. 28.        parkjunhong77@gmail.com            최초 작성
      * 2021. 12. 30.    parkjunhong77@gmail.com     변환 이후 Class<?> 파라미터 삭제.
      * </pre>
      *

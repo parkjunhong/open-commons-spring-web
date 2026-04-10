@@ -35,17 +35,23 @@ import org.springframework.web.client.RestTemplate;
 /**
  * {@link ClientHttpRequestFactory} properties for {@link RestTemplate}.
  * 
+ * 
+ * <pre>
+ * [개정이력]
+ * 날짜            | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2019. 6. 27.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 10.     parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5.
+ *                                              'bufferRequestBody, connectionTimeout' 삭제
+ * </pre>
+ * 
  * @since 2019. 6. 27.
  * @version
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class RestTemplateRequestFactoryResource {
 
-    private boolean bufferRequestBody = true;
-
     private int connectionRequestTimeout;
-
-    private int connectionTimeout;
 
     private int readTimeout;
 
@@ -101,28 +107,6 @@ public class RestTemplateRequestFactoryResource {
      * 2019. 6. 27.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      * 
-     * @return the connctionTimeout
-     *
-     * @since 2019. 6. 27.
-     * @version
-     * 
-     * @see #connectionTimeout
-     */
-    public int getConnectionTimeout() {
-        return connectionTimeout;
-    }
-
-    /**
-     *
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2019. 6. 27.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     * 
      * @return the readTimeout
      *
      * @since 2019. 6. 27.
@@ -135,35 +119,13 @@ public class RestTemplateRequestFactoryResource {
     }
 
     /**
-     *
      * <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2019. 6. 27.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     * 
-     * @return the bufferRequestBody
-     *
-     * @since 2019. 6. 27.
-     * @version
-     * 
-     * @see #bufferRequestBody
-     */
-    public boolean isBufferRequestBody() {
-        return bufferRequestBody;
-    }
-
-    /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜    	| 작성자	|	내용
-     * ------------------------------------------
-     * 2025. 8. 11.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 11.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the initialized
@@ -176,32 +138,6 @@ public class RestTemplateRequestFactoryResource {
 
     public boolean isInitialized() {
         return initialized;
-    }
-
-    /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2019. 6. 27.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
-     * @param bufferRequestBody
-     *            the bufferRequestBody to set
-     *
-     * @since 2019. 6. 27.
-     * @version
-     * 
-     * @see #bufferRequestBody
-     * 
-     * @see HttpComponentsClientHttpRequestFactory#setBufferRequestBody(boolean)
-     */
-    public void setBufferRequestBody(boolean bufferRequestBody) {
-        this.bufferRequestBody = bufferRequestBody;
-
-        this.initialized = true;
     }
 
     /**
@@ -239,31 +175,6 @@ public class RestTemplateRequestFactoryResource {
      * 2019. 6. 27.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
-     * @param connctionTimeout
-     *            the connctionTimeout to set
-     *
-     * @since 2019. 6. 27.
-     * @version
-     * 
-     * @see #connectionTimeout
-     * @see HttpComponentsClientHttpRequestFactory#setConnectTimeout(int)
-     */
-    public void setConnectionTimeout(@Min(0) int connctionTimeout) {
-        this.connectionTimeout = connctionTimeout;
-
-        this.initialized = true;
-    }
-
-    /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2019. 6. 27.     parkjunhong77@gmail.com         최초 작성
-     * </pre>
-     *
      * @param readTimeout
      *            the readTimeout to set
      *
@@ -285,13 +196,9 @@ public class RestTemplateRequestFactoryResource {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("RestTemplateRequestFactoryResource [bufferRequestBody=");
-        builder.append(bufferRequestBody);
-        builder.append(", connectionRequestTimeout=");
+        builder.append("RestTemplateRequestFactoryResource [connectionRequestTimeout=");
         builder.append(connectionRequestTimeout);
         builder.append(", connectionTimeout=");
-        builder.append(connectionTimeout);
-        builder.append(", readTimeout=");
         builder.append(readTimeout);
         builder.append("]");
         return builder.toString();

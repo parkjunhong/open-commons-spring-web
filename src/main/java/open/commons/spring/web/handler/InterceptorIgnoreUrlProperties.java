@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import open.commons.core.utils.ExceptionUtils;
-import open.commons.spring.web.servlet.InvalidAntPathUrlPatternException;
+import open.commons.spring.web.servlet.InvalidPathPatternUrlException;
 import open.commons.spring.web.utils.PathUtils;
 
 /**
@@ -118,9 +118,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 4.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param excludePathPattern
@@ -130,10 +130,10 @@ public class InterceptorIgnoreUrlProperties {
      * @version 0.8.0
      */
     public InterceptorIgnoreUrlProperties addExcludePathPattern(String excludePathPattern) {
-        if (PathUtils.isValidAntPath(excludePathPattern)) {
+        if (PathUtils.isValidPathPattern(excludePathPattern)) {
             this.excludePathPatterns.add(excludePathPattern);
         } else {
-            logger.warn("{}, fqcn={}, exclude.invalid={}", InvalidAntPathUrlPatternException.class.getName(), this.fqcn, excludePathPattern);
+            logger.warn("{}, fqcn={}, exclude.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn, excludePathPattern);
         }
         return this;
     }
@@ -144,9 +144,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 4.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param excludePathPatterns
@@ -156,10 +156,10 @@ public class InterceptorIgnoreUrlProperties {
      * @version 0.8.0
      */
     public InterceptorIgnoreUrlProperties addExcludePathPatterns(@NotNull Set<String> excludePathPatterns) {
-        if (PathUtils.isValidAntPath(excludePathPatterns)) {
+        if (PathUtils.isValidPathPattern(excludePathPatterns)) {
             this.excludePathPatterns.addAll(excludePathPatterns);
         } else {
-            logger.warn("{}, fqcn={}, exclude.invalid={}", InvalidAntPathUrlPatternException.class.getName(), this.fqcn, excludePathPatterns.toString());
+            logger.warn("{}, fqcn={}, exclude.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn, excludePathPatterns.toString());
         }
         return this;
     }
@@ -170,9 +170,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 4.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param includePathPattern
@@ -182,10 +182,10 @@ public class InterceptorIgnoreUrlProperties {
      * @version 0.8.0
      */
     public InterceptorIgnoreUrlProperties addIncludePathPattern(String includePathPattern) {
-        if (PathUtils.isValidAntPath(includePathPattern)) {
+        if (PathUtils.isValidPathPattern(includePathPattern)) {
             this.includePathPatterns.add(includePathPattern);
         } else {
-            logger.warn("{}, fqcn={}, include.invalid={}", InvalidAntPathUrlPatternException.class.getName(), this.fqcn, includePathPattern);
+            logger.warn("{}, fqcn={}, include.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn, includePathPattern);
         }
         return this;
     }
@@ -196,9 +196,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 4.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param includePathPatterns
@@ -208,10 +208,10 @@ public class InterceptorIgnoreUrlProperties {
      * @version 0.8.0
      */
     public InterceptorIgnoreUrlProperties addIncludePathPatterns(@NotNull Set<String> includePathPatterns) {
-        if (PathUtils.isValidAntPath(includePathPatterns)) {
+        if (PathUtils.isValidPathPattern(includePathPatterns)) {
             this.includePathPatterns.addAll(includePathPatterns);
         } else {
-            logger.warn("{}, fqcn={}, include.invalid={}", InvalidAntPathUrlPatternException.class.getName(), this.fqcn, includePathPatterns.toArray());
+            logger.warn("{}, fqcn={}, include.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn, includePathPatterns.toArray());
         }
         return this;
     }
@@ -240,9 +240,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the excludePathPatterns
@@ -261,9 +261,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the fqcn
@@ -282,9 +282,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the includePathPatterns
@@ -303,9 +303,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 7.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 7.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the scheme
@@ -325,9 +325,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 8. 7.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 8. 7.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return
@@ -344,9 +344,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param excludePathPatterns
@@ -358,8 +358,8 @@ public class InterceptorIgnoreUrlProperties {
      * @see #excludePathPatterns
      */
     public InterceptorIgnoreUrlProperties setExcludePathPatterns(@NotNull Set<String> excludePathPatterns) {
-        if (!PathUtils.isValidAntPath(excludePathPatterns)) {
-            throw ExceptionUtils.newException(InvalidAntPathUrlPatternException.class, "fqcn=%s, exclude.invalid=%s", this.fqcn, excludePathPatterns.toString());
+        if (!PathUtils.isValidPathPattern(excludePathPatterns)) {
+            throw ExceptionUtils.newException(InvalidPathPatternUrlException.class, "fqcn=%s, exclude.invalid=%s", this.fqcn, excludePathPatterns.toString());
         }
         this.excludePathPatterns = excludePathPatterns;
 
@@ -371,9 +371,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param includePathPatterns
@@ -385,8 +385,8 @@ public class InterceptorIgnoreUrlProperties {
      * @see #includePathPatterns
      */
     public InterceptorIgnoreUrlProperties setIncludePathPatterns(@NotNull Set<String> includePathPatterns) {
-        if (!PathUtils.isValidAntPath(includePathPatterns)) {
-            throw ExceptionUtils.newException(InvalidAntPathUrlPatternException.class, "fqcn=%s, include.invalid=%s", this.fqcn, includePathPatterns.toString());
+        if (!PathUtils.isValidPathPattern(includePathPatterns)) {
+            throw ExceptionUtils.newException(InvalidPathPatternUrlException.class, "fqcn=%s, include.invalid=%s", this.fqcn, includePathPatterns.toString());
         }
         this.includePathPatterns = includePathPatterns;
 
@@ -398,9 +398,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 30.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param fqcn
@@ -442,7 +442,7 @@ public class InterceptorIgnoreUrlProperties {
                     this.fqcn = m.group(6) + ".*";
                 }
             } else {
-                throw ExceptionUtils.newException(InvalidAntPathUrlPatternException.class, "fqcn.invalid=%s", target);
+                throw ExceptionUtils.newException(InvalidPathPatternUrlException.class, "fqcn.invalid=%s", target);
             }
         }
 

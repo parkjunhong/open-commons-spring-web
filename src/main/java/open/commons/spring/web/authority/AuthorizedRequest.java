@@ -111,9 +111,9 @@ public @interface AuthorizedRequest {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 5. 20.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 5. 20.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @return

@@ -80,9 +80,9 @@ public class ArgumentsUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 8. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 8. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @param loggerName

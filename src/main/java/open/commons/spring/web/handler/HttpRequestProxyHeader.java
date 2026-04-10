@@ -51,7 +51,7 @@ import java.util.HashMap;
  * 
  * <pre>
  * [개정이력]
- *      날짜    	| 작성자			|	내용
+ *      날짜        | 작성자            |    내용
  * ------------------------------------------
  * 2025. 7. 18.     parkjunhong77@gmail.com(jhpark@ymtech.co.kr)    최초 작성
  * 2025. 7. 30.     parkjunhong77@gmail.com(jhpark@ymtech.co.kr)    추후 전달되는 헤더의 확장을 위하여 {@link HashMap}을 상속받음.
@@ -108,9 +108,9 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2025. 7. 18.
@@ -124,9 +124,9 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 29.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the clientPort
@@ -146,9 +146,9 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the forwardedFor
@@ -168,9 +168,9 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the forwardedHost
@@ -190,9 +190,9 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the forwardedPort
@@ -212,9 +212,9 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the forwardedProto
@@ -234,9 +234,9 @@ public class HttpRequestProxyHeader extends HashMap<String, String> {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 7. 18.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 7. 18.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the realIp

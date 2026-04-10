@@ -71,9 +71,9 @@ public class RestApiGroup {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 9. 29.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2025. 9. 29.
@@ -87,9 +87,9 @@ public class RestApiGroup {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 10. 20.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 10. 20.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the classPath
@@ -109,9 +109,9 @@ public class RestApiGroup {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 9. 29.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the description
@@ -131,9 +131,9 @@ public class RestApiGroup {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 9. 29.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the name
@@ -153,9 +153,9 @@ public class RestApiGroup {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 9. 29.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      * 
      * @return the restApis
@@ -175,9 +175,9 @@ public class RestApiGroup {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 10. 20.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 10. 20.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param classPath
@@ -197,9 +197,9 @@ public class RestApiGroup {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 9. 29.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param description
@@ -219,9 +219,9 @@ public class RestApiGroup {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 9. 29.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param name
@@ -241,9 +241,9 @@ public class RestApiGroup {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2025. 9. 29.		parkjunhong77@gmail.com			최초 작성
+     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param restApis

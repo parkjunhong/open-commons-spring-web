@@ -63,9 +63,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 12. 9.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 12. 9.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @since 2021. 12. 9.
@@ -80,9 +80,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 12. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 12. 28.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -243,9 +243,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 12. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 12. 28.        parkjunhong77@gmail.com            최초 작성
      * 2022. 2. 10.     parkjunhong77@gmail.com     구현부를 {@link PaginationUtils#orderBy(String...)} 로 이관.
      * </pre>
      *
@@ -266,9 +266,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 12. 24.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 12. 24.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <D>
@@ -397,9 +397,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -435,9 +435,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -585,9 +585,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -628,9 +628,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -857,9 +857,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -907,9 +907,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -956,9 +956,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -991,9 +991,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1029,9 +1029,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1073,9 +1073,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1237,9 +1237,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1288,9 +1288,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 12. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 12. 28.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1458,9 +1458,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 12. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 12. 28.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1508,9 +1508,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1554,9 +1554,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 12. 28.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 12. 28.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1654,9 +1654,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1695,9 +1695,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1733,9 +1733,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1778,9 +1778,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1822,9 +1822,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 10.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 10.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <E>
@@ -1856,9 +1856,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 12. 22.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 12. 22.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <S>
@@ -1889,9 +1889,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 26.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 26.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <S>
@@ -1920,9 +1920,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2021. 12. 22.		parkjunhong77@gmail.com			최초 작성
+     * 2021. 12. 22.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <S>
@@ -1949,9 +1949,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜    	| 작성자	|	내용
+     *      날짜        | 작성자    |    내용
      * ------------------------------------------
-     * 2022. 1. 26.		parkjunhong77@gmail.com			최초 작성
+     * 2022. 1. 26.        parkjunhong77@gmail.com            최초 작성
      * </pre>
      *
      * @param <S>
