@@ -27,6 +27,7 @@
 package open.commons.spring.web.aspect;
 
 import java.lang.annotation.Annotation;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 import org.aspectj.lang.annotation.Pointcut;
@@ -73,15 +74,17 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 23.
      * @version 0.8.0
      */
     public AbstractAspectPointcuts(ApplicationContext context) {
+        Objects.requireNonNull(context);
+
         this.context = context;
         this.env = context.getEnvironment();
         this.BEAN_UTILS = BeanUtils.context(context);
@@ -93,9 +96,9 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 23.
@@ -138,11 +141,15 @@ public abstract class AbstractAspectPointcuts {
      * @version 0.8.0
      */
     @SuppressWarnings("unchecked")
-    protected final <A extends Annotation, V> @Nullable V getAttribute(A first, A second, String attributeName, Predicate<V> rule) {
+    protected final <A extends @Nullable Annotation, V> @Nullable V getAttribute(A first, A second, @Nullable String attributeName, Predicate<V> rule) {
         if (first != null) {
             V v = (V) AnnotationUtils.getValue(first, attributeName);
-            if (v != null && rule.test(v)) {
-                return v;
+            if (v != null) {
+                Objects.requireNonNull(rule);
+
+                if (rule.test(v)) {
+                    return v;
+                }
             }
         }
 
@@ -154,9 +161,9 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 20.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 20.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <B>
@@ -182,7 +189,7 @@ public abstract class AbstractAspectPointcuts {
      * @since 2025. 5. 20.
      * @version 0.8.0
      */
-    protected final <@Nullable B> B getBean(String beanName, Class<B> beanType, B defaultBean, boolean required) throws BeansException {
+    protected final <B> @Nullable B getBean(@Nullable String beanName, Class<B> beanType, @Nullable B defaultBean, boolean required) throws BeansException {
         return BEAN_UTILS.getBean(beanName, beanType, defaultBean, required);
     }
 
@@ -192,9 +199,9 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 21.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 21.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <B>
@@ -220,7 +227,7 @@ public abstract class AbstractAspectPointcuts {
      * @since 2025. 5. 21.
      * @version 0.8.0
      */
-    protected final <@Nullable I, E extends I> I getBean(String beanName, Class<I> beanType, Class<E> beanImplType, boolean required) throws BeansException {
+    protected final <I, E extends I> @Nullable I getBean(@Nullable String beanName, Class<I> beanType, @Nullable Class<E> beanImplType, boolean required) throws BeansException {
         return BEAN_UTILS.findBean(beanName, beanType, beanImplType, required);
     }
 
@@ -229,9 +236,9 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 23.
@@ -250,9 +257,9 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 23.
@@ -273,9 +280,9 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 23.
@@ -294,9 +301,9 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 23.
@@ -311,9 +318,9 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 23.
@@ -328,9 +335,9 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 23.
@@ -345,9 +352,9 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 23.
@@ -362,9 +369,9 @@ public abstract class AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 23.

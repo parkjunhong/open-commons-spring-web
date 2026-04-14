@@ -27,6 +27,7 @@
 package open.commons.spring.web.async;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.FutureTask;
 
 import org.slf4j.Logger;
@@ -57,6 +58,8 @@ public class MdcTaskDecorator implements TaskDecorator {
     }
 
     public MdcTaskDecorator(String symbol) {
+        Objects.requireNonNull(symbol);
+
         this.threadNameSymbol = symbol;
     }
 
@@ -69,6 +72,8 @@ public class MdcTaskDecorator implements TaskDecorator {
      */
     @Override
     public Runnable decorate(Runnable runnable) {
+        Objects.requireNonNull(runnable);
+
         if (runnable instanceof MdcWrappedJob //
                 || runnable instanceof FutureTask //
         ) {

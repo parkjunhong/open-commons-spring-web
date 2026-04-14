@@ -161,9 +161,9 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 29.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param context
@@ -192,9 +192,9 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
     /**
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 29.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param controllerType
@@ -303,9 +303,9 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 29.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param input
@@ -444,9 +444,9 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 20.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 20.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param groupOrder
@@ -494,10 +494,10 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
          * <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+         * 2025. 9. 29.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param controller
@@ -519,7 +519,7 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
          * [개정이력]
          *      날짜      | 작성자   |   내용
          * ------------------------------------------
-         * 2025. 9. 29.     parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+         * 2025. 9. 29.     parkjunhong77@gmail.com     최초 작성
          * </pre>
          * 
          * @return the controller
@@ -541,7 +541,7 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
          * [개정이력]
          *      날짜      | 작성자   |   내용
          * ------------------------------------------
-         * 2025. 9. 29.     parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+         * 2025. 9. 29.     parkjunhong77@gmail.com     최초 작성
          * </pre>
          * 
          * @return the restController
@@ -562,7 +562,7 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
          * [개정이력]
          *      날짜      | 작성자   |   내용
          * ------------------------------------------
-         * 2025. 9. 29.     parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+         * 2025. 9. 29.     parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param controller
@@ -584,7 +584,7 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
          * [개정이력]
          *      날짜      | 작성자   |   내용
          * ------------------------------------------
-         * 2025. 9. 29.     parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+         * 2025. 9. 29.     parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param restController

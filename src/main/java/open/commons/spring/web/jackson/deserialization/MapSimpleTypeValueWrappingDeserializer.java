@@ -26,30 +26,36 @@
 
 package open.commons.spring.web.jackson.deserialization;
 
-import java.io.IOException;
 import java.util.Map;
 
 import jakarta.validation.constraints.NotEmpty;
 
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.BeanProperty;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.deser.ContextualDeserializer;
-import com.fasterxml.jackson.databind.deser.std.MapDeserializer;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.BeanProperty;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.deser.jdk.MapDeserializer;
 
 /**
  * {@link Map}의 value(값)에 대한 'deserialization'을 처리하는 클래스.
  * 
+ * <pre>
+ * [개정이력]
+ * 날짜        | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 9. 23.    parkjunhong77@gmail.com     최초 작성 (Jackson 2.x)
+ * 2026. 4. 14.    parkjunhong77@gmail.com     Jackson 3.0 현행화: ContextualDeserializer 병합 및 ValueDeserializer 적용
+ * </pre>
+ * 
  * @since 2025. 9. 23.
- * @version 0.8.0
+ * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
-public class MapSimpleTypeValueWrappingDeserializer extends JsonDeserializer<Object> implements ContextualDeserializer {
+public class MapSimpleTypeValueWrappingDeserializer extends ValueDeserializer<Object> {
 
     // Map<*, SimpleType>
     private final JavaType mapType;
@@ -57,16 +63,16 @@ public class MapSimpleTypeValueWrappingDeserializer extends JsonDeserializer<Obj
     private final String handleType;
 
     // createContextual 이후 주입
-    private final JsonDeserializer<?> delegate;
+    private final ValueDeserializer<?> delegate;
 
     /**
      * <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param mapType
@@ -87,9 +93,9 @@ public class MapSimpleTypeValueWrappingDeserializer extends JsonDeserializer<Obj
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param mapType
@@ -103,7 +109,7 @@ public class MapSimpleTypeValueWrappingDeserializer extends JsonDeserializer<Obj
      * @since 2025. 9. 23.
      * @version 0.8.0
      */
-    public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType, JsonDeserializer<?> delegate) {
+    public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType, ValueDeserializer<?> delegate) {
         this.mapType = mapType;
         this.handler = handler;
         this.handleType = handleType;
@@ -111,36 +117,40 @@ public class MapSimpleTypeValueWrappingDeserializer extends JsonDeserializer<Obj
     }
 
     /**
+     * 
+     * {@inheritDoc}
      *
-     * @since 2025. 9. 23.
-     * @version 0.8.0
+     * @since 2026. 4. 14.
+     * @version 4.0.0
      *
-     * @see com.fasterxml.jackson.databind.deser.ContextualDeserializer#createContextual(com.fasterxml.jackson.databind.DeserializationContext,
-     *      com.fasterxml.jackson.databind.BeanProperty)
+     * @see tools.jackson.databind.ValueDeserializer#createContextual(tools.jackson.databind.DeserializationContext,
+     *      tools.jackson.databind.BeanProperty)
      */
     @Override
-    public JsonDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) throws JsonMappingException {
+    public ValueDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) throws JacksonException {
         if (this.delegate != null) {
             return this; // 이미 contextual-resolved
         }
         // Map 타입 자체로 표준 delegate 획득
-        JsonDeserializer<Object> std = (JsonDeserializer<Object>) ctxt.findContextualValueDeserializer(this.mapType, property);
+        ValueDeserializer<Object> std = (ValueDeserializer<Object>) ctxt.findContextualValueDeserializer(this.mapType, property);
         if (std == null) {
-            std = (JsonDeserializer<Object>) ctxt.findRootValueDeserializer(this.mapType);
+            std = (ValueDeserializer<Object>) ctxt.findRootValueDeserializer(this.mapType);
         }
         return new MapSimpleTypeValueWrappingDeserializer(this.mapType, this.handler, this.handleType, std);
     }
 
     /**
+     * 
+     * {@inheritDoc}
      *
-     * @since 2025. 9. 23.
-     * @version 0.8.0
+     * @since 2026. 4. 14.
+     * @version 4.0.0
      *
-     * @see com.fasterxml.jackson.databind.deser.std.DelegatingDeserializer#deserialize(com.fasterxml.jackson.core.JsonParser,
-     *      com.fasterxml.jackson.databind.DeserializationContext)
+     * @see tools.jackson.databind.ValueDeserializer#deserialize(tools.jackson.core.JsonParser,
+     *      tools.jackson.databind.DeserializationContext)
      */
     @Override
-    public Object deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+    public Object deserialize(JsonParser p, DeserializationContext ctxt) throws JacksonException {
         Object mapObj = this.delegate.deserialize(p, ctxt);
 
         if (!(mapObj instanceof Map)) {

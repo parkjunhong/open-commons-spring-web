@@ -31,8 +31,9 @@ import jakarta.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -47,7 +48,8 @@ import open.commons.spring.web.jackson.AuthorizedObjectJackson2HttpMessageConver
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfigureAfter(AuthorizedObjectMessageConverterConfiguration.class)
+@AutoConfiguration(after = AuthorizedObjectMessageConverterConfiguration.class)
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedObjectMessageConfigureConfiguration {
 
     private Logger logger = LoggerFactory.getLogger(AuthorizedObjectMessageConfigureConfiguration.class);
@@ -57,9 +59,9 @@ public class AuthorizedObjectMessageConfigureConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 10.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 10.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 10.

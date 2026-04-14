@@ -126,7 +126,7 @@ public class PaginationUtils {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 12. 28.        parkjunhong77@gmail.com         최초 작성
+     * 2021. 12. 28.    parkjunhong77@gmail.com         최초 작성
      * 2022. 2. 10.     parkjunhong77@gmail.com     {@link AbstractMvcService}.orderBy(String...)에서 이관시킴.
      * </pre>
      *

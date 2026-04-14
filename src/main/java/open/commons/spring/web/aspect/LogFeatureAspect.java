@@ -61,10 +61,13 @@ import open.commons.spring.web.servlet.filter.RequestThreadNameFilter;
 import open.commons.spring.web.servlet.filter.header.SharedHeadersBuiltinProvider;
 
 /**
+ * {@link LogFeature} 설정에 따라서 로그를 분리해서 기록할 수 있는 지원하는 클래스.
  * 
  * @since 2025. 7. 28.
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
+ * 
+ * @see LogFeature
  */
 @Aspect
 @Order(AspectOrder.LOG_FEATURE)
@@ -87,9 +90,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 28.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 28.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param context
@@ -108,9 +111,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 28.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 28.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 7. 28.
@@ -125,9 +128,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 31.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 31.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 7. 31.
@@ -144,9 +147,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 28.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 28.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param pjp
@@ -206,9 +209,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 31.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 31.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param pjp
@@ -252,9 +255,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 31.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 31.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param feature
@@ -264,7 +267,7 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * @since 2025. 7. 31.
      * @version 0.8.0
      */
-    private void setLogFeature(@NotBlank String feature, @Nullable String marker, String thread, String featureNotBlankAsserMsg) {
+    private void setLogFeature(@NotBlank String feature, @Nullable String marker, @Nullable String thread, @Nullable String featureNotBlankAsserMsg) {
 
         // 'feature' 설정
         if (LogFeature.VALUE_THREAD_NULL.equals(feature) || (feature = feature.trim()).isEmpty()) {
@@ -291,9 +294,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 28.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 28.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 7. 28.

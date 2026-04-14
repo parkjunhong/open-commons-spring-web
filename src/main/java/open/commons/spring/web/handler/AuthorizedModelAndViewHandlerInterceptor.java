@@ -99,9 +99,9 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 24.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 24.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param context
@@ -221,9 +221,9 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 25.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 25.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param authority
@@ -369,9 +369,9 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 25.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 25.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param targetValue
@@ -426,9 +426,9 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 25.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 25.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param rawValue
@@ -526,10 +526,10 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
          * <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 9. 25.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+         * 2025. 9. 25.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param targetClass

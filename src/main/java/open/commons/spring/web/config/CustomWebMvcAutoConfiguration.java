@@ -79,9 +79,9 @@ public class CustomWebMvcAutoConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param context

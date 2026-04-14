@@ -58,7 +58,7 @@ public abstract class Validational<C extends List<E>, E extends Validational<Lis
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2019. 10. 10.        parkjunhong77@gmail.com         최초 작성
+     * 2019. 10. 10.    parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param buf
@@ -67,7 +67,6 @@ public abstract class Validational<C extends List<E>, E extends Validational<Lis
      * @param builder
      *
      * @since 2019. 10. 10.
-     * @version
      */
     private void aggregate(Collection<String> buf, Collection<String> errors, int index, StringBuffer builder) {
         for (String error : errors) {
@@ -90,13 +89,12 @@ public abstract class Validational<C extends List<E>, E extends Validational<Lis
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2019. 10. 10.        parkjunhong77@gmail.com         최초 작성
+     * 2019. 10. 10.    parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @return
      *
      * @since 2019. 10. 10.
-     * @version
      */
     public abstract C getSubObjects();
 
@@ -107,7 +105,7 @@ public abstract class Validational<C extends List<E>, E extends Validational<Lis
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2019. 10. 10.        parkjunhong77@gmail.com         최초 작성
+     * 2019. 10. 10.    parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
      * @param validator
@@ -115,7 +113,6 @@ public abstract class Validational<C extends List<E>, E extends Validational<Lis
      * @return 오류가 없는 경우 null을 제공한다.
      *
      * @since 2019. 10. 10.
-     * @version
      */
     public Collection<String> validate(Function<Object, Collection<String>> validator) {
 

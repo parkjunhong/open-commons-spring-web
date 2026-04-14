@@ -41,7 +41,7 @@ import open.commons.spring.web.authority.AuthorizedRequestData;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 import open.commons.spring.web.utils.BeanUtils;
 
-import com.fasterxml.jackson.databind.JavaType;
+import tools.jackson.databind.JavaType;
 
 /**
  * 컨테이너(배열 / {@link Collection} / {@link Map})로 역직렬화된 자바 객체를 재귀 순회하며 단순 타입( {@link String} / {@link Number} /
@@ -53,8 +53,16 @@ import com.fasterxml.jackson.databind.JavaType;
  * <li>- primitive 배열에 대해 안전한 타입 강제(coerce) 처리
  * <li>- POJO는 이 유틸에서 손대지 않고 그대로 반환 (POJO 필드의 {@link AuthorizedRequestData} 는 Bean/Field 단위 Deserializer가 처리)
  * 
+ * <pre>
+ * [개정이력]
+ * 날짜        | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 9. 24.    parkjunhong77@gmail.com     최초 작성 (Jackson 2.x)
+ * 2026. 4. 14.    parkjunhong77@gmail.com     Jackson 3.0 현행화: ContextualDeserializer 병합 및 ValueDeserializer 적용
+ * </pre>
+ * 
  * @since 2025. 9. 24.
- * @version 0.8.0
+ * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
 public class AuthorizedRequestDataContainerWalker {

@@ -26,7 +26,6 @@
 
 package open.commons.spring.web.jackson.deserialization;
 
-import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Collection;
 
@@ -34,23 +33,29 @@ import jakarta.validation.constraints.NotEmpty;
 
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.BeanProperty;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.deser.ContextualDeserializer;
-import com.fasterxml.jackson.databind.deser.std.CollectionDeserializer;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.BeanProperty;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.ValueDeserializer;
 
 /**
  * 배열(또는 {@link Array}, {@link Collection}의 데이터에 대한 'deserialization'을 처리하는 클래스.
  * 
+ * <pre>
+ * [개정이력]
+ * 날짜        | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 9. 23.    parkjunhong77@gmail.com     최초 작성 (Jackson 2.x)
+ * 2026. 4. 14.    parkjunhong77@gmail.com     Jackson 3.0 현행화: ContextualDeserializer 병합 및 ValueDeserializer 적용
+ * </pre>
+ * 
  * @since 2025. 9. 23.
- * @version 0.8.0
+ * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
-public class ContainerSimpleTypeElementWrappingDeserializer extends JsonDeserializer<Object> implements ContextualDeserializer {
+public class ContainerSimpleTypeElementWrappingDeserializer extends ValueDeserializer<Object> {
 
     // List, Set, Collection, [] 등
     private final JavaType containerType;
@@ -58,16 +63,16 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends JsonDeserial
     private final String handleType;
 
     // createContextual 이후 채워질 delegate
-    private final JsonDeserializer<?> delegate;
+    private final ValueDeserializer<?> delegate;
 
     /**
      * <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param containerType
@@ -88,9 +93,9 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends JsonDeserial
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param containerType
@@ -99,13 +104,13 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends JsonDeserial
      * @param handleType
      *            데이터 처리 방식
      * @param delegate
-     *            기본 {@link CollectionDeserializer}
+     *            기본 {@link ValueDeserializer}
      *
      * @since 2025. 9. 23.
      * @version 0.8.0
      */
     public ContainerSimpleTypeElementWrappingDeserializer(JavaType containerType, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType,
-            JsonDeserializer<?> delegate) {
+            ValueDeserializer<?> delegate) {
         this.containerType = containerType;
         this.handler = handler;
         this.handleType = handleType;
@@ -121,28 +126,30 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends JsonDeserial
      *      com.fasterxml.jackson.databind.BeanProperty)
      */
     @Override
-    public JsonDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) throws JsonMappingException {
+    public ValueDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) throws JacksonException {
         if (this.delegate != null) {
             return this; // 이미 contextual-resolved
         }
         // 컨테이너 타입 자체로 표준 delegate 획득 (property 컨텍스트 고려)
-        JsonDeserializer<Object> std = (JsonDeserializer<Object>) ctxt.findContextualValueDeserializer(this.containerType, property);
+        ValueDeserializer<Object> std = (ValueDeserializer<Object>) ctxt.findContextualValueDeserializer(this.containerType, property);
         if (std == null) {
-            std = (JsonDeserializer<Object>) ctxt.findRootValueDeserializer(this.containerType);
+            std = (ValueDeserializer<Object>) ctxt.findRootValueDeserializer(this.containerType);
         }
         return new ContainerSimpleTypeElementWrappingDeserializer(this.containerType, this.handler, this.handleType, std);
     }
 
     /**
+     * 
+     * {@inheritDoc}
      *
-     * @since 2025. 9. 23.
-     * @version 0.8.0
+     * @since 2026. 4. 14.
+     * @version 4.0.0
      *
-     * @see com.fasterxml.jackson.databind.deser.std.DelegatingDeserializer#deserialize(com.fasterxml.jackson.core.JsonParser,
-     *      com.fasterxml.jackson.databind.DeserializationContext)
+     * @see tools.jackson.databind.ValueDeserializer#deserialize(tools.jackson.core.JsonParser,
+     *      tools.jackson.databind.DeserializationContext)
      */
     @Override
-    public Object deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+    public Object deserialize(JsonParser p, DeserializationContext ctxt) throws JacksonException {
         // Jackson이 컨테이너 전체를 먼저 만듦
         Object container = this.delegate.deserialize(p, ctxt);
 

@@ -32,8 +32,6 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jakarta.validation.constraints.NotNull;
-
 import org.aspectj.lang.annotation.Pointcut;
 import org.jspecify.annotations.Nullable;
 import org.springframework.beans.BeansException;
@@ -42,6 +40,7 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
 
+import open.commons.core.utils.ObjectUtils;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.authority.AuthorizedMethod;
 import open.commons.spring.web.authority.AuthorizedRequest;
@@ -54,7 +53,7 @@ import open.commons.spring.web.authority.AuthorizedRequest;
  */
 public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspectPointcuts implements IAuthorizedResource<T> {
 
-    private static final Pattern PLACEHOLDER_PATTERN = Objects.requireNonNull(Pattern.compile("^\\$\\{\\s*([^:}]+)(?::([^}]*))?\\s*}$"));
+    private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("^\\$\\{\\s*([^:}]+)(?::([^}]*))?\\s*}$");
 
     protected final Class<T> providerType;
 
@@ -63,9 +62,9 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param context
@@ -76,7 +75,10 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @since 2025. 5. 19.
      * @version 0.8.0
      */
-    public AbstractAuthorizedResourceAspect(@NotNull ApplicationContext context, Class<T> providerType) {
+    public AbstractAuthorizedResourceAspect(ApplicationContext context, Class<T> providerType) {
+        Objects.requireNonNull(context);
+        Objects.requireNonNull(providerType);
+
         super(context);
         this.providerType = providerType;
     }
@@ -86,9 +88,9 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 5. 19.
@@ -103,9 +105,9 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 5. 19.
@@ -138,7 +140,8 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @version 0.8.0
      */
     protected final <A extends Annotation> @Nullable A decideAnnotation(Class<A> annoType, Class<?> o, Method m) {
-        @Nullable
+        ObjectUtils.requireNonNulls(annoType, o, m);
+
         A annoM = AnnotationUtils.getAnnotation(m, annoType);
         return annoM != null //
                 ? annoM //
@@ -162,12 +165,13 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @version 0.8.0
      */
     protected final @Nullable String findConfigurationValue(String input) {
+        Objects.requireNonNull(input);
+
         Matcher matcher = PLACEHOLDER_PATTERN.matcher(input);
         if (matcher.matches()) {
             String propertyName = matcher.group(1); // 속성 이름
             String defaultValue = matcher.group(2); // 기본값 (없으면 null)
 
-            @SuppressWarnings("null")
             String configValue = this.env.getProperty(propertyName);
             if (StringUtils.isNullOrEmptyString(configValue)) {
                 return defaultValue;
@@ -184,9 +188,9 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <T>
@@ -204,8 +208,7 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @since 2025. 5. 19.
      * @version 0.8.0
      */
-    @SuppressWarnings("null")
-    protected final T getAuthorityBean(String beanName) throws BeansException {
+    protected final @Nullable T getAuthorityBean(@Nullable String beanName) throws BeansException {
         return BEAN_UTILS.getBean(beanName, providerType, null, true);
     }
 
@@ -214,9 +217,9 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 5. 19.
@@ -231,9 +234,9 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 5. 19.

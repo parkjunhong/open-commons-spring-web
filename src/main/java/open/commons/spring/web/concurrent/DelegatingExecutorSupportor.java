@@ -26,15 +26,25 @@
 
 package open.commons.spring.web.concurrent;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 
-import org.springframework.core.task.AsyncListenableTaskExecutor;
+import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.TaskScheduler;
 
 /**
  * {@link ExecutorService} 구현 객체를 'delegate'로써 사용하는 'Delegating' {@link ExecutorService}를 제공하는 클래스.
+ * 
+ * <pre>
+ * [개정이력]
+ *      날짜       | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 8. 2.      parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 14.     parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5. , ({@code AsyncListenableTaskExecutor, ListenableFuture}) 클래스가 폐기되고 다른 클래스로 통합({@link AsyncTaskExecutor}, {@link CompletableFuture}) 됨
+ * </pre>
+ * 
  * 
  * @since 2025. 8. 2.
  * @version 0.8.0
@@ -51,9 +61,9 @@ public class DelegatingExecutorSupportor {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param delegate
@@ -73,9 +83,9 @@ public class DelegatingExecutorSupportor {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param delegate
@@ -97,9 +107,9 @@ public class DelegatingExecutorSupportor {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param delegate
@@ -119,9 +129,9 @@ public class DelegatingExecutorSupportor {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param delegate
@@ -143,9 +153,10 @@ public class DelegatingExecutorSupportor {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 6.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 6.      parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 14.     parkjunhong77@gmail.com     파라미터 변경.({@code AsyncListenableTaskExecutor, ListenableFuture}) 클래스가 폐기되고 다른 클래스로 통합({@link AsyncTaskExecutor}, {@link CompletableFuture}) 됨에 따라 수정됨.
      * </pre>
      *
      * {@link TaskExecutor} 기능을 제공하는 객체.
@@ -155,7 +166,7 @@ public class DelegatingExecutorSupportor {
      * @since 2025. 8. 6.
      * @version 0.8.0
      */
-    public static AsyncListenableTaskExecutor taskExecutor(AsyncListenableTaskExecutor delegate) {
+    public static AsyncTaskExecutor taskExecutor(AsyncTaskExecutor delegate) {
         return taskExecutor(delegate, "executor");
     }
 
@@ -165,9 +176,10 @@ public class DelegatingExecutorSupportor {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 6.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 6.    parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 14.     parkjunhong77@gmail.com     파라미터 변경.({@code AsyncListenableTaskExecutor, ListenableFuture}) 클래스가 폐기되고 다른 클래스로 통합({@link AsyncTaskExecutor}, {@link CompletableFuture}) 됨에 따라 수정됨.
      * </pre>
      *
      * @param delegate
@@ -179,8 +191,8 @@ public class DelegatingExecutorSupportor {
      * @since 2025. 8. 6.
      * @version 0.8.0
      */
-    public static AsyncListenableTaskExecutor taskExecutor(AsyncListenableTaskExecutor delegate, String threadSymbol) {
-        return new DelegatingTaskExecutor<AsyncListenableTaskExecutor>(delegate, threadSymbol);
+    public static AsyncTaskExecutor taskExecutor(AsyncTaskExecutor delegate, String threadSymbol) {
+        return new DelegatingTaskExecutor<AsyncTaskExecutor>(delegate, threadSymbol);
     }
 
     /**
@@ -189,9 +201,10 @@ public class DelegatingExecutorSupportor {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.      parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 14.     parkjunhong77@gmail.com     파라미터 변경.({@code AsyncListenableTaskExecutor, ListenableFuture}) 클래스가 폐기되고 다른 클래스로 통합({@link AsyncTaskExecutor}, {@link CompletableFuture}) 됨에 따라 수정됨.
      * </pre>
      *
      * @param delegate
@@ -201,7 +214,7 @@ public class DelegatingExecutorSupportor {
      * @since 2025. 8. 3.
      * @version 0.8.0
      */
-    public static <S extends TaskScheduler & AsyncListenableTaskExecutor> TaskScheduler taskScheduler(S delegate) {
+    public static <S extends TaskScheduler & AsyncTaskExecutor> TaskScheduler taskScheduler(S delegate) {
         return taskScheduler(delegate, "scheduled");
     }
 
@@ -211,9 +224,10 @@ public class DelegatingExecutorSupportor {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 14.     parkjunhong77@gmail.com     파라미터 변경.({@code AsyncListenableTaskExecutor, ListenableFuture}) 클래스가 폐기되고 다른 클래스로 통합({@link AsyncTaskExecutor}, {@link CompletableFuture}) 됨에 따라 수정됨.
      * </pre>
      *
      * @param delegate
@@ -225,7 +239,7 @@ public class DelegatingExecutorSupportor {
      * @since 2025. 8. 3.
      * @version 0.8.0
      */
-    public static <S extends TaskScheduler & AsyncListenableTaskExecutor> TaskScheduler taskScheduler(S delegate, String threadSymbol) {
+    public static <S extends TaskScheduler & AsyncTaskExecutor> TaskScheduler taskScheduler(S delegate, String threadSymbol) {
         return new DelegatingTaskScheduler<S>(delegate, threadSymbol);
     }
 

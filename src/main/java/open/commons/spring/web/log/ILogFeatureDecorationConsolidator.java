@@ -45,9 +45,9 @@ public interface ILogFeatureDecorationConsolidator {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param feature
@@ -68,9 +68,9 @@ public interface ILogFeatureDecorationConsolidator {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param propertyValue
@@ -92,9 +92,9 @@ public interface ILogFeatureDecorationConsolidator {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param propertyValue

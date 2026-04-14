@@ -46,24 +46,33 @@ import open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata;
 import open.commons.spring.web.exception.InvalidBeanNameException;
 import open.commons.spring.web.utils.BeanUtils;
 
-import com.fasterxml.jackson.databind.BeanDescription;
-import com.fasterxml.jackson.databind.DeserializationConfig;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.deser.BeanDeserializerBuilder;
-import com.fasterxml.jackson.databind.deser.BeanDeserializerModifier;
-import com.fasterxml.jackson.databind.deser.SettableBeanProperty;
-import com.fasterxml.jackson.databind.introspect.Annotated;
-import com.fasterxml.jackson.databind.introspect.AnnotatedMember;
-import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
+import tools.jackson.databind.BeanDescription;
+import tools.jackson.databind.DeserializationConfig;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.deser.BeanDeserializerBuilder;
+import tools.jackson.databind.deser.SettableBeanProperty;
+import tools.jackson.databind.deser.ValueDeserializerModifier;
+import tools.jackson.databind.introspect.Annotated;
+import tools.jackson.databind.introspect.AnnotatedMember;
+import tools.jackson.databind.introspect.BeanPropertyDefinition;
 
 /**
+ * <pre>
+ * [개정이력]
+ *      날짜       | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 9. 22.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 14.     parkjunhong77@gmail.com     Jackson 3.0 현행화: Supplier<BeanDescription> 지연 평가 적용 및 ValueDeserializerModifier 적용
+ * </pre>
  * 
  * @since 2025. 9. 22.
- * @version 0.8.0
+ * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
-public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifier {
+public class AuthorizedFieldDeserializerModifier extends ValueDeserializerModifier {
+
+    private static final long serialVersionUID = 1439725932987560016L;
 
     /** 특정 {@link BeanPropertyDefinition}에 설정된 {@link AuthorizedRequestData} 데이터 */
     private static final ConcurrentHashMap<BeanPropertyDefinition, AuthorizedRequestData> AUTHORIZED_REQUEST_DATA_CACHE = new ConcurrentHashMap<>();
@@ -81,9 +90,9 @@ public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifie
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 22.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 22.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param context
@@ -118,9 +127,9 @@ public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifie
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param handleBean
@@ -137,16 +146,20 @@ public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifie
     }
 
     /**
+     * 
+     * {@inheritDoc}
      *
-     * @since 2025. 9. 22.
-     * @version 0.8.0
+     * @since 2026. 4. 14.
+     * @version 4.0.0
      *
-     * @see com.fasterxml.jackson.databind.deser.BeanDeserializerModifier#updateBuilder(com.fasterxml.jackson.databind.DeserializationConfig,
-     *      com.fasterxml.jackson.databind.BeanDescription,
-     *      com.fasterxml.jackson.databind.deser.BeanDeserializerBuilder)
+     * @see tools.jackson.databind.deser.ValueDeserializerModifier#updateBuilder(tools.jackson.databind.DeserializationConfig,
+     *      tools.jackson.databind.BeanDescription.Supplier, tools.jackson.databind.deser.BeanDeserializerBuilder)
      */
     @Override
-    public BeanDeserializerBuilder updateBuilder(DeserializationConfig config, BeanDescription beanDesc, BeanDeserializerBuilder builder) {
+    public BeanDeserializerBuilder updateBuilder(DeserializationConfig config, BeanDescription.Supplier beanDescSupplier, BeanDeserializerBuilder builder) {
+
+        // 지연 평가(Lazy Evaluation) 해제: 필요한 순간에 get()을 호출하여 BeanDescription 획득
+        BeanDescription beanDesc = beanDescSupplier.get();
 
         List<SettableBeanProperty> toReplace = new ArrayList<>();
         Iterator<SettableBeanProperty> itrProperties = builder.getProperties();
@@ -197,21 +210,21 @@ public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifie
             // 단순 타입
             if (isSimpleType(fieldRawType)) {
                 IAuthorizedRequestDataHandler handler = resolveHandler(handleBean);
-                JsonDeserializer<Object> customDeser = new AuthorizedFieldDeserializer(handler, handleType);
+                ValueDeserializer<Object> customDeser = new AuthorizedFieldDeserializer(handler, handleType);
                 toReplace.add(prop.withValueDeserializer(customDeser));
             }
             // Array / Collection
             else if (fieldType.isArrayType() || fieldType.isCollectionLikeType()) {
                 IAuthorizedRequestDataHandler handler = resolveHandler(handleBean);
                 // delegate 'deserializer'
-                JsonDeserializer<?> wrapper = new ContainerSimpleTypeElementWrappingDeserializer(fieldType, handler, handleType);
+                ValueDeserializer<?> wrapper = new ContainerSimpleTypeElementWrappingDeserializer(fieldType, handler, handleType);
                 toReplace.add(prop.withValueDeserializer(wrapper));
             }
             // Map
             else if (fieldType.isMapLikeType()) {
                 IAuthorizedRequestDataHandler handler = resolveHandler(handleBean);
                 // delegate 'deserializer'
-                JsonDeserializer<?> wrapper = new MapSimpleTypeValueWrappingDeserializer(fieldType, handler, handleType);
+                ValueDeserializer<?> wrapper = new MapSimpleTypeValueWrappingDeserializer(fieldType, handler, handleType);
                 toReplace.add(prop.withValueDeserializer(wrapper));
             }
         }
@@ -231,9 +244,9 @@ public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifie
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param beanName
@@ -268,7 +281,7 @@ public class AuthorizedFieldDeserializerModifier extends BeanDeserializerModifie
 
     private static BeanPropertyDefinition findPropertyDef(Class<?> targetClass, BeanDescription beanDesc, String name) {
         final String propId = String.join("#", targetClass.getName(), name);
-        return PROPERTY_DEF_CACHE.computeIfAbsent(propId, k -> beanDesc.findProperties().stream() //
+        return PROPERTY_DEF_CACHE.computeIfAbsent(propId, _ -> beanDesc.findProperties().stream() //
                 .filter(p -> p.getName().equals(name)) //
                 .findFirst() //
                 .orElse(null));

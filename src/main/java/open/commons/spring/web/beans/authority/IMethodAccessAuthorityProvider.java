@@ -49,9 +49,9 @@ public interface IMethodAccessAuthorityProvider extends IResourceAccessAuthority
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 16.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 16.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param operator

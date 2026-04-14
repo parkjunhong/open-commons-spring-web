@@ -28,6 +28,8 @@ package open.commons.spring.web.autoconfigure.configuration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -42,6 +44,8 @@ import open.commons.spring.web.log.ILogFeatureDecorationConsolidator;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
+@AutoConfiguration
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class LogFeatureConfiguration {
 
     private final Logger logger = LoggerFactory.getLogger(LogFeatureConfiguration.class);
@@ -51,9 +55,9 @@ public class LogFeatureConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 28.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 28.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 7. 28.

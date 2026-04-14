@@ -45,9 +45,9 @@ public class ForcedUnintelligibleHandler implements IUnauthorizedFieldHandler {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 12.

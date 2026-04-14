@@ -202,16 +202,15 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 27.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 27.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param context
      * @param env
      *
      * @since 2019. 6. 27.
-     * @version
      */
     public ResourceConfiguration(ApplicationContext context, Environment environment) {
         this.context = context;
@@ -278,9 +277,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 1.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -300,9 +299,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -322,9 +321,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 1. 20.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 1. 20.    parkjunhong77@gmail.com     최초 작성
      * 2025. 5. 28.     parkjunhong77@gmail.com         명시적으로 {@link ThreadPoolTaskExecutorConfig} 파라미터로 전달
      * </pre>
      * 
@@ -348,9 +347,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -370,9 +369,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 1.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param prefix
@@ -402,8 +401,8 @@ public class ResourceConfiguration {
     /**
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
      * 2026. 4. 10.     parkjunohng77@gmail.com     {@link RestTemplateRequestFactoryResource} 변경내용 반영.
      * </pre>
      *
@@ -424,9 +423,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 1.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -458,9 +457,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 4.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -481,9 +480,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -595,9 +594,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 4.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -617,9 +616,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -659,9 +658,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 4.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -683,9 +682,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 1.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param prefix
@@ -703,9 +702,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -724,9 +723,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 4.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -745,9 +744,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 1.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 1.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -776,9 +775,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -806,9 +805,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2021. 8. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2021. 8. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -851,9 +850,9 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -893,8 +892,8 @@ public class ResourceConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
      * 2019. 6. 27.     parkjunhong77@gmail.com     최초 작성
      * 2020. 12. 9.     parkjunhong77@gmail.com     access modifier 변경 (private -> public static)
      * 2026. 4. 10.     parkjunohng77@gmail.com     {@link RestTemplateRequestFactoryResource} 변경내용 반영.

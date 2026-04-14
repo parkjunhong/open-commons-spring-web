@@ -28,8 +28,10 @@ package open.commons.spring.web.authority;
 
 import java.util.function.Supplier;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.context.annotation.Bean;
 
+import open.commons.core.utils.ObjectUtils;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.utils.BeanUtils;
 
@@ -50,9 +52,9 @@ public class AuthorizedResourceUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 25.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 25.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <T>
@@ -71,7 +73,9 @@ public class AuthorizedResourceUtils {
      * @since 2025. 9. 25.
      * @version 0.8.0
      */
-    public static <T> T getBean(BeanUtils beanUtils, Class<T> beanType, Supplier<String> o, Supplier<String> f, boolean required) {
+    public static <T> T getBean(BeanUtils beanUtils, Class<T> beanType, Supplier<String> o, @Nullable Supplier<String> f, boolean required) {
+        ObjectUtils.requireNonNulls(beanUtils, beanType, o);
+
         String beanName = null;
         if (f == null) {
             beanName = o.get();

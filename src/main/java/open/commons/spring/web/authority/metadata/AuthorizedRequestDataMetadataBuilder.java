@@ -26,13 +26,13 @@
 
 package open.commons.spring.web.authority.metadata;
 
-import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -80,10 +80,10 @@ public class AuthorizedRequestDataMetadataBuilder {
          * 1개의 {@link AuthorizedRequestDataObjectMetadata}를 생성하는 빌더를 제공합니다. <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 6. 20.        parkjunhong77@gmail.com            최초 작성
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
+         * 2025. 6. 20.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @return
@@ -98,10 +98,10 @@ public class AuthorizedRequestDataMetadataBuilder {
          * <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 6. 20.        parkjunhong77@gmail.com            최초 작성
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
+         * 2025. 6. 20.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @return
@@ -127,21 +127,15 @@ public class AuthorizedRequestDataMetadataBuilder {
             return new ObjectsBuilderImpl();
         }
 
-        private static boolean allowAccess(AccessibleObject o) {
-            boolean accessible = o.isAccessible();
-            o.setAccessible(true);
-            return accessible;
-        }
-
         /**
          * 
          * <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 6. 20.        parkjunhong77@gmail.com            최초 작성
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
+         * 2025. 6. 20.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param targetClass
@@ -159,10 +153,10 @@ public class AuthorizedRequestDataMetadataBuilder {
          * <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 6. 19.        parkjunhong77@gmail.com            최초 작성
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
+         * 2025. 6. 19.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          * 
          * @param targetClass
@@ -178,50 +172,42 @@ public class AuthorizedRequestDataMetadataBuilder {
          */
         private static <T> T newObject(Class<T> targetClass, Object builder, Map<String, Function<Object, Object>> postprocessors) {
             T newObject = null;
-            Boolean targetFieldAccessible = null;
-            String targetFieldName = null;
             Method targetMethod = null;
 
             Class<?> builderClass = builder.getClass();
             Field builderField = null;
-            Boolean builderFieldAccessible = null;
             Object value = null;
+
             try {
-                newObject = targetClass.newInstance();
+                newObject = targetClass.getDeclaredConstructor().newInstance();
                 for (Field targetField : targetClass.getDeclaredFields()) {
-                    try {
-                        // #1. 대상 클래스 필드 접근 허용
-                        targetFieldAccessible = allowAccess(targetField);
-                        // #2. builder 객체에서 동일한 이름의 필드 정보 조회
-                        builderField = ClassInspector.getDeclaredFieldIfExist(builderClass, targetFieldName = targetField.getName());
-                        if (builderField == null) {
-                            continue;
-                        }
+                    String targetFieldName = targetField.getName();
 
-                        builderFieldAccessible = allowAccess(builderField);
-                        value = builderField.get(builder);
-                        // builderField.get(builder) 후처리
-                        if (postprocessors != null && postprocessors.containsKey(targetFieldName)) {
-                            value = postprocessors.get(builderField.getName()).apply(value);
-                        }
-
-                        if (value == null) {
-                            continue;
-                        }
-
-                        targetMethod = targetClass.getMethod(String.join("", "set", StringUtils.toUpperCase(targetFieldName, 0)), targetField.getType());
-                        targetMethod.invoke(newObject, value);
-                    } finally {
-                        if (targetFieldAccessible != null && targetField != null) {
-                            targetField.setAccessible(targetFieldAccessible);
-                        }
-                        if (builderFieldAccessible != null && builderField != null) {
-                            builderField.setAccessible(builderFieldAccessible);
-                        }
-
-                        targetFieldAccessible = null;
-                        builderFieldAccessible = null;
+                    // #1. builder 객체에서 동일한 이름의 필드 정보 조회
+                    builderField = ClassInspector.getDeclaredFieldIfExist(builderClass, targetFieldName);
+                    if (builderField == null) {
+                        continue;
                     }
+
+                    // #2. [JDK 25 표준] builderField 접근 가능 여부 확인 및 안전한 해제
+                    if (!builderField.canAccess(builder)) {
+                        // setAccessible(true) 대신 모듈 시스템에서 안전한 trySetAccessible() 사용
+                        builderField.trySetAccessible();
+                    }
+
+                    value = builderField.get(builder);
+
+                    // #3. builderField.get(builder) 후처리
+                    if (postprocessors != null && postprocessors.containsKey(targetFieldName)) {
+                        value = postprocessors.get(targetFieldName).apply(value);
+                    }
+
+                    if (value == null) {
+                        continue;
+                    }
+
+                    targetMethod = targetClass.getMethod(String.join("", "set", StringUtils.toUpperCase(targetFieldName, 0)), targetField.getType());
+                    targetMethod.invoke(newObject, value);
                 }
             } catch (Exception e) {
                 String errMsg = String.format("데이터 처리 도중 오류가 발생하였습니다. target.class=%s, target.method=%s, target.object=%s / builder.class=%s, builder.field=%s, builder.object=%s" //
@@ -247,14 +233,20 @@ public class AuthorizedRequestDataMetadataBuilder {
             }
 
             public void handleBean(String handleBean) {
+                Objects.requireNonNull(handleBean);
+
                 this.handleBean = handleBean;
             }
 
             public void handleType(String handleType) {
+                Objects.requireNonNull(handleType);
+
                 this.handleType = handleType;
             }
 
             public void name(String name) {
+                Objects.requireNonNull(name);
+
                 this.name = name;
             }
         }
@@ -277,14 +269,20 @@ public class AuthorizedRequestDataMetadataBuilder {
             }
 
             public void fields(List<FieldBuilder> fields) {
+                Objects.requireNonNull(fields);
+
                 this.fields = fields;
             }
 
             public void handleBean(String handleBean) {
+                Objects.requireNonNull(handleBean);
+
                 this.handleBean = handleBean;
             }
 
             public void type(Class<?> type) {
+                Objects.requireNonNull(type);
+
                 this.type = type;
             }
         }
@@ -339,6 +337,8 @@ public class AuthorizedRequestDataMetadataBuilder {
 
             @Override
             public ObjectBuilder field(Function<FieldBuilder, FieldBuilder> consumer) {
+                Objects.requireNonNull(consumer);
+
                 FieldBuilderImpl builder = new FieldBuilderImpl();
                 fields.add(consumer.apply(builder));
                 return this;
@@ -382,6 +382,8 @@ public class AuthorizedRequestDataMetadataBuilder {
              */
             @Override
             public ObjectsBuilder object(Function<ObjectBuilder, ObjectBuilder> consumer) {
+                Objects.requireNonNull(consumer);
+
                 ObjectBuilder builder = new ObjectBuilderImpl();
                 objects.add(consumer.apply(builder));
                 return this;
@@ -398,10 +400,10 @@ public class AuthorizedRequestDataMetadataBuilder {
          * {@link AuthorizedRequestDataFieldMetadata} 객체를 생성합니다. <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 9. 20.        parkjunhong77@gmail.com            최초 작성
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
+         * 2025. 9. 20.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @return
@@ -415,10 +417,10 @@ public class AuthorizedRequestDataMetadataBuilder {
          * {@link AuthorizedRequestDataFieldMetadata#handleBean()}에 해당하는 값을 설정합니다.
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 9. 20.        parkjunhong77@gmail.com            최초 작성
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
+         * 2025. 9. 20.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param handleBean
@@ -434,10 +436,10 @@ public class AuthorizedRequestDataMetadataBuilder {
          * {@link AuthorizedRequestDataFieldMetadata#handleType()}에 해당하는 값을 설정합니다.<br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 9. 20.        parkjunhong77@gmail.com            최초 작성
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
+         * 2025. 9. 20.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param handleType
@@ -453,10 +455,10 @@ public class AuthorizedRequestDataMetadataBuilder {
          * {@link AuthorizedRequestDataFieldMetadata#name()}에 해당하는 값을 설정합니다.<br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 9. 20.        parkjunhong77@gmail.com            최초 작성
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
+         * 2025. 9. 20.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param name
@@ -477,10 +479,10 @@ public class AuthorizedRequestDataMetadataBuilder {
          * {@link AuthorizedRequestDataObjectMetadata} 객체를 생성합니다. <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 9. 20.        parkjunhong77@gmail.com            최초 작성
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
+         * 2025. 9. 20.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @return
@@ -492,10 +494,10 @@ public class AuthorizedRequestDataMetadataBuilder {
 
         /**
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 6. 19.        parkjunhong77@gmail.com            최초 작성
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
+         * 2025. 6. 19.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param function
@@ -529,10 +531,10 @@ public class AuthorizedRequestDataMetadataBuilder {
          * {@link AuthorizedRequestData}가 적용된 {@link Field}를 소유한 데이터 유형을 설정합니다.<br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 9. 20.        parkjunhong77@gmail.com            최초 작성
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
+         * 2025. 9. 20.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param type

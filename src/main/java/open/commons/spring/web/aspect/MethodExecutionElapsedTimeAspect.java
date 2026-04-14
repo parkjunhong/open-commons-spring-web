@@ -39,6 +39,7 @@ import open.commons.core.test.StopWatch;
 import open.commons.spring.web.log.LogFeature;
 
 /**
+ * 메소드 실행 시간을 기록하는 클래스.
  * 
  * @since 2025. 8. 12.
  * @version 0.8.0

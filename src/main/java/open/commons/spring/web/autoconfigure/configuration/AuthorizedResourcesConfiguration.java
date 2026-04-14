@@ -34,14 +34,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import open.commons.spring.web.aspect.AuthorizedMethodAspect;
 import open.commons.spring.web.aspect.AuthorizedRequestAspect;
@@ -59,8 +59,8 @@ import open.commons.spring.web.jackson.deserialization.AuthorizedFieldDeserializ
 import open.commons.spring.web.jackson.serialization.AuthorizedFieldSerializerModifier;
 import open.commons.spring.web.servlet.filter.AuthorizedResourceFilter;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.module.SimpleModule;
 
 /**
  * 
@@ -68,7 +68,8 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfigureAfter({ AuthorizedResourceBuiltinHandlerConfiguration.class })
+@AutoConfiguration(after = AuthorizedResourceBuiltinHandlerConfiguration.class)
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedResourcesConfiguration {
 
     public static final String BEAN_QUALIFIER_AUTHORIZED_OBJECT_MAPPER = "open.commons.spring.web.autoconfigure.AuthorizedResourcesConfiguration#AUTHORIZED_OBJECT_MAPPER";
@@ -87,23 +88,51 @@ public class AuthorizedResourcesConfiguration {
         return aspect;
     }
 
+    /**
+     * 기본 JsonMapper의 설정을 그대로 상속받으면서, 데이터 보안(난독/암복호화) 모듈만 추가된 특수 목적의 JsonMapper를 생성합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 19.     parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 14.     parkjunohng77@gmail.com     Jackson 3.0 적용.
+     * </pre>
+     *
+     * @param context
+     * @param authorizedResourcesMetadata
+     * @param authorizedRequestDataMetadata
+     * @param defaultJsonMapper
+     * @param objectMapperBuilder
+     * @return
+     *
+     * @since 2025. 5. 19.
+     * @version 4.0.0
+     */
     @Bean(name = BEAN_QUALIFIER_AUTHORIZED_OBJECT_MAPPER)
     @ConditionalOnBean({ IFieldAccessAuthorityProvider.class, IUnauthorizedFieldHandler.class })
-    ObjectMapper authorizedObjectMapper(ApplicationContext context //
+    JsonMapper authorizedObjectMapper(ApplicationContext context //
             , @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata //
             , @NotNull IAuthorizedRequestDataMetadata authorizedRequestDataMetadata //
-            , @NotNull Jackson2ObjectMapperBuilder objectMapperBuilder) {
-        // #1. ObjectMapper 생성
-        ObjectMapper mapper = objectMapperBuilder.build();
-        // #2. AuthorizedObject 처리 모듈 등록
+            , @NotNull JsonMapper defaultJsonMapper //
+    ) {
+        // #1. 기본 Mapper의 설정을 그대로 물려받는 Builder 생성
+        JsonMapper.Builder builder = defaultJsonMapper.rebuild();
+
+        // #2. AuthorizedObject 처리 모듈 생성
         SimpleModule module = new SimpleModule();
         module.setSerializerModifier(new AuthorizedFieldSerializerModifier(context, authorizedResourcesMetadata));
         module.setDeserializerModifier(new AuthorizedFieldDeserializerModifier(context, authorizedRequestDataMetadata));
-        mapper.registerModule(module);
 
-        logger.info("[authorized-resources] authorized-object-mapper={}", mapper);
+        // #3. 빌더에 보안 모듈 추가 후 새로운 JsonMapper 완성
+        // (Jackson 3.0 빌더는 registerModule 대신 addModule을 사용합니다)
+        builder.addModule(module);
 
-        return mapper;
+        JsonMapper authorizedMapper = builder.build();
+
+        logger.info("[authorized-resources] authorized-json-mapper={}", authorizedMapper);
+
+        return authorizedMapper;
     }
 
     @Bean

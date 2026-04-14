@@ -57,10 +57,10 @@ public class LogFeatureBuilder {
          * 1개의 {@link ILogFeatureDecorator}를 생성하는 빌더를 제공합니다. <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+         * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @return
@@ -74,10 +74,10 @@ public class LogFeatureBuilder {
          * 여러 개의 {@link ILogFeatureDecorator}를 생성하는 빌더를 제공합니다. <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+         * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @return
@@ -124,10 +124,10 @@ public class LogFeatureBuilder {
              * {@link ILogFeatureDecorator} 객체를 생성합니다. <br>
              * 
              * <pre>
-             * [개정이력]
-             *      날짜        | 작성자    |    내용
-             * ------------------------------------------
-             * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+             * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
              * </pre>
              *
              * @return
@@ -159,10 +159,10 @@ public class LogFeatureBuilder {
              * 'marker'({@link LogFeature#marker()}) 항목에 해당하는 값을 처리하는 함수를 설정합니다. <br>
              * 
              * <pre>
-             * [개정이력]
-             *      날짜        | 작성자    |    내용
-             * ------------------------------------------
-             * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+             * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
              * </pre>
              *
              * @param decorator
@@ -178,10 +178,10 @@ public class LogFeatureBuilder {
              * 'feature'({@link LogFeature#feature()}) 항목에 해당하는 값을 설정합니다. <br>
              * 
              * <pre>
-             * [개정이력]
-             *      날짜        | 작성자    |    내용
-             * ------------------------------------------
-             * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+             * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
              * </pre>
              *
              * @param feature
@@ -197,10 +197,10 @@ public class LogFeatureBuilder {
              * 'marker'({@link LogFeature#marker()}) 항목에 해당하는 값을 설정합니다. <br>
              * 
              * <pre>
-             * [개정이력]
-             *      날짜        | 작성자    |    내용
-             * ------------------------------------------
-             * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+             * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
              * </pre>
              *
              * @param marker
@@ -310,10 +310,10 @@ public class LogFeatureBuilder {
          * {@link ILogFeatureDecorator} 객체를 제공합니다. <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+         * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @return
@@ -328,10 +328,10 @@ public class LogFeatureBuilder {
          * <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+         * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param decorator
@@ -346,10 +346,10 @@ public class LogFeatureBuilder {
          * 'feature'({@link LogFeature#feature()}) 항목에 해당하는 값을 설정합니다. <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+         * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param feature
@@ -364,10 +364,10 @@ public class LogFeatureBuilder {
          * 'marker'({@link LogFeature#marker()}) 항목에 해당하는 값을 설정합니다. <br>
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2025. 7. 29.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+         * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param marker

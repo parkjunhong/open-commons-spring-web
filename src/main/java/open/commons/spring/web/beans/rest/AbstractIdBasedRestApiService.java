@@ -72,10 +72,11 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
-     * 2025. 8. 8.      parkjunhong77@gmail.com         abstract 메소드를 <code>Map<String, String> pathVariable</code> 파라미터가 추가된 것으로 변경
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
+     * 2025. 8. 8.      parkjunhong77@gmail.com     abstract 메소드를 <code>Map<String, String> pathVariable</code> 파라미터가 추가된 것으로 변경
+     * 2026. 4. 14.     parkjunhong77@gmail.com     {@link HttpHeaders}::7.0.5 상속관계 변경({@link MultiValueMap<K,V>}을 상속받지 않음)에 따른 수정
      * </pre>
      *
      * @param restTemplate
@@ -90,7 +91,29 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
         this.apiInfo.putAll(restApis.stream().collect(Collectors.toMap(api -> api.getId(), api -> api)));
     }
 
-    private RestEndpoint createRestEndpoint(String id, Map<String, String> pathVariables, MultiValueMap<String, String> headers, MultiValueMap<String, Object> queries) {
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8.      parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 14.     parkjunhong77@gmail.com     {@link HttpHeaders}::7.0.5 상속관계 변경({@link MultiValueMap}을 상속받지 않음)에 따른 수정
+     *                                              {@code MultiValueMap headers} -> {@code HttpHeaders headers}로 변경
+     * </pre>
+     *
+     * @param id
+     * @param pathVariables
+     * @param headers
+     * @param queries
+     * @return
+     *
+     * @since 2025. 8. 8.
+     * @version 0.8.0
+     */
+    private RestEndpoint createRestEndpoint(String id, Map<String, String> pathVariables, HttpHeaders headers, MultiValueMap<String, Object> queries) {
         IdBasedRestApiDecl api = this.apiInfo.get(id);
         if (api == null) {
             logger.warn("'{}'에 해당하는 REST API 정보가 없습니다.", id);

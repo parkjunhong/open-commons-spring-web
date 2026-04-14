@@ -29,7 +29,7 @@ package open.commons.spring.web.servlet.binder;
 import org.springframework.http.HttpStatus;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  * 'Spring Security' 인증절차에서 발생하는 {@link Exception} 객체에 대한 {@link HttpStatus} 정보를 제공합니다.
@@ -52,9 +52,9 @@ public abstract class AbstractExceptionStatusWriter implements IExceptionRespons
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param binder
@@ -72,9 +72,9 @@ public abstract class AbstractExceptionStatusWriter implements IExceptionRespons
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param binder

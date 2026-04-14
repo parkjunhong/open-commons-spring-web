@@ -86,9 +86,9 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 22.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 22.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 9. 22.
@@ -248,9 +248,9 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 22.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 22.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param authorizedRequestObjectMetadata
@@ -271,9 +271,9 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param targetClass

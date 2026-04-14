@@ -26,11 +26,13 @@
 
 package open.commons.spring.web.thread;
 
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.util.Assert;
 
 import open.commons.core.lang.IThreadLocalContext;
@@ -56,24 +58,27 @@ public class MethodLogContext {
     private MethodLogContext() {
     }
 
-    public static void clear(@NotEmpty String holder) {
+    public static void clear(@NotBlank String holder) {
+        Assert.hasLength(holder, "Thread Context Holder MUST not be null and not the empty string.");
+
         if (holder.equals(CONTEXT.get(HOLDER))) {
             CONTEXT.clear();
         }
     }
 
-    public static int getAfterDecrement(@NotEmpty String holder) {
+    public static int getAfterDecrement(@NotBlank String holder) {
         initialize(holder, null);
         return internalDecrementAndGet();
     }
 
-    public static int getBeforeIncrement(@NotEmpty String holder, Class<?> originClass) {
+    public static int getBeforeIncrement(@NotBlank String holder, @Nullable Class<?> originClass) {
         initialize(holder, originClass);
         return internalGetAndIncrement();
     }
 
-    private static void initialize(@NotEmpty String holder, Class<?> originClass) {
+    private static void initialize(@NotEmpty String holder, @Nullable Class<?> originClass) {
         Assert.hasLength(holder, "Thread Context Holder MUST not be null and not the empty string.");
+
         if (CONTEXT.containsNot(HOLDER)) {
             CONTEXT.set(HOLDER, holder);
             CONTEXT.set(INDENTATION, new AtomicInteger());
@@ -91,8 +96,9 @@ public class MethodLogContext {
         return ((AtomicInteger) CONTEXT.get(INDENTATION)).getAndIncrement();
     }
 
-    public static boolean originatedFrom(@NotNull Class<?> clazz) {
-        Assert.notNull(clazz, "The origin of method calling is MUST NOT be null.");
+    public static boolean originatedFrom(Class<?> clazz) {
+        Objects.requireNonNull(clazz);
+
         return clazz.equals(CONTEXT.get(ORIGIN));
     }
 }

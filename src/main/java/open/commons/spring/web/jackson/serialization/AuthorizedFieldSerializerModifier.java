@@ -44,41 +44,51 @@ import open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider;
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
 import open.commons.spring.web.utils.BeanUtils;
 
-import com.fasterxml.jackson.databind.BeanDescription;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.SerializationConfig;
-import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
-import com.fasterxml.jackson.databind.introspect.AnnotatedField;
-import com.fasterxml.jackson.databind.introspect.BeanPropertyDefinition;
-import com.fasterxml.jackson.databind.ser.BeanPropertyWriter;
-import com.fasterxml.jackson.databind.ser.BeanSerializerBuilder;
-import com.fasterxml.jackson.databind.ser.BeanSerializerModifier;
+import tools.jackson.databind.BeanDescription;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.SerializationConfig;
+import tools.jackson.databind.introspect.AnnotatedClass;
+import tools.jackson.databind.introspect.AnnotatedField;
+import tools.jackson.databind.introspect.BeanPropertyDefinition;
+import tools.jackson.databind.ser.BeanPropertyWriter;
+import tools.jackson.databind.ser.ValueSerializerModifier;
 
 /**
- * {@link SecureField}
- * 
+ * <pre>
+ * [개정이력]
+ *      날짜       | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 5. 25.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 14.     parkjunhong77@gmail.com     Jackson 3.0 현행화: Supplier<BeanDescription> 지연 평가 적용 및 {@link ValueSerializerModifier} 적용
+ * </pre>
+ *
  * @since 2025. 5. 25.
- * @version 0.8.0
+ * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
-public class AuthorizedFieldSerializerModifier extends BeanSerializerModifier {
+public class AuthorizedFieldSerializerModifier extends ValueSerializerModifier {
+
+    private static final long serialVersionUID = 1L;
 
     /** 메타데이터 형태로 기술된 {@link AuthorizedObject}, {@link AuthorizedField} 설정 정보 제공 서비스 */
     private final IAuthorizedResourcesMetadata authorizedResourcesMetadata;
+
     /** 동적으로 bean을 제공 */
     private final BeanUtils BEANS;
 
     /**
      * <br>
+     * *
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 25.        parkjunhong77@gmail.com            최초 작성
+     * 날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 25.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
-     * @param context
+     * * @param context
+     * 
      * @param authorizedResourcesMetadata
      *            {@link AuthorizedObject}, {@link AuthorizedField} 설정 정보 제공 서비스
      *
@@ -92,14 +102,14 @@ public class AuthorizedFieldSerializerModifier extends BeanSerializerModifier {
 
     /**
      *
-     * @since 2025. 5. 25.
-     * @version 0.8.0
-     *
-     * @see com.fasterxml.jackson.databind.ser.BeanSerializerModifier#changeProperties(com.fasterxml.jackson.databind.SerializationConfig,
-     *      com.fasterxml.jackson.databind.BeanDescription, java.util.List)
+     * @see tools.jackson.databind.ser.ValueSerializerModifier#changeProperties(tools.jackson.databind.SerializationConfig,
+     *      java.util.function.Supplier, java.util.List)
      */
     @Override
-    public List<BeanPropertyWriter> changeProperties(SerializationConfig config, BeanDescription beanDesc, List<BeanPropertyWriter> beanProperties) {
+    public List<BeanPropertyWriter> changeProperties(SerializationConfig config, BeanDescription.Supplier beanDescSupplier, List<BeanPropertyWriter> beanProperties) {
+
+        // 지연 평가(Lazy Evaluation) 해제: 필요한 순간에 get()을 호출하여 BeanDescription 획득
+        BeanDescription beanDesc = beanDescSupplier.get();
 
         final AnnotatedClass annoClass = beanDesc.getClassInfo();
         final Class<?> serializedType = annoClass.getAnnotated();
@@ -132,6 +142,7 @@ public class AuthorizedFieldSerializerModifier extends BeanSerializerModifier {
 
             String fieldName = annoField.getName();
             annoAuthorizedField = annoField.getAnnotation(AuthorizedField.class);
+
             // 조건1: ao 와 af 가 반드시 있어야 합니다.
             if (annoAuthorizedObject != null && annoAuthorizedField != null) {
                 authorityBeanNameOnObject = annoAuthorizedObject::authorityBean;
@@ -187,21 +198,5 @@ public class AuthorizedFieldSerializerModifier extends BeanSerializerModifier {
         }
 
         return beanProperties;
-    }
-
-    /**
-     *
-     * @since 2025. 9. 25.
-     * @version 0.8.0
-     *
-     * @see com.fasterxml.jackson.databind.ser.BeanSerializerModifier#updateBuilder(com.fasterxml.jackson.databind.SerializationConfig,
-     *      com.fasterxml.jackson.databind.BeanDescription, com.fasterxml.jackson.databind.ser.BeanSerializerBuilder)
-     */
-    @Override
-    public BeanSerializerBuilder updateBuilder(SerializationConfig config, BeanDescription beanDesc, BeanSerializerBuilder builder) {
-
-        builder.getProperties();
-
-        return super.updateBuilder(config, beanDesc, builder);
     }
 }

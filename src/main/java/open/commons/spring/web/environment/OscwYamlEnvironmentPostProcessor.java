@@ -93,9 +93,9 @@ public class OscwYamlEnvironmentPostProcessor implements EnvironmentPostProcesso
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 21.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 21.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 10. 21.

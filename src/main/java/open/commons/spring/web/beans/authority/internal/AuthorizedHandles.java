@@ -113,9 +113,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 27.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 27.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param handleType
@@ -148,9 +148,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 29.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -169,9 +169,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param isBuiltin
@@ -199,9 +199,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * * @param target 데이터 유형
@@ -224,9 +224,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param isBuiltin
@@ -253,9 +253,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param isBuiltin
@@ -291,9 +291,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param handleType
@@ -316,9 +316,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param handleType
@@ -647,9 +647,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param str
@@ -686,9 +686,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 29.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param handleType
@@ -710,9 +710,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param handleType
@@ -737,9 +737,9 @@ public class AuthorizedHandles {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 27.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 27.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param handleType

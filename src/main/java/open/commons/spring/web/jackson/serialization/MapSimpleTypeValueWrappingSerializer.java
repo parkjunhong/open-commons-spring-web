@@ -38,17 +38,27 @@ import open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata;
 import open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider;
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.introspect.AnnotatedField;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.introspect.AnnotatedField;
 
 /**
  * Map의 단순타입 Value에 AuthorizedField 처리를 적용하는 Serializer.
  * <li>- Jackson 권장 API: writeStartObject(Object forValue)
  * <li>- 값 출력은 serializers.defaultSerializeValue(...) 사용
  * 
+ * <pre>
+ * [개정이력]
+ *      날짜       | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 9. 25.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 14.     parkjunhong77@gmail.com     Jackson 3.0 현행화 ( com.fasterxml.jackson.xxx => tools.jackson.databind.xxx )
+ * </pre>
+ * 
+ * 
  * @since 2025. 9. 25.
- * @version 0.8.0
+ * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
 public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerializer {
@@ -59,9 +69,9 @@ public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerial
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 25.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 25.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param context
@@ -85,17 +95,19 @@ public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerial
     }
 
     /**
+     * 
+     * {@inheritDoc}
      *
-     * @since 2025. 9. 25.
-     * @version 0.8.0
+     * @since 2026. 4. 14.
+     * @version 4.0.0
      *
-     * @see com.fasterxml.jackson.databind.JsonSerializer#serialize(java.lang.Object,
-     *      com.fasterxml.jackson.core.JsonGenerator, com.fasterxml.jackson.databind.SerializerProvider)
+     * @see tools.jackson.databind.ValueSerializer#serialize(java.lang.Object, tools.jackson.core.JsonGenerator,
+     *      tools.jackson.databind.SerializationContext)
      */
     @Override
-    public void serialize(Object value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+    public void serialize(Object value, JsonGenerator gen, SerializationContext context) throws JacksonException {
         if (!(value instanceof Map)) {
-            serializers.defaultSerializeValue(value, gen);
+            setDefaultSerializeValue(value, gen, context);
             return;
         }
 
@@ -106,18 +118,38 @@ public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerial
         try {
             gen.writeStartObject(value);
         } catch (Throwable t) {
-            gen.setCurrentValue(value);
+            gen.assignCurrentValue(value);
             gen.writeStartObject();
         }
         for (Map.Entry<?, ?> e : map.entrySet()) {
-            gen.writeFieldName(String.valueOf(e.getKey()));
-            writeValueRecursive(e.getValue(), gen, serializers, decision);
+            gen.writeName(String.valueOf(e.getKey()));
+            writeValueRecursive(e.getValue(), gen, context, decision);
         }
+
         gen.writeEndObject();
     }
 
-    // Map의 Value를 재귀 처리 (Collection/Array/Map/POJO 포함)
-    private void writeValueRecursive(Object rawValue, JsonGenerator gen, SerializerProvider sp, FieldAccessAuthorityDecision decision) throws IOException {
+    /**
+     * Map의 Value를 재귀 처리 (Collection/Array/Map/POJO 포함)
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 25.    parkjunhong77@gmail.com     최초 작성 (Jackson 2.x)
+     * 2026. 4. 14.    parkjunhong77@gmail.com     Jackson 3.0 현행화: SerializationContext, JacksonException, API 명칭 변경(writeName 등) 적용
+     * </pre>
+     *
+     * @param rawValue
+     * @param gen
+     * @param context
+     * @param decision
+     * @throws IOException
+     *
+     * @since 2025. 9. 25.
+     * @version 4.0.0
+     */
+    private void writeValueRecursive(Object rawValue, JsonGenerator gen, SerializationContext context, FieldAccessAuthorityDecision decision) throws JacksonException {
         if (rawValue == null) {
             gen.writeNull();
             return;
@@ -127,7 +159,7 @@ public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerial
 
         if (isSimpleType(rawClass)) {
             Object value = handleValue(rawValue, null);
-            sp.defaultSerializeValue(value, gen);
+            setDefaultSerializeValue(value, gen, context);
             return;
         }
         if (rawClass.isArray()) {
@@ -135,11 +167,11 @@ public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerial
             try {
                 gen.writeStartArray(rawValue, len);
             } catch (Throwable t) {
-                gen.setCurrentValue(rawValue);
+                gen.assignCurrentValue(rawValue);
                 gen.writeStartArray();
             }
             for (int i = 0; i < len; i++) {
-                writeValueRecursive(Array.get(rawValue, i), gen, sp, decision);
+                writeValueRecursive(Array.get(rawValue, i), gen, context, decision);
             }
             gen.writeEndArray();
             return;
@@ -149,11 +181,11 @@ public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerial
             try {
                 gen.writeStartArray(rawValue, col.size());
             } catch (Throwable t) {
-                gen.setCurrentValue(rawValue);
+                gen.assignCurrentValue(rawValue);
                 gen.writeStartArray();
             }
             for (Object e : col) {
-                writeValueRecursive(e, gen, sp, decision);
+                writeValueRecursive(e, gen, context, decision);
             }
             gen.writeEndArray();
             return;
@@ -163,18 +195,18 @@ public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerial
             try {
                 gen.writeStartObject(rawValue);
             } catch (Throwable t) {
-                gen.setCurrentValue(rawValue);
+                gen.assignCurrentValue(rawValue);
                 gen.writeStartObject();
             }
             for (Map.Entry<?, ?> en : m.entrySet()) {
-                gen.writeFieldName(String.valueOf(en.getKey()));
-                writeValueRecursive(en.getValue(), gen, sp, decision);
+                gen.writeName(String.valueOf(en.getKey()));
+                writeValueRecursive(en.getValue(), gen, context, decision);
             }
             gen.writeEndObject();
             return;
         }
 
         // POJO
-        sp.defaultSerializeValue(rawValue, gen);
+        setDefaultSerializeValue(rawValue, gen, context);
     }
 }

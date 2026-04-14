@@ -84,9 +84,9 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 1. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 1. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @since 2020. 1. 17.
@@ -102,9 +102,9 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 28.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 28.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param exceptionHttpStatusBinder
@@ -145,9 +145,9 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 1. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 1. 17.    parkjunhong77@gmail.com     최초 작성
      * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
@@ -170,9 +170,9 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 28.        parkjunhong77@gmail.com        최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 28.    parkjunhong77@gmail.com        최초 작성
      * 2026. 4. 9.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
@@ -237,9 +237,9 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 28.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 28.    parkjunhong77@gmail.com     최초 작성
      * 2026. 4. 9.      parkjunhong77@gmail.com     파라미터 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
@@ -263,9 +263,9 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 28.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 28.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param exceptionHttpStatusBinders

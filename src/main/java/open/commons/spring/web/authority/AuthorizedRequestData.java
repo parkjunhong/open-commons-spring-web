@@ -65,9 +65,9 @@ public @interface AuthorizedRequestData {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 18.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 18.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -83,9 +83,9 @@ public @interface AuthorizedRequestData {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 18.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 18.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return

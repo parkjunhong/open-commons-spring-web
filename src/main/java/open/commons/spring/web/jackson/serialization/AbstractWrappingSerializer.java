@@ -30,6 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
+import open.commons.core.utils.ObjectUtils;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.authority.AuthorizedObject;
@@ -38,16 +39,25 @@ import open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata;
 import open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider;
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
 
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.introspect.AnnotatedField;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.introspect.AnnotatedField;
 
 /**
+ * <pre>
+ * [개정이력]
+ *      날짜       | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 9. 25.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 14.     parkjunhong77@gmail.com     Jackson 3.0 현행화 ( com.fasterxml.jackson.xxx => tools.jackson.databind.xxx )
+ * </pre>
  * 
  * @since 2025. 9. 25.
- * @version 0.8.0
+ * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
-public abstract class AbstractWrappingSerializer extends JsonSerializer<Object> {
+public abstract class AbstractWrappingSerializer extends ValueSerializer<Object> {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -67,9 +77,9 @@ public abstract class AbstractWrappingSerializer extends JsonSerializer<Object> 
     /**
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 25.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 25.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param context
@@ -107,9 +117,9 @@ public abstract class AbstractWrappingSerializer extends JsonSerializer<Object> 
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 9. 29.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 29.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param value
@@ -133,5 +143,31 @@ public abstract class AbstractWrappingSerializer extends JsonSerializer<Object> 
         } else {
             return (IUnauthorizedFieldHandler) this.context.getBean(handleBean);
         }
+    }
+
+    /**
+     * 기본값을 설정합니다.
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2026. 4. 14.     parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param value
+     * @param gen
+     * @param context
+     *
+     * @since 2026. 4. 14.
+     * @version 4.0.0
+     */
+    protected final void setDefaultSerializeValue(Object value, JsonGenerator gen, SerializationContext context) {
+        ObjectUtils.requireNonNulls(value, gen, context);
+
+        ValueSerializer<Object> pojoSerializer = context.findValueSerializer(value.getClass());
+        pojoSerializer.serialize(value, gen, context);
     }
 }

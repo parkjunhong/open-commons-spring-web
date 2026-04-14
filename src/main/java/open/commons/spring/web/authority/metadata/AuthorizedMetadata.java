@@ -26,6 +26,8 @@
 
 package open.commons.spring.web.authority.metadata;
 
+import java.util.Objects;
+
 import jakarta.validation.constraints.NotNull;
 
 import open.commons.spring.web.utils.BeanUtils;
@@ -41,6 +43,8 @@ public abstract class AuthorizedMetadata {
     private static final String PREFIX_CLASSPATH = "classpath:";
 
     protected final String resolveBeanName(@NotNull String beanName) {
+        Objects.requireNonNull(beanName);
+        
         return beanName.startsWith(PREFIX_CLASSPATH) //
                 ? BeanUtils.resolveBeanNameFromFqn(beanName.replace(PREFIX_CLASSPATH, "")) //
                 : beanName;

@@ -27,6 +27,7 @@
 package open.commons.spring.web.authority.metadata;
 
 import java.util.List;
+import java.util.Objects;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -65,9 +66,9 @@ public class AuthorizedObjectMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 12.
@@ -83,9 +84,9 @@ public class AuthorizedObjectMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the authorityBean
@@ -107,9 +108,9 @@ public class AuthorizedObjectMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the fieldHandleBean
@@ -129,9 +130,9 @@ public class AuthorizedObjectMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the fields
@@ -151,9 +152,9 @@ public class AuthorizedObjectMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the type
@@ -173,9 +174,9 @@ public class AuthorizedObjectMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param authorityBean
@@ -196,9 +197,9 @@ public class AuthorizedObjectMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param fieldHandleBean
@@ -219,9 +220,9 @@ public class AuthorizedObjectMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param fields
@@ -233,6 +234,8 @@ public class AuthorizedObjectMetadata extends AuthorizedMetadata {
      * @see #fields
      */
     public void setFields(@NotEmpty List<AuthorizedFieldMetadata> fields) {
+        Objects.requireNonNull(fields);
+
         this.fields = fields;
     }
 
@@ -241,9 +244,9 @@ public class AuthorizedObjectMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param type
@@ -251,7 +254,9 @@ public class AuthorizedObjectMetadata extends AuthorizedMetadata {
      * @since 2025. 6. 12.
      * @version 0.8.0
      */
-    public void setType(@NotNull Class<?> type) {
+    public void setType(Class<?> type) {
+        Objects.requireNonNull(type);
+
         this.type = type;
     }
 

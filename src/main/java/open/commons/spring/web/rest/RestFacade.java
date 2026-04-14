@@ -93,7 +93,6 @@ import open.commons.core.utils.ThreadUtils;
  * {@link RestTemplate}을 이용하는 유틸리티 클래스.
  * 
  * @since 2019. 10. 24.
- * @version
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public class RestFacade {
@@ -110,8 +109,8 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
      * 2026. 4. 10.     parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
@@ -280,9 +279,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 8. 27.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 8. 27.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param context
@@ -345,9 +344,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 2.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param value
@@ -654,9 +653,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2021. 06. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -705,9 +704,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2023. 03. 06.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -760,9 +759,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 11. 20.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 11. 20.    parkjunhong77@gmail.com     최초 작성
      * 2026. 4. 10.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      *
@@ -817,9 +816,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2021. 06. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -869,9 +868,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2023. 03. 06.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -955,7 +954,6 @@ public class RestFacade {
      * @return
      *
      * @since 2019. 10. 24.
-     * @version
      */
     public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
             HttpEntity<REQ> entity, Class<RES> responseType) {
@@ -983,9 +981,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2021. 06. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1042,9 +1040,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2023. 03. 06.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1104,8 +1102,8 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
      * 2020. 11. 20.    parkjunhong77@gmail.com     최초 작성
      * 2026. 4. 10.     parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
@@ -1163,9 +1161,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2021. 06. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1222,9 +1220,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2023. 03. 06.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1284,9 +1282,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2021. 06. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1334,9 +1332,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2023. 03. 06.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1387,9 +1385,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2021. 06. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2021. 06. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1437,9 +1435,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2023. 03. 06.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1677,7 +1675,7 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 06. 11.        parkjunhong77@gmail.com         최초 작성
+     * 2021. 06. 11.    parkjunhong77@gmail.com         최초 작성
      * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, Class, Function, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
      * </pre>
      *
@@ -1727,7 +1725,7 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com         최초 작성
+     * 2023. 03. 06.    parkjunhong77@gmail.com         최초 작성
      * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, Class, Function, Result, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
      * </pre>
      *
@@ -1780,7 +1778,7 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 06. 11.        parkjunhong77@gmail.com         최초 작성
+     * 2021. 06. 11.    parkjunhong77@gmail.com         최초 작성
      * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, ParameterizedTypeReference, Function, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
      * </pre>
      *
@@ -1831,7 +1829,7 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com         최초 작성
+     * 2023. 03. 06.    parkjunhong77@gmail.com         최초 작성
      * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity, ParameterizedTypeReference, Function, Function, int)} 메소드의 반환데이터에서 {@link Result}를 제거함.
      * </pre>
      *
@@ -1884,7 +1882,7 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 06. 11.        parkjunhong77@gmail.com         최초 작성
+     * 2021. 06. 11.    parkjunhong77@gmail.com         최초 작성
      * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, Class, Function, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
      * </pre>
      *
@@ -1942,7 +1940,7 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com         최초 작성
+     * 2023. 03. 06.    parkjunhong77@gmail.com         최초 작성
      * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, Class, Function, Function, int)} 메소드의 반환데이터에서 {@link Result}를 제거함.
      * </pre>
      *
@@ -2059,7 +2057,7 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com     최초 작성
+     * 2023. 03. 06.    parkjunhong77@gmail.com     최초 작성
      * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, String, String, int, String, String, HttpEntity, ParameterizedTypeReference, Function, Function, int)} 메소드의 반환데이터에서 {@link Result}를 제거함.
      * </pre>
      *
@@ -2119,7 +2117,7 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 06. 11.        parkjunhong77@gmail.com         최초 작성
+     * 2021. 06. 11.    parkjunhong77@gmail.com         최초 작성
      * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, Class, Function, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
      * </pre>
      *
@@ -2164,7 +2162,7 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com         최초 작성
+     * 2023. 03. 06.    parkjunhong77@gmail.com         최초 작성
      * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, Class, Function, Function, int)} 메소드의 반환데이터에서 {@link Result}를 제거함.
      * </pre>
      *
@@ -2212,7 +2210,7 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2021. 06. 11.        parkjunhong77@gmail.com         최초 작성
+     * 2021. 06. 11.    parkjunhong77@gmail.com         최초 작성
      * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, ParameterizedTypeReference, Function, Function)} 메소드의 반환데이터에서 {@link Result}를 제거함.
      * </pre>
      *
@@ -2257,7 +2255,7 @@ public class RestFacade {
      * [개정이력]
      *      날짜      | 작성자   |   내용
      * ------------------------------------------
-     * 2023. 03. 06.        parkjunhong77@gmail.com         최초 작성
+     * 2023. 03. 06.    parkjunhong77@gmail.com         최초 작성
      * 2025. 7. 14.         parkjunhong77@gmail.com     {@link RestFacade2#exchange(RestTemplate, HttpMethod, URI, HttpEntity, ParameterizedTypeReference, Function, Function, int)} 메소드의 반환데이터에서 {@link Result}를 제거함.
      * </pre>
      *
@@ -2300,8 +2298,8 @@ public class RestFacade {
     /**
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
      * 2026. 4. 9.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      */
@@ -2386,8 +2384,8 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
      * 2026. 4. 10.     parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
@@ -2444,9 +2442,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 10. 21.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 10. 21.    parkjunhong77@gmail.com     최초 작성
      * 2025. 7. 2.          parkjunhong77@gmail.com     key=value에 {@link URLEncoder#encode(String)} 적용
      * </pre>
      *
@@ -2486,9 +2484,9 @@ public class RestFacade {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 10. 21.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 10. 21.    parkjunhong77@gmail.com     최초 작성
      * 2025. 7. 2.          parkjunhong77@gmail.com     key=value에서 key 의 <code>null</code> 여부 확인.
      * </pre>
      *

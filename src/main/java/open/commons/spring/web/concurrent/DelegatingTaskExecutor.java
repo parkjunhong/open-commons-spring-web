@@ -28,24 +28,31 @@ package open.commons.spring.web.concurrent;
 
 import java.util.Map;
 import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
-import org.springframework.core.task.AsyncListenableTaskExecutor;
-import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.core.task.AsyncTaskExecutor;
 
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.mdc.MdcWrappedJob;
 
 /**
+ * <pre>
+ * [개정이력]
+ *      날짜       | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 8. 6.      parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 14.     parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5. , ({@code AsyncListenableTaskExecutor, ListenableFuture}) 클래스가 폐기되고 다른 클래스로 통합({@link AsyncTaskExecutor}, {@link CompletableFuture}) 됨
+ * </pre>
  * 
  * @since 2025. 8. 6.
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> implements AsyncListenableTaskExecutor {
+public class DelegatingTaskExecutor<S extends AsyncTaskExecutor> implements AsyncTaskExecutor {
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -59,9 +66,9 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 6.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 6.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param delegate
@@ -88,26 +95,13 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
     }
 
     /**
-     *
-     * @since 2025. 8. 6.
-     * @version 0.8.0
-     *
-     * @see org.springframework.core.task.AsyncTaskExecutor#execute(java.lang.Runnable, long)
-     */
-    @Override
-    @Deprecated
-    public void execute(Runnable task, long startTimeout) {
-        execute(task);
-    }
-
-    /**
      * 현재 시점의 MDC 정보를 복제해서 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 6.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 6.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param symbol
@@ -150,27 +144,31 @@ public class DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor> imple
     }
 
     /**
+     * 
+     * {@inheritDoc}
      *
-     * @since 2025. 8. 6.
-     * @version 0.8.0
+     * @since 2026. 4. 14.
+     * @version 4.0.0
      *
-     * @see org.springframework.core.task.AsyncListenableTaskExecutor#submitListenable(java.util.concurrent.Callable)
+     * @see org.springframework.core.task.AsyncTaskExecutor#submitCompletable(java.util.concurrent.Callable)
      */
     @Override
-    public <T> ListenableFuture<T> submitListenable(Callable<T> task) {
-        return (ListenableFuture<T>) this.delegate.submit(wrap(task));
+    public <T> CompletableFuture<T> submitCompletable(Callable<T> task) {
+        return (CompletableFuture<T>) this.delegate.submit(wrap(task));
     }
 
     /**
+     * 
+     * {@inheritDoc}
      *
-     * @since 2025. 8. 6.
-     * @version 0.8.0
+     * @since 2026. 4. 14.
+     * @version 4.0.0
      *
-     * @see org.springframework.core.task.AsyncListenableTaskExecutor#submitListenable(java.lang.Runnable)
+     * @see org.springframework.core.task.AsyncTaskExecutor#submitCompletable(java.lang.Runnable)
      */
     @Override
-    public ListenableFuture<?> submitListenable(Runnable task) {
-        return (ListenableFuture<?>) this.delegate.submit(wrap(task));
+    public CompletableFuture<Void> submitCompletable(Runnable task) {
+        return (CompletableFuture<Void>) this.delegate.submit(wrap(task));
     }
 
     /**

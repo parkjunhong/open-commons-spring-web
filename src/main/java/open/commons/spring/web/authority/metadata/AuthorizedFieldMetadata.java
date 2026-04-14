@@ -29,10 +29,11 @@ package open.commons.spring.web.authority.metadata;
 import java.lang.reflect.Field;
 import java.util.Objects;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.util.Assert;
 
 import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider;
@@ -64,9 +65,9 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 12.
@@ -103,9 +104,9 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the authorityBean
@@ -127,9 +128,9 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the fieldHandleBean
@@ -149,9 +150,9 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the handleType
@@ -171,9 +172,9 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the name
@@ -207,9 +208,9 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param authorityBean
@@ -230,9 +231,9 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param fieldHandleBean
@@ -253,9 +254,9 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param handleType
@@ -266,7 +267,9 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      *
      * @see #handleType
      */
-    public void setHandleType(@NotNull String handleType) {
+    public void setHandleType(@NotBlank String handleType) {
+        Assert.hasLength(handleType, "타입은 '빈 문자열'일 수 없습니다.");
+
         this.handleType = handleType;
     }
 
@@ -275,9 +278,9 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param name
@@ -288,7 +291,9 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      *
      * @see #name
      */
-    public void setName(@NotEmpty String name) {
+    public void setName(@NotBlank String name) {
+        Assert.hasLength(name, "변수 이름은 '빈 문자열'일 수 없습니다.");
+
         this.name = name;
     }
 

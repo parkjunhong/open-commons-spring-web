@@ -126,9 +126,9 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2021. 9. 9.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2021. 9. 9.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param eventPub
@@ -155,9 +155,9 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2021. 9. 9.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2021. 9. 9.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @throws Exception
@@ -182,9 +182,9 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2021. 9. 9.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2021. 9. 9.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @throws Exception
@@ -209,9 +209,9 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2021. 9. 9.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2021. 9. 9.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2021. 9. 9.
@@ -994,10 +994,10 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * 동일한 이벤트 타입에 대해서 동일한 파라미터로 구독요청이 왔을 경우에 호출.
          * 
          * <pre>
-         * [개정이력]
-         *      날짜        | 작성자    |    내용
-         * ------------------------------------------
-         * 2021. 9. 14.        parkjunhong77@gmail.com            최초 작성
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+         * 2021. 9. 14.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
          * @param eventTypeKey

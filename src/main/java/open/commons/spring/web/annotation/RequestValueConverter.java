@@ -58,7 +58,6 @@ public @interface RequestValueConverter {
      * @return
      *
      * @since 2019. 5. 29.
-     * @version
      */
     boolean hasIgnoreCase() default false;
 

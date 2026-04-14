@@ -41,12 +41,19 @@ import open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider;
 import open.commons.spring.web.servlet.InternalServerException;
 import open.commons.spring.web.utils.BeanUtils;
 
-import com.fasterxml.jackson.databind.introspect.AnnotatedField;
+import tools.jackson.databind.introspect.AnnotatedField;
 
 /**
+ * <pre>
+ * [개정이력]
+ *      날짜       | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 9. 25.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 14.     parkjunhong77@gmail.com     Jackson 3.0 현행화 ( com.fasterxml.jackson.xxx => tools.jackson.databind.xxx )
+ * </pre>
  * 
  * @since 2025. 9. 25.
- * @version 0.8.0
+ * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
 public class AuthorizedFieldDecisionUtil {

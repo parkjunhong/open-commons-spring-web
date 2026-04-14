@@ -32,15 +32,16 @@ import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 
 import open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata;
 import open.commons.spring.web.config.ObjectMapperConfiguration;
 import open.commons.spring.web.jackson.AuthorizedObjectJackson2HttpMessageConverter;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  * 
@@ -48,7 +49,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfigureAfter(AuthorizedResourcesConfiguration.class)
+@AutoConfiguration(after = AuthorizedResourcesConfiguration.class)
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedObjectMessageConverterConfiguration {
 
     private Logger logger = LoggerFactory.getLogger(AuthorizedObjectMessageConverterConfiguration.class);
@@ -58,9 +60,9 @@ public class AuthorizedObjectMessageConverterConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 10.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 10.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 10.
@@ -73,6 +75,7 @@ public class AuthorizedObjectMessageConverterConfiguration {
     @ConditionalOnBean({ ObjectMapper.class, IAuthorizedResourcesMetadata.class })
     AuthorizedObjectJackson2HttpMessageConverter authorizedObjectMessageConverter(@NotNull Map<String, ObjectMapper> allObjectMappers,
             @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadataProvider) {
+        
         ObjectMapper defaultObjectMapper = allObjectMappers.get(ObjectMapperConfiguration.BEAN_QUALIFIER_DEFAULT_OBJECT_MAPPER);
         AuthorizedObjectJackson2HttpMessageConverter converter = new AuthorizedObjectJackson2HttpMessageConverter(defaultObjectMapper, allObjectMappers,
                 authorizedResourcesMetadataProvider);

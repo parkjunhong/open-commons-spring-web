@@ -52,9 +52,9 @@ public class BadRequestException extends RuntimeException {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2020. 7. 30.
@@ -67,9 +67,9 @@ public class BadRequestException extends RuntimeException {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param arg0
@@ -84,9 +84,9 @@ public class BadRequestException extends RuntimeException {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param message
@@ -102,9 +102,9 @@ public class BadRequestException extends RuntimeException {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param message
@@ -122,9 +122,9 @@ public class BadRequestException extends RuntimeException {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2020. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2020. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param cause

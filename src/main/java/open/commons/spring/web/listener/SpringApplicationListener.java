@@ -62,13 +62,12 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public SpringApplicationListener() {
     }
@@ -78,15 +77,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onApplicationContextInitializedEvent(ApplicationContextInitializedEvent event) {
         logger.trace("ApplicationContextInitialized - {}", event);
@@ -98,15 +96,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onApplicationEnvironmentPreparedEvent(ApplicationEnvironmentPreparedEvent event) {
         logger.trace("ApplicationEnvironmentPrepared - {}", event);
@@ -154,15 +151,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onApplicationFailedEvent(ApplicationFailedEvent event) {
         Throwable t = event.getException();
@@ -176,15 +172,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onApplicationPreparedEvent(ApplicationPreparedEvent event) {
         logger.trace("ApplicationPrepared - {}", event);
@@ -196,15 +191,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onApplicationReadyEvent(ApplicationReadyEvent event) {
         logger.trace("ApplicationReady - {}", event);
@@ -216,15 +210,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onApplicationStartedEvent(ApplicationStartedEvent event) {
         logger.trace("ApplicationStarted - {}", event);
@@ -236,15 +229,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onApplicationStartingEvent(ApplicationStartingEvent event) {
         logger.trace("ApplicationStarting - {}", event);
@@ -256,15 +248,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onContextClosedEvent(ContextClosedEvent event) {
         logger.trace("ContextClosed - {}", event);
@@ -276,15 +267,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onContextRefreshedEvent(ContextRefreshedEvent event) {
         logger.trace("ContextRefreshed - {}", event);
@@ -296,15 +286,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onContextStartedEvent(ContextStartedEvent event) {
         logger.trace("ContextStarted - {}", event);
@@ -316,15 +305,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onContextStoppedEvent(ContextStoppedEvent event) {
         logger.trace("ContextStopped - {}", event);
@@ -336,15 +324,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onOtherApplicationEvent(ApplicationEvent event) {
         logger.trace("ApplicationEvent - {}", event);
@@ -356,15 +343,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onServletRequestHandledEvent(ServletRequestHandledEvent event) {
         logger.trace("ServletRequestHandled - {}", event);
@@ -376,15 +362,14 @@ public class SpringApplicationListener implements ApplicationListener<Applicatio
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 6. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 6. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param event
      *
      * @since 2019. 6. 11.
-     * @version
      */
     public void onServletWebServerInitializedEvent(ServletWebServerInitializedEvent event) {
         logger.trace("ServletWebServerInitialized - {}", event);

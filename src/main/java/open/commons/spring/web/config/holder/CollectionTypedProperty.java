@@ -46,9 +46,9 @@ public class CollectionTypedProperty<C extends Collection<T>, T> {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 8.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 8. 8.
@@ -63,9 +63,9 @@ public class CollectionTypedProperty<C extends Collection<T>, T> {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 8.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the properies
@@ -85,9 +85,9 @@ public class CollectionTypedProperty<C extends Collection<T>, T> {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 8.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param properties

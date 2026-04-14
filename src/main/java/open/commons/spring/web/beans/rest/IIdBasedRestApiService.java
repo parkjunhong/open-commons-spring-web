@@ -57,9 +57,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -83,9 +83,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -112,9 +112,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -144,9 +144,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -173,9 +173,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -205,9 +205,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -240,9 +240,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -272,9 +272,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -307,9 +307,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -345,9 +345,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -379,9 +379,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -416,9 +416,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -456,9 +456,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -488,9 +488,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -523,9 +523,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -561,9 +561,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -590,9 +590,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -622,9 +622,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -657,9 +657,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -688,9 +688,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -722,9 +722,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -759,9 +759,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -788,9 +788,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -820,9 +820,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -855,9 +855,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -883,9 +883,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -914,9 +914,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -948,9 +948,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -979,9 +979,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1013,9 +1013,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1050,9 +1050,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1084,9 +1084,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1121,9 +1121,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1161,9 +1161,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1197,9 +1197,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1236,9 +1236,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1278,9 +1278,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1312,9 +1312,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1349,9 +1349,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1389,9 +1389,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1420,9 +1420,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1454,9 +1454,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1491,9 +1491,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1524,9 +1524,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1560,9 +1560,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1599,9 +1599,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1630,9 +1630,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1664,9 +1664,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1701,9 +1701,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1735,9 +1735,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1772,9 +1772,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1812,9 +1812,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1849,9 +1849,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1889,9 +1889,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1932,9 +1932,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1972,9 +1972,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2015,9 +2015,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2061,9 +2061,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2103,9 +2103,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2148,9 +2148,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2196,9 +2196,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2236,9 +2236,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2279,9 +2279,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2325,9 +2325,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2362,9 +2362,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2402,9 +2402,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2445,9 +2445,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2484,9 +2484,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2526,9 +2526,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2571,9 +2571,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2608,9 +2608,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2648,9 +2648,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2691,9 +2691,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2722,9 +2722,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2756,9 +2756,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2793,9 +2793,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2827,9 +2827,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2864,9 +2864,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2904,9 +2904,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2941,9 +2941,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2981,9 +2981,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3024,9 +3024,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3063,9 +3063,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3105,9 +3105,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3149,9 +3149,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3185,9 +3185,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3224,9 +3224,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3266,9 +3266,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3302,9 +3302,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3341,9 +3341,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3383,9 +3383,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3421,9 +3421,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3462,9 +3462,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3506,9 +3506,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3540,9 +3540,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3577,9 +3577,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3617,9 +3617,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3655,9 +3655,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3696,9 +3696,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3740,9 +3740,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3781,9 +3781,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3825,9 +3825,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3872,9 +3872,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3916,9 +3916,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3963,9 +3963,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4013,9 +4013,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4059,9 +4059,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4108,9 +4108,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4159,9 +4159,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4202,9 +4202,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4248,9 +4248,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4297,9 +4297,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4340,9 +4340,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4386,9 +4386,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4435,9 +4435,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4480,9 +4480,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4528,9 +4528,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4579,9 +4579,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4620,9 +4620,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4664,9 +4664,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4711,9 +4711,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4743,9 +4743,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4778,9 +4778,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4816,9 +4816,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4851,9 +4851,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4889,9 +4889,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4930,9 +4930,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -4968,9 +4968,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5009,9 +5009,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5053,9 +5053,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5093,9 +5093,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5136,9 +5136,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5182,9 +5182,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5220,9 +5220,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5261,9 +5261,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5305,9 +5305,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5340,9 +5340,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5378,9 +5378,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5419,9 +5419,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5456,9 +5456,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5496,9 +5496,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5539,9 +5539,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5574,9 +5574,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5612,9 +5612,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5653,9 +5653,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5682,9 +5682,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5714,9 +5714,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5749,9 +5749,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5781,9 +5781,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5816,9 +5816,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5854,9 +5854,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5889,9 +5889,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5927,9 +5927,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -5968,9 +5968,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6005,9 +6005,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6045,9 +6045,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6089,9 +6089,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6123,9 +6123,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6160,9 +6160,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6200,9 +6200,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6237,9 +6237,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6274,9 +6274,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6314,9 +6314,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6350,9 +6350,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6389,9 +6389,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6431,9 +6431,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6463,9 +6463,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6498,9 +6498,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6536,9 +6536,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6571,9 +6571,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6609,9 +6609,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6650,9 +6650,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6688,9 +6688,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6729,9 +6729,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6773,9 +6773,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6814,9 +6814,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6858,9 +6858,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6905,9 +6905,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6948,9 +6948,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -6994,9 +6994,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7044,9 +7044,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7084,9 +7084,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7127,9 +7127,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7173,9 +7173,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7213,9 +7213,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7256,9 +7256,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7302,9 +7302,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7344,9 +7344,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7389,9 +7389,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7437,9 +7437,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7475,9 +7475,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7516,9 +7516,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7560,9 +7560,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7586,9 +7586,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7615,9 +7615,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7644,9 +7644,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7676,9 +7676,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7708,9 +7708,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7743,9 +7743,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7777,9 +7777,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7814,9 +7814,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7846,9 +7846,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7881,9 +7881,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7910,9 +7910,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7942,9 +7942,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -7973,9 +7973,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8007,9 +8007,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8036,9 +8036,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8068,9 +8068,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8096,9 +8096,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8127,9 +8127,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8158,9 +8158,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8192,9 +8192,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8226,9 +8226,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8263,9 +8263,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8299,9 +8299,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8338,9 +8338,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8372,9 +8372,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8409,9 +8409,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8440,9 +8440,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8474,9 +8474,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8507,9 +8507,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8543,9 +8543,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8574,9 +8574,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8608,9 +8608,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8642,9 +8642,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8679,9 +8679,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8716,9 +8716,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8756,9 +8756,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8796,9 +8796,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8839,9 +8839,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8881,9 +8881,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8926,9 +8926,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -8966,9 +8966,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9009,9 +9009,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9046,9 +9046,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9086,9 +9086,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9125,9 +9125,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9167,9 +9167,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9204,9 +9204,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9244,9 +9244,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9275,9 +9275,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9309,9 +9309,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9343,9 +9343,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9380,9 +9380,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9417,9 +9417,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9457,9 +9457,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9496,9 +9496,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9538,9 +9538,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9574,9 +9574,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9613,9 +9613,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9649,9 +9649,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9688,9 +9688,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9726,9 +9726,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9767,9 +9767,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9801,9 +9801,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9838,9 +9838,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9876,9 +9876,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9917,9 +9917,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -9958,9 +9958,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10002,9 +10002,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10046,9 +10046,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10093,9 +10093,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10139,9 +10139,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10188,9 +10188,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10231,9 +10231,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10277,9 +10277,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10320,9 +10320,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10366,9 +10366,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10411,9 +10411,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10459,9 +10459,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10500,9 +10500,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 8..      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8..      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10544,9 +10544,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10576,9 +10576,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10611,9 +10611,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10646,9 +10646,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10684,9 +10684,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10722,9 +10722,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10763,9 +10763,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10803,9 +10803,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10846,9 +10846,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10884,9 +10884,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10925,9 +10925,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10960,9 +10960,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -10998,9 +10998,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11035,9 +11035,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11075,9 +11075,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11110,9 +11110,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11148,9 +11148,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11177,9 +11177,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11209,9 +11209,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11241,9 +11241,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11276,9 +11276,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11311,9 +11311,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11349,9 +11349,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11386,9 +11386,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11428,9 +11428,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11462,9 +11462,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11499,9 +11499,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11533,9 +11533,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11570,9 +11570,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11606,9 +11606,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11645,9 +11645,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11677,9 +11677,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11712,9 +11712,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11747,9 +11747,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11785,9 +11785,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11823,9 +11823,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11864,9 +11864,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11905,9 +11905,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11949,9 +11949,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -11992,9 +11992,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -12040,9 +12040,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -12080,9 +12080,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -12123,9 +12123,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -12163,9 +12163,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -12206,9 +12206,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -12248,9 +12248,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -12293,9 +12293,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -12331,9 +12331,9 @@ public interface IIdBasedRestApiService {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>

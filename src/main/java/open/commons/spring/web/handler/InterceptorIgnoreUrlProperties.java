@@ -118,9 +118,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 4.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param excludePathPattern
@@ -144,9 +144,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 4.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param excludePathPatterns
@@ -170,9 +170,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 4.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param includePathPattern
@@ -196,9 +196,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 4.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param includePathPatterns
@@ -240,9 +240,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the excludePathPatterns
@@ -261,9 +261,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the fqcn
@@ -282,9 +282,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the includePathPatterns
@@ -303,9 +303,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 7.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 7.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the scheme
@@ -325,9 +325,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 7.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 7.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -344,9 +344,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param excludePathPatterns
@@ -371,9 +371,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param includePathPatterns
@@ -398,9 +398,9 @@ public class InterceptorIgnoreUrlProperties {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param fqcn

@@ -88,9 +88,9 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 21.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 21.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 10. 21.
@@ -121,7 +121,7 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
         for (Map.Entry<String, GroupedOpenApiProperties> entry : groups.entrySet()) {
             // API 식별정보
             final String key = entry.getKey();
-            final GroupedOpenApiProperties props = Objects.requireNonNull(entry.getValue(), "GroupedOpenApiProperties must not be null");
+            final GroupedOpenApiProperties props = entry.getValue();
             final String group = StringUtils.isNullOrEmptyString(props.getGroup()) ? key : props.getGroup().trim();
 
             // 내부 REST API 제공 검증
@@ -151,9 +151,9 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 21.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 21.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param env
@@ -176,9 +176,9 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 21.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 21.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -197,9 +197,9 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 21.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 21.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param env

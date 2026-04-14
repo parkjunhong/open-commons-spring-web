@@ -73,9 +73,9 @@ public class ValidationUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 10. 15.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 10. 15.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <T>
@@ -86,7 +86,6 @@ public class ValidationUtils {
      * @return
      *
      * @since 2019. 10. 15.
-     * @version
      */
     public static <T> Set<ConstraintViolation<T>> validate(T object, boolean nested, Class<?>... groups) {
         return nested
@@ -111,7 +110,6 @@ public class ValidationUtils {
      * @return
      *
      * @since 2019. 6. 18.
-     * @version
      * 
      * @see Validator#validate(Object, Class...)
      */
@@ -125,9 +123,9 @@ public class ValidationUtils {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 10. 15.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 10. 15.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <T>
@@ -138,7 +136,6 @@ public class ValidationUtils {
      * @return
      *
      * @since 2019. 10. 15.
-     * @version
      */
     public static <T> Collection<String> validateAndErrorMsg(T object, boolean nested, Class<?>... groups) {
         return makeErrorMessage(validate(object, nested, groups));
@@ -159,7 +156,6 @@ public class ValidationUtils {
      * @return 검증통과 실패 원인. 검증에 통과한 경우 null 반환.
      *
      * @since 2019. 6. 18.
-     * @version
      * @see Validator#validate(Object, Class...)
      */
     public static <T> Collection<String> validateAndErrorMsg(T object, Class<?>... groups) {
@@ -182,7 +178,6 @@ public class ValidationUtils {
      * @return 검증통과 실패 원인. 검증에 통과한 경우 null 반환.
      *
      * @since 2019. 6. 18.
-     * @version
      * @see Validator#validateProperty(Object, String, Class...)
      */
     public static <T> Set<ConstraintViolation<T>> validateProperty(T object, String propertyName, Class<?>... groups) {
@@ -205,7 +200,6 @@ public class ValidationUtils {
      * @return 검증통과 실패 원인. 검증에 통과한 경우 null 반환.
      * 
      * @since 2019. 6. 18.
-     * @version
      * @see Validator#validateProperty(Object, String, Class...)
      */
     public static <T> Collection<String> validatePropertyAndErrorMsg(T object, String propertyName, Class<?>... groups) {
@@ -230,7 +224,6 @@ public class ValidationUtils {
      * @return
      *
      * @since 2019. 6. 18.
-     * @version
      * @see Validator#validateValue(Class, String, Object, Class...)
      */
     public static <T> Set<ConstraintViolation<T>> validateValue(Class<T> beanType, String propertyName, Object value, Class<?>... groups) {
@@ -255,7 +248,6 @@ public class ValidationUtils {
      * @return 검증통과 실패 원인. 검증에 통과한 경우 null 반환.
      *
      * @since 2019. 6. 18.
-     * @version
      * @see Validator#validateValue(Class, String, Object, Class...)
      */
     public static <T> Collection<String> validateValueAndErrorMsg(Class<T> beanType, String propertyName, Object value, Class<?>... groups) {

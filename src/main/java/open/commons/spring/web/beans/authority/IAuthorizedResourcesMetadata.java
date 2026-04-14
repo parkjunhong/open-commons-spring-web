@@ -71,9 +71,9 @@ public interface IAuthorizedResourcesMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
@@ -92,9 +92,9 @@ public interface IAuthorizedResourcesMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
@@ -113,9 +113,9 @@ public interface IAuthorizedResourcesMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
@@ -152,9 +152,9 @@ public interface IAuthorizedResourcesMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
@@ -173,9 +173,9 @@ public interface IAuthorizedResourcesMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
@@ -195,9 +195,9 @@ public interface IAuthorizedResourcesMetadata {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz

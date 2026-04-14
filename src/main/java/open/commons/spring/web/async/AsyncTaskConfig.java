@@ -28,6 +28,8 @@ package open.commons.spring.web.async;
 
 import java.util.concurrent.Executor;
 
+import jakarta.validation.constraints.NotNull;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -58,9 +60,9 @@ public class AsyncTaskConfig implements AsyncConfigurer {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 30.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 30.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -68,7 +70,7 @@ public class AsyncTaskConfig implements AsyncConfigurer {
      * @since 2025. 7. 30.
      * @version 0.8.0
      */
-    public AsyncTaskConfig(@Qualifier(ResourceConfiguration.CONFIGURATION_THREAD_POOL_TASK_EXECUTOR_CONFIG_ON_ASYNC) ThreadPoolTaskExecutorConfig config) {
+    public AsyncTaskConfig(@NotNull @Qualifier(ResourceConfiguration.CONFIGURATION_THREAD_POOL_TASK_EXECUTOR_CONFIG_ON_ASYNC) ThreadPoolTaskExecutorConfig config) {
         this.config = config;
     }
 

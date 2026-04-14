@@ -31,7 +31,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,7 +38,9 @@ import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -74,6 +75,8 @@ import open.commons.spring.web.utils.PathUtils;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
+@AutoConfiguration
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class GlobalServletConfiguration {
 
     /** {@link HandlerInterceptor}에서 URL 기반으로 처리 대상에서 제외하는 URL 패턴 설정 */
@@ -108,9 +111,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 5.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 5.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param context
@@ -150,9 +153,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param filter
@@ -175,9 +178,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 4.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 4.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param filter
@@ -200,9 +203,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 7.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 7.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param headers
@@ -303,9 +306,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 18.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 18.    parkjunhong77@gmail.com     최초 작성
      * 2025. 8. 7.      parkjunhong77@gmail.com         기본적으로 지원하는 헤더를 내부 코드로 강제화 시킴.
      *                                  - real-ip: X-Real-IP
      *                                  - client-port: X-Client-Port
@@ -351,9 +354,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 7.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 7.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -404,9 +407,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 8.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 8.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -442,9 +445,9 @@ public class GlobalServletConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 20.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 20.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return

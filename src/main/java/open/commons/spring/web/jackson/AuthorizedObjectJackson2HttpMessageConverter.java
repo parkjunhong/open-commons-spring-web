@@ -138,9 +138,9 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 26.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 26.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param objectMapper
@@ -168,9 +168,9 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 13.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
@@ -197,9 +197,9 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 27.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 27.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -312,9 +312,9 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 27.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 27.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param object
@@ -344,9 +344,9 @@ public class AuthorizedObjectJackson2HttpMessageConverter extends MappingJackson
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 27.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 27.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param targetType

@@ -36,6 +36,8 @@ import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.util.LinkedMultiValueMap;
@@ -58,6 +60,8 @@ import open.commons.spring.web.exception.BeanMergeFailedException;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
+@AutoConfiguration
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedResourceBuiltinHandlerConfiguration {
 
     public static final String BEAN_QUALIFIER_AUTHORIZED_RESOURCE_HANDLERS = "open.commons.spring.web.autoconfigure.configuration.AuthorizedResourceBuiltinHandlerConfiguration#AUTHORIZED_RESOURCE_HANDLERS";
@@ -69,9 +73,9 @@ public class AuthorizedResourceBuiltinHandlerConfiguration {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 12.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 6. 12.

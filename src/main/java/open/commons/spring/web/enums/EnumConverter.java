@@ -67,7 +67,6 @@ public class EnumConverter<E extends Enum> implements Converter<String, E> {
      * </pre>
      *
      * @since 2019. 6. 3.
-     * @version
      */
     public EnumConverter(Class<E> enumType) {
         this.enumType = enumType;
@@ -140,7 +139,6 @@ public class EnumConverter<E extends Enum> implements Converter<String, E> {
      * @return
      *
      * @since 2019. 6. 3.
-     * @version
      */
     public String getType() {
         return this.enumType != null ? this.enumType.getName() : null;

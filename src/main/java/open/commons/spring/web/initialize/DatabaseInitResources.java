@@ -71,9 +71,9 @@ public class DatabaseInitResources {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 4. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 4. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 4. 3.
@@ -87,9 +87,9 @@ public class DatabaseInitResources {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 4. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 4. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param sqlList
@@ -126,9 +126,9 @@ public class DatabaseInitResources {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 4. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 4. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -145,9 +145,9 @@ public class DatabaseInitResources {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 4. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 4. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -164,9 +164,9 @@ public class DatabaseInitResources {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 4. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 4. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param data
@@ -189,9 +189,9 @@ public class DatabaseInitResources {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 4. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 4. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param schema

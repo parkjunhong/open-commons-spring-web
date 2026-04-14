@@ -1,1 +1,6 @@
-open.commons.spring.web.autoconfigure.OpenCommonsSpringWebAutoConfiguration
+open.commons.spring.web.autoconfigure.configuration.AuthorizedObjectMessageConfigureConfiguration
+open.commons.spring.web.autoconfigure.configuration.AuthorizedObjectMessageConverterConfiguration
+open.commons.spring.web.autoconfigure.configuration.AuthorizedResourceBuiltinHandlerConfiguration
+open.commons.spring.web.autoconfigure.configuration.AuthorizedResourcesConfiguration
+open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration
+open.commons.spring.web.autoconfigure.configuration.LogFeatureConfiguration

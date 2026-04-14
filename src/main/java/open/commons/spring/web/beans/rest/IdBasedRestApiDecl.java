@@ -114,9 +114,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 7. 3.
@@ -130,9 +130,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the headers
@@ -154,9 +154,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the id
@@ -176,9 +176,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the method
@@ -198,9 +198,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the path
@@ -220,9 +220,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the queries
@@ -242,9 +242,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the title
@@ -263,9 +263,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param headers
@@ -295,9 +295,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param id
@@ -317,9 +317,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param method
@@ -339,9 +339,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param path
@@ -361,9 +361,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param queries
@@ -390,9 +390,9 @@ public class IdBasedRestApiDecl {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param title

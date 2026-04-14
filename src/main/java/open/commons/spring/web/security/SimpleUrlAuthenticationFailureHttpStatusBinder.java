@@ -64,9 +64,9 @@ public class SimpleUrlAuthenticationFailureHttpStatusBinder extends SimpleUrlAut
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 10. 24.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 10. 24.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param defaultFailureUrl
@@ -89,7 +89,7 @@ public class SimpleUrlAuthenticationFailureHttpStatusBinder extends SimpleUrlAut
     /**
      * <pre>
      * [개정이력]
-     * 날짜            | 작성자                   |   내용
+     *     날짜        | 작성자                   |   내용
      * -----------------------------------------------------
      * 2025. 10. 24     parkjunohng77@gmail.com     최초 작성
      * 2026. 4. 9.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5

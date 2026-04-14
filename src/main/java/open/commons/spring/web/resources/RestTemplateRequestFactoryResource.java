@@ -69,7 +69,6 @@ public class RestTemplateRequestFactoryResource {
      * </pre>
      *
      * @since 2019. 6. 27.
-     * @version
      */
     public RestTemplateRequestFactoryResource() {
     }
@@ -88,7 +87,6 @@ public class RestTemplateRequestFactoryResource {
      * @return the connectionRequestTimeout
      *
      * @since 2019. 6. 27.
-     * @version
      * 
      * @see #connectionRequestTimeout
      */
@@ -110,7 +108,6 @@ public class RestTemplateRequestFactoryResource {
      * @return the readTimeout
      *
      * @since 2019. 6. 27.
-     * @version
      * 
      * @see #readTimeout
      */
@@ -123,9 +120,9 @@ public class RestTemplateRequestFactoryResource {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the initialized
@@ -154,7 +151,6 @@ public class RestTemplateRequestFactoryResource {
      *            the connectionRequestTimeout to set
      *
      * @since 2019. 6. 27.
-     * @version
      * 
      * @see #connectionRequestTimeout
      * @see HttpComponentsClientHttpRequestFactory#setConnectionRequestTimeout(int)
@@ -179,7 +175,6 @@ public class RestTemplateRequestFactoryResource {
      *            the readTimeout to set
      *
      * @since 2019. 6. 27.
-     * @version
      * 
      * @see #readTimeout
      * @see HttpComponentsClientHttpRequestFactory#setReadTimeout(int)

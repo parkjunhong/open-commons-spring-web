@@ -68,7 +68,7 @@ import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.core.utils.MapUtils;
 import open.commons.core.utils.StringUtils;
-import open.commons.spring.web.rest.RestFacade2;
+import open.commons.spring.web.rest.RestFacade;
 import open.commons.spring.web.rest.service.TemplateUriEncoder.Encoding;
 import open.commons.spring.web.rest.service.TemplateUriEncoder.UriComponent;
 import open.commons.spring.web.servlet.InternalServerException;
@@ -79,6 +79,14 @@ import open.commons.spring.web.utils.WebUtils.TemplateUrlSplit;
 
 /**
  * {@link RestTemplate}를 이용하여 외부 서비스와 연동하는 기능을 제공합니다.
+ * 
+ * <pre>
+ * [개정이력]
+ * 날짜            | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 14.     parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5.
+ * </pre>
  * 
  * @since 2025. 7. 2.
  * @version 0.8.0
@@ -97,9 +105,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 7. 2.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 7. 2.
@@ -117,9 +125,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 26.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 26.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2025. 8. 25.
@@ -136,9 +144,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param fqUrl
@@ -185,9 +193,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 26.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 26.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param path
@@ -211,9 +219,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param scheme
@@ -241,9 +249,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param baseHttpUrl
@@ -297,9 +305,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -339,7 +347,7 @@ public abstract class AbstractRestApiClient {
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return RestFacade2.exchange(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, onError, retryCount);
+        return RestFacade.exchange(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, onError, retryCount);
     }
 
     /**
@@ -347,9 +355,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -394,9 +402,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -438,9 +446,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -487,7 +495,7 @@ public abstract class AbstractRestApiClient {
             , Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return RestFacade2.exchange(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, onError, retryCount);
+        return RestFacade.exchange(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, onError, retryCount);
     }
 
     /**
@@ -495,9 +503,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -547,9 +555,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -602,9 +610,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -655,9 +663,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -705,9 +713,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -753,9 +761,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -812,9 +820,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -868,9 +876,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -922,9 +930,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -966,7 +974,7 @@ public abstract class AbstractRestApiClient {
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return RestFacade2.exchange(restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, onError, retryCount);
+        return RestFacade.exchange(restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, onError, retryCount);
     }
 
     /**
@@ -975,9 +983,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1025,7 +1033,7 @@ public abstract class AbstractRestApiClient {
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return RestFacade2.exchange(restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, onError, retryCount);
+        return RestFacade.exchange(restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, onError, retryCount);
     }
 
     /**
@@ -1034,9 +1042,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1089,9 +1097,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1141,9 +1149,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1191,9 +1199,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1252,9 +1260,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1310,9 +1318,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 3.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 3.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1366,9 +1374,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1417,9 +1425,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1465,9 +1473,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1511,9 +1519,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1568,9 +1576,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1622,9 +1630,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1674,9 +1682,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1725,9 +1733,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1782,9 +1790,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1835,9 +1843,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1885,9 +1893,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1932,9 +1940,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -1991,9 +1999,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2047,9 +2055,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2099,9 +2107,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2138,7 +2146,7 @@ public abstract class AbstractRestApiClient {
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
-        return RestFacade2.exchangeAsRaw(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, retryCount);
+        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, retryCount);
     }
 
     /**
@@ -2146,9 +2154,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2190,9 +2198,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2236,7 +2244,7 @@ public abstract class AbstractRestApiClient {
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
-        return RestFacade2.exchangeAsRaw(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, retryCount);
+        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, retryCount);
     }
 
     /**
@@ -2244,9 +2252,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2296,9 +2304,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2346,9 +2354,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2394,9 +2402,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2450,9 +2458,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2504,9 +2512,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2545,7 +2553,7 @@ public abstract class AbstractRestApiClient {
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
-        return RestFacade2.exchangeAsRaw(this.restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, retryCount);
+        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, retryCount);
     }
 
     /**
@@ -2554,9 +2562,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2601,7 +2609,7 @@ public abstract class AbstractRestApiClient {
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
-        return RestFacade2.exchangeAsRaw(this.restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, retryCount);
+        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, retryCount);
     }
 
     /**
@@ -2610,9 +2618,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2662,9 +2670,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2711,9 +2719,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2769,9 +2777,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2824,9 +2832,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2872,9 +2880,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2917,9 +2925,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -2971,9 +2979,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3022,9 +3030,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3070,9 +3078,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3124,9 +3132,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3174,9 +3182,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3221,9 +3229,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3277,9 +3285,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <REQ>
@@ -3336,9 +3344,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 27.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 27.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -3360,9 +3368,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -3378,9 +3386,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 1.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 1.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -3407,9 +3415,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 27.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 27.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -3432,9 +3440,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 27.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 27.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @return
@@ -3451,9 +3459,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 27.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 27.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param restTemplate
@@ -3473,9 +3481,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param data
@@ -3493,9 +3501,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param data
@@ -3513,9 +3521,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param data
@@ -3544,9 +3552,32 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2026. 4. 14.     parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     * @param requestBody
+     * @param headers
+     * @return
+     *
+     * @since 2026. 4. 14.
+     * @version 4.0.0
+     */
+    protected static final <REQ> HttpEntity<REQ> createHttpEntity(REQ requestBody, HttpHeaders headers) {
+        return new HttpEntity<REQ>(requestBody, headers);
+    }
+
+    /**
+     * Http 요청 데이터를 생성합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 14.     parkjunhong77@gmail.com     {@link HttpHeaders}::7.0.5 상속관계 변경({@link MultiValueMap<K,V>}을 상속받지 않음)에 따른 수정
      * </pre>
      * 
      * @param requestBody
@@ -3557,7 +3588,7 @@ public abstract class AbstractRestApiClient {
      * @since 2025. 7. 2.
      */
     protected static final <REQ> HttpEntity<REQ> createHttpEntity(REQ requestBody, MultiValueMap<String, String> headers) {
-        return new HttpEntity<REQ>(requestBody, headers);
+        return createHttpEntity(requestBody, new HttpHeaders(headers));
     }
 
     /**
@@ -3565,9 +3596,10 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 14.     parkjunhong77@gmail.com     {@link HttpHeaders}::7.0.5 상속관계 변경({@link MultiValueMap<K,V>}을 상속받지 않음)에 따른 수정
      * </pre>
      *
      * @param <REQ>
@@ -3578,7 +3610,7 @@ public abstract class AbstractRestApiClient {
      * @since 2025. 7. 2.
      */
     protected static final <REQ> HttpEntity<REQ> createHttpEntity(REQ requestBody, String... headers) {
-        return new HttpEntity<REQ>(requestBody, toMultiValueMap(headers));
+        return new HttpEntity<REQ>(requestBody, new HttpHeaders(toMultiValueMap(headers)));
     }
 
     /**
@@ -3586,9 +3618,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <P>
@@ -3608,9 +3640,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param <P>
@@ -3631,9 +3663,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param headerValues
@@ -3650,9 +3682,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param data
@@ -3669,9 +3701,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param headerValues
@@ -3689,9 +3721,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param data
@@ -3715,9 +3747,9 @@ public abstract class AbstractRestApiClient {
      * 
      * <pre>
      * [개정이력]
-     *      날짜       | 작성자                           |  내용
-     * ------------------------------------------------------------------------
-     * 2025. 7. 2.      parkjunhong77@gmail.com(jhpark@ymtech.co.kr)            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 2.      parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param data

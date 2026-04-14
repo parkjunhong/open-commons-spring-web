@@ -26,8 +26,6 @@
 
 package open.commons.spring.web.jackson.serialization;
 
-import java.io.IOException;
-
 import org.springframework.context.ApplicationContext;
 
 import open.commons.spring.web.authority.AuthorizedField;
@@ -36,18 +34,27 @@ import open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata;
 import open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider;
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.BeanProperty;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.introspect.AnnotatedField;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.introspect.AnnotatedField;
 
 /**
  * {@link SecureField}가 적용된 Field를 JSON 문자열로 변한해 주는 클래스.
  * 
+ * 
+ * <pre>
+ * [개정이력]
+ *      날짜       | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 5. 25.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 14.     parkjunhong77@gmail.com     Jackson 3.0 현행화 ( com.fasterxml.jackson.xxx => tools.jackson.databind.xxx )
+ * </pre>
+ * 
+ * 
  * @since 2025. 5. 23.
- * @version 0.8.0
+ * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
 public class AuthorizedFieldSerializer extends AbstractWrappingSerializer {
@@ -57,9 +64,9 @@ public class AuthorizedFieldSerializer extends AbstractWrappingSerializer {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 5. 23.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 5. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @param context
@@ -82,42 +89,44 @@ public class AuthorizedFieldSerializer extends AbstractWrappingSerializer {
     }
 
     /**
+     * 
+     * {@inheritDoc}
      *
-     * @since 2025. 9. 25.
-     * @version 0.8.0
+     * @since 2026. 4. 14.
+     * @version 4.0.0
      *
-     * @see com.fasterxml.jackson.databind.ser.ContextualSerializer#createContextual(com.fasterxml.jackson.databind.SerializerProvider,
-     *      com.fasterxml.jackson.databind.BeanProperty)
-     */
-    // @Override
-    public JsonSerializer<?> createContextual(SerializerProvider prov, BeanProperty property) throws JsonMappingException {
-        return this;
-    }
-
-    /**
-     *
-     * @since 2025. 5. 23.
-     * @version 0.8.0
-     *
-     * @see com.fasterxml.jackson.databind.JsonSerializer#serialize(java.lang.Object,
-     *      com.fasterxml.jackson.core.JsonGenerator, com.fasterxml.jackson.databind.SerializerProvider)
+     * @see tools.jackson.databind.ValueSerializer#serialize(java.lang.Object, tools.jackson.core.JsonGenerator,
+     *      tools.jackson.databind.SerializationContext)
      */
     @Override
-    public void serialize(Object rawValue, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+    public void serialize(Object rawValue, JsonGenerator gen, SerializationContext context) throws JacksonException {
 
+        // #1. Null 처리 (기존 로직 유지 - Jackson 3.0에서도 가장 깔끔한 방식입니다)
         if (rawValue == null) {
             gen.writeNull();
             return;
         }
 
-        // 단순타입이 아니면 컨테이너/POJO → 위임 (컨테이너는 위 래퍼가 처리)
+        // #2. 단순타입이 아니면 컨테이너/POJO → 명시적 위임
         if (!isSimpleType(rawValue.getClass())) {
-            serializers.defaultSerializeValue(rawValue, gen);
+            // [PATCH] defaultSerializeValue 대체: 실제 타입에 맞는 직렬화기를 찾아 위임
+            ValueSerializer<Object> serializer = context.findValueSerializer(rawValue.getClass());
+            serializer.serialize(rawValue, gen, context);
             return;
         }
 
+        // #3. 보안/권한 처리 로직 적용 (난독화, 암복호화 등)
         Object value = handleValue(rawValue, decide());
 
-        serializers.defaultSerializeValue(value, gen);
+        // #4. 조작된 결과값에 대한 Null 방어 (handleValue의 결과가 null일 수 있으므로 안전장치 추가)
+        if (value == null) {
+            gen.writeNull();
+            return;
+        }
+
+        // #5. 최종 처리된 값에 대한 명시적 위임
+        // [PATCH] defaultSerializeValue 대체
+        ValueSerializer<Object> finalSerializer = context.findValueSerializer(value.getClass());
+        finalSerializer.serialize(value, gen, context);
     }
 }

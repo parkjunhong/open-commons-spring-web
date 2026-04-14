@@ -70,13 +70,12 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @since 2019. 7. 17.
-     * @version
      */
     public ThreadPoolTaskExecutorConfig() {
     }
@@ -87,9 +86,9 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param config
@@ -118,9 +117,9 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the awaitTerminationMillis
@@ -141,15 +140,14 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the beanName
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #beanName
      */
@@ -162,15 +160,14 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the corePoolSize
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #corePoolSize
      */
@@ -183,15 +180,14 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the keepAliveSeconds
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #keepAliveSeconds
      */
@@ -204,15 +200,14 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the maxPoolSize
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #maxPoolSize
      * @see java.util.concurrent.ThreadPoolExecutor#getPoolSize()
@@ -227,15 +222,14 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the queueCapacity
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #queueCapacity
      */
@@ -249,15 +243,14 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the threadGroupName
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #threadGroupName
      */
@@ -271,15 +264,14 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the threadNamePrefix
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #threadNamePrefix
      */
@@ -293,15 +285,14 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the threadPriority
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #threadPriority
      */
@@ -315,15 +306,14 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the allowCoreThreadTimeOut
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #allowCoreThreadTimeOut
      */
@@ -337,15 +327,14 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the daemon
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #daemon
      */
@@ -358,9 +347,9 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 11.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 11.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the initialized
@@ -380,9 +369,9 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the prestartAllCoreThreads
@@ -403,15 +392,14 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      * 
      * @return the waitForTasksToCompleteOnShutdown
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #waitForTasksToCompleteOnShutdown
      */
@@ -424,16 +412,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param allowCoreThreadTimeOut
      *            the allowCoreThreadTimeOut to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #allowCoreThreadTimeOut
      */
@@ -448,9 +435,9 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param awaitTerminationMillis
@@ -472,16 +459,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param awaitTerminationSeconds
      *            the awaitTerminationSeconds to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #awaitTerminationSeconds
      */
@@ -496,16 +482,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param beanName
      *            the beanName to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #beanName
      */
@@ -520,16 +505,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param corePoolSize
      *            the corePoolSize to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #corePoolSize
      */
@@ -544,16 +528,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param daemon
      *            the daemon to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #daemon
      */
@@ -568,16 +551,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param keepAliveSeconds
      *            the keepAliveSeconds to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #keepAliveSeconds
      */
@@ -592,16 +574,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param maxPoolSize
      *            the maxPoolSize to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #maxPoolSize
      */
@@ -616,9 +597,9 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 8. 3.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 3.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param prestartAllCoreThreads
@@ -640,16 +621,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param queueCapacity
      *            the queueCapacity to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #queueCapacity
      */
@@ -664,16 +644,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param threadGroupName
      *            the threadGroupName to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #threadGroupName
      */
@@ -688,16 +667,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param threadNamePrefix
      *            the threadNamePrefix to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #threadNamePrefix
      */
@@ -712,16 +690,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param threadPriority
      *            the threadPriority to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #threadPriority
      */
@@ -736,16 +713,15 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2019. 7. 17.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 7. 17.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param waitForTasksToCompleteOnShutdown
      *            the waitForTasksToCompleteOnShutdown to set
      *
      * @since 2019. 7. 17.
-     * @version
      * 
      * @see #waitForTasksToCompleteOnShutdown
      */

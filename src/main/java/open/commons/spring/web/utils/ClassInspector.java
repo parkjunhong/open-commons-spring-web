@@ -31,10 +31,15 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+
+import org.jspecify.annotations.Nullable;
+import org.springframework.util.Assert;
 
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.servlet.InternalServerException;
@@ -62,9 +67,9 @@ public class ClassInspector {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 16.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 16.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
@@ -82,9 +87,9 @@ public class ClassInspector {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 16.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 16.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
@@ -102,13 +107,14 @@ public class ClassInspector {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
      * @param fieldName
+     * 
      * @return
      *
      * @since 2025. 6. 19.
@@ -116,7 +122,10 @@ public class ClassInspector {
      * 
      * @see Class#getDeclaredField(String)
      */
-    public static Field getDeclaredFieldIfExist(@NotNull Class<?> clazz, @NotEmpty String fieldName) {
+    public static @Nullable Field getDeclaredFieldIfExist(@NotNull Class<?> clazz, @NotBlank String fieldName) {
+        Objects.requireNonNull(clazz);
+        Assert.hasLength(fieldName, "변수이름은 반드시 길이가 있어야 합니다.");
+
         try {
             return clazz.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {
@@ -131,9 +140,9 @@ public class ClassInspector {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
@@ -160,9 +169,9 @@ public class ClassInspector {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
@@ -183,9 +192,9 @@ public class ClassInspector {
      * 
      * <pre>
      * [개정이력]
-     *      날짜        | 작성자    |    내용
-     * ------------------------------------------
-     * 2025. 6. 19.        parkjunhong77@gmail.com            최초 작성
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 6. 19.    parkjunhong77@gmail.com     최초 작성
      * </pre>
      *
      * @param clazz
