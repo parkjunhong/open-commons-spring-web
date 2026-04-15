@@ -29,8 +29,8 @@ package open.commons.spring.web.beans.authority;
 import java.lang.reflect.Field;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.context.annotation.Bean;
 
 import open.commons.spring.web.authority.AuthorizedRequestData;
@@ -65,7 +65,7 @@ public interface IAuthorizedRequestDataMetadata {
      * @since 2025. 9. 22.
      * @version 0.8.0
      */
-    public AuthorizedRequestDataFieldMetadata getFieldMetadat(@NotNull Class<?> targetClass, @NotBlank String fieldName);
+    public AuthorizedRequestDataFieldMetadata getFieldMetadat(Class<?> targetClass, @NotBlank String fieldName);
 
     /**
      * 주어진 클래스의 {@link Field}에 선언된 {@link IAuthorizedRequestDataHandler}를 구현한 {@link Bean} 이름을 제공합니다.<br>
@@ -89,7 +89,7 @@ public interface IAuthorizedRequestDataMetadata {
      * 
      * @see AuthorizedRequestData#handleBean()
      */
-    public String getHandleBeanName(@NotNull Class<?> targetClass, @NotBlank String fieldName);
+    public @Nullable String getHandleBeanName(Class<?> targetClass, @NotBlank String fieldName);
 
     /**
      * 주어진 클래스의 {@link Field}에 선언된 {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}에 사용될 '데이터 처리방식
@@ -114,7 +114,7 @@ public interface IAuthorizedRequestDataMetadata {
      * 
      * @see AuthorizedRequestData#handleType()
      */
-    public String getHandleType(@NotNull Class<?> targetClass, @NotBlank String fieldName);
+    public String getHandleType(Class<?> targetClass, @NotBlank String fieldName);
 
     /**
      * 주어진 클래스에 적용될 {@link AuthorizedRequestDataObjectMetadata} 정보를 제공합니다. <br>
@@ -133,7 +133,7 @@ public interface IAuthorizedRequestDataMetadata {
      * @since 2025. 9. 22.
      * @version 0.8.0
      */
-    public AuthorizedRequestDataObjectMetadata getObjectMetadata(@NotNull Class<?> targetClass);
+    public @Nullable AuthorizedRequestDataObjectMetadata getObjectMetadata(Class<?> targetClass);
 
     /**
      * 주어진 클래스가 '권한제어' 해제 대상인지 여부를 제공합니다.<br>
@@ -152,6 +152,6 @@ public interface IAuthorizedRequestDataMetadata {
      * @since 2025. 9. 22.
      * @version 0.8.0
      */
-    public boolean isAuthorizedRequestDataObject(@NotNull Class<?> targetClass);
+    public boolean isAuthorizedRequestDataObject(Class<?> targetClass);
 
 }

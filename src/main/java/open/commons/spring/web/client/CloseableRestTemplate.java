@@ -30,6 +30,7 @@ import java.io.Closeable;
 import java.util.List;
 
 import jakarta.annotation.PreDestroy;
+import jakarta.validation.constraints.NotEmpty;
 
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -101,7 +102,7 @@ public class CloseableRestTemplate extends RestTemplate implements Closeable {
      * @since 2025. 8. 26.
      * @version 0.8.0
      */
-    public CloseableRestTemplate(List<HttpMessageConverter<?>> messageConverters) {
+    public CloseableRestTemplate(@NotEmpty List<HttpMessageConverter<?>> messageConverters) {
         super(messageConverters);
     }
 

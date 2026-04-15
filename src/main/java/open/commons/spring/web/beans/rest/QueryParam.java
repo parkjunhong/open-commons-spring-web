@@ -30,7 +30,7 @@ import java.util.Objects;
 
 import jakarta.validation.constraints.NotEmpty;
 
-import org.springframework.util.Assert;
+import open.commons.core.utils.AssertUtils2;
 
 /**
  * 
@@ -133,7 +133,7 @@ public class QueryParam implements Comparable<QueryParam> {
      */
 
     public String getName() {
-        Assert.hasLength(this.name, "Query Parameter 이름은 반드시 설정되어야 합니다.");
+        AssertUtils2.notBlank(this.name, "Query Parameter 이름은 반드시 설정되어야 합니다.");
         return name;
     }
 

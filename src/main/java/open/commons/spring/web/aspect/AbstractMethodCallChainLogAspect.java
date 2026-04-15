@@ -48,7 +48,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
 import open.commons.core.utils.ArrayUtils;
-import open.commons.core.utils.ObjectUtils;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.log.LogFeature;
 import open.commons.spring.web.thread.MethodLogContext;
@@ -305,7 +305,7 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      * @version 0.8.0
      */
     public void afterController(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(aspectSign, logger, pjp);
+        AssertUtils2.notNulls(aspectSign, logger, pjp);
 
         defaultAfterController(logger, pjp);
     }
@@ -331,7 +331,7 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      * @version 0.8.0
      */
     public void afterRepository(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(aspectSign, logger, pjp);
+        AssertUtils2.notNulls(aspectSign, logger, pjp);
 
         defaultAfterRepository(logger, pjp);
     }
@@ -357,7 +357,7 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      * @version 0.8.0
      */
     public void afterService(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(aspectSign, logger, pjp);
+        AssertUtils2.notNulls(aspectSign, logger, pjp);
 
         defaultAfterService(logger, pjp);
     }
@@ -383,7 +383,7 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      * @version 0.8.0
      */
     public void beforeController(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(aspectSign, logger, pjp);
+        AssertUtils2.notNulls(aspectSign, logger, pjp);
 
         defaultBeforeController(logger, pjp);
     }
@@ -409,7 +409,7 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      * @version 0.8.0
      */
     public void beforeRepository(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(aspectSign, logger, pjp);
+        AssertUtils2.notNulls(aspectSign, logger, pjp);
 
         defaultBeforeRepository(logger, pjp);
     }
@@ -435,48 +435,48 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      * @version 0.8.0
      */
     public void beforeService(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(aspectSign, logger, pjp);
+        AssertUtils2.notNulls(aspectSign, logger, pjp);
 
         defaultBeforeService(logger, pjp);
     }
 
     protected final void defaultAfterController(Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(logger, pjp);
+        AssertUtils2.notNulls(logger, pjp);
 
         Object[] msg = log(pjp, "afterController...");
         logger.log(msg);
     }
 
     protected final void defaultAfterRepository(Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(logger, pjp);
+        AssertUtils2.notNulls(logger, pjp);
 
         Object[] msg = log(pjp, "afterRepository...");
         logger.log(msg);
     }
 
     protected final void defaultAfterService(Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(logger, pjp);
+        AssertUtils2.notNulls(logger, pjp);
 
         Object[] msg = log(pjp, "afterService...");
         logger.log(msg);
     }
 
     protected final void defaultBeforeController(Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(logger, pjp);
+        AssertUtils2.notNulls(logger, pjp);
 
         Object[] msg = log(pjp, "beforeController...");
         logger.log(msg);
     }
 
     protected final void defaultBeforeRepository(Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(logger, pjp);
+        AssertUtils2.notNulls(logger, pjp);
 
         Object[] msg = log(pjp, "beforeRepository...");
         logger.log(msg);
     }
 
     protected final void defaultBeforeService(Log logger, ProceedingJoinPoint pjp) throws Throwable {
-        ObjectUtils.requireNonNulls(logger, pjp);
+        AssertUtils2.notNulls(logger, pjp);
 
         Object[] msg = log(pjp, "beforeService...");
         logger.log(msg);

@@ -34,6 +34,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -47,6 +48,7 @@ import open.commons.core.annotation.Setter;
 import open.commons.core.function.QuadFunction;
 import open.commons.core.function.Runner;
 import open.commons.core.function.TripleFunction;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ObjectUtils;
 import open.commons.spring.web.utils.PaginationUtils;
 
@@ -107,6 +109,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      */
     @SuppressWarnings("unchecked")
     private <E> Result<Page<E>> executePagination(Supplier<Result<List<E>>> data, Supplier<Result<Integer>> count, int offset, int limit, String[] orderByArgs) {
+        AssertUtils2.notNulls(data, count, orderByArgs);
 
         final String propData = "content";
         final String propCount = "count";
@@ -157,6 +160,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @version 0.4.0
      */
     protected <D> Result<Boolean> exists(Result<?> resultDao, D data) {
+        AssertUtils2.notNulls(resultDao, data);
+
         if (resultDao.isError()) {
             return Result.error(resultDao.getMessage());
         }
@@ -287,10 +292,13 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @version 0.4.0
      */
     @SuppressWarnings("unchecked")
-    protected <D, E> Result<Integer> save(List<D> data, Class<E> entityType, Function<List<E>, Result<Integer>> funcSave) {
+    protected <D, E> Result<Integer> save(@Nullable List<D> data, Class<E> entityType, Function<List<E>, Result<Integer>> funcSave) {
         if (data == null || data.size() < 1) {
             return Result.success(0);
         }
+
+        AssertUtils2.notNull(funcSave);
+
         return funcSave.apply(convertMultiResult(data, ObjectUtils.getTransformer((Class<D>) data.get(0).getClass(), true, entityType, true)));
     }
 
@@ -333,6 +341,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int offset//
             , int limit //
             , String... orderByArgs) {
+        AssertUtils2.notNulls(type, funcAll, funcPagination, orderByArgs);
+
         switch (type) {
             case ALL:
                 return funcAll.apply(orderByArgs);
@@ -420,8 +430,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
     protected <E> Result<List<E>> selectMulti(SearchResultType type //
             , Function<String[], Result<List<E>>> funcAll //
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
-            , Pageable pageable //
-    ) {
+            , Pageable pageable) {
+        AssertUtils2.notNulls(type, funcAll, funcPagination, pageable);
+
         if (SearchResultType.ALL.equals(type)) {
             pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
         }
@@ -464,6 +475,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable //
             , Function<E, D> converter) {
+        AssertUtils2.notNulls(type, funcAll, funcPagination, pageable, converter);
 
         if (SearchResultType.ALL.equals(type)) {
             pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
@@ -516,6 +528,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int offset//
             , int limit //
             , String... orderByArgs) {
+        AssertUtils2.notNulls(type, param, funcAll, funcPagination, orderByArgs);
+
         switch (type) {
             case ALL:
                 return funcAll.apply(param, orderByArgs);
@@ -614,6 +628,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , BiFunction<P, String[], Result<List<E>>> funcAll //
             , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable) {
+        AssertUtils2.notNulls(type, param, funcAll, funcPagination, pageable);
 
         if (SearchResultType.ALL.equals(type)) {
             pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
@@ -662,6 +677,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable//
             , Function<E, D> converter) {
+        AssertUtils2.notNulls(type, param, funcAll, funcPagination, pageable, converter);
 
         if (SearchResultType.ALL.equals(type)) {
             pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
@@ -707,8 +723,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , Function<P, Result<List<E>>> funcAll //
             , TripleFunction<P, Integer, Integer, Result<List<E>>> funcPagination //
             , int offset//
-            , int limit //
-    ) {
+            , int limit) {
+        AssertUtils2.notNulls(type, param, funcAll, funcPagination);
+
         switch (type) {
             case ALL:
                 return funcAll.apply(param);
@@ -798,8 +815,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , Supplier<Result<List<E>>> funcAll //
             , BiFunction<Integer, Integer, Result<List<E>>> funcPagination //
             , int offset//
-            , int limit //
-    ) {
+            , int limit) {
+        AssertUtils2.notNulls(type, funcAll, funcPagination);
+
         switch (type) {
             case ALL:
                 return funcAll.get();
@@ -892,6 +910,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int offset//
             , int limit //
             , String... orderByArgs) {
+        AssertUtils2.notNulls(param, funcCount, funcPagination, orderByArgs);
 
         // #1-1. 데이터 조회
         Supplier<Result<List<E>>> data = () -> funcPagination.apply(param, offset, limit, orderByArgs);
@@ -1057,8 +1076,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , Supplier<Result<Integer>> funcCount //
             , TripleFunction<P, Integer, Integer, Result<List<E>>> funcPagination //
             , int offset//
-            , int limit //
-    ) {
+            , int limit) {
+        AssertUtils2.notNulls(param, funcCount, funcPagination);
+
         // #1-1. 데이터 조회
         Supplier<Result<List<E>>> data = () -> funcPagination.apply(param, offset, limit);
         // #1-2. 개수 조회
@@ -1157,6 +1177,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int offset//
             , int limit //
             , String... orderByArgs) {
+
+        AssertUtils2.notNulls(type, param, funcCount, funcAll, funcPagination, orderByArgs);
 
         // #1-1. 데이터 조회
         Supplier<Result<List<E>>> data = () -> {
@@ -1275,6 +1297,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , Pageable pageable //
             , Function<E, D> converter) {
 
+        AssertUtils2.notNulls(type, param, funcCount, funcAll, funcPagination, pageable, converter);
+
         if (SearchResultType.ALL.equals(type)) {
             pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
         }
@@ -1322,8 +1346,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , Function<P, Result<List<E>>> funcAll //
             , TripleFunction<P, Integer, Integer, Result<List<E>>> funcPagination //
             , int offset//
-            , int limit //
-    ) {
+            , int limit) {
+        AssertUtils2.notNulls(type, param, funcCount, funcAll, funcPagination);
+
         // #1-1. 데이터 조회
         Supplier<Result<List<E>>> data = () -> {
             switch (type) {
@@ -1433,6 +1458,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int offset//
             , int limit //
             , String... orderByArgs) {
+        AssertUtils2.notNulls(type, funcCount, funcAll, funcPagination, orderByArgs);
 
         // #1-1. 데이터 조회
         Supplier<Result<List<E>>> data = () -> {
@@ -1540,6 +1566,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable //
             , Function<E, D> converter) {
+        AssertUtils2.notNulls(type, funcCount, funcAll, funcPagination, pageable, converter);
 
         if (SearchResultType.ALL.equals(type)) {
             pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
@@ -1583,8 +1610,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , Supplier<Result<List<E>>> funcAll //
             , BiFunction<Integer, Integer, Result<List<E>>> funcPagination //
             , int offset//
-            , int limit //
-    ) {
+            , int limit) {
+        AssertUtils2.notNulls(type, funcCount, funcAll, funcPagination);
 
         // #1-1. 데이터 조회
         Supplier<Result<List<E>>> data = () -> {
@@ -1678,8 +1705,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             Supplier<Result<Integer>> funcCount //
             , BiFunction<Integer, Integer, Result<List<E>>> funcPagination //
             , int offset//
-            , int limit //
-    ) {
+            , int limit) {
+        AssertUtils2.notNulls(funcCount, funcPagination);
 
         // #1-1. 데이터 조회
         Supplier<Result<List<E>>> data = () -> funcPagination.apply(offset, limit);
@@ -1763,6 +1790,7 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int offset//
             , int limit //
             , String... orderByArgs) {
+        AssertUtils2.notNulls(funcCount, funcPagination, orderByArgs);
 
         // #1-1. 데이터 조회
         Supplier<Result<List<E>>> data = () -> funcPagination.apply(offset, limit, orderByArgs);

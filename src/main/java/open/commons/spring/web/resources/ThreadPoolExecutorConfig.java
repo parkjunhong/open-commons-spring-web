@@ -29,6 +29,8 @@ package open.commons.spring.web.resources;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import open.commons.core.utils.AssertUtils2;
+
 /**
  * 
  * @since 2025. 8. 13.
@@ -364,6 +366,8 @@ public class ThreadPoolExecutorConfig {
      * @see #timeUnit
      */
     public void setTimeUnit(TimeUnit timeUnit) {
+        AssertUtils2.notNull(timeUnit);
+        
         this.timeUnit = timeUnit;
 
         this.initialized = true;

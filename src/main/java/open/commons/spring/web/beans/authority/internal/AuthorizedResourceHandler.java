@@ -27,12 +27,13 @@
 package open.commons.spring.web.beans.authority.internal;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.authority.AuthorizedRequestData;
@@ -80,9 +81,11 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
      *
      * @see open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler#handleObject(String, java.lang.Object)
      */
+    @SuppressWarnings("unchecked")
     @Override
-    public Object handleObject(@NotEmpty String handle, Object data) throws UnsupportedOperationException {
-        @SuppressWarnings("unchecked")
+    public Object handleObject(@NotBlank String handle, Object data) throws UnsupportedOperationException {
+        AssertUtils2.notBlank(handle, "데이터 처리방식 식별정보는 '빈 문자열'을 허용하지 않습니다.");
+
         Function<Object, Object> handler = (Function<Object, Object>) this.unauthorizedFieldHandlers.get(handle);
         if (handler == null) {
             throw ExceptionUtils.newException(UnsupportedOperationException.class, "전달받은 핸들타입(%s)에 해당하는 기능이 존재하지 않습니다.", handle);
@@ -97,9 +100,11 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
      *
      * @see open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler#restoreValue(String, java.lang.Object)
      */
+    @SuppressWarnings("unchecked")
     @Override
-    public Object restoreValue(@NotEmpty String handle, Object value) throws UnsupportedOperationException {
-        @SuppressWarnings("unchecked")
+    public Object restoreValue(@NotBlank String handle, Object value) throws UnsupportedOperationException {
+        AssertUtils2.notBlank(handle, "데이터 처리방식 식별정보는 '빈 문자열'을 허용하지 않습니다.");
+
         Function<Object, Object> handler = (Function<Object, Object>) this.authorizedDataHandlers.get(handle);
         if (handler == null) {
             throw ExceptionUtils.newException(UnsupportedOperationException.class, "전달받은 핸들타입(%s)에 해당하는 기능이 존재하지 않습니다.", handle);
@@ -131,8 +136,9 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
      * @see IUnauthorizedFieldHandler
      * @see Target#UNAUTHORIZED
      */
-    // @auto
-    public void setAuthorizedResourceHandlers(@NotNull Collection<ResourceHandle> handlers) {
+    public void setAuthorizedResourceHandlers(Collection<ResourceHandle> handlers) {
+        Objects.requireNonNull(handlers);
+
         handlers.forEach(h -> {
             if (Target.AUTHORIZED == h.target()) {
                 this.authorizedDataHandlers.put(h.handleType(), h.handle());

@@ -35,8 +35,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import jakarta.annotation.PostConstruct;
-import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,8 +51,8 @@ import open.commons.core.Result;
 import open.commons.core.TwoValueObject;
 import open.commons.core.function.Runner;
 import open.commons.core.test.StopWatch;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ConvertUtils;
-import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.config.ResourceConfiguration;
 
 /**
@@ -115,7 +115,7 @@ public class AbstractComponent {
      * @since 2021. 8. 24.
      * @version 0.3.0
      */
-    public final <T> Result<T> error(String msg) {
+    public final <T> Result<T> error(@Nullable String msg) {
         return Result.error(msg);
     }
 
@@ -139,7 +139,7 @@ public class AbstractComponent {
      * @since 2021. 8. 24.
      * @version 0.3.0
      */
-    public final <T> Result<T> error(String format, Object... args) {
+    public final <T> Result<T> error(String format, @Nullable Object... args) {
         return Result.error(format, args);
     }
 
@@ -164,7 +164,7 @@ public class AbstractComponent {
      * @version 0.3.0
      */
     @SuppressWarnings("unchecked")
-    public final <T> Result<T> error(T data, String msg) {
+    public final <T> Result<T> error(@Nullable T data, @Nullable String msg) {
         return (Result<T>) Result.error(msg).setData(data);
     }
 
@@ -191,7 +191,7 @@ public class AbstractComponent {
      * @version 0.3.0
      */
     @SuppressWarnings("unchecked")
-    public final <T> Result<T> error(T data, String format, Object... args) {
+    public final <T> Result<T> error(@Nullable T data, @Nullable String format, @Nullable Object... args) {
         return (Result<T>) Result.error(format, args).setData(data);
     }
 
@@ -218,7 +218,9 @@ public class AbstractComponent {
      * @since 2021. 11. 9.
      * @version 0.4.0
      */
-    public final <T> void execute(Consumer<T> action, T param, String job) {
+    public final <T extends @Nullable Object> void execute(Consumer<T> action, T param, @Nullable String job) {
+        AssertUtils2.notNull(action);
+
         StopWatch watch = new StopWatch();
         watch.start();
         try {
@@ -255,7 +257,9 @@ public class AbstractComponent {
      * @since 2021. 11. 9.
      * @version 0.4.0
      */
-    public final <R, T> R execute(Function<T, R> action, T param, String job) {
+    public final <T extends @Nullable Object, R> @Nullable R execute(Function<T, R> action, T param, @Nullable String job) {
+        AssertUtils2.notNull(action);
+
         StopWatch watch = new StopWatch();
         watch.start();
         try {
@@ -286,7 +290,9 @@ public class AbstractComponent {
      * @since 2021. 11. 9.
      * @version 0.4.0
      */
-    public final void execute(Runner action, String job) {
+    public final void execute(Runner action, @Nullable String job) {
+        AssertUtils2.notNull(action);
+
         StopWatch watch = new StopWatch();
         watch.start();
         try {
@@ -319,7 +325,9 @@ public class AbstractComponent {
      * @since 2021. 10. 4.
      * @version 0.4.0
      */
-    public final <T> T execute(Supplier<T> action, String job) {
+    public final <T> @Nullable T execute(Supplier<T> action, @Nullable String job) {
+        AssertUtils2.notNull(action);
+
         StopWatch watch = new StopWatch();
         watch.start();
         try {
@@ -353,10 +361,8 @@ public class AbstractComponent {
      * @since 2022. 5. 4.
      * @version 0.5.0
      */
-    protected <T> List<T> getMultiValuesArgument(@NotNull ApplicationArguments mainArgs, @NotNull String argName, @NotNull Class<T> valueType) {
-        if (mainArgs == null) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class);
-        }
+    protected <T> List<T> getMultiValuesArgument(ApplicationArguments mainArgs, String argName, Class<T> valueType) {
+        AssertUtils2.notNulls(String.format("'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class), IllegalArgumentException.class, mainArgs, argName, valueType);
 
         List<String> argValues = mainArgs.getOptionValues(argName);
         if (argValues == null || argValues.size() < 1 || argValues.get(0) == null || argValues.get(0).trim().isEmpty()) {
@@ -394,10 +400,8 @@ public class AbstractComponent {
      * @version 0.5.0
      */
     @SuppressWarnings("unchecked")
-    protected Map<String, List<Object>> getMultiValuesArguments(@NotNull ApplicationArguments mainArgs, @NotNull Map<String, Class<?>> argNameTypes) {
-        if (mainArgs == null) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class);
-        }
+    protected Map<String, List<Object>> getMultiValuesArguments(ApplicationArguments mainArgs, Map<String, Class<?>> argNameTypes) {
+        AssertUtils2.notNulls(String.format("'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class), IllegalArgumentException.class, mainArgs, argNameTypes);
 
         return argNameTypes.entrySet().stream() //
                 .map(nt -> new TwoValueObject<String, List<?>>(nt.getKey(), getMultiValuesArgument(mainArgs, nt.getKey(), nt.getValue()))) //
@@ -428,10 +432,8 @@ public class AbstractComponent {
      * @version 0.5.0
      */
     @SuppressWarnings("unchecked")
-    protected <T> T getSingleValueArgument(@NotNull ApplicationArguments mainArgs, @NotNull String argName, @NotNull Class<T> valueType) {
-        if (mainArgs == null) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class);
-        }
+    protected <T> T getSingleValueArgument(ApplicationArguments mainArgs, String argName, Class<T> valueType) {
+        AssertUtils2.notNulls(String.format("'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class), IllegalArgumentException.class, mainArgs, argName, valueType);
 
         List<String> argValues = mainArgs.getOptionValues(argName);
         if (argValues == null || argValues.size() < 1 || argValues.get(0) == null || argValues.get(0).trim().isEmpty()) {
@@ -466,10 +468,8 @@ public class AbstractComponent {
      * @since 2022. 5. 4.
      * @version 0.5.0
      */
-    protected Map<String, Object> getSingleValueArguments(@NotNull ApplicationArguments mainArgs, @NotNull Map<String, Class<?>> argNameTypes) {
-        if (mainArgs == null) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class);
-        }
+    protected Map<String, Object> getSingleValueArguments(ApplicationArguments mainArgs, Map<String, Class<?>> argNameTypes) {
+        AssertUtils2.notNulls(String.format("'{}'은 반드시 설정되어야 합니다. 값=null", ApplicationArguments.class), IllegalArgumentException.class, mainArgs, argNameTypes);
 
         return argNameTypes.entrySet().stream() //
                 .map(nt -> new TwoValueObject<String, Object>(nt.getKey(), getSingleValueArgument(mainArgs, nt.getKey(), nt.getValue()))) //
@@ -501,7 +501,7 @@ public class AbstractComponent {
      * @since 2021. 8. 24.
      * @version 0.3.0
      */
-    public final <T> Result<T> success(T data, String message) {
+    public final <T> Result<T> success(@Nullable T data, @Nullable String message) {
         return Result.success(data).setMessage(message);
     }
 
@@ -527,7 +527,7 @@ public class AbstractComponent {
      * @since 2021. 8. 24.
      * @version 0.3.0
      */
-    public final <T> Result<T> success(T data, String format, Object... args) {
+    public final <T> Result<T> success(@Nullable T data, String format, @Nullable Object... args) {
         return Result.success(data).setMessage(format, args);
     }
 
@@ -556,7 +556,9 @@ public class AbstractComponent {
      * @see Stream#parallel()
      */
     @SuppressWarnings("unchecked")
-    public static <T> Supplier<Stream<T>> streamOf(boolean isParallel, T... values) {
+    public static <T> Supplier<Stream<T>> streamOf(boolean isParallel, @Nullable T... values) {
+        AssertUtils2.notNull(values);
+
         return () -> isParallel ? Stream.of(values).parallel() : Stream.of(values);
     }
 
@@ -586,7 +588,9 @@ public class AbstractComponent {
      * @see #streamOf(boolean, Object...)
      */
     @SuppressWarnings("unchecked")
-    public static <T> Supplier<Stream<T>> streamOf(@NotNull String parallelProfile, String currentProfile, T... values) {
+    public static <T> Supplier<Stream<T>> streamOf(String parallelProfile, String currentProfile, @Nullable T... values) {
+        AssertUtils2.notNulls(parallelProfile, currentProfile, values);
+
         return streamOf(parallelProfile.equalsIgnoreCase(currentProfile), values);
     }
 }

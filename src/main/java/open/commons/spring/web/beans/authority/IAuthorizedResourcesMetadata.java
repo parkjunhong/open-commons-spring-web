@@ -28,9 +28,9 @@ package open.commons.spring.web.beans.authority;
 
 import java.lang.reflect.Field;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.context.annotation.Bean;
 
 import open.commons.spring.web.authority.AuthorizedField;
@@ -64,7 +64,7 @@ public interface IAuthorizedResourcesMetadata {
      * @since 2025. 6. 12.
      * @version 0.8.0
      */
-    public String getAuthorityBeanName(@NotNull Class<?> clazz);
+    public @Nullable String getAuthorityBeanName(Class<?> clazz);
 
     /**
      * {@link Field}에 설정된 {@link IFieldAccessAuthorityProvider}를 구현한 {@link Bean} 을 제공합니다. <br>
@@ -85,7 +85,7 @@ public interface IAuthorizedResourcesMetadata {
      * @since 2025. 6. 12.
      * @version 0.8.0
      */
-    public String getAuthorityBeanName(@NotNull Class<?> clazz, String fieldName);
+    public @Nullable String getAuthorityBeanName(Class<?> clazz, @NotBlank String fieldName);
 
     /**
      * {@link AuthorizedFieldMetadata}를 제공합니다.<br>
@@ -106,7 +106,7 @@ public interface IAuthorizedResourcesMetadata {
      * @since 2025. 6. 13.
      * @version 0.8.0
      */
-    public AuthorizedFieldMetadata getAuthorizedFieldMetadata(@NotNull Class<?> clazz, String fieldName);
+    public @Nullable AuthorizedFieldMetadata getAuthorizedFieldMetadata(Class<?> clazz, @NotBlank String fieldName);
 
     /**
      * {@link AuthorizedObjectMetadata} 정보를 제공합니다. <br>
@@ -125,7 +125,7 @@ public interface IAuthorizedResourcesMetadata {
      * @since 2025. 6. 13.
      * @version 0.8.0
      */
-    public AuthorizedObjectMetadata getAuthorizedObjectMetadata(@NotNull Class<?> clazz);
+    public @Nullable AuthorizedObjectMetadata getAuthorizedObjectMetadata(Class<?> clazz);
 
     /**
      * 
@@ -145,7 +145,7 @@ public interface IAuthorizedResourcesMetadata {
      * @since 2025. 6. 12.
      * @version 0.8.0
      */
-    public String getFieldHandleBeanName(@NotNull Class<?> clazz);
+    public @Nullable String getFieldHandleBeanName(Class<?> clazz);
 
     /**
      * {@link Field}에 설정된 {@link IUnauthorizedFieldHandler}를 구현한 {@link Bean}을 제공합니다. <br>
@@ -166,7 +166,7 @@ public interface IAuthorizedResourcesMetadata {
      * @since 2025. 6. 12.
      * @version 0.8.0
      */
-    public String getFieldHandleBeanName(@NotNull Class<?> clazz, String fieldName);
+    public @Nullable String getFieldHandleBeanName(Class<?> clazz, @NotBlank String fieldName);
 
     /**
      * {@link AuthorizedField} metadata 적용여부를 제공합니다. <br>
@@ -188,7 +188,7 @@ public interface IAuthorizedResourcesMetadata {
      * @since 2025. 6. 13.
      * @version 0.8.0
      */
-    public boolean isAuthorizedField(@NotNull Class<?> clazz, @NotEmpty String fieldName);
+    public boolean isAuthorizedField(Class<?> clazz, @NotBlank String fieldName);
 
     /**
      * {@link AuthorizedObject} metadata 적용여부를 제공합니다. <br>
@@ -207,6 +207,6 @@ public interface IAuthorizedResourcesMetadata {
      * @since 2025. 6. 12.
      * @version 0.8.0
      */
-    public boolean isAuthorizedObject(@NotNull Class<?> clazz);
+    public boolean isAuthorizedObject(Class<?> clazz);
 
 }

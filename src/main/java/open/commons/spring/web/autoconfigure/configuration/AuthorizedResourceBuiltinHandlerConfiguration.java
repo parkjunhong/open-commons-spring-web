@@ -55,6 +55,13 @@ import open.commons.spring.web.config.ResourceHandle;
 import open.commons.spring.web.exception.BeanMergeFailedException;
 
 /**
+ * <pre>
+ * [개정이력]
+ *      날짜       | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 6. 12.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 15.     parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5.
+ * </pre>
  * 
  * @since 2025. 6. 12.
  * @version 0.8.0

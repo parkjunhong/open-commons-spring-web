@@ -45,7 +45,6 @@ import java.util.function.Supplier;
 import javax.net.ssl.SSLContext;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 
 import org.apache.hc.client5.http.DnsResolver;
 import org.apache.hc.client5.http.SchemePortResolver;
@@ -68,6 +67,7 @@ import org.apache.hc.core5.http.config.RegistryBuilder;
 import org.apache.hc.core5.http.io.HttpConnectionFactory;
 import org.apache.hc.core5.ssl.SSLContextBuilder;
 import org.apache.hc.core5.ssl.TrustStrategy;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.ParameterizedTypeReference;
@@ -121,7 +121,8 @@ public class RestFacade {
      * @since 2026. 4. 10.
      * @version 4.0.0
      */
-    public static HttpEntity<Map<String, Object>> buildHttpEntity(HttpHeaders headers, Object... values) {
+    public static HttpEntity<Map<String, Object>> buildHttpEntity(@Nullable HttpHeaders headers, Object... values) {
+        AssertUtils2.notNull(values);
 
         Map<String, Object> map = new HashMap<>();
 
@@ -150,15 +151,8 @@ public class RestFacade {
      *
      * @since 2020. 8. 25.
      */
-    public static HttpEntity<Map<String, Object>> buildHttpEntity(MultiValueMap<String, String> headers, Object... values) {
-
-        Map<String, Object> map = new HashMap<>();
-
-        for (int i = 0; (i + 1) < values.length; i++) {
-            map.put(String.valueOf(values[i++]), values[i]);
-        }
-
-        return new HttpEntity<Map<String, Object>>(map, new HttpHeaders(headers));
+    public static HttpEntity<Map<String, Object>> buildHttpEntity(MultiValueMap<String, @Nullable String> headers, Object... values) {
+        return buildHttpEntity(new HttpHeaders(headers), values);
     }
 
     /**
@@ -294,7 +288,8 @@ public class RestFacade {
      *
      * @since 2020. 8. 27.
      */
-    public static String createUrl(String context, String url, MultiValueMap<String, Object> parameters) {
+    public static String createUrl(@Nullable String context, String url, MultiValueMap<String, @Nullable Object> parameters) {
+        AssertUtils2.notNulls(url, parameters);
 
         StringBuffer requestUrl = new StringBuffer();
 
@@ -400,12 +395,12 @@ public class RestFacade {
      * @since 2025. 8. 26.
      * @version 0.8.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, String httpUrl, Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
     ) {
         try {
             return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
@@ -453,12 +448,12 @@ public class RestFacade {
      * @since 2025. 8. 26.
      * @version 0.8.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, String httpUrl, Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
             , int retryCount //
     ) {
         try {
@@ -505,12 +500,12 @@ public class RestFacade {
      * @since 2025. 8. 26.
      * @version 0.8.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, String httpUrl, Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
     ) {
         try {
             return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
@@ -558,12 +553,12 @@ public class RestFacade {
      * @since 2025. 8. 26.
      * @version 0.8.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, String httpUrl, Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
             , int retryCount //
     ) {
         try {
@@ -609,7 +604,7 @@ public class RestFacade {
      *
      * @since 2019. 10. 24.
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
+    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, @Nullable HttpEntity<REQ> entity,
             Class<RES> responseType) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, response -> {
             Result<RES> result = null;
@@ -689,12 +684,12 @@ public class RestFacade {
      * @since 2021. 06. 11.
      * @version 0.4.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError //
     ) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError);
     }
@@ -742,12 +737,12 @@ public class RestFacade {
      * @since 2023. 03. 06.
      * @version 0.5.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError, retryCount);
@@ -790,7 +785,7 @@ public class RestFacade {
      * @since 2020. 11. 20.
      * @version 0.4.0
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, HttpEntity<REQ> entity,
+    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, @Nullable HttpEntity<REQ> entity,
             ParameterizedTypeReference<RES> responseType) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, response -> {
             Result<RES> result = null;
@@ -852,12 +847,12 @@ public class RestFacade {
      * @since 2021. 06. 11.
      * @version 0.4.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError //
     ) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError);
     }
@@ -906,12 +901,12 @@ public class RestFacade {
      * @since 2023. 03. 06.
      * @version 0.5.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError, retryCount);
@@ -1019,12 +1014,12 @@ public class RestFacade {
      * @since 2021. 06. 11.
      * @version 0.4.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
     ) {
         try {
             return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, onError);
@@ -1080,12 +1075,12 @@ public class RestFacade {
      * @since 2023. 03. 06.
      * @version 0.5.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
         try {
@@ -1199,12 +1194,12 @@ public class RestFacade {
      * @since 2021. 06. 11.
      * @version 0.4.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
     ) {
         try {
             return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, onError);
@@ -1260,12 +1255,12 @@ public class RestFacade {
      * @since 2023. 03. 06.
      * @version 0.5.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
             , int retryCount //
     ) {
         try {
@@ -1312,12 +1307,12 @@ public class RestFacade {
      * @since 2021. 06. 11.
      * @version 0.4.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull URI uri //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, URI uri //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
     ) {
         try {
             return exchangeAsRaw(restTemplate, method, uri, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
@@ -1364,12 +1359,12 @@ public class RestFacade {
      * @since 2023. 03. 06.
      * @version 0.5.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull URI uri //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, URI uri //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
             , int retryCount //
     ) {
         try {
@@ -1415,12 +1410,12 @@ public class RestFacade {
      * @since 2021. 06. 11.
      * @version 0.4.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull URI uri //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, URI uri //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
     ) {
         try {
             return exchangeAsRaw(restTemplate, method, uri, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
@@ -1467,12 +1462,12 @@ public class RestFacade {
      * @since 2023. 03. 06.
      * @version 0.5.0
      */
-    public static <REQ, RES, RET> Result<RET> exchange(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull URI uri //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
+            , HttpMethod method, URI uri //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError//
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError//
             , int retryCount //
     ) {
         try {
@@ -1517,12 +1512,14 @@ public class RestFacade {
      * @since 2025. 8. 26.
      * @version 0.8.0
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, String httpUrl, Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     ) {
+        AssertUtils2.notNulls(restTemplate, method, httpUrl, uriVariables, responseType, onSuccess);
+
         Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
         return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
     }
@@ -1564,13 +1561,15 @@ public class RestFacade {
      * @since 2025. 8. 26.
      * @version 0.8.0
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, String httpUrl, Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
+        AssertUtils2.notNulls(restTemplate, method, httpUrl, uriVariables, responseType, onSuccess);
+
         Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
         return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, retryCount);
     }
@@ -1610,12 +1609,14 @@ public class RestFacade {
      * @since 2025. 8. 26.
      * @version 0.8.0
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, String httpUrl, Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     ) {
+        AssertUtils2.notNulls(restTemplate, method, httpUrl, uriVariables, responseType, onSuccess);
+
         Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
         return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
     }
@@ -1657,13 +1658,15 @@ public class RestFacade {
      * @since 2025. 8. 26.
      * @version 0.8.0
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull String httpUrl, Map<String, ?> uriVariables //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, String httpUrl, Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
+        AssertUtils2.notNulls(restTemplate, method, httpUrl, uriVariables, responseType, onSuccess);
+
         Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
         return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, retryCount);
     }
@@ -1709,11 +1712,11 @@ public class RestFacade {
      * @version 0.4.0
      * @throws URISyntaxException
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     ) throws URISyntaxException {
         return exchangeAsRaw(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess);
     }
@@ -1761,11 +1764,11 @@ public class RestFacade {
      * @version 0.8.0
      * @throws URISyntaxException
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount) throws URISyntaxException {
         return exchangeAsRaw(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, retryCount);
     }
@@ -1812,11 +1815,11 @@ public class RestFacade {
      * @version 0.4.0
      * @throws URISyntaxException
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     ) throws URISyntaxException {
         return exchangeAsRaw(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess);
     }
@@ -1865,11 +1868,11 @@ public class RestFacade {
      * @version 0.8.0
      * @throws URISyntaxException
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount) throws URISyntaxException {
         return exchangeAsRaw(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess);
     }
@@ -1918,11 +1921,11 @@ public class RestFacade {
      * @version 0.4.0
      * @throws URISyntaxException
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     ) throws URISyntaxException {
         try {
             return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess);
@@ -1978,11 +1981,11 @@ public class RestFacade {
      * @version 0.8.0
      * @throws URISyntaxException
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount) throws URISyntaxException {
         try {
             return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, retryCount);
@@ -2036,11 +2039,11 @@ public class RestFacade {
      * @version 0.4.0
      * @throws URISyntaxException
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     ) throws URISyntaxException {
         try {
             return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess);
@@ -2095,11 +2098,11 @@ public class RestFacade {
      * @version 0.8.0
      * @throws URISyntaxException
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount) throws URISyntaxException {
         try {
             return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess);
@@ -2144,12 +2147,14 @@ public class RestFacade {
      * @since 2021. 06. 11.
      * @version 0.4.0
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull URI uri //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, URI uri //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     ) {
+        AssertUtils2.notNulls(restTemplate, method, uri, responseType, onSuccess);
+
         Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
         return exchangeAsRaw(sup, method, uri, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
     }
@@ -2191,13 +2196,15 @@ public class RestFacade {
      * @since 2025. 7. 14.
      * @version 0.8.0
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull URI uri //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, URI uri //
+            , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
+        AssertUtils2.notNulls(restTemplate, method, uri, responseType, onSuccess);
+
         Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
         return exchangeAsRaw(sup, method, uri, entity, responseType, onSuccess, retryCount);
     }
@@ -2237,12 +2244,14 @@ public class RestFacade {
      * @since 2021. 06. 11.
      * @version 0.4.0
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull URI uri //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, URI uri //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     ) {
+        AssertUtils2.notNulls(restTemplate, method, uri, responseType, onSuccess);
+
         Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
         return exchangeAsRaw(sup, method, uri, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
     }
@@ -2284,13 +2293,15 @@ public class RestFacade {
      * @since 2025. 7. 14.
      * @version 0.8.0
      */
-    public static <REQ, RES, RET> RET exchangeAsRaw(@NotNull RestTemplate restTemplate //
-            , @NotNull HttpMethod method, @NotNull URI uri //
-            , HttpEntity<REQ> entity //
+    public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
+            , HttpMethod method, URI uri //
+            , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
+        AssertUtils2.notNulls(restTemplate, method, uri, responseType, onSuccess);
+
         Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(uri, method, entity, responseType);
         return exchangeAsRaw(sup, method, uri, entity, responseType, onSuccess, retryCount);
     }
@@ -2303,12 +2314,14 @@ public class RestFacade {
      * 2026. 4. 9.      parkjunhong77@gmail.com     내부 데이터 타입 변경. {@link HttpStatus}::5.3.29 -> {@link HttpStatusCode}:7.0.5
      * </pre>
      */
-    private static <REQ, RES, RET> RET exchangeAsRaw(@NotNull Supplier<ResponseEntity<RES>> sup //
-            , @NotNull HttpMethod method, Object url //
-            , Object entity, Object responseType //
+    private static <REQ, RES, RET> RET exchangeAsRaw(Supplier<ResponseEntity<RES>> sup //
+            , HttpMethod method, Object url //
+            , @Nullable Object entity, Object responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
+        AssertUtils2.notNulls(sup, method, url, entity, responseType, onSuccess);
+
         final int RETRY_MAX_COUNT = retryCount;
         int retrial = 0;
 
@@ -2434,6 +2447,7 @@ public class RestFacade {
      */
     public static final HttpHeaders headers(MultiValueMap<String, String> headers, String... headerEntries) {
         AssertUtils2.notNulls(IllegalArgumentException.class, (Object[]) headerEntries);
+
         return headers(new HttpHeaders(headers), headerEntries);
     }
 
@@ -2454,6 +2468,8 @@ public class RestFacade {
      * @since 2020. 10. 21.
      */
     public static String queryParameters(MultiValueMap<String, Object> parameters) {
+        AssertUtils2.notNull(parameters);
+
         List<String> paramBuf = new ArrayList<>();
         parameters.entrySet().stream()//
                 .map(e -> {
@@ -2496,7 +2512,7 @@ public class RestFacade {
      *
      * @since 2020. 10. 21.
      */
-    public static String queryParameters(String... parameters) {
+    public static String queryParameters(@Nullable String @Nullable... parameters) {
         if (parameters == null) {
             return "";
         }

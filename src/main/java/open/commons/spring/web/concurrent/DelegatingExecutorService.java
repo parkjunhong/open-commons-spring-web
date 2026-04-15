@@ -129,7 +129,7 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      * @since 2025. 8. 2.
      * @version 0.8.0
      */
-    protected final Map<String, String> getCopyOfContextMap(String symbol) {
+    protected final @Nullable Map<String, String> getCopyOfContextMap(String symbol) {
         Map<String, String> copiedMDC = MDC.getCopyOfContextMap();
         if (copiedMDC != null && !StringUtils.isNullOrEmptyString(symbol)) {
             copiedMDC.put(MdcWrappedJob.MDC_PROPERTY_THREAD_SYMBOL, symbol);

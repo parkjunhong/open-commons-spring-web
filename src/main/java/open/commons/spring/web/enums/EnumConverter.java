@@ -30,10 +30,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,9 +79,7 @@ public class EnumConverter<E extends Enum> implements Converter<String, E> {
 
         logger.trace("Try to convert '{}' to '{}'", source, this.enumType.toString());
 
-        List<Method> methods = getAnnotatedMethods(this.enumType, RequestValueConverter.class).stream() //
-                .filter(m -> Modifier.isStatic(m.getModifiers())) // filtering
-                .collect(Collectors.toList());
+        List<Method> methods = getAnnotatedMethods(this.enumType, RequestValueConverter.class);
 
         logger.trace("Found !!! methods: '{}'", methods);
 
@@ -104,25 +100,10 @@ public class EnumConverter<E extends Enum> implements Converter<String, E> {
     }
 
     private <T extends Annotation> List<Method> getAnnotatedMethods(Class<?> typeClass, Class<T> annotationClass) {
-        ArrayList<Method> methods = new ArrayList<>();
-
-        Arrays.stream(typeClass.getDeclaredMethods()) // create methods stream
-                .forEach(m -> {
-                    boolean accessible = false;
-                    try {
-                        accessible = m.isAccessible();
-
-                        if (m.isAnnotationPresent(annotationClass)) {
-                            methods.add(m);
-                        }
-                    } catch (Throwable ignored) {
-                        // ignored
-                    } finally {
-                        m.setAccessible(accessible);
-                    }
-                });
-
-        return methods;
+        return Arrays.stream(typeClass.getDeclaredMethods()) //
+                .filter(m -> m.isAnnotationPresent(annotationClass) //
+                        && Modifier.isStatic(m.getModifiers())) //
+                .toList();
     }
 
     /**

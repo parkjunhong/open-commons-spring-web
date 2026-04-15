@@ -31,11 +31,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
 import org.slf4j.Logger;
@@ -129,9 +131,10 @@ public class AuthorizedHandles {
      * @since 2025. 9. 27.
      * @version 0.8.0
      */
-    public static void assertUsableHandleType(@NotEmpty String handleType, Target targetType, boolean preemptive) {
-        AssertUtils2.notNull(targetType);
-        AssertUtils2.isFalse("데이터 처리 방식은 반드시 설정되어야 합니다.", StringUtils.isNullOrEmptyString(handleType));
+    public static void assertUsableHandleType(@NotBlank String handleType, Target targetType, boolean preemptive) {
+        Objects.requireNonNull(targetType);
+        AssertUtils2.notBlank(handleType, "데이터 처리 방식은 '빈 문자열'을 허용하지 않습니다.");
+
         if (preemptive //
                 || !HANDLE_TYPES.containsKey(handleType) //
                 || !HANDLE_TYPES.get(handleType).contains(targetType) //
@@ -189,7 +192,7 @@ public class AuthorizedHandles {
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    public static ResourceHandle createResourceHandle(boolean isBuiltin, Target target, @NotEmpty String handleType, Function<?, ?> handle, boolean preemptive) {
+    public static ResourceHandle createResourceHandle(boolean isBuiltin, Target target, @NotBlank String handleType, Function<?, ?> handle, boolean preemptive) {
         assertUsableHandleType(handleType, target, preemptive);
         return new ResourceHandleImpl(target, handleType, handle, preemptive);
     }
@@ -748,7 +751,7 @@ public class AuthorizedHandles {
      * @since 2025. 9. 27.
      * @version 0.8.0
      */
-    private static void update(@NotEmpty String handleType, Target targetType) {
+    private static void update(@NotBlank String handleType, Target targetType) {
         List<Target> targets = MapUtils.getOrDefault(HANDLE_TYPES, handleType, (Supplier<List<Target>>) () -> {
             return new ArrayList<>();
         }, true);

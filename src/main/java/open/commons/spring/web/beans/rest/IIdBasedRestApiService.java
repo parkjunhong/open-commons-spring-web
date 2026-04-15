@@ -30,8 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 import org.jspecify.annotations.Nullable;
 import org.springframework.core.ParameterizedTypeReference;
@@ -73,7 +72,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, Class<RES> responseType) {
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, Class<RES> responseType) {
         return execute(id, null, null, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
     }
 
@@ -101,8 +100,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, null, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -132,9 +131,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, null, responseType, null, null, null, onSuccess, onError);
     }
 
@@ -162,7 +161,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return execute(id, null, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -193,9 +192,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, responseType, headers, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -227,10 +226,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, responseType, headers, null, null, onSuccess, onError);
     }
 
@@ -260,7 +259,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, null, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
@@ -294,10 +293,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, responseType, headers, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -331,11 +330,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, responseType, headers, query, null, onSuccess, onError);
     }
 
@@ -367,7 +366,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, null, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -403,10 +402,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, responseType, headers, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -442,11 +441,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, responseType, headers, query, fragment, onSuccess, onError);
     }
 
@@ -476,7 +475,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
         return execute(id, null, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -510,10 +509,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, responseType, headers, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -547,11 +546,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, responseType, headers, null, fragment, onSuccess, onError);
     }
 
@@ -579,7 +578,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, null, null, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -610,9 +609,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, null, responseType, null, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -644,10 +643,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, null, responseType, null, query, null, onSuccess, onError);
     }
 
@@ -677,7 +676,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, null, null, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -710,9 +709,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, null, responseType, null, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -746,10 +745,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, null, responseType, null, query, fragment, onSuccess, onError);
     }
 
@@ -777,7 +776,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable String fragment) {
         return execute(id, null, null, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -808,9 +807,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, null, responseType, null, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -842,10 +841,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, null, responseType, null, null, fragment, onSuccess, onError);
     }
 
@@ -873,7 +872,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType) {
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType) {
         return execute(id, pathVariables, null, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
     }
 
@@ -903,8 +902,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -936,9 +935,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, null, null, null, onSuccess, onError);
     }
 
@@ -968,7 +967,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return execute(id, pathVariables, null, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -1001,9 +1000,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, headers, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -1037,10 +1036,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, headers, null, null, onSuccess, onError);
     }
 
@@ -1072,7 +1071,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, pathVariables, null, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
@@ -1108,10 +1107,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, headers, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -1147,11 +1146,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, headers, query, null, onSuccess, onError);
     }
 
@@ -1185,7 +1184,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, pathVariables, null, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -1223,10 +1222,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, headers, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -1264,11 +1263,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, headers, query, fragment, onSuccess, onError);
     }
 
@@ -1300,7 +1299,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
         return execute(id, pathVariables, null, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -1336,10 +1335,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, headers, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -1375,11 +1374,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, headers, null, fragment, onSuccess, onError);
     }
 
@@ -1409,7 +1408,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, pathVariables, null, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -1442,9 +1441,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -1478,10 +1477,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, null, query, null, onSuccess, onError);
     }
 
@@ -1513,7 +1512,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, pathVariables, null, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -1548,9 +1547,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -1586,10 +1585,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, null, query, fragment, onSuccess, onError);
     }
 
@@ -1619,7 +1618,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable String fragment) {
         return execute(id, pathVariables, null, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -1652,9 +1651,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -1688,10 +1687,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, null, null, fragment, onSuccess, onError);
     }
 
@@ -1725,7 +1724,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType) {
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType) {
         return execute(id, pathVariables, null, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
     }
 
@@ -1761,8 +1760,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -1800,9 +1799,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, null, null, null, onSuccess, onError);
     }
 
@@ -1838,7 +1837,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return execute(id, pathVariables, null, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -1877,9 +1876,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, headers, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -1919,10 +1918,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, headers, null, null, onSuccess, onError);
     }
 
@@ -1960,7 +1959,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, pathVariables, null, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
@@ -2002,10 +2001,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, headers, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -2047,11 +2046,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, headers, query, null, onSuccess, onError);
     }
 
@@ -2091,7 +2090,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, pathVariables, null, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -2135,10 +2134,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, headers, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -2182,11 +2181,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, headers, query, fragment, onSuccess, onError);
     }
 
@@ -2224,7 +2223,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
         return execute(id, pathVariables, null, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -2266,10 +2265,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, headers, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -2311,11 +2310,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, headers, null, fragment, onSuccess, onError);
     }
 
@@ -2351,7 +2350,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, pathVariables, null, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -2390,9 +2389,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -2432,10 +2431,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, null, query, null, onSuccess, onError);
     }
 
@@ -2473,7 +2472,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, pathVariables, null, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -2514,9 +2513,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -2558,10 +2557,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, null, query, fragment, onSuccess, onError);
     }
 
@@ -2597,7 +2596,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
         return execute(id, pathVariables, null, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -2636,9 +2635,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -2678,10 +2677,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, null, null, fragment, onSuccess, onError);
     }
 
@@ -2712,7 +2711,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType) {
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType) {
         return execute(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
     }
 
@@ -2745,8 +2744,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -2781,9 +2780,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, null, null, null, onSuccess, onError);
     }
 
@@ -2816,7 +2815,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -2852,9 +2851,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -2891,10 +2890,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess, onError);
     }
 
@@ -2929,7 +2928,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, pathVariables, requestBody, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
@@ -2968,10 +2967,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, headers, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -3010,11 +3009,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, headers, query, null, onSuccess, onError);
     }
 
@@ -3051,7 +3050,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -3092,10 +3091,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -3137,11 +3136,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    public <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError);
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError);
 
     /**
      * 
@@ -3174,7 +3173,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -3212,9 +3211,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -3253,10 +3252,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess, onError);
     }
 
@@ -3291,7 +3290,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, pathVariables, requestBody, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -3329,9 +3328,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -3370,10 +3369,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, null, query, null, onSuccess, onError);
     }
 
@@ -3410,7 +3409,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, pathVariables, requestBody, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -3450,9 +3449,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -3493,10 +3492,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess, onError);
     }
 
@@ -3529,7 +3528,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment) {
         return execute(id, pathVariables, requestBody, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -3565,9 +3564,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -3604,10 +3603,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess, onError);
     }
 
@@ -3644,8 +3643,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType) {
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType) {
         return execute(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
     }
 
@@ -3684,9 +3683,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -3727,10 +3726,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, null, null, null, onSuccess, onError);
     }
 
@@ -3769,8 +3768,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -3812,10 +3810,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -3858,11 +3856,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess, onError);
     }
 
@@ -3903,8 +3901,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, pathVariables, requestBody, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
@@ -3949,11 +3946,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, headers, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -3998,12 +3995,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, headers, query, null, onSuccess, onError);
     }
 
@@ -4046,8 +4043,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -4094,11 +4090,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -4146,12 +4142,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    public <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError);
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError);
 
     /**
      * 
@@ -4190,8 +4186,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -4235,10 +4230,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -4283,11 +4278,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess, onError);
     }
 
@@ -4328,8 +4323,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, pathVariables, requestBody, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -4373,10 +4367,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -4421,11 +4415,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, null, query, null, onSuccess, onError);
     }
 
@@ -4468,8 +4462,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, pathVariables, requestBody, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -4515,10 +4508,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -4565,11 +4558,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess, onError);
     }
 
@@ -4608,8 +4601,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
         return execute(id, pathVariables, requestBody, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -4651,10 +4643,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -4697,11 +4689,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess, onError);
     }
 
@@ -4733,7 +4725,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType) {
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType) {
         return execute(id, null, null, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
     }
 
@@ -4767,8 +4759,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, null, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -4804,9 +4796,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, null, responseType, null, null, null, onSuccess, onError);
     }
 
@@ -4840,7 +4832,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return execute(id, null, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -4877,9 +4869,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, responseType, headers, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -4917,10 +4909,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, responseType, headers, null, null, onSuccess, onError);
     }
 
@@ -4956,7 +4948,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, null, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
@@ -4996,10 +4988,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, responseType, headers, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -5039,11 +5031,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, responseType, headers, query, null, onSuccess, onError);
     }
 
@@ -5081,7 +5073,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, null, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -5123,10 +5115,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, responseType, headers, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -5168,11 +5160,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, responseType, headers, query, fragment, onSuccess, onError);
     }
 
@@ -5208,7 +5200,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
         return execute(id, null, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -5248,10 +5240,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, responseType, headers, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -5291,11 +5283,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, responseType, headers, null, fragment, onSuccess, onError);
     }
 
@@ -5329,7 +5321,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, null, null, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -5366,9 +5358,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, null, responseType, null, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -5406,10 +5398,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, null, responseType, null, query, null, onSuccess, onError);
     }
 
@@ -5445,7 +5437,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, null, null, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -5484,9 +5476,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, null, responseType, null, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -5526,10 +5518,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, null, responseType, null, query, fragment, onSuccess, onError);
     }
 
@@ -5563,7 +5555,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
         return execute(id, null, null, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -5600,9 +5592,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, null, responseType, null, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -5640,10 +5632,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, null, responseType, null, null, fragment, onSuccess, onError);
     }
 
@@ -5672,7 +5664,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, Class<RES> responseType) {
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType) {
         return execute(id, null, requestBody, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
     }
 
@@ -5703,8 +5695,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -5737,9 +5729,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, null, null, null, onSuccess, onError);
     }
 
@@ -5770,7 +5762,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return execute(id, null, requestBody, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -5804,9 +5796,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, headers, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -5841,10 +5833,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, headers, null, null, onSuccess, onError);
     }
 
@@ -5877,7 +5869,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, null, requestBody, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
@@ -5914,10 +5906,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, headers, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -5954,11 +5946,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, headers, query, null, onSuccess, onError);
     }
 
@@ -5993,7 +5985,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, null, requestBody, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -6032,10 +6024,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, headers, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -6075,11 +6067,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, headers, query, fragment, onSuccess, onError);
     }
 
@@ -6112,7 +6104,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
         return execute(id, null, requestBody, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -6148,9 +6140,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, headers, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -6187,10 +6179,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, headers, null, fragment, onSuccess, onError);
     }
 
@@ -6223,7 +6215,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, null, requestBody, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -6262,9 +6254,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -6301,10 +6293,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, null, query, null, onSuccess, onError);
     }
 
@@ -6339,7 +6331,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, null, requestBody, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -6377,9 +6369,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -6418,10 +6410,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, null, query, fragment, onSuccess, onError);
     }
 
@@ -6452,7 +6444,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment) {
         return execute(id, null, requestBody, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -6486,9 +6478,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -6523,10 +6515,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, null, null, fragment, onSuccess, onError);
     }
 
@@ -6561,7 +6553,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType) {
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType) {
         return execute(id, null, requestBody, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
     }
 
@@ -6598,8 +6590,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -6638,9 +6630,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, null, null, null, onSuccess, onError);
     }
 
@@ -6677,7 +6669,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return execute(id, null, requestBody, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -6717,9 +6709,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, headers, null, null, onSuccess, CallbackOn.error());
     }
 
@@ -6760,10 +6752,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, headers, null, null, onSuccess, onError);
     }
 
@@ -6802,7 +6794,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, null, requestBody, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
@@ -6845,10 +6837,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, headers, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -6891,11 +6883,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, headers, query, null, onSuccess, onError);
     }
 
@@ -6936,7 +6928,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, null, requestBody, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
@@ -6981,10 +6973,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, headers, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -7030,11 +7022,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, headers, query, fragment, onSuccess, onError);
     }
 
@@ -7073,7 +7065,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
         return execute(id, null, requestBody, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -7115,9 +7107,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, headers, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -7160,10 +7152,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, headers, null, fragment, onSuccess, onError);
     }
 
@@ -7202,7 +7194,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return execute(id, null, requestBody, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
     }
@@ -7244,9 +7236,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, query, null, onSuccess, CallbackOn.error());
     }
 
@@ -7289,10 +7281,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, null, query, null, onSuccess, onError);
     }
 
@@ -7333,7 +7325,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return execute(id, null, requestBody, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -7377,9 +7369,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, query, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -7424,10 +7416,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, null, query, fragment, onSuccess, onError);
     }
 
@@ -7464,7 +7456,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
         return execute(id, null, requestBody, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
     }
@@ -7504,9 +7496,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, null, fragment, onSuccess, CallbackOn.error());
     }
 
@@ -7547,10 +7539,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
-            , @NotNull Function<Exception, Result<RET>> onError) {
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
+            , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, null, null, fragment, onSuccess, onError);
     }
 
@@ -7576,7 +7568,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, Class<RES> responseType) {
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, Class<RES> responseType) {
         return executeAsRaw(id, null, null, responseType, null, null, null, CallbackOn.successAsRaw(null));
     }
 
@@ -7604,8 +7596,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, null, null, null, onSuccess);
     }
 
@@ -7633,7 +7625,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return executeAsRaw(id, null, null, responseType, headers, null, null, CallbackOn.successAsRaw(null));
     }
@@ -7664,9 +7656,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, headers, null, null, onSuccess);
     }
 
@@ -7696,7 +7688,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, null, null, responseType, headers, query, null, CallbackOn.successAsRaw(null));
@@ -7730,10 +7722,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, headers, query, null, onSuccess);
     }
 
@@ -7765,7 +7757,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, null, null, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
@@ -7801,10 +7793,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, headers, query, fragment, onSuccess);
     }
 
@@ -7834,7 +7826,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
         return executeAsRaw(id, null, null, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
@@ -7868,10 +7860,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, headers, null, fragment, onSuccess);
     }
 
@@ -7899,7 +7891,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, null, null, responseType, null, query, null, CallbackOn.successAsRaw(null));
     }
@@ -7930,9 +7922,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, null, query, null, onSuccess);
     }
 
@@ -7962,7 +7954,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, null, null, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
     }
@@ -7995,9 +7987,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, null, query, fragment, onSuccess);
     }
 
@@ -8025,7 +8017,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable String fragment) {
         return executeAsRaw(id, null, null, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -8056,9 +8048,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, null, null, fragment, onSuccess);
     }
 
@@ -8086,7 +8078,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType) {
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, null, CallbackOn.successAsRaw(null));
     }
 
@@ -8116,8 +8108,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, null, onSuccess);
     }
 
@@ -8147,7 +8139,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, null, CallbackOn.successAsRaw(null));
     }
@@ -8180,9 +8172,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, null, onSuccess);
     }
 
@@ -8214,7 +8206,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, query, null, CallbackOn.successAsRaw(null));
@@ -8250,10 +8242,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, query, null, onSuccess);
     }
 
@@ -8287,7 +8279,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
@@ -8325,10 +8317,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, query, fragment, onSuccess);
     }
 
@@ -8360,7 +8352,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
@@ -8396,10 +8388,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, fragment, onSuccess);
     }
 
@@ -8429,7 +8421,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, null, CallbackOn.successAsRaw(null));
     }
@@ -8462,9 +8454,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, null, onSuccess);
     }
 
@@ -8496,7 +8488,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
     }
@@ -8531,9 +8523,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, fragment, onSuccess);
     }
 
@@ -8563,7 +8555,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -8596,9 +8588,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, fragment, onSuccess);
     }
 
@@ -8632,7 +8624,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType) {
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, null, CallbackOn.successAsRaw(null));
     }
 
@@ -8668,8 +8660,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, null, onSuccess);
     }
 
@@ -8705,7 +8697,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, null, CallbackOn.successAsRaw(null));
     }
@@ -8744,9 +8736,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, null, onSuccess);
     }
 
@@ -8784,7 +8776,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, query, null, CallbackOn.successAsRaw(null));
@@ -8826,10 +8818,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, query, null, onSuccess);
     }
 
@@ -8869,7 +8861,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
@@ -8913,10 +8905,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, query, fragment, onSuccess);
     }
 
@@ -8954,7 +8946,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
@@ -8996,10 +8988,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, fragment, onSuccess);
     }
 
@@ -9035,7 +9027,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, null, CallbackOn.successAsRaw(null));
     }
@@ -9074,9 +9066,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, null, onSuccess);
     }
 
@@ -9114,7 +9106,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
     }
@@ -9155,9 +9147,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, fragment, onSuccess);
     }
 
@@ -9193,7 +9185,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -9232,9 +9224,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, fragment, onSuccess);
     }
 
@@ -9265,7 +9257,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType) {
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.successAsRaw(null));
     }
 
@@ -9298,8 +9290,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, null, onSuccess);
     }
 
@@ -9332,7 +9324,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, null, CallbackOn.successAsRaw(null));
     }
@@ -9368,9 +9360,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess);
     }
 
@@ -9405,7 +9397,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, null, CallbackOn.successAsRaw(null));
@@ -9444,10 +9436,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, null, onSuccess);
     }
 
@@ -9484,7 +9476,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
@@ -9526,10 +9518,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    public <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     );
 
     /**
@@ -9563,7 +9555,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -9601,9 +9593,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess);
     }
 
@@ -9638,7 +9630,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, null, CallbackOn.successAsRaw(null));
     }
@@ -9676,9 +9668,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, null, onSuccess);
     }
 
@@ -9715,7 +9707,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
     }
@@ -9755,9 +9747,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess);
     }
 
@@ -9790,7 +9782,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -9826,9 +9818,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess);
     }
 
@@ -9865,8 +9857,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType) {
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.successAsRaw(null));
     }
 
@@ -9905,9 +9896,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, null, onSuccess);
     }
 
@@ -9946,8 +9937,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, null, CallbackOn.successAsRaw(null));
     }
@@ -9989,10 +9979,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess);
     }
 
@@ -10033,8 +10023,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, null, CallbackOn.successAsRaw(null));
@@ -10079,11 +10068,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, null, onSuccess);
     }
 
@@ -10126,8 +10115,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
@@ -10175,11 +10163,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    public <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     );
 
     /**
@@ -10219,8 +10207,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -10264,10 +10251,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess);
     }
 
@@ -10308,8 +10295,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, null, CallbackOn.successAsRaw(null));
     }
@@ -10353,10 +10339,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, null, onSuccess);
     }
 
@@ -10399,8 +10385,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
     }
@@ -10446,10 +10431,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess);
     }
 
@@ -10488,8 +10473,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -10531,10 +10515,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess);
     }
 
@@ -10566,7 +10550,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType) {
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType) {
         return executeAsRaw(id, null, null, responseType, null, null, null, CallbackOn.successAsRaw(null));
     }
 
@@ -10600,8 +10584,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, null, null, null, onSuccess);
     }
 
@@ -10635,7 +10619,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return executeAsRaw(id, null, null, responseType, headers, null, null, CallbackOn.successAsRaw(null));
     }
@@ -10672,9 +10656,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, headers, null, null, onSuccess);
     }
 
@@ -10710,7 +10694,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, null, null, responseType, headers, query, null, CallbackOn.successAsRaw(null));
@@ -10750,10 +10734,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, headers, query, null, onSuccess);
     }
 
@@ -10791,7 +10775,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, null, null, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
@@ -10833,10 +10817,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, headers, query, fragment, onSuccess);
     }
 
@@ -10872,7 +10856,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
         return executeAsRaw(id, null, null, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
@@ -10912,10 +10896,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, headers, null, fragment, onSuccess);
     }
 
@@ -10949,7 +10933,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, null, null, responseType, null, query, null, CallbackOn.successAsRaw(null));
     }
@@ -10986,9 +10970,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, null, query, null, onSuccess);
     }
 
@@ -11024,7 +11008,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, null, null, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
     }
@@ -11063,9 +11047,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, null, query, fragment, onSuccess);
     }
 
@@ -11099,7 +11083,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
         return executeAsRaw(id, null, null, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -11136,9 +11120,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, null, responseType, null, null, fragment, onSuccess);
     }
 
@@ -11167,7 +11151,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, Class<RES> responseType) {
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, null, CallbackOn.successAsRaw(null));
     }
 
@@ -11198,8 +11182,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, null, onSuccess);
     }
 
@@ -11230,7 +11214,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return executeAsRaw(id, null, requestBody, responseType, headers, null, null, CallbackOn.successAsRaw(null));
     }
@@ -11264,9 +11248,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, headers, null, null, onSuccess);
     }
 
@@ -11299,7 +11283,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, null, requestBody, responseType, headers, query, null, CallbackOn.successAsRaw(null));
@@ -11336,10 +11320,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, headers, query, null, onSuccess);
     }
 
@@ -11374,7 +11358,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, null, requestBody, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
@@ -11414,10 +11398,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     ) {
         return executeAsRaw(id, null, requestBody, responseType, headers, query, fragment, onSuccess);
     }
@@ -11451,7 +11435,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
         return executeAsRaw(id, null, requestBody, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -11487,9 +11471,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, headers, null, fragment, onSuccess);
     }
 
@@ -11522,7 +11506,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, null, CallbackOn.successAsRaw(null));
     }
@@ -11558,9 +11542,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, null, onSuccess);
     }
 
@@ -11595,7 +11579,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
     }
@@ -11633,9 +11617,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, fragment, onSuccess);
     }
 
@@ -11666,7 +11650,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -11700,9 +11684,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, fragment, onSuccess);
     }
 
@@ -11737,7 +11721,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType) {
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, null, CallbackOn.successAsRaw(null));
     }
 
@@ -11774,8 +11758,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, null, onSuccess);
     }
 
@@ -11812,7 +11796,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return executeAsRaw(id, null, requestBody, responseType, headers, null, null, CallbackOn.successAsRaw(null));
     }
@@ -11852,9 +11836,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, headers, null, null, onSuccess);
     }
 
@@ -11893,7 +11877,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, null, requestBody, responseType, headers, query, null, CallbackOn.successAsRaw(null));
@@ -11936,10 +11920,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, headers, query, null, onSuccess);
     }
 
@@ -11980,7 +11964,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, null, requestBody, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
@@ -12026,10 +12010,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , Function<ResponseEntity<RES>, RET> onSuccess //
     ) {
         return executeAsRaw(id, null, requestBody, responseType, headers, query, fragment, onSuccess);
     }
@@ -12069,7 +12053,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
         return executeAsRaw(id, null, requestBody, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -12111,9 +12095,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, headers, null, fragment, onSuccess);
     }
 
@@ -12152,7 +12136,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, null, CallbackOn.successAsRaw(null));
     }
@@ -12194,9 +12178,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, null, onSuccess);
     }
 
@@ -12237,7 +12221,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
     }
@@ -12281,9 +12265,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, fragment, onSuccess);
     }
 
@@ -12320,7 +12304,7 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -12360,9 +12344,9 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotEmpty String id, @Nullable REQ requestBody, @NotNull ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess) {
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, fragment, onSuccess);
     }
 }

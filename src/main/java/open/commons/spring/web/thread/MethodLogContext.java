@@ -37,6 +37,7 @@ import org.springframework.util.Assert;
 
 import open.commons.core.lang.IThreadLocalContext;
 import open.commons.core.lang.ThreadLocalContextService;
+import open.commons.core.utils.AssertUtils2;
 
 /**
  * 
@@ -59,7 +60,7 @@ public class MethodLogContext {
     }
 
     public static void clear(@NotBlank String holder) {
-        Assert.hasLength(holder, "Thread Context Holder MUST not be null and not the empty string.");
+        AssertUtils2.notBlank(holder, "Thread Context Holder MUST not be null and not the empty string.");
 
         if (holder.equals(CONTEXT.get(HOLDER))) {
             CONTEXT.clear();
@@ -77,7 +78,7 @@ public class MethodLogContext {
     }
 
     private static void initialize(@NotEmpty String holder, @Nullable Class<?> originClass) {
-        Assert.hasLength(holder, "Thread Context Holder MUST not be null and not the empty string.");
+        AssertUtils2.notBlank(holder, "Thread Context Holder MUST not be null and not the empty string.");
 
         if (CONTEXT.containsNot(HOLDER)) {
             CONTEXT.set(HOLDER, holder);

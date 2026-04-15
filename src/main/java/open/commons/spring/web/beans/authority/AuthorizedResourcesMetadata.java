@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -40,13 +41,14 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import jakarta.annotation.PostConstruct;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanCreationException;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.MapUtils;
 import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.authority.AuthorizedObject;
@@ -67,9 +69,9 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
     private final Logger logger = LoggerFactory.getLogger(AuthorizedResourcesMetadata.class);
 
     /** {@link AuthorizedObject}가 적용되는 데이터 유형({@link Class}) */
-    private final Map<Class<?>, AuthorizedObjectMetadata> authorizedClasses = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Class<?>, AuthorizedObjectMetadata> authorizedClasses = new ConcurrentHashMap<>();
     /** {@link AuthorizedField}가 적용되는 필드({@link Field}) */
-    private final Map<Class<?>, Set<AuthorizedFieldMetadata>> authorizedFields = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Class<?>, Set<AuthorizedFieldMetadata>> authorizedFields = new ConcurrentHashMap<>();
     /** 외부 설정 정보 */
     private Collection<AuthorizedObjectMetadata> authorizedObjectMetadata;
 
@@ -87,7 +89,7 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#getAuthorityBeanName(java.lang.Class)
      */
     @Override
-    public String getAuthorityBeanName(@NotNull Class<?> clazz) {
+    public @Nullable String getAuthorityBeanName(Class<?> clazz) {
         return isAuthorizedObject(clazz) ? this.authorizedClasses.get(clazz).getAuthorityBean() : null;
     }
 
@@ -100,7 +102,9 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *      java.lang.String)
      */
     @Override
-    public String getAuthorityBeanName(@NotNull Class<?> clazz, String fieldName) {
+    public @Nullable String getAuthorityBeanName(Class<?> clazz, @NotBlank String fieldName) {
+        AssertUtils2.notBlank(fieldName, "변수 이름은 '빈 문자열'을 허용하지 않습니다.");
+
         if (isAuthorizedObject(clazz)) {
             Optional<String> opt = this.authorizedFields.get(clazz).stream()//
                     .filter(afm -> afm.getName().equals(fieldName)) //
@@ -121,7 +125,9 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *      java.lang.String)
      */
     @Override
-    public AuthorizedFieldMetadata getAuthorizedFieldMetadata(@NotNull Class<?> clazz, String fieldName) {
+    public @Nullable AuthorizedFieldMetadata getAuthorizedFieldMetadata(Class<?> clazz, @NotBlank String fieldName) {
+        AssertUtils2.notBlank(fieldName, "변수 이름은 '빈 문자열'을 허용하지 않습니다.");
+
         if (isAuthorizedObject(clazz)) {
             Optional<AuthorizedFieldMetadata> opt = this.authorizedFields.get(clazz).stream()//
                     .filter(afm -> afm.getName().equals(fieldName)) //
@@ -140,7 +146,9 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#getAuthorizedObjectMetadata(java.lang.Class)
      */
     @Override
-    public AuthorizedObjectMetadata getAuthorizedObjectMetadata(@NotNull Class<?> clazz) {
+    public @Nullable AuthorizedObjectMetadata getAuthorizedObjectMetadata(Class<?> clazz) {
+        Objects.requireNonNull(clazz);
+
         return this.authorizedClasses.get(clazz);
     }
 
@@ -152,7 +160,7 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#getFieldHandleBeanName(java.lang.Class)
      */
     @Override
-    public String getFieldHandleBeanName(@NotNull Class<?> clazz) {
+    public @Nullable String getFieldHandleBeanName(Class<?> clazz) {
         return isAuthorizedObject(clazz) ? this.authorizedClasses.get(clazz).getFieldHandleBean() : null;
     }
 
@@ -165,7 +173,9 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *      java.lang.String)
      */
     @Override
-    public String getFieldHandleBeanName(@NotNull Class<?> clazz, String fieldName) {
+    public @Nullable String getFieldHandleBeanName(Class<?> clazz, String fieldName) {
+        AssertUtils2.notBlank(fieldName, "변수 이름은 '빈 문자열'을 허용하지 않습니다.");
+
         if (isAuthorizedObject(clazz)) {
             Optional<String> opt = this.authorizedFields.get(clazz).stream()//
                     .filter(afm -> afm.getName().equals(fieldName)) //
@@ -186,7 +196,9 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *      java.lang.String)
      */
     @Override
-    public boolean isAuthorizedField(@NotNull Class<?> clazz, @NotEmpty String fieldName) {
+    public boolean isAuthorizedField(Class<?> clazz, @NotBlank String fieldName) {
+        AssertUtils2.notBlank(fieldName, "변수 이름은 '빈 문자열'을 허용하지 않습니다.");
+
         if (isAuthorizedObject(clazz)) {
             return this.authorizedFields.get(clazz).stream()//
                     .filter(afm -> afm.getName().equals(fieldName))//
@@ -205,7 +217,9 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      * @see open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata#isAuthorizedObject(java.lang.Class)
      */
     @Override
-    public boolean isAuthorizedObject(@NotNull Class<?> clazz) {
+    public boolean isAuthorizedObject(Class<?> clazz) {
+        Objects.requireNonNull(clazz);
+
         return this.authorizedClasses.containsKey(clazz);
     }
 
@@ -279,9 +293,8 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
      *
      * @see #authorizedObjectMetadata
      */
-    public void setAuthorizedObjectMetadata(Collection<AuthorizedObjectMetadata> authorizedObjectMetadata) {
+    public void setAuthorizedObjectMetadata(@Nullable Collection<AuthorizedObjectMetadata> authorizedObjectMetadata) {
         this.authorizedObjectMetadata = authorizedObjectMetadata;
         this.resolved = false;
     }
-
 }

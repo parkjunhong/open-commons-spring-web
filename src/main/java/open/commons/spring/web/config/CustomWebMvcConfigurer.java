@@ -45,7 +45,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverters.ServerBuilder;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -61,7 +61,6 @@ import open.commons.spring.web.autoconfigure.configuration.GlobalServletConfigur
 import open.commons.spring.web.beans.resolver.IAuthorizedDataResolver;
 import open.commons.spring.web.enums.EnumConverter;
 import open.commons.spring.web.enums.EnumConverterFactory;
-import open.commons.spring.web.enums.EnumPackages;
 import open.commons.spring.web.handler.InterceptorIgnoreUrlProperties;
 import open.commons.spring.web.handler.InterceptorIgnoreValidator;
 import open.commons.spring.web.handler.PostProcessingHandlerInterceptor;
@@ -200,15 +199,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
     /** 사용자 정의 {@link WebMvcConfigurer} 들 중에서 가장 마지막으로 실행하기 위한 설정값 */
     public static final int ORDER = Ordered.LOWEST_PRECEDENCE;
 
-    /**
-     * Prefix of configurations in appliation.yml(or .properteis, or ...)<br>
-     * 
-     * @deprecated {@link #setEnumPkgs(EnumPackages)} 메소드 내부에서 {@link AutoConfigurationPackages}를 이용해서 BasePackage 정보를
-     *             추출해서 사용함.<br>
-     *             <font color="RED">추후 삭제됨.</font>
-     */
-    public static final String APPLICATION_PROPERTIES_PREFIX = "open-commons.spring.web.factory.enum";
-
     /** 정적 자원 경로 alias 패턴 */
     private static final String SPRING_MVC_STATIC_PATH_PATTERN = "spring.mvc.static-path-pattern";
     /**
@@ -236,14 +226,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
     // @Value("${" + SPRING_WEB_RESOURCES_STATIC_LOCATIONS + "}")
     // private String[] staticLocations;
-
-    /**
-     * @deprecated {@link #setEnumPkgs(EnumPackages)} 메소드 내부에서 {@link AutoConfigurationPackages}를 이용해서 BasePackage 정보를
-     *             추출해서 사용함.<br>
-     *             <font color="RED">추후 삭제됨.</font>
-     */
-    @SuppressWarnings("unused")
-    private EnumPackages enumPkgs;
 
     public CustomWebMvcConfigurer(ApplicationContext context, Environment env) {
         this.context = context;
@@ -516,12 +498,16 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     /**
-     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#extendMessageConverters(java.util.List)
+     * {@inheritDoc}
+     *
+     * @since 2026. 4. 15.
+     * @version 4.0.0
+     *
+     * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#configureMessageConverters(org.springframework.http.converter.HttpMessageConverters.ServerBuilder)
      */
     @Override
-    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-
-        WebMvcConfigurer.super.extendMessageConverters(converters);
+    public void configureMessageConverters(ServerBuilder builder) {
+        WebMvcConfigurer.super.configureMessageConverters(builder);
 
         // context.getBeansOfType(HttpMessageConverter.class) // Bean 중에서 HttpMessageConverter 를 구현한 객체를찾아서.
         // .values() //
@@ -533,7 +519,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
         //
         // logger.info("Register a HttpMessageConverter. {}.", converter);
         // });
-
     }
 
     /**
@@ -556,33 +541,6 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
     @Autowired
     public void setAuthorizedDataResolver(@Qualifier(CustomWebMvcAutoConfiguration.BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS) List<IAuthorizedDataResolver> resolvers) {
         this.argumentResolvers.addAll(resolvers);
-    }
-
-    /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 30.    parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param enumPkgs
-     *            the enumPkgs to set
-     *
-     * @since 2025. 7. 30.
-     * @version 0.8.0
-     *
-     * @see #enumPkgs
-     * 
-     * @deprecated {@link #setEnumPkgs(EnumPackages)} 메소드 내부에서 {@link AutoConfigurationPackages}를 이용해서 BasePackage 정보를
-     *             추출해서 사용함.<br>
-     *             <font color="RED">추후 삭제됨.</font>
-     */
-    @Autowired
-    public void setEnumPkgs(EnumPackages enumPkgs) {
-        this.enumPkgs = enumPkgs;
     }
 
     /**

@@ -27,9 +27,11 @@
 package open.commons.spring.web.resources;
 
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
+import open.commons.core.utils.AssertUtils2;
 
 /**
  * {@link ThreadPoolTaskExecutor} 설정 정보 클래스.
@@ -51,14 +53,14 @@ public class ThreadPoolTaskExecutorConfig {
 
     // --- org.springframework.scheduling.concurrent.ExecutorConfigurationSupport --- //
     private long awaitTerminationMillis = 0;
-    private String beanName;
+    private @Nullable String beanName;
     private boolean waitForTasksToCompleteOnShutdown = false;
     // ---------------------------------------------------------- //
 
     // --- org.springframework.util.CustomizableThreadCreator --- //
     private boolean daemon = false;
-    private String threadGroupName;
-    private String threadNamePrefix;
+    private @Nullable String threadGroupName;
+    private @Nullable String threadNamePrefix;
     private int threadPriority = Thread.NORM_PRIORITY;
     // -------------------------------------------------- //
 
@@ -96,7 +98,9 @@ public class ThreadPoolTaskExecutorConfig {
      * @since 2025. 8. 11.
      * @version 0.8.0
      */
-    public ThreadPoolTaskExecutorConfig(@NotNull ThreadPoolTaskExecutorConfig config) {
+    public ThreadPoolTaskExecutorConfig(ThreadPoolTaskExecutorConfig config) {
+        AssertUtils2.notNull(config);
+
         this.corePoolSize = config.corePoolSize;
         this.keepAliveSeconds = config.keepAliveSeconds;
         this.maxPoolSize = config.maxPoolSize;
@@ -494,7 +498,7 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * @see #beanName
      */
-    public void setBeanName(String beanName) {
+    public void setBeanName(@Nullable String beanName) {
         this.beanName = beanName;
 
         this.initialized = true;
@@ -656,7 +660,7 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * @see #threadGroupName
      */
-    public void setThreadGroupName(String threadGroupName) {
+    public void setThreadGroupName(@Nullable String threadGroupName) {
         this.threadGroupName = threadGroupName;
 
         this.initialized = true;
@@ -679,7 +683,7 @@ public class ThreadPoolTaskExecutorConfig {
      * 
      * @see #threadNamePrefix
      */
-    public void setThreadNamePrefix(String threadNamePrefix) {
+    public void setThreadNamePrefix(@Nullable String threadNamePrefix) {
         this.threadNamePrefix = threadNamePrefix;
 
         this.initialized = true;

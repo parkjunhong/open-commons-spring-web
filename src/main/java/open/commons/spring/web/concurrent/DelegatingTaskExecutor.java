@@ -154,7 +154,7 @@ public class DelegatingTaskExecutor<S extends AsyncTaskExecutor> implements Asyn
      */
     @Override
     public <T> CompletableFuture<T> submitCompletable(Callable<T> task) {
-        return (CompletableFuture<T>) this.delegate.submit(wrap(task));
+        return (CompletableFuture<T>) this.delegate.submitCompletable(wrap(task));
     }
 
     /**
@@ -168,7 +168,7 @@ public class DelegatingTaskExecutor<S extends AsyncTaskExecutor> implements Asyn
      */
     @Override
     public CompletableFuture<Void> submitCompletable(Runnable task) {
-        return (CompletableFuture<Void>) this.delegate.submit(wrap(task));
+        return (CompletableFuture<Void>) this.delegate.submitCompletable(wrap(task));
     }
 
     /**

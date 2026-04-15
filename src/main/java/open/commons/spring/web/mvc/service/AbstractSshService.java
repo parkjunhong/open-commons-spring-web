@@ -41,10 +41,12 @@ import java.util.function.Supplier;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Value;
 
 import open.commons.core.Result;
 import open.commons.core.function.TripleFunction;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.MapUtils;
 import open.commons.spring.web.servlet.InternalServerException;
 import open.commons.ssh.SshConnection;
@@ -138,6 +140,7 @@ public class AbstractSshService extends AbstractGenericService {
      */
     protected final Result<Boolean> download(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String srcPath,
             OutputStream dstOutput, boolean autoClose) {
+        AssertUtils2.notNull(dstOutput);
 
         Result<Boolean> resultExistSrcFile = existFile(host, port, username, password, srcPath);
 
@@ -191,6 +194,12 @@ public class AbstractSshService extends AbstractGenericService {
      */
     protected final Result<Boolean> download(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String srcPath,
             @NotBlank String dstPath) {
+        AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(srcPath, "데이터 경로는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(dstPath, "저장위치는 '빈 문자열'을 허용하지 않습니다.");
+
         try (OutputStream out = new FileOutputStream(dstPath);) {
             return download(host, port, username, password, srcPath, out, true);
         } catch (Exception e) {
@@ -227,7 +236,11 @@ public class AbstractSshService extends AbstractGenericService {
      * @version 0.8.0
      */
     protected final <T> Result<T> execute(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, Function<FileTransfer, Result<T>> action,
-            String job) {
+            @Nullable String job) {
+        AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
+
         return execute(() -> {
             try ( //
                     FileTransfer sftp = new FileTransfer(getConnection(username, password, host, port));
@@ -266,6 +279,11 @@ public class AbstractSshService extends AbstractGenericService {
      * @version 0.8.0
      */
     protected final Result<Boolean> existFile(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String srcFile) {
+        AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(srcFile, "데이터 경로는 '빈 문자열'을 허용하지 않습니다.");
+
         try {
             return execute(host, port, username, password, sftp -> {
                 // #1. 대상파일 존재 확인
@@ -312,7 +330,11 @@ public class AbstractSshService extends AbstractGenericService {
      * @since 2023. 11. 20.
      * @version 0.8.0
      */
-    protected final SshConnection getConnection(String username, String password, String host, int port) {
+    protected final SshConnection getConnection(@NotBlank String username, @NotBlank String password, @NotBlank String host, int port) {
+        AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
+
         ReentrantLock lock = this.mutexSession;
         try {
             lock.lock();
@@ -352,6 +374,10 @@ public class AbstractSshService extends AbstractGenericService {
      * @version 0.8.0
      */
     protected final Result<List<LsEntry>> list(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String dir) {
+        AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
+
         try ( //
                 FileTransfer sftp = new FileTransfer(getConnection(username, password, host, port));
         //
@@ -396,6 +422,11 @@ public class AbstractSshService extends AbstractGenericService {
      */
     protected final Result<Boolean> upload(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, InputStream srcInput,
             @NotBlank String dstPath, boolean autoClose) {
+        AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(dstPath, "저장위치는 '빈 문자열'을 허용하지 않습니다.");
+
         return execute(host, port, username, password, sftp -> {
             return sftp.upload(srcInput, dstPath, autoClose);
         }, "파일 업로드");
@@ -430,6 +461,12 @@ public class AbstractSshService extends AbstractGenericService {
      */
     protected final Result<Boolean> upload(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, String srcPath,
             @NotBlank String dstPath) {
+        AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(srcPath, "데이터 경로는 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notBlank(dstPath, "저장위치는 '빈 문자열'을 허용하지 않습니다.");
+
         // #1. 대상파일 존재 확인
         if (!Files.exists(Paths.get(srcPath))) {
             // 파일이 없는 경우

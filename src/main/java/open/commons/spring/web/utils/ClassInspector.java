@@ -41,6 +41,7 @@ import jakarta.validation.constraints.NotNull;
 import org.jspecify.annotations.Nullable;
 import org.springframework.util.Assert;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.servlet.InternalServerException;
 
@@ -123,8 +124,7 @@ public class ClassInspector {
      * @see Class#getDeclaredField(String)
      */
     public static @Nullable Field getDeclaredFieldIfExist(@NotNull Class<?> clazz, @NotBlank String fieldName) {
-        Objects.requireNonNull(clazz);
-        Assert.hasLength(fieldName, "변수이름은 반드시 길이가 있어야 합니다.");
+        AssertUtils2.notBlank(fieldName, "변수이름은 반드시 길이가 있어야 합니다.");
 
         try {
             return clazz.getDeclaredField(fieldName);

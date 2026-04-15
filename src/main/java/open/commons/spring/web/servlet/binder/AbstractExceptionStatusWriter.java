@@ -28,7 +28,7 @@ package open.commons.spring.web.servlet.binder;
 
 import org.springframework.http.HttpStatus;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 
 /**
@@ -111,7 +111,7 @@ public abstract class AbstractExceptionStatusWriter implements IExceptionRespons
     public String writeAsString(Object o) {
         try {
             return o != null ? this.objectMapper.writeValueAsString(o) : "null";
-        } catch (JsonProcessingException e) {
+        } catch (JacksonException e) {
             return e.toString();
         }
     }

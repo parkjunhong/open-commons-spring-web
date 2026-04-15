@@ -31,11 +31,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import jakarta.validation.constraints.NotNull;
-
+import org.jspecify.annotations.Nullable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Order;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.mvc.service.AbstractMvcService;
 
@@ -68,7 +68,9 @@ public class PaginationUtils {
      * @since 2021. 12. 9.
      * @version 0.4.0
      */
-    public static int limit(@NotNull Pageable pageable) {
+    public static int limit(Pageable pageable) {
+        AssertUtils2.notNull(pageable);
+
         return pageable.getPageSize();
     }
 
@@ -89,7 +91,9 @@ public class PaginationUtils {
      * @since 2021. 12. 9.
      * @version 0.4.0
      */
-    public static int offset(@NotNull Pageable pageable) {
+    public static int offset(Pageable pageable) {
+        AssertUtils2.notNull(pageable);
+
         return pageable.getPageNumber() * pageable.getPageSize();
     }
 
@@ -112,7 +116,9 @@ public class PaginationUtils {
      * 
      * @see #orderBy(String...)
      */
-    public static String[] orderBy(@NotNull Pageable pageable) {
+    public static String[] orderBy(Pageable pageable) {
+        AssertUtils2.notNull(pageable);
+
         return pageable.getSort().stream() //
                 .map(sort -> String.join(" ", sort.getProperty(), sort.getDirection().toString())) //
                 .collect(Collectors.toList())//
@@ -138,7 +144,7 @@ public class PaginationUtils {
      * 
      * @see #orderBy(Pageable)
      */
-    public static List<Order> orderBy(String... orderByArgs) {
+    public static List<Order> orderBy(String @Nullable... orderByArgs) {
         return orderByArgs != null //
                 ? Stream.of(orderByArgs).map(orderBy -> {
                     String[] strs = orderBy.split(" ");

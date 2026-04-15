@@ -28,6 +28,8 @@ package open.commons.spring.web.resources;
 
 import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
+
 /**
  * 
  * @since 2025. 8. 3.
@@ -46,14 +48,14 @@ public class ThreadPoolTaskSchedulerConfig {
 
     // --- org.springframework.scheduling.concurrent.ExecutorConfigurationSupport --- //
     private long awaitTerminationMillis = 0;
-    private String beanName;
+    private @Nullable String beanName;
     private boolean waitForTasksToCompleteOnShutdown = false;
     // ---------------------------------------------------------- //
 
     // --- org.springframework.util.CustomizableThreadCreator --- //
     private boolean daemon = false;
-    private String threadGroupName;
-    private String threadNamePrefix;
+    private @Nullable String threadGroupName;
+    private @Nullable String threadNamePrefix;
     private int threadPriority = Thread.NORM_PRIORITY;
     // -------------------------------------------------- //
 
@@ -438,7 +440,7 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @see #beanName
      */
-    public void setBeanName(String beanName) {
+    public void setBeanName(@Nullable String beanName) {
         this.beanName = beanName;
 
         this.initialized = true;

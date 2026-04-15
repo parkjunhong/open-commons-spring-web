@@ -35,6 +35,7 @@ import jakarta.validation.constraints.NotEmpty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.util.Assert;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider;
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
@@ -268,7 +269,7 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * @see #handleType
      */
     public void setHandleType(@NotBlank String handleType) {
-        Assert.hasLength(handleType, "타입은 '빈 문자열'일 수 없습니다.");
+        AssertUtils2.notBlank(handleType, "타입은 '빈 문자열'일 수 없습니다.");
 
         this.handleType = handleType;
     }
@@ -292,7 +293,7 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
      * @see #name
      */
     public void setName(@NotBlank String name) {
-        Assert.hasLength(name, "변수 이름은 '빈 문자열'일 수 없습니다.");
+        AssertUtils2.notBlank(name, "변수 이름은 '빈 문자열'일 수 없습니다.");
 
         this.name = name;
     }

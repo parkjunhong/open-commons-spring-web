@@ -34,6 +34,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -42,11 +43,12 @@ import java.util.stream.Collectors;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanCreationException;
+import org.springframework.util.Assert;
 
 import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.MapUtils;
@@ -106,7 +108,7 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *      java.lang.String)
      */
     @Override
-    public AuthorizedRequestDataFieldMetadata getFieldMetadat(@NotNull Class<?> targetClass, @NotBlank String fieldName) {
+    public @Nullable AuthorizedRequestDataFieldMetadata getFieldMetadat(Class<?> targetClass, @NotBlank String fieldName) {
         Class<?> supportingClass = supporingAuthorizedRequestDataObjectType(targetClass);
         if (supportingClass != null) {
             Optional<AuthorizedRequestDataFieldMetadata> opt = this.authorizedRequestFields.get(supportingClass).stream() //
@@ -127,7 +129,9 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *      java.lang.String)
      */
     @Override
-    public String getHandleBeanName(@NotNull Class<?> targetClass, @NotBlank String fieldName) {
+    public @Nullable String getHandleBeanName(Class<?> targetClass, @NotBlank String fieldName) {
+        AssertUtils2.notBlank(fieldName, "필드이름은 '빈 문자열'이 허용되지 않습니다.");
+        
         AuthorizedRequestDataObjectMetadata om = getObjectMetadata(targetClass);
         if (om == null) {
             return null;
@@ -147,7 +151,7 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *      java.lang.String)
      */
     @Override
-    public String getHandleType(@NotNull Class<?> targetClass, @NotBlank String fieldName) {
+    public String getHandleType(Class<?> targetClass, @NotBlank String fieldName) {
         AuthorizedRequestDataFieldMetadata fm = getFieldMetadat(targetClass, fieldName);
         return fm != null ? fm.getHandleType() : AuthorizedRequestData.NO_ASSINGED_HANDLE_TYPE;
     }
@@ -160,8 +164,8 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      * @see open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata#getObjectMetadata(java.lang.Class)
      */
     @Override
-    public AuthorizedRequestDataObjectMetadata getObjectMetadata(@NotNull Class<?> targetClass) {
-        AssertUtils2.notNull(targetClass);
+    public @Nullable AuthorizedRequestDataObjectMetadata getObjectMetadata(Class<?> targetClass) {
+        Objects.requireNonNull(targetClass);
 
         // 일치하는 클래스 조회
         AuthorizedRequestDataObjectMetadata om = this.authorizedRequestClasses.get(targetClass);
@@ -186,7 +190,7 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      * @see open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata#isAuthorizedRequestDataObject(java.lang.Class)
      */
     @Override
-    public boolean isAuthorizedRequestDataObject(@NotNull Class<?> targetClass) {
+    public boolean isAuthorizedRequestDataObject(Class<?> targetClass) {
         return getObjectMetadata(targetClass) != null;
     }
 
@@ -282,7 +286,7 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      * @since 2025. 9. 23.
      * @version 0.8.0
      */
-    private Class<?> supporingAuthorizedRequestDataObjectType(Class<?> targetClass) {
+    private @Nullable Class<?> supporingAuthorizedRequestDataObjectType(Class<?> targetClass) {
         AuthorizedRequestDataObjectMetadata om = getObjectMetadata(targetClass);
         return om != null ? om.getType() : null;
     }

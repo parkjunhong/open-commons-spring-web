@@ -26,7 +26,7 @@
 
 package open.commons.spring.web.beans.authority;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.authority.AuthorizedRequestData;
@@ -54,7 +54,9 @@ public interface IAuthorizedRequestDataHandler {
      *            데이터 처리 방식 식별정보
      * @param value
      *            {@link AuthorizedField#fieldHandleBean()}에 의해서 처리된 데이터
+     *            
      * @return
+     * 
      * @throws UnsupportedOperationException
      *             지원하지 않는 <code>handle</code>을 전달받았을 때.
      *
@@ -63,6 +65,6 @@ public interface IAuthorizedRequestDataHandler {
      * 
      * @see AuthorizedRequestData#handleType()
      */
-    Object restoreValue(@NotEmpty String handle, Object value) throws UnsupportedOperationException;
+    Object restoreValue(@NotBlank String handle, Object value) throws UnsupportedOperationException;
 
 }

@@ -54,7 +54,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.support.WebRequestDataBinder;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.annotation.ModelAttributeMethodProcessor;
-import org.springframework.web.servlet.mvc.method.annotation.ExtendedServletRequestDataBinder;
+import org.springframework.web.servlet.support.ExtendedServletRequestDataBinder;
 
 import open.commons.core.TwoValueObject;
 import open.commons.core.utils.ExceptionUtils;

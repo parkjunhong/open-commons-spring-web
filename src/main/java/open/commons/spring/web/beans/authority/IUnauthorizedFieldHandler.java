@@ -26,7 +26,7 @@
 
 package open.commons.spring.web.beans.authority;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 import open.commons.spring.web.authority.AuthorizedField;
 
@@ -61,6 +61,6 @@ public interface IUnauthorizedFieldHandler {
      * 
      * @see AuthorizedField#handleType()
      */
-    Object handleObject(@NotEmpty String handle, Object data) throws UnsupportedOperationException;
+    Object handleObject(@NotBlank String handle, Object data) throws UnsupportedOperationException;
 
 }

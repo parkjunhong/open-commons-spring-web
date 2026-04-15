@@ -133,27 +133,17 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
 
     /** {@link RestApiGroup} 정렬 */
     private final Function<OrderBy, Comparator<RestApiGroup>> GROUP_ORDER = orderBy -> (g1, g2) -> {
-        switch (orderBy) {
-            case name:
-                return g1.getName().compareTo(g2.getName());
-            case path:
-                return g1.getGroupPath().compareTo(g2.getGroupPath());
-            default:
-                // unreachable code
-                throw new IllegalArgumentException("허용되지 않는 정보입니다. 허용범위=" + OrderBy.name + ", " + OrderBy.path);
-        }
+        return switch (orderBy) {
+            case name -> g1.getName().compareTo(g2.getName());
+            case path -> g1.getGroupPath().compareTo(g2.getGroupPath());
+        };
     };
     /** {@link RestApiDecl} 정렬 */
     private final Function<OrderBy, Comparator<RestApiDecl>> API_ORDER = orderBy -> (a1, a2) -> {
-        switch (orderBy) {
-            case name:
-                return a1.getName().compareTo(a2.getName());
-            case path:
-                return a1.getPath().compareTo(a2.getPath());
-            default:
-                // unreachable code
-                throw new IllegalArgumentException("허용되지 않는 정보입니다. 허용범위=" + OrderBy.name + ", " + OrderBy.path);
-        }
+        return switch (orderBy) {
+            case name -> a1.getName().compareTo(a2.getName());
+            case path -> a1.getPath().compareTo(a2.getPath());
+        };
     };
 
     /**
@@ -494,9 +484,9 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
          * <br>
          * 
          * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
          * 2025. 9. 29.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *

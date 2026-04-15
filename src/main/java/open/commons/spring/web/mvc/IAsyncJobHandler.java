@@ -26,60 +26,64 @@
 
 package open.commons.spring.web.mvc;
 
+import java.util.concurrent.CompletableFuture; // [PATCH] CompletableFuture 임포트
 import java.util.concurrent.Future;
-
-import org.springframework.scheduling.annotation.AsyncResult;
 
 import open.commons.core.Result;
 import open.commons.core.concurrent.AsyncJobManager;
 
 /**
- *
- * <br>
- * 
  * <pre>
  * [개정이력]
- *      날짜        | 작성자    |    내용
+ * 날짜        | 작성자    |    내용
  * ------------------------------------------
  * 2020. 11. 26.    parkjunhong77@gmail.com     최초 작성
- * 2021. 1. 13.         parkjunhong77@gmail.com     클래스 이관.
+ * 2021. 1. 13.     parkjunhong77@gmail.com     클래스 이관.
+ * 2026. 4. 15.     parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5.
  * </pre>
  * 
- * @since 2020. 11. 26.
- * @version 0.3.0
+ * * @since 2020. 11. 26.
+ * 
+ * @version 4.0.0
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
 public interface IAsyncJobHandler {
 
     /**
-     * 주어진 데이터를 가지고 {@link Future} 객체를 생성한다. <br>
+     * 주어진 데이터를 가지고 {@link CompletableFuture} 객체를 생성한다. <br>
+     * *
      * 
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     * 날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2020. 11. 10.    parkjunhong77@gmail.com         최초 작성
+     * 2026. 4. 15.     parkjunhong77@gmail.com         AsyncResult 폐기에 따른 CompletableFuture.completedFuture 적용
      * </pre>
      *
      * @param <T>
      * @param value
-     * @return
+     * 
+     * @return 완료된 상태의 CompletableFuture 객체
      *
      * @since 2020. 11. 10.
+     * @version 4.0.0
      */
-    default <T> Future<T> future(T value) {
-        return new AsyncResult<>(value);
+    default <T> CompletableFuture<T> future(T value) {
+        // [PATCH] AsyncResult 생성자 대체
+        return CompletableFuture.completedFuture(value);
     }
 
     /**
-     * 
-     * <br>
+     * * <br>
+     * *
      * 
      * <pre>
      * [개정이력]
-     *     날짜        | 작성자                   |   내용
+     * 날짜        | 작성자                   |   내용
      * -----------------------------------------------------
      * 2020. 11. 26.    parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 15.     parkjunhong77@gmail.com     AsyncResult 폐기에 따른 CompletableFuture.completedFuture 적용
      * </pre>
      *
      * @param <T>
@@ -89,21 +93,24 @@ public interface IAsyncJobHandler {
      *            결과
      * @param msg
      *            메시지
-     * @return
+     * 
+     * @return 완료된 상태의 CompletableFuture 객체
      *
      * @since 2020. 11. 26.
-     * @version 0.4.0
+     * @version 4.0.0
      */
-    default <T> Future<Result<T>> futureAsResult(T value, boolean result, String msg) {
-        return new AsyncResult<>(new Result<T>(value, result).setMessage(msg));
+    default <T> CompletableFuture<Result<T>> futureAsResult(T value, boolean result, String msg) {
+        // [PATCH] AsyncResult 생성자 대체
+        return CompletableFuture.completedFuture(new Result<T>(value, result).setMessage(msg));
     }
 
     /**
      * 비동기 작업관리자 식별정보를 제공한다. <br>
+     * *
      * 
      * <pre>
      * [개정이력]
-     *     날짜        | 작성자                   |   내용
+     * 날짜        | 작성자                   |   내용
      * -----------------------------------------------------
      * 2021. 4. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
@@ -120,10 +127,11 @@ public interface IAsyncJobHandler {
 
     /**
      * 비동기 작업을 관리자에게 등록한다. <br>
+     * *
      * 
      * <pre>
      * [개정이력]
-     *     날짜        | 작성자                   |   내용
+     * 날짜        | 작성자                   |   내용
      * -----------------------------------------------------
      * 2021. 1. 13.    parkjunhong77@gmail.com     최초 작성
      * </pre>
@@ -150,10 +158,11 @@ public interface IAsyncJobHandler {
 
     /**
      * 비동기 작업을 관리자에 등록한다. <br>
+     * *
      * 
      * <pre>
      * [개정이력]
-     *     날짜        | 작성자                   |   내용
+     * 날짜        | 작성자                   |   내용
      * -----------------------------------------------------
      * 2021. 4. 23.    parkjunhong77@gmail.com     최초 작성
      * </pre>
@@ -175,10 +184,11 @@ public interface IAsyncJobHandler {
 
     /**
      * 비동기 작업등록을 해제한다. <br>
+     * *
      * 
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     * 날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2020. 11. 10.    parkjunhong77@gmail.com         최초 작성
      * 2023. 11. 02.    parkjunhong77@gmail.com         데이터 반환 추가
@@ -205,10 +215,11 @@ public interface IAsyncJobHandler {
 
     /**
      * 비동기 작업등록을 해제한다. <br>
+     * *
      * 
      * <pre>
      * [개정이력]
-     *     날짜        | 작성자                   |   내용
+     * 날짜        | 작성자                   |   내용
      * -----------------------------------------------------
      * 2021. 4. 23.    parkjunhong77@gmail.com     최초 작성
      * 2023. 11. 02.    parkjunhong77@gmail.com         데이터 반환 추가

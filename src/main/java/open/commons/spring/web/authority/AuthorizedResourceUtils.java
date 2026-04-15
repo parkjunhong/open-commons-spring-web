@@ -31,7 +31,7 @@ import java.util.function.Supplier;
 import org.jspecify.annotations.Nullable;
 import org.springframework.context.annotation.Bean;
 
-import open.commons.core.utils.ObjectUtils;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.utils.BeanUtils;
 
@@ -74,7 +74,7 @@ public class AuthorizedResourceUtils {
      * @version 0.8.0
      */
     public static <T> T getBean(BeanUtils beanUtils, Class<T> beanType, Supplier<String> o, @Nullable Supplier<String> f, boolean required) {
-        ObjectUtils.requireNonNulls(beanUtils, beanType, o);
+        AssertUtils2.notNulls(beanUtils, beanType, o);
 
         String beanName = null;
         if (f == null) {

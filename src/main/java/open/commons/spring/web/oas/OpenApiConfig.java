@@ -45,7 +45,7 @@ import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 
-import open.commons.core.collection.FIFOMap;
+import open.commons.core.collection.concurrent.ConcurrentLinkedHashMap;
 import open.commons.core.utils.StringUtils;
 
 /**
@@ -247,7 +247,7 @@ public class OpenApiConfig {
     @Bean(BEAN_QUALIFIER_GROUPED_OPEN_API_PROPERTIES)
     @ConfigurationProperties(PROPERTIES_GROUPED_OPEN_API)
     public Map<String, GroupedOpenApiProperties> loadGroupedOpenApiProperties() {
-        return new FIFOMap<String, GroupedOpenApiProperties>();
+        return new ConcurrentLinkedHashMap<String, GroupedOpenApiProperties>();
     }
 
     /**

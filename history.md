@@ -1,3 +1,8 @@
+[2026/04/15]
+- Patch
+  + Migration ( Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5 )
+    + open.commonns.spring.web.rest 패키지 완료.
+
 [2026/04/09]
 - Patch
   + JSpecify 스펙 적용 

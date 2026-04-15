@@ -26,7 +26,9 @@
 
 package open.commons.spring.web.beans.authority;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
+
+import open.commons.core.utils.AssertUtils2;
 
 /**
  * 
@@ -68,7 +70,10 @@ public class FieldAccessAuthorityDecision {
      * @since 2025. 10. 1.
      * @version 0.8.0
      */
-    public FieldAccessAuthorityDecision(boolean accessible, @NotEmpty String handleType, String handleBean) {
+    public FieldAccessAuthorityDecision(boolean accessible, @NotBlank String handleType, @NotBlank String handleBean) {
+        AssertUtils2.notBlank(handleType);
+        AssertUtils2.notBlank(handleBean);
+
         this.accessible = accessible;
         this.handleType = handleType;
         this.handleBean = handleBean;

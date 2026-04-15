@@ -27,6 +27,7 @@
 package open.commons.spring.web.log;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -34,9 +35,11 @@ import java.util.function.Function;
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.constraints.NotBlank;
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
 
 /**
@@ -46,6 +49,10 @@ import open.commons.core.utils.StringUtils;
  * @author parkjunhong77@gmail.com
  */
 public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationConsolidator {
+
+    private static final BiFunction<String, String, String> DECORATOR_KEY = (feature, marker) -> {
+        return String.join("#", feature, StringUtils.isNullOrEmptyString(marker) ? "" : marker.toString());
+    };
 
     private final Logger logger = LoggerFactory.getLogger(LogFeatureDecorationConsolidator.class);
 
@@ -57,9 +64,6 @@ public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationCo
     /** 외부 설정 */
     private Collection<ILogFeatureDecorator> decoratorConfigurations;
     private boolean resolved = false;
-    private final BiFunction<String, String, String> DECORATOR_KEY = (feature, marker) -> {
-        return String.join("#", feature, StringUtils.isNullOrEmptyString(marker) ? "" : marker.toString());
-    };
 
     /**
      * <br>
@@ -87,7 +91,10 @@ public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationCo
     @Override
 
     public Function<String, String> decorator(@NotBlank String feature, String marker) {
-        Function<String, String> f = decorators.get(DECORATOR_KEY.apply(feature, marker));
+        AssertUtils2.notBlank(feature);
+        Objects.requireNonNull(marker);
+
+        Function<String, String> f = this.decorators.get(DECORATOR_KEY.apply(feature, marker));
         return f != null ? f : ILogFeatureDecorationConsolidator::decorate;
     }
 
@@ -105,7 +112,7 @@ public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationCo
                 }
                 return !nulpty;
             }).forEach(d -> {
-                decorators.put(DECORATOR_KEY.apply(d.feature(), d.marker()), d.decorator());
+                this.decorators.put(DECORATOR_KEY.apply(d.feature(), d.marker()), d.decorator());
             });
         }
 
@@ -113,7 +120,7 @@ public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationCo
         this.resolved = true;
     }
 
-    public void setMdcPropertyLogDecoratorConfigurations(Collection<ILogFeatureDecorator> decoratorConfigurations) {
+    public void setMdcPropertyLogDecoratorConfigurations(@Nullable Collection<ILogFeatureDecorator> decoratorConfigurations) {
         this.decoratorConfigurations = decoratorConfigurations;
         this.resolved = false;
     }

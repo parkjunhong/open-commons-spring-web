@@ -31,12 +31,12 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import jakarta.validation.constraints.NotNull;
-
+import org.jspecify.annotations.Nullable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
 import open.commons.core.Result;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ObjectUtils;
 
 /**
@@ -66,14 +66,19 @@ public interface IConvertingService {
      * @param resultSrc
      *            변환 이전 데이터 조회 결과
      * @param converter
-     *            변환 함수
+     *            변환 함수. (<b><i>{@code resultSrc}</i></b>의 {@link Result#isSuccess()} == <b><i>{@code true}</i></b>인 경우
+     *            <font color="red"><b><i>{@code NOT NULL}</i></b></font>)
      * @return
      *
      * @since 2021. 12. 28.
      * @version 0.4.0
      */
-    default <S, T> Result<Page<T>> convertMultiPaginationResult(@NotNull Result<Page<S>> resultSrc, @NotNull Function<S, T> converter) {
+    default <S, T> Result<Page<T>> convertMultiPaginationResult(Result<Page<S>> resultSrc, @Nullable Function<S, T> converter) {
+        AssertUtils2.notNull(resultSrc);
+
         if (resultSrc.isSuccess()) {
+            AssertUtils2.notNull(converter);
+
             Page<S> page = resultSrc.getData();
             List<S> srcContent = page.getContent();
             List<T> targetContent = convertMultiResult(srcContent, converter);
@@ -108,7 +113,7 @@ public interface IConvertingService {
      * @since 2021. 12. 3.
      * @version 0.4.0
      */
-    default <S, T> List<T> convertMultiResult(@NotNull List<S> source, @NotNull Function<S, T> converter) {
+    default <S, T> List<T> convertMultiResult(List<S> source, Function<S, T> converter) {
         return convertMultiResultAsStream(source, converter).collect(Collectors.toList());
     }
 
@@ -138,7 +143,7 @@ public interface IConvertingService {
      * @since 2022. 11. 9.
      * @version 0.4.0
      */
-    default <S, T> Result<List<T>> convertMultiResult(@NotNull Result<List<S>> resultSrc, @NotNull Class<T> returnType) {
+    default <S, T> Result<List<T>> convertMultiResult(Result<List<S>> resultSrc, Class<T> returnType) {
         return convertMultiResult(resultSrc, srcObj -> ObjectUtils.transform(srcObj, true, returnType, true));
     }
 
@@ -160,13 +165,16 @@ public interface IConvertingService {
      * @param resultSrc
      *            변환 이전 데이터 조회 결과
      * @param converter
-     *            변환 함수
+     *            변환 함수. (<b><i>{@code resultSrc}</i></b>의 {@link Result#isSuccess()} == <b><i>{@code true}</i></b>인 경우
+     *            <font color="red"><b><i>{@code NOT NULL}</i></b></font>)
      * @return
      *
      * @since 2021. 12. 3.
      * @version 0.4.0
      */
-    default <S, T> Result<List<T>> convertMultiResult(@NotNull Result<List<S>> resultSrc, @NotNull Function<S, T> converter) {
+    default <S, T> Result<List<T>> convertMultiResult(Result<List<S>> resultSrc, @Nullable Function<S, T> converter) {
+        AssertUtils2.notNull(resultSrc);
+
         if (resultSrc.isSuccess()) {
             return Result.success(convertMultiResult(resultSrc.getData(), converter));
         } else {
@@ -198,7 +206,9 @@ public interface IConvertingService {
      * @since 2021. 12. 6.
      * @version 0.4.0
      */
-    default <S, T> Stream<T> convertMultiResultAsStream(@NotNull List<S> source, @NotNull Function<S, T> converter) {
+    default <S, T> Stream<T> convertMultiResultAsStream(List<S> source, Function<S, T> converter) {
+        AssertUtils2.notNulls(source, converter);
+
         return source.stream().map(converter);
     }
 
@@ -228,7 +238,7 @@ public interface IConvertingService {
      * @since 2022. 11. 9.
      * @version 0.4.0
      */
-    default <S, T> Result<T> convertSingleResult(@NotNull Result<S> resultSrc, @NotNull Class<T> returnType) {
+    default <S, T> Result<T> convertSingleResult(Result<S> resultSrc, Class<T> returnType) {
         return convertSingleResult(resultSrc, srcObj -> ObjectUtils.transform(srcObj, true, returnType, true));
     }
 
@@ -250,14 +260,19 @@ public interface IConvertingService {
      * @param resultSrc
      *            변환 이전 데이터 조회 결과
      * @param converter
-     *            변환 함수
+     *            변환 함수. (<b><i>{@code resultSrc}</i></b>의 {@link Result#isSuccess()} == <b><i>{@code true}</i></b>인 경우
+     *            <font color="red"><b><i>{@code NOT NULL}</i></b></font>)
      * @return
      *
      * @since 2021. 12. 3.
      * @version 0.4.0
      */
-    default <S, T> Result<T> convertSingleResult(@NotNull Result<S> resultSrc, @NotNull Function<S, T> converter) {
+    default <S, T> Result<T> convertSingleResult(Result<S> resultSrc, @Nullable Function<S, T> converter) {
+        AssertUtils2.notNull(resultSrc);
+
         if (resultSrc.isSuccess()) {
+            AssertUtils2.notNull(converter);
+
             return resultSrc.getData() != null //
                     ? Result.success(converter.apply(resultSrc.getData())) //
                     : Result.success(null);

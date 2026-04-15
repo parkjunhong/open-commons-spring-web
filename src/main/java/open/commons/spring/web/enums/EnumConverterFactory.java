@@ -28,9 +28,12 @@ package open.commons.spring.web.enums;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
+
+import open.commons.core.utils.AssertUtils2;
 
 /**
  * {@link Enum} 변환기를 등록/제공하는 클래스.
@@ -65,10 +68,14 @@ public class EnumConverterFactory implements ConverterFactory<String, Enum> {
     @SuppressWarnings("unchecked")
     @Override
     public <T extends Enum> Converter<String, T> getConverter(Class<T> targetType) {
+        Objects.requireNonNull(targetType);
+
         return (Converter<String, T>) this.converters.get(targetType);
     }
 
     public void register(Class<?> enumType, Converter<String, Enum> converter) {
+        AssertUtils2.notNulls(enumType, converter);
+
         this.converters.put(enumType, converter);
     }
 }

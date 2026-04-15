@@ -32,6 +32,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -115,8 +116,10 @@ public abstract class AbstractRestApiClient {
      */
     public AbstractRestApiClient(@NotNull RestTemplate restTemplate) {
         AssertUtils2.notNull(restTemplate, "RestTemplate 객체는 반드시 존재해야 합니다");
+
         this.restTemplate = restTemplate;
         this.retryCount = getRetryCount();
+
         setUriBuilderFactory(restTemplate);
     }
 
@@ -3405,8 +3408,7 @@ public abstract class AbstractRestApiClient {
     }
 
     private TemplateUriEncoder pathEncoder() {
-        Encoding enc = pathEncoding();
-        AssertUtils2.notNull(enc, "'Path' encoding 정보가 설정되지 않았습니다.");
+        Encoding enc = Objects.requireNonNull(pathEncoding(), "'Path' encoding 정보가 설정되지 않았습니다.");
         return UriEncodingHelper.encoder(enc);
     }
 
@@ -3430,8 +3432,7 @@ public abstract class AbstractRestApiClient {
     }
 
     private TemplateUriEncoder queryEncoder() {
-        Encoding enc = queryEncoding();
-        AssertUtils2.notNull(enc, "'Query' encoding 정보가 설정되지 않았습니다.");
+        Encoding enc = Objects.requireNonNull(queryEncoding(), "'Query' encoding 정보가 설정되지 않았습니다.");
         return UriEncodingHelper.encoder(enc);
     }
 

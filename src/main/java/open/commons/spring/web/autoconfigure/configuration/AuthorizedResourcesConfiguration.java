@@ -63,6 +63,13 @@ import tools.jackson.databind.json.JsonMapper;
 import tools.jackson.databind.module.SimpleModule;
 
 /**
+ * <pre>
+ * [개정이력]
+ *      날짜       | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2025. 5. 19.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 15.     parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5.
+ * </pre>
  * 
  * @since 2025. 5. 19.
  * @version 0.8.0
@@ -72,7 +79,7 @@ import tools.jackson.databind.module.SimpleModule;
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedResourcesConfiguration {
 
-    public static final String BEAN_QUALIFIER_AUTHORIZED_OBJECT_MAPPER = "open.commons.spring.web.autoconfigure.AuthorizedResourcesConfiguration#AUTHORIZED_OBJECT_MAPPER";
+    public static final String BEAN_QUALIFIER_AUTHORIZED_JSON_MAPPER = "open.commons.spring.web.autoconfigure.AuthorizedResourcesConfiguration#AUTHORIZED_JSON_MAPPER";
 
     private static final Logger logger = LoggerFactory.getLogger(AuthorizedResourcesConfiguration.class);
 
@@ -109,7 +116,7 @@ public class AuthorizedResourcesConfiguration {
      * @since 2025. 5. 19.
      * @version 4.0.0
      */
-    @Bean(name = BEAN_QUALIFIER_AUTHORIZED_OBJECT_MAPPER)
+    @Bean(name = BEAN_QUALIFIER_AUTHORIZED_JSON_MAPPER)
     @ConditionalOnBean({ IFieldAccessAuthorityProvider.class, IUnauthorizedFieldHandler.class })
     JsonMapper authorizedObjectMapper(ApplicationContext context //
             , @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata //
@@ -125,7 +132,6 @@ public class AuthorizedResourcesConfiguration {
         module.setDeserializerModifier(new AuthorizedFieldDeserializerModifier(context, authorizedRequestDataMetadata));
 
         // #3. 빌더에 보안 모듈 추가 후 새로운 JsonMapper 완성
-        // (Jackson 3.0 빌더는 registerModule 대신 addModule을 사용합니다)
         builder.addModule(module);
 
         JsonMapper authorizedMapper = builder.build();

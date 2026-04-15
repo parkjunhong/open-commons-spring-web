@@ -30,7 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
-import open.commons.core.utils.ObjectUtils;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.authority.AuthorizedObject;
@@ -165,7 +165,7 @@ public abstract class AbstractWrappingSerializer extends ValueSerializer<Object>
      * @version 4.0.0
      */
     protected final void setDefaultSerializeValue(Object value, JsonGenerator gen, SerializationContext context) {
-        ObjectUtils.requireNonNulls(value, gen, context);
+        AssertUtils2.notNulls(value, gen, context);
 
         ValueSerializer<Object> pojoSerializer = context.findValueSerializer(value.getClass());
         pojoSerializer.serialize(value, gen, context);

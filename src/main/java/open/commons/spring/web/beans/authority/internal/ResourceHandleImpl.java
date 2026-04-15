@@ -28,9 +28,11 @@ package open.commons.spring.web.beans.authority.internal;
 
 import java.util.function.Function;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
 import open.commons.core.utils.AssertUtils2;
+import open.commons.core.utils.ObjectUtils;
 import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.authority.AuthorizedRequestData;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
@@ -90,8 +92,9 @@ public class ResourceHandleImpl implements ResourceHandle {
      * @since 2025. 9. 29.
      * @version 0.8.0
      */
-    ResourceHandleImpl(boolean isBuiltin, Target target, @NotEmpty String handleType, Function<?, ?> handle, boolean preemptive) {
+    ResourceHandleImpl(boolean isBuiltin, Target target, @NotBlank String handleType, Function<?, ?> handle, boolean preemptive) {
         AssertUtils2.notNulls(target, handle);
+        
         this.isBuiltin = isBuiltin;
         this.target = target;
         this.handleType = handleType;
@@ -141,7 +144,7 @@ public class ResourceHandleImpl implements ResourceHandle {
      * @since 2025. 9. 19.
      * @version 0.8.0
      */
-    public ResourceHandleImpl(Target target, @NotEmpty String handleType, Function<?, ?> handle, boolean preemptive) {
+    public ResourceHandleImpl(Target target, @NotBlank String handleType, Function<?, ?> handle, boolean preemptive) {
         this(false, target, handleType, handle, preemptive);
     }
 

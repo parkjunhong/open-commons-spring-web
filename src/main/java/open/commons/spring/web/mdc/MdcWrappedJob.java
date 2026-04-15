@@ -40,8 +40,6 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import jakarta.validation.constraints.NotNull;
-
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +47,7 @@ import org.slf4j.MDC;
 import org.springframework.scheduling.TaskScheduler;
 
 import open.commons.core.function.ExceptionableSupplier;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.FunctionUtils;
 import open.commons.core.utils.StringUtils;
 import open.commons.core.utils.ThreadUtils;
@@ -104,7 +103,6 @@ public abstract class MdcWrappedJob<V> {
      * @param mdc
      *            작업이 수행될 때 공유할 {@link MDC} 정보
      * @param byScheduler
-     *            TODO
      *
      * @since 2025. 8. 1.
      * @version 0.8.0
@@ -114,7 +112,7 @@ public abstract class MdcWrappedJob<V> {
         if (this.forwardedMDC != null) {
             FunctionUtils.runIf(this.forwardedMDC.get(MDC_PROPERTY_THREAD_SYMBOL) //
                     , (Predicate<String>) v -> StringUtils.isNullOrEmptyString(v) //
-                    , (Consumer<String>) v -> this.forwardedThreadSymbol = SYMBOL //
+                    , (Consumer<String>) _ -> this.forwardedThreadSymbol = SYMBOL //
                     , (Consumer<String>) v -> this.forwardedThreadSymbol = v.trim()//
             );
         }
@@ -227,7 +225,7 @@ public abstract class MdcWrappedJob<V> {
      * @since 2025. 7. 31.
      * @version 0.8.0
      */
-    public static <T> Callable<T> wrap(Map<String, String> context, Callable<T> callable) {
+    public static <T> Callable<T> wrap(@Nullable Map<String, String> context, Callable<T> callable) {
         return new MdcWrappedCallable<T>(context != null ? new HashMap<>(context) : null, callable);
     }
 
@@ -277,7 +275,7 @@ public abstract class MdcWrappedJob<V> {
      * @since 2025. 7. 31.
      * @version 0.8.0
      */
-    public static Runnable wrap(Map<String, String> context, Runnable runnable, boolean byScheduler) {
+    public static Runnable wrap(@Nullable Map<String, String> context, Runnable runnable, boolean byScheduler) {
         return new MdcWrappedRunnable(context != null ? new HashMap<>(context) : null, runnable, byScheduler);
     }
 
@@ -302,7 +300,9 @@ public abstract class MdcWrappedJob<V> {
          * @since 2025. 8. 1.
          * @version 0.8.0
          */
-        MdcWrappedCallable(Map<String, String> mdc, @NotNull Callable<V> callable) {
+        MdcWrappedCallable(@Nullable Map<String, String> mdc, Callable<V> callable) {
+            AssertUtils2.notNull(callable);
+
             super(mdc, false);
             this.callable = callable;
         }
@@ -345,6 +345,8 @@ public abstract class MdcWrappedJob<V> {
          * @version 0.8.0
          */
         public MdcWrappedRunnable(@Nullable Map<String, String> mdc, Runnable runnable, boolean byScheduler) {
+            AssertUtils2.notNull(runnable);
+
             super(mdc, byScheduler);
             this.runnable = runnable;
         }
@@ -375,7 +377,7 @@ public abstract class MdcWrappedJob<V> {
 
         // 번호 발급: 재활용된 번호가 있으면 그 중 최소값, 없으면 새 번호
         public static int acquire(String key) {
-            NumberPool pool = POOLS.computeIfAbsent(key, k -> new NumberPool());
+            NumberPool pool = POOLS.computeIfAbsent(key, _ -> new NumberPool());
 
             synchronized (pool) {
                 pool.activated.incrementAndGet();// 활성화된 개수 증가

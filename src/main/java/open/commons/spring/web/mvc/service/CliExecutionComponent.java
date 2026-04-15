@@ -31,7 +31,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
+import org.jspecify.annotations.Nullable;
+
 import open.commons.core.Result;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.IOUtils;
 
 /**
@@ -81,7 +84,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * @since 2023. 11. 7.
      * @version 0.7.0
      */
-    protected Result<Boolean> executeNoWait(String[] cmdarray, File workingDir, String job) {
+    protected Result<Boolean> executeNoWait(String[] cmdarray, File workingDir, @Nullable String job) {
         return executeNoWait(cmdarray, null, workingDir, job);
     }
 
@@ -106,7 +109,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see #executeNoWait(String[], String[], File, String)
      */
-    protected Result<Boolean> executeNoWait(String[] cmdarray, String job) throws IOException {
+    protected Result<Boolean> executeNoWait(String[] cmdarray, @Nullable String job) throws IOException {
         return executeNoWait(cmdarray, null, null, job);
     }
 
@@ -136,7 +139,9 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see #executeNoWait(String[], String[], File, String)
      */
-    protected Result<Boolean> executeNoWait(String[] cmdarray, String[] env, File workingDir, String job) {
+    protected Result<Boolean> executeNoWait(String[] cmdarray, String[] env, File workingDir, @Nullable String job) {
+        AssertUtils2.notNulls(cmdarray, env, workingDir);
+
         return execute(() -> {
             try {
                 Runtime.getRuntime().exec(cmdarray, env, workingDir);
@@ -174,7 +179,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see #executeNoWait(String[], String[], File, String)
      */
-    protected Result<Boolean> executeNoWait(String[] cmdarray, String[] env, String job) {
+    protected Result<Boolean> executeNoWait(String[] cmdarray, String[] env, @Nullable String job) {
         return executeNoWait(cmdarray, env, null, job);
     }
 
@@ -202,7 +207,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see #executeWaitFor(String[], String[], File, String)
      */
-    protected Result<Integer> executeWaitFor(String[] cmdarray, File workingDir, String job) {
+    protected Result<Integer> executeWaitFor(String[] cmdarray, File workingDir, @Nullable String job) {
         return executeWaitFor(cmdarray, null, workingDir, job);
     }
 
@@ -228,7 +233,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see #executeWaitFor(String[], String[], File, String)
      */
-    protected Result<Integer> executeWaitFor(String[] cmdarray, String job) {
+    protected Result<Integer> executeWaitFor(String[] cmdarray, @Nullable String job) {
         return executeWaitFor(cmdarray, null, null, job);
     }
 
@@ -258,7 +263,9 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see Runtime#exec(String[], String[], File)
      */
-    protected Result<Integer> executeWaitFor(String[] cmdarray, String[] env, File workingDir, String job) {
+    protected Result<Integer> executeWaitFor(String[] cmdarray, String[] env, File workingDir, @Nullable String job) {
+        AssertUtils2.notNulls(cmdarray, env, workingDir);
+
         return execute(() -> {
             Process proc = null;
             BufferedReader reader = null;
@@ -312,7 +319,7 @@ public abstract class CliExecutionComponent extends AbstractComponent {
      * 
      * @see #executeWaitFor(String[], String[], File, String)
      */
-    protected Result<Integer> executeWaitFor(String[] cmdarray, String[] env, String job) {
+    protected Result<Integer> executeWaitFor(String[] cmdarray, String[] env, @Nullable String job) {
         return executeWaitFor(cmdarray, env, null, job);
     }
 }

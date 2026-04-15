@@ -40,7 +40,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import open.commons.spring.web.config.AuthorizedObjectMessageConfigure;
 import open.commons.spring.web.handler.AuthorizedModelAndViewHandlerInterceptor;
-import open.commons.spring.web.jackson.AuthorizedObjectJackson2HttpMessageConverter;
+import open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConverter;
 
 /**
  * 
@@ -71,9 +71,9 @@ public class AuthorizedObjectMessageConfigureConfiguration {
     }
 
     @Bean
-    @ConditionalOnBean(name = { AuthorizedObjectJackson2HttpMessageConverter.BEAN_QUALIFIER })
+    @ConditionalOnBean(name = { AuthorizedObjectJacksonHttpMessageConverter.BEAN_QUALIFIER })
     WebMvcConfigurer authorizedObjectMessageConfigure(Environment environment //
-            , @Qualifier(AuthorizedObjectJackson2HttpMessageConverter.BEAN_QUALIFIER) @NotNull AuthorizedObjectJackson2HttpMessageConverter messageConverter //
+            , @Qualifier(AuthorizedObjectJacksonHttpMessageConverter.BEAN_QUALIFIER) @NotNull AuthorizedObjectJacksonHttpMessageConverter messageConverter //
             , AuthorizedModelAndViewHandlerInterceptor authorizedModelAndViewHandlerInterceptor) {
         WebMvcConfigurer configure = new AuthorizedObjectMessageConfigure(messageConverter);
         logger.info("[authorized-resources] authorized-object-message-configure={}", configure);
