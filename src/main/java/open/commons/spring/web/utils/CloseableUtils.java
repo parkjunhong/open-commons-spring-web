@@ -36,6 +36,7 @@ import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.client.CloseableRestTemplate;
 
 /**
@@ -76,6 +77,7 @@ public class CloseableUtils {
      *     날짜        | 작성자                   |   내용
      * -----------------------------------------------------
      * 2025. 8. 26.    parkjunhong77@gmail.com     최초 작성
+     * 2026. 4. 16.    parkjunhong77@gmail.com     JDK 25 현행화: Deprecated된 isAccessible() 폐기 및 trySetAccessible() 적용
      * </pre>
      *
      * @param chrf
@@ -84,35 +86,51 @@ public class CloseableUtils {
      *            동일 객체에 대한 중복방지를 위한 기록
      *
      * @since 2025. 8. 26.
-     * @version 0.8.0
+     * @version 4.0.0
      */
     public static void close(ClientHttpRequestFactory chrf, Set<Object> visited) {
-        // 이미 포함하고 있는 경우.
-        if (!visited.add(chrf)) {
+        AssertUtils2.notNull(visited);
+
+        if (chrf == null || !visited.add(chrf)) {
             return;
         }
 
-        if (chrf instanceof AbstractClientHttpRequestFactoryWrapper) {
-            boolean accessible = false;
-            for (Field f : ClassInspector.getAllFields(chrf.getClass())) {
-                accessible = f.isAccessible();
-                f.setAccessible(true);
-                try {
-                    if (ClientHttpRequestFactory.class.isAssignableFrom(f.getType())) {
+        switch (chrf) {
+            case AbstractClientHttpRequestFactoryWrapper wrapper -> {
+                for (Field f : ClassInspector.getAllFields(wrapper.getClass())) {
+                    // 현재 컨텍스트에서 해당 객체 필드에 실제 접근 가능한지 확인하는 canAccess() 사용
+                    boolean alreadyAccessible = f.canAccess(wrapper);
+
+                    // 안전하게 접근 권한 획득을 시도하는 trySetAccessible() 사용
+                    if (alreadyAccessible || f.trySetAccessible()) {
                         try {
-                            close((ClientHttpRequestFactory) f.get(chrf), visited);
+                            if (ClientHttpRequestFactory.class.isAssignableFrom(f.getType())) {
+                                close((ClientHttpRequestFactory) f.get(wrapper), visited);
+                            }
                         } catch (IllegalArgumentException | IllegalAccessException e) {
+                            // ignored: 필드 값 읽기 실패 시 건너뜀
+                        } finally {
+                            // 원래 접근 불가능했던 상태라면, 읽은 후 다시 닫아줌
+                            if (!alreadyAccessible) {
+                                try {
+                                    f.setAccessible(false);
+                                } catch (Exception e) {
+                                    // ignored: 상태 복구 실패 시 무시
+                                }
+                            }
                         }
                     }
-                } finally {
-                    f.setAccessible(accessible);
                 }
             }
-        }
-        if (chrf instanceof HttpComponentsClientHttpRequestFactory) {
-            try {
-                ((HttpComponentsClientHttpRequestFactory) chrf).destroy();
-            } catch (Exception e) {
+            case HttpComponentsClientHttpRequestFactory hcFactory -> {
+                try {
+                    hcFactory.destroy();
+                } catch (Exception e) {
+                    // ignored: 내부 자원 파기(destroy) 중 발생하는 예외 무시
+                }
+            }
+            default -> {
+                // 처리할 타입이 아닌 경우 (안전한 스킵)
             }
         }
     }
@@ -134,6 +152,8 @@ public class CloseableUtils {
      * @version 0.8.0
      */
     public static void close(RestTemplate restTemplate) {
+        AssertUtils2.notNull(restTemplate);
+
         if (restTemplate instanceof CloseableRestTemplate) {
             ((CloseableRestTemplate) restTemplate).close();
         } else {

@@ -39,6 +39,8 @@ import jakarta.validation.Validator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import open.commons.core.utils.AssertUtils2;
+
 /**
  * 사용자 정의 제한조건 검증 추상 클래스.<br>
  * 
@@ -74,7 +76,8 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      * @version 0.3.0
      */
     public CustomConstraintValidator(Validator validator) {
-        super();
+        AssertUtils2.notNull(validator);
+
         this.validator = validator;
     }
 
@@ -117,7 +120,10 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      * @since 2021. 7. 5.
      */
     protected ConstraintViolation<T> getViolation(T value, Class<?>... groups) {
-        Set<ConstraintViolation<T>> vs = validator.validate(value, groups);
+        AssertUtils2.notNull(value);
+        AssertUtils2.notNulls((Object[]) groups);
+
+        Set<ConstraintViolation<T>> vs = this.validator.validate(value, groups);
         if (vs.isEmpty()) {
             return null;
         } else {
@@ -142,10 +148,12 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      * @since 2021. 7. 5.
      */
     protected Set<ConstraintViolation<T>> getViolations(T value, Class<?>... groups) {
+        AssertUtils2.notNull(value);
+        AssertUtils2.notNulls((Object[]) groups);
 
         logger.debug("value: {}, groups:{}", value, groups != null ? Arrays.toString(groups) : null);
 
-        Set<ConstraintViolation<T>> vs = validator.validate(value, groups);
+        Set<ConstraintViolation<T>> vs = this.validator.validate(value, groups);
         if (vs.isEmpty()) {
             return null;
         } else {
@@ -173,6 +181,8 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      * @version 0.3.0
      */
     protected boolean validateMultiNodes(ConstraintValidatorContext context, BiFunction<T, Class<?>[], Set<ConstraintViolation<T>>> provider, T value, Class<?>... groups) {
+        AssertUtils2.notNulls(context, provider, value);
+        AssertUtils2.notNulls((Object[]) groups);
 
         logger.debug("value: {}, groups:{}", value, groups != null ? Arrays.toString(groups) : null);
 
@@ -206,6 +216,8 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      * @version 0.3.0
      */
     protected boolean validateSingleNode(ConstraintValidatorContext context, BiFunction<T, Class<?>[], ConstraintViolation<T>> provider, T value, Class<?>... groups) {
+        AssertUtils2.notNulls(context, provider, value);
+        AssertUtils2.notNulls((Object[]) groups);
 
         logger.debug("value: {}, groups:{}", value, groups != null ? Arrays.toString(groups) : null);
 

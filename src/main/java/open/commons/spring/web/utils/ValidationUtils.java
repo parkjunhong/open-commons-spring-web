@@ -26,14 +26,16 @@
 
 package open.commons.spring.web.utils;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
+import jakarta.validation.constraints.NotBlank;
+
+import open.commons.core.utils.AssertUtils2;
 
 /**
  * {@link Validator} 기능 지원 클래스.
@@ -44,96 +46,127 @@ import jakarta.validation.ValidatorFactory;
  */
 public class ValidationUtils {
 
-    private static final Validator validator;
+    private static final Validator VALIDATOR;
     static {
-        ValidatorFactory vfactory = Validation.buildDefaultValidatorFactory();
-        validator = vfactory.getValidator();
+        VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
     }
 
     // prevent to be created
     private ValidationUtils() {
     }
 
+    /**
+     * ConstraintViolation 집합을 문자열 에러 메시지 컬렉션으로 변환합니다.
+     * 
+     * @param <T>
+     *            검증 대상 객체의 제네릭 타입
+     * @param violations
+     *            검증 실패 결과 집합 (null을 허용하지만, 정상적인 흐름에서는 null이 전달되지 않음)
+     * 
+     * @return 에러 메시지 컬렉션 (절대 null을 반환하지 않으며, 실패 결과가 없으면 빈 컬렉션을 반환)
+     */
     private static <T> Collection<String> makeErrorMessage(Set<ConstraintViolation<T>> violations) {
         if (violations.size() < 1) {
-            return null;
+            return Collections.emptyList();
         }
 
-        ArrayList<String> msg = new ArrayList<>();
-        violations.forEach(v -> {
-            msg.add(String.join(" => ", String.join(".", v.getRootBeanClass().getCanonicalName(), v.getPropertyPath().toString()), v.getMessage()));
-        });
-
-        return msg;
+        return violations.stream() //
+                .map(//
+                        v -> String.join(" => " //
+                                , String.join("." //
+                                        , v.getRootBeanClass().getCanonicalName() //
+                                        , v.getPropertyPath().toString()) //
+                                , v.getMessage()) //
+                ) //
+                .toList();
     }
 
     /**
-     * 
-     * <br>
+     * 객체를 검증합니다. <br>
      * 
      * <pre>
      * [개정이력]
-     *     날짜        | 작성자                   |   내용
+     * 날짜        | 작성자                   |   내용
      * -----------------------------------------------------
      * 2019. 10. 15.    parkjunhong77@gmail.com     최초 작성
+     * 2026.  4. 16.    parkjunhong77@gmail.com     미구현된 nested 논리에 대해 Fail-Fast 예외 적용
      * </pre>
      *
      * @param <T>
+     *            검증 대상 객체의 타입
      * @param object
+     *            검증 대상 객체
      * @param nested
-     *            내부 필드 검증 여부.
+     *            내부 필드 검증 여부 (true 지원 안 함 - 호출 시 UnsupportedOperationException 발생)
      * @param groups
-     * @return
+     *            적용할 검증 그룹 배열 (배열 자체 및 배열 내 요소 모두 null을 허용하지 않음)
+     * 
+     * @return 검증 실패 결과 집합
      *
      * @since 2019. 10. 15.
      */
     public static <T> Set<ConstraintViolation<T>> validate(T object, boolean nested, Class<?>... groups) {
-        return nested
-                // TODO [Park Jun-Hong]: 2019. 10. 15.: nested == true 인 경우 처리할 것.
-                ? validator.validate(object, groups)
-                : validator.validate(object, groups);
+        AssertUtils2.notNull(object);
+        AssertUtils2.notNulls((Object[]) groups);
+
+        // [PATCH] 불필요한 분기 및 TODO 방치 제거. 미구현 기능에 대한 명시적 Fail-Fast 적용
+        if (nested) {
+            throw new UnsupportedOperationException("Nested validation is not implemented yet.");
+        }
+        return validate(object, groups);
     }
 
     /**
-     * 
-     * <br>
+     * 객체를 검증합니다. <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     * 날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2019. 6. 18.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
+     * @param <T>
+     *            검증 대상 객체의 타입
      * @param object
+     *            검증 대상 객체
      * @param groups
-     * @return
+     *            적용할 검증 그룹 배열 (배열 자체 및 배열 내 요소 모두 null을 허용하지 않음)
+     * 
+     * @return 검증 실패 결과 집합
      *
      * @since 2019. 6. 18.
      * 
      * @see Validator#validate(Object, Class...)
      */
     public static <T> Set<ConstraintViolation<T>> validate(T object, Class<?>... groups) {
-        return validator.validate(object, groups);
+        AssertUtils2.notNull(object);
+        AssertUtils2.notNulls((Object[]) groups);
+
+        return VALIDATOR.validate(object, groups);
     }
 
     /**
-     * 
-     * <br>
+     * 객체를 검증한 후 검증통과 실패 원인 메시지를 반환합니다. <br>
      * 
      * <pre>
      * [개정이력]
-     *     날짜        | 작성자                   |   내용
+     * 날짜        | 작성자                   |   내용
      * -----------------------------------------------------
      * 2019. 10. 15.    parkjunhong77@gmail.com     최초 작성
+     * 2026.  4. 16.    parkjunhong77@gmail.com     반환값 Null-Safety 적용 (null -> 빈 컬렉션 반환)
      * </pre>
      *
      * @param <T>
+     *            검증 대상 객체의 타입
      * @param object
+     *            검증 대상 객체
      * @param nested
-     *            내부필드 검증 여부
+     *            내부필드 검증 여부 (true 입력 시 예외 발생)
      * @param groups
-     * @return
+     *            적용할 검증 그룹 배열
+     * 
+     * @return 검증통과 실패 원인 메시지 컬렉션
      *
      * @since 2019. 10. 15.
      */
@@ -142,115 +175,157 @@ public class ValidationUtils {
     }
 
     /**
-     * 객체를 검증한 후 검증통과 실패 원인을 반환한다. <br>
+     * 객체를 검증한 후 검증통과 실패 원인 메시지를 반환합니다. <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
-     * ------------------------------------------
-     * 2019. 6. 18.     parkjunhong77@gmail.com         최초 작성
+     * 날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2019. 10. 15.    parkjunhong77@gmail.com     최초 작성
+     * 2026.  4. 16.    parkjunhong77@gmail.com     반환값 Null-Safety 적용 (null -> 빈 컬렉션 반환)
      * </pre>
      *
+     * @param <T>
+     *            검증 대상 객체의 타입
      * @param object
+     *            검증 대상 객체
+     * @param nested
+     *            내부필드 검증 여부 (true 입력 시 예외 발생)
      * @param groups
-     * @return 검증통과 실패 원인. 검증에 통과한 경우 null 반환.
+     *            적용할 검증 그룹 배열
+     * 
+     * @return 검증통과 실패 원인 메시지 컬렉션
      *
-     * @since 2019. 6. 18.
-     * @see Validator#validate(Object, Class...)
+     * @since 2019. 10. 15.
      */
     public static <T> Collection<String> validateAndErrorMsg(T object, Class<?>... groups) {
         return makeErrorMessage(validate(object, groups));
     }
 
     /**
-     * <br>
+     * 객체의 특정 속성(Property)을 검증합니다. <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     * 날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2019. 6. 18.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
+     * @param <T>
+     *            검증 대상 객체의 타입
      * @param object
+     *            검증 대상 객체
      * @param propertyName
+     *            속성이름
      * @param groups
-     * @return 검증통과 실패 원인. 검증에 통과한 경우 null 반환.
+     *            적용할 검증 그룹 배열
+     * 
+     * @return 검증 실패 결과 집합
      *
      * @since 2019. 6. 18.
      * @see Validator#validateProperty(Object, String, Class...)
      */
-    public static <T> Set<ConstraintViolation<T>> validateProperty(T object, String propertyName, Class<?>... groups) {
-        return validator.validateProperty(object, propertyName, groups);
+    public static <T> Set<ConstraintViolation<T>> validateProperty(T object, @NotBlank String propertyName, Class<?>... groups) {
+        AssertUtils2.notNull(object);
+        AssertUtils2.notBlank(propertyName, "속성이름은 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notNulls((Object[]) groups);
+
+        return VALIDATOR.validateProperty(object, propertyName, groups);
     }
 
     /**
-     * 객체를 검증한 후 검증통과 실패 원인을 반환한다. <br>
+     * 객체의 특정 속성을 검증한 후 실패 원인 메시지를 반환합니다. <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     * 날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2019. 6. 18.     parkjunhong77@gmail.com         최초 작성
+     * 2026.  4. 16.    parkjunhong77@gmail.com         반환값 Null-Safety 적용 (null -> 빈 컬렉션 반환)
      * </pre>
      *
+     * @param <T>
+     *            검증 대상 객체의 타입
      * @param object
+     *            검증 대상 객체
      * @param propertyName
+     *            속성이름
      * @param groups
-     * @return 검증통과 실패 원인. 검증에 통과한 경우 null 반환.
+     *            적용할 검증 그룹 배열
+     * 
+     * @return 검증통과 실패 원인 메시지 컬렉션
      * 
      * @since 2019. 6. 18.
      * @see Validator#validateProperty(Object, String, Class...)
      */
-    public static <T> Collection<String> validatePropertyAndErrorMsg(T object, String propertyName, Class<?>... groups) {
+    public static <T> Collection<String> validatePropertyAndErrorMsg(T object, @NotBlank String propertyName, Class<?>... groups) {
         return makeErrorMessage(validateProperty(object, propertyName, groups));
     }
 
     /**
-     * 
-     * <br>
+     * 지정된 값(value)이 해당 클래스의 속성에 유효한지 검증합니다. <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     * 날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2019. 6. 18.     parkjunhong77@gmail.com         최초 작성
      * </pre>
      *
+     * @param <T>
+     *            검증 대상 객체의 타입
      * @param beanType
+     *            검증 대상 클래스 정보
      * @param propertyName
+     *            속성이름
      * @param value
+     *            검증할 실제 값 (검증 로직에 따라 null 허용 여부가 달라짐)
      * @param groups
-     * @return
+     *            적용할 검증 그룹 배열
+     * 
+     * @return 검증 실패 결과 집합
      *
      * @since 2019. 6. 18.
      * @see Validator#validateValue(Class, String, Object, Class...)
      */
-    public static <T> Set<ConstraintViolation<T>> validateValue(Class<T> beanType, String propertyName, Object value, Class<?>... groups) {
-        return validator.validateValue(beanType, propertyName, value, groups);
+    public static <T> Set<ConstraintViolation<T>> validateValue(Class<T> beanType, @NotBlank String propertyName, Object value, Class<?>... groups) {
+        AssertUtils2.notNull(beanType);
+        AssertUtils2.notBlank(propertyName, "속성이름은 '빈 문자열'을 허용하지 않습니다.");
+        AssertUtils2.notNulls((Object[]) groups);
+
+        return VALIDATOR.validateValue(beanType, propertyName, value, groups);
     }
 
     /**
      * 
-     * 객체를 검증한 후 검증통과 실패 원인을 반환한다. <br>
+     * 지정된 값(value)이 해당 클래스의 속성에 유효한지 검증한 후 실패 원인 메시지를 반환합니다. <br>
      * 
      * <pre>
      * [개정이력]
-     *      날짜      | 작성자   |   내용
+     * 날짜      | 작성자   |   내용
      * ------------------------------------------
      * 2019. 6. 18.     parkjunhong77@gmail.com         최초 작성
+     * 2026.  4. 16.    parkjunhong77@gmail.com         반환값 Null-Safety 적용 (null -> 빈 컬렉션 반환)
      * </pre>
      *
+     * @param <T>
+     *            검증 대상 객체의 타입
      * @param beanType
+     *            검증 대상 클래스 정보
      * @param propertyName
+     *            속성이름
      * @param value
+     *            검증할 실제 값 (검증 로직에 따라 null 허용 여부가 달라짐)
      * @param groups
-     * @return 검증통과 실패 원인. 검증에 통과한 경우 null 반환.
+     *            적용할 검증 그룹 배열
+     * 
+     * @return 검증통과 실패 원인 메시지 컬렉션
      *
      * @since 2019. 6. 18.
      * @see Validator#validateValue(Class, String, Object, Class...)
      */
-    public static <T> Collection<String> validateValueAndErrorMsg(Class<T> beanType, String propertyName, Object value, Class<?>... groups) {
+    public static <T> Collection<String> validateValueAndErrorMsg(Class<T> beanType, @NotBlank String propertyName, Object value, Class<?>... groups) {
         return makeErrorMessage(validateValue(beanType, propertyName, value, groups));
     }
 }

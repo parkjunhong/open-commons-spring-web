@@ -74,7 +74,7 @@ public interface SharedHeader {
      */
     @NotNull
     default BiConsumer<String, String> postAction() {
-        return (name, value) -> {
+        return (_, _) -> {
         };
     }
 
@@ -95,6 +95,6 @@ public interface SharedHeader {
      */
     @NotNull
     default BiPredicate<String, String> validator() {
-        return (name, value) -> false;
+        return (_, _) -> false;
     }
 }

@@ -33,13 +33,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
 import org.jspecify.annotations.Nullable;
-import org.springframework.util.Assert;
 
 import open.commons.core.lang.IThreadLocalContext;
 import open.commons.core.lang.ThreadLocalContextService;
 import open.commons.core.utils.AssertUtils2;
 
 /**
+ * '요청 -> 응답' 과정에서 생성되는 로그를 일관적으로 출력할 수 있도록 지원하는 클래스.
  * 
  * @since 2025. 6. 23.
  * @version 0.8.0

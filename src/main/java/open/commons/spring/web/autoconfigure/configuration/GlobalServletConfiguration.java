@@ -55,6 +55,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import open.commons.core.function.Functions;
 import open.commons.core.utils.CollectionUtils;
 import open.commons.core.utils.MapUtils;
 import open.commons.core.utils.StreamUtils;
@@ -262,7 +263,7 @@ public class GlobalServletConfiguration {
         // 중복 검증
         // key: FQCN 기반의 target 정보, value: 동일한 target 정보인 InterceptorIgnoreUrlProperties 객체들
         MultiValueMap<String, InterceptorIgnoreUrlProperties> mayBeDuplicated = StreamUtils.toMap(merged.stream(), InterceptorIgnoreUrlProperties::getTarget,
-                StreamUtils.identity(), LinkedMultiValueMap::new);
+                Functions.Unary.identity(), LinkedMultiValueMap::new);
 
         mayBeDuplicated.forEach((k, v) -> {
             if (v.size() > 1) {

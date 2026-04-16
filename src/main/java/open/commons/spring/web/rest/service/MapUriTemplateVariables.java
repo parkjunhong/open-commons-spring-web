@@ -28,6 +28,7 @@ package open.commons.spring.web.rest.service;
 
 import java.util.Map;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.web.util.UriComponents.UriTemplateVariables;
 
 /**
@@ -37,5 +38,5 @@ import org.springframework.web.util.UriComponents.UriTemplateVariables;
  * @author parkjunhong77@gmail.com
  */
 public interface MapUriTemplateVariables extends UriTemplateVariables {
-    public Map<String, ?> getVariables();
+    public Map<String, ? extends @Nullable Object> getVariables();
 }

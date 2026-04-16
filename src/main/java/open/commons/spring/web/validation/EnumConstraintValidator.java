@@ -107,13 +107,13 @@ public class EnumConstraintValidator<C extends Annotation, T extends Enum<T>> ex
     }
 
     /**
+     * {@inheritDoc}
      *
      * @since 2021. 12. 16.
      * @version 0.4.0
      *
-     * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
+     * @see jakarta.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
      */
-    @Override
     public void initialize(C constraint) {
         super.initialize(constraint);
         try {
@@ -131,11 +131,13 @@ public class EnumConstraintValidator<C extends Annotation, T extends Enum<T>> ex
     }
 
     /**
+     * {@inheritDoc}
      *
      * @since 2021. 12. 16.
      * @version 0.4.0
      *
-     * @see javax.validation.ConstraintValidator#isValid(java.lang.Object, javax.validation.ConstraintValidatorContext)
+     * @see jakarta.validation.ConstraintValidator#isValid(java.lang.Object,
+     *      jakarta.validation.ConstraintValidatorContext)
      */
     @Override
     public boolean isValid(T value, ConstraintValidatorContext context) {

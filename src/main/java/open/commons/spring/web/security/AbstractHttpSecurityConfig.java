@@ -69,6 +69,7 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.util.ClassUtils;
 
 import open.commons.core.function.ThrowableFunction;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ExceptionUtils;
 
 /**
@@ -244,6 +245,7 @@ public abstract class AbstractHttpSecurityConfig {
      * @version 2.1.0
      */
     protected final void configure(HttpSecurity http) throws Exception {
+        AssertUtils2.notNull(http);
 
         // #1. (선택) 체인 범위/요청 매처 — 필요 시 사용
         http.securityMatchers(this::requestMatchers);

@@ -32,12 +32,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Objects;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.constraints.NotBlank;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -45,7 +43,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import open.commons.core.collection.FIFOMap;
+import open.commons.core.collection.concurrent.ConcurrentLinkedHashMap;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.Base64Utils;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.servlet.mvc.support.UrlInfo;
@@ -133,9 +132,10 @@ public class WebUtils {
      * @since 2025. 10. 22.
      * @version 2.1.0
      */
-    public static FIFOMap<String, Object> createEntity(HttpServletRequest request, Exception ex, HttpStatusCode status) {
+    public static ConcurrentLinkedHashMap<String, Object> createEntity(HttpServletRequest request, Exception ex, HttpStatusCode status) {
+        AssertUtils2.notNulls(request, ex, status);
 
-        FIFOMap<String, Object> entity = new FIFOMap<>();
+        ConcurrentLinkedHashMap<String, Object> entity = new ConcurrentLinkedHashMap<>();
 
         entity.put("timestamp", System.currentTimeMillis());
         entity.put("status", String.join("/", status.toString(), status.toString(), status instanceof HttpStatus hs ? hs.getReasonPhrase() : ""));
@@ -188,9 +188,10 @@ public class WebUtils {
      * @since 2019. 6. 28.
      * @version 3.0.0
      */
-    public static FIFOMap<String, Object> createEntity(WebRequest request, Exception ex, HttpStatusCode status) {
+    public static ConcurrentLinkedHashMap<String, Object> createEntity(WebRequest request, Exception ex, HttpStatusCode status) {
+        AssertUtils2.notNulls(request, ex, status);
 
-        FIFOMap<String, Object> entity = new FIFOMap<>();
+        ConcurrentLinkedHashMap<String, Object> entity = new ConcurrentLinkedHashMap<>();
 
         entity.put("timestamp", System.currentTimeMillis());
         entity.put("status", String.join("/", status.toString(), status instanceof HttpStatus hs ? hs.getReasonPhrase() : ""));
@@ -244,6 +245,7 @@ public class WebUtils {
      * @version 3.0.0
      */
     public static void createThrowableResponse(ModelAndView view, HttpStatusCode status, Throwable ex, HttpServletRequest request) {
+        AssertUtils2.notNulls(view, status, ex, request);
 
         view.setStatus(status);
 
@@ -287,10 +289,11 @@ public class WebUtils {
      * @since 2018. 9. 27.
      */
     public static final String getParameter(String parameter, Charset inputCharset, Charset outputCharset) {
-
         if (parameter == null) {
             return null;
         }
+
+        AssertUtils2.notNulls(inputCharset, outputCharset);
 
         return new String(parameter.getBytes(inputCharset), outputCharset);
     }
@@ -316,6 +319,8 @@ public class WebUtils {
      * @since 2018. 9. 27.
      */
     public static final String getParameter(String parameter, String inputCharset, String outputCharset) {
+        AssertUtils2.notNulls(inputCharset, outputCharset);
+
         return getParameter(parameter, Charset.forName(inputCharset), Charset.forName(outputCharset));
     }
 
@@ -344,6 +349,8 @@ public class WebUtils {
         if (parameters == null) {
             return null;
         }
+
+        AssertUtils2.notNulls(inputCharset, outputCharset);
 
         HashMap<String, String> converted = new HashMap<>();
 
@@ -376,6 +383,8 @@ public class WebUtils {
      */
 
     public static final Map<String, String> getParameters(Map<String, String> parameters, String inputCharset, String outputCharset) {
+        AssertUtils2.notNulls(inputCharset, outputCharset);
+
         return getParameters(parameters, Charset.forName(inputCharset), Charset.forName(outputCharset));
     }
 
@@ -400,6 +409,8 @@ public class WebUtils {
      * @version 0.8.0
      */
     public static Map<String, String> getParameters(String urlLocation) {
+        AssertUtils2.notNull(urlLocation);
+
         String[] url_param = urlLocation.split("[?]");
 
         urlLocation = url_param.length > 1 ? url_param[1] : urlLocation;
@@ -434,6 +445,7 @@ public class WebUtils {
      * @since 2018. 8. 2.
      */
     public static final String getUrlInfo(HttpServletRequest request) {
+        AssertUtils2.notNull(request);
 
         StringBuffer sb = new StringBuffer();
 
@@ -474,6 +486,7 @@ public class WebUtils {
      * @since 2018. 10. 11.
      */
     public static final String getUrlInfoForIntercept(HttpServletRequest request) {
+        AssertUtils2.notNull(request);
 
         StringBuffer sb = new StringBuffer();
 
@@ -511,12 +524,8 @@ public class WebUtils {
      * @since 2025. 8. 27.
      * @version 0.8.0
      */
-    public static TemplateUrlSplit splitUrlTemplate(@NotBlank String url) {
-        Objects.requireNonNull(url);
-
-        if (url.isBlank()) {
-            throw new IllegalArgumentException("'url'이 비어 있거나 whitespace로 이루어져 있습니다. url='" + url + "'");
-        }
+    public static TemplateUrlSplit splitUrlTemplate(String url) {
+        AssertUtils2.notBlank(url, "'URL'은 '빈 문자열'을 허용하지 않습니다.");
 
         int n = url.length();
         int brace = 0;

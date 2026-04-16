@@ -26,6 +26,8 @@
 
 package open.commons.spring.web.thread;
 
+import jakarta.servlet.ServletRequest;
+
 import open.commons.core.lang.IThreadLocalContext;
 import open.commons.core.lang.ThreadLocalContextService;
 import open.commons.spring.web.authority.AuthorizedField;
@@ -34,6 +36,8 @@ import open.commons.spring.web.authority.metadata.AuthorizedFieldMetadata;
 import open.commons.spring.web.authority.metadata.AuthorizedObjectMetadata;
 
 /**
+ * {@link ServletRequest} 요청시 '헤더'에 {@link #DISABLE_AUTHORIZED_RESOURCES}({@value #DISABLE_AUTHORIZED_RESOURCES}) 설정이 있는
+ * 경우 관련기능을 지원하는 클래스.
  * 
  * @since 2025. 6. 24.
  * @version 0.8.0

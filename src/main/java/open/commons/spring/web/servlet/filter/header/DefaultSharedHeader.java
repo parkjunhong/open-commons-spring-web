@@ -31,6 +31,8 @@ import java.util.function.BiPredicate;
 
 import jakarta.validation.constraints.NotNull;
 
+import open.commons.core.utils.AssertUtils2;
+
 /**
  * 'frond-end' 또는 외부에서 전달한 'header' 정보 중에 공유하기 위한 설정 기능.
  * 
@@ -64,7 +66,7 @@ public class DefaultSharedHeader implements SharedHeader {
      * @version 0.8.0
      */
     public DefaultSharedHeader(String headerName, BiPredicate<String, String> validator) {
-        this(headerName, validator, (name, value) -> {
+        this(headerName, validator, (_, _) -> {
         });
     }
 
@@ -86,6 +88,8 @@ public class DefaultSharedHeader implements SharedHeader {
      * @version 2.1.0
      */
     public DefaultSharedHeader(String header, BiPredicate<String, String> validator, BiConsumer<String, String> postAction) {
+        AssertUtils2.notNulls(header, validator, postAction);
+
         this.header = header;
         this.validator = validator;
         this.postAction = postAction;

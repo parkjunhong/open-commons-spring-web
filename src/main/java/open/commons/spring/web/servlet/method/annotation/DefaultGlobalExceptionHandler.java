@@ -44,8 +44,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import open.commons.core.collection.FIFOMap;
+import open.commons.core.collection.concurrent.ConcurrentLinkedHashMap;
 import open.commons.core.function.TripleFunction;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
 import open.commons.spring.web.utils.ExceptionHttpStatusUtils;
 import open.commons.spring.web.utils.WebUtils;
@@ -71,10 +72,10 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
 
     public static final String BEAN_QUALIFIER = "open.commons.spring.web.servlet.method.annotation.DefaultGlobalExceptionHandler";
 
-    public static final TripleFunction<WebRequest, Exception, HttpStatusCode, FIFOMap<String, Object>> FN_CREATE_ENTITY_DEFAULT = WebUtils::createEntity;
+    public static final TripleFunction<WebRequest, Exception, HttpStatusCode, ConcurrentLinkedHashMap<String, Object>> FN_CREATE_ENTITY_DEFAULT = WebUtils::createEntity;
 
     /** {@link RequestBody} 정보 생성 함수 */
-    private final TripleFunction<WebRequest, Exception, HttpStatusCode, FIFOMap<String, Object>> FN_CREATE_ENTITY;
+    private final TripleFunction<WebRequest, Exception, HttpStatusCode, ConcurrentLinkedHashMap<String, Object>> FN_CREATE_ENTITY;
 
     /** {@link Throwable}과 {@link HttpStatus} 매핑 정보 */
     private @Nullable ExceptionHttpStatusBinder exceptionHttpStatusBinder;
@@ -114,6 +115,8 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * @version 0.8.0
      */
     public DefaultGlobalExceptionHandler(@Qualifier(ExceptionHttpStatusBinder.BEAN_QUALIFIER) ExceptionHttpStatusBinder exceptionHttpStatusBinder) {
+        AssertUtils2.notNull(exceptionHttpStatusBinder);
+
         this(exceptionHttpStatusBinder, FN_CREATE_ENTITY_DEFAULT);
     }
 
@@ -134,8 +137,8 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * @since 2025. 4. 17.
      * @version 0.8.0
      */
-    public DefaultGlobalExceptionHandler(ExceptionHttpStatusBinder exceptionHttpStatusBinder,
-            TripleFunction<WebRequest, Exception, HttpStatusCode, FIFOMap<String, Object>> funcCreateEntity) {
+    public DefaultGlobalExceptionHandler(@Nullable ExceptionHttpStatusBinder exceptionHttpStatusBinder,
+            @Nullable TripleFunction<WebRequest, Exception, HttpStatusCode, ConcurrentLinkedHashMap<String, Object>> funcCreateEntity) {
         this.exceptionHttpStatusBinder = exceptionHttpStatusBinder;
         this.FN_CREATE_ENTITY = funcCreateEntity != null ? funcCreateEntity : FN_CREATE_ENTITY_DEFAULT;
     }
@@ -160,7 +163,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * @version 0.2.3
      */
     protected ResponseEntity<Object> createEntity(HttpStatusCode status, Exception ex, WebRequest request) {
-        FIFOMap<String, Object> entity = this.FN_CREATE_ENTITY.apply(request, ex, status);
+        ConcurrentLinkedHashMap<String, Object> entity = this.FN_CREATE_ENTITY.apply(request, ex, status);
         return handleExceptionInternal(ex, entity, new HttpHeaders(), status, request);
     }
 
@@ -186,7 +189,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * @see #resolveAnnotatedResponseStatus
      */
     @ExceptionHandler(value = { Throwable.class })
-    public ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
+    public @Nullable ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
 
         HttpStatusCode status = resolveAnnotatedResponseStatus(ex, HttpStatus.INTERNAL_SERVER_ERROR);
         if (status == null) {
@@ -202,7 +205,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
         }
         // end - 기존에 CaseByCase로 처리되던 예외클래스 지원. : 2025. 5. 28. 오후 4:46:04
 
-        FIFOMap<String, Object> entity = this.FN_CREATE_ENTITY.apply(request, ex, status);
+        ConcurrentLinkedHashMap<String, Object> entity = this.FN_CREATE_ENTITY.apply(request, ex, status);
 
         return handleExceptionInternal(ex, entity, new HttpHeaders(), status, request);
     }
@@ -217,7 +220,8 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *      org.springframework.web.context.request.WebRequest)
      */
     @Override
-    protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+    protected @Nullable ResponseEntity<Object> handleExceptionInternal(Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+        AssertUtils2.notNulls(ex, headers, status, request);
 
         if (body == null) {
             body = this.FN_CREATE_ENTITY.apply(request, ex, status);
@@ -226,9 +230,9 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
     }
 
     @ExceptionHandler({ JsonMappingException.class })
-    public ResponseEntity<Object> handleJsonMappingException(JsonMappingException ex, WebRequest request) {
+    public @Nullable ResponseEntity<Object> handleJsonMappingException(JsonMappingException ex, WebRequest request) {
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-        FIFOMap<String, Object> entity = this.FN_CREATE_ENTITY.apply(request, ex, status);
+        ConcurrentLinkedHashMap<String, Object> entity = this.FN_CREATE_ENTITY.apply(request, ex, status);
         return handleExceptionInternal(ex, entity, new HttpHeaders(), status, request);
     }
 
@@ -279,6 +283,8 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
     @Qualifier(ExceptionHttpStatusBinder.BEAN_QUALIFIER)
     @Autowired
     public void setExceptionHttpStatusBinder(ExceptionHttpStatusBinder exceptionHttpStatusBinder) {
+        AssertUtils2.notNull(exceptionHttpStatusBinder);
+
         this.exceptionHttpStatusBinder = exceptionHttpStatusBinder;
     }
 }

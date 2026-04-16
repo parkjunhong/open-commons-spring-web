@@ -135,13 +135,6 @@ public class ResourceConfiguration {
     public static final String PROPERTIES_DEFAULT_THREAD_POOL_TASK_EXECUTOR_CONFIG = PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH + ".concurrent.thread-pool-task-executor";
     /** 내부적으로 사용되는 {@link ThreadPoolTaskExecutor} 설정 */
     public static final String CONFIGURATION_THREAD_POOL_TASK_EXECUTOR_CONFIG_ON_MDC = "open.commons.spring.web.config.ResourceConfiguration#CONFIGURATION_THREAD_POOL_TASK_EXECUTOR_CONFIG_ON_MDC";
-    /**
-     * {@link ThreadPoolTaskExecutor} 설정 경로<br>
-     * 
-     * @deprecated 경로가 변경에 따라 사용되지 않음.{@link #PROPERTIES_DEFAULT_THREAD_POOL_TASK_EXECUTOR_CONFIG}를 사용할 것.<br>
-     *             <font color="red">다음 배포시 삭제될 예정.</font>
-     */
-    public static final String PROPERTIES_DEFAULT_ASYNC_THREAD_POOL_TASK_EXECUTOR_CONFIG = PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH + ".async.thread-pool-task-executor";
     // -------------------------------------------------------------------------- //
 
     /** {@link Async} 어노테이션이 적용된 메소드가 실행될 때 기본값으로 사용되는 {@link Executor} 설정값 */

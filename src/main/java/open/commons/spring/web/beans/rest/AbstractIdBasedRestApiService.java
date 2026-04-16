@@ -190,8 +190,9 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      *      java.util.function.Function)
      */
     @Override
-    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, REQ requestBody, Class<RES> responseType, HttpHeaders headers,
-            MultiValueMap<String, Object> query, String fragment, Function<ResponseEntity<RES>, Result<RET>> onSuccess, Function<Exception, Result<RET>> onError) {
+    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody //
+            , Class<RES> responseType, HttpHeaders headers, MultiValueMap<String, Object> query, String fragment //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess, Function<Exception, Result<RET>> onError) {
         RestEndpoint api = createRestEndpoint(id, pathVariables, headers, query);
 
         if (api == null) {
@@ -213,9 +214,9 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      *      java.util.function.Function)
      */
     @Override
-    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, REQ requestBody, ParameterizedTypeReference<RES> responseType,
-            HttpHeaders headers, MultiValueMap<String, Object> query, String fragment, Function<ResponseEntity<RES>, Result<RET>> onSuccess,
-            Function<Exception, Result<RET>> onError) {
+    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody //
+            , ParameterizedTypeReference<RES> responseType, HttpHeaders headers, MultiValueMap<String, Object> query, String fragment //
+            , Function<ResponseEntity<RES>, Result<RET>> onSuccess, Function<Exception, Result<RET>> onError) {
         RestEndpoint api = createRestEndpoint(id, pathVariables, headers, query);
 
         if (api == null) {
@@ -236,8 +237,9 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      *      org.springframework.util.MultiValueMap, java.lang.String, java.util.function.Function)
      */
     @Override
-    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, REQ requestBody, Class<RES> responseType, HttpHeaders headers,
-            MultiValueMap<String, Object> query, String fragment, Function<ResponseEntity<RES>, RET> onSuccess) {
+    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody //
+            , Class<RES> responseType, HttpHeaders headers, MultiValueMap<String, Object> query, String fragment //
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         RestEndpoint api = createRestEndpoint(id, pathVariables, headers, query);
 
         if (api == null) {
@@ -258,8 +260,9 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      *      org.springframework.util.MultiValueMap, java.lang.String, java.util.function.Function)
      */
     @Override
-    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, REQ requestBody, ParameterizedTypeReference<RES> responseType,
-            HttpHeaders headers, MultiValueMap<String, Object> query, String fragment, Function<ResponseEntity<RES>, RET> onSuccess) {
+    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody //
+            , ParameterizedTypeReference<RES> responseType, HttpHeaders headers, MultiValueMap<String, Object> query, String fragment //
+            , Function<ResponseEntity<RES>, RET> onSuccess) {
         RestEndpoint api = createRestEndpoint(id, pathVariables, headers, query);
 
         if (api == null) {

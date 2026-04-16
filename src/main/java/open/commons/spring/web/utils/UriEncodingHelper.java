@@ -34,8 +34,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import jakarta.validation.constraints.NotBlank;
-
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UriUtils;
 
@@ -69,7 +67,8 @@ public class UriEncodingHelper {
 
     static {
         ENCODERS.put(Encoding.TEMPLATE_AND_VALUES, (uriComponent, template, variables) -> {
-            AssertUtils2.notNull(template);
+            AssertUtils2.notNulls(uriComponent, template);
+
             if (variables == null || MapUtils.isNullOrEmpty(variables.getVariables())) {
                 variables = ByPassUriTemplateVariables.emptyVariables();
             }
@@ -82,7 +81,8 @@ public class UriEncodingHelper {
             }
         });
         ENCODERS.put(Encoding.VALUES_ONLY_STRICT, (uriComponent, template, variables) -> {
-            AssertUtils2.notNull(template);
+            AssertUtils2.notNulls(uriComponent, template);
+
             if (variables == null || MapUtils.isNullOrEmpty(variables.getVariables())) {
                 variables = ByPassUriTemplateVariables.emptyVariables();
             }
@@ -96,7 +96,8 @@ public class UriEncodingHelper {
             }
         });
         ENCODERS.put(Encoding.VALUES_ONLY_RESERVED, (uriComponent, template, variables) -> {
-            AssertUtils2.notNull(template);
+            AssertUtils2.notNulls(uriComponent, template);
+
             if (variables == null || MapUtils.isNullOrEmpty(variables.getVariables())) {
                 variables = ByPassUriTemplateVariables.emptyVariables();
             }
@@ -107,7 +108,7 @@ public class UriEncodingHelper {
                 return format(template, encoded);
             }
         });
-        ENCODERS.put(Encoding.NONE, (uriComponent, template, variables) -> {
+        ENCODERS.put(Encoding.NONE, (_, template, _) -> {
             AssertUtils2.notNull(template);
             return format(template, null);
         });
@@ -158,8 +159,9 @@ public class UriEncodingHelper {
      * @since 2025. 8. 27.
      * @version 0.8.0
      */
-    public static TemplateUriEncoder encoder(@NotBlank Encoding encoding) {
+    public static TemplateUriEncoder encoder(Encoding encoding) {
         AssertUtils2.notNull(encoding);
+
         TemplateUriEncoder encoder = ENCODERS.get(encoding);
         return encoder != null ? encoder : ENCODERS.get(Encoding.NONE);
     }

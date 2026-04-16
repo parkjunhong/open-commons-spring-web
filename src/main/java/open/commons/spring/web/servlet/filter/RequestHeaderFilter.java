@@ -42,11 +42,13 @@ import org.springframework.core.annotation.Order;
 
 import open.commons.core.lang.IThreadLocalContext;
 import open.commons.core.lang.ThreadLocalContextService;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration;
 import open.commons.spring.web.servlet.filter.header.SharedHeader;
 
 /**
+ * {@link HttpServletRequest} 와 함께 전달된 '헤더'를 서비스 로직까지 공유해 주는 기능을 지원하는 클래스.
  * 
  * @since 2025. 8. 19.
  * @version 0.8.0
@@ -116,7 +118,9 @@ public class RequestHeaderFilter extends AbstractOncePerRequestFilter {
     }
 
     @Autowired
-    public void setSharedHeaders(@Qualifier(GlobalServletConfiguration.BEAN_QUALIFIER_PRIMARY_SHARED_HEADERS) @NotNull List<SharedHeader> headers) {
+    public void setSharedHeaders(@NotNull @Qualifier(GlobalServletConfiguration.BEAN_QUALIFIER_PRIMARY_SHARED_HEADERS) List<SharedHeader> headers) {
+        AssertUtils2.notNull(headers);
+
         this.sharedHeaders.addAll(headers);
     }
 }

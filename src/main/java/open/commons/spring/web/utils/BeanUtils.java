@@ -42,8 +42,8 @@ import org.springframework.boot.context.properties.bind.Bindable;
 import org.springframework.boot.context.properties.bind.Binder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
-import org.springframework.util.Assert;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.exception.InvalidBeanNameFqnResolveException;
@@ -105,7 +105,9 @@ public class BeanUtils {
      * @see ApplicationContext#getBeansOfType(Class)
      * @see #findExplicitBean(Class)
      */
-    public final <T, E extends T> T findBean(@Nullable String beanName, Class<T> beanType, @Nullable Class<E> beanImplType, boolean required) throws BeansException {
+    public final <T, E extends T> @Nullable T findBean(@Nullable String beanName, Class<T> beanType, @Nullable Class<E> beanImplType, boolean required) throws BeansException {
+        AssertUtils2.notNull(beanType);
+
         T bean = null;
         try {
             if (StringUtils.isNullOrEmptyString(beanName)) {
@@ -165,7 +167,11 @@ public class BeanUtils {
      * 
      * @see ApplicationContext#getBeansOfType(Class)
      */
-    private <@Nullable T> T findExplicitBean(Class<T> beanExplicitImplType) throws BeansException {
+    private <T> @Nullable T findExplicitBean(@Nullable Class<T> beanExplicitImplType) throws BeansException {
+        if (beanExplicitImplType == null) {
+            return null;
+        }
+
         Map<String, T> candidates = this.context.getBeansOfType(beanExplicitImplType);
         T bean = null;
         int count = 0;
@@ -220,6 +226,8 @@ public class BeanUtils {
      * @see ApplicationContext#getBean(String, Class)
      */
     public final <T> @Nullable T getBean(@Nullable String beanName, Class<T> beanType, @Nullable T defaultBean, boolean required) throws BeansException {
+        AssertUtils2.notNull(beanType);
+
         T bean = null;
         try {
             if (StringUtils.isNullOrEmptyString(beanName)) {
@@ -258,7 +266,8 @@ public class BeanUtils {
      * @version 0.8.0
      */
     public static BeanUtils context(ApplicationContext context) {
-        Assert.notNull(context, "컨텍스트 정보는 반드시 설정되어야 합니다.");
+        AssertUtils2.notNull(context, "컨텍스트 정보는 반드시 설정되어야 합니다.");
+
         return new BeanUtils(context);
     }
 
@@ -281,6 +290,8 @@ public class BeanUtils {
      * @see org.springframework.beans.BeanUtils#isSimpleValueType(Class)
      */
     public static boolean isSimpleValueType(Class<?> type) {
+        AssertUtils2.notNull(type);
+
         return org.springframework.beans.BeanUtils.isSimpleValueType(type) //
                 || UUID.class.equals(type) //
         ;
@@ -310,6 +321,8 @@ public class BeanUtils {
      * @version 0.8.0
      */
     public static <E> List<E> listOf(Environment environment, String property, Class<E> type) {
+        AssertUtils2.notNulls(environment, property, type);
+
         return Binder.get(environment).bind(property, Bindable.listOf(type)).orElse(Collections.emptyList());
     }
 
@@ -331,6 +344,8 @@ public class BeanUtils {
      * @version 0.8.0
      */
     public static String resolveBeanNameFromFqn(String fqn) {
+        AssertUtils2.notNull(fqn);
+
         try {
             int lastDotIndex = fqn.lastIndexOf(".");
             String className = fqn.substring(0, lastDotIndex);

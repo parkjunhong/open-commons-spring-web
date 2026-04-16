@@ -29,11 +29,13 @@ package open.commons.spring.web.utils;
 import java.util.List;
 
 import org.apache.logging.log4j.ThreadContext;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.DefaultApplicationArguments;
 
 import open.commons.core.log4j.appender.ProcessRollingFileAppender;
+import open.commons.core.utils.AssertUtils2;
 
 /**
  * Application Argument에 대한 지원 기능을 제공.
@@ -65,7 +67,9 @@ public class ArgumentsUtils {
      *
      * @since 2022. 8. 10.
      */
-    public String getOptionValue(DefaultApplicationArguments args, String name) {
+    public @Nullable String getOptionValue(DefaultApplicationArguments args, @Nullable String name) {
+        AssertUtils2.notNull(args);
+
         List<String> values = args.getOptionValues(name);
         return values != null && values.size() > 0 //
                 ? values.get(0) //
@@ -97,7 +101,8 @@ public class ArgumentsUtils {
      * @since 2022. 8. 10.
      * @version 0.5.0
      */
-    public Logger setLoggerContextUsingApplicationExternalConfiguration(Class<?> loggerName, String argName, String[] args) {
+    public Logger setLoggerContextUsingApplicationExternalConfiguration(Class<?> loggerName, @Nullable String argName, String[] args) {
+        AssertUtils2.notNulls(loggerName, args);
 
         DefaultApplicationArguments argObj = new DefaultApplicationArguments(args);
         String context = getOptionValue(argObj, argName);

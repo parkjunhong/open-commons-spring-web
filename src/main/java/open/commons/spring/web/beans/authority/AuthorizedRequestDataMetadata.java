@@ -48,7 +48,6 @@ import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanCreationException;
-import org.springframework.util.Assert;
 
 import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.MapUtils;

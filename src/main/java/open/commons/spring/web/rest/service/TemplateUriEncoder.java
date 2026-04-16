@@ -26,8 +26,6 @@
 
 package open.commons.spring.web.rest.service;
 
-import jakarta.validation.constraints.NotNull;
-
 import org.springframework.web.util.DefaultUriBuilderFactory.EncodingMode;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -64,7 +62,7 @@ public interface TemplateUriEncoder {
      * @since 2025. 8. 27.
      * @version 0.8.0
      */
-    String encode(@NotNull UriComponent uriComponent, @NotNull String template, ByPassUriTemplateVariables varaibles);
+    String encode(UriComponent uriComponent, String template, ByPassUriTemplateVariables varaibles);
 
     /**
      * <pre>

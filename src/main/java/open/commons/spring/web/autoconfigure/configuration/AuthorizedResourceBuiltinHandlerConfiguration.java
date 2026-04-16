@@ -43,6 +43,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import open.commons.core.function.Functions;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.core.utils.MapUtils;
 import open.commons.core.utils.StreamUtils;
@@ -112,7 +113,7 @@ public class AuthorizedResourceBuiltinHandlerConfiguration {
         });
         // #2. 중복 '데이터 처리 식별정보' 검증
         MultiValueMap<String, ResourceHandle> mayBeDuplicated = StreamUtils.toMap(merged.stream(),
-                (Function<ResourceHandle, String>) h -> String.format("%s#%s", h.target(), h.handleType()), StreamUtils.identity(), LinkedMultiValueMap::new);
+                (Function<ResourceHandle, String>) h -> String.format("%s#%s", h.target(), h.handleType()), Functions.Unary.identity(), LinkedMultiValueMap::new);
 
         boolean duplicated = false;
         for (Entry<String, List<ResourceHandle>> entry : mayBeDuplicated.entrySet()) {

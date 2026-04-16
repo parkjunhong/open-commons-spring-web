@@ -29,6 +29,7 @@ package open.commons.spring.web.rest.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.web.util.UriComponents.UriTemplateVariables;
 
 import open.commons.core.utils.StringUtils;
@@ -43,13 +44,13 @@ import open.commons.core.utils.StringUtils;
 public class ByPassUriTemplateVariables implements MapUriTemplateVariables {
 
     /** URI 템플릿에 사용될 정보. */
-    private Map<String, ?> variables;
+    private Map<String, ? extends @Nullable Object> variables;
 
     private ByPassUriTemplateVariables() {
         this.variables = new HashMap<>();
     }
 
-    public ByPassUriTemplateVariables(Map<String, ?> variables) {
+    public ByPassUriTemplateVariables(@Nullable Map<String, ? extends @Nullable Object> variables) {
         this.variables = variables != null ? variables : new HashMap<>();
     }
 
@@ -62,7 +63,7 @@ public class ByPassUriTemplateVariables implements MapUriTemplateVariables {
      * @see org.springframework.web.util.UriComponents.UriTemplateVariables#getValue(java.lang.String)
      */
     @Override
-    public Object getValue(String name) {
+    public Object getValue(@Nullable String name) {
         if (StringUtils.isNullOrEmptyString(name)) {
             return UriTemplateVariables.class;
         }
@@ -80,7 +81,7 @@ public class ByPassUriTemplateVariables implements MapUriTemplateVariables {
      * @see open.commons.spring.web.rest.service.MapUriTemplateVariables#getVariables()
      */
     @Override
-    public Map<String, ?> getVariables() {
+    public Map<String, ? extends @Nullable Object> getVariables() {
         return this.variables;
     }
 

@@ -33,7 +33,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.util.Assert;
 
 import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.authority.AuthorizedField;

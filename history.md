@@ -1,3 +1,6 @@
+[2026/04/16]
+- Spring Boot 4.0.3, Spring Framework 7.0.5 현행화 적용 완료.
+
 [2026/04/15]
 - Patch
   + Migration ( Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5 )

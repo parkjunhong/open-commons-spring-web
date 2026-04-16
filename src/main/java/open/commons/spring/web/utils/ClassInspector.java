@@ -31,7 +31,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Function;
 
 import jakarta.validation.constraints.NotBlank;
@@ -39,7 +38,6 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import org.jspecify.annotations.Nullable;
-import org.springframework.util.Assert;
 
 import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ExceptionUtils;
@@ -80,6 +78,8 @@ public class ClassInspector {
      * @version 0.8.0
      */
     public static List<Field> getAllFields(Class<?> clazz) {
+        AssertUtils2.notNull(clazz);
+
         return getAll(clazz, Class::getDeclaredFields);
     }
 
@@ -100,6 +100,8 @@ public class ClassInspector {
      * @version 0.8.0
      */
     public static List<Method> getAllMethods(Class<?> clazz) {
+        AssertUtils2.notNull(clazz);
+
         return getAll(clazz, Class::getDeclaredMethods);
     }
 
@@ -123,8 +125,9 @@ public class ClassInspector {
      * 
      * @see Class#getDeclaredField(String)
      */
-    public static @Nullable Field getDeclaredFieldIfExist(@NotNull Class<?> clazz, @NotBlank String fieldName) {
-        AssertUtils2.notBlank(fieldName, "변수이름은 반드시 길이가 있어야 합니다.");
+    public static @Nullable Field getDeclaredFieldIfExist(Class<?> clazz, @NotBlank String fieldName) {
+        AssertUtils2.notNulls(clazz);
+        AssertUtils2.notBlank(fieldName, "변수이름은 '빈 문자열'을 허용하지 않습니다.");
 
         try {
             return clazz.getDeclaredField(fieldName);
@@ -154,7 +157,10 @@ public class ClassInspector {
      * 
      * @see Class#getField(String)
      */
-    public static Field getFieldIfExist(@NotNull Class<?> clazz, @NotEmpty String fieldName) {
+    public static @Nullable Field getFieldIfExist(@NotNull Class<?> clazz, @NotEmpty String fieldName) {
+        AssertUtils2.notNulls(clazz, fieldName);
+        AssertUtils2.notBlank(fieldName, "변수이름은 '빈 문자열'을 허용하지 않습니다.");
+
         try {
             return clazz.getField(fieldName);
         } catch (NoSuchFieldException e) {

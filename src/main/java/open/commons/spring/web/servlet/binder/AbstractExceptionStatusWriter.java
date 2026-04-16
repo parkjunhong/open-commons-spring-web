@@ -26,6 +26,7 @@
 
 package open.commons.spring.web.servlet.binder;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpStatus;
 
 import tools.jackson.core.JacksonException;
@@ -108,7 +109,7 @@ public abstract class AbstractExceptionStatusWriter implements IExceptionRespons
      * @see open.commons.spring.web.servlet.binder.IExceptionResponseWriter#writeAsString(java.lang.Object)
      */
     @Override
-    public String writeAsString(Object o) {
+    public String writeAsString(@Nullable Object o) {
         try {
             return o != null ? this.objectMapper.writeValueAsString(o) : "null";
         } catch (JacksonException e) {

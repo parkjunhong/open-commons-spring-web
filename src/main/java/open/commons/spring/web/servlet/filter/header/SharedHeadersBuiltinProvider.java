@@ -59,7 +59,7 @@ public class SharedHeadersBuiltinProvider {
                             && StringUtils.isNullOrEmptyString(value) ? false : value.matches(LogFeature.FEATURE_REG_EX) //
                     ;
                 } //
-                , (name, value) -> {
+                , (_, value) -> {
                     MDC.put("feature", value);
                 }));
     }

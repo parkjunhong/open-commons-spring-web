@@ -90,7 +90,7 @@ public abstract class AbstractOncePerRequestFilter extends OncePerRequestFilter 
      * @author parkjunhong77@gmail.com
      */
     @Autowired
-    public void setIgnoredUrl(@Nullable @Qualifier(GlobalServletConfiguration.BEAN_QUALIFIER_PRIMARY_ONCE_PER_REQUEST_SHOULD_NOT_PATTERNS) List<PathPatternRequest> ignoredUrl) {
+    public void setIgnoredUrl(@Qualifier(GlobalServletConfiguration.BEAN_QUALIFIER_PRIMARY_ONCE_PER_REQUEST_SHOULD_NOT_PATTERNS) @Nullable List<PathPatternRequest> ignoredUrl) {
         if (ignoredUrl != null) {
             this.ignoredUrl = ignoredUrl.stream().filter(p -> p.matches(getClass())).collect(Collectors.toUnmodifiableList());
 

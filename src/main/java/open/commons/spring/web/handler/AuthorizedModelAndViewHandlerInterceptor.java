@@ -304,7 +304,7 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
         return this.authorizedContextCache.computeIfAbsent(
                 // "{클래스}#{필드}" 형태의 식별정보
                 String.join("#", objectClass.getName(), field.toString()) //
-                , key -> {
+                , _ -> {
                     final AuthorizedObject annoAuthorizedObject = objectClass.getAnnotation(AuthorizedObject.class);
                     final AuthorizedField annoAuthorizedField = field.getAnnotation(AuthorizedField.class);
                     final String fieldName = field.getName();
@@ -526,9 +526,9 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
          * <br>
          * 
          * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
          * 2025. 9. 25.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *

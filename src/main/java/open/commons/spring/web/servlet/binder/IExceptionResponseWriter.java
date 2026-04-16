@@ -32,10 +32,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.utils.WebUtils;
 
 /**
@@ -155,7 +157,7 @@ public interface IExceptionResponseWriter {
      * @since 2025. 10. 30.
      * @version 2.1.0
      */
-    String writeAsString(Object o);
+    String writeAsString(@Nullable Object o);
 
     /**
      * 
@@ -179,6 +181,8 @@ public interface IExceptionResponseWriter {
      * @version 2.1.0
      */
     default void writeExceptionResponse(HttpServletRequest request, HttpServletResponse response, Exception exception) throws IOException, ServletException {
+        AssertUtils2.notNulls(request, response, exception);
+
         HttpStatusCode status = bind(exception);
         response.setStatus(status.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);

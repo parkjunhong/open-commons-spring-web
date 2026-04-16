@@ -27,7 +27,6 @@
 package open.commons.spring.web.utils;
 
 import java.util.Collection;
-import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.regex.Pattern;
@@ -36,6 +35,8 @@ import java.util.regex.PatternSyntaxException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
+
+import open.commons.core.utils.AssertUtils2;
 
 /**
  * 
@@ -69,6 +70,8 @@ public class PathUtils {
      * @version 0.8.0
      */
     public static void addEnvironmentProperty(Environment env, String propName, Consumer<String> actor) {
+        AssertUtils2.notNulls(env, propName, actor);
+
         String value = env.getProperty(propName);
         if (value == null) {
             logger.debug("'{}' 에 해당하는 설정이 존재하지 않습니다.", propName);
@@ -103,6 +106,8 @@ public class PathUtils {
      * @version 0.8.0
      */
     public static <V> void addEnvironmentProperty(Environment env, String propName, Function<String, V> converter, Consumer<V> actor) {
+        AssertUtils2.notNulls(env, propName, converter, actor);
+
         String value = env.getProperty(propName);
         if (value == null) {
             logger.debug("'{}' 에 해당하는 설정이 존재하지 않습니다.", propName);
@@ -129,6 +134,8 @@ public class PathUtils {
      * @version 0.8.0
      */
     public static boolean isValidFqcn(String fqcn) {
+        AssertUtils2.notNull(fqcn);
+
         try {
             Pattern.compile(fqcn.replace(".", "\\.").replace("*", ".*"));
             return true;
@@ -156,7 +163,7 @@ public class PathUtils {
      * @version 0.8.0
      */
     public static boolean isValidPathPattern(Collection<String> patterns) {
-        Objects.requireNonNull(patterns);
+        AssertUtils2.notNull(patterns);
 
         for (String pattern : patterns) {
             if (!isValidPathPattern(pattern)) {
@@ -185,6 +192,8 @@ public class PathUtils {
      * @version 0.8.0
      */
     public static boolean isValidPathPattern(String pattern) {
+        AssertUtils2.notNull(pattern);
+
         return pattern != null && pattern.startsWith("/");
     }
 }
