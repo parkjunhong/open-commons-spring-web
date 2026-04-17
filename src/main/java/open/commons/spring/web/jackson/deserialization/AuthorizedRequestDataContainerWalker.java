@@ -142,7 +142,7 @@ public class AuthorizedRequestDataContainerWalker {
      * @return 변환된 객체(가능하면 원본 컬렉션/맵은 제자리 갱신, 배열은 새 배열 반환)
      */
     public static Object processRecursively(Object rawValue, JavaType type, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType) {
-        AssertUtils2.isFalse("데이터 처리 식별정보는 반드시 설정되어야 합니다. handleType=" + handleType, StringUtils.isNullOrEmptyString(handleType));
+        AssertUtils2.isFalse(StringUtils.isNullOrEmptyString(handleType), "데이터 처리 식별정보는 반드시 설정되어야 합니다. handleType=" + handleType);
 
         if (rawValue == null || type == null) {
             return processRecursivelyRuntime(rawValue, handler, handleType);
