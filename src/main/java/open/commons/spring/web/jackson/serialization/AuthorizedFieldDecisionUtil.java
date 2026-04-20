@@ -38,7 +38,7 @@ import open.commons.spring.web.authority.metadata.AuthorizedFieldMetadata;
 import open.commons.spring.web.beans.authority.FieldAccessAuthorityDecision;
 import open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata;
 import open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 import open.commons.spring.web.utils.BeanUtils;
 
 import tools.jackson.databind.introspect.AnnotatedField;

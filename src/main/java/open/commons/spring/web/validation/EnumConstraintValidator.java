@@ -37,7 +37,7 @@ import jakarta.validation.ConstraintValidatorContext;
 import jakarta.validation.Validator;
 
 import open.commons.core.utils.ExceptionUtils;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 
 /**
  * 

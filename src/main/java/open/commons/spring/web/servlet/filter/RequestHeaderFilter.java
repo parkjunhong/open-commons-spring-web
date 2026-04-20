@@ -44,7 +44,7 @@ import open.commons.core.lang.IThreadLocalContext;
 import open.commons.core.lang.ThreadLocalContextService;
 import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
-import open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration;
+import open.commons.spring.web.autoconfigure.GlobalServletAutoConfiguration;
 import open.commons.spring.web.servlet.filter.header.SharedHeader;
 
 /**
@@ -118,7 +118,7 @@ public class RequestHeaderFilter extends AbstractOncePerRequestFilter {
     }
 
     @Autowired
-    public void setSharedHeaders(@NotNull @Qualifier(GlobalServletConfiguration.BEAN_QUALIFIER_PRIMARY_SHARED_HEADERS) List<SharedHeader> headers) {
+    public void setSharedHeaders(@NotNull @Qualifier(GlobalServletAutoConfiguration.BEAN_QUALIFIER_PRIMARY_SHARED_HEADERS) List<SharedHeader> headers) {
         AssertUtils2.notNull(headers);
 
         this.sharedHeaders.addAll(headers);

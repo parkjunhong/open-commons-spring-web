@@ -42,7 +42,7 @@ import org.springframework.security.web.servlet.util.matcher.PathPatternRequestM
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration;
+import open.commons.spring.web.autoconfigure.GlobalServletAutoConfiguration;
 
 /**
  * 기본 요청 당 한 번 실행되는 필터의 추상 클래스입니다. 지정된 URL 패턴에 대해 필터링을 건너뛰는(Ignore) 기능을 제공합니다.
@@ -90,7 +90,7 @@ public abstract class AbstractOncePerRequestFilter extends OncePerRequestFilter 
      * @author parkjunhong77@gmail.com
      */
     @Autowired
-    public void setIgnoredUrl(@Qualifier(GlobalServletConfiguration.BEAN_QUALIFIER_PRIMARY_ONCE_PER_REQUEST_SHOULD_NOT_PATTERNS) @Nullable List<PathPatternRequest> ignoredUrl) {
+    public void setIgnoredUrl(@Qualifier(GlobalServletAutoConfiguration.BEAN_QUALIFIER_PRIMARY_ONCE_PER_REQUEST_SHOULD_NOT_PATTERNS) @Nullable List<PathPatternRequest> ignoredUrl) {
         if (ignoredUrl != null) {
             this.ignoredUrl = ignoredUrl.stream().filter(p -> p.matches(getClass())).collect(Collectors.toUnmodifiableList());
 

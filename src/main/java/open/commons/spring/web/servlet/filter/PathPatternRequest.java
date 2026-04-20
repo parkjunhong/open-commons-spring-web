@@ -35,7 +35,7 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpMethod;
 
 import open.commons.core.utils.ExceptionUtils;
-import open.commons.spring.web.servlet.InvalidPathPatternUrlException;
+import open.commons.spring.web.servlet.exception.InvalidPathPatternUrlException;
 import open.commons.spring.web.utils.PathUtils;
 
 /**

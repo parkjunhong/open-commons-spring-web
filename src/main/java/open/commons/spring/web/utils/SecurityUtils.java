@@ -54,8 +54,8 @@ import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.EncryptUtils;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.core.utils.ObjectTransformer;
-import open.commons.spring.web.servlet.BadRequestException;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.BadRequestException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 
 /**
  * Http 요청에 관한 보안 기능을 제공하는 클래스.

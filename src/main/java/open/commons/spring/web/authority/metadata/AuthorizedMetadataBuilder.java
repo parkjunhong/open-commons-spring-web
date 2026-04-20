@@ -49,7 +49,7 @@ import open.commons.spring.web.authority.AuthorizedObject;
 import open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider;
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
 import open.commons.spring.web.beans.authority.internal.ForcedUnintelligibleJudge;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 import open.commons.spring.web.utils.ClassInspector;
 
 /**

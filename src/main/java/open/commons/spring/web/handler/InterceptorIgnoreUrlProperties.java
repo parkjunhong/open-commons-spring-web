@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import open.commons.core.utils.ExceptionUtils;
-import open.commons.spring.web.servlet.InvalidPathPatternUrlException;
+import open.commons.spring.web.servlet.exception.InvalidPathPatternUrlException;
 import open.commons.spring.web.utils.PathUtils;
 
 /**

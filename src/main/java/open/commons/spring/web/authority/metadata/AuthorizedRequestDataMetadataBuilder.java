@@ -47,7 +47,7 @@ import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.authority.AuthorizedRequestData;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 import open.commons.spring.web.utils.ClassInspector;
 
 /**

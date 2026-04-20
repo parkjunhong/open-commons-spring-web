@@ -39,8 +39,8 @@ import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.authority.AuthorizedRequestData;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
-import open.commons.spring.web.config.ResourceHandle;
-import open.commons.spring.web.config.ResourceHandle.Target;
+import open.commons.spring.web.beans.authority.ResourceHandle;
+import open.commons.spring.web.beans.authority.ResourceHandle.Target;
 
 /**
  * {@link IUnauthorizedFieldHandler}, {@link IAuthorizedRequestDataHandler}를 하나의 서비스로 통합하여 제공하는 내부 컴포넌트

@@ -48,7 +48,7 @@ import open.commons.core.Result;
 import open.commons.core.function.TripleFunction;
 import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.MapUtils;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 import open.commons.ssh.SshConnection;
 import open.commons.ssh.file.FileTransfer;
 

@@ -62,8 +62,8 @@ import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.authority.AuthorizedRequestData;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata;
-import open.commons.spring.web.config.CustomWebMvcAutoConfiguration;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.configure.CustomWebMvcAutoConfiguration;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 import open.commons.spring.web.utils.BeanUtils;
 import open.commons.spring.web.utils.ClassInspector;
 

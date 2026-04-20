@@ -51,7 +51,8 @@ import org.springframework.core.type.AnnotationMetadata;
 
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.beans.controller.RequestMappingProvider;
-import open.commons.spring.web.config.ResourceConfiguration;
+import open.commons.spring.web.configure.OpenApiConfiguration;
+import open.commons.spring.web.configure.ResourceConfiguration;
 
 /**
  * '서비스 설정'에 작성된 {@link GroupedOpenApi} 정보를 읽어 {@link Bean} 으로 등록해 주는 클래스.<br>
@@ -165,7 +166,7 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
         // Map<String, GroupedOpenApiProperties> 데이터 유형을 지정
         Bindable<Map<String, GroupedOpenApiProperties>> target = Bindable.mapOf(String.class, GroupedOpenApiProperties.class);
         // 설정정보에서 {prefix}와 데이터 유형으로 조회
-        BindResult<Map<String, GroupedOpenApiProperties>> result = Binder.get(env).bind(OpenApiConfig.PROPERTIES_GROUPED_OPEN_API, target);
+        BindResult<Map<String, GroupedOpenApiProperties>> result = Binder.get(env).bind(OpenApiConfiguration.PROPERTIES_GROUPED_OPEN_API, target);
 
         return result.orElseGet(Collections::emptyMap);
     }
@@ -214,7 +215,7 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      */
     private static GroupedOpenApi createGroupedOpenApi(Environment env, @NotNull GroupedOpenApiProperties prop, String group) {
         // 내부 제공 REST API 그룹 정보 설정. 대상: pathsToMatch
-        if (OpenApiConfig.PROPERTIES_OCSW_API_GROUP.equalsIgnoreCase(group)) {
+        if (OpenApiConfiguration.PROPERTIES_OCSW_API_GROUP.equalsIgnoreCase(group)) {
             // 중복방지 및 정렬을 위해서 TreeSet 사용.
             Set<String> pathsToMatch = new TreeSet<>();
             for (Entry<String, String> entry : builtinRestApiClassPathOcswSupported().entrySet()) {
@@ -238,6 +239,6 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
             }
             prop.setPathsToMatch(new ArrayList<>(pathsToMatch));
         }
-        return OpenApiConfig.transform(prop, group);
+        return OpenApiConfiguration.transform(prop, group);
     }
 }

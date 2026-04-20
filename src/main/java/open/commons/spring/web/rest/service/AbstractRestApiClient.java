@@ -72,7 +72,7 @@ import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.rest.RestFacade;
 import open.commons.spring.web.rest.service.TemplateUriEncoder.Encoding;
 import open.commons.spring.web.rest.service.TemplateUriEncoder.UriComponent;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 import open.commons.spring.web.utils.CloseableUtils;
 import open.commons.spring.web.utils.UriEncodingHelper;
 import open.commons.spring.web.utils.WebUtils;

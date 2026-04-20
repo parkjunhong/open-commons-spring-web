@@ -53,7 +53,7 @@ import open.commons.core.function.Runner;
 import open.commons.core.test.StopWatch;
 import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.ConvertUtils;
-import open.commons.spring.web.config.ResourceConfiguration;
+import open.commons.spring.web.configure.ResourceConfiguration;
 
 /**
  * 

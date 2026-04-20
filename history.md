@@ -1,3 +1,13 @@
+[2026/04/20]
+- 'auto-configuration' 이관
+  + '@AutoConfiguration' 클래스를
+    +  'open.commons.spring.web.autoconfigure' 패키지로 이관
+    + 'XXXAutoConfiguration'으로 Naming Rule 적용.
+  + '@Configuration' 클래스를
+    + 'open.commons.spring.web.configure' 패키지로 이관
+    + 'XXXConfiguration'으로 Naming Rule 적용.
+  
+
 [2026/04/16]
 - Spring Boot 4.0.3, Spring Framework 7.0.5 현행화 적용 완료.
 

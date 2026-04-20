@@ -47,13 +47,13 @@ import org.springframework.web.servlet.HandlerMapping;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.authority.AuthorizedRequestData;
-import open.commons.spring.web.autoconfigure.configuration.AuthorizedResourcesConfiguration;
+import open.commons.spring.web.autoconfigure.AuthorizedResourcesAutoConfiguration;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 
 /**
  * "{@link AuthorizedRequestData} && ({@link PathVariable} || {@link RequestParam})"가 선언된 파라미터를 처리합니다.<br>
- * {@link AuthorizedResourcesConfiguration}을 통해서 {@link Bean}으로 제공됩니다.
+ * {@link AuthorizedResourcesAutoConfiguration}을 통해서 {@link Bean}으로 제공됩니다.
  * 
  * @since 2025. 9. 18.
  * @version 0.8.0

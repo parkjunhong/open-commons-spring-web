@@ -36,7 +36,7 @@ import open.commons.spring.web.authority.AuthorizedField;
 import open.commons.spring.web.authority.AuthorizedRequestData;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
-import open.commons.spring.web.config.ResourceHandle;
+import open.commons.spring.web.beans.authority.ResourceHandle;
 
 /**
  * @since 2025. 9. 19.
@@ -152,7 +152,7 @@ public class ResourceHandleImpl implements ResourceHandle {
      * @since 2025. 9. 19.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.config.ResourceHandle#handle()
+     * @see open.commons.spring.web.beans.authority.ResourceHandle#handle()
      */
     @Override
     public Function<?, ?> handle() {
@@ -164,7 +164,7 @@ public class ResourceHandleImpl implements ResourceHandle {
      * @since 2025. 9. 19.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.config.ResourceHandle#handleType()
+     * @see open.commons.spring.web.beans.authority.ResourceHandle#handleType()
      */
     @Override
     @NotEmpty
@@ -200,7 +200,7 @@ public class ResourceHandleImpl implements ResourceHandle {
      * @since 2025. 9. 19.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.config.ResourceHandle#preemptive()
+     * @see open.commons.spring.web.beans.authority.ResourceHandle#preemptive()
      */
     @Override
     public boolean preemptive() {
@@ -212,7 +212,7 @@ public class ResourceHandleImpl implements ResourceHandle {
      * @since 2025. 9. 19.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.config.ResourceHandle#target()
+     * @see open.commons.spring.web.beans.authority.ResourceHandle#target()
      */
     @Override
     public Target target() {

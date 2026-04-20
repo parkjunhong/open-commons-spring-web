@@ -51,8 +51,8 @@ import open.commons.core.utils.MapUtils;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
-import open.commons.spring.web.config.ResourceHandle;
-import open.commons.spring.web.config.ResourceHandle.Target;
+import open.commons.spring.web.beans.authority.ResourceHandle;
+import open.commons.spring.web.beans.authority.ResourceHandle.Target;
 import open.commons.spring.web.utils.SecurityUtils;
 
 /**

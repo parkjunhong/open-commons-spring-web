@@ -35,7 +35,7 @@ import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.beans.authority.FieldAccessAuthorityDecision;
 import open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider;
 import open.commons.spring.web.beans.authority.internal.ForcedUnintelligibleHandler.ForcedUnintelligibleHandleType;
-import open.commons.spring.web.servlet.InternalServerException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
 
 /**
  * 

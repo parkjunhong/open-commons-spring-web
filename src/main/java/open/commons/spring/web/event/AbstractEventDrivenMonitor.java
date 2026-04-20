@@ -59,7 +59,7 @@ import open.commons.core.utils.IOUtils;
 import open.commons.core.utils.MapUtils;
 import open.commons.core.utils.ThreadUtils;
 import open.commons.spring.web.mvc.service.AbstractComponent;
-import open.commons.spring.web.servlet.BadRequestException;
+import open.commons.spring.web.servlet.exception.BadRequestException;
 
 /**
  * Spring Event 시스템 기반 데이터 모니터링 서비스

@@ -76,14 +76,14 @@ public class OscwYamlEnvironmentPostProcessor implements EnvironmentPostProcesso
 
     private static final Map<String, String> RESOURCES_PATH = new HashMap<>();
     static {
-        RESOURCES_PATH.put("oc-core-yaml", "META-INF/open-commons-core.yml");
-        RESOURCES_PATH.put("oc-ssh-yaml", "META-INF/open-commons-ssh.yml");
-        RESOURCES_PATH.put("ocs-csv-yaml", "META-INF/open-commons-spring-csv.yml");
-        RESOURCES_PATH.put("ocs-elastic-yaml", "META-INF/open-commons-spring-elastic.yml");
-        RESOURCES_PATH.put("ocs-jdbc-yaml", "META-INF/open-commons-spring-jdbc.yml");
-        RESOURCES_PATH.put("ocs-oshi-yaml", "META-INF/open-commons-spring-oshi.yml");
-        RESOURCES_PATH.put("ocs-redis-yaml", "META-INF/open-commons-spring-redis.yml");
-        RESOURCES_PATH.put("ocs-web-yaml", "META-INF/open-commons-spring-web.yml");
+        RESOURCES_PATH.put("oc-core-yaml", "META-INF/open-commons/open-commons-core.yml");
+        RESOURCES_PATH.put("oc-ssh-yaml", "META-INF/open-commons/open-commons-ssh.yml");
+        RESOURCES_PATH.put("ocs-csv-yaml", "META-INF/open-commons/open-commons-spring-csv.yml");
+        RESOURCES_PATH.put("ocs-elastic-yaml", "META-INF/open-commons/open-commons-spring-elastic.yml");
+        RESOURCES_PATH.put("ocs-jdbc-yaml", "META-INF/open-commons/open-commons-spring-jdbc.yml");
+        RESOURCES_PATH.put("ocs-oshi-yaml", "META-INF/open-commons/open-commons-spring-oshi.yml");
+        RESOURCES_PATH.put("ocs-redis-yaml", "META-INF/open-commons/open-commons-spring-redis.yml");
+        RESOURCES_PATH.put("ocs-web-yaml", "META-INF/open-commons/open-commons-spring-web.yml");
     }
 
     private Logger logger = LoggerFactory.getLogger(getClass());

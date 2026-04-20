@@ -41,8 +41,8 @@ import open.commons.core.Result;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.spring.web.authority.AuthorizedMethod;
 import open.commons.spring.web.beans.authority.IMethodAccessAuthorityProvider;
-import open.commons.spring.web.servlet.InternalServerException;
-import open.commons.spring.web.servlet.UnauthorizedAccessException;
+import open.commons.spring.web.servlet.exception.InternalServerException;
+import open.commons.spring.web.servlet.exception.UnauthorizedAccessException;
 
 /**
  * 메소드에 대한 접근권한을 중개합니다.

@@ -74,11 +74,11 @@ import org.springframework.util.TypeUtils;
 import org.springframework.web.bind.annotation.RestController;
 
 import open.commons.core.utils.AssertUtils2;
-import open.commons.spring.web.autoconfigure.configuration.AuthorizedResourcesConfiguration;
+import open.commons.spring.web.autoconfigure.AuthorizedResourcesAutoConfiguration;
 import open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata;
 import open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider;
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
-import open.commons.spring.web.config.AuthorizedResourcesMetadataConfiguration;
+import open.commons.spring.web.configure.AuthorizedResourcesMetadataConfiguration;
 import open.commons.spring.web.thread.AuthorizedResourceContext;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -427,7 +427,7 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
      * 
      * {@link AbstractJacksonHttpMessageConverter} 클래스의 <b><i>{@code selectMapper(Class<?>, MediaType)}</i></b> 메소드가
      * <font color="red"><b><i>{@code private}</i></b></font>이어서
-     * {@link AuthorizedResourcesConfiguration#BEAN_QUALIFIER_AUTHORIZED_JSON_MAPPER} <b><i>{@code Bean}</i></b>을 적용하기
+     * {@link AuthorizedResourcesAutoConfiguration#BEAN_QUALIFIER_AUTHORIZED_JSON_MAPPER} <b><i>{@code Bean}</i></b>을 적용하기
      * 위해서 코드를 그대로 인용하여 구현한 메소드
      * 
      * <pre>
@@ -452,7 +452,7 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
         MediaType contentType = inputMessage.getHeaders().getContentType();
         Charset charset = getCharset(contentType);
 
-        JsonMapper jsonMapper = allJsonMappers.get(AuthorizedResourcesConfiguration.BEAN_QUALIFIER_AUTHORIZED_JSON_MAPPER);
+        JsonMapper jsonMapper = allJsonMappers.get(AuthorizedResourcesAutoConfiguration.BEAN_QUALIFIER_AUTHORIZED_JSON_MAPPER);
 
         Objects.requireNonNull(jsonMapper, "No JsonMapper for " + javaType);
 
@@ -535,7 +535,7 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
             jm = selectMapper(targetType, targetMediaType);
             return jm != null ? jm : getMapper();
         } else {
-            return allJsonMappers.get(AuthorizedResourcesConfiguration.BEAN_QUALIFIER_AUTHORIZED_JSON_MAPPER);
+            return allJsonMappers.get(AuthorizedResourcesAutoConfiguration.BEAN_QUALIFIER_AUTHORIZED_JSON_MAPPER);
         }
     }
 

@@ -98,7 +98,6 @@ import open.commons.core.utils.ThreadUtils;
 public class RestFacade {
     private static final int DEFAULT_RETRY_COUNT = 5;
 
-    @SuppressWarnings("unused")
     private static final Logger sLogger = LoggerFactory.getLogger(RestFacade.class);
 
     private RestFacade() {
