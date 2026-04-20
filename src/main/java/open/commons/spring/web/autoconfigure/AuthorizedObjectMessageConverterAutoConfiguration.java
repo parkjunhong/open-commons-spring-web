@@ -112,9 +112,7 @@ public class AuthorizedObjectMessageConverterAutoConfiguration {
         AuthorizedObjectJacksonHttpMessageConverter converter = new AuthorizedObjectJacksonHttpMessageConverter(defaultJsonMapper, customJsonMappersOnly,
                 authorizedResourcesMetadataProvider);
 
-        if (logger.isDebugEnabled()) {
-            logger.debug("[authorized-resources] 제외 후 순수 커스텀 매퍼 개수: {}", customJsonMappersOnly.size());
-        }
+        logger.info("[authorized-resources] 제외 후 순수 커스텀 매퍼 개수: {}", customJsonMappersOnly.size());
 
         return converter;
     }

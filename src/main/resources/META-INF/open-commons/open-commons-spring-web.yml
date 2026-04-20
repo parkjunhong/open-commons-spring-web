@@ -57,6 +57,24 @@ open-commons:
           continueExistingPeriodicTasksAfterShutdown: false # default: false
           executeExistingDelayedTasksAfterShutdown: true # default: true
           removeOnCancel: false # default: false
+        # for 'virtual thread' 기반 TaskExecutor. e.g.: org.springframework.core.task.SimpleAsyncTaskExecutor
+        virtual-async-task-executor:
+            # 기본값: true
+            daemon: true
+            # 기본값: "virtual'
+            threadGroupName: "virtual"
+            # 기본값: "@async-1"
+            threadNamePrefix: "@async-"
+            # 기본값: 5
+            threadPriority: 5
+            # 기본값: false
+            cancelRemainingTasksOnClose: false
+            # 기본값: -1 (무제한 생성)
+            concurrentLimit: 100000
+            # 기본값: false
+            rejectTasksWhenLimitReached: false
+            # 기본값: 0 (기다리지 않음)
+            taskTerminationTimeout: 0
       # {@link HandlerInterceptor}에서 URL 기반으로 {@link Thread} 이름을 설정하는 대상에서 제외하는 URL 패턴
       interceptor-ignore-url-patterns:
         - # FQCN 기반 Java 정규식

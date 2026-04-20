@@ -30,7 +30,6 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
-import open.commons.spring.web.configure.AsyncTaskConfiguration;
 import open.commons.spring.web.configure.AuthorizedHandlesConfiguration;
 import open.commons.spring.web.configure.AuthorizedResourcesMetadataConfiguration;
 import open.commons.spring.web.configure.CustomWebMvcAutoConfiguration;
@@ -38,6 +37,8 @@ import open.commons.spring.web.configure.LogFeatureDecorationConfiguration;
 import open.commons.spring.web.configure.OpenApiConfiguration;
 import open.commons.spring.web.configure.ResourceConfiguration;
 import open.commons.spring.web.configure.ScheduledTaskConfiguration;
+import open.commons.spring.web.configure.async.AsyncTaskConfiguration;
+import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
 
 /**
  * <b><i>{@code open.commons.spring.web.autoconfigure}</i></b> 패키지에 선언된 {@link AutoConfiguration}이 적용된 클래스 이외에
@@ -105,6 +106,7 @@ import open.commons.spring.web.configure.ScheduledTaskConfiguration;
         , LogFeatureDecorationConfiguration.class //
         , OpenApiConfiguration.class //
         , ResourceConfiguration.class //
+        , RestTemplateConfiguration.class //
         , ScheduledTaskConfiguration.class //
 })
 // 2. [일괄 스캔 로드] 개수가 많고 로드 순서가 독립적인 일반 @Component, @Service 등을 스캔합니다.

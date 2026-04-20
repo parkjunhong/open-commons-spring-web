@@ -26,9 +26,6 @@
 
 package open.commons.spring.web.configure;
 
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +39,6 @@ import java.util.concurrent.TimeUnit;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import org.apache.hc.client5.http.classic.HttpClient;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -57,8 +53,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.core.env.Environment;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -68,15 +64,13 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import open.commons.spring.web.async.MdcTaskDecorator;
-import open.commons.spring.web.client.CloseableRestTemplate;
+import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
 import open.commons.spring.web.handler.InterceptorIgnoreUrlProperties;
 import open.commons.spring.web.oas.GroupOpenApiRegistrar;
-import open.commons.spring.web.resources.RestTemplateRequestFactoryResource;
 import open.commons.spring.web.resources.ScheduledThreadPoolExecutorConfig;
 import open.commons.spring.web.resources.ThreadPoolExecutorConfig;
 import open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig;
 import open.commons.spring.web.resources.ThreadPoolTaskSchedulerConfig;
-import open.commons.spring.web.rest.RestFacade;
 import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
 import open.commons.spring.web.servlet.filter.PathPatternRequest;
 
@@ -87,6 +81,7 @@ import open.commons.spring.web.servlet.filter.PathPatternRequest;
  * -----------------------------------------------------
  * 2019. 6. 27.     parkjunhong77@gmail.com     최초 작성
  * 2026. 4. 10.     parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5.
+ * 2026. 4. 20.     parkjunohng77@gmail.com     'virtual thread'기반 {@link Async}, {@link Scheduled} 추가.
  * </pre>
  * 
  * @since 2019. 6. 27.
@@ -97,33 +92,50 @@ import open.commons.spring.web.servlet.filter.PathPatternRequest;
 @Import(GroupOpenApiRegistrar.class)
 public class ResourceConfiguration {
 
+    /**
+     * <b><i>{@code /META-INF/open-commons/open-commons-spring-web.yml}</i></b> 파일 내에서의 루트 경로.
+     * 
+     * <pre>
+     * open-commons:
+     *   spring:
+     *     web:
+     * </pre>
+     */
     public static final String PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH = "open-commons.spring.web";
 
     // --- java.util.concurrent.ScheduledThreadPoolExecutor --- //
     /**
      * 기본 {@link RestTemplate}<br>
      * <li>공인 인증서만 허용
+     * 
+     * @deprecated {@link RestTemplateConfiguration#BEAN_QUALIFIER_RESTTEMPLATE} 를 사용하세요.
      */
-    public static final String BEAN_QUALIFIER_RESTTEMPLATE = "open.commons.spring.web.config.ResourceConfiguration#RESTTEMPLATE";
+    @Deprecated(since = "4.0.0", forRemoval = true)
+    public static final String BEAN_QUALIFIER_RESTTEMPLATE = RestTemplateConfiguration.BEAN_QUALIFIER_RESTTEMPLATE;
     /**
      * 기본 {@link RestTemplate}<br>
      * <li>'공인 + 비공인' 인증서 허용
+     * 
+     * @deprecated {@link RestTemplateConfiguration#BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA} 를 사용하세요.
      */
-    public static final String BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA = "open.commons.spring.web.config.ResourceConfiguration#RESTTEMPLATE_ALLOW_PRIVATE_CA";
+    @Deprecated(since = "4.0.0", forRemoval = true)
+    public static final String BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA = RestTemplateConfiguration.BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA;
     /**
      * 기본 {@link RestTemplate}<br>
      * <li>공인 인증서만 허용
+     * 
+     * @deprecated {@link RestTemplateConfiguration#BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE} 를 사용하세요.
      */
-    public static final String BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE = "open.commons.spring.web.config.ResourceConfiguration#RESTTEMPLATE_PROXY)MODE";
+    @Deprecated(since = "4.0.0", forRemoval = true)
+    public static final String BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE = RestTemplateConfiguration.BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE;
     /**
      * 기본 {@link RestTemplate}<br>
      * <li>'공인 + 비공인' 인증서 허용
+     * 
+     * @deprecated {@link RestTemplateConfiguration#BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE_ALLOW_PRIVATE_CA} 를 사용하세요.
      */
-    public static final String BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE_ALLOW_PRIVATE_CA = "open.commons.spring.web.config.ResourceConfiguration#RESTTEMPLATE_PROXY_MODE_ALLOW_PRIVATE_CA";
-    /** 기본 {@link RestTemplate} 설정 */
-    public static final String CONFIGURATION_DEFAULT_RESTTEMPLATE_REQUEST_SOURCE = "open.commons.spring.web.config.ResourceConfiguration#CONFIGURATION_DEFAULT_RESTTEMPLATE_REQUEST_SOURCE";
-    /** 기본 {@link RestTemplate} 설정 경로 */
-    public static final String PROPERTIES_DEFAULT_RESTTEMPLATE_REQUEST_SOURCE = ResourceConfiguration.PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH + ".resttemplate.requestfactory";
+    @Deprecated(since = "4.0.0", forRemoval = true)
+    public static final String BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE_ALLOW_PRIVATE_CA = RestTemplateConfiguration.BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE_ALLOW_PRIVATE_CA;
     // --------------------------------------------------------- //
 
     // --- org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor --- //
@@ -174,6 +186,14 @@ public class ResourceConfiguration {
     public static final String CONFIGURATION_THREAD_POOL_EXECUTOR_CONFIG_ON_MDC = "open.commons.spring.web.config.ResourceConfiguration#CONFIGURATION_THREAD_POOL_EXECUTOR_CONFIG_ON_MDC";
     // -------------------------------------------------------------------------- //
 
+    // --- org.springframework.core.task.SimpleAsyncTaskExecutor,
+    // org.springframework.scheduling.concurrent.SimpleAsyncTaskScheduler --- //
+    /** 'virtual thread'를 기반으로 하는 {@link SimpleAsyncTaskExecutor} */
+    public static final String BEAN_QUALIFIER_DEFAULT_VIRTUAL_SIMPLE_ASYNC_TASK_EXECUTOR = "open.commons.spring.web.configure.ResourceConfiguration#DEFAULT_VIRTUAL_SIMPLE_ASYNC_TASK_EXECUTOR";
+    public static final String CONFIGURATION_DEFAULT_VIRTUAL_SIMPLE_ASYNC_TASK_EXECUTOR = "open.commons.spring.web.configure.ResourceConfiguration#CONFIGURATION_DEFAULT_VIRTUAL_SIMPLE_ASYNC_TASK_EXECUTOR";
+    public static final String PROPERTIES_DEFAULT_VIRTUAL_SIMPLE_ASYNC_TASK_EXECUTOR = PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH
+            + ".concurrent.virtual-async-simple-task-executor";
+
     /** {@link Throwable} 과 그에 따르는 {@link HttpStatus} 매핑 제공 서비스 */
     public static final String CONFIGURATION_DEFAULT_EXCETPION_HTTPSTATUS_PROPERTIES = "open.commons.spring.web.config.ResourceConfiguration#EXCETPION_HTTPSTATUS_PROPERTIES";
     /** {@link Throwable} 과 그에 따르는 {@link HttpStatus} 매핑 설정 경로 */
@@ -214,55 +234,6 @@ public class ResourceConfiguration {
     @Primary
     ExceptionHttpStatusBinder beanExceptionHttpStatusBinder(@Qualifier(CONFIGURATION_DEFAULT_EXCETPION_HTTPSTATUS_PROPERTIES) Map<String, String> exceptionHttpStatusProperties) {
         return new ExceptionHttpStatusBinder(exceptionHttpStatusProperties);
-    }
-
-    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE)
-    @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    @Primary
-    CloseableRestTemplate beanRestTemplate(@Qualifier(CONFIGURATION_DEFAULT_RESTTEMPLATE_REQUEST_SOURCE) RestTemplateRequestFactoryResource reqFactoryResource)
-            throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
-        HttpClient httpClient = RestFacade.createHttpsClient(false);
-        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient, reqFactoryResource);
-
-        CloseableRestTemplate tpl = new CloseableRestTemplate(reqFactory);
-        return tpl;
-    }
-
-    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA)
-    @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    @Primary
-    CloseableRestTemplate beanRestTemplateAllowPrivateCA(@Qualifier(CONFIGURATION_DEFAULT_RESTTEMPLATE_REQUEST_SOURCE) RestTemplateRequestFactoryResource reqFactoryResource)
-            throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
-        HttpClient httpClient = RestFacade.createHttpsClient(true);
-        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient, reqFactoryResource);
-
-        CloseableRestTemplate tpl = new CloseableRestTemplate(reqFactory);
-        return tpl;
-    }
-
-    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE)
-    @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    @Primary
-    CloseableRestTemplate beanRestTemplateProxyMode(@Qualifier(CONFIGURATION_DEFAULT_RESTTEMPLATE_REQUEST_SOURCE) RestTemplateRequestFactoryResource reqFactoryResource)
-            throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
-        HttpClient httpClient = RestFacade.createHttpsClient(false);
-        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient, reqFactoryResource);
-
-        CloseableRestTemplate tpl = new CloseableRestTemplate(reqFactory);
-        return tpl;
-    }
-
-    @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE_ALLOW_PRIVATE_CA)
-    @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    @Primary
-    CloseableRestTemplate beanRestTemplateProxyModeAllowPrivateCA(
-            @Qualifier(CONFIGURATION_DEFAULT_RESTTEMPLATE_REQUEST_SOURCE) RestTemplateRequestFactoryResource reqFactoryResource)
-            throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
-        HttpClient httpClient = RestFacade.createHttpsClient(true);
-        HttpComponentsClientHttpRequestFactory reqFactory = getRequestFactory(httpClient, reqFactoryResource);
-
-        CloseableRestTemplate tpl = new CloseableRestTemplate(reqFactory);
-        return tpl;
     }
 
     /**
@@ -384,31 +355,7 @@ public class ResourceConfiguration {
     @ConfigurationProperties(prefix = PROPERTIES_DEFAULT_EXCETPION_HTTPSTATUS_PROPERTIES)
     Map<String, String> configExceptionHttpStatusProperties() {
         Map<String, String> prop = new HashMap<>();
-
-//        prop.put("java.lang.UnsupportedOperationException", "INTERNAL_SERVER_ERROR");
-//        prop.put("javax.validation.ConstraintViolationException", "BAD_REQUEST");
-
         return prop;
-    }
-
-    /**
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2026. 4. 10.     parkjunohng77@gmail.com     {@link RestTemplateRequestFactoryResource} 변경내용 반영.
-     * </pre>
-     *
-     * @return
-     */
-    @Bean(name = CONFIGURATION_DEFAULT_RESTTEMPLATE_REQUEST_SOURCE)
-    @ConfigurationProperties(prefix = PROPERTIES_DEFAULT_RESTTEMPLATE_REQUEST_SOURCE)
-    RestTemplateRequestFactoryResource configRestTemplateRequestFactoryResource() {
-        RestTemplateRequestFactoryResource config = new RestTemplateRequestFactoryResource();
-        config.setConnectionRequestTimeout(30000);
-        config.setReadTimeout(300000);
-
-        return config;
     }
 
     /**
@@ -826,7 +773,7 @@ public class ResourceConfiguration {
         // --- org.springframework.scheduling.concurrent.ExecutorConfigurationSupport --- //
         executor.setAwaitTerminationMillis(config.getAwaitTerminationMillis());
         executor.setWaitForTasksToCompleteOnShutdown(config.isWaitForTasksToCompleteOnShutdown());
-        executor.setAwaitTerminationMillis(config.getAwaitTerminationMillis());
+        executor.setWaitForTasksToCompleteOnShutdown(config.isWaitForTasksToCompleteOnShutdown());
         // -------------------------------------------------- //
         // --- org.springframework.util.CustomizableThreadCreator --- //
         executor.setDaemon(config.isDaemon());
@@ -866,8 +813,8 @@ public class ResourceConfiguration {
 
         // --- org.springframework.scheduling.concurrent.ExecutorConfigurationSupport --- //
         scheduler.setAwaitTerminationMillis(config.getAwaitTerminationMillis());
+        scheduler.setBeanName(config.getBeanName());
         scheduler.setWaitForTasksToCompleteOnShutdown(config.isWaitForTasksToCompleteOnShutdown());
-        scheduler.setAwaitTerminationMillis(config.getAwaitTerminationMillis());
         // ---------------------------------------------------------- //
 
         // --- org.springframework.util.CustomizableThreadCreator --- //
@@ -878,34 +825,5 @@ public class ResourceConfiguration {
         // -------------------------------------------------- //
 
         return scheduler;
-    }
-
-    /**
-     * 전달받은 설정이 적용된 {@link HttpComponentsClientHttpRequestFactory} 객체를 제공합니다. <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2019. 6. 27.     parkjunhong77@gmail.com     최초 작성
-     * 2020. 12. 9.     parkjunhong77@gmail.com     access modifier 변경 (private -> public static)
-     * 2026. 4. 10.     parkjunohng77@gmail.com     {@link RestTemplateRequestFactoryResource} 변경내용 반영.
-     * </pre>
-     *
-     * @param httpClient
-     * @param reqFactoryResource
-     * @return
-     *
-     * @since 2020. 12. 9.
-     * @version 0.3.0
-     */
-    public static HttpComponentsClientHttpRequestFactory getRequestFactory(HttpClient httpClient, RestTemplateRequestFactoryResource reqFactoryResource) {
-        HttpComponentsClientHttpRequestFactory reqFactory = httpClient != null //
-                ? new HttpComponentsClientHttpRequestFactory(httpClient)//
-                : new HttpComponentsClientHttpRequestFactory();
-        reqFactory.setConnectionRequestTimeout(reqFactoryResource.getConnectionRequestTimeout());
-        reqFactory.setReadTimeout(reqFactoryResource.getReadTimeout());
-
-        return reqFactory;
     }
 }
