@@ -1,4 +1,7 @@
 [2026/04/20]
+- 삭제
+  + 'open.commons.spring.web' Marker 클래스 삭제
+    + 이를 삭제하고 제공하는 모든 '빈'을 'auto-configuration' 방식으로 지원
 - 'auto-configuration' 이관
   + '@AutoConfiguration' 클래스를
     +  'open.commons.spring.web.autoconfigure' 패키지로 이관
@@ -6,6 +9,8 @@
   + '@Configuration' 클래스를
     + 'open.commons.spring.web.configure' 패키지로 이관
     + 'XXXConfiguration'으로 Naming Rule 적용.
+  + 'spring' 설정 파일 경로 수정
+    + /META-INF/spring/
   
 
 [2026/04/16]
@@ -27,7 +32,7 @@
           -> 순수 자동 설정 (org.springframework.boot.autoconfigure.AutoConfiguration.imports)
 
 [2025/11/24]
-- New
+- 신규
   + open.commons.spring.web.aspect.AspectOrder: 'OCSW'에서 제공하는 Bean 우선순위 관리 클래스.
   + 'active profiles' 기반 'Method' 실행 제어
     + open.commons.spring.web.aspect.ProfilesOnAspect: @Aspect 클래스
@@ -35,7 +40,7 @@
     + open.commons.spring.web.exception.ProfileOnDeniedException: 예외 클래스.
 
 [2025/11/20]
-- Add
+- 추가
   + '사용자 정의 정적 자원 요청 패턴' 추가
     + open.commons.spring.web.config.CustomWebMvcConfigurer: 
       + "spring.mvc.static-path-pattern-x": 속성 추가. (기존 "spring.mvc.static-path-pattern"과 함께 사용하기 위해서 "open.commons.mvc.static-pattern" 을 사용하지 않음.)
@@ -47,7 +52,7 @@
     + open.commons.spring.web.config.CustomWebMvcConfigurer.bindProperties(Environment, String, Class&lt;T&gt;, T)
 
 [2025/11/07]
-- Modify
+- 수정
   + 공유헤더 검증 통과 후 '후처리 기능' 추가
     + open.commons.spring.web.servlet.filter.header
       + SharedHeader
@@ -56,9 +61,9 @@
     + open.commons.spring.web.servlet.filter.RequestHeaderFilter
 
 [2025/10/30]
-- New
+- 신규
   + open.commons.spring.web.servlet.binder.IExceptionResponseWriter: 예외 클래스를 응답 데이터로 제공하는 기능을 정의.
-- Modify
+- 수정
   + open.commons.spring.web.security
     + AccessDeninedExceptionHttpStatusBinder
     + AuthenticationExceptionHttpStatusBinder
@@ -67,12 +72,12 @@
   + open.commons.spring.web.servlet.binder.AbstractExceptionStatusWriter
 
 [2025/10/24]
-- New
+- 신규
   + open.commons.spring.web.security.SimpleUrlAuthenticationFailureHttpStatusBinder: 사용자 정의 예외상황 X Http Status 지원
   + open.commons.spring.web.servlet.UnauthenticationException: 인증 실패를 위한 예외 상황
 
 [2025/10/23]
-- New
+- 신규
   + HttpSecurity 설정 지원
     + open.commons.spring.web.security.AbstractHttpSecurityConfig
     +  open.commons.spring.web.security.AbstractSecurityExceptionStatusBinder
@@ -80,20 +85,20 @@
     +  open.commons.spring.web.security.AuthenticationExceptionHttpStatusBinder
     +  open.commons.spring.web.security.AuthenticationFailureHttpStatusBinder
   + open.commons.spring.web.utils.ExceptionHttpStatusUtils
-- Add
+- 추가
   + open.commons.spring.web.utils.WebUtils.createEntity(HttpServletRequest, Exception, HttpStatus)
-- Modify
+- 수정
   + open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder.resolveHttpStatus(Class&lt;EX&gt;, HttpStatus)
    
 
 [2025/10/21]
-- New
+- 신규
   + open.commons.spring.web.environment.OscwYamlEnvironmentPostProcessor: 라이브러리 내부 yaml 설정 지원
   + open.commons.spring.web.oas.GroupOpenApiRegistrar: GroupOpenApi 자동 등록
   + resources/META-INF/open-commons-spring-web.yml: 설정
 
 [2025/10/13]
-- Modify
+- 수정
   + AuthorizedField#handleType(), AuthorizedRequestData#handleType() 데이터 유형 변경(Integer -> String)에 따른 코드 수정
     + open.commons.spring.web.authority.AuthorizedField
     + open.commons.spring.web.authority.AuthorizedRequestData
@@ -130,7 +135,7 @@
       + ResourceHandle.java
 
 [2025/10/01]
-- Modify
+- 수정
   + '데이터 필드 접근제어' 기본설정 적용
     + open.commons.spring.web.authority.AuthorizedResourceUtils
     + open.commons.spring.web.beans.authority.FieldAccessAuthorityDecision
@@ -148,9 +153,9 @@
     + open.commons.spring.web.jackson.serialization.MapSimpleTypeValueWrappingSerializer
 
 [2025/09/29]
-- New
+- 신규
   + open.commons.spring.web.config.AuthorizedHandlesConfiguration: ResouceHandles 등록을 분리.
-- Modify
+- 수정
   + 패키지명 수정: open.commons.spring.web.beans.authority.builtin => open.commons.spring.web.beans.authority.internal
     + AuthorizedHandles
     + AuthorizedResourceHandler
@@ -162,7 +167,7 @@
     + open.commons.spring.web.beans.authority.internal
       + AuthorizedHandles
       + ResourceHandleImpl
-- Add
+- 추가
   + Spring Environment Property Placeholder 패턴(${...:default})을 지원
       + open.commons.spring.web.aspect.AbstractAuthorizedResourceAspect.findConfigurationValue(String)
   + 응용프로그램이 제공하는 REST API 목록 제공
@@ -178,14 +183,14 @@
       + AuthorizedFieldSerializerModifier
       + ContainerSimpleTypeElementWrappingSerializer
       + MapSimpleTypeValueWrappingSerializer
-- New
+- 신규
   + open.commons.spring.web.authority.AuthorizedResourceUtils
   + open.commons.spring.web.handler.AuthorizedModelAndViewHandlerInterceptor
   + open.commons.spring.web.handler.PostProcessingHandlerInterceptor: HandlerInterceptor 를 등록하고 후처리를 지원하는 인터페이스
 
 
 [2025/09/23]
-- New
+- 신규
   + open.commons.spring.web.jackson
     + AuthorizedFieldDeserializer
     + AuthorizedFieldDeserializerModifier
@@ -198,7 +203,7 @@
     + AuthorizedObjectForcedUnintelligibleConfiguration => AuthorizedResourceBuiltinHandlerConfiguration
   + open.commons.spring.web.exception
     + IllegalBeanNameFqnResolveException => InvalidBeanNameFqnResolveException
-- Modify
+- 수정
   + AuthorizedHandles
     + decryptEmail(String)
     + encryptEmail(String)
@@ -206,15 +211,15 @@
 
 
 [2025/09/22]
-- New
+- 신규
   + open.commons.spring.web.beans.authority
     + AuthorizedRequestDataMetadata
     + IAuthorizedRequestDataMetadata
-- Add
+- 추가
   + open.commons.spring.web.authority.metadata.AuthorizedRequestDataFieldMetadata
     + equals(Object)
     + hashCode()
-- Modify
+- 수정
   + open.commons.spring.web.beans.resolver.AuthorizedDataModelAttributeResolver: IAuthorizedRequestDataMetadata 적용
     + getProcessableFields(Class&lt;?&gt;)
     + resolveAnnotatedContext(Class&lt;?&gt;, String, AuthorizedRequestData)
@@ -223,7 +228,7 @@
     + restoreValue(ApplicationContext, String, int, Object)
 
 [2025/09/20]
-- New
+- 신규
   + open.commons.spring.web.authority.metadata
     + AuthorizedRequestDataFieldMetadata
     + AuthorizedRequestDataMetadataBuilder
@@ -236,7 +241,7 @@
     + AuthorizedHandles
   + open.commons.spring.web.exception
     + BeanMergeFailedException
-- Add
+- 추가
   + open.commons.spring.web.config.CustomWebMvcAutoConfiguration
     + authorizedDataArgumentRevolser(ApplicationContext)
     + authorizedDataModelAttributeResolver(ApplicationContext)
@@ -249,7 +254,7 @@
     + IAuthorizedDataHandler -> IAuthorizedRequestDataHandler
 
 [2025/09/18]
-- New
+- 신규
   + open.commons.spring.web.authority.AuthorizedData: 'AuthorizedField'에  의해 처리된 데이터를 원복하는 기능을 선언.
   + open.commons.spring.web.beans.resolver: 'AuthorizedField'에  의해 처리된 데이터를 원복하는 기능을 제공 (PathVariable, RequestParam, ModelAttribute 지원)
     + AuthorizedDataArgumentResolver
@@ -257,7 +262,7 @@
     + AuthorizedDataModelAttributeResolver
     + IAuthorizedDataResolver
   + open.commons.spring.web.beans.authority.IAuthorizedDataHandler: 데이터를 원복하는 기능을 제공.
-- Add
+- 추가
   + open.commons.spring.web.config.CustomWebMvcAutoConfiguration
     + authorizedDataArgumentRevolser(ApplicationContext): PathVariable, RequestParam 지원.
     + authorizedDataModelAttributeResolver(ApplicationContext): ModelAttribute 지원.
@@ -268,7 +273,7 @@
     + setAuthorizedDataResolver(List&lt;IAuthorizedDataResolver&gt;): 내부에 추가하기 위해서 Bean을 전달받음.
 
 [2025/08/27]
-- New
+- 신규
   + open.commons.spring.web.client.CloseableRestTemplate
   + open.commons.spring.web.rest.RestFacade2: open.commons.spring.web.rest.RestUtil2 대체
   + open.commons.spring.web.rest.RestFacade: open.commons.spring.web.rest.RestUtil 대체
@@ -276,7 +281,7 @@
   + open.commons.spring.web.rest.service.MapUriTemplateVariables
   + open.commons.spring.web.rest.service.TemplateUriEncoder
   + open.commons.spring.web.utils.UrlEncoderHelper
-- Add
+- 추가
   + open.commons.spring.web.utils.WebUtils.splitUrlTemplate(String)
 
 [2025/08/20]
@@ -286,7 +291,7 @@
   + open.commons.spring.web.handler.InterceptorIgnoreUrlProperties: 'unmodifiable set' 으로 제공하여 데이터 처리시 오류 발생
     + getExcludePathPatterns()
     + getIncludePathPatterns()
-- New
+- 신규
   + open.commons.spring.web.servlet.filter: OncePerRequestFilter 추상 클래스 추가
     + AbstractOncePerRequestFilter.java
     + RequestHeaderFilter.java
@@ -294,7 +299,7 @@
     + DefaultSharedHeader.java
     + SharedHeader.java
     + SharedHeadersBuiltinProvider.java
-- Modify
+- 수정
   + open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration
     + Header 정보 공유 기능
       + beanDefaultRequestHeaderFilter()
@@ -312,7 +317,7 @@
     + beforeRepository(String, Log, ProceedingJoinPoint)
     + beforeService(String, Log, ProceedingJoinPoint)
     
-- Modify
+- 수정
   + open.commons.spring.web.aspect.AbstractMethodCallChainLogAspect: 아래 메소드에 "AOP가 적용되어 Aspect에 기반하여 메소드 호출을 잡은 위치의 식별정보" 를 추가 (첫번째 파라미터)
     + afterController(String, Log, ProceedingJoinPoint)
     + afterRepository(String, Log, ProceedingJoinPoint)
@@ -323,9 +328,9 @@
   + open.commons.spring.web.servlet.filter.RequestThreadNameFilter.doFilterInternal(HttpServletRequest, HttpServletResponse, FilterChain): 요청 URL 기반으로 Thread 이름을 결정할 때 'context-path' 정보 제거
 
 [2025/08/13]
-- New
+- 신규
   + open.commons.spring.web.resources.ThreadPoolExecutorConfig
-- Add
+- 추가
   + open.commons.spring.web.config.ResourceConfiguration
     + BEAN_QUALIFIER_DEFAULT_THREAD_POOL_EXECUTOR
     + CONFIGURATION_DEFAULT_THREAD_POOL_EXECUTOR_CONFIG
@@ -336,11 +341,11 @@
     + configThreadPoolExecutorConfigOnMDC(ThreadPoolExecutorConfig)
 
 [2025/08/06]
-- New
+- 신규
   + open.commons.spring.web.concurrent.DelegatingTaskExecutor<S extends AsyncListenableTaskExecutor>: ThreadPoolTaskExecutor 기반
-- Modify
+- 수정
   + open.commons.spring.web.mdc.MdcWrappedJob&lt;V&gt;: 동일 Executor에서 다중 작업이 실행될 때 TaskNumber 동적 적용.
-- Add
+- 추가
   + open.commons.spring.web.concurrent.DelegatingExecutorSupportor: TaskExecutor 제공 메소드 추가
     + taskExecutor(AsyncListenableTaskExecutor)
     + taskExecutor(AsyncListenableTaskExecutor, String)
@@ -362,11 +367,11 @@
     + open.commons.spring.web.aspect.LogFeatureAspect: Thread 이름 관련된 기능을 open.commons.spring.web.servlet.filter.RequestThreadNameFilter와 공유함.
 
 [2025/08/04]
-- Add
+- 추가
   + open.commons.spring.web.aspect.LogFeatureAspect
     + handleBeforeHandlerInterceptor(ProceedingJoinPoint): HandlerInterceptor 이전에 실행되는 메소드에 대한 처리
   + open.commons.spring.web.config.ResourceConfiguration: java.util.Executor 구현체에 대한 '기본제공'과 '내부사용' 설정을 분리.
-- Modify
+- 수정
   + 복제 메소드 추가
     + open.commons.spring.web.resources.ScheduledThreadPoolExecutorConfig
     + open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig
@@ -394,12 +399,12 @@
 
 
 [2025/07/30]
-- New
+- 신규
   + open.commons.spring.web.handler: HandlerInterceptor에서 처리할 URL 패턴 기능 추가
     + InterceptorIgnoreUrlProperties.java
     + InterceptorIgnoreValidator.java
     + InvalidIgnoreUrlPatternException.java
-- Modify
+- 수정
   + 기능별 로그 분리 관련 클래스 이름 변경
     + open.commons.spring.web.log: 사용자 정의 어노테이션을 통합 기능별 로그파일 분리 지원.
       + IMdcPropertyLogDecorationConsolidator -> ILogFeatureDecorationConsolidator
@@ -413,7 +418,7 @@
   + HTTP 요청 Proxy 헤더 클래스 변경
     + open.commons.spring.web.handler.HttpRequestProxyHeader: Map&lt;String, String&gt;를 상속받아 확장가능하게 개선됨.
         + 추가되는 헤더이름은 상수화 시키는 작업을 계속적으로 추가.
-- Add
+- 추가
   + open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration.interceptorIgnoreUrlPatterns(Map&lt;String, InterceptorIgnoreUrlProperties&gt;, Map&lt;String, List&lt;InterceptorIgnoreUrlProperties&gt;&gt;)
   + open.commons.spring.web.config.CustomWebMvcConfigurer
     + addExcludePatternsToInterceptor(InterceptorRegistration, List&lt;String&lt;)
@@ -425,7 +430,7 @@
 
 
 [2025/07/29]
-- New
+- 신규
   + open.commons.spring.web.log: 사용자 정의 어노테이션을 통합 기능별 로그파일 분리 지원.
     + IMdcPropertyLogDecorationConsolidator.java
     + IMdcPropertyLogDecorator.java
@@ -436,7 +441,7 @@
   + open.commons.spring.web.aspect.FeatureBasedLoggingAspect
   + open.commons.spring.web.config.MdcPropertyLogDecorationConfiguration
   
-- Modify
+- 수정
   + nginx와 같은 Proxy 서버 전달 헤더 오류 수정
     + open.commons.spring.web.handler.HttpRequestProxyHeader
     + open.commons.spring.web.handler.ProxyHeaderUtil
@@ -456,27 +461,27 @@
     + com.google.code.findbugs:jsr305:${managed-version}
 
 [20225/07/23]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AbstractSshService: Input/Output Stream 형태의 데이터 전송 추가
     + download(String, int, String, String, String, OutputStream, boolean)
     + upload(String, int, String, String, InputStream, String, boolean)
     + list(String, int, String, String, String): 디렉토리 내 목록 조회 기능
 
 [20225/07/18]
-- New
+- 신규
   + nginx와 같은 proxy 서비스를 통한 http request의 실제 클라이언트 연결 정보 제공
     + open.commons.spring.web.handler.HttpRequestProxyHeader
     + open.commons.spring.web.handler.ProxyHeaderUtil
-- Add
+- 추가
   + nginx와 같은 proxy 서비스를 통한 http request의 실제 클라이언트 연결 정보 제공
     + open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration.getProxyHeader(): 추가
     + open.commons.spring.web.handler.DefaultGlobalInterceptor.setProxyHeader(HttpRequestProxyHeader)
-- Modify
+- 수정
   + nginx와 같은 proxy 서비스를 통한 http request의 실제 클라이언트 연결 정보 제공
     + open.commons.spring.web.handler.DefaultGlobalInterceptor.preHandle(HttpServletRequest, HttpServletResponse, Object)
 
 [20225/07/14]
-- Add
+- 추가
   + open.commons.spring.web.rest.RestUtils2: Result&lt;R&gt;를 제거한 메소드 추가
     + exchangeAsRaw(RestTemplate, HttpMethod, String, String, int, String, HttpEntity&lt;REQ&gt;, Class&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, RET&gt;)
     + exchangeAsRaw(RestTemplate, HttpMethod, String, String, int, String, HttpEntity&lt;REQ&gt;, Class&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, RET&gt;, int)
@@ -496,38 +501,38 @@
   + open.commons.spring.web.beans.rest.AbstractIdBasedRestApiService: open.commons.spring.web.beans.rest.IIdBasedRestApiService 메소드 확장에 따른 대응 메소드 추가
 
 [20225/07/10]
-- New
+- 신규
   + open.commons.spring.web.beans.rest.QueryParam: 쿼리 파라미터 필수 여부 검증
-- Modify
+- 수정
   + open.commons.spring.web.beans.rest.AbstractIdBasedRestApiService: 쿼리 파라미터 변경에 따른 수정.
   + open.commons.spring.web.beans.rest.IdBasedRestApiDecl: 쿼리 파라미터 변경에 따른 수정.
 
 [20225/07/03]
-- New
+- 신규
   + 'ID'기반 REST API 식별 기능 추가
     + open.commons.spring.web.beans.rest.AbstractIdBasedRestApiService
     + open.commons.spring.web.beans.rest.IdBasedRestApiDecl
     + open.commons.spring.web.beans.rest.IIdBasedRestApiService
-- Modify
+- 수정
   + open.commons.spring.web.rest.service.AbstractRestApiClient
     : 기존 `open.commons.spring.web.rest.service.AbstractRestService` 클래스 기능 개선 및 이름 변경
   
 
 [20225/07/02]
-- New
+- 신규
   + open.commons.spring.web.rest.service.AbstractRestService: REST API 서비스 연동 지원
 
 [20225/06/24]
 - Notation
   + (req) Controller -> ... -> (res) Controller 과정의 메소드 호출 추적 
   + Authorized-Resources 권한인증 비활성화 기능 지원
-- New
+- 신규
   + open.commons.spring.web.beans.authority.IAuthorizedResourceAuthenticationPause
   + open.commons.spring.web.servlet.filter.AuthorizedResourceFilter
   + open.commons.spring.web.thread.AuthorizedResourceContext
   + open.commons.spring.web.thread.MethodContextHandler
   + open.commons.spring.web.thread.MethodLogContext
-- Modify
+- 수정
   + open.commons.spring.web.autoconfigure.configuration.AuthorizedResourcesConfiguration
   + open.commons.spring.web.autoconfigure.EnableOpenCommonsSpringWeb
   + open.commons.spring.web.aspect.AbstractMethodLogAspect
@@ -535,36 +540,36 @@
 
 
 [20225/06/23]
-- Add
+- 추가
   + open.commons.spring.web.aspect.AbstractAspectPointcuts: Aspect Pointcut 을 지원하기 위한 상위 클래스 추출
-- Modify
+- 수정
   + open.commons.spring.web.aspect.AbstractAuthorizedResourceAspect.AbstractAuthorizedResourceAspect(ApplicationContext, Class<T>): 상위 Aspect 기능 제거
-- New
+- 신규
   + open.commons.spring.web.aspect.AbstractMethodLogAspect: 메소드 호출을 추적하기 위한 Aspect 추가
 
 [20225/06/20]
-- Add
+- 추가
   + open.commons.spring.web.authority.metadata 패키지 추가: AuthorizedObject, AuthorizedField 어노테이션 정보를 외부설정(예: yaml 파일), 프로그래밍 코드에서 설정할 수 있도록 지원.
 
 [20225/06/18]
-- Modify
+- 수정
   + open.commons.spring.web.beans.authority.forced.ForcedUnintelligibleJudge: 클래스명 오타 수정
-- Add
+- 추가
   + open.commons.spring.web.authority.metadata.AuthorizedMetadataBuilder: 권한제어 메타데이터 빌더 추가
 
 [20225/06/12]
-- Modify
+- 수정
   + open.commons.spring.web.jackson.AuthorizedObjectJackson2HttpMessageConverter.writeInternal(Object, Type, HttpOutputMessage): serialize 도중 오류가 발생했을 때, 이전 데이터 제거 처리. (JacksonGenerator는 기본적으로 스트림으로 처리하기 때문에 내부 버퍼를 적용함.)
-- Add
+- 추가
   + open.commons.spring.web.beans.authority.forced: 패키지 
   
   
 [20225/06/11]
-- Modify
+- 수정
   + open.commons.spring.web.autoconfigure.configuration.AuthorizedResourcesConfiguration: 권한제어대상 객체 메시지 변환기 분리
     + open.commons.spring.web.autoconfigure.configuration.AuthorizedObjectMessageConverterConfiguration
     + open.commons.spring.web.autoconfigure.configuration.AuthorizedObjectMessageConfigureConfiguration
-- Add
+- 추가
   + META-INF/spring.factories
     + open.commons.spring.web.autoconfigure.configuration.AuthorizedObjectMessageConverterConfiguration
     + open.commons.spring.web.autoconfigure.configuration.AuthorizedObjectMessageConfigureConfiguration
@@ -584,7 +589,7 @@
     + open.commons.spring.web.autoconfigure.EnableAuthorizedResorces: EnableOpenCommonsSpringWeb으로 통합 처리
 
 [2025/05/28]
-- Add
+- 추가
   + open.commons.spring.web.servlet.method.annotation.DefaultGlobalExceptionHandler
     + resolveAnnotatedResponseStatus(Exception, HttpStatus): ResponseStatus 를 통한 HttpStatus 설정 지원
     + handleAllException(Exception, WebRequest): 모든 예외 클래스(Throwable로 설정) 처리.
@@ -594,20 +599,20 @@
     + handle5xxException(Exception, WebRequest): resolveAnnotatedResponseStatus 적용
     
 [2025/05/27]
-- Add
+- 추가
   + open.commons.spring.web.jackson 패키지
   + open.commons.spring.web.beans.factory.
   + open.commons.spring.web.config.AuthorizedObjectMessageConfigure
-- Modify
+- 수정
   + 패키지 구조 변화 
     + open.commons.spring.web.ac -> open.commons.spring.web.authority
     + open.commons.spring.web.ac.provider -> open.commons.spring.web.beans.ac
-- Delete
+- 삭제
   + open.commons.spring.web.authority.AuthorizedResponse
   + open.commons.spring.web.aspect.AuthorizedResponseAspect
     
 [2025/05/20]
-- Add
+- 추가
   + open.commons.spring.web.aspect.AuthorizedResponseAspect: 응답 권한 처리 
   + open.commons.spring.web.beans: 데이터 처리 기본 인터페이스 및 추상 클래스 추가.
     + AbstractResponseDataHandler.java
@@ -615,7 +620,7 @@
     + IUnauthorizedFieldHandler.java
   
 [2025/05/19]
-- New
+- 신규
   + open.commons.spring.web.ac: 자원 유형별 권한 정의 어노테이션
   + open.commons.spring.web.aspect: 자원 유형별 권한 중개
   + open.commons.spring.web.beans.factory: 자원 유형 어노테이션 설정 검증.
@@ -633,13 +638,13 @@
 
 
 [2025/05/09]
-- Add
+- 추가
   + open.commons.spring.web.utils.SecurityUtils
     + registerDecryptionConverter(Class&lt;?&gt;, Class&lt;?&gt;, String)
     + registerEncryptionConverter(Class&lt;?&gt;, Class&lt;?&gt;, String)
 
 [2025/04/29]
-- Add
+- 추가
   + open.commons.spring.web.oas.OpenApiConfig.loadGroupedOpenApi(Map<String, GroupedOpenApiProperties>, String): API 그룹에서 해당하는 API 정보를 생성하는 함수 단일화.
 
 [2025/04/28]
@@ -653,7 +658,7 @@
     </dependency>
     ```
 [2025/04/18]
-- Add
+- 추가
   + open.commons.spring.web.utils.SecurityUtils
     + decryptBySessionUUID(String)
     + decryptBySessionUUID(String, String)
@@ -667,7 +672,7 @@
     + encryptBySessionId(String, String)
 
 [2025/04/18]
-- Update
+- 갱신
   + open.commons.spring.web.utils.SecurityUtils
     + decryptBySessionId(String, String): Base64 Url Decoder 적용
     + encryptBySessionId(String, String): Based64 Url Encoder 적용
@@ -675,7 +680,7 @@
     + @Configuration, @EnableWebMvc, @SpringBootAppliication 제거: 구현 클래스에서 적용하도록 허용.
   
 [2025/04/17]
-- Add
+- 추가
   + open.commons.spring.web.utils.SecurityUtils
     + clearAuthentication()
     + clearSession()
@@ -694,37 +699,37 @@
     + getSessionId(boolean)
     + getSessionId(HttpServletRequest)
     + getSessionId(HttpServletRequest, boolean)
-- Update
+- 갱신
   + open.commons.spring.web.servlet.method.annotation.DefaultGlobalExceptionHandler: 응답 객체 생성 함수를 동적으로 설정하도록 변경
   
 [2025/04/08]
-- New
+- 신규
   + open.commons.spring.web.utils.SecurityUtils
-- Add
+- 추가
   + open.commons.spring.web.utils.WebUtils
     + getParameters(String)
 
 
 [2025/04/08]
-- Add
+- 추가
   + open.commons.spring.web.oas.GroupedOpenApiProperties
   + open.commons.spring.web.oas.OpenApiConfig
     + loadGroupedOpenApiProperties()
     + transform(GroupedOpenApiProperties, String)
 
 [2025/04/03]
-- Add
+- 추가
   + open.commons.spring.web.initialize 추가
 
 [2025/02/21]
 Apply 'Maven Central Deployment'
 
-- Update
+- 갱신
   + <deploymentManagement>
     + Release: Maven Central (https://central.sonatype.com)
   + 'open.commons' dependencies 
     + groupId: io.github.open-commons
-- Add
+- 추가
   + <build>
     + org.sonatype.central:central-publishing-maven-plugin
     + org.apache.maven.plugins:maven-gpg-plugin
@@ -742,7 +747,7 @@ Apply 'Maven Central Deployment'
   + Maven Repository 주소 변경 (http -> https)
   
 [2023/11/02]
-- Modify
+- 수정
   + open.commons.spring.web.mvc.service.AbstractSshService
     + connectTimeout @Value 기본값 설정: 100
     + download(String, int, String, String, String, String)
@@ -754,7 +759,7 @@ Apply 'Maven Central Deployment'
     
 
 [2023/11/02]
-- Add
+- 추가
   + open.commons.spring.web.mvc.IAsyncJobHandler
     + unregister(H, K): 반환 데이터 추가
     + unregister(K): 반환 데이터 추가
@@ -793,7 +798,7 @@ Apply 'Maven Central Deployment'
     + 사용자 정의 Interceptor 등록 메소드 추가
 
 [2023/07/19]
-- Add
+- 추가
   + Sprinngdoc Open API 지원
     + dependency 추가
       + org.springdoc:springdoc-openapi-ui:1.7.0
@@ -814,13 +819,13 @@ Apply 'Maven Central Deployment'
 - Release: 0.5.0
 
 [2023/05/12]
-- Update
+- 갱신
   + open.commons.spring.web.rest.RestUtils2
     + exchange(Supplier&lt;ResponseEntity&lt;RES&gt;&gt;, HttpMethod, URI, int, HttpEntity&lt;REQ&gt;, Object, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;): 에러 로그 추가
 
 
 [2023/03/06]
-- Add
+- 추가
   + open.commons.spring.web.rest.RestUtils2
     + exchange(RestTemplate, HttpMethod, String, String, int, String, int, HttpEntity&lt;REQ&gt;, Class&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
     + exchange(RestTemplate, HttpMethod, String, String, int, String, int, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
@@ -831,17 +836,17 @@ Apply 'Maven Central Deployment'
     + exchange(Supplier&lt;ResponseEntity&lt;RES&gt;&gt;, HttpMethod, URI, int, HttpEntity&lt;REQ&gt;, Object, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
 
 [2022/12/01]
-- Add
+- 추가
   + open.commons.spring.web.servlet.NotFoundException
 
 [2022/11/29]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.IConvertingService.transformAll(S, Class&lt;T&gt;): 
-- Delete
+- 삭제
   + open.commons.spring.web.mvc.service.IConvertingService.transferAll(S, Class&lt;T&gt;):  
 
 [2022/11/25]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.IConvertingService
     + convertMultiResult(Result&lt;List&lt;S&gt;&gt;, Class&lt;T&gt;)
     + convertSingleResult(Result&lt;S&gt;, Class&lt;T&gt;)
@@ -852,11 +857,11 @@ Apply 'Maven Central Deployment'
 	+ spring-core.version: 5.3.23 고정
 	
 [2022/05/04]
-- New
+- 신규
   + open.commons.spring.web.utils.ArgumentsUtils: Application Argument에 대한 지원 기능을 제공.
 
 [2022/05/04]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AbstractComponent
     + getMultiValuesArgument(ApplicationArguments, String, Class&lt;T&gt;)
     + getMultiValuesArguments(ApplicationArguments, Map&lt;String, Class&lt;?&gt;&gt;)
@@ -873,7 +878,7 @@ Apply 'Maven Central Deployment'
 - Release: 0.4.0
 
 [2022/02/11]
-- Modify
+- 수정
   + open.commons.spring.web.mvc.service.AbstractMvcService: SearchResultType에 따라서 Pageable 값 자동 조정
     + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, Pageable)
     + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, Pageable, Function&lt;E, D&gt;)
@@ -883,17 +888,17 @@ Apply 'Maven Central Deployment'
     + selectMultiPagination(SearchResultType, Supplier&lt;Result&lt;Integer&gt;&gt;, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, Pageable, Function&lt;E, D&gt;)
 
 [2022/02/10]
-- Add
+- 추가
   + open.commons.spring.web.utils.PaginationUtils
   
 [2022/01/26]
-- Add
+- 추가
   + open.commons.spring.web.mvn.service.AbstractMvcService
     + transform(S, boolean, T, boolean)
     + transform(S, T)
 
 [2022/01/10]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AbstractMvcService
     + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, Pageable)
     + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, Pageable, Function&lt;E, D&gt;)
@@ -914,7 +919,7 @@ Apply 'Maven Central Deployment'
     + selectMultiPagination(Supplier&lt;Result&lt;Integer&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Function&lt;E, D&gt;)
 
 [2021/12/29]
-- Modify
+- 수정
   + open.commons.spring.web.mvc.service.AbstractMvcService: DTO Class&lt;?&gt; 파라미터 제거
     + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Function&lt;E, D&gt;)
     + selectMulti(SearchResultType, P, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Function&lt;E, D&gt;)
@@ -932,7 +937,7 @@ Apply 'Maven Central Deployment'
     + convertSingleResult(Result&lt;S&gt;, Function&lt;S, T&gt;)
 
 [2021/12/29]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AbstractMvcService
     + executePagination(Supplier&lt;Result&lt;List&lt;E&gt;&gt;&gt;, Supplier&lt;Result&lt;Integer&gt;&gt;, int, int, String[])
     + orderBy(String...)
@@ -948,12 +953,12 @@ Apply 'Maven Central Deployment'
     + convertMultiPaginationResult(Result&lt;Page&lt;S&gt;&gt;, Class&lt;T&gt;, Function&lt;S, T&gt;)
   
 [2021/12/24]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AbstractMvcService
     + save(List&lt;D&gt;, Class&lt;E&gt;, Function&lt;D, E&gt;, Function&lt;List&lt;E&gt;, Result&lt;Integer&gt;&gt;): DTO -> Entity로 저장하는 함수.
 
 [2021/12/22]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AbstractMvcService
     + transform(S, boolean, Class&lt;T&gt;, boolean)
     + transform(S, Class&lt;T&gt;)
@@ -965,11 +970,11 @@ Apply 'Maven Central Deployment'
     + getHeaders()
 
 [2021/12/16]
-- Add
+- 추가
   + open.commons.spring.web.validation.EnumConstraintValidator&lt;C extends Annotation, T extends Enum&lt;T&gt;&gt;: Enum&lt;T&gt; 데이터를 검증하는 상위 클래스 정의
 
 [2021/12/15]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AbstractComponent
     + streamOf(boolean, T...)
     + streamOf(String, String, T...)
@@ -979,9 +984,9 @@ Apply 'Maven Central Deployment'
     + streamOf(String, String, T...)</strike>
 
 [2021/12/10]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AbstractMvcService
-- Delete
+- 삭제
   + open.commons.spring.web.mvc.service.AbstractGenericService: 아래 메소드를 'open.commons.spring.web.mvc.service.AbstractMvcService'로 이관. 
     + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String...)
     + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Class&lt;D&gt;, Function&lt;E, D&gt;)
@@ -993,13 +998,13 @@ Apply 'Maven Central Deployment'
     + selectMulti(SearchResultType, Supplier&lt;Result&lt;List&lt;E&gt;&gt;&gt;, BiFunction&lt;Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Class&lt;D&gt;, Function&lt;E, D&gt;)
 
 [2021/12/09]
-- Modify
+- 수정
   + open.commons.spring.web.mvc.service.AbstractGenericService: 파라미터 순서 변경
     + selectMulti(SearchResultType, P, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String...)
     + selectMulti(SearchResultType, P, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Class&lt;D&gt;, Function&lt;E, D&gt;)
     + selectMulti(SearchResultType, P, Function&lt;P, Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int)
     + selectMulti(SearchResultType, P, Function&lt;P, Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Class&lt;D&gt;, Function&lt;E, D&gt;)
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AbstractGenericService
     + selectMulti(SearchResultType, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, P, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String...)
     + selectMulti(SearchResultType, BiFunction&lt;P, String[], Result&lt;List&lt;E&gt;&gt;&gt;, P, QuadFunction&lt;P, Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Class&lt;D&gt;, Function&lt;E, D&gt;)
@@ -1007,44 +1012,44 @@ Apply 'Maven Central Deployment'
     + selectMulti(SearchResultType, Function&lt;String[], Result&lt;List&lt;E&gt;&gt;&gt;, TripleFunction&lt;Integer, Integer, String[], Result&lt;List&lt;E&gt;&gt;&gt;, int, int, String[], Class&lt;D&gt;, Function&lt;E, D&gt;)
     
 [2021/12/08]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AbstractGenericService
     + selectMulti(SearchResultType, Function&lt;P, Result&lt;List&lt;E&gt;&gt;&gt;, P, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int)
     + selectMulti(SearchResultType, Supplier&lt;Result&lt;List&lt;E&gt;&gt;&gt;, BiFunction&lt;Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int)
-- Update
+- 갱신
   + open.commons.spring.web.config.CustomWebMvcConfigurer
     + addFormatters(FormatterRegistry): Enum 검색 패키지 확장.
       - 'open.commons' 기본값으로 설정.
 
 [2021/12/06]
-- Update
+- 갱신
   + open.commons.spring.web.mv.service.AbstractGenericService
     + implements open.commons.spring.web.mv.service.IConvertingService
     + selectMulti(SearchResultType, Function&lt;P, Result&lt;List&lt;E&gt;&gt;&gt;, P, TripleFunction&lt;P, Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Class&lt;D&gt;, Function&lt;E, D&gt;)
     + selectMulti(SearchResultType, Function&lt;Result&lt;List&lt;E&gt;&gt;&gt;, P, BiFunction&lt;Integer, Integer, Result&lt;List&lt;E&gt;&gt;&gt;, int, int, Class&lt;D&gt;, Function&lt;E, D&gt;)
   
   
-- New
+- 신규
   + open.commons.spring.web.mv.service.IConvertingService
     + convertMultiResultAsStream(List&lt;S&gt;, Class&lt;T&gt;, Function&lt;S, T&gt;)
   
 [2021/12/03]
-- New
+- 신규
   + open.commons.spring.web.mv.service.IConvertingService
 
 [2021/11/16]
-- Add
+- 추가
   + open.commons.spring.web.mv.service.CliExecutionComponent
 
 [2021/11/09]
-- Add
+- 추가
   + open.commons.spring.web.mvn.service.AbstractComponent
     + execute(Consumer&lt;T&gt;, T, String)
     + execute(Function&lt;T, R&gt;, T, String)
     + execute(Runner, String)
 
 [2021/10/04]
-- Updated
+- 갱신d
   + open.common.spring.web.rest.RestApiDecl: 설정 데이터 변경을 막기 위한 조치.
     + getHeaders()
     + getMethod()
@@ -1052,7 +1057,7 @@ Apply 'Maven Central Deployment'
     + setHeaders(MultiValueMap&lt;String, String&gt;)
   
 [2021/10/04]
-- Add
+- 추가
   + open.commonad.spring.web.mvc.service.AbstractComponent
     - execute(Supplier&lt;T&gt;, String)
 
@@ -1062,19 +1067,19 @@ Apply 'Maven Central Deployment'
     + contains(String, Object): 포함 여부 변수의 혼용사용에 따른 버그 수정
 
 [2021/09/09]
-- Add
+- 추가
   + open.common.spring.web.event
     + AbstractEventDrivenMonitor
     + IEventDrivenService
 
 [2021/09/09]
-- Modify
+- 수정
   + open.commons.spring.web.config.ResourceConfiguration.createThreadPoolTaskExecutor(ThreadPoolTaskExecutorConfig, String)
     - 내부 구현 변경.
 - Changed
   + open.commons.spring.web.event.IEventStatus <- open.commons.spring.web.event.IEventType
     + getStatus() <- getType()
-- Add
+- 추가
   + open.commons.spring.web.event
     + AbstractEventObject&lt;T, E extends IEventType&gt;
     + IEventObject&lt;T, E extends IEventType&gt;
@@ -1083,7 +1088,7 @@ Apply 'Maven Central Deployment'
 - Release: 0.3.0
 
 [2021/08/24]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AbstractComponent
     + error(String)
     + error(String, Object...)
@@ -1102,13 +1107,13 @@ Apply 'Maven Central Deployment'
     + open.commons.spring.web.config.ThreadPoolTaskExecutorConfig
 
 [2021/08/19]
-- Add
+- 추가
   + open.commons.spring.web.config.createThreadPoolTaskExecutor(ThreadPoolTaskExecutorConfig, String)
 
 [2021/07/05]
-- New
+- 신규
   + open.commons.spring.web.validation.CustomConstraintValidator&lt;A extends Annotation, T&gt;
-- Modify
+- 수정
   + open.commons.spring.web.rest.RestUtils2
     - exchange(Supplier&lt;ResponseEntity&lt;RES&gt;&gt;, HttpMethod, URI, HttpEntity&lt;REQ&gt;, Object, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RET&gt;&gt;, Function&lt;Exception, Result&lt;RET&gt;&gt;)
 - __CVE-2020-13956__ 
@@ -1124,11 +1129,11 @@ Apply 'Maven Central Deployment'
 ```
 
 [2021/06/11]
-- New
+- 신규
   + open.commons.spring.web.validation.CustomConstraintValidator&lt;A extends Annotation, T&gt;
 
 [2021/06/11]
-- Add
+- 추가
   + open.commons.spring.web.rest.RestUtils2 추가
     - 기존 RestUtils의 메소드 정의 확장: REQ, RES -> REQ, RES, RET
       - REQ: Http Reqeust Entity T ype 
@@ -1144,7 +1149,7 @@ Apply 'Maven Central Deployment'
     - exchange(RestTemplate, HttpMethod, URI, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
 
 [2021/04/23]
-- Add
+- 추가
   + open.commons.spring.web.mvn.IAsyncJobHandler
     - getAsyncManagerHolder()
     - register(K, Future&lt;?&gt;)
@@ -1152,14 +1157,14 @@ Apply 'Maven Central Deployment'
 
     
 [2021/01/13]
-- New
+- 신규
   + open.commons.spring.web.mvc.IAsyncJobHanlder
 - Deprecated
   + open.commons.spring.web.mvc.service.IAsyncHandlerService
 
 
 [2020/12/09]
-- Update
+- 갱신
   + open.commons.spring.web.config.ResourceConfiguration
     - getRequestFactory(HttpClient, RestTemplateRequestFactoryResource): access modifier 변경 (private -> public static)
     - getRestTemplate(): @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS) 적용
@@ -1169,17 +1174,17 @@ Apply 'Maven Central Deployment'
       * BasicHttpClientConnectionManager -> PoolingHttpClientConnectionManager
 
 [2020/11/26]
-- New
+- 신규
   + open.commons.spring.web.mvc.service.IAsyncHandlerService
   + open.commons.spring.web.mvc.service.AbstractSshService
-- Add
+- 추가
   + open.commons.spring.web.rest.RestUtils
     - exchange(Supplier&lt;ResponseEntity&lt;RES&gt;&gt;, HttpMethod, URI, HttpEntity&lt;REQ&gt;, Object, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
-- Update
+- 갱신
   + open.commons.spring.web.rest.RestUtils 
     - exchange(RestTemplate, HttpMethod, URI, HttpEntity&lt;REQ&gt;, Class&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
     - exchange(RestTemplate, HttpMethod, URI, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
-- Delete
+- 삭제
   + open.commons.spring.web.rest.RestUtils
     - createArrayResponseType(Class&lt;T&gt;)
     - createResponseType(Class&lt;T&gt;)    
@@ -1187,26 +1192,26 @@ Apply 'Maven Central Deployment'
   + open.commons.spring.web.mvc.service.AsyncHandlerService
 
 [2020/11/23]
-- Add
+- 추가
   + open.commons.spring.web.rest.RestUtils
     - createArrayResponseType(Class&lt;T&gt;)
     - createClient()
     - createHttpsClient(boolean)
     - createRegistryBuilder(boolean)
     - createResponseType(Class&lt;T&gt;)
-- Update
+- 갱신
   + open.commons.spring.web.config.ResourceConfiguration
     - getRestTemplateAllowPrivateCA() <- getRestTemplateIgnoreHostNameVerification(): 메소드 이름변경
     
 [2020/11/21]
-- Add
+- 추가
   + open.commons.spring.web.config.ResourceConfiguration
     - getRequestFactory(HttpClient): ClientHttpRequestFactory  제공함수 별도 분리
     - getRestTemplateIgnoreHostNameVerification(): 호스트명 확인 무시 RestTemplate 제공
 
 
 [2020/11/19]
-- Add
+- 추가
   + open.commons.spring.web.rest.RestUtils
     - exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;)
     - exchange(RestTemplate, HttpMethod, String, String, int, String, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
@@ -1215,12 +1220,12 @@ Apply 'Maven Central Deployment'
     - exchange(RestTemplate, HttpMethod, URI, HttpEntity&lt;REQ&gt;, ParameterizedTypeReference&lt;RES&gt;, Function&lt;ResponseEntity&lt;RES&gt;, Result&lt;RES&gt;&gt;, Function&lt;Exception, Result&lt;RES&gt;&gt;)
 
 [2020/11/11]
-- Add
+- 추가
   + open.commons.spring.web.mvc.service.AsyncHandlerService: 비동기(Future&lt;V&gt; 반환)로 수행하는 메소드를 제어하는 기능 제공
-- Modify
+- 수정
   + open.commons.spring.web.handler.DefaultGlobalInterceptor: 상위 클래스 변경
     - HandlerInterceptorAdapter(Deprecated) -> AsyncHandlerInterceptor
-- Update
+- 갱신
   + open.commons.spring.web.swagger.SpringfoxSwaggerConfig:
     - getSwaggerApiInfo(): 직접 구현
 
@@ -1230,52 +1235,52 @@ Apply 'Maven Central Deployment'
 
 
 [2020/10/21]
-- Add
+- 추가
   + open.commons.spring.web.swagger
     - SpringfoxSwaggerConfig: API 설정 클래스.
     - SwaggerApiInfo: API 정의 클래스.
 
 [2020/10/21]
-- Add
+- 추가
   + open.commons.spring.web.rest.RestUtils
     - queryParameters(MultiValueMap&lt;String, Object&gt;)
     - queryParameters(String...)    
 
 [2020/09/05]
-- Add
+- 추가
   + open.commons.spring.web.springfox.swagger.SpringfoxSwagger
     - springfox-swagger, springfox-swagger-ui 를 위한 설정
-- Update
+- 갱신
   + open.commons.spring.web.config.CustomWebMvcConfigurer
     - Spring Security 자동 설정 방지 추가: @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 
 [2020/09/04]
-- Add
+- 추가
   + open.commons.spring.web.config.SpringfoxSwaggerWebSecurityConfigurer 
 
 
 [2020/09/03]
-- Add
+- 추가
   + pom.xml: swagger2 적용
-- Update
+- 갱신
   + open.commons.spring.web.config
     - swagger2 적용  
 
 [2020/08/27]
-- Add
+- 추가
   + open.commons.spring.web.rest
     - RestApiDecl.java
     - RestApiServer.java
-- Update
+- 갱신
   + open.commons.spring.web.rest
     - RestUtils.java
         
 [2020/07/30]
 - Tag: 0.3.0-SNAPSHOT
-- Add
+- 추가
   + open.commons.spring.web.servlet.BadRequestException
   + open.commons.spring.web.servlet.InternalServerException
-- Update
+- 갱신
   + open.commons.spring.web.servlet.method.annotation.DefaultGlobalExceptionHandler
     + handle4xxException(Exception, WebRequest): 대상 추가
       + open.commons.spring.web.servlet.BadRequestException
@@ -1288,13 +1293,13 @@ Apply 'Maven Central Deployment'
 
 [2020/02/13]
 - Release: 0.2.3
-- Add
+- 추가
   + open.commons.spring.web.BasePackageMarker
   + open.commons.spring.web.handler.DefaultGlobalInterceptor
   + open.commons.spring.web.mvc.service.AbstractComponent
   + open.commons.spring.web.mvc.service.AbstractGenericService
   + open.commons.spring.web.servlet.method.annotation.DefaultGlobalExceptionHandler
-- Update
+- 갱신
   + open.commons.spring.web.OpenCommonsSpringWeb
   + open.commons.spring.web.annotation.CustomHttpMessageconverter
   + open.commons.spring.web.config.ResourceConfiguration
@@ -1302,26 +1307,26 @@ Apply 'Maven Central Deployment'
   + open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig
 
 [2019/10/23]
-- Add
+- 추가
   + open.commons.spring.web.rest.RestUtils
 
 
 [2019/10/15]
-- Add
+- 추가
   + open.commons.spring.web.validation.ValidationTarget
 
 [2019/10/10]
-- Add
+- 추가
   + open.commons.spring.web.validation.Validational&lt;C extends List&lt;E&gt;, E extends Validational&lt;List&lt;E&gt;, E&gt;&gt;
 
 [2019/10/08]
 - Release: 0.2.2-RELEASE
 - Tag: 0.2.3-SNAPSHOT
-- Add
+- 추가
   + open.commons.spring.web.utils.ValidationUtils
  
 [2019/9/20]
-- Update
+- 갱신
   + open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig.maxPoolSize 기본값 변경
     - 30 -> Integer.MAX_VALUE
 
@@ -1330,12 +1335,12 @@ Apply 'Maven Central Deployment'
 - Tag: 0.2.2-SNAPSHOT
 
 [2019/9/9]
-- Add
+- 추가
   + open.commons.spring.web.OpenCommonsSpringWeb 
 
 [2019/9/8]
 - Tag: 0.2.1-SNAPSHOT
-- Add
+- 추가
   + open.commons.spring.web.config.CustomWebMvcConfigurer.extendMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt;)
 
 [2019/8/7]
@@ -1344,7 +1349,7 @@ Apply 'Maven Central Deployment'
 
 [2019/7/17]
 - Release: 0.2.0
-- Add
+- 추가
   + open.commons.spring.web.resources.ThreadPoolTaskExecutorConfig
 - Dependency
   + open.commons.core: 1.6.11
@@ -1360,7 +1365,7 @@ Apply 'Maven Central Deployment'
 
 [2019/6/28]
 - Release: 0.1.1
-- Add
+- 추가
   + open.commons.spring.web.servlet.mvn.support
   + open.commons.spring.web.utils.WebUtils
   
@@ -1370,7 +1375,7 @@ Apply 'Maven Central Deployment'
 
 [2019/6/27]
 - Release: 0.1.0
-- Add
+- 추가
   + open.commons.spring.web.config.ResourceConfiguration
   + open.commons.spring.web.resources.RestTempalteReqeust
 
