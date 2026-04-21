@@ -35,7 +35,8 @@ import org.springframework.beans.factory.InitializingBean;
  * @version
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
-public abstract class AbstractGenericService extends AbstractComponent implements InitializingBean, DisposableBean, IConvertingService {
+public abstract class AbstractGenericService extends AbstractComponent
+        implements InitializingBean, DisposableBean, IConvertingService {
 
     /**
      * <br>

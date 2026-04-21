@@ -41,7 +41,8 @@ public class ThreadPoolExecutorConfig {
 
     // -- java.util.concurrent.ThreadPoolExecutor -- //
     /**
-     * the number of threads to keep in the pool, even if they are idle, unless {@code allowCoreThreadTimeOut} is set
+     * the number of threads to keep in the pool, even if they are idle, unless
+     * {@code allowCoreThreadTimeOut} is set
      * 
      * @see ThreadPoolExecutor#setCorePoolSize(int)
      */
@@ -53,23 +54,25 @@ public class ThreadPoolExecutorConfig {
      */
     private int maximumPoolSize = Integer.MAX_VALUE;
     /**
-     * when the number of threads is greater than the core, this is the maximum time that excess idle threads will wait
-     * for new tasks before terminating.
+     * when the number of threads is greater than the core, this is the maximum
+     * time that excess idle threads will wait for new tasks before terminating.
      * 
-     * @see ThreadPoolExecutor#setKeepAliveTime(long, java.util.concurrent.TimeUnit)
+     * @see ThreadPoolExecutor#setKeepAliveTime(long,
+     *      java.util.concurrent.TimeUnit)
      * @see #timeUnit
      */
     private long keepAliveTime;
     /**
      * the time timeUnit for the {@code keepAliveTime} argument
      * 
-     * @see ThreadPoolExecutor#setKeepAliveTime(long, java.util.concurrent.TimeUnit)
+     * @see ThreadPoolExecutor#setKeepAliveTime(long,
+     *      java.util.concurrent.TimeUnit)
      * @see #keepAliveTime
      */
     private TimeUnit timeUnit = TimeUnit.NANOSECONDS;
     /**
-     * If false (default), core threads stay alive even when idle. If true, core threads use keepAliveTime to time out
-     * waiting for work.
+     * If false (default), core threads stay alive even when idle. If true, core
+     * threads use keepAliveTime to time out waiting for work.
      * 
      * @see ThreadPoolExecutor#allowCoreThreadTimeOut(boolean)
      */
@@ -367,7 +370,7 @@ public class ThreadPoolExecutorConfig {
      */
     public void setTimeUnit(TimeUnit timeUnit) {
         AssertUtils2.notNull(timeUnit);
-        
+
         this.timeUnit = timeUnit;
 
         this.initialized = true;

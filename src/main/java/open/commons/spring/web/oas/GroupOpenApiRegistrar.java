@@ -52,7 +52,6 @@ import org.springframework.core.type.AnnotationMetadata;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.beans.controller.RequestMappingProvider;
 import open.commons.spring.web.configure.OpenApiConfiguration;
-import open.commons.spring.web.configure.ResourceConfiguration;
 
 /**
  * '서비스 설정'에 작성된 {@link GroupedOpenApi} 정보를 읽어 {@link Bean} 으로 등록해 주는 클래스.<br>
@@ -67,7 +66,7 @@ import open.commons.spring.web.configure.ResourceConfiguration;
  * }
  * </pre>
  * 
- * <font color="red">* {@link ResourceConfiguration}에 등록되어 있습니다.</font>
+ * <font color="red">* {@link OpenApiConfiguration}에 등록되어 있습니다.</font>
  * 
  * @since 2025. 10. 21.
  * @version 2.1.0
@@ -129,7 +128,8 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
                 continue;
             }
             // Supplier 기반 정의만 등록(인스턴스 생성은 컨테이너가 필요할 때 수행)
-            BeanDefinitionBuilder bdb = BeanDefinitionBuilder.genericBeanDefinition(GroupedOpenApi.class, () -> createGroupedOpenApi(this.environment, props, group));
+            BeanDefinitionBuilder bdb = BeanDefinitionBuilder.genericBeanDefinition(GroupedOpenApi.class,
+                    () -> createGroupedOpenApi(this.environment, props, group));
             registry.registerBeanDefinition("GroupOpenedApi#" + group, bdb.getBeanDefinition());
         }
     }
@@ -164,9 +164,11 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      */
     private static Map<String, GroupedOpenApiProperties> bindProperties(Environment env) {
         // Map<String, GroupedOpenApiProperties> 데이터 유형을 지정
-        Bindable<Map<String, GroupedOpenApiProperties>> target = Bindable.mapOf(String.class, GroupedOpenApiProperties.class);
+        Bindable<Map<String, GroupedOpenApiProperties>> target = Bindable.mapOf(String.class,
+                GroupedOpenApiProperties.class);
         // 설정정보에서 {prefix}와 데이터 유형으로 조회
-        BindResult<Map<String, GroupedOpenApiProperties>> result = Binder.get(env).bind(OpenApiConfiguration.PROPERTIES_GROUPED_OPEN_API, target);
+        BindResult<Map<String, GroupedOpenApiProperties>> result = Binder.get(env)
+                .bind(OpenApiConfiguration.PROPERTIES_GROUPED_OPEN_API, target);
 
         return result.orElseGet(Collections::emptyMap);
     }
@@ -213,7 +215,8 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
      * @since 2025. 10. 21.
      * @version 2.1.0
      */
-    private static GroupedOpenApi createGroupedOpenApi(Environment env, @NotNull GroupedOpenApiProperties prop, String group) {
+    private static GroupedOpenApi createGroupedOpenApi(Environment env, @NotNull GroupedOpenApiProperties prop,
+            String group) {
         // 내부 제공 REST API 그룹 정보 설정. 대상: pathsToMatch
         if (OpenApiConfiguration.PROPERTIES_OCSW_API_GROUP.equalsIgnoreCase(group)) {
             // 중복방지 및 정렬을 위해서 TreeSet 사용.
@@ -227,13 +230,18 @@ public class GroupOpenApiRegistrar implements ImportBeanDefinitionRegistrar, Env
 
                 // 경로값 검증
                 if (StringUtils.isNullOrEmptyString(classPath)) {
-                    throw new IllegalArgumentException("@RestController 에 설정된 RequestMapping#path() 값은, 빈 문자열이나 null 일 수 없습니다. 설정값=" + (classPath == null ? "null" : "[빈 문자열임]"));
+                    throw new IllegalArgumentException(
+                            "@RestController 에 설정된 RequestMapping#path() 값은, 빈 문자열이나 null 일 수 없습니다. 설정값="
+                                    + (classPath == null ? "null" : "[빈 문자열임]"));
                 } else if ('/' != classPath.charAt(0)) {
-                    throw new IllegalArgumentException("@RestController 에 설정된 RequestMapping#path() 값은 반드시 '/'로 시작해야 합니다.설정값=" + classPath);
+                    throw new IllegalArgumentException(
+                            "@RestController 에 설정된 RequestMapping#path() 값은 반드시 '/'로 시작해야 합니다.설정값=" + classPath);
                 }
                 String[] paths = classPath.split("/");
                 if (paths.length < 2) {
-                    throw new IllegalArgumentException("@RestController 에 설정된 RequestMapping#path() 값은 반드시 '/'로 시작해야 하며, 시작 경로값이 있어야 합니다. 설정값=" + classPath);
+                    throw new IllegalArgumentException(
+                            "@RestController 에 설정된 RequestMapping#path() 값은 반드시 '/'로 시작해야 하며, 시작 경로값이 있어야 합니다. 설정값="
+                                    + classPath);
                 }
                 pathsToMatch.add(StringUtils.concat("/", true, true, false, paths[1], "**"));
             }

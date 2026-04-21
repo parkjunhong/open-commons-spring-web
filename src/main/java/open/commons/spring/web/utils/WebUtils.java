@@ -132,13 +132,15 @@ public class WebUtils {
      * @since 2025. 10. 22.
      * @version 2.1.0
      */
-    public static ConcurrentLinkedHashMap<String, Object> createEntity(HttpServletRequest request, Exception ex, HttpStatusCode status) {
+    public static ConcurrentLinkedHashMap<String, Object> createEntity(HttpServletRequest request, Exception ex,
+            HttpStatusCode status) {
         AssertUtils2.notNulls(request, ex, status);
 
         ConcurrentLinkedHashMap<String, Object> entity = new ConcurrentLinkedHashMap<>();
 
         entity.put("timestamp", System.currentTimeMillis());
-        entity.put("status", String.join("/", status.toString(), status.toString(), status instanceof HttpStatus hs ? hs.getReasonPhrase() : ""));
+        entity.put("status", String.join("/", status.toString(), status.toString(),
+                status instanceof HttpStatus hs ? hs.getReasonPhrase() : ""));
         entity.put("session", request.getRequestedSessionId());
 
         // Set a URI
@@ -188,13 +190,15 @@ public class WebUtils {
      * @since 2019. 6. 28.
      * @version 3.0.0
      */
-    public static ConcurrentLinkedHashMap<String, Object> createEntity(WebRequest request, Exception ex, HttpStatusCode status) {
+    public static ConcurrentLinkedHashMap<String, Object> createEntity(WebRequest request, Exception ex,
+            HttpStatusCode status) {
         AssertUtils2.notNulls(request, ex, status);
 
         ConcurrentLinkedHashMap<String, Object> entity = new ConcurrentLinkedHashMap<>();
 
         entity.put("timestamp", System.currentTimeMillis());
-        entity.put("status", String.join("/", status.toString(), status instanceof HttpStatus hs ? hs.getReasonPhrase() : ""));
+        entity.put("status",
+                String.join("/", status.toString(), status instanceof HttpStatus hs ? hs.getReasonPhrase() : ""));
         entity.put("session", request.getSessionId());
 
         // Set a URI
@@ -244,7 +248,8 @@ public class WebUtils {
      * @since 2018. 8. 22.
      * @version 3.0.0
      */
-    public static void createThrowableResponse(ModelAndView view, HttpStatusCode status, Throwable ex, HttpServletRequest request) {
+    public static void createThrowableResponse(ModelAndView view, HttpStatusCode status, Throwable ex,
+            HttpServletRequest request) {
         AssertUtils2.notNulls(view, status, ex, request);
 
         view.setStatus(status);
@@ -344,7 +349,8 @@ public class WebUtils {
      *
      * @since 2018. 9. 27.
      */
-    public static final Map<String, String> getParameters(Map<String, String> parameters, Charset inputCharset, Charset outputCharset) {
+    public static final Map<String, String> getParameters(Map<String, String> parameters, Charset inputCharset,
+            Charset outputCharset) {
 
         if (parameters == null) {
             return null;
@@ -382,7 +388,8 @@ public class WebUtils {
      * @since 2018. 9. 27.
      */
 
-    public static final Map<String, String> getParameters(Map<String, String> parameters, String inputCharset, String outputCharset) {
+    public static final Map<String, String> getParameters(Map<String, String> parameters, String inputCharset,
+            String outputCharset) {
         AssertUtils2.notNulls(inputCharset, outputCharset);
 
         return getParameters(parameters, Charset.forName(inputCharset), Charset.forName(outputCharset));
@@ -576,7 +583,10 @@ public class WebUtils {
      * @version 0.8.0
      */
     public static class TemplateUrlSplit {
-        /** ({scheme}://)?({authority}@)?{host}:{port} 정보 ({query}, {fragment} 제외) */
+        /**
+         * ({scheme}://)?({authority}@)?{host}:{port} 정보 ({query}, {fragment}
+         * 제외)
+         */
         public final String path;
         /** {query}(#{fragment}) 정보 */
         public final String query;

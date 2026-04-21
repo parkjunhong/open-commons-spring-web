@@ -18,37 +18,53 @@
  *
  * This file is generated under this project, "open-commons-spring-web".
  *
- * Date  : 2026. 4. 20. 오후 8:41:26
+ * Date  : 2026. 4. 21. 오후 4:12:05
  *
  * Author: Park Jun-Hong (parkjunhong77@gmail.com)
  * 
  */
 
-package open.commons.spring.web.configure.executor;
+package open.commons.spring.web.configure.exception;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+
+import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
 
 /**
  * <br>
+ * 
  * <pre>
  * [개정이력]
  *     날짜        | 작성자                   |   내용
  * -----------------------------------------------------
- * 2026. 4. 20.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 21.     parkjunhong77@gmail.com     최초 작성
  * </pre>
  *
- * @since 2026. 4. 20.
+ * @since 2026. 4. 21.
  * @version 4.0.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 @Configuration
-public class ExecutorConfiguration {
+public class ExceptionHttpStatusBinderConfiguration {
+
+    private final ExceptionHttpStatusProperties props;
 
     /**
-     * @since 2026. 4. 20.
+     * 
+     * @param props
+     * 
+     * @since 2026. 4. 21.
      * @version 4.0.0
      */
-    public ExecutorConfiguration() {
+    public ExceptionHttpStatusBinderConfiguration(ExceptionHttpStatusProperties props) {
+        this.props = props;
     }
 
+    @Bean(name = ExceptionHttpStatusBinder.BEAN_QUALIFIER)
+    @Primary
+    ExceptionHttpStatusBinder beanExceptionHttpStatusBinder() {
+        return new ExceptionHttpStatusBinder(this.props.properties());
+    }
 }

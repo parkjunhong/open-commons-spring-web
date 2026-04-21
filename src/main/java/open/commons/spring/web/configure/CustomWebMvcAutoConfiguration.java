@@ -69,7 +69,7 @@ public class CustomWebMvcAutoConfiguration {
 
     public static final String BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS = "open.commons.spring.web.config.CustomWebMvcAutoConfiguration#AUTHORIZED_DATA_RESOLVERS";
 
-    private static final Logger logger = LoggerFactory.getLogger(CustomWebMvcAutoConfiguration.class);
+    private final Logger logger = LoggerFactory.getLogger(CustomWebMvcAutoConfiguration.class);
 
     private final ApplicationContext context;
     private final Environment environment;
@@ -110,7 +110,8 @@ public class CustomWebMvcAutoConfiguration {
     @Order(Ordered.HIGHEST_PRECEDENCE + 1)
     AuthorizedDataModelAttributeResolver authorizedDataModelAttributeResolver(ApplicationContext context,
             @Qualifier(AuthorizedRequestDataMetadata.BEAN_QUALIFIER) IAuthorizedRequestDataMetadata authorizedRequestDataMetadata) {
-        AuthorizedDataModelAttributeResolver resolver = new AuthorizedDataModelAttributeResolver(context, authorizedRequestDataMetadata);
+        AuthorizedDataModelAttributeResolver resolver = new AuthorizedDataModelAttributeResolver(context,
+                authorizedRequestDataMetadata);
         logger.info("[authorized-resources] authorized-data-model-attribute-resolver={}", resolver);
         return resolver;
     }
@@ -126,14 +127,14 @@ public class CustomWebMvcAutoConfiguration {
 
     @Bean
     @Order(CustomWebMvcConfiguration.ORDER)
-    public CustomWebMvcConfiguration customWebMvcConfigurer() {
+    CustomWebMvcConfiguration customWebMvcConfigurer() {
         CustomWebMvcConfiguration c = new CustomWebMvcConfiguration(this.context, this.environment);
         logger.info("[web-mvc-configurer] custom-web-mvc-configurer={}", c);
         return c;
     }
 
     @Bean
-    public BeanPostProcessor reorderArgumentResolvers() {
+    static BeanPostProcessor reorderArgumentResolvers() {
         return new BeanPostProcessor() {
             @Override
             public Object postProcessAfterInitialization(Object bean, String beanName) {

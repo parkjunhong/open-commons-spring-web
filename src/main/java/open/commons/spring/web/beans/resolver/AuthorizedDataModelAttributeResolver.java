@@ -69,14 +69,16 @@ import open.commons.spring.web.utils.ClassInspector;
 
 /**
  * "{@link AuthorizedRequestData} && ({@link ModelAttribute} ||
- * {@link ModelAttributeMethodProcessor#annotationNotRequired} )"가 선언된 파라미터를 처리합니다.<br>
+ * {@link ModelAttributeMethodProcessor#annotationNotRequired} )"가 선언된 파라미터를
+ * 처리합니다.<br>
  * {@link CustomWebMvcAutoConfiguration}을 통해서 {@link Bean}으로 제공됩니다.
  * 
  * @since 2025. 9. 18.
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodProcessor implements IAuthorizedDataResolver {
+public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodProcessor
+        implements IAuthorizedDataResolver {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -91,7 +93,8 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
     @NotNull
     private final ApplicationContext applicationContext;
 
-    public AuthorizedDataModelAttributeResolver(ApplicationContext applicationContext, IAuthorizedRequestDataMetadata authorizedRequestDataMetadata //
+    public AuthorizedDataModelAttributeResolver(ApplicationContext applicationContext,
+            IAuthorizedRequestDataMetadata authorizedRequestDataMetadata //
     ) {
         super(false);
         this.applicationContext = applicationContext;
@@ -108,7 +111,8 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
         } else if (binder instanceof WebRequestDataBinder) {
             ((WebRequestDataBinder) binder).bind(request);
         } else {
-            throw ExceptionUtils.newException(InternalServerException.class, "지원하는 않는 WebDataBinder('%s') 구현 클래스 입니다.", binder.getClass());
+            throw ExceptionUtils.newException(InternalServerException.class, "지원하는 않는 WebDataBinder('%s') 구현 클래스 입니다.",
+                    binder.getClass());
         }
 
         Object target = binder.getTarget();
@@ -140,7 +144,8 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
     }
 
     /**
-     * {@link AuthorizedRequestData} 정보와 TODO ( ) 정보를 확인하여, {@link AuthorizedRequestData#handleBean()},
+     * {@link AuthorizedRequestData} 정보와 TODO ( ) 정보를 확인하여,
+     * {@link AuthorizedRequestData#handleBean()},
      * {@link AuthorizedRequestData#handleType()}에 해당하는 정보를 제공합니다. <br>
      * 
      * <pre>
@@ -163,7 +168,8 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
      * @since 2025. 9. 22.
      * @version 0.8.0
      */
-    private TwoValueObject<String, String> resolveAnnotatedContext(Class<?> targetClass, String fieldName, AuthorizedRequestData anno) {
+    private TwoValueObject<String, String> resolveAnnotatedContext(Class<?> targetClass, String fieldName,
+            AuthorizedRequestData anno) {
         if (anno != null) {
             return new TwoValueObject<>(anno.handleBean(), anno.handleType());
         } else {
@@ -217,7 +223,8 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
                 if (rawValue == null) {
                     continue;
                 }
-                TwoValueObject<String, String> annotatedValue = resolveAnnotatedContext(targetClass, field.getName(), field.getAnnotation(AuthorizedRequestData.class));
+                TwoValueObject<String, String> annotatedValue = resolveAnnotatedContext(targetClass, field.getName(),
+                        field.getAnnotation(AuthorizedRequestData.class));
                 if (annotatedValue == null) {
                     continue;
                 }
@@ -226,14 +233,16 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
                 Object value = resolveRawValue(rawValue, handleBean, handleType, visited);
                 field.set(targetValue, value);
             } catch (BeansException e) {
-                String errMsg = String
-                        .format("'권한 제어가 적용된 파라미터'를 처리하는 도중 오류가 발생하였습니다. field.name=%s, field.raw_value=%s, handle.beanname=%s, handle.type=%s, handle.class=%s, 원인=%s" //
-                                , field.getName(), rawValue, handleBean, handleType, IAuthorizedRequestDataHandler.class.getName(), e.getMessage());
+                String errMsg = String.format(
+                        "'권한 제어가 적용된 파라미터'를 처리하는 도중 오류가 발생하였습니다. field.name=%s, field.raw_value=%s, handle.beanname=%s, handle.type=%s, handle.class=%s, 원인=%s" //
+                        , field.getName(), rawValue, handleBean, handleType,
+                        IAuthorizedRequestDataHandler.class.getName(), e.getMessage());
                 logger.error("{}", errMsg, e);
 
                 throw ExceptionUtils.newException(InternalServerException.class, e, errMsg);
             } catch (IllegalAccessException e) {
-                String errMsg = String.format("'%s.%s' 필드 처리시 오류가 발생하였습니다.", targetValue.getClass().getName(), field.getName());
+                String errMsg = String.format("'%s.%s' 필드 처리시 오류가 발생하였습니다.", targetValue.getClass().getName(),
+                        field.getName());
                 logger.error("{}", errMsg, e);
 
                 throw ExceptionUtils.newException(InternalServerException.class, e, errMsg);
@@ -241,7 +250,8 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
         }
     }
 
-    private Object resolveRawValue(Object rawValue, String handleBean, @NotEmpty String handleType, Set<Object> visited) {
+    private Object resolveRawValue(Object rawValue, String handleBean, @NotEmpty String handleType,
+            Set<Object> visited) {
         if (rawValue == null || visited.contains(rawValue)) {
             return rawValue;
         }
@@ -297,7 +307,8 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
     }
 
     /**
-     * "{@link AuthorizedRequestData} && {@link ModelAttribute}"가 선언된 파라미터만 지원합니다.
+     * "{@link AuthorizedRequestData} && {@link ModelAttribute}"가 선언된 파라미터만
+     * 지원합니다.
      *
      * @since 2025. 9. 18.
      * @version 0.8.0

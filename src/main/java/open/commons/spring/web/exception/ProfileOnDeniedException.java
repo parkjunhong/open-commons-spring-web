@@ -78,7 +78,8 @@ public class ProfileOnDeniedException extends RuntimeException {
     public ProfileOnDeniedException(ProfilesOn profilesOn, Collection<String> activeProfiles, Method method) {
         super(buildMessage(profilesOn, activeProfiles, method));
         this.profilesOn = profilesOn;
-        this.activeProfiles = activeProfiles != null ? activeProfiles.stream().collect(Collectors.toList()) : Collections.emptyList();
+        this.activeProfiles = activeProfiles != null ? activeProfiles.stream().collect(Collectors.toList())
+                : Collections.emptyList();
         this.methodSignature = method != null ? method.toGenericString() : "";
     }
 
@@ -105,7 +106,8 @@ public class ProfileOnDeniedException extends RuntimeException {
     private static String buildMessage(ProfilesOn profilesOn, Collection<String> activeProfiles, Method method) {
 
         String methodSig = method != null ? method.toGenericString() : "<unknown>";
-        String standards = ObjectUtils.getOrDefault(profilesOn.standards(), _std -> StringUtils.concatenate(", ", _std), "");
+        String standards = ObjectUtils.getOrDefault(profilesOn.standards(), _std -> StringUtils.concatenate(", ", _std),
+                "");
         String profiles = activeProfiles != null ? String.join(", ", activeProfiles) : "";
 
         return new StringBuilder() //

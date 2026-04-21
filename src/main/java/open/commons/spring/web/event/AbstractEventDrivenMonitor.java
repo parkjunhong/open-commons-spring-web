@@ -68,7 +68,8 @@ import open.commons.spring.web.servlet.exception.BadRequestException;
  * @version 0.4.0
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
-public abstract class AbstractEventDrivenMonitor extends AbstractComponent implements IEventDrivenService, InitializingBean, DisposableBean {
+public abstract class AbstractEventDrivenMonitor extends AbstractComponent
+        implements IEventDrivenService, InitializingBean, DisposableBean {
 
     private static final Supplier<Set<Object>> SET_OBJECT = () -> new HashSet<>();
 
@@ -142,8 +143,8 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * @since 2021. 9. 9.
      * @version 0.4.0
      */
-    public AbstractEventDrivenMonitor(@NotNull ApplicationEventPublisher eventPub, @NotNull ThreadPoolTaskExecutor mtrExecutor, @Min(1) long unsubsTtl,
-            @Min(1) long unsubsInterval) {
+    public AbstractEventDrivenMonitor(@NotNull ApplicationEventPublisher eventPub,
+            @NotNull ThreadPoolTaskExecutor mtrExecutor, @Min(1) long unsubsTtl, @Min(1) long unsubsInterval) {
         this.eventPub = eventPub;
         this.mtrExecutor = mtrExecutor;
         this.unsubsTtl = unsubsTtl;
@@ -225,7 +226,8 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
             Set<Object> params = null;
 
             Future<?> asyncJob = null;
-            for (Entry<String, Function<Object, IEventObject<?, ? extends IEventStatus>>> entry : this.providers.entrySet()) {
+            for (Entry<String, Function<Object, IEventObject<?, ? extends IEventStatus>>> entry : this.providers
+                    .entrySet()) {
                 eventTypeKey = entry.getKey();
                 // #1. 이벤트 타입에 대한 파라미터별로 작업 실행 및 완료 대기를 위해
                 if ((params = this.paramsSubscribed.getParameters(eventTypeKey)) == null) {
@@ -241,7 +243,8 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
                     this.paramsAsync.addParameter(eventTypeKey, param);
 
                     try {
-                        Worker<IEventObject<?, ?>> worker = new Worker<IEventObject<?, ?>>(provider, param, this.eventPub);
+                        Worker<IEventObject<?, ?>> worker = new Worker<IEventObject<?, ?>>(provider, param,
+                                this.eventPub);
                         asyncJob = this.mtrExecutor.submit(worker);
 
                         // #2. 비동기 작업 종료 및 이벤트 타입별 파라미터 추가.
@@ -298,9 +301,11 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      */
     @SuppressWarnings("unchecked")
     @Override
-    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> void registerEventProvider(@NotNull Class<C> eventType, @NotNull Function<P, C> provider) {
+    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> void registerEventProvider(
+            @NotNull Class<C> eventType, @NotNull Function<P, C> provider) {
         synchronized (mutexProviders) {
-            this.providers.put(getEventTypeKey(eventType), (Function<Object, IEventObject<?, ? extends IEventStatus>>) provider);
+            this.providers.put(getEventTypeKey(eventType),
+                    (Function<Object, IEventObject<?, ? extends IEventStatus>>) provider);
 
             logger.info("'{}' 이벤트 제공자가 등록되었습니다. 제공자={}", eventType, provider);
         }
@@ -310,12 +315,14 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * @since 2021. 9. 9.
      * @version 0.4.0
      *
-     * @see open.commons.spring.web.event.IEventDrivenService#subscribe(java.lang.Class, java.lang.Object)
+     * @see open.commons.spring.web.event.IEventDrivenService#subscribe(java.lang.Class,
+     *      java.lang.Object)
      * @see {@link HashSet#add(Object)}: 파라미터 저장 객체
      * @see {@link Object#hashCode()}: 파라미터 추가를 위해 사용
      */
     @Override
-    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> Result<Boolean> subscribe(@NotNull Class<C> eventType, @NotNull P parameter) {
+    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> Result<Boolean> subscribe(
+            @NotNull Class<C> eventType, @NotNull P parameter) {
         if (parameter == null) {
             throw ExceptionUtils.newException(BadRequestException.class, "이벤트 생성용 파라미터는 null 일 수가 없습니다.");
         }
@@ -343,10 +350,12 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
      * @since 2021. 9. 9.
      * @version 0.4.0
      *
-     * @see open.commons.spring.web.event.IEventDrivenService#unsubscribe(java.lang.Class, java.lang.Object)
+     * @see open.commons.spring.web.event.IEventDrivenService#unsubscribe(java.lang.Class,
+     *      java.lang.Object)
      */
     @Override
-    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> Result<Boolean> unsubscribe(@NotNull Class<C> eventType, @NotNull P parameter) {
+    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> Result<Boolean> unsubscribe(
+            @NotNull Class<C> eventType, @NotNull P parameter) {
         if (parameter == null) {
             throw ExceptionUtils.newException(BadRequestException.class, "이벤트 생성용 파라미터는 null 일 수가 없습니다.");
         }
@@ -509,7 +518,8 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
 
                 boolean contains = parameters != null ? parameters.contains(parameter) : false;
 
-                logger.trace("[async] contains={}, event={}, param={}, parameters={}", contains, eventTypeKey, parameter, parameters);
+                logger.trace("[async] contains={}, event={}, param={}, parameters={}", contains, eventTypeKey,
+                        parameter, parameters);
 
                 return contains;
             }
@@ -629,7 +639,8 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          *            신규 구독신청 여부
          * @since 2021. 9. 14.
          */
-        public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> boolean addParameter(@NotNull String eventTypeKey, @NotNull P parameter, boolean isNew) {
+        public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> boolean addParameter(
+                @NotNull String eventTypeKey, @NotNull P parameter, boolean isNew) {
             synchronized (this.mutexParams) {
                 Set<Object> parameters = MapUtils.getOrDefault(this.eventParameters, eventTypeKey, SET_OBJECT, true);
                 boolean containsUnsubs = this.unsubsParamsClosure.contains(eventTypeKey, parameter);
@@ -648,7 +659,8 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
                     added = parameters.add(parameter);
                 }
 
-                logger.trace("[subscribed] added={}, event={}, parameter={}. size={}", added, eventTypeKey, parameter, parameters.size());
+                logger.trace("[subscribed] added={}, event={}, parameter={}. size={}", added, eventTypeKey, parameter,
+                        parameters.size());
 
                 return added;
             }
@@ -720,7 +732,8 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
 
                 boolean removed = parameters.remove(parameter);
 
-                logger.trace("[subscribed] removed={}, event={}, parameter={}. size={}", removed, eventTypeKey, parameter, parameters.size());
+                logger.trace("[subscribed] removed={}, event={}, parameter={}. size={}", removed, eventTypeKey,
+                        parameter, parameters.size());
 
                 return removed;
             }
@@ -974,12 +987,14 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
 
             boolean inInvestigating = this.investigated.contains(up);
             if (inInvestigating) {
-                logger.trace("[unsubscribed] contains={} in 'investigated'. event={}, parameter={}", inInvestigating, eventTypeKey, parameter);
+                logger.trace("[unsubscribed] contains={} in 'investigated'. event={}, parameter={}", inInvestigating,
+                        eventTypeKey, parameter);
             }
 
             boolean inQueue = false;
             if (inQueue = contains(up)) {
-                logger.trace("[unsubscribed] contains={} in 'queue'. event={}, parameter={}", inQueue, eventTypeKey, parameter);
+                logger.trace("[unsubscribed] contains={} in 'queue'. event={}, parameter={}", inQueue, eventTypeKey,
+                        parameter);
             }
 
             boolean contains = inInvestigating || inQueue;
@@ -994,9 +1009,9 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * 동일한 이벤트 타입에 대해서 동일한 파라미터로 구독요청이 왔을 경우에 호출.
          * 
          * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
+        * [개정이력]
+        *     날짜        | 작성자                   |   내용
+        * -----------------------------------------------------
          * 2021. 9. 14.    parkjunhong77@gmail.com     최초 작성
          * </pre>
          *
@@ -1028,7 +1043,8 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
 
                     for (UnsubscribedParameter param : this.investigated) {
                         if (param.isTimeout(this.ttl)) {
-                            logger.info("[unsubscribed] removed. event={}, parameter={}", param.getEventTypeKey(), param.getParameter());
+                            logger.info("[unsubscribed] removed. event={}, parameter={}", param.getEventTypeKey(),
+                                    param.getParameter());
                         } else {
                             push(param);
                         }
@@ -1072,7 +1088,8 @@ public abstract class AbstractEventDrivenMonitor extends AbstractComponent imple
          * @param param
          * @since 2021. 9. 9.
          */
-        public Worker(@NotNull Function<Object, T> provider, @NotNull Object param, @NotNull ApplicationEventPublisher eventPub) {
+        public Worker(@NotNull Function<Object, T> provider, @NotNull Object param,
+                @NotNull ApplicationEventPublisher eventPub) {
             this.provider = provider;
             this.param = param;
             this.eventPub = eventPub;

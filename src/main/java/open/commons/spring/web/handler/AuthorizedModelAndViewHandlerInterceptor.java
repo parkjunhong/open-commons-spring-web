@@ -111,7 +111,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      * @since 2025. 9. 24.
      * @version 0.8.0
      */
-    public AuthorizedModelAndViewHandlerInterceptor(@NotNull ApplicationContext context, @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
+    public AuthorizedModelAndViewHandlerInterceptor(@NotNull ApplicationContext context,
+            @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
         this.BEANS = BeanUtils.context(context);
         this.authorizedResourcesMetadata = authorizedResourcesMetadata;
     }
@@ -198,7 +199,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
         String handleBean = null;
 
         if (AuthorizedField.NO_ASSINGED_HANDLE_TYPE.equals(annoCtx.handleType)) {
-            FieldAccessAuthorityDecision fieldAccessible = isAllowed(annoCtx.authority, annoCtx.targetClass.getName(), null);
+            FieldAccessAuthorityDecision fieldAccessible = isAllowed(annoCtx.authority, annoCtx.targetClass.getName(),
+                    null);
             accessible = fieldAccessible.accessible;
             handleType = fieldAccessible.handleType;
             handleBean = fieldAccessible.handleBean;
@@ -210,7 +212,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
             if (StringUtils.isNullOrEmptyString(handleBean)) {
                 return annoCtx.unauthorized.handleObject(handleType, rawValue);
             } else {
-                return this.BEANS.findBean(handleBean, IUnauthorizedFieldHandler.class, null, true).handleObject(handleType, rawValue);
+                return this.BEANS.findBean(handleBean, IUnauthorizedFieldHandler.class, null, true)
+                        .handleObject(handleType, rawValue);
             }
         }
     }
@@ -237,15 +240,18 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      * @since 2025. 9. 25.
      * @version 0.8.0
      */
-    private FieldAccessAuthorityDecision isAllowed(IFieldAccessAuthorityProvider authority, String fqcn, String fieldName) {
+    private FieldAccessAuthorityDecision isAllowed(IFieldAccessAuthorityProvider authority, String fqcn,
+            String fieldName) {
         Result<FieldAccessAuthorityDecision> resultFieldAccessible = authority.isAllowed(fqcn, fieldName);
         if (resultFieldAccessible == null) {
             throw ExceptionUtils.newException(InternalServerException.class,
                     "Field 접근에 대한 판단은 'null'일 수가 없습니다. 원인=open.commons.spring.web.beans.authority.IFieldAccessAuthorityProvider.isAllowed(String, String) 구현이 올바르지 않습니다.");
         } else if (resultFieldAccessible.isError()) {
-            throw ExceptionUtils.newException(InternalServerException.class, "필드 접근권한 조회시 오류가 발생하였습니다. 원인=%s", resultFieldAccessible.getMessage());
+            throw ExceptionUtils.newException(InternalServerException.class, "필드 접근권한 조회시 오류가 발생하였습니다. 원인=%s",
+                    resultFieldAccessible.getMessage());
         } else if (resultFieldAccessible.getData() == null) {
-            throw ExceptionUtils.newException(InternalServerException.class, "필드 접근권한 조회시 오류가 발생하였습니다. 원인='권한조회결과가 존재하지 않습니다.'");
+            throw ExceptionUtils.newException(InternalServerException.class,
+                    "필드 접근권한 조회시 오류가 발생하였습니다. 원인='권한조회결과가 존재하지 않습니다.'");
         }
 
         return resultFieldAccessible.getData();
@@ -257,10 +263,12 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      * @version 0.8.0
      *
      * @see org.springframework.web.servlet.HandlerInterceptor#postHandle(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse, java.lang.Object, org.springframework.web.servlet.ModelAndView)
+     *      javax.servlet.http.HttpServletResponse, java.lang.Object,
+     *      org.springframework.web.servlet.ModelAndView)
      */
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+            ModelAndView modelAndView) throws Exception {
 
         if (modelAndView == null) {
             return;
@@ -281,7 +289,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
     }
 
     /**
-     * {@link AuthorizedRequestData} 정보와 TODO ( ) 정보를 확인하여, {@link AuthorizedRequestData#handleBean()},
+     * {@link AuthorizedRequestData} 정보와 TODO ( ) 정보를 확인하여,
+     * {@link AuthorizedRequestData#handleBean()},
      * {@link AuthorizedRequestData#handleType()}에 해당하는 정보를 제공합니다. <br>
      * 
      * <pre>
@@ -329,11 +338,13 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
                     }
                     // serialize 대상 데이터 유형(class)을 기준으로 검색
                     else if (this.authorizedResourcesMetadata.isAuthorizedField(objectClass, fieldName)) {
-                        AuthorizedObjectMetadata aom = this.authorizedResourcesMetadata.getAuthorizedObjectMetadata(objectClass);
+                        AuthorizedObjectMetadata aom = this.authorizedResourcesMetadata
+                                .getAuthorizedObjectMetadata(objectClass);
                         authorityBeanNameOnObject = () -> aom.getAuthorityBean();
                         fieldHandleBeanNamOnObject = () -> aom.getFieldHandleBean();
 
-                        AuthorizedFieldMetadata afm = this.authorizedResourcesMetadata.getAuthorizedFieldMetadata(objectClass, fieldName);
+                        AuthorizedFieldMetadata afm = this.authorizedResourcesMetadata
+                                .getAuthorizedFieldMetadata(objectClass, fieldName);
                         authorityBeanNameOnField = () -> afm.getAuthorityBean();
                         fieldHandleBeanNamOnField = () -> afm.getFieldHandleBean();
 
@@ -343,11 +354,13 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
                     else if (this.authorizedResourcesMetadata.isAuthorizedField(field.getDeclaringClass(), fieldName)) {
                         Class<?> declaringClass = field.getDeclaringClass();
 
-                        AuthorizedObjectMetadata aom = this.authorizedResourcesMetadata.getAuthorizedObjectMetadata(declaringClass);
+                        AuthorizedObjectMetadata aom = this.authorizedResourcesMetadata
+                                .getAuthorizedObjectMetadata(declaringClass);
                         authorityBeanNameOnObject = () -> aom.getAuthorityBean();
                         fieldHandleBeanNamOnObject = () -> aom.getFieldHandleBean();
 
-                        AuthorizedFieldMetadata afm = this.authorizedResourcesMetadata.getAuthorizedFieldMetadata(declaringClass, fieldName);
+                        AuthorizedFieldMetadata afm = this.authorizedResourcesMetadata
+                                .getAuthorizedFieldMetadata(declaringClass, fieldName);
                         authorityBeanNameOnField = () -> afm.getAuthorityBean();
                         fieldHandleBeanNamOnField = () -> afm.getFieldHandleBean();
 
@@ -356,10 +369,13 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
                         return AnnotatedContext.NULL;
                     }
 
-                    authority = AuthorizedResourceUtils.getBean(this.BEANS, IFieldAccessAuthorityProvider.class, authorityBeanNameOnObject, authorityBeanNameOnField, false);
-                    unauthorized = AuthorizedResourceUtils.getBean(this.BEANS, IUnauthorizedFieldHandler.class, fieldHandleBeanNamOnObject, fieldHandleBeanNamOnField, true);
+                    authority = AuthorizedResourceUtils.getBean(this.BEANS, IFieldAccessAuthorityProvider.class,
+                            authorityBeanNameOnObject, authorityBeanNameOnField, false);
+                    unauthorized = AuthorizedResourceUtils.getBean(this.BEANS, IUnauthorizedFieldHandler.class,
+                            fieldHandleBeanNamOnObject, fieldHandleBeanNamOnField, true);
 
-                    AnnotatedContext annoCtx = new AnnotatedContext(field.getType(), authority, unauthorized, handleType);
+                    AnnotatedContext annoCtx = new AnnotatedContext(field.getType(), authority, unauthorized,
+                            handleType);
                     return annoCtx;
                 });
     }
@@ -409,7 +425,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
                 String errMsg = String.format(
                         "'권한 제어가 적용된 파라미터'를 처리하는 도중 오류가 발생하였습니다. pojo.class=%s, field.class=%s, field.name=%s, field.raw_value=%s, authority.beane=%s, unauthorized.bean=%s, handle.type=%s, 원인=%s" //
                         , pojoClass, field.getType(), field.getName(), fieldRawValue //
-                        , annoCtx != null ? annoCtx.authority : null, annoCtx != null ? annoCtx.unauthorized : null, annoCtx != null ? annoCtx.handleType : null //
+                        , annoCtx != null ? annoCtx.authority : null, annoCtx != null ? annoCtx.unauthorized : null,
+                        annoCtx != null ? annoCtx.handleType : null //
                         , e.getMessage());
                 logger.error("{}", errMsg, e);
 
@@ -438,8 +455,10 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      * @param visited
      *            중복 방지 기록
      * @param fromRoot
-     *            {@link #postHandle(HttpServletRequest, HttpServletResponse, Object, ModelAndView)}에서 호출한지 여부.<br>
-     *            {@link ModelAndView#getModel()}의 값에 해당하는 정보를 처리하는 것이기 때문에, 'simple type'인 경우 값을 반환하기 위함.
+     *            {@link #postHandle(HttpServletRequest, HttpServletResponse, Object, ModelAndView)}에서
+     *            호출한지 여부.<br>
+     *            {@link ModelAndView#getModel()}의 값에 해당하는 정보를 처리하는 것이기 때문에,
+     *            'simple type'인 경우 값을 반환하기 위함.
      * @return
      *
      * @since 2025. 9. 25.
@@ -497,7 +516,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
             }
         } else {
             // @AuthorizedObject 어노테이션이 있거나, AuthorizedObjectMetadata 설정이 있거나.
-            if (rawValueClass.getAnnotation(AuthorizedObject.class) != null || this.authorizedResourcesMetadata.isAuthorizedObject(rawValueClass)) {
+            if (rawValueClass.getAnnotation(AuthorizedObject.class) != null
+                    || this.authorizedResourcesMetadata.isAuthorizedObject(rawValueClass)) {
                 resolvePojo(rawValue, visited);
             }
         }
@@ -544,7 +564,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
          * @since 2025. 9. 25.
          * @version 0.8.0
          */
-        public AnnotatedContext(Class<?> targetClass, IFieldAccessAuthorityProvider authority, IUnauthorizedFieldHandler unauthorized, @NotEmpty String handleType) {
+        public AnnotatedContext(Class<?> targetClass, IFieldAccessAuthorityProvider authority,
+                IUnauthorizedFieldHandler unauthorized, @NotEmpty String handleType) {
             this.targetClass = targetClass;
             this.authority = authority;
             this.unauthorized = unauthorized;

@@ -59,7 +59,8 @@ public class RequestHeaderFilter extends AbstractOncePerRequestFilter {
     /** {@link Order}에 사용할 값 */
     public static final int ORDER = RequestThreadNameFilter.ORDER + 1;
 
-    private static final IThreadLocalContext THREAD_SHARED_CONTEXT = ThreadLocalContextService.context(RequestHeaderFilter.class);
+    private static final IThreadLocalContext THREAD_SHARED_CONTEXT = ThreadLocalContextService
+            .context(RequestHeaderFilter.class);
 
     private final List<SharedHeader> sharedHeaders = new ArrayList<>();
 
@@ -88,7 +89,8 @@ public class RequestHeaderFilter extends AbstractOncePerRequestFilter {
      *      javax.servlet.http.HttpServletResponse, javax.servlet.FilterChain)
      */
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
         try {
             String headerName = null;
             String headerValue = null;
@@ -101,7 +103,8 @@ public class RequestHeaderFilter extends AbstractOncePerRequestFilter {
                 // #2. 헤더값 검증 후 공유
                 if (hdConfig.validator().test(headerName, headerValue)) {
                     THREAD_SHARED_CONTEXT.set(headerName, headerValue);
-                    // start - 공유 헤더로 설정한 이후에 추가 동작 지원. : 2025. 11. 7. 오후 2:27:11
+                    // start - 공유 헤더로 설정한 이후에 추가 동작 지원. : 2025. 11. 7. 오후
+                    // 2:27:11
                     hdConfig.postAction().accept(headerName, headerValue);
                     // end - 공유 헤더로 설정한 이후에 추가 동작 지원. : 2025. 11. 7. 오후 2:27:11
                 } else {
@@ -118,7 +121,8 @@ public class RequestHeaderFilter extends AbstractOncePerRequestFilter {
     }
 
     @Autowired
-    public void setSharedHeaders(@NotNull @Qualifier(GlobalServletAutoConfiguration.BEAN_QUALIFIER_PRIMARY_SHARED_HEADERS) List<SharedHeader> headers) {
+    public void setSharedHeaders(
+            @NotNull @Qualifier(GlobalServletAutoConfiguration.BEAN_QUALIFIER_PRIMARY_SHARED_HEADERS) List<SharedHeader> headers) {
         AssertUtils2.notNull(headers);
 
         this.sharedHeaders.addAll(headers);

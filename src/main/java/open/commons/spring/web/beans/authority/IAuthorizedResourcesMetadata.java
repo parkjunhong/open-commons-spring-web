@@ -39,7 +39,8 @@ import open.commons.spring.web.authority.metadata.AuthorizedFieldMetadata;
 import open.commons.spring.web.authority.metadata.AuthorizedObjectMetadata;
 
 /**
- * {@link AuthorizedObject}, {@link AuthorizedField}를 POJO 클래스에 직접 선언하지 않거나, 3rd POJO 클래스에 적용하고자 할때 사용되메타데이터 클래스
+ * {@link AuthorizedObject}, {@link AuthorizedField}를 POJO 클래스에 직접 선언하지 않거나, 3rd
+ * POJO 클래스에 적용하고자 할때 사용되메타데이터 클래스
  * 
  * @since 2025. 6. 12.
  * @version 0.8.0
@@ -48,7 +49,8 @@ import open.commons.spring.web.authority.metadata.AuthorizedObjectMetadata;
 public interface IAuthorizedResourcesMetadata {
 
     /**
-     * 데이터 유형({@link Class})에 설정된 {@link IFieldAccessAuthorityProvider}를 구현한 {@link Bean} 을 제공합니다. <br>
+     * 데이터 유형({@link Class})에 설정된 {@link IFieldAccessAuthorityProvider}를 구현한
+     * {@link Bean} 을 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -67,7 +69,8 @@ public interface IAuthorizedResourcesMetadata {
     public @Nullable String getAuthorityBeanName(Class<?> clazz);
 
     /**
-     * {@link Field}에 설정된 {@link IFieldAccessAuthorityProvider}를 구현한 {@link Bean} 을 제공합니다. <br>
+     * {@link Field}에 설정된 {@link IFieldAccessAuthorityProvider}를 구현한
+     * {@link Bean} 을 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -129,7 +132,8 @@ public interface IAuthorizedResourcesMetadata {
 
     /**
      * 
-     * 데이터 유형({@link Class})에 설정된 {@link IUnauthorizedFieldHandler}를 구현한 {@link Bean}을 제공합니다. <br>
+     * 데이터 유형({@link Class})에 설정된 {@link IUnauthorizedFieldHandler}를 구현한
+     * {@link Bean}을 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -148,7 +152,8 @@ public interface IAuthorizedResourcesMetadata {
     public @Nullable String getFieldHandleBeanName(Class<?> clazz);
 
     /**
-     * {@link Field}에 설정된 {@link IUnauthorizedFieldHandler}를 구현한 {@link Bean}을 제공합니다. <br>
+     * {@link Field}에 설정된 {@link IUnauthorizedFieldHandler}를 구현한 {@link Bean}을
+     * 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]

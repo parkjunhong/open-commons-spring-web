@@ -89,7 +89,8 @@ public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerial
      * @since 2025. 9. 25.
      * @version 0.8.0
      */
-    public MapSimpleTypeValueWrappingSerializer(ApplicationContext context, Class<?> serializedType, AnnotatedField annotatedField, IFieldAccessAuthorityProvider fieldAccessor,
+    public MapSimpleTypeValueWrappingSerializer(ApplicationContext context, Class<?> serializedType,
+            AnnotatedField annotatedField, IFieldAccessAuthorityProvider fieldAccessor,
             IUnauthorizedFieldHandler fieldHandler, IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
         super(context, serializedType, annotatedField, fieldAccessor, fieldHandler, authorizedResourcesMetadata);
     }
@@ -101,7 +102,8 @@ public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerial
      * @since 2026. 4. 14.
      * @version 4.0.0
      *
-     * @see tools.jackson.databind.ValueSerializer#serialize(java.lang.Object, tools.jackson.core.JsonGenerator,
+     * @see tools.jackson.databind.ValueSerializer#serialize(java.lang.Object,
+     *      tools.jackson.core.JsonGenerator,
      *      tools.jackson.databind.SerializationContext)
      */
     @Override
@@ -149,7 +151,8 @@ public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerial
      * @since 2025. 9. 25.
      * @version 4.0.0
      */
-    private void writeValueRecursive(Object rawValue, JsonGenerator gen, SerializationContext context, FieldAccessAuthorityDecision decision) throws JacksonException {
+    private void writeValueRecursive(Object rawValue, JsonGenerator gen, SerializationContext context,
+            FieldAccessAuthorityDecision decision) throws JacksonException {
         if (rawValue == null) {
             gen.writeNull();
             return;

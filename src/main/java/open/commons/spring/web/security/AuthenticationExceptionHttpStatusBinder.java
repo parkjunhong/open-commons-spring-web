@@ -46,7 +46,8 @@ import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
  * @version 2.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
-public class AuthenticationExceptionHttpStatusBinder extends AbstractExceptionStatusWriter implements AuthenticationEntryPoint {
+public class AuthenticationExceptionHttpStatusBinder extends AbstractExceptionStatusWriter
+        implements AuthenticationEntryPoint {
 
     /**
      * <br>
@@ -74,10 +75,12 @@ public class AuthenticationExceptionHttpStatusBinder extends AbstractExceptionSt
      * @version 2.1.0
      *
      * @see org.springframework.security.web.AuthenticationEntryPoint#commence(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse, org.springframework.security.core.AuthenticationException)
+     *      javax.servlet.http.HttpServletResponse,
+     *      org.springframework.security.core.AuthenticationException)
      */
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
+    public void commence(HttpServletRequest request, HttpServletResponse response,
+            AuthenticationException authException) throws IOException, ServletException {
         writeExceptionResponse(request, response, authException);
     }
 

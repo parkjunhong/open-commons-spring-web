@@ -107,10 +107,12 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *      java.lang.String)
      */
     @Override
-    public @Nullable AuthorizedRequestDataFieldMetadata getFieldMetadat(Class<?> targetClass, @NotBlank String fieldName) {
+    public @Nullable AuthorizedRequestDataFieldMetadata getFieldMetadat(Class<?> targetClass,
+            @NotBlank String fieldName) {
         Class<?> supportingClass = supporingAuthorizedRequestDataObjectType(targetClass);
         if (supportingClass != null) {
-            Optional<AuthorizedRequestDataFieldMetadata> opt = this.authorizedRequestFields.get(supportingClass).stream() //
+            Optional<AuthorizedRequestDataFieldMetadata> opt = this.authorizedRequestFields.get(supportingClass)
+                    .stream() //
                     .filter(fm -> fm.getName().equals(fieldName)) //
                     .findAny();
             return opt.isPresent() ? opt.get() : null;
@@ -130,7 +132,7 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
     @Override
     public @Nullable String getHandleBeanName(Class<?> targetClass, @NotBlank String fieldName) {
         AssertUtils2.notBlank(fieldName, "필드이름은 '빈 문자열'이 허용되지 않습니다.");
-        
+
         AuthorizedRequestDataObjectMetadata om = getObjectMetadata(targetClass);
         if (om == null) {
             return null;
@@ -218,7 +220,8 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
                 MapUtils.getOrDefault(this.authorizedRequestClasses, aoTargetType, aomSup = () -> objectMeta, true);
                 // #2. Authorized Request Field 설정
                 afmsNew = objectMeta.getFields();
-                afmsCur = MapUtils.getOrDefault(this.authorizedRequestFields, aoTargetType, afmSup = () -> new HashSet<>(), true);
+                afmsCur = MapUtils.getOrDefault(this.authorizedRequestFields, aoTargetType,
+                        afmSup = () -> new HashSet<>(), true);
                 for (AuthorizedRequestDataFieldMetadata afm : afmsNew) {
                     // 중복 체크
                     if (afmsCur.contains(afm)) {
@@ -264,7 +267,8 @@ public class AuthorizedRequestDataMetadata implements IAuthorizedRequestDataMeta
      *
      * @see #authorizedRequestObjectMetadata
      */
-    public void setAuthorizedRequestObjectMetadata(Collection<AuthorizedRequestDataObjectMetadata> authorizedRequestObjectMetadata) {
+    public void setAuthorizedRequestObjectMetadata(
+            Collection<AuthorizedRequestDataObjectMetadata> authorizedRequestObjectMetadata) {
         this.authorizedRequestObjectMetadata = authorizedRequestObjectMetadata;
         this.resolved = false;
     }

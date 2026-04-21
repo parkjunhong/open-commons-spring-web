@@ -46,7 +46,9 @@ public class ThreadPoolTaskSchedulerConfig {
     private volatile boolean executeExistingDelayedTasksAfterShutdownPolicy = true;
     // --------------------------------------------- //
 
-    // --- org.springframework.scheduling.concurrent.ExecutorConfigurationSupport --- //
+    // ---
+    // org.springframework.scheduling.concurrent.ExecutorConfigurationSupport
+    // --- //
     private long awaitTerminationMillis = 0;
     private @Nullable String beanName;
     private boolean waitForTasksToCompleteOnShutdown = false;
@@ -464,7 +466,8 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @see #continueExistingPeriodicTasksAfterShutdownPolicy
      */
-    public void setContinueExistingPeriodicTasksAfterShutdownPolicy(boolean continueExistingPeriodicTasksAfterShutdownPolicy) {
+    public void setContinueExistingPeriodicTasksAfterShutdownPolicy(
+            boolean continueExistingPeriodicTasksAfterShutdownPolicy) {
         this.continueExistingPeriodicTasksAfterShutdownPolicy = continueExistingPeriodicTasksAfterShutdownPolicy;
 
         this.initialized = true;
@@ -512,7 +515,8 @@ public class ThreadPoolTaskSchedulerConfig {
      *
      * @see #executeExistingDelayedTasksAfterShutdownPolicy
      */
-    public void setExecuteExistingDelayedTasksAfterShutdownPolicy(boolean executeExistingDelayedTasksAfterShutdownPolicy) {
+    public void setExecuteExistingDelayedTasksAfterShutdownPolicy(
+            boolean executeExistingDelayedTasksAfterShutdownPolicy) {
         this.executeExistingDelayedTasksAfterShutdownPolicy = executeExistingDelayedTasksAfterShutdownPolicy;
 
         this.initialized = true;

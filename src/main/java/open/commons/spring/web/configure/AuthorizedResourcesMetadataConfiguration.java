@@ -167,7 +167,8 @@ public class AuthorizedResourcesMetadataConfiguration {
     }
 
     /**
-     * <code>open-commons.application.authorized-object-metadata</code> 항목으로 설정된 값을 제공합니다. <br>
+     * <code>open-commons.application.authorized-object-metadata</code> 항목으로 설정된
+     * 값을 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -187,7 +188,8 @@ public class AuthorizedResourcesMetadataConfiguration {
     List<AuthorizedObjectMetadata> builtInAuthorizedObjectMetadata(Environment environment) {
         List<AuthorizedObjectMetadata> aoms = BeanUtils.listOf( //
                 environment, //
-                String.join(".", PREFIX_OPEN_COMMONS_APPLICATION, NAME_AUTHORIZED_OBJECT_METADATA.replace("[0].type", "")), //
+                String.join(".", PREFIX_OPEN_COMMONS_APPLICATION,
+                        NAME_AUTHORIZED_OBJECT_METADATA.replace("[0].type", "")), //
                 AuthorizedObjectMetadata.class //
         );
 

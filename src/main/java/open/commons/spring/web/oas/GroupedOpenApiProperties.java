@@ -102,13 +102,15 @@ public class GroupedOpenApiProperties {
 
     /**
      * API Info.<br>
-     * binding: {@link GroupedOpenApi.Builder#addOpenApiCustomiser(org.springdoc.core.customizers.OpenApiCustomiser)}
+     * binding:
+     * {@link GroupedOpenApi.Builder#addOpenApiCustomiser(org.springdoc.core.customizers.OpenApiCustomiser)}
      */
     private Info info;
 
     /**
      * External Documentation.<br>
-     * binding: {@link GroupedOpenApi.Builder#addOpenApiCustomiser(org.springdoc.core.customizers.OpenApiCustomiser)}
+     * binding:
+     * {@link GroupedOpenApi.Builder#addOpenApiCustomiser(org.springdoc.core.customizers.OpenApiCustomiser)}
      */
     private ExternalDocumentation externalDocs;
 

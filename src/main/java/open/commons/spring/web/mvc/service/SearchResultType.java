@@ -123,8 +123,8 @@ public enum SearchResultType {
             }
         }
 
-        throw new IllegalArgumentException(
-                "Unexpected 'type' value of 'SearchResultType'. expected: " + values0() + " & Ignore case-sensitive: " + ignoreCase + ", input: " + type);
+        throw new IllegalArgumentException("Unexpected 'type' value of 'SearchResultType'. expected: " + values0()
+                + " & Ignore case-sensitive: " + ignoreCase + ", input: " + type);
     }
 
     private static List<String> values0() {

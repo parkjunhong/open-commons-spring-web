@@ -65,8 +65,8 @@ public class AuthorizedFieldDecisionUtil {
         return BeanUtils.isSimpleValueType(type) || UUID.class.equals(type);
     }
 
-    public static FieldAccessAuthorityDecision resolve(Class<?> serializedType, AnnotatedField annotatedField, IFieldAccessAuthorityProvider fieldAccessor,
-            IAuthorizedResourcesMetadata metadata) {
+    public static FieldAccessAuthorityDecision resolve(Class<?> serializedType, AnnotatedField annotatedField,
+            IFieldAccessAuthorityProvider fieldAccessor, IAuthorizedResourcesMetadata metadata) {
 
         final Field field = annotatedField.getAnnotated();
         final Class<?> declaringClass = annotatedField.getDeclaringClass();
@@ -94,9 +94,12 @@ public class AuthorizedFieldDecisionUtil {
         try {
             // 3) 아직 미지정이면 권한서비스로 접근/처리결정 조회
             if (AuthorizedField.NO_ASSINGED_HANDLE_TYPE.equals(handleType)) {
-                Result<FieldAccessAuthorityDecision> resultFieldAccessorDecision = fieldAccessor.isAllowed(declaringClass.getName(), fieldName);
-                if (resultFieldAccessorDecision == null || resultFieldAccessorDecision.isError() || resultFieldAccessorDecision.getData() == null) {
-                    throw ExceptionUtils.newException(InternalServerException.class, "필드 접근권한 조회 실패. type=%s, field=%s, result=%s", declaringClass, fieldName,
+                Result<FieldAccessAuthorityDecision> resultFieldAccessorDecision = fieldAccessor
+                        .isAllowed(declaringClass.getName(), fieldName);
+                if (resultFieldAccessorDecision == null || resultFieldAccessorDecision.isError()
+                        || resultFieldAccessorDecision.getData() == null) {
+                    throw ExceptionUtils.newException(InternalServerException.class,
+                            "필드 접근권한 조회 실패. type=%s, field=%s, result=%s", declaringClass, fieldName,
                             resultFieldAccessorDecision);
                 }
                 FieldAccessAuthorityDecision fad = resultFieldAccessorDecision.getData();
@@ -108,7 +111,8 @@ public class AuthorizedFieldDecisionUtil {
                 accessible = false;
             }
         } catch (Exception e) {
-            throw ExceptionUtils.newException(InternalServerException.class, e, "필드 처리결정 중 오류. type=%s, field=%s, 원인=%s", declaringClass, fieldName, e.getMessage());
+            throw ExceptionUtils.newException(InternalServerException.class, e,
+                    "필드 처리결정 중 오류. type=%s, field=%s, 원인=%s", declaringClass, fieldName, e.getMessage());
         }
         return new FieldAccessAuthorityDecision(accessible, handleType, handleBean);
     }

@@ -104,10 +104,12 @@ public class InterceptorIgnoreValidator {
                 case Package:
                     return isAcceptable(prop.getFqcn(), interceptor);
                 default:
-                    throw ExceptionUtils.newException(UnsupportedOperationException.class, "지원하지 않는 'scheme'(%s) 입니다. 지원목록=%s", prop.getScheme(), Scheme.values());
+                    throw ExceptionUtils.newException(UnsupportedOperationException.class,
+                            "지원하지 않는 'scheme'(%s) 입니다. 지원목록=%s", prop.getScheme(), Scheme.values());
             }
         } catch (ClassNotFoundException e) {
-            throw ExceptionUtils.newException(InvalidBeanNameFqnResolveException.class, e, "'{}'에 해당하는 클래스 정보가 없습니다.", prop.getFqcn());
+            throw ExceptionUtils.newException(InvalidBeanNameFqnResolveException.class, e, "'{}'에 해당하는 클래스 정보가 없습니다.",
+                    prop.getFqcn());
         }
     }
 

@@ -72,7 +72,8 @@ public class UriEncodingHelper {
             if (variables == null || MapUtils.isNullOrEmpty(variables.getVariables())) {
                 variables = ByPassUriTemplateVariables.emptyVariables();
             }
-            Map<String, Object> encoded = encodeVariables(uriComponent, Encoding.TEMPLATE_AND_VALUES, variables.getVariables());
+            Map<String, Object> encoded = encodeVariables(uriComponent, Encoding.TEMPLATE_AND_VALUES,
+                    variables.getVariables());
 
             if (uriComponent == UriComponent.QUERY) {
                 return encodeQuery(template, encoded);
@@ -87,7 +88,8 @@ public class UriEncodingHelper {
                 variables = ByPassUriTemplateVariables.emptyVariables();
             }
 
-            Map<String, Object> encoded = encodeVariables(uriComponent, Encoding.VALUES_ONLY_STRICT, variables.getVariables());
+            Map<String, Object> encoded = encodeVariables(uriComponent, Encoding.VALUES_ONLY_STRICT,
+                    variables.getVariables());
 
             if (uriComponent == UriComponent.QUERY) {
                 return encodeQuery(template, encoded);
@@ -101,7 +103,8 @@ public class UriEncodingHelper {
             if (variables == null || MapUtils.isNullOrEmpty(variables.getVariables())) {
                 variables = ByPassUriTemplateVariables.emptyVariables();
             }
-            Map<String, Object> encoded = encodeVariables(uriComponent, Encoding.VALUES_ONLY_RESERVED, variables.getVariables());
+            Map<String, Object> encoded = encodeVariables(uriComponent, Encoding.VALUES_ONLY_RESERVED,
+                    variables.getVariables());
             if (uriComponent == UriComponent.QUERY) {
                 return encodeQuery(template, encoded);
             } else {
@@ -225,7 +228,8 @@ public class UriEncodingHelper {
      * @since 2025. 8. 27.
      * @version 0.8.0
      */
-    private static Map<String, Object> encodeVariables(UriComponent uriComponent, Encoding encoding, Map<String, ?> variables) {
+    private static Map<String, Object> encodeVariables(UriComponent uriComponent, Encoding encoding,
+            Map<String, ?> variables) {
         Map<String, Object> encoded = new LinkedHashMap<>();
         String varName = null;
         Object value = null;

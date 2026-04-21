@@ -77,11 +77,14 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
     public static final String FORWARDED_THREAD_NAME = RequestThreadNameFilter.THREAD_NAME_INTERCEPTED_URL;
     /**
      * {@link OncePerRequestFilter}와 {@link ThreadLocal} 정보를 공유하는 객체 <br>
-     * {@link OncePerRequestFilter} -> {@link LogFeatureAspect} 까지 동일한 {@link Thread} 로 연결되고 있음.
+     * {@link OncePerRequestFilter} -> {@link LogFeatureAspect} 까지 동일한
+     * {@link Thread} 로 연결되고 있음.
      */
-    private static final IThreadLocalContext REQUEST_THREAD_NAME_FILTER_CONTEXT = ThreadLocalContextService.context(RequestThreadNameFilter.class);
+    private static final IThreadLocalContext REQUEST_THREAD_NAME_FILTER_CONTEXT = ThreadLocalContextService
+            .context(RequestThreadNameFilter.class);
     /** Request 헤더의 정보를 공유하는 컨텍스트 */
-    private static final IThreadLocalContext REQUEST_HEADER_FILTER_CONTEXT = ThreadLocalContextService.context(RequestHeaderFilter.class);
+    private static final IThreadLocalContext REQUEST_HEADER_FILTER_CONTEXT = ThreadLocalContextService
+            .context(RequestHeaderFilter.class);
     /** {@link LogFeature#marker()} 값을 'pretty'하게 출력하는 정보 */
     private final ILogFeatureDecorationConsolidator logDecorator;
 
@@ -142,8 +145,9 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
     }
 
     /**
-     * {@link HandlerInterceptor} 이후에 실행되는 {@link RestController}, {@link Controller} 어노테이션이 선언된 클래스 중에
-     * {@link LogFeature} 어노테이션이 클래스에 선언되었거나 메소드에 선언된 경우에 대해서 처리합니다.<br>
+     * {@link HandlerInterceptor} 이후에 실행되는 {@link RestController},
+     * {@link Controller} 어노테이션이 선언된 클래스 중에 {@link LogFeature} 어노테이션이 클래스에
+     * 선언되었거나 메소드에 선언된 경우에 대해서 처리합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -179,23 +183,31 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
             // 어노테이션이 메소드에 설정이 되어 있거나 클래스에 설정된 경우 대상이 '모두'인 경우
             if (annoMethod != null || annoType.target().equals(Target.ALL)) {
                 // #3. 'feature'
-                String requestFeature = (String) REQUEST_HEADER_FILTER_CONTEXT.get(SharedHeadersBuiltinProvider.X_LOG_FEATURE);
-                String feature = requestFeature != null // Http 요청시 LogFeature 설정이 있었는지 확인
+                String requestFeature = (String) REQUEST_HEADER_FILTER_CONTEXT
+                        .get(SharedHeadersBuiltinProvider.X_LOG_FEATURE);
+                String feature = requestFeature != null // Http 요청시 LogFeature
+                                                        // 설정이 있었는지 확인
                         ? requestFeature //
-                        : getAttribute(annoMethod, annoType, LogFeature.PROP_FEATURE, f -> f != null && !f.trim().isEmpty());
+                        : getAttribute(annoMethod, annoType, LogFeature.PROP_FEATURE,
+                                f -> f != null && !f.trim().isEmpty());
                 // #4. 'marker'
-                String marker = getAttribute(annoMethod, annoType, LogFeature.PROP_MARKER, m -> m != null && !m.trim().isEmpty());
+                String marker = getAttribute(annoMethod, annoType, LogFeature.PROP_MARKER,
+                        m -> m != null && !m.trim().isEmpty());
                 // #5. 'thread'
-                // HandlerInterceptor.preHandle(...)에서 설정한 HTTP 요청 URL 기반 Thread 이름을 MDC에 추가.
-                String intcptorThreadName = (String) REQUEST_THREAD_NAME_FILTER_CONTEXT.get(RequestThreadNameFilter.THREAD_NAME_INTERCEPTED_URL);
-                String annoThread = getAttribute(annoMethod, annoType, LogFeature.PROP_THREAD, m -> m != null && !m.trim().isEmpty());
+                // HandlerInterceptor.preHandle(...)에서 설정한 HTTP 요청 URL 기반 Thread
+                // 이름을 MDC에 추가.
+                String intcptorThreadName = (String) REQUEST_THREAD_NAME_FILTER_CONTEXT
+                        .get(RequestThreadNameFilter.THREAD_NAME_INTERCEPTED_URL);
+                String annoThread = getAttribute(annoMethod, annoType, LogFeature.PROP_THREAD,
+                        m -> m != null && !m.trim().isEmpty());
                 String thread = StringUtils.isNullOrEmptyString(intcptorThreadName) //
                         ? annoThread.trim() //
                         : intcptorThreadName.trim();
                 // 'feature', 'marker' 설정
                 logger.trace("[log-aspected] feature={}, marker={}, thread={}", feature, marker, thread);
 
-                setLogFeature(feature, marker, thread, String.format("클래스 또는 메소드중에 반드시 1개는 'feature'값이 설정되어야 합니다. type=%s, method=%s", annoType, annoMethod));
+                setLogFeature(feature, marker, thread, String.format(
+                        "클래스 또는 메소드중에 반드시 1개는 'feature'값이 설정되어야 합니다. type=%s, method=%s", annoType, annoMethod));
             }
 
             return pjp.proceed();
@@ -205,7 +217,8 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
     }
 
     /**
-     * {@link Component} 어노테이션이 설정된 클래스의 메소드 중에 {@link Scheduled}와 {@link LogFeature}가 모두 선언된 메소드를 처리합니다. <br>
+     * {@link Component} 어노테이션이 설정된 클래스의 메소드 중에 {@link Scheduled}와
+     * {@link LogFeature}가 모두 선언된 메소드를 처리합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -267,13 +280,15 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * @since 2025. 7. 31.
      * @version 0.8.0
      */
-    private void setLogFeature(@NotBlank String feature, @Nullable String marker, @Nullable String thread, @Nullable String featureNotBlankAsserMsg) {
+    private void setLogFeature(@NotBlank String feature, @Nullable String marker, @Nullable String thread,
+            @Nullable String featureNotBlankAsserMsg) {
 
         // 'feature' 설정
         if (LogFeature.VALUE_THREAD_NULL.equals(feature) || (feature = feature.trim()).isEmpty()) {
             throw ExceptionUtils.newException(InvalidLogFeatureException.class, featureNotBlankAsserMsg);
         } else if (!feature.matches(LogFeature.FEATURE_REG_EX)) {
-            throw ExceptionUtils.newException(InvalidLogFeatureException.class, "설정된 'feature' 정보에 허용하지 않은 문자가 포함되어 있습니다. 허용하는 정규식=%s, feature=%s", LogFeature.FEATURE_REG_EX,
+            throw ExceptionUtils.newException(InvalidLogFeatureException.class,
+                    "설정된 'feature' 정보에 허용하지 않은 문자가 포함되어 있습니다. 허용하는 정규식=%s, feature=%s", LogFeature.FEATURE_REG_EX,
                     feature);
         }
         MDC.put(LogFeature.PROP_FEATURE, feature);

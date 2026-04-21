@@ -157,7 +157,8 @@ public class PaginationUtils {
                             case "desc":
                                 return Order.desc(strs[0]);
                             default:
-                                throw ExceptionUtils.newException(UnsupportedOperationException.class, "지원하지 않는 정보입니다. 허용=(asc,desc), 입력=%s", strs[1]);
+                                throw ExceptionUtils.newException(UnsupportedOperationException.class,
+                                        "지원하지 않는 정보입니다. 허용=(asc,desc), 입력=%s", strs[1]);
                         }
                     }
                 }).collect(Collectors.toList()) //

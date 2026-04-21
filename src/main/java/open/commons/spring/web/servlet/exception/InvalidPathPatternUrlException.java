@@ -112,7 +112,8 @@ public class InvalidPathPatternUrlException extends RuntimeException {
      * @since 2025. 7. 30.
      * @version 0.8.0
      */
-    public InvalidPathPatternUrlException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public InvalidPathPatternUrlException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 

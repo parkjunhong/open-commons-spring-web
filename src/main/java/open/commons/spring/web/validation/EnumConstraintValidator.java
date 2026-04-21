@@ -100,8 +100,8 @@ public class EnumConstraintValidator<C extends Annotation, T extends Enum<T>> ex
      * @version 0.4.0
      */
     @SuppressWarnings("unchecked")
-    private <R> R getProperty(C constraint, String method)
-            throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    private <R> R getProperty(C constraint, String method) throws NoSuchMethodException, SecurityException,
+            IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         Method m = constraint.getClass().getMethod(method);
         return (R) m.invoke(constraint);
     }
@@ -123,8 +123,10 @@ public class EnumConstraintValidator<C extends Annotation, T extends Enum<T>> ex
             this.disallowed.addAll(Arrays.asList(getProperty(constraint, "disallowed")));
             // method#3: boolean emptyIsAllowed()
             this.emptyIsAllowed = getProperty(constraint, "emptyIsAllowed");
-        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            String errMsg = String.format("'%s' 속성 정보를 읽는 도정 에러가 발생하였습니다. 원인=%s", constraint.getClass(), e.getMessage());
+        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
+                | InvocationTargetException e) {
+            String errMsg = String.format("'%s' 속성 정보를 읽는 도정 에러가 발생하였습니다. 원인=%s", constraint.getClass(),
+                    e.getMessage());
             logger.error(errMsg, e);
             throw ExceptionUtils.newException(InternalServerException.class, errMsg);
         }

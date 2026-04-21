@@ -88,8 +88,9 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
     }
 
     /**
-     * 메소드에 정의된 {@link RequestMapping} 및 확장 어노테이션 ({@link DeleteMapping}, {@link GetMapping}, {@link PatchMapping},
-     * {@link PostMapping}, {@link PutMapping}) 에서에서 경로 정보를 찾아 제공합니다. <br>
+     * 메소드에 정의된 {@link RequestMapping} 및 확장 어노테이션 ({@link DeleteMapping},
+     * {@link GetMapping}, {@link PatchMapping}, {@link PostMapping},
+     * {@link PutMapping}) 에서에서 경로 정보를 찾아 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -108,8 +109,10 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
     @SuppressWarnings("unchecked")
     private <A extends Annotation> TwoValueObject<RequestMethod, String> mappingOnMethod(Method method) {
         try {
-            // Aspect 설정 조건에서 아래 XXXMapping 중에 반드시 1개는 설정이 되기 때문에 null 확인을 하지 않음.
-            Class<?>[] annoTypes = { DeleteMapping.class, GetMapping.class, PatchMapping.class, PostMapping.class, PutMapping.class, RequestMapping.class };
+            // Aspect 설정 조건에서 아래 XXXMapping 중에 반드시 1개는 설정이 되기 때문에 null 확인을 하지
+            // 않음.
+            Class<?>[] annoTypes = { DeleteMapping.class, GetMapping.class, PatchMapping.class, PostMapping.class,
+                    PutMapping.class, RequestMapping.class };
 
             TwoValueObject<RequestMethod, A> httpRequest = Stream.of(annoTypes) //
                     .map(hm -> {
@@ -118,7 +121,8 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
                             return null;
                         }
 
-                        RequestMapping reqMapping = AnnotationUtils.findAnnotation(realAnno.getClass(), RequestMapping.class);
+                        RequestMapping reqMapping = AnnotationUtils.findAnnotation(realAnno.getClass(),
+                                RequestMapping.class);
                         RequestMethod reqMethod = reqMapping.method()[0];
 
                         return new TwoValueObject<RequestMethod, A>(reqMethod, realAnno);
@@ -136,7 +140,8 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
             logger.trace("method={}, anno={}, req.method={}, req.path={}", method, anno, requestMethod, path);
 
             return new TwoValueObject<RequestMethod, String>(httpRequest.first, path);
-        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
+                | InvocationTargetException e) {
             throw new InternalServerException(e);
         }
     }

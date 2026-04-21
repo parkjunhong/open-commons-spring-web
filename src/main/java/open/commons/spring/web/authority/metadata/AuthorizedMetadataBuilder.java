@@ -173,7 +173,8 @@ public class AuthorizedMetadataBuilder {
          * @since 2025. 6. 19.
          * @version 0.8.0
          */
-        private static <T> T newObject(Class<T> targetClass, Object builder, Map<String, Function<Object, Object>> postprocessors) {
+        private static <T> T newObject(Class<T> targetClass, Object builder,
+                Map<String, Function<Object, Object>> postprocessors) {
             T newObject = null;
             Method targetMethod = null;
 
@@ -195,7 +196,8 @@ public class AuthorizedMetadataBuilder {
 
                     // #2. [JDK 25 표준] builderField 접근 가능 여부 확인 및 안전한 해제
                     if (!builderField.canAccess(builder)) {
-                        // setAccessible(true) 대신 모듈 시스템에서 안전한 trySetAccessible() 사용
+                        // setAccessible(true) 대신 모듈 시스템에서 안전한
+                        // trySetAccessible() 사용
                         builderField.trySetAccessible();
                     }
 
@@ -211,11 +213,13 @@ public class AuthorizedMetadataBuilder {
                     }
 
                     // #4. 대상 객체의 Setter 메소드 호출
-                    targetMethod = targetClass.getMethod(String.join("", "set", StringUtils.toUpperCase(targetFieldName, 0)), targetField.getType());
+                    targetMethod = targetClass.getMethod(
+                            String.join("", "set", StringUtils.toUpperCase(targetFieldName, 0)), targetField.getType());
                     targetMethod.invoke(newObject, value);
                 }
             } catch (Exception e) {
-                String errMsg = String.format("데이터 처리 도중 오류가 발생하였습니다. target.class=%s, target.method=%s, target.object=%s / builder.class=%s, builder.field=%s, builder.object=%s" //
+                String errMsg = String.format(
+                        "데이터 처리 도중 오류가 발생하였습니다. target.class=%s, target.method=%s, target.object=%s / builder.class=%s, builder.field=%s, builder.object=%s" //
                         , targetClass, targetMethod, newObject, builderClass, builderField, builder);
                 LOGGER.error(errMsg, e);
                 throw ExceptionUtils.newException(InternalServerException.class, e, errMsg);
@@ -268,7 +272,8 @@ public class AuthorizedMetadataBuilder {
         private static class AuthorizedObjectMetadataBuilder {
             static Map<String, Function<Object, Object>> pp = new HashMap<>();
             static {
-                pp.put("fields", o -> ((List<FieldBuilder>) o).stream().map(b -> b.build()).collect(Collectors.toList()));
+                pp.put("fields",
+                        o -> ((List<FieldBuilder>) o).stream().map(b -> b.build()).collect(Collectors.toList()));
             }
             private String authorityBean = ForcedUnintelligibleJudge.BEAN_QUALIFIER;
             private String fieldHandleBean;
@@ -435,7 +440,8 @@ public class AuthorizedMetadataBuilder {
          * </pre>
          *
          * @param authorityBean
-         *            {@link IFieldAccessAuthorityProvider}를 구현함 {@link Bean} 이름.
+         *            {@link IFieldAccessAuthorityProvider}를 구현함 {@link Bean}
+         *            이름.
          * @return
          *
          * @since 2025. 6. 18.
@@ -535,7 +541,8 @@ public class AuthorizedMetadataBuilder {
          * </pre>
          *
          * @param authorityBean
-         *            {@link IFieldAccessAuthorityProvider}를 구현함 {@link Bean} 이름.
+         *            {@link IFieldAccessAuthorityProvider}를 구현함 {@link Bean}
+         *            이름.
          * @return
          *
          * @since 2025. 6. 18.

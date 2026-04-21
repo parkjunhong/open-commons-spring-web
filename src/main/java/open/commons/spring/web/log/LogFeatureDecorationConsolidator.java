@@ -57,7 +57,8 @@ public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationCo
     private final Logger logger = LoggerFactory.getLogger(LogFeatureDecorationConsolidator.class);
 
     /**
-     * <li>key: 'feature'({@link LogFeature#feature()})와 'marker'({@link LogFeature#marker()})의 조합
+     * <li>key: 'feature'({@link LogFeature#feature()})와
+     * 'marker'({@link LogFeature#marker()})의 조합
      * <li>value: 'marker' 값을 처리하는 함수.
      */
     private final ConcurrentSkipListMap<String, Function<String, String>> decorators = new ConcurrentSkipListMap<>();
@@ -86,7 +87,8 @@ public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationCo
      * @since 2025. 7. 29.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.log.ILogFeatureDecorationConsolidator#decorator(java.lang.String, java.lang.String)
+     * @see open.commons.spring.web.log.ILogFeatureDecorationConsolidator#decorator(java.lang.String,
+     *      java.lang.String)
      */
     @Override
 
@@ -108,7 +110,8 @@ public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationCo
             this.decoratorConfigurations.stream().filter(d -> {
                 boolean nulpty = StringUtils.isNullOrEmptyString(d.feature());
                 if (nulpty) {
-                    logger.warn("feature('{}') is null or emptry. marker={}, decorator={}", d.feature(), d.marker(), d.decorator());
+                    logger.warn("feature('{}') is null or emptry. marker={}, decorator={}", d.feature(), d.marker(),
+                            d.decorator());
                 }
                 return !nulpty;
             }).forEach(d -> {
@@ -120,7 +123,8 @@ public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationCo
         this.resolved = true;
     }
 
-    public void setMdcPropertyLogDecoratorConfigurations(@Nullable Collection<ILogFeatureDecorator> decoratorConfigurations) {
+    public void setMdcPropertyLogDecoratorConfigurations(
+            @Nullable Collection<ILogFeatureDecorator> decoratorConfigurations) {
         this.decoratorConfigurations = decoratorConfigurations;
         this.resolved = false;
     }

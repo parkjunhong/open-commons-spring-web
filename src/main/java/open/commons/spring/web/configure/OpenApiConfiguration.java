@@ -40,22 +40,27 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 
 import open.commons.core.collection.concurrent.ConcurrentLinkedHashMap;
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
+import open.commons.spring.web.oas.GroupOpenApiRegistrar;
 import open.commons.spring.web.oas.GroupedOpenApiProperties;
 
 /**
- * <a href="https://springdoc.org/">Spring Docs</a> {@link OpenAPI}를 사용하기 위한 설정.<br>
+ * <a href="https://springdoc.org/">Spring Docs</a> {@link OpenAPI}를 사용하기 위한
+ * 설정.<br>
  * 
  * <p>
  * application.yml 내 속성정의는 다음과 같습니다.<br>
  * 
- * 설정 내용 중에 "open-commons.springdoc.open-api.info.contact.[email, name]"은 필수항목입니다.<br>
+ * 설정 내용 중에 "open-commons.springdoc.open-api.info.contact.[email, name]"은
+ * 필수항목입니다.<br>
  * 
  * <pre>
  * open-commons:
@@ -92,12 +97,13 @@ import open.commons.spring.web.oas.GroupedOpenApiProperties;
  * @see <a href="https://springdoc.org/">springdoc.org</a>
  */
 @Configuration(OpenApiConfiguration.BEAN_QUALIFIER)
+@Import(GroupOpenApiRegistrar.class)
 public class OpenApiConfiguration {
     private static Logger logger = LoggerFactory.getLogger(OpenApiConfiguration.class);
 
-    public static final String BEAN_QUALIFIER = "open.commons.spring.web.oas.OpenApiConfig";
-    public static final String BEAN_QUALIFIER_OPEN_API_INFO = "open.commons.spring.web.oas.OpenApiConfig#OPEN_API_INFO";
-    public static final String BEAN_QUALIFIER_OPEN_API_EXT_DOCS = "open.commons.spring.web.oas.OpenApiConfig#OPEN_API_EXT_DOCS";
+    public static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.OpenApiConfiguration";
+    public static final String BEAN_QUALIFIER_OPEN_API_INFO = "open.commons.spring.web.configure.OpenApiConfiguration#OPEN_API_INFO";
+    public static final String BEAN_QUALIFIER_OPEN_API_EXT_DOCS = "open.commons.spring.web.configure.OpenApiConfiguration#OPEN_API_EXT_DOCS";
     /**
      * {@link GroupedOpenApi}를 지원하기 위한 {@link Bean}<br>
      * <code>
@@ -106,7 +112,7 @@ public class OpenApiConfiguration {
      * 
      * @since 0.8.0
      */
-    public static final String BEAN_QUALIFIER_GROUPED_OPEN_API_PROPERTIES = "open.commons.spring.web.oas.OpenApiConfig#GROUPED_OPEN_API_PROPERTIES";
+    public static final String BEAN_QUALIFIER_GROUPED_OPEN_API_PROPERTIES = "open.commons.spring.web.configure.OpenApiConfiguration#GROUPED_OPEN_API_PROPERTIES";
     /** configuration properties path for {@link Info}. */
     private static final String PROPERTIES_OPEN_API_INFO = "open-commons.springdoc.open-api.info";
     /** configuration properties path for {@link ExternalDocumentation}. */
@@ -173,7 +179,8 @@ public class OpenApiConfiguration {
         }
 
         if (this.context.containsBeanDefinition(BEAN_QUALIFIER_OPEN_API_EXT_DOCS)) {
-            ExternalDocumentation extDoc = this.context.getBean(BEAN_QUALIFIER_OPEN_API_EXT_DOCS, ExternalDocumentation.class);
+            ExternalDocumentation extDoc = this.context.getBean(BEAN_QUALIFIER_OPEN_API_EXT_DOCS,
+                    ExternalDocumentation.class);
             api.setExternalDocs(extDoc);
         }
 
@@ -290,7 +297,8 @@ public class OpenApiConfiguration {
      * @since 2025. 4. 29.
      * @version 0.8.0
      */
-    public static GroupedOpenApi loadGroupedOpenApi(@NotNull Map<String, GroupedOpenApiProperties> props, @NotEmpty String apiName) {
+    public static GroupedOpenApi loadGroupedOpenApi(@NotNull Map<String, GroupedOpenApiProperties> props,
+            @NotEmpty String apiName) {
         GroupedOpenApiProperties prop = props.get(apiName);
         if (prop == null) {
             logger.warn("'{}'를 위한 설정이 존재하지 않습니다.", apiName);
@@ -301,7 +309,8 @@ public class OpenApiConfiguration {
     }
 
     /**
-     * {@link GroupedOpenApiProperties} 설정을 {@link GroupedOpenApi} 객체로 변환합니다. <br>
+     * {@link GroupedOpenApiProperties} 설정을 {@link GroupedOpenApi} 객체로 변환합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -320,6 +329,8 @@ public class OpenApiConfiguration {
      * @version 0.8.0
      */
     public static GroupedOpenApi transform(@NotNull GroupedOpenApiProperties prop, String name) {
+        AssertUtils2.notNulls(prop, name);
+
         GroupedOpenApi api = GroupedOpenApi.builder()//
                 .group(prop.getGroup())//
                 .displayName(prop.getDisplayName())//

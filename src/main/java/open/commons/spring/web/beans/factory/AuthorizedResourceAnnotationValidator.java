@@ -92,7 +92,9 @@ public class AuthorizedResourceAnnotationValidator implements BeanFactoryPostPro
             AuthorizedRequest classAR = AnnotationUtils.findAnnotation(beanType, AuthorizedRequest.class);
 
             if (classAM != null && classAR != null) {
-                throw new IllegalStateException(String.format("[권한 설정 오류] 클래스 '%s'에 @AuthorizedMethod 와 @AuthorizedRequest 를 동시에 사용할 수 없습니다.", beanType.getName()));
+                throw new IllegalStateException(
+                        String.format("[권한 설정 오류] 클래스 '%s'에 @AuthorizedMethod 와 @AuthorizedRequest 를 동시에 사용할 수 없습니다.",
+                                beanType.getName()));
             }
 
             noAnnoOnClass = classAM == null && classAR == null;
@@ -113,13 +115,15 @@ public class AuthorizedResourceAnnotationValidator implements BeanFactoryPostPro
                 }
 
                 if (methodAM != null && methodAR != null) {
-                    throw new IllegalStateException(
-                            String.format("[권한 설정 오류] 메서드 '%s.%s()'에 @AuthorizedMethod 와 @AuthorizedRequest 를 동시에 사용할 수 없습니다.", beanType.getName(), method.getName()));
+                    throw new IllegalStateException(String.format(
+                            "[권한 설정 오류] 메서드 '%s.%s()'에 @AuthorizedMethod 와 @AuthorizedRequest 를 동시에 사용할 수 없습니다.",
+                            beanType.getName(), method.getName()));
                 }
 
                 if ((classAM != null && methodAR != null) || (classAR != null && methodAM != null)) {
-                    throw new IllegalStateException(
-                            String.format("[권한 설정 오류] '%s.%s()'는 클래스와 메서드에 @AuthorizedMethod / @AuthorizedRequest 가 교차 사용되었습니다.", beanType.getName(), method.getName()));
+                    throw new IllegalStateException(String.format(
+                            "[권한 설정 오류] '%s.%s()'는 클래스와 메서드에 @AuthorizedMethod / @AuthorizedRequest 가 교차 사용되었습니다.",
+                            beanType.getName(), method.getName()));
                 }
 
                 logger.trace("bean.name={}, bean.type={}, method={}", beanName, beanType, method);
@@ -132,7 +136,8 @@ public class AuthorizedResourceAnnotationValidator implements BeanFactoryPostPro
         Set<Method> methods = new LinkedHashSet<>();
         methods.addAll(Arrays.asList(clazz.getDeclaredMethods()));
         for (Class<?> iface : clazz.getInterfaces()) {
-            methods.addAll(Arrays.asList(iface.getMethods())); // default methods 포함
+            methods.addAll(Arrays.asList(iface.getMethods())); // default
+                                                               // methods 포함
         }
 
         return methods;

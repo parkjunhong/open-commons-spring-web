@@ -88,15 +88,16 @@ public abstract class AbstractHttpSecurityConfig {
     protected boolean enableFormLogin;
     /**
      * 이 옵션을 <code>true</code>로 설정하는 경우
-     * "org.springframework.security.oauth2.client.registration.ClientRegistrationRepository" 등을 구현한 {@link Bean}이 필요할 수
-     * 있습니다.
+     * "org.springframework.security.oauth2.client.registration.ClientRegistrationRepository"
+     * 등을 구현한 {@link Bean}이 필요할 수 있습니다.
      * 
      * @see #oauth2Login(OAuth2LoginConfigurer)
      */
     protected boolean enableOauth2Login;
     /**
-     * 이 옵션을 <code>true</code>로 설정하는 경우 "org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager" 등을
-     * 구현한 {@link Bean}이 필요할 수 있습니다.
+     * 이 옵션을 <code>true</code>로 설정하는 경우
+     * "org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager"
+     * 등을 구현한 {@link Bean}이 필요할 수 있습니다.
      * 
      * @see #oauth2Client(OAuth2ClientConfigurer)
      */
@@ -112,7 +113,8 @@ public abstract class AbstractHttpSecurityConfig {
     /** @see #jee(JeeConfigurer) */
     protected boolean enableJee;
 
-    // [PATCH] enableAuthorizeHttpRequests 플래그 제거 (SS 7.0에서는 항상 authorizeHttpRequests만 사용)
+    // [PATCH] enableAuthorizeHttpRequests 플래그 제거 (SS 7.0에서는 항상
+    // authorizeHttpRequests만 사용)
 
     /**
      * 이 옵션을 <code>true</code>로 설정하는 경우 기능에 필요한 {@link Bean}을 확인하기 바랍니다.
@@ -159,7 +161,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#anonymous(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#anonymous(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -182,7 +185,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity}에서 {@link AuthenticationManager}, {@link AuthenticationProvider}를 설정합니다.<br>
+     * {@link HttpSecurity}에서 {@link AuthenticationManager},
+     * {@link AuthenticationProvider}를 설정합니다.<br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -204,7 +208,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#authorizeHttpRequests(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#authorizeHttpRequests(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -223,7 +228,8 @@ public abstract class AbstractHttpSecurityConfig {
      * 
      * @see HttpSecurity#authorizeHttpRequests(org.springframework.security.config.Customizer)
      */
-    protected void authorizeHttpRequests(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry configurer) {
+    protected void authorizeHttpRequests(
+            AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry configurer) {
     }
 
     /**
@@ -264,7 +270,8 @@ public abstract class AbstractHttpSecurityConfig {
             executeIfOverride(this::oauth2Client, http::oauth2Client, "oauth2Client", OAuth2ClientConfigurer.class);
         }
         if (this.enableOauth2ResourceServer) {
-            executeIfOverride(this::oauth2ResourceServer, http::oauth2ResourceServer, "oauth2ResourceServer", OAuth2ResourceServerConfigurer.class);
+            executeIfOverride(this::oauth2ResourceServer, http::oauth2ResourceServer, "oauth2ResourceServer",
+                    OAuth2ResourceServerConfigurer.class);
         }
         if (this.enableX509) {
             executeIfOverride(this::x509, http::x509, "x509", X509Configurer.class);
@@ -278,7 +285,8 @@ public abstract class AbstractHttpSecurityConfig {
         http.exceptionHandling(this::exceptionHandling);
 
         // #4. 권한 규칙 (좁은 규칙 -> 넓은 규칙)
-        executeIfOverride(this::authorizeHttpRequests, http::authorizeHttpRequests, "authorizeHttpRequests", AuthorizationManagerRequestMatcherRegistry.class);
+        executeIfOverride(this::authorizeHttpRequests, http::authorizeHttpRequests, "authorizeHttpRequests",
+                AuthorizationManagerRequestMatcherRegistry.class);
 
         // #5. AuthentationProvider, AuthenticationManager 'Hook'
         this.authenticationProviders(http);
@@ -296,7 +304,8 @@ public abstract class AbstractHttpSecurityConfig {
         http.cors(this::cors);
         http.servletApi(this::servletApi);
         if (enablePasswordManagement) {
-            executeIfOverride(this::passwordManagement, http::passwordManagement, "passwordManagement", PasswordManagementConfigurer.class);
+            executeIfOverride(this::passwordManagement, http::passwordManagement, "passwordManagement",
+                    PasswordManagementConfigurer.class);
         }
         http.requestCache(this::requestCache);
         if (enablePortMapper) {
@@ -314,7 +323,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#cors(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#cors(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -337,7 +347,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#csrf(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#csrf(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -360,7 +371,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#exceptionHandling(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#exceptionHandling(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -382,7 +394,8 @@ public abstract class AbstractHttpSecurityConfig {
     protected void exceptionHandling(ExceptionHandlingConfigurer<HttpSecurity> configurer) {
     }
 
-    private final <T> void executeIfOverride(Customizer<T> configurer, ThrowableFunction<Customizer<T>, HttpSecurity> applier, String methodName, Class<?>... argTypes)
+    private final <T> void executeIfOverride(Customizer<T> configurer,
+            ThrowableFunction<Customizer<T>, HttpSecurity> applier, String methodName, Class<?>... argTypes)
             throws Exception {
         if (isOverrided(methodName, argTypes)) {
             try {
@@ -391,7 +404,8 @@ public abstract class AbstractHttpSecurityConfig {
                 throw new Exception("", e);
             }
         } else {
-            logger.warn("'{}' 옵션을 활성화(true) 시켰으나, '{}' 메소드를 'overriding' 하지 않았습니다.", methodName, getMethod(methodName, argTypes));
+            logger.warn("'{}' 옵션을 활성화(true) 시켰으나, '{}' 메소드를 'overriding' 하지 않았습니다.", methodName,
+                    getMethod(methodName, argTypes));
         }
     }
 
@@ -422,9 +436,11 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#formLogin(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#formLogin(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableFormLogin} 값을 <code>true</code>로 설정합니다.</font>
+     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableFormLogin}
+     * 값을 <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -467,12 +483,14 @@ public abstract class AbstractHttpSecurityConfig {
         try {
             return userClass.getDeclaredMethod(methodName, argTypes);
         } catch (NoSuchMethodException e) {
-            throw ExceptionUtils.newException(RuntimeException.class, "'%s'클래스에 '%s' 메소드가 존재하지 않습니다.", userClass.getName(), methodName, e);
+            throw ExceptionUtils.newException(RuntimeException.class, "'%s'클래스에 '%s' 메소드가 존재하지 않습니다.",
+                    userClass.getName(), methodName, e);
         }
     }
 
     /**
-     * {@link HttpSecurity#headers(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#headers(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -495,9 +513,11 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#httpBasic(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#httpBasic(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableHttpBasic} 값을 <code>true</code>로 설정합니다.</font>
+     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableHttpBasic}
+     * 값을 <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -542,9 +562,11 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#jee(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#jee(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableJee} 값을 <code>true</code>로 설정합니다.</font>
+     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableJee} 값을
+     * <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -566,7 +588,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#logout(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#logout(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -589,9 +612,11 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#oauth2Client(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#oauth2Client(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableOauth2Client} 값을 <code>true</code>로 설정합니다.</font>
+     * <font color="red">'overriding'한 메소드를 사용하기 위해서는
+     * {@link #enableOauth2Client} 값을 <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -613,9 +638,11 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#oauth2Login(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#oauth2Login(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableOauth2Login} 값을 <code>true</code>로 설정합니다.</font>
+     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableOauth2Login}
+     * 값을 <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -637,10 +664,11 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#oauth2ResourceServer(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#oauth2ResourceServer(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableOauth2ResourceServer} 값을 <code>true</code>로
-     * 설정합니다.</font>
+     * <font color="red">'overriding'한 메소드를 사용하기 위해서는
+     * {@link #enableOauth2ResourceServer} 값을 <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -662,10 +690,11 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#passwordManagement(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#passwordManagement(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enablePasswordManagement} 값을 <code>true</code>로
-     * 설정합니다.</font>
+     * <font color="red">'overriding'한 메소드를 사용하기 위해서는
+     * {@link #enablePasswordManagement} 값을 <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -687,7 +716,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#portMapper(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#portMapper(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -730,9 +760,11 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#rememberMe(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#rememberMe(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableRememberMe} 값을 <code>true</code>로 설정합니다.</font>
+     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableRememberMe}
+     * 값을 <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -754,7 +786,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#requestCache(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#requestCache(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -777,7 +810,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#requestMatchers(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#requestMatchers(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -800,7 +834,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#requiresChannel(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#requiresChannel(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -820,18 +855,22 @@ public abstract class AbstractHttpSecurityConfig {
      * 
      * @see HttpSecurity#requiresChannel(org.springframework.security.config.Customizer)
      * 
-     * @deprecated {@link HttpSecurity#requiresChannel(Customizer)} 메소드가 {@code deprecated} 되었고, 대체 메소드로 제시한
+     * @deprecated {@link HttpSecurity#requiresChannel(Customizer)} 메소드가
+     *             {@code deprecated} 되었고, 대체 메소드로 제시한
      *             {@link HttpSecurity#redirectToHttps(Customizer)} 메소드를 위한
-     *             {@link #redirectToHttps(HttpsRedirectConfigurer)} 를 사용하기 바랍니다.
+     *             {@link #redirectToHttps(HttpsRedirectConfigurer)} 를 사용하기
+     *             바랍니다.
      */
     @Deprecated(since = "4.0.0", forRemoval = true)
     protected void requiresChannel(ChannelSecurityConfigurer<HttpSecurity>.ChannelRequestMatcherRegistry configurer) {
     }
 
     /**
-     * {@link HttpSecurity#saml2Login(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#saml2Login(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableSaml2} 값을 <code>true</code>로 설정합니다.</font>
+     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableSaml2} 값을
+     * <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -853,9 +892,11 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#saml2Logout(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#saml2Logout(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableSaml2} 값을 <code>true</code>로 설정합니다.</font>
+     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableSaml2} 값을
+     * <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -877,7 +918,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#securityContext(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#securityContext(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -900,7 +942,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#servletApi(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#servletApi(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -923,7 +966,8 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#sessionManagement(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#sessionManagement(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
      * 
      * <pre>
@@ -946,9 +990,11 @@ public abstract class AbstractHttpSecurityConfig {
     }
 
     /**
-     * {@link HttpSecurity#x509(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다. <br>
+     * {@link HttpSecurity#x509(org.springframework.security.config.Customizer)}에
+     * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableX509} 값을 <code>true</code>로 설정합니다.</font>
+     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableX509} 값을
+     * <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]

@@ -73,7 +73,8 @@ import open.commons.spring.web.authority.AuthorizedRequest;
 
 /**
  * Spring기반 어플리케이션이 제공하는 REST API 정보를 제공합니다.<br>
- * {@link Controller}, {@link RestController} 를 구현한 클래스에는 {@link Tag#name()} 어노테이션이 설정되어야 하며,<br>
+ * {@link Controller}, {@link RestController} 를 구현한 클래스에는 {@link Tag#name()}
+ * 어노테이션이 설정되어야 하며,<br>
  * 메소드에는 {@link Operation#summary()} 어노테이션 정보가 설정되어야 합니다.<br>
  * 
  * 설정파일(yaml 파일 기준)에는 아래와 같이 설정하여 기본 Path 정보를 수정할 수 있습니다.
@@ -109,7 +110,8 @@ import open.commons.spring.web.authority.AuthorizedRequest;
  */
 @Tag(name = "REST API 제공 서비스", description = "서비스가 제공하는 REST API 정보를 제공합니다.")
 @RestController
-@RequestMapping("${" + RequestMappingProvider.PROPERTIES_PREFIX + ":" + RequestMappingProvider.PROPERTIES_PREFIX_VALUE + "}")
+@RequestMapping("${" + RequestMappingProvider.PROPERTIES_PREFIX + ":" + RequestMappingProvider.PROPERTIES_PREFIX_VALUE
+        + "}")
 @Validated
 @AuthorizedRequest
 public class RequestMappingProvider implements ApplicationListener<ApplicationReadyEvent> {
@@ -170,11 +172,15 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
         // 여기서 groups 를 로깅하거나, Bean 으로 등록하거나, 별도 API 로 제공 가능
         apiGroup.forEach(g -> {
             String tagDesc = null;
-            this.logger.info("Group: {}{}", g.getName(), StringUtils.isNullOrEmptyString(tagDesc = g.getDescription()) ? "" : String.join(tagDesc, " (", ")"));
+            this.logger.info("Group: {}{}", g.getName(),
+                    StringUtils.isNullOrEmptyString(tagDesc = g.getDescription()) ? ""
+                            : String.join(tagDesc, " (", ")"));
             g.getRestApis().forEach(api -> {
                 String opDesc = null;
-                this.logger.trace("  - {} {}, {}{}", String.format("%-8s", String.join(api.getMethod().toString(), "[", "]")), api.getPath(), api.getName(),
-                        StringUtils.isNullOrEmptyString(opDesc = api.getDescription()) ? "" : String.join(opDesc, " (", ")"));
+                this.logger.trace("  - {} {}, {}{}",
+                        String.format("%-8s", String.join(api.getMethod().toString(), "[", "]")), api.getPath(),
+                        api.getName(), StringUtils.isNullOrEmptyString(opDesc = api.getDescription()) ? ""
+                                : String.join(opDesc, " (", ")"));
             });
         });
     }
@@ -206,7 +212,8 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
         List<RestApiDecl> apiDecls = new ArrayList<>();
 
         RequestMapping classMapping = AnnotatedElementUtils.findMergedAnnotation(clazz, RequestMapping.class);
-        String[] classPaths = (classMapping != null && classMapping.path().length > 0) ? classMapping.path() : new String[] { "" };
+        String[] classPaths = (classMapping != null && classMapping.path().length > 0) ? classMapping.path()
+                : new String[] { "" };
 
         // --- 메소드 검사 ---
         for (Method method : clazz.getDeclaredMethods()) {
@@ -226,7 +233,8 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
                 continue;
             }
 
-            // RequestMapping#path() 또는 RequestMapping#value() 값을 설정하지 않은 경우에 대한 방어 코드
+            // RequestMapping#path() 또는 RequestMapping#value() 값을 설정하지 않은 경우에 대한
+            // 방어 코드
             if (methodPaths.size() < 1) {
                 methodPaths.add("");
             }
@@ -281,7 +289,8 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
         return apiGroups;
     }
 
-    private void _findAndAddRestApiGroups(Class<?> clazz, Class<? extends Annotation> controllerType, List<RestApiGroup> restApiGroupBucket) {
+    private void _findAndAddRestApiGroups(Class<?> clazz, Class<? extends Annotation> controllerType,
+            List<RestApiGroup> restApiGroupBucket) {
         List<RestApiGroup> groups = _buildRestApiGroup(clazz, controllerType);
         if (groups != null) {
             restApiGroupBucket.addAll(groups);
@@ -346,7 +355,8 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
             httpMethods.add(RequestMethod.DELETE);
             methodPaths.addAll(Arrays.asList(delete.path()));
         } else if (req != null) {
-            httpMethods.addAll(req.method().length > 0 ? Arrays.asList(req.method()) : CollectionUtils.newList(RequestMethod.GET));
+            httpMethods.addAll(
+                    req.method().length > 0 ? Arrays.asList(req.method()) : CollectionUtils.newList(RequestMethod.GET));
             methodPaths.addAll(req.path().length > 0 ? Arrays.asList(req.path()) : CollectionUtils.newList(""));
         } else {
             methodPaths.add("");
@@ -386,7 +396,8 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      * @since 2025. 10. 20.
      * @version 0.8.0
      */
-    private RestApiMetadataDTO createRestApiMetadata(Comparator<RestApiGroup> groupOrder, Comparator<RestApiDecl> apiOrder) {
+    private RestApiMetadataDTO createRestApiMetadata(Comparator<RestApiGroup> groupOrder,
+            Comparator<RestApiDecl> apiOrder) {
 
         List<RestApiGroup> sortCtrlApiGroups = this.controllerApiGroups.stream() //
                 .sorted(groupOrder) //
@@ -448,7 +459,8 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      */
     @Operation(summary = "REST API Metadata 제공", description = "")
     @GetMapping(path = "${open-commons.spring.web.beans.controller.request-mapping-provider.get-all:}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RestApiMetadataDTO> getRestApiMetadata(@RequestParam(name = "groupOrder", defaultValue = "name") OrderBy groupOrder,
+    public ResponseEntity<RestApiMetadataDTO> getRestApiMetadata(
+            @RequestParam(name = "groupOrder", defaultValue = "name") OrderBy groupOrder,
             @RequestParam(name = "apiOrder", defaultValue = "name") OrderBy apiOrder) {
         return ResponseEntity.ok(createRestApiMetadata(GROUP_ORDER.apply(groupOrder), API_ORDER.apply(apiOrder)));
     }

@@ -38,7 +38,8 @@ import open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConvert
 import open.commons.spring.web.jackson.serialization.AuthorizedFieldSerializerModifier;
 
 /**
- * {@link AuthorizedObject} 어노테이션이 설정된 타입을 serialize 처리하는 {@link HttpMessageConverter}를 등록하는 서비스. *
+ * {@link AuthorizedObject} 어노테이션이 설정된 타입을 serialize 처리하는
+ * {@link HttpMessageConverter}를 등록하는 서비스. *
  * 
  * <pre>
  * [개정이력]
@@ -56,21 +57,25 @@ public class AuthorizedObjectMessageConfiguration implements WebMvcConfigurer {
 
     private final AuthorizedObjectJacksonHttpMessageConverter authorizeObjectMessageConverter;
 
-    public AuthorizedObjectMessageConfiguration(@NotNull AuthorizedObjectJacksonHttpMessageConverter authorizeObjectMessageConverter) {
+    public AuthorizedObjectMessageConfiguration(
+            @NotNull AuthorizedObjectJacksonHttpMessageConverter authorizeObjectMessageConverter) {
         this.authorizeObjectMessageConverter = authorizeObjectMessageConverter;
     }
 
     /**
      * <p>
-     * 내부 로직은 Spring 기반 웹 서비스 구동시 내부적으로 생성되는 기본 {@link HttpMessageConverter} 목록을 기반으로 합니다.<br>
-     * {@link AuthorizedObjectJacksonHttpMessageConverter}는 {@link JacksonJsonHttpMessageConverter}를 상속받아 구현되었고 상위 클래스
-     * 기능을 모두 제공하기 때문에, 기본 JSON 컨버터인 {@link JacksonJsonHttpMessageConverter}를 대체합니다.
+     * 내부 로직은 Spring 기반 웹 서비스 구동시 내부적으로 생성되는 기본 {@link HttpMessageConverter} 목록을
+     * 기반으로 합니다.<br>
+     * {@link AuthorizedObjectJacksonHttpMessageConverter}는
+     * {@link JacksonJsonHttpMessageConverter}를 상속받아 구현되었고 상위 클래스 기능을 모두 제공하기
+     * 때문에, 기본 JSON 컨버터인 {@link JacksonJsonHttpMessageConverter}를 대체합니다.
      * </p>
      * <p>
      * Spring은 배열에서 순차적으로 {@link HttpMessageConverter} 구현체를 꺼내고,
-     * {@link HttpMessageConverter#canWrite(Class, org.springframework.http.MediaType)} 의 결과에 따라서 사용여부를 결정합니다.<br>
-     * 기본 컨버터보다 앞에 위치해야 {@link AuthorizedObject} 어노테이션이 설정된 데이터 유형을 먼저 가로채어 {@link AuthorizedFieldSerializerModifier}를
-     * 통해 권한 기반 처리를 수행할 수 있습니다.
+     * {@link HttpMessageConverter#canWrite(Class, org.springframework.http.MediaType)}
+     * 의 결과에 따라서 사용여부를 결정합니다.<br>
+     * 기본 컨버터보다 앞에 위치해야 {@link AuthorizedObject} 어노테이션이 설정된 데이터 유형을 먼저 가로채어
+     * {@link AuthorizedFieldSerializerModifier}를 통해 권한 기반 처리를 수행할 수 있습니다.
      * </p>
      * 
      * @param builder

@@ -36,8 +36,9 @@ import open.commons.spring.web.authority.metadata.AuthorizedFieldMetadata;
 import open.commons.spring.web.authority.metadata.AuthorizedObjectMetadata;
 
 /**
- * {@link ServletRequest} 요청시 '헤더'에 {@link #DISABLE_AUTHORIZED_RESOURCES}({@value #DISABLE_AUTHORIZED_RESOURCES}) 설정이 있는
- * 경우 관련기능을 지원하는 클래스.
+ * {@link ServletRequest} 요청시 '헤더'에
+ * {@link #DISABLE_AUTHORIZED_RESOURCES}({@value #DISABLE_AUTHORIZED_RESOURCES})
+ * 설정이 있는 경우 관련기능을 지원하는 클래스.
  * 
  * @since 2025. 6. 24.
  * @version 0.8.0
@@ -48,7 +49,8 @@ public class AuthorizedResourceContext {
     /** Http 요청시 일시적으로 '권한기반 자원 제어'를 해제하는 요청 정보 헤더 */
     public static final String DISABLE_AUTHORIZED_RESOURCES = "X-Disable-Authorized-Resources";
 
-    private static final IThreadLocalContext CONTEXT = ThreadLocalContextService.context(AuthorizedResourceContext.class);
+    private static final IThreadLocalContext CONTEXT = ThreadLocalContextService
+            .context(AuthorizedResourceContext.class);
 
     private AuthorizedResourceContext() {
     }
@@ -107,7 +109,8 @@ public class AuthorizedResourceContext {
      * @version 0.8.0
      */
     public static boolean isEnableAuthentication() {
-        return CONTEXT.containsNot(DISABLE_AUTHORIZED_RESOURCES) || !(boolean) CONTEXT.get(DISABLE_AUTHORIZED_RESOURCES);
+        return CONTEXT.containsNot(DISABLE_AUTHORIZED_RESOURCES)
+                || !(boolean) CONTEXT.get(DISABLE_AUTHORIZED_RESOURCES);
     }
 
     /**

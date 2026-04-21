@@ -35,7 +35,8 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.TaskScheduler;
 
 /**
- * {@link ExecutorService} 구현 객체를 'delegate'로써 사용하는 'Delegating' {@link ExecutorService}를 제공하는 클래스.
+ * {@link ExecutorService} 구현 객체를 'delegate'로써 사용하는 'Delegating'
+ * {@link ExecutorService}를 제공하는 클래스.
  * 
  * <pre>
  * [개정이력]
@@ -143,7 +144,8 @@ public class DelegatingExecutorSupportor {
      * @since 2025. 8. 3.
      * @version 0.8.0
      */
-    public static ScheduledExecutorService scheduledExecutorService(ScheduledExecutorService delegate, String threadSymbol) {
+    public static ScheduledExecutorService scheduledExecutorService(ScheduledExecutorService delegate,
+            String threadSymbol) {
         return new DelegatingScheduledExecutorService(delegate, threadSymbol);
     }
 
@@ -239,7 +241,8 @@ public class DelegatingExecutorSupportor {
      * @since 2025. 8. 3.
      * @version 0.8.0
      */
-    public static <S extends TaskScheduler & AsyncTaskExecutor> TaskScheduler taskScheduler(S delegate, String threadSymbol) {
+    public static <S extends TaskScheduler & AsyncTaskExecutor> TaskScheduler taskScheduler(S delegate,
+            String threadSymbol) {
         return new DelegatingTaskScheduler<S>(delegate, threadSymbol);
     }
 

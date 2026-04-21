@@ -114,7 +114,8 @@ public abstract class MethodExecutionElapsedTimeAspect extends AbstractMethodCal
      * @since 2025. 8. 12.
      * @version 0.8.0
      */
-    public MethodExecutionElapsedTimeAspect(ApplicationContext context, boolean disableRepository, boolean handleIfOriginatedFromController) {
+    public MethodExecutionElapsedTimeAspect(ApplicationContext context, boolean disableRepository,
+            boolean handleIfOriginatedFromController) {
         super(context, false, false, disableRepository, handleIfOriginatedFromController, true, true);
     }
 
@@ -135,12 +136,14 @@ public abstract class MethodExecutionElapsedTimeAspect extends AbstractMethodCal
      * @param handleIfOriginatedFromController
      *            메소드 호출이 {@link Controller}에서부터 시작된 경우에만 AOP 적용 여부
      * @param enableLogRouting
-     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에 따라서 로그 분기 적용 여부
+     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에
+     *            따라서 로그 분기 적용 여부
      *
      * @since 2025. 8. 12.
      * @version 0.8.0
      */
-    public MethodExecutionElapsedTimeAspect(ApplicationContext context, boolean disableRepository, boolean handleIfOriginatedFromController, boolean enableLogRouting) {
+    public MethodExecutionElapsedTimeAspect(ApplicationContext context, boolean disableRepository,
+            boolean handleIfOriginatedFromController, boolean enableLogRouting) {
         super(context, false, false, disableRepository, handleIfOriginatedFromController, enableLogRouting, true);
     }
 
@@ -162,16 +165,18 @@ public abstract class MethodExecutionElapsedTimeAspect extends AbstractMethodCal
      * @param handleIfOriginatedFromController
      *            메소드 호출이 {@link Controller}에서부터 시작된 경우에만 AOP 적용 여부
      * @param enableLogRouting
-     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에 따라서 로그 분기 적용 여부
+     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에
+     *            따라서 로그 분기 적용 여부
      * @param enableIndentation
      *            들여쓰기 적용 여부
      *
      * @since 2025. 8. 12.
      * @version 0.8.0
      */
-    public MethodExecutionElapsedTimeAspect(ApplicationContext context, boolean disableRepository, boolean handleIfOriginatedFromController, boolean enableLogRouting,
-            boolean enableIndentation) {
-        super(context, false, false, disableRepository, handleIfOriginatedFromController, enableLogRouting, enableIndentation);
+    public MethodExecutionElapsedTimeAspect(ApplicationContext context, boolean disableRepository,
+            boolean handleIfOriginatedFromController, boolean enableLogRouting, boolean enableIndentation) {
+        super(context, false, false, disableRepository, handleIfOriginatedFromController, enableLogRouting,
+                enableIndentation);
     }
 
     public void after(String contextKey, Log logger, ProceedingJoinPoint pjp) throws Throwable {
@@ -187,7 +192,8 @@ public abstract class MethodExecutionElapsedTimeAspect extends AbstractMethodCal
      * @version 0.8.0
      *
      * @see open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect#afterController(String,
-     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log, org.aspectj.lang.ProceedingJoinPoint)
+     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log,
+     *      org.aspectj.lang.ProceedingJoinPoint)
      */
     @Override
     public void afterController(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
@@ -200,7 +206,8 @@ public abstract class MethodExecutionElapsedTimeAspect extends AbstractMethodCal
      * @version 0.8.0
      *
      * @see open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect#afterRepository(String,
-     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log, org.aspectj.lang.ProceedingJoinPoint)
+     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log,
+     *      org.aspectj.lang.ProceedingJoinPoint)
      */
     @Override
     public void afterRepository(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
@@ -213,7 +220,8 @@ public abstract class MethodExecutionElapsedTimeAspect extends AbstractMethodCal
      * @version 0.8.0
      *
      * @see open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect#afterService(String,
-     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log, org.aspectj.lang.ProceedingJoinPoint)
+     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log,
+     *      org.aspectj.lang.ProceedingJoinPoint)
      */
     @Override
     public void afterService(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
@@ -234,7 +242,8 @@ public abstract class MethodExecutionElapsedTimeAspect extends AbstractMethodCal
      * @version 0.8.0
      *
      * @see open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect#beforeController(String,
-     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log, org.aspectj.lang.ProceedingJoinPoint)
+     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log,
+     *      org.aspectj.lang.ProceedingJoinPoint)
      */
     @Override
     public void beforeController(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
@@ -247,7 +256,8 @@ public abstract class MethodExecutionElapsedTimeAspect extends AbstractMethodCal
      * @version 0.8.0
      *
      * @see open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect#beforeRepository(String,
-     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log, org.aspectj.lang.ProceedingJoinPoint)
+     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log,
+     *      org.aspectj.lang.ProceedingJoinPoint)
      */
     @Override
     public void beforeRepository(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {
@@ -260,7 +270,8 @@ public abstract class MethodExecutionElapsedTimeAspect extends AbstractMethodCal
      * @version 0.8.0
      *
      * @see open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect#beforeService(String,
-     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log, org.aspectj.lang.ProceedingJoinPoint)
+     *      open.commons.spring.web.aspect.MethodExecutionElapsedTimeAspect.Log,
+     *      org.aspectj.lang.ProceedingJoinPoint)
      */
     @Override
     public void beforeService(String aspectSign, Log logger, ProceedingJoinPoint pjp) throws Throwable {

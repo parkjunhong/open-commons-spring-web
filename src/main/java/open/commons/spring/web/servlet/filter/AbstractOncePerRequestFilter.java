@@ -90,9 +90,11 @@ public abstract class AbstractOncePerRequestFilter extends OncePerRequestFilter 
      * @author parkjunhong77@gmail.com
      */
     @Autowired
-    public void setIgnoredUrl(@Qualifier(GlobalServletAutoConfiguration.BEAN_QUALIFIER_PRIMARY_ONCE_PER_REQUEST_SHOULD_NOT_PATTERNS) @Nullable List<PathPatternRequest> ignoredUrl) {
+    public void setIgnoredUrl(
+            @Qualifier(GlobalServletAutoConfiguration.BEAN_QUALIFIER_PRIMARY_ONCE_PER_REQUEST_SHOULD_NOT_PATTERNS) @Nullable List<PathPatternRequest> ignoredUrl) {
         if (ignoredUrl != null) {
-            this.ignoredUrl = ignoredUrl.stream().filter(p -> p.matches(getClass())).collect(Collectors.toUnmodifiableList());
+            this.ignoredUrl = ignoredUrl.stream().filter(p -> p.matches(getClass()))
+                    .collect(Collectors.toUnmodifiableList());
 
             // [아키텍처 최종 개선] Spring 7.0의 권장 방식: PathPatternRequestMatcher
             this.cachedMatchers = this.ignoredUrl.stream().map(p -> {
@@ -101,7 +103,8 @@ public abstract class AbstractOncePerRequestFilter extends OncePerRequestFilter 
                     httpMethod = HttpMethod.valueOf(p.getHttpMethodString());
                 }
 
-                // Spring Security 7.0 API 스펙: new 연산자 대신 정적 팩토리 메소드(pathPattern) 사용
+                // Spring Security 7.0 API 스펙: new 연산자 대신 정적 팩토리
+                // 메소드(pathPattern) 사용
                 if (httpMethod != null) {
                     return PathPatternRequestMatcher.pathPattern(httpMethod, p.getPattern());
                 } else {

@@ -29,11 +29,9 @@ package open.commons.spring.web.resources;
 import jakarta.validation.constraints.Min;
 
 import org.jspecify.annotations.Nullable;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import open.commons.core.utils.AssertUtils2;
-import open.commons.spring.web.configure.ResourceConfiguration;
 
 /**
  * {@link ThreadPoolTaskExecutor} 설정 정보 클래스.
@@ -42,10 +40,10 @@ import open.commons.spring.web.configure.ResourceConfiguration;
  * @version
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
-//@ConfigurationProperties(prefix = ResourceConfiguration.PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH + ".concurrent.thread-pool-task-executor")
 public class ThreadPoolTaskExecutorConfig {
 
-    // --- org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor --- //
+    // --- org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor ---
+    // //
     private int corePoolSize = 1;
     private int keepAliveSeconds = 60;
     private int maxPoolSize = Integer.MAX_VALUE;
@@ -54,7 +52,9 @@ public class ThreadPoolTaskExecutorConfig {
     private boolean prestartAllCoreThreads = false;
     // --------------------------------------------- //
 
-    // --- org.springframework.scheduling.concurrent.ExecutorConfigurationSupport --- //
+    // ---
+    // org.springframework.scheduling.concurrent.ExecutorConfigurationSupport
+    // --- //
     private long awaitTerminationMillis = 0;
     private @Nullable String beanName;
     private boolean waitForTasksToCompleteOnShutdown = false;

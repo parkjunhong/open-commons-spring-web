@@ -47,7 +47,9 @@ import org.springframework.core.io.Resource;
  * 라이브러리 내에서 정의한 설정을 이를 사용하는 '서비스 설정'에 추가하는 클래스.<br>
  * 
  * <p>
- * <a href="https://github.com/orgs/open-commons/repositories">'Open-Commons'</a>를 구성하는 패키지의 설정파일을 추가합니다.
+ * <a href=
+ * "https://github.com/orgs/open-commons/repositories">'Open-Commons'</a>를 구성하는
+ * 패키지의 설정파일을 추가합니다.
  * <li>open-commons-core
  * <li>open-commons-ssh
  * <li>open-commons-spring-csv

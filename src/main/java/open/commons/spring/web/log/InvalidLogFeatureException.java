@@ -110,7 +110,8 @@ public class InvalidLogFeatureException extends RuntimeException {
      * @since 2025. 7. 28.
      * @version 0.8.0
      */
-    public InvalidLogFeatureException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public InvalidLogFeatureException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 

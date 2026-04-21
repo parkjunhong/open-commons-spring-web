@@ -40,7 +40,8 @@ import tools.jackson.databind.introspect.AnnotatedField;
 
 /**
  * 배열/Collection의 단순타입 원소에 AuthorizedField 처리를 적용하는 Serializer.
- * <li>- Jackson 2.12+ 권장 API 사용(writeStartArray(Object,int) / writeStartArray(Object))
+ * <li>- Jackson 2.12+ 권장 API 사용(writeStartArray(Object,int) /
+ * writeStartArray(Object))
  * <li>- 요소 출력은 serializers.defaultSerializeValue(...) 사용
  * <li>- 내부가 컨테이너일 경우 ContextualSerializer로 '중첩 래퍼 체인'을 구성하여 재귀 처리.
  * 
@@ -85,8 +86,9 @@ public class ContainerSimpleTypeElementWrappingSerializer extends AbstractWrappi
      * @since 2025. 9. 25.
      * @version 0.8.0
      */
-    public ContainerSimpleTypeElementWrappingSerializer(ApplicationContext context, Class<?> serializedType, AnnotatedField annotatedField,
-            IFieldAccessAuthorityProvider fieldAccessor, IUnauthorizedFieldHandler fieldHandler, IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
+    public ContainerSimpleTypeElementWrappingSerializer(ApplicationContext context, Class<?> serializedType,
+            AnnotatedField annotatedField, IFieldAccessAuthorityProvider fieldAccessor,
+            IUnauthorizedFieldHandler fieldHandler, IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
         super(context, serializedType, annotatedField, fieldAccessor, fieldHandler, authorizedResourcesMetadata);
     }
 
@@ -102,7 +104,8 @@ public class ContainerSimpleTypeElementWrappingSerializer extends AbstractWrappi
      * @since 2025. 9. 25.
      * @version 4.0.0
      *
-     * @see tools.jackson.databind.ValueSerializer#serialize(java.lang.Object, tools.jackson.core.JsonGenerator,
+     * @see tools.jackson.databind.ValueSerializer#serialize(java.lang.Object,
+     *      tools.jackson.core.JsonGenerator,
      *      tools.jackson.databind.SerializationContext)
      */
     @Override
@@ -137,7 +140,8 @@ public class ContainerSimpleTypeElementWrappingSerializer extends AbstractWrappi
      * @since 2025. 9. 25.
      * @version 4.0.0
      */
-    private void writeValueRecursive(Object rawValue, JsonGenerator gen, SerializationContext context, FieldAccessAuthorityDecision decision) throws JacksonException {
+    private void writeValueRecursive(Object rawValue, JsonGenerator gen, SerializationContext context,
+            FieldAccessAuthorityDecision decision) throws JacksonException {
 
         if (rawValue == null) {
             gen.writeNull();
@@ -166,7 +170,8 @@ public class ContainerSimpleTypeElementWrappingSerializer extends AbstractWrappi
             try {
                 gen.writeStartArray(rawValue, len);
             } catch (Exception e) {
-                // [PATCH] Jackson 3.0 표준: setCurrentValue() -> assignCurrentValue()
+                // [PATCH] Jackson 3.0 표준: setCurrentValue() ->
+                // assignCurrentValue()
                 gen.assignCurrentValue(rawValue);
                 gen.writeStartArray();
             }
@@ -184,7 +189,8 @@ public class ContainerSimpleTypeElementWrappingSerializer extends AbstractWrappi
             try {
                 gen.writeStartArray(rawValue, col.size());
             } catch (Exception e) {
-                // [PATCH] Jackson 3.0 표준: setCurrentValue() -> assignCurrentValue()
+                // [PATCH] Jackson 3.0 표준: setCurrentValue() ->
+                // assignCurrentValue()
                 gen.assignCurrentValue(rawValue);
                 gen.writeStartArray();
             }
@@ -201,7 +207,8 @@ public class ContainerSimpleTypeElementWrappingSerializer extends AbstractWrappi
             try {
                 gen.writeStartObject(rawValue);
             } catch (Exception e) {
-                // [PATCH] Jackson 3.0 표준: setCurrentValue() -> assignCurrentValue()
+                // [PATCH] Jackson 3.0 표준: setCurrentValue() ->
+                // assignCurrentValue()
                 gen.assignCurrentValue(rawValue);
                 gen.writeStartObject();
             }

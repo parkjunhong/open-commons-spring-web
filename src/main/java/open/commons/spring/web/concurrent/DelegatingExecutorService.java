@@ -88,7 +88,8 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      * @since 2025. 7. 31.
      * @version 0.8.0
      *
-     * @see java.util.concurrent.ExecutorService#awaitTermination(long, java.util.concurrent.TimeUnit)
+     * @see java.util.concurrent.ExecutorService#awaitTermination(long,
+     *      java.util.concurrent.TimeUnit)
      */
     @Override
     public boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
@@ -155,11 +156,12 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      * @since 2025. 7. 31.
      * @version 0.8.0
      *
-     * @see java.util.concurrent.AbstractExecutorService#invokeAny(java.util.Collection, long,
-     *      java.util.concurrent.TimeUnit)
+     * @see java.util.concurrent.AbstractExecutorService#invokeAny(java.util.Collection,
+     *      long, java.util.concurrent.TimeUnit)
      */
     @Override
-    public <T> T invokeAny(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+    public <T> T invokeAny(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit)
+            throws InterruptedException, ExecutionException, TimeoutException {
         return super.invokeAny(wrap(tasks), timeout, unit);
     }
 
@@ -204,7 +206,8 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      * @since 2025. 7. 31.
      * @version 0.8.0
      *
-     * @see java.util.concurrent.AbstractExecutorService#newTaskFor(java.lang.Runnable, java.lang.Object)
+     * @see java.util.concurrent.AbstractExecutorService#newTaskFor(java.lang.Runnable,
+     *      java.lang.Object)
      */
     @Override
     protected <T> RunnableFuture<T> newTaskFor(Runnable runnable, T value) {
@@ -236,7 +239,8 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
     }
 
     /**
-     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable} 객체를 제공합니다. <br>
+     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable}
+     * 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -257,7 +261,8 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
     }
 
     /**
-     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable} 객체를 제공합니다. <br>
+     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable}
+     * 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -278,7 +283,8 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
     }
 
     /**
-     * 전달받은 {@link Runnable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Runnable} 객체를 제공합니다. <br>
+     * 전달받은 {@link Runnable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Runnable}
+     * 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]

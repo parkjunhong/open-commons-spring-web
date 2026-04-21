@@ -18,15 +18,13 @@
  *
  * This file is generated under this project, "open-commons-spring-web".
  *
- * Date  : 2026. 4. 20. 오후 8:39:48
+ * Date  : 2026. 4. 21. 오후 4:49:37
  *
  * Author: Park Jun-Hong (parkjunhong77@gmail.com)
  * 
  */
 
-package open.commons.spring.web.configure.taskexecutor;
-
-import org.springframework.context.annotation.Configuration;
+package open.commons.spring.web.configure.properties;
 
 /**
  * <br>
@@ -35,21 +33,26 @@ import org.springframework.context.annotation.Configuration;
  * [개정이력]
  *     날짜        | 작성자                   |   내용
  * -----------------------------------------------------
- * 2026. 4. 20.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 4. 21.     parkjunhong77@gmail.com     최초 작성
  * </pre>
  *
- * @since 2026. 4. 20.
+ * @since 2026. 4. 21.
  * @version 4.0.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
-@Configuration
-public class TaskExecutorConfiguration {
-
+public class Const {
     /**
-     * @since 2026. 4. 20.
-     * @version 4.0.0
+     * <b><i>{@code /META-INF/open-commons/open-commons-spring-web.yml}</i></b>
+     * 파일 내에서의 루트 경로.
+     * 
+     * <pre>
+     * open-commons:
+     *   spring:
+     *     web:
+     * </pre>
      */
-    public TaskExecutorConfiguration() {
-    }
+    public static final String PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH = "open-commons.spring.web";
 
+    private Const() {
+    }
 }

@@ -150,7 +150,8 @@ public class RestFacade {
      *
      * @since 2020. 8. 25.
      */
-    public static HttpEntity<Map<String, Object>> buildHttpEntity(MultiValueMap<String, @Nullable String> headers, Object... values) {
+    public static HttpEntity<Map<String, Object>> buildHttpEntity(MultiValueMap<String, @Nullable String> headers,
+            Object... values) {
         return buildHttpEntity(new HttpHeaders(headers), values);
     }
 
@@ -176,14 +177,17 @@ public class RestFacade {
         Lookup<TlsSocketStrategy> emptyTlsStrategyLookup = RegistryBuilder.<TlsSocketStrategy> create().build();
 
         // [PATCH] [오류-1] 명시적 캐스팅을 통해 생성자 모호성 제거
-        DefaultHttpClientConnectionOperator connectionOperator = new DefaultHttpClientConnectionOperator((SchemePortResolver) null, (DnsResolver) null, emptyTlsStrategyLookup);
+        DefaultHttpClientConnectionOperator connectionOperator = new DefaultHttpClientConnectionOperator(
+                (SchemePortResolver) null, (DnsResolver) null, emptyTlsStrategyLookup);
 
         // [PATCH] [오류-2] 캐릭터셋 설정을 위해 ConnectionFactory 사용
         CharCodingConfig charCodingConfig = CharCodingConfig.custom().setCharset(StandardCharsets.UTF_8).build();
 
-        HttpConnectionFactory<ManagedHttpClientConnection> connectionFactory = new ManagedHttpClientConnectionFactory(Http1Config.DEFAULT, charCodingConfig, null);
+        HttpConnectionFactory<ManagedHttpClientConnection> connectionFactory = new ManagedHttpClientConnectionFactory(
+                Http1Config.DEFAULT, charCodingConfig, null);
 
-        BasicHttpClientConnectionManager manager = new BasicHttpClientConnectionManager(connectionOperator, connectionFactory);
+        BasicHttpClientConnectionManager manager = new BasicHttpClientConnectionManager(connectionOperator,
+                connectionFactory);
 
         return HttpClientBuilder.create().setConnectionManager(manager).build();
     }
@@ -215,23 +219,27 @@ public class RestFacade {
      * @version 4.0.0
      * @author parkjunhong77@gmail.com
      */
-    public static CloseableHttpClient createHttpsClient(boolean allowPrivateCA) throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
+    public static CloseableHttpClient createHttpsClient(boolean allowPrivateCA)
+            throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
 
         TlsSocketStrategy tlsStrategy = createTlsSocketStrategy(allowPrivateCA);
 
         CharCodingConfig charCodingConfig = CharCodingConfig.custom().setCharset(StandardCharsets.UTF_8).build();
 
         // [CHECK] 확인된 3개 인자 생성자 사용
-        HttpConnectionFactory<ManagedHttpClientConnection> connectionFactory = new ManagedHttpClientConnectionFactory(Http1Config.DEFAULT, charCodingConfig, null);
+        HttpConnectionFactory<ManagedHttpClientConnection> connectionFactory = new ManagedHttpClientConnectionFactory(
+                Http1Config.DEFAULT, charCodingConfig, null);
 
         // PoolingBuilder에 팩토리 주입
-        HttpClientConnectionManager manager = PoolingHttpClientConnectionManagerBuilder.create().setTlsSocketStrategy(tlsStrategy).setConnectionFactory(connectionFactory).build();
+        HttpClientConnectionManager manager = PoolingHttpClientConnectionManagerBuilder.create()
+                .setTlsSocketStrategy(tlsStrategy).setConnectionFactory(connectionFactory).build();
 
         return HttpClientBuilder.create().setConnectionManager(manager).build();
     }
 
     /**
-     * Apache HttpClient 5.4 최신 스펙인 {@link TlsSocketStrategy}를 생성합니다. 기존의 SSLConnectionSocketFactory를 대체합니다.
+     * Apache HttpClient 5.4 최신 스펙인 {@link TlsSocketStrategy}를 생성합니다. 기존의
+     * SSLConnectionSocketFactory를 대체합니다.
      *
      * <pre>
      * [개정이력]
@@ -252,7 +260,8 @@ public class RestFacade {
      * @version 4.0.0
      * @author parkjunhong77@gmail.com
      */
-    private static TlsSocketStrategy createTlsSocketStrategy(boolean allowPrivateCA) throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
+    private static TlsSocketStrategy createTlsSocketStrategy(boolean allowPrivateCA)
+            throws NoSuchAlgorithmException, KeyManagementException, KeyStoreException {
 
         if (allowPrivateCA) {
             TrustStrategy trustStrategy = (_, _) -> true;
@@ -287,7 +296,8 @@ public class RestFacade {
      *
      * @since 2020. 8. 27.
      */
-    public static String createUrl(@Nullable String context, String url, MultiValueMap<String, @Nullable Object> parameters) {
+    public static String createUrl(@Nullable String context, String url,
+            MultiValueMap<String, @Nullable Object> parameters) {
         AssertUtils2.notNulls(url, parameters);
 
         StringBuffer requestUrl = new StringBuffer();
@@ -358,7 +368,8 @@ public class RestFacade {
     }
 
     /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -402,14 +413,16 @@ public class RestFacade {
             , Function<Exception, Result<RET>> onError//
     ) {
         try {
-            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess,
+                    DEFAULT_RETRY_COUNT);
         } catch (Exception e) {
             return onError.apply(e);
         }
     }
 
     /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -456,14 +469,16 @@ public class RestFacade {
             , int retryCount //
     ) {
         try {
-            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, retryCount);
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess,
+                    retryCount);
         } catch (Exception e) {
             return onError.apply(e);
         }
     }
 
     /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -507,14 +522,16 @@ public class RestFacade {
             , Function<Exception, Result<RET>> onError//
     ) {
         try {
-            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess,
+                    DEFAULT_RETRY_COUNT);
         } catch (Exception e) {
             return onError.apply(e);
         }
     }
 
     /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -561,7 +578,8 @@ public class RestFacade {
             , int retryCount //
     ) {
         try {
-            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess, retryCount);
+            return exchangeAsRaw(restTemplate, method, httpUrl, uriVariables, entity, responseType, onSuccess,
+                    retryCount);
         } catch (Exception e) {
             return onError.apply(e);
         }
@@ -603,8 +621,8 @@ public class RestFacade {
      *
      * @since 2019. 10. 24.
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, @Nullable HttpEntity<REQ> entity,
-            Class<RES> responseType) {
+    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme,
+            String host, int port, String path, @Nullable HttpEntity<REQ> entity, Class<RES> responseType) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, response -> {
             Result<RES> result = null;
             HttpStatusCode status = response.getStatusCode();
@@ -744,7 +762,8 @@ public class RestFacade {
             , Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError, retryCount);
+        return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError,
+                retryCount);
     }
 
     /**
@@ -784,7 +803,8 @@ public class RestFacade {
      * @since 2020. 11. 20.
      * @version 0.4.0
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, @Nullable HttpEntity<REQ> entity,
+    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme,
+            String host, int port, String path, @Nullable HttpEntity<REQ> entity,
             ParameterizedTypeReference<RES> responseType) {
         return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, response -> {
             Result<RES> result = null;
@@ -908,7 +928,8 @@ public class RestFacade {
             , Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError, retryCount);
+        return exchange(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, onError,
+                retryCount);
     }
 
     /**
@@ -949,8 +970,8 @@ public class RestFacade {
      *
      * @since 2019. 10. 24.
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
-            HttpEntity<REQ> entity, Class<RES> responseType) {
+    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme,
+            String host, int port, String path, String query, HttpEntity<REQ> entity, Class<RES> responseType) {
         return exchange(restTemplate, method, scheme, host, port, path, query, entity, responseType, response -> {
             Result<RES> result = null;
             HttpStatusCode status = response.getStatusCode();
@@ -1021,9 +1042,11 @@ public class RestFacade {
             , Function<Exception, Result<RET>> onError//
     ) {
         try {
-            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, onError);
+            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity,
+                    responseType, onSuccess, onError);
         } catch (URISyntaxException e) {
-            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}",
+                    method, scheme, host, port, path, query, entity, responseType);
             return onError.apply(e);
         }
     }
@@ -1083,9 +1106,11 @@ public class RestFacade {
             , int retryCount //
     ) {
         try {
-            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, onError, retryCount);
+            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity,
+                    responseType, onSuccess, onError, retryCount);
         } catch (URISyntaxException e) {
-            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}",
+                    method, scheme, host, port, path, query, entity, responseType);
             return onError.apply(e);
         }
     }
@@ -1129,8 +1154,9 @@ public class RestFacade {
      * @since 2020. 11. 20.
      * @version 0.4.0
      */
-    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme, String host, int port, String path, String query,
-            HttpEntity<REQ> entity, ParameterizedTypeReference<RES> responseType) {
+    public static <REQ, RES> Result<RES> exchange(RestTemplate restTemplate, HttpMethod method, String scheme,
+            String host, int port, String path, String query, HttpEntity<REQ> entity,
+            ParameterizedTypeReference<RES> responseType) {
         return exchange(restTemplate, method, scheme, host, port, path, query, entity, responseType, response -> {
             Result<RES> result = null;
             HttpStatusCode status = response.getStatusCode();
@@ -1201,9 +1227,11 @@ public class RestFacade {
             , Function<Exception, Result<RET>> onError//
     ) {
         try {
-            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, onError);
+            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity,
+                    responseType, onSuccess, onError);
         } catch (URISyntaxException e) {
-            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}",
+                    method, scheme, host, port, path, query, entity, responseType);
             return onError.apply(e);
         }
     }
@@ -1263,9 +1291,11 @@ public class RestFacade {
             , int retryCount //
     ) {
         try {
-            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, onError, retryCount);
+            return exchange(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity,
+                    responseType, onSuccess, onError, retryCount);
         } catch (URISyntaxException e) {
-            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}",
+                    method, scheme, host, port, path, query, entity, responseType);
             return onError.apply(e);
         }
     }
@@ -1519,7 +1549,8 @@ public class RestFacade {
     ) {
         AssertUtils2.notNulls(restTemplate, method, httpUrl, uriVariables, responseType, onSuccess);
 
-        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType,
+                uriVariables);
         return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
     }
 
@@ -1569,7 +1600,8 @@ public class RestFacade {
     ) {
         AssertUtils2.notNulls(restTemplate, method, httpUrl, uriVariables, responseType, onSuccess);
 
-        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType,
+                uriVariables);
         return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, retryCount);
     }
 
@@ -1616,7 +1648,8 @@ public class RestFacade {
     ) {
         AssertUtils2.notNulls(restTemplate, method, httpUrl, uriVariables, responseType, onSuccess);
 
-        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType,
+                uriVariables);
         return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, DEFAULT_RETRY_COUNT);
     }
 
@@ -1666,7 +1699,8 @@ public class RestFacade {
     ) {
         AssertUtils2.notNulls(restTemplate, method, httpUrl, uriVariables, responseType, onSuccess);
 
-        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType, uriVariables);
+        Supplier<ResponseEntity<RES>> sup = () -> restTemplate.exchange(httpUrl, method, entity, responseType,
+                uriVariables);
         return exchangeAsRaw(sup, method, httpUrl, entity, responseType, onSuccess, retryCount);
     }
 
@@ -1769,7 +1803,8 @@ public class RestFacade {
             , Class<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount) throws URISyntaxException {
-        return exchangeAsRaw(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess, retryCount);
+        return exchangeAsRaw(restTemplate, method, scheme, host, port, path, null, entity, responseType, onSuccess,
+                retryCount);
     }
 
     /**
@@ -1927,9 +1962,11 @@ public class RestFacade {
             , Function<ResponseEntity<RES>, RET> onSuccess //
     ) throws URISyntaxException {
         try {
-            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess);
+            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity,
+                    responseType, onSuccess);
         } catch (URISyntaxException e) {
-            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}",
+                    method, scheme, host, port, path, query, entity, responseType);
             throw e;
         }
     }
@@ -1987,9 +2024,11 @@ public class RestFacade {
             , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount) throws URISyntaxException {
         try {
-            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess, retryCount);
+            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity,
+                    responseType, onSuccess, retryCount);
         } catch (URISyntaxException e) {
-            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}",
+                    method, scheme, host, port, path, query, entity, responseType);
             throw e;
         }
     }
@@ -2045,9 +2084,11 @@ public class RestFacade {
             , Function<ResponseEntity<RES>, RET> onSuccess //
     ) throws URISyntaxException {
         try {
-            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess);
+            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity,
+                    responseType, onSuccess);
         } catch (URISyntaxException e) {
-            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}",
+                    method, scheme, host, port, path, query, entity, responseType);
             throw e;
         }
     }
@@ -2104,9 +2145,11 @@ public class RestFacade {
             , Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount) throws URISyntaxException {
         try {
-            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity, responseType, onSuccess);
+            return exchangeAsRaw(restTemplate, method, new URI(scheme, null, host, port, path, query, null), entity,
+                    responseType, onSuccess);
         } catch (URISyntaxException e) {
-            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}", method, scheme, host, port, path, query, entity, responseType);
+            sLogger.warn("method={}, scheme={}, host={}, port={}, path={}, query={}, entity={}, response.type={}",
+                    method, scheme, host, port, path, query, entity, responseType);
             throw e;
         }
     }
@@ -2347,7 +2390,8 @@ public class RestFacade {
                 return onSuccess.apply(response);
             } catch (HttpClientErrorException | HttpServerErrorException e) {
 
-                sLogger.warn("'Request' -> method={}, uri={}, req.entity={}, res.type={}", method, url, entity, responseType);
+                sLogger.warn("'Request' -> method={}, uri={}, req.entity={}, res.type={}", method, url, entity,
+                        responseType);
 
                 HttpStatusCode exStatusCode = e.getStatusCode();
                 String occurs = null;
@@ -2360,8 +2404,8 @@ public class RestFacade {
                     occurs = "Remote Server Error.";
                 }
 
-                sLogger.warn("'{}' -> res.status={}, res.status.raw={}, res.status.text={}, res.body={}", occurs, exStatusCode, exStatusCode.value(), e.getStatusText(),
-                        e.getResponseBodyAsString());
+                sLogger.warn("'{}' -> res.status={}, res.status.raw={}, res.status.text={}, res.body={}", occurs,
+                        exStatusCode, exStatusCode.value(), e.getStatusText(), e.getResponseBodyAsString());
 
                 throw e;
             } catch (Exception e) {
@@ -2372,10 +2416,12 @@ public class RestFacade {
                 ) {
                     retrial++;
                     sLogger.warn("{} Retry {} by {}", "* * * * * ", retrial, e.getClass().getName());
-                    sLogger.warn("{} Request -> method={}, uri={}, req.entity={}, res.type={}", "* * * * * ", method, url, entity, responseType);
+                    sLogger.warn("{} Request -> method={}, uri={}, req.entity={}, res.type={}", "* * * * * ", method,
+                            url, entity, responseType);
                     ThreadUtils.sleep(1000);
                 } else {
-                    throw ExceptionUtils.newException(RuntimeException.class, e, "예상하지 못한 에러가 발생하였습니다. 원인=%s, parent=%s", e.getMessage(), e);
+                    throw ExceptionUtils.newException(RuntimeException.class, e,
+                            "예상하지 못한 에러가 발생하였습니다. 원인=%s, parent=%s", e.getMessage(), e);
                 }
             }
         }
@@ -2384,7 +2430,8 @@ public class RestFacade {
             if (RuntimeException.class.isAssignableFrom(unhandled.getClass())) {
                 throw (RuntimeException) unhandled;
             } else {
-                throw ExceptionUtils.newException(RuntimeException.class, unhandled, "서비스연동에 실패했습니다. 원인=%s, parent=%s", unhandled.getMessage(), unhandled);
+                throw ExceptionUtils.newException(RuntimeException.class, unhandled, "서비스연동에 실패했습니다. 원인=%s, parent=%s",
+                        unhandled.getMessage(), unhandled);
             }
         } else {
             throw ExceptionUtils.newException(UnsupportedOperationException.class, "예상하지 못한 에러가 발생하였습니다.");
@@ -2516,7 +2563,8 @@ public class RestFacade {
             return "";
         }
         if (parameters.length % 2 != 0) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "올바르지 않은 파라미터 입니다. paramters=%s", Arrays.toString(parameters));
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "올바르지 않은 파라미터 입니다. paramters=%s",
+                    Arrays.toString(parameters));
         }
         LinkedMultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<>();
         for (int i = 0; i < parameters.length; i += 2) {

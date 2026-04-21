@@ -68,7 +68,7 @@ import open.commons.spring.web.exception.BeanMergeFailedException;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(after = { OpenCommonsWebCoreAutoConfiguration.class })
+@AutoConfiguration(after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedResourceBuiltinHandlerAutoConfiguration {
 
@@ -98,22 +98,24 @@ public class AuthorizedResourceBuiltinHandlerAutoConfiguration {
             , @NotNull Map<String, List<ResourceHandle>> multi) {
 
         // #1. 데이터 병합
-        List<ResourceHandle> merged = MapUtils.toList(single, multi, h -> String.format("%s#%s", h.target(), h.handleType()), (h1, h2) -> {
-            if (h2.preemptive()) {
-                return h2;
-            } else if (h1.preemptive()) {
-                return h1;
-            } else if (h1 instanceof ResourceHandleImpl && ((ResourceHandleImpl) h1).isBuiltin()) {
-                return h1;
-            } else if (h2 instanceof ResourceHandleImpl && ((ResourceHandleImpl) h2).isBuiltin()) {
-                return h2;
-            } else {
-                return h2;
-            }
-        });
+        List<ResourceHandle> merged = MapUtils.toList(single, multi,
+                h -> String.format("%s#%s", h.target(), h.handleType()), (h1, h2) -> {
+                    if (h2.preemptive()) {
+                        return h2;
+                    } else if (h1.preemptive()) {
+                        return h1;
+                    } else if (h1 instanceof ResourceHandleImpl && ((ResourceHandleImpl) h1).isBuiltin()) {
+                        return h1;
+                    } else if (h2 instanceof ResourceHandleImpl && ((ResourceHandleImpl) h2).isBuiltin()) {
+                        return h2;
+                    } else {
+                        return h2;
+                    }
+                });
         // #2. 중복 '데이터 처리 식별정보' 검증
         MultiValueMap<String, ResourceHandle> mayBeDuplicated = StreamUtils.toMap(merged.stream(),
-                (Function<ResourceHandle, String>) h -> String.format("%s#%s", h.target(), h.handleType()), Functions.Unary.identity(), LinkedMultiValueMap::new);
+                (Function<ResourceHandle, String>) h -> String.format("%s#%s", h.target(), h.handleType()),
+                Functions.Unary.identity(), LinkedMultiValueMap::new);
 
         boolean duplicated = false;
         for (Entry<String, List<ResourceHandle>> entry : mayBeDuplicated.entrySet()) {
@@ -121,8 +123,9 @@ public class AuthorizedResourceBuiltinHandlerAutoConfiguration {
                 logger.debug("{}에 대한 설정이 {}개 존재합니다. 목록은 다음과 같습니다.\n\t{}\n" //
                         , entry.getKey() // FQCN 값
                         , entry.getValue().size() // 중복 데이터 개수
-                        , String.join("\n\t", entry.getValue().stream().map(Object::toString).collect(Collectors.toList())) // 모든
-                                                                                                                            // 설정
+                        , String.join("\n\t",
+                                entry.getValue().stream().map(Object::toString).collect(Collectors.toList())) // 모든
+                                                                                                              // 설정
                 );
                 duplicated = true;
             }
@@ -130,7 +133,8 @@ public class AuthorizedResourceBuiltinHandlerAutoConfiguration {
 
         if (duplicated) {
             ExceptionUtils.newException(BeanMergeFailedException.class, "", ResourceHandle.class);
-            throw new BeanMergeFailedException("동일한 '데이터 처리 방식(%s)'에 2개 이상의 기능이 설정되었습니다. 자세한 내용은 로그를 확인하시기 바랍니다.", ResourceHandle.class);
+            throw new BeanMergeFailedException("동일한 '데이터 처리 방식(%s)'에 2개 이상의 기능이 설정되었습니다. 자세한 내용은 로그를 확인하시기 바랍니다.",
+                    ResourceHandle.class);
         }
 
         return merged;

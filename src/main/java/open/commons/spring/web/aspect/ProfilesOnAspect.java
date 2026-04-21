@@ -85,7 +85,8 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      */
     public ProfilesOnAspect(ApplicationContext context) {
         super(context);
-        this.currentProfiles = ObjectUtils.getOrDefault(this.context.getEnvironment().getActiveProfiles(), () -> this.context.getEnvironment().getDefaultProfiles());
+        this.currentProfiles = ObjectUtils.getOrDefault(this.context.getEnvironment().getActiveProfiles(),
+                () -> this.context.getEnvironment().getDefaultProfiles());
 
     }
 
@@ -140,14 +141,16 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      *
      * @param standards
      * @param rule
-     *            {@link Environment#getActiveProfiles()}(+추가설정)과 {@link ProfilesOn#standards()} 값을 비교하는 규칙
+     *            {@link Environment#getActiveProfiles()}(+추가설정)과
+     *            {@link ProfilesOn#standards()} 값을 비교하는 규칙
      * @return
      *
      * @since 2025. 11. 24.
      * @version 2.1.0
      */
     private boolean decideByRule(String[] standards, DecisionRule rule) {
-        Set<String> filteredStandards = Stream.of(standards).filter(std -> std != null && !std.trim().isEmpty()).collect(Collectors.toSet());
+        Set<String> filteredStandards = Stream.of(standards).filter(std -> std != null && !std.trim().isEmpty())
+                .collect(Collectors.toSet());
         // 조건에 부합하는 'standard'가 없는 경우 모두 '매칭 성공' 처리.
         if (filteredStandards.isEmpty()) {
             return true;

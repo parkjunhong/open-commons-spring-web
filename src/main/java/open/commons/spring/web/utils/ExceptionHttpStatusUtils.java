@@ -35,7 +35,8 @@ import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
 
 /**
- * 발생한 예외 클래스(<code> ? extends {@link Throwable})과 {@link HttpStatus} 매핑에 관한 기능을 제공
+ * 발생한 예외 클래스(<code> ? extends {@link Throwable})과 {@link HttpStatus} 매핑에 관한 기능을
+ * 제공
  * 
  * 
  * <br>
@@ -81,14 +82,16 @@ public class ExceptionHttpStatusUtils {
      * 
      * @see ResponseStatus
      */
-    public static HttpStatusCode resolveResponseStatus(ExceptionHttpStatusBinder binder, Exception ex, HttpStatusCode defaultStatus) {
+    public static HttpStatusCode resolveResponseStatus(ExceptionHttpStatusBinder binder, Exception ex,
+            HttpStatusCode defaultStatus) {
         AssertUtils2.notNulls(ex, defaultStatus);
 
         HttpStatusCode status = binder != null ? binder.resolveHttpStatus(ex.getClass(), defaultStatus) : null;
         if (status != null) {
             return status;
         } else {
-            ResponseStatus annotatedStatus = AnnotatedElementUtils.findMergedAnnotation(ex.getClass(), ResponseStatus.class);
+            ResponseStatus annotatedStatus = AnnotatedElementUtils.findMergedAnnotation(ex.getClass(),
+                    ResponseStatus.class);
             return annotatedStatus != null ? annotatedStatus.code() : defaultStatus;
         }
     }

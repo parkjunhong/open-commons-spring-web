@@ -53,7 +53,7 @@ import open.commons.spring.web.log.ILogFeatureDecorationConsolidator;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(after = { OpenCommonsWebCoreAutoConfiguration.class })
+@AutoConfiguration(after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class LogFeatureAutoConfiguration {
 
@@ -77,7 +77,8 @@ public class LogFeatureAutoConfiguration {
 
     @Bean
     @Primary
-    LogFeatureAspect featureBasedLoggingAspect(ApplicationContext context, ILogFeatureDecorationConsolidator decorator) {
+    LogFeatureAspect featureBasedLoggingAspect(ApplicationContext context,
+            ILogFeatureDecorationConsolidator decorator) {
         LogFeatureAspect aspect = new LogFeatureAspect(context, decorator);
         logger.info("[feature-based-logging] apsect={}", aspect);
         return aspect;

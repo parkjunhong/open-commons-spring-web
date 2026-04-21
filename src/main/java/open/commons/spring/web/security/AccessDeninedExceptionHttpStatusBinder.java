@@ -46,7 +46,8 @@ import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
  * @version 2.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
-public class AccessDeninedExceptionHttpStatusBinder extends AbstractExceptionStatusWriter implements AccessDeniedHandler {
+public class AccessDeninedExceptionHttpStatusBinder extends AbstractExceptionStatusWriter
+        implements AccessDeniedHandler {
 
     /**
      * <br>
@@ -86,10 +87,12 @@ public class AccessDeninedExceptionHttpStatusBinder extends AbstractExceptionSta
      * @version 2.1.0
      *
      * @see org.springframework.security.web.access.AccessDeniedHandler#handle(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse, org.springframework.security.access.AccessDeniedException)
+     *      javax.servlet.http.HttpServletResponse,
+     *      org.springframework.security.access.AccessDeniedException)
      */
     @Override
-    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+    public void handle(HttpServletRequest request, HttpServletResponse response,
+            AccessDeniedException accessDeniedException) throws IOException, ServletException {
         writeExceptionResponse(request, response, accessDeniedException);
     }
 }

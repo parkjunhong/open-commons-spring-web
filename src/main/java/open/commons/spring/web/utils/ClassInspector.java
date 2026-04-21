@@ -134,7 +134,8 @@ public class ClassInspector {
         } catch (NoSuchFieldException e) {
             return null;
         } catch (Exception e) {
-            throw ExceptionUtils.newException(InternalServerException.class, e, "clazz=%s, field-name=%s, 오류=%s", clazz, fieldName, e.getMessage());
+            throw ExceptionUtils.newException(InternalServerException.class, e, "clazz=%s, field-name=%s, 오류=%s", clazz,
+                    fieldName, e.getMessage());
         }
     }
 
@@ -166,7 +167,8 @@ public class ClassInspector {
         } catch (NoSuchFieldException e) {
             return null;
         } catch (Exception e) {
-            throw ExceptionUtils.newException(InternalServerException.class, e, "clazz=%s, field-name=%s, 오류=%s", clazz, fieldName, e.getMessage());
+            throw ExceptionUtils.newException(InternalServerException.class, e, "clazz=%s, field-name=%s, 오류=%s", clazz,
+                    fieldName, e.getMessage());
         }
     }
 

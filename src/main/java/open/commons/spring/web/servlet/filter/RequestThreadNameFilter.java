@@ -45,7 +45,8 @@ import open.commons.spring.web.handler.HttpRequestProxyHeader;
 import open.commons.spring.web.handler.ProxyHeaderUtil;
 
 /**
- * {@link HttpServletRequest} 정보를 기반으로 '요청 -> 응답'을 처리하는 {@link Thread} 이름을 제공하는 클래스.
+ * {@link HttpServletRequest} 정보를 기반으로 '요청 -> 응답'을 처리하는 {@link Thread} 이름을 제공하는
+ * 클래스.
  * 
  * @since 2025. 8. 4.
  * @version 0.8.0
@@ -58,7 +59,8 @@ public class RequestThreadNameFilter extends AbstractOncePerRequestFilter {
     public static final String THREAD_NAME_DEFAULT = "open.commons.spring.web.servlet.filter.RequestThreadNameFilter#THREAD_NAME_DEFAULT";
     public static final String THREAD_NAME_INTERCEPTED_URL = "open.commons.spring.web.servlet.filter.RequestThreadNameFilter#THREAD_NAME_INTERCEPTED_URL";
 
-    private static final IThreadLocalContext THREAD_LOCAL_CONTEXT = ThreadLocalContextService.context(RequestThreadNameFilter.class);
+    private static final IThreadLocalContext THREAD_LOCAL_CONTEXT = ThreadLocalContextService
+            .context(RequestThreadNameFilter.class);
 
     /** proxy 서버를 이용하여 제공되는 서비스인 경우 HTTP 요청 정보를 forwardig 하기 위한 헤더 */
     private HttpRequestProxyHeader proxyHeader;
@@ -88,7 +90,8 @@ public class RequestThreadNameFilter extends AbstractOncePerRequestFilter {
      *      javax.servlet.http.HttpServletResponse, javax.servlet.FilterChain)
      */
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
 
         // #1. Servlet 경로 (Context Path 제외)
         String servletPath = request.getServletPath();

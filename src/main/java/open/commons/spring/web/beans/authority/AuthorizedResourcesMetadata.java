@@ -248,7 +248,8 @@ public class AuthorizedResourcesMetadata implements IAuthorizedResourcesMetadata
                 MapUtils.getOrDefault(this.authorizedClasses, aoTargetType, aomSup = () -> aoMeta, true);
                 // #2. Authorized Field 설정
                 afmsNew = aoMeta.getFields();
-                afmsCur = MapUtils.getOrDefault(this.authorizedFields, aoTargetType, afmSup = () -> new HashSet<>(), true);
+                afmsCur = MapUtils.getOrDefault(this.authorizedFields, aoTargetType, afmSup = () -> new HashSet<>(),
+                        true);
                 for (AuthorizedFieldMetadata afm : afmsNew) {
                     // 중복 체크
                     if (afmsCur.contains(afm)) {

@@ -78,9 +78,11 @@ public class ForcedUnintelligibleJudge implements IFieldAccessAuthorityProvider 
             Field field = typeClass.getDeclaredField(fieldName);
             Class<?> fieldClass = field.getType();
 
-            return Result.success(new FieldAccessAuthorityDecision(false, ForcedUnintelligibleHandleType.find(fieldClass), ForcedUnintelligibleHandler.BEAN_QUALIFIER));
+            return Result.success(new FieldAccessAuthorityDecision(false,
+                    ForcedUnintelligibleHandleType.find(fieldClass), ForcedUnintelligibleHandler.BEAN_QUALIFIER));
         } catch (ClassNotFoundException | NoSuchFieldException | SecurityException e) {
-            throw ExceptionUtils.newException(InternalServerException.class, e, "필드유형에 따른 처리 방식을 결정하는 도중에 오류가 발생하였습니다. 원인=%s", e.getMessage());
+            throw ExceptionUtils.newException(InternalServerException.class, e,
+                    "필드유형에 따른 처리 방식을 결정하는 도중에 오류가 발생하였습니다. 원인=%s", e.getMessage());
         }
     }
 }

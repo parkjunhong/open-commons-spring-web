@@ -44,7 +44,7 @@ public abstract class AuthorizedMetadata {
 
     protected final String resolveBeanName(@NotNull String beanName) {
         Objects.requireNonNull(beanName);
-        
+
         return beanName.startsWith(PREFIX_CLASSPATH) //
                 ? BeanUtils.resolveBeanNameFromFqn(beanName.replace(PREFIX_CLASSPATH, "")) //
                 : beanName;

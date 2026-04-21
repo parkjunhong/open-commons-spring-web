@@ -147,8 +147,8 @@ public abstract class CliExecutionComponent extends AbstractComponent {
                 Runtime.getRuntime().exec(cmdarray, env, workingDir);
                 return Result.success(true);
             } catch (Exception e) {
-                String errMsg = String.format("작업('%s')을/를 실패하였습니다. 명령어=%s, 환경변수=%s, 작업디렉톨=%s, 원인=%s", job, Arrays.toString(cmdarray), Arrays.toString(env), workingDir,
-                        e.getMessage());
+                String errMsg = String.format("작업('%s')을/를 실패하였습니다. 명령어=%s, 환경변수=%s, 작업디렉톨=%s, 원인=%s", job,
+                        Arrays.toString(cmdarray), Arrays.toString(env), workingDir, e.getMessage());
                 logger.error(errMsg, e);
                 return Result.error(errMsg);
             }
@@ -283,8 +283,8 @@ public abstract class CliExecutionComponent extends AbstractComponent {
 
                 return Result.success(proc.exitValue());
             } catch (Exception e) {
-                String errMsg = String.format("작업('%s')을/를 실패하였습니다. 명령어=%s, 환경변수=%s, 작업디렉톨=%s, 원인=%s", job, Arrays.toString(cmdarray), Arrays.toString(env), workingDir,
-                        e.getMessage());
+                String errMsg = String.format("작업('%s')을/를 실패하였습니다. 명령어=%s, 환경변수=%s, 작업디렉톨=%s, 원인=%s", job,
+                        Arrays.toString(cmdarray), Arrays.toString(env), workingDir, e.getMessage());
                 logger.error(errMsg, e);
                 int exitCode = -1;
                 if (proc != null) {

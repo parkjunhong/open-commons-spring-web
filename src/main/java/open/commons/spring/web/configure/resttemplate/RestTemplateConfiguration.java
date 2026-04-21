@@ -32,7 +32,6 @@ import java.security.NoSuchAlgorithmException;
 
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -52,9 +51,7 @@ import open.commons.spring.web.rest.RestFacade;
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
 @Configuration
-@EnableConfigurationProperties(RestTemplateProperties.class)
 public class RestTemplateConfiguration {
-
     /**
      * 기본 {@link RestTemplate}<br>
      * <li>공인 인증서만 허용
@@ -102,7 +99,8 @@ public class RestTemplateConfiguration {
     @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE)
     @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     @Primary
-    CloseableRestTemplate beanRestTemplate() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
+    CloseableRestTemplate beanRestTemplate()
+            throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
         return createRestTemplate(false);
     }
 
@@ -111,7 +109,8 @@ public class RestTemplateConfiguration {
      */
     @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA)
     @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    CloseableRestTemplate beanRestTemplateAllowPrivateCA() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
+    CloseableRestTemplate beanRestTemplateAllowPrivateCA()
+            throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
         return createRestTemplate(true);
     }
 
@@ -120,7 +119,8 @@ public class RestTemplateConfiguration {
      */
     @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE)
     @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    CloseableRestTemplate beanRestTemplateProxyMode() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
+    CloseableRestTemplate beanRestTemplateProxyMode()
+            throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
         return createRestTemplate(false);
     }
 
@@ -129,14 +129,16 @@ public class RestTemplateConfiguration {
      */
     @Bean(name = BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE_ALLOW_PRIVATE_CA)
     @Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    CloseableRestTemplate beanRestTemplateProxyModeAllowPrivateCA() throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
+    CloseableRestTemplate beanRestTemplateProxyModeAllowPrivateCA()
+            throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
         return createRestTemplate(true);
     }
 
     /**
      * 설정을 기반으로 RestTemplate 인스턴스를 생성하는 공통 로직.
      */
-    private CloseableRestTemplate createRestTemplate(boolean allowPrivateCA) throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
+    private CloseableRestTemplate createRestTemplate(boolean allowPrivateCA)
+            throws KeyManagementException, KeyStoreException, NoSuchAlgorithmException {
 
         // 1. SSL 설정에 따른 HttpClient 생성
         HttpClient httpClient = RestFacade.createHttpsClient(allowPrivateCA);

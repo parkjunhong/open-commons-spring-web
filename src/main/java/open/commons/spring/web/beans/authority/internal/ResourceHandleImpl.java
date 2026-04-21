@@ -91,9 +91,10 @@ public class ResourceHandleImpl implements ResourceHandle {
      * @since 2025. 9. 29.
      * @version 0.8.0
      */
-    ResourceHandleImpl(boolean isBuiltin, Target target, @NotBlank String handleType, Function<?, ?> handle, boolean preemptive) {
+    ResourceHandleImpl(boolean isBuiltin, Target target, @NotBlank String handleType, Function<?, ?> handle,
+            boolean preemptive) {
         AssertUtils2.notNulls(target, handle);
-        
+
         this.isBuiltin = isBuiltin;
         this.target = target;
         this.handleType = handleType;

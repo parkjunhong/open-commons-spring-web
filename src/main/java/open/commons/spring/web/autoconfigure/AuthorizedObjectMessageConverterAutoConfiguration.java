@@ -57,7 +57,7 @@ import tools.jackson.databind.json.JsonMapper;
  * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(after = { OpenCommonsWebCoreAutoConfiguration.class, AuthorizedResourcesAutoConfiguration.class })
+@AutoConfiguration(after = { OpenCommonsSpringWebCoreAutoConfiguration.class, AuthorizedResourcesAutoConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedObjectMessageConverterAutoConfiguration {
 
@@ -103,14 +103,15 @@ public class AuthorizedObjectMessageConverterAutoConfiguration {
             , @NotNull Map<String, JsonMapper> allJsonMappers //
             , @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadataProvider) {
 
-        // [PATCH] defaultJsonMapper 객체와 참조(Reference)가 동일한 엔트리만 완벽하게 제외하여 새로운 Map 생성
+        // [PATCH] defaultJsonMapper 객체와 참조(Reference)가 동일한 엔트리만 완벽하게 제외하여 새로운
+        // Map 생성
         Map<String, JsonMapper> customJsonMappersOnly = allJsonMappers.entrySet().stream() //
                 .filter(entry -> entry.getValue() != defaultJsonMapper) // 객체
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         // 필터링된 맵(customJsonMappersOnly)을 생성자에 전달
-        AuthorizedObjectJacksonHttpMessageConverter converter = new AuthorizedObjectJacksonHttpMessageConverter(defaultJsonMapper, customJsonMappersOnly,
-                authorizedResourcesMetadataProvider);
+        AuthorizedObjectJacksonHttpMessageConverter converter = new AuthorizedObjectJacksonHttpMessageConverter(
+                defaultJsonMapper, customJsonMappersOnly, authorizedResourcesMetadataProvider);
 
         logger.info("[authorized-resources] 제외 후 순수 커스텀 매퍼 개수: {}", customJsonMappersOnly.size());
 

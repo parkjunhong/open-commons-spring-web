@@ -97,7 +97,8 @@ public abstract class AbstractWrappingSerializer extends ValueSerializer<Object>
      * @since 2025. 9. 25.
      * @version 0.8.0
      */
-    public AbstractWrappingSerializer(ApplicationContext context, Class<?> serializedType, AnnotatedField annotatedField, IFieldAccessAuthorityProvider fieldAccessor,
+    public AbstractWrappingSerializer(ApplicationContext context, Class<?> serializedType,
+            AnnotatedField annotatedField, IFieldAccessAuthorityProvider fieldAccessor,
             IUnauthorizedFieldHandler fieldHandler, IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
         this.context = context;
         this.serializedType = serializedType;
@@ -108,7 +109,8 @@ public abstract class AbstractWrappingSerializer extends ValueSerializer<Object>
     }
 
     protected FieldAccessAuthorityDecision decide() {
-        return AuthorizedFieldDecisionUtil.resolve(this.serializedType, this.annotatedField, this.fieldAccessor, this.authorizedResourcesMetadata);
+        return AuthorizedFieldDecisionUtil.resolve(this.serializedType, this.annotatedField, this.fieldAccessor,
+                this.authorizedResourcesMetadata);
     }
 
     /**
@@ -130,7 +132,8 @@ public abstract class AbstractWrappingSerializer extends ValueSerializer<Object>
      * @version 0.8.0
      */
     protected Object handleValue(Object value, FieldAccessAuthorityDecision decision) {
-        return decision.accessible ? value : resolveFieldHandler(decision.handleBean).handleObject(decision.handleType, value);
+        return decision.accessible ? value
+                : resolveFieldHandler(decision.handleBean).handleObject(decision.handleType, value);
     }
 
     protected boolean isSimpleType(Class<?> type) {

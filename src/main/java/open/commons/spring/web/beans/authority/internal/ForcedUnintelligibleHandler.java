@@ -61,7 +61,8 @@ public class ForcedUnintelligibleHandler implements IUnauthorizedFieldHandler {
      * @since 2025. 6. 12.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler#handleObject(String, java.lang.Object)
+     * @see open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler#handleObject(String,
+     *      java.lang.Object)
      */
     @Override
     public Object handleObject(@NotEmpty String handle, Object data) {
@@ -92,7 +93,8 @@ public class ForcedUnintelligibleHandler implements IUnauthorizedFieldHandler {
                 return (String) null;
             default:
                 return null;
-            // throw ExceptionUtils.newException(InternalServerException.class, "지원하지 않는 처리방식입니다. 입력=%s", handle);
+            // throw ExceptionUtils.newException(InternalServerException.class,
+            // "지원하지 않는 처리방식입니다. 입력=%s", handle);
         }
     }
 

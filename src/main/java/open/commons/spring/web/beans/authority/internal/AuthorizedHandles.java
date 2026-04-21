@@ -83,29 +83,35 @@ public class AuthorizedHandles {
 
     static {
         // CIPHER_STRING (문자열 암/복호화)
-        registerResourceHandles(CIPHER_STRING, (Function<String, String>) SecurityUtils::encryptBySessionUUID, (Function<String, String>) SecurityUtils::decryptBySessionUUID,
-                false);
+        registerResourceHandles(CIPHER_STRING, (Function<String, String>) SecurityUtils::encryptBySessionUUID,
+                (Function<String, String>) SecurityUtils::decryptBySessionUUID, false);
 
         // MASKING_PHONE_NUMBER (전화번호 마스킹)
-        registerResourceHandle(MASKING_PHONE_NUMBER, Target.UNAUTHORIZED, (Function<String, String>) AuthorizedHandles::maskPhoneNumber, false);
+        registerResourceHandle(MASKING_PHONE_NUMBER, Target.UNAUTHORIZED,
+                (Function<String, String>) AuthorizedHandles::maskPhoneNumber, false);
 
         // MASKING_EMAIL (email masking)
-        registerResourceHandle(MASKING_EMAIL, Target.UNAUTHORIZED, (Function<String, String>) AuthorizedHandles::maskEmail, false);
+        registerResourceHandle(MASKING_EMAIL, Target.UNAUTHORIZED,
+                (Function<String, String>) AuthorizedHandles::maskEmail, false);
 
         // CIPHER_EMAIL (email 암/복호화)
-        registerResourceHandles(CIPHER_EMAIL, (Function<String, String>) AuthorizedHandles::encryptEmail, (Function<String, String>) AuthorizedHandles::decryptEmail, false);
+        registerResourceHandles(CIPHER_EMAIL, (Function<String, String>) AuthorizedHandles::encryptEmail,
+                (Function<String, String>) AuthorizedHandles::decryptEmail, false);
 
         // MASKING_IPV4
-        registerResourceHandle(MASKING_IPV4, Target.UNAUTHORIZED, (Function<String, String>) ipv4 -> AuthorizedHandles.maskIPv4(ipv4, 2, 3), false);
+        registerResourceHandle(MASKING_IPV4, Target.UNAUTHORIZED,
+                (Function<String, String>) ipv4 -> AuthorizedHandles.maskIPv4(ipv4, 2, 3), false);
 
         // MASKING_IPV6
-        registerResourceHandle(MASKING_IPV6, Target.UNAUTHORIZED, (Function<String, String>) ipv4 -> AuthorizedHandles.maskIPv6(ipv4, 2, 3, 4, 5, 6, 7), false);
+        registerResourceHandle(MASKING_IPV6, Target.UNAUTHORIZED,
+                (Function<String, String>) ipv4 -> AuthorizedHandles.maskIPv6(ipv4, 2, 3, 4, 5, 6, 7), false);
     }
 
     private static final String DELIM_REGEX = "[-/:_]";
 
     private static final Pattern PHONE_NUMBER_PATTERN = Pattern.compile("^\\d+([-_/:]\\d+)*$");
-    private static final Pattern IPV4_PATTERN = Pattern.compile("^(\\d{1,3})\\.?(\\d{1,3})\\.?(\\d{1,3})\\.?(\\d{1,3})$");
+    private static final Pattern IPV4_PATTERN = Pattern
+            .compile("^(\\d{1,3})\\.?(\\d{1,3})\\.?(\\d{1,3})\\.?(\\d{1,3})$");
 
     private AuthorizedHandles() {
     }
@@ -143,7 +149,8 @@ public class AuthorizedHandles {
             return;
         }
 
-        throw ExceptionUtils.newException(IllegalArgumentException.class, "'%s' 데이터 유형에 대한 처리방식(%s)이 존재합니다. 교체여부=%s", targetType, handleType, preemptive);
+        throw ExceptionUtils.newException(IllegalArgumentException.class, "'%s' 데이터 유형에 대한 처리방식(%s)이 존재합니다. 교체여부=%s",
+                targetType, handleType, preemptive);
     }
 
     /**
@@ -192,7 +199,8 @@ public class AuthorizedHandles {
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    public static ResourceHandle createResourceHandle(boolean isBuiltin, Target target, @NotBlank String handleType, Function<?, ?> handle, boolean preemptive) {
+    public static ResourceHandle createResourceHandle(boolean isBuiltin, Target target, @NotBlank String handleType,
+            Function<?, ?> handle, boolean preemptive) {
         assertUsableHandleType(handleType, target, preemptive);
         return new ResourceHandleImpl(target, handleType, handle, preemptive);
     }
@@ -218,7 +226,8 @@ public class AuthorizedHandles {
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    public static ResourceHandle createResourceHandle(Target target, @NotEmpty String handleType, Function<?, ?> handle) {
+    public static ResourceHandle createResourceHandle(Target target, @NotEmpty String handleType,
+            Function<?, ?> handle) {
         return createResourceHandle(false, target, handleType, handle, false);
     }
 
@@ -247,7 +256,8 @@ public class AuthorizedHandles {
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    public static ResourceHandle createResourceHandle(Target target, @NotEmpty String handleType, Function<?, ?> handle, boolean preemptive) {
+    public static ResourceHandle createResourceHandle(Target target, @NotEmpty String handleType, Function<?, ?> handle,
+            boolean preemptive) {
         return createResourceHandle(false, target, handleType, handle, preemptive);
     }
 
@@ -266,9 +276,11 @@ public class AuthorizedHandles {
      * @param handleType
      *            데이터 처리유형 식별정보
      * @param unauthorizedHandle
-     *            {@link IUnauthorizedFieldHandler#handleObject(String, Object)} 함수
+     *            {@link IUnauthorizedFieldHandler#handleObject(String, Object)}
+     *            함수
      * @param authorizedHandle
-     *            {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)} 함수
+     *            {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}
+     *            함수
      * @param preemptive
      *            우선적용 여부
      * @return
@@ -276,8 +288,8 @@ public class AuthorizedHandles {
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    static Collection<ResourceHandle> createResourceHandles(boolean isBuiltin, @NotEmpty String handleType, Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle,
-            boolean preemptive) {
+    static Collection<ResourceHandle> createResourceHandles(boolean isBuiltin, @NotEmpty String handleType,
+            Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle, boolean preemptive) {
 
         assertUsableHandleType(handleType, Target.UNAUTHORIZED, preemptive);
         assertUsableHandleType(handleType, Target.AUTHORIZED, preemptive);
@@ -302,15 +314,18 @@ public class AuthorizedHandles {
      * @param handleType
      *            데이터 처리유형 식별정보
      * @param unauthorizedHandle
-     *            {@link IUnauthorizedFieldHandler#handleObject(String, Object)}에서 사용되는 함수
+     *            {@link IUnauthorizedFieldHandler#handleObject(String, Object)}에서
+     *            사용되는 함수
      * @param authorizedHandle
-     *            {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}에서 사용되는 함수
+     *            {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}에서
+     *            사용되는 함수
      * @return
      *
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    public static Collection<ResourceHandle> createResourceHandles(@NotEmpty String handleType, Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle) {
+    public static Collection<ResourceHandle> createResourceHandles(@NotEmpty String handleType,
+            Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle) {
         return createResourceHandles(false, handleType, unauthorizedHandle, authorizedHandle, false);
     }
 
@@ -327,9 +342,11 @@ public class AuthorizedHandles {
      * @param handleType
      *            데이터 처리유형 식별정보
      * @param unauthorizedHandle
-     *            {@link IUnauthorizedFieldHandler#handleObject(String, Object)}에서 사용되는 함수
+     *            {@link IUnauthorizedFieldHandler#handleObject(String, Object)}에서
+     *            사용되는 함수
      * @param authorizedHandle
-     *            {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}에서 사용되는 함수
+     *            {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}에서
+     *            사용되는 함수
      * @param preemptive
      *            우선적용 여부
      * @return
@@ -337,8 +354,8 @@ public class AuthorizedHandles {
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    public static Collection<ResourceHandle> createResourceHandles(@NotEmpty String handleType, Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle,
-            boolean preemptive) {
+    public static Collection<ResourceHandle> createResourceHandles(@NotEmpty String handleType,
+            Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle, boolean preemptive) {
         return createResourceHandles(false, handleType, unauthorizedHandle, authorizedHandle, preemptive);
     }
 
@@ -531,7 +548,8 @@ public class AuthorizedHandles {
 
         // 압축이 아닌데 8개보다 많거나 적으면, 확장 없이 바로 마스킹 처리
         if (ipv6Address.contains("::") && expandedParts.size() != 8) {
-            // If it was supposed to be compressed but didn't expand to 8, we handle it as an invalid format.
+            // If it was supposed to be compressed but didn't expand to 8, we
+            // handle it as an invalid format.
             expandedParts.clear();
             expandedParts.addAll(Arrays.asList(parts));
         } else if (!ipv6Address.contains("::")) {
@@ -626,16 +644,31 @@ public class AuthorizedHandles {
             String firstPart = parts[0];
             String secondPart = parts[1];
 
-            if (firstPart.length() == 2 && secondPart.length() == 3) { // 2 / 3 / 4
+            if (firstPart.length() == 2 && secondPart.length() == 3) { // 2 / 3
+                                                                       // / 4
                 maskedNumber = firstPart + "-***-" + lastFourDigits;
-            } else if (firstPart.length() == 2 && secondPart.length() == 4) { // 2 / 4 / 4
+            } else if (firstPart.length() == 2 && secondPart.length() == 4) { // 2
+                                                                              // /
+                                                                              // 4
+                                                                              // /
+                                                                              // 4
                 maskedNumber = firstPart + "-****-" + lastFourDigits;
-            } else if (firstPart.length() == 3 && secondPart.length() == 3) { // 3 / 3 / 4
+            } else if (firstPart.length() == 3 && secondPart.length() == 3) { // 3
+                                                                              // /
+                                                                              // 3
+                                                                              // /
+                                                                              // 4
                 maskedNumber = firstPart + "-***-" + lastFourDigits;
-            } else if (firstPart.length() == 3 && secondPart.length() == 4) { // 3 / 4 / 4
+            } else if (firstPart.length() == 3 && secondPart.length() == 4) { // 3
+                                                                              // /
+                                                                              // 4
+                                                                              // /
+                                                                              // 4
                 maskedNumber = firstPart + "-****-" + lastFourDigits;
             } else {
-                maskedNumber = firstPart + "-********-" + lastFourDigits; // 기타 미정의 형식
+                maskedNumber = firstPart + "-********-" + lastFourDigits; // 기타
+                                                                          // 미정의
+                                                                          // 형식
             }
         } else {
             return phoneNumber; // 예상치 못한 경우 그대로 반환
@@ -702,7 +735,8 @@ public class AuthorizedHandles {
      * @since 2025. 9. 29.
      * @version 0.8.0
      */
-    private static void registerResourceHandle(String handleType, Target targetType, Function<?, ?> function, boolean preemptive) {
+    private static void registerResourceHandle(String handleType, Target targetType, Function<?, ?> function,
+            boolean preemptive) {
         assertUsableHandleType(handleType, targetType, preemptive);
         BUILTIN_HANDLES.add(new ResourceHandleImpl(true, targetType, handleType, function, preemptive));
     }
@@ -721,16 +755,19 @@ public class AuthorizedHandles {
      * @param handleType
      *            데이터 처리유형 식별정보
      * @param unauthorizedHandle
-     *            {@link IUnauthorizedFieldHandler#handleObject(String, Object)}에서 사용되는 함수
+     *            {@link IUnauthorizedFieldHandler#handleObject(String, Object)}에서
+     *            사용되는 함수
      * @param authorizedHandle
-     *            {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}에서 사용되는 함수
+     *            {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}에서
+     *            사용되는 함수
      * @param preemptive
      *            우선적용 여부
      *
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    private static void registerResourceHandles(String handleType, Function<?, ?> unuathorizedHandle, Function<?, ?> authorizedHandle, boolean preemptive) {
+    private static void registerResourceHandles(String handleType, Function<?, ?> unuathorizedHandle,
+            Function<?, ?> authorizedHandle, boolean preemptive) {
         registerResourceHandle(handleType, Target.UNAUTHORIZED, unuathorizedHandle, preemptive);
         registerResourceHandle(handleType, Target.AUTHORIZED, authorizedHandle, preemptive);
     }

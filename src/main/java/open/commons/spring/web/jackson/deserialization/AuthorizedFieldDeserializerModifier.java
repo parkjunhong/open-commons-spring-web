@@ -74,7 +74,9 @@ public class AuthorizedFieldDeserializerModifier extends ValueDeserializerModifi
 
     private static final long serialVersionUID = 1439725932987560016L;
 
-    /** 특정 {@link BeanPropertyDefinition}에 설정된 {@link AuthorizedRequestData} 데이터 */
+    /**
+     * 특정 {@link BeanPropertyDefinition}에 설정된 {@link AuthorizedRequestData} 데이터
+     */
     private static final ConcurrentHashMap<BeanPropertyDefinition, AuthorizedRequestData> AUTHORIZED_REQUEST_DATA_CACHE = new ConcurrentHashMap<>();
     /** "{특정 클래스}#{필드}"의 {@link BeanPropertyDefinition} 캐쉬. */
     private static final ConcurrentHashMap<String, BeanPropertyDefinition> PROPERTY_DEF_CACHE = new ConcurrentHashMap<>();
@@ -102,7 +104,8 @@ public class AuthorizedFieldDeserializerModifier extends ValueDeserializerModifi
      * @since 2025. 9. 22.
      * @version 0.8.0
      */
-    public AuthorizedFieldDeserializerModifier(ApplicationContext context, IAuthorizedRequestDataMetadata authorizedRequestDataMetadata) {
+    public AuthorizedFieldDeserializerModifier(ApplicationContext context,
+            IAuthorizedRequestDataMetadata authorizedRequestDataMetadata) {
         this.BEANS = BeanUtils.context(context);
         this.authorizedRequestDataMetadata = authorizedRequestDataMetadata;
     }
@@ -153,10 +156,12 @@ public class AuthorizedFieldDeserializerModifier extends ValueDeserializerModifi
      * @version 4.0.0
      *
      * @see tools.jackson.databind.deser.ValueDeserializerModifier#updateBuilder(tools.jackson.databind.DeserializationConfig,
-     *      tools.jackson.databind.BeanDescription.Supplier, tools.jackson.databind.deser.BeanDeserializerBuilder)
+     *      tools.jackson.databind.BeanDescription.Supplier,
+     *      tools.jackson.databind.deser.BeanDeserializerBuilder)
      */
     @Override
-    public BeanDeserializerBuilder updateBuilder(DeserializationConfig config, BeanDescription.Supplier beanDescSupplier, BeanDeserializerBuilder builder) {
+    public BeanDeserializerBuilder updateBuilder(DeserializationConfig config,
+            BeanDescription.Supplier beanDescSupplier, BeanDeserializerBuilder builder) {
 
         // 지연 평가(Lazy Evaluation) 해제: 필요한 순간에 get()을 호출하여 BeanDescription 획득
         BeanDescription beanDesc = beanDescSupplier.get();
@@ -195,8 +200,10 @@ public class AuthorizedFieldDeserializerModifier extends ValueDeserializerModifi
 
             if (!validateBeanNameAndHandleType(handleBean, handleType)) {
                 if (anno != null) {
-                    String errMsg = String.format("'%s.%s'에 대한 '%s' 정보가 설정되어 있지만, 올바르지 않습니다. handleBean=%s, handleType=%s", targetClass.getName(), prop.getType().getRawClass(),
-                            AuthorizedRequestData.class.getName(), handleBean, handleBean);
+                    String errMsg = String.format(
+                            "'%s.%s'에 대한 '%s' 정보가 설정되어 있지만, 올바르지 않습니다. handleBean=%s, handleType=%s",
+                            targetClass.getName(), prop.getType().getRawClass(), AuthorizedRequestData.class.getName(),
+                            handleBean, handleBean);
                     logger.error("{}", errMsg);
                     throw new InvalidBeanNameException(errMsg);
                 }
@@ -217,14 +224,16 @@ public class AuthorizedFieldDeserializerModifier extends ValueDeserializerModifi
             else if (fieldType.isArrayType() || fieldType.isCollectionLikeType()) {
                 IAuthorizedRequestDataHandler handler = resolveHandler(handleBean);
                 // delegate 'deserializer'
-                ValueDeserializer<?> wrapper = new ContainerSimpleTypeElementWrappingDeserializer(fieldType, handler, handleType);
+                ValueDeserializer<?> wrapper = new ContainerSimpleTypeElementWrappingDeserializer(fieldType, handler,
+                        handleType);
                 toReplace.add(prop.withValueDeserializer(wrapper));
             }
             // Map
             else if (fieldType.isMapLikeType()) {
                 IAuthorizedRequestDataHandler handler = resolveHandler(handleBean);
                 // delegate 'deserializer'
-                ValueDeserializer<?> wrapper = new MapSimpleTypeValueWrappingDeserializer(fieldType, handler, handleType);
+                ValueDeserializer<?> wrapper = new MapSimpleTypeValueWrappingDeserializer(fieldType, handler,
+                        handleType);
                 toReplace.add(prop.withValueDeserializer(wrapper));
             }
         }
@@ -259,7 +268,8 @@ public class AuthorizedFieldDeserializerModifier extends ValueDeserializerModifi
      * @version 0.8.0
      */
     private boolean validateBeanNameAndHandleType(String beanName, String beanType) {
-        return !StringUtils.isNullOrEmptyString(beanName) && !AuthorizedRequestData.NO_ASSINGED_HANDLE_TYPE.equals(beanType);
+        return !StringUtils.isNullOrEmptyString(beanName)
+                && !AuthorizedRequestData.NO_ASSINGED_HANDLE_TYPE.equals(beanType);
     }
 
     private static AuthorizedRequestData findAuthorizedAnnotation(BeanPropertyDefinition def) {
@@ -272,9 +282,10 @@ public class AuthorizedFieldDeserializerModifier extends ValueDeserializerModifi
                             ? annotation //
                             : (annotation = getAnnotation(_def.getSetter(), AuthorizedRequestData.class)) != null //
                                     ? annotation //
-                                    : (annotation = getAnnotation(_def.getGetter(), AuthorizedRequestData.class)) != null //
-                                            ? annotation //
-                                            : null //
+                                    : (annotation = getAnnotation(_def.getGetter(),
+                                            AuthorizedRequestData.class)) != null //
+                                                    ? annotation //
+                                                    : null //
                     : null;
         });
     }

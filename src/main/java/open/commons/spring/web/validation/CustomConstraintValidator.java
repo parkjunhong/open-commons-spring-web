@@ -180,7 +180,8 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      * @since 2021. 7. 5.
      * @version 0.3.0
      */
-    protected boolean validateMultiNodes(ConstraintValidatorContext context, BiFunction<T, Class<?>[], Set<ConstraintViolation<T>>> provider, T value, Class<?>... groups) {
+    protected boolean validateMultiNodes(ConstraintValidatorContext context,
+            BiFunction<T, Class<?>[], Set<ConstraintViolation<T>>> provider, T value, Class<?>... groups) {
         AssertUtils2.notNulls(context, provider, value);
         AssertUtils2.notNulls((Object[]) groups);
 
@@ -215,7 +216,8 @@ public abstract class CustomConstraintValidator<A extends Annotation, T> impleme
      * @since 2021. 7. 5.
      * @version 0.3.0
      */
-    protected boolean validateSingleNode(ConstraintValidatorContext context, BiFunction<T, Class<?>[], ConstraintViolation<T>> provider, T value, Class<?>... groups) {
+    protected boolean validateSingleNode(ConstraintValidatorContext context,
+            BiFunction<T, Class<?>[], ConstraintViolation<T>> provider, T value, Class<?>... groups) {
         AssertUtils2.notNulls(context, provider, value);
         AssertUtils2.notNulls((Object[]) groups);
 

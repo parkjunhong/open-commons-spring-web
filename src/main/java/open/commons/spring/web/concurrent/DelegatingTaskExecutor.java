@@ -172,7 +172,8 @@ public class DelegatingTaskExecutor<S extends AsyncTaskExecutor> implements Asyn
     }
 
     /**
-     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable} 객체를 제공합니다. <br>
+     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable}
+     * 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -193,7 +194,8 @@ public class DelegatingTaskExecutor<S extends AsyncTaskExecutor> implements Asyn
     }
 
     /**
-     * 전달받은 {@link Runnable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Runnable} 객체를 제공합니다. <br>
+     * 전달받은 {@link Runnable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Runnable}
+     * 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]

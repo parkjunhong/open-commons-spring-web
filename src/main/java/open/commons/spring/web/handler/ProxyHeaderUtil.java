@@ -35,7 +35,8 @@ import jakarta.validation.constraints.NotNull;
 import open.commons.core.utils.StringUtils;
 
 /**
- * {@link HttpServletRequest}와 {@link HttpRequestProxyHeader}를 이용하여 실제 클라이언트의 연결정보를 제공하는 클래스.
+ * {@link HttpServletRequest}와 {@link HttpRequestProxyHeader}를 이용하여 실제 클라이언트의
+ * 연결정보를 제공하는 클래스.
  * 
  * @since 2025. 7. 18.
  * @version 0.8.0
@@ -59,7 +60,8 @@ public class ProxyHeaderUtil {
      * @param value
      *            {@link HttpServletRequest}에서 값을 제공하는 함수
      * @param header
-     *            {@link HttpRequestProxyHeader} 설정값을 이용하여 {@link HttpServletRequest}의 헤더의 값을 제공하는 함수.
+     *            {@link HttpRequestProxyHeader} 설정값을 이용하여
+     *            {@link HttpServletRequest}의 헤더의 값을 제공하는 함수.
      * @param header
      *            {@link HttpRequestProxyHeader} 설정값
      * @return
@@ -127,7 +129,8 @@ public class ProxyHeaderUtil {
         if (header == null) {
             return String.valueOf(request.getRemotePort());
         } else {
-            return get(() -> String.valueOf(request.getRemotePort()), h -> request.getHeader(h), String.valueOf(header.getForwardedPort()));
+            return get(() -> String.valueOf(request.getRemotePort()), h -> request.getHeader(h),
+                    String.valueOf(header.getForwardedPort()));
         }
     }
 

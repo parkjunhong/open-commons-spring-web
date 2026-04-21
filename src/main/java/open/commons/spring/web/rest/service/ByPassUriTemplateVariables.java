@@ -35,7 +35,8 @@ import org.springframework.web.util.UriComponents.UriTemplateVariables;
 import open.commons.core.utils.StringUtils;
 
 /**
- * '변수'에 해당하는 값이 없는 경우 변수패턴("{변수}")을 제공하는 {@link Map}기반의 {@link UriTemplateVariables} 클래스.
+ * '변수'에 해당하는 값이 없는 경우 변수패턴("{변수}")을 제공하는 {@link Map}기반의
+ * {@link UriTemplateVariables} 클래스.
  * 
  * @since 2025. 8. 27.
  * @version 0.8.0

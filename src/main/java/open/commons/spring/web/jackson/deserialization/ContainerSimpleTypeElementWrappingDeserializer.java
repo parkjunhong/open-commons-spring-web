@@ -84,7 +84,8 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends ValueDeseria
      * @since 2025. 9. 23.
      * @version 0.8.0
      */
-    public ContainerSimpleTypeElementWrappingDeserializer(JavaType containerType, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType) {
+    public ContainerSimpleTypeElementWrappingDeserializer(JavaType containerType, IAuthorizedRequestDataHandler handler,
+            @NotEmpty String handleType) {
         this(containerType, handler, handleType, null);
     }
 
@@ -109,8 +110,8 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends ValueDeseria
      * @since 2025. 9. 23.
      * @version 0.8.0
      */
-    public ContainerSimpleTypeElementWrappingDeserializer(JavaType containerType, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType,
-            ValueDeserializer<?> delegate) {
+    public ContainerSimpleTypeElementWrappingDeserializer(JavaType containerType, IAuthorizedRequestDataHandler handler,
+            @NotEmpty String handleType, ValueDeserializer<?> delegate) {
         this.containerType = containerType;
         this.handler = handler;
         this.handleType = handleType;
@@ -126,16 +127,19 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends ValueDeseria
      *      com.fasterxml.jackson.databind.BeanProperty)
      */
     @Override
-    public ValueDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) throws JacksonException {
+    public ValueDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property)
+            throws JacksonException {
         if (this.delegate != null) {
             return this; // 이미 contextual-resolved
         }
         // 컨테이너 타입 자체로 표준 delegate 획득 (property 컨텍스트 고려)
-        ValueDeserializer<Object> std = (ValueDeserializer<Object>) ctxt.findContextualValueDeserializer(this.containerType, property);
+        ValueDeserializer<Object> std = (ValueDeserializer<Object>) ctxt
+                .findContextualValueDeserializer(this.containerType, property);
         if (std == null) {
             std = (ValueDeserializer<Object>) ctxt.findRootValueDeserializer(this.containerType);
         }
-        return new ContainerSimpleTypeElementWrappingDeserializer(this.containerType, this.handler, this.handleType, std);
+        return new ContainerSimpleTypeElementWrappingDeserializer(this.containerType, this.handler, this.handleType,
+                std);
     }
 
     /**
@@ -158,6 +162,7 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends ValueDeseria
         }
 
         // 그 다음 자바 객체를 재귀 후처리 (파서 재소모 없음)
-        return AuthorizedRequestDataContainerWalker.processRecursively(container, this.containerType, this.handler, this.handleType);
+        return AuthorizedRequestDataContainerWalker.processRecursively(container, this.containerType, this.handler,
+                this.handleType);
     }
 }

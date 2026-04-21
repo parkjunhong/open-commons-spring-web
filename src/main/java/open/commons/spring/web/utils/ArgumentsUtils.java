@@ -101,7 +101,8 @@ public class ArgumentsUtils {
      * @since 2022. 8. 10.
      * @version 0.5.0
      */
-    public Logger setLoggerContextUsingApplicationExternalConfiguration(Class<?> loggerName, @Nullable String argName, String[] args) {
+    public Logger setLoggerContextUsingApplicationExternalConfiguration(Class<?> loggerName, @Nullable String argName,
+            String[] args) {
         AssertUtils2.notNulls(loggerName, args);
 
         DefaultApplicationArguments argObj = new DefaultApplicationArguments(args);

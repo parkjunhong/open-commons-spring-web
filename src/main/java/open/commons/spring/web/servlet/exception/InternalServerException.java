@@ -31,7 +31,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 /**
- * 서버 내부 에러가 발생한 경우 {@link ResponseEntityExceptionHandler} 에서 처리할 수 있도록 발생시키는 예외클래스.
+ * 서버 내부 에러가 발생한 경우 {@link ResponseEntityExceptionHandler} 에서 처리할 수 있도록 발생시키는
+ * 예외클래스.
  * 
  * @since 2020. 7. 30.
  * @version

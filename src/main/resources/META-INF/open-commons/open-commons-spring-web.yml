@@ -6,20 +6,31 @@ open-commons:
         requestfactory:
           connectionRequestTimeout: 300000
           readTimeout: 300000
-      proxy-header:
-        real-ip: X-Real-IP
-        client-port: X-Client-Port
-        forwarded-for: X-Forwarded-For
-        forwarded-proto: X-Forwarded-Proto
-        forwarded-host: X-Forwarded-Host
-        forwarded-port: X-Forwarded-Port
       exception-httpstatus-binder:
         # key: Throwable 하위 클래스, value: org.springframework.http.HttpStatus 의 인스턴스 이름 (예: BAD_REQUEST)
         properties:
           java.lang.UnsupportedOperationException: SERVICE_UNAVAILABLE
           jakarta.validation.ConstraintViolationException: BAD_REQUEST
       concurrent:
-        thread-pool-task-executor:
+        # for 'java.util.concurrent.ThreadPoolExecutor'
+        executor:
+          corePoolSize: 8  # default: 1
+          maximumPoolSize: 1024 # default: Integer.MAX_VALUE
+          keepAliveTime: 60 # default: 60 sec
+          allowCoreThreadTimeOut: false # default: false
+        # for 'java.util.concurrent.ScheduledThreadPoolExecutor'
+        scheduled-executor:
+          corePoolSize: 8
+          maximumPoolSize: 1000000 # default: Integer.MAX_VALUE
+          keepAliveTime: 60
+          # java.util.concurrent.TimeUnit
+          timeUnit: SECONDS # default: NANOSECONDS
+          allowCoreThreadTimeOut: false # default: false
+          continueExistingPeriodicTasksAfterShutdown: false # default: false
+          executeExistingDelayedTasksAfterShutdown: true # default: true
+          removeOnCancel: false # default: false
+        # for 'org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor'
+        task-executor:
           corePoolSize: 8 # default: 1
           maxPoolSize: 1024 # default: Integer.MAX_VALUE
           queueCapacity: 5000 # default: Integer.MAX_VALUE
@@ -29,9 +40,10 @@ open-commons:
           waitForTasksToCompleteOnShutdown: false # default: false
           daemon: true # default: false
           threadGroupName: async
-          threadNamePrefix: "default-executor-pool-"
+          threadNamePrefix: "task-executor-pool-"
           threadPriority: 5 # MIN: 1, NORMAL: 5, MAX: 10
-        thread-pool-task-scheduler:
+        # for 'org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler'
+        task-scheduler:
           poolSize: 8 # default: 1
           removeOnCancelPolicy: false # default: false
           continueExistingPeriodicTasksAfterShutdownPolicy: false # default: false
@@ -44,33 +56,40 @@ open-commons:
           waitForTasksToCompleteOnShutdown: false # default: false
           daemon: true # default: false
           threadGroupName: async
-          threadNamePrefix: "default-scheduler-pool-"
+          threadNamePrefix: "task-scheduler-pool-"
           threadPriority: 5 # MIN: 1, NORMAL: 5, MAX: 10
-        # for 'java.util.concurrent.ScheduledThreadPoolExecutor'
-        scheduled-thread-pool-executor:
-          corePoolSize: 8
-          maximumPoolSize: 1000000 # default: Integer.MAX_VALUE
-          keepAliveTime: 60
-          # java.util.concurrent.TimeUnit
-          timeUnit: SECONDS # default: NANOSECONDS
-          allowCoreThreadTimeOut: false # default: false
-          continueExistingPeriodicTasksAfterShutdown: false # default: false
-          executeExistingDelayedTasksAfterShutdown: true # default: true
-          removeOnCancel: false # default: false
         # for 'virtual thread' 기반 TaskExecutor. e.g.: org.springframework.core.task.SimpleAsyncTaskExecutor
-        virtual-async-task-executor:
+        virtual-task-executor:
             # 기본값: true
             daemon: true
             # 기본값: "virtual'
             threadGroupName: "virtual"
             # 기본값: "@async-1"
-            threadNamePrefix: "@async-"
+            threadNamePrefix: "async-task-executor-"
             # 기본값: 5
             threadPriority: 5
             # 기본값: false
             cancelRemainingTasksOnClose: false
             # 기본값: -1 (무제한 생성)
-            concurrentLimit: 100000
+            concurrencyLimit: 100000
+            # 기본값: false
+            rejectTasksWhenLimitReached: false
+            # 기본값: 0 (기다리지 않음)
+            taskTerminationTimeout: 0
+        # for 'virtual thread' 기반 TaskExecutor. e.g.: org.springframework.core.task.SimpleAsyncTaskScheduler
+        virtual-task-scheduler:
+            # 기본값: true
+            daemon: true
+            # 기본값: "virtual'
+            threadGroupName: "virtual"
+            # 기본값: "@async-1"
+            threadNamePrefix: "async-task-executor-"
+            # 기본값: 5
+            threadPriority: 5
+            # 기본값: false
+            cancelRemainingTasksOnClose: false
+            # 기본값: -1 (무제한 생성)
+            concurrencyLimit: 100000
             # 기본값: false
             rejectTasksWhenLimitReached: false
             # 기본값: 0 (기다리지 않음)

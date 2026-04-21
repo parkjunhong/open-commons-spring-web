@@ -112,30 +112,38 @@ public interface TemplateUriEncoder {
      */
     public static enum Encoding {
         /**
-         * "URL 템플릿"와 "변수값"을 모두 "인코딩" 한 후에 치환을 합니다. 예약문자(&, =, +, /, > 등)가 보존되지 않습니다.<br>
+         * "URL 템플릿"와 "변수값"을 모두 "인코딩" 한 후에 치환을 합니다. 예약문자(&, =, +, /, > 등)가 보존되지
+         * 않습니다.<br>
          * 아래 설정값에 대응됩니다.
          * <li>{@link EncodingMode#TEMPLATE_AND_VALUES}
          * <li>{@link org.springframework.web.util.UriComponentsBuilder.EncodingHint#ENCODE_TEMPLATE}:
-         * {@link UriComponentsBuilder#encode()} 또는 {@link UriComponentsBuilder#encode(java.nio.charset.Charset)} 를 호출한
-         * 이후에 {@link UriComponentsBuilder#build()}, {@link UriComponentsBuilder#build(Object...)},
-         * {@link UriComponentsBuilder#build(java.util.Map)}, {@link UriComponentsBuilder#build(boolean)}에
-         * <code>false</code>를 전달하는 경우.
+         * {@link UriComponentsBuilder#encode()} 또는
+         * {@link UriComponentsBuilder#encode(java.nio.charset.Charset)} 를 호출한
+         * 이후에 {@link UriComponentsBuilder#build()},
+         * {@link UriComponentsBuilder#build(Object...)},
+         * {@link UriComponentsBuilder#build(java.util.Map)},
+         * {@link UriComponentsBuilder#build(boolean)}에 <code>false</code>를 전달하는
+         * 경우.
          */
         TEMPLATE_AND_VALUES,
         /**
-         * "URL 템플릿"은 그대로 두고, "변수값"을 모두 "인코딩" 후에 치환을 합니다. 예약문자(&, =, +, /, > 등)가 보존되지 않습니다.<br>
+         * "URL 템플릿"은 그대로 두고, "변수값"을 모두 "인코딩" 후에 치환을 합니다. 예약문자(&, =, +, /, > 등)가
+         * 보존되지 않습니다.<br>
          * 아래 설정값에 대응됩니다.
          * <li>{@link EncodingMode#VALUES_ONLY}
          * <li>
-         * <li>{@link org.springframework.web.util.UriComponentsBuilder.EncodingHint}는 유사한 정의 없음.
+         * <li>{@link org.springframework.web.util.UriComponentsBuilder.EncodingHint}는
+         * 유사한 정의 없음.
          */
         VALUES_ONLY_STRICT,
         /**
-         * "URL 템플릿"은 그대로 두고, "변수값"을 모두 "인코딩" 후에 치환을 합니다. 예약문자(&, =, +, /, > 등)가 보존됩니다.<br>
+         * "URL 템플릿"은 그대로 두고, "변수값"을 모두 "인코딩" 후에 치환을 합니다. 예약문자(&, =, +, /, > 등)가
+         * 보존됩니다.<br>
          * 아래 설정값에 대응됩니다.
          * <li>{@link EncodingMode#URI_COMPONENT}
          * <li>{@link org.springframework.web.util.UriComponentsBuilder.EncodingHint#NONE}:
-         * {@link UriComponentsBuilder#encode()} 또는 {@link UriComponentsBuilder#encode(java.nio.charset.Charset)} 를 호출하지
+         * {@link UriComponentsBuilder#encode()} 또는
+         * {@link UriComponentsBuilder#encode(java.nio.charset.Charset)} 를 호출하지
          * 않고, {@link UriComponentsBuilder#build()}를 호출하는 경우.
          */
         VALUES_ONLY_RESERVED,
@@ -143,8 +151,9 @@ public interface TemplateUriEncoder {
          * "URL 템플릿"과 "변수값"에 대해서 치환을 하지 않습니다.<br>
          * 아래 설정값에 대응됩니다.
          * <li>{@link EncodingMode#NONE}
-         * <li>{@link org.springframework.web.util.UriComponentsBuilder.EncodingHint#FULLY_ENCODED}: 변수 치환 및 인코딩이 완료된
-         * 상태를 의미 (그렇지 않은 경우 {@link IllegalArgumentException} 발생)하며, {@link UriComponentsBuilder#build(boolean)}에
+         * <li>{@link org.springframework.web.util.UriComponentsBuilder.EncodingHint#FULLY_ENCODED}:
+         * 변수 치환 및 인코딩이 완료된 상태를 의미 (그렇지 않은 경우 {@link IllegalArgumentException}
+         * 발생)하며, {@link UriComponentsBuilder#build(boolean)}에
          * <code>true</code>를 전달하는 경우.
          */
         NONE,
@@ -154,7 +163,8 @@ public interface TemplateUriEncoder {
 
     /**
      * Full Qualified URL 구성요소<br>
-     * 포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     * 포맷:
+     * {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * 
      * @since 2025. 8. 28.
      * @version 0.8.0

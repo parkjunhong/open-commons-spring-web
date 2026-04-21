@@ -94,7 +94,8 @@ public class AuthorizedRequestDataMetadataBuilder {
         ObjectBuilder object();
 
         /**
-         * 여러 개의 {@link AuthorizedRequestDataObjectMetadata}를 생성하는 빌더를 제공합니다. <br>
+         * 여러 개의 {@link AuthorizedRequestDataObjectMetadata}를 생성하는 빌더를 제공합니다.
+         * <br>
          * <br>
          * 
          * <pre>
@@ -170,7 +171,8 @@ public class AuthorizedRequestDataMetadataBuilder {
          * @since 2025. 6. 19.
          * @version 0.8.0
          */
-        private static <T> T newObject(Class<T> targetClass, Object builder, Map<String, Function<Object, Object>> postprocessors) {
+        private static <T> T newObject(Class<T> targetClass, Object builder,
+                Map<String, Function<Object, Object>> postprocessors) {
             T newObject = null;
             Method targetMethod = null;
 
@@ -191,7 +193,8 @@ public class AuthorizedRequestDataMetadataBuilder {
 
                     // #2. [JDK 25 표준] builderField 접근 가능 여부 확인 및 안전한 해제
                     if (!builderField.canAccess(builder)) {
-                        // setAccessible(true) 대신 모듈 시스템에서 안전한 trySetAccessible() 사용
+                        // setAccessible(true) 대신 모듈 시스템에서 안전한
+                        // trySetAccessible() 사용
                         builderField.trySetAccessible();
                     }
 
@@ -206,11 +209,13 @@ public class AuthorizedRequestDataMetadataBuilder {
                         continue;
                     }
 
-                    targetMethod = targetClass.getMethod(String.join("", "set", StringUtils.toUpperCase(targetFieldName, 0)), targetField.getType());
+                    targetMethod = targetClass.getMethod(
+                            String.join("", "set", StringUtils.toUpperCase(targetFieldName, 0)), targetField.getType());
                     targetMethod.invoke(newObject, value);
                 }
             } catch (Exception e) {
-                String errMsg = String.format("데이터 처리 도중 오류가 발생하였습니다. target.class=%s, target.method=%s, target.object=%s / builder.class=%s, builder.field=%s, builder.object=%s" //
+                String errMsg = String.format(
+                        "데이터 처리 도중 오류가 발생하였습니다. target.class=%s, target.method=%s, target.object=%s / builder.class=%s, builder.field=%s, builder.object=%s" //
                         , targetClass, targetMethod, newObject, builderClass, builderField, builder);
                 LOGGER.error(errMsg, e);
                 throw ExceptionUtils.newException(InternalServerException.class, e, errMsg);
@@ -258,7 +263,8 @@ public class AuthorizedRequestDataMetadataBuilder {
         private static class AuthorizedRequestDataObjectMetadataBuilder {
             static Map<String, Function<Object, Object>> pp = new HashMap<>();
             static {
-                pp.put("fields", o -> ((List<FieldBuilder>) o).stream().map(b -> b.build()).collect(Collectors.toList()));
+                pp.put("fields",
+                        o -> ((List<FieldBuilder>) o).stream().map(b -> b.build()).collect(Collectors.toList()));
             }
             private String handleBean;
             private Class<?> type;
@@ -414,7 +420,8 @@ public class AuthorizedRequestDataMetadataBuilder {
         AuthorizedRequestDataFieldMetadata build();
 
         /**
-         * {@link AuthorizedRequestDataFieldMetadata#handleBean()}에 해당하는 값을 설정합니다.
+         * {@link AuthorizedRequestDataFieldMetadata#handleBean()}에 해당하는 값을
+         * 설정합니다.
          * 
          * <pre>
         * [개정이력]
@@ -433,7 +440,8 @@ public class AuthorizedRequestDataMetadataBuilder {
         FieldBuilder handleBean(String handleBean);
 
         /**
-         * {@link AuthorizedRequestDataFieldMetadata#handleType()}에 해당하는 값을 설정합니다.<br>
+         * {@link AuthorizedRequestDataFieldMetadata#handleType()}에 해당하는 값을
+         * 설정합니다.<br>
          * 
          * <pre>
         * [개정이력]
@@ -528,7 +536,8 @@ public class AuthorizedRequestDataMetadataBuilder {
         ObjectBuilder fieldHandleBean(String fieldHandleBean);
 
         /**
-         * {@link AuthorizedRequestData}가 적용된 {@link Field}를 소유한 데이터 유형을 설정합니다.<br>
+         * {@link AuthorizedRequestData}가 적용된 {@link Field}를 소유한 데이터 유형을
+         * 설정합니다.<br>
          * 
          * <pre>
         * [개정이력]

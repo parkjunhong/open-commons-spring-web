@@ -55,7 +55,8 @@ import open.commons.spring.web.mdc.MdcWrappedJob;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-public class DelegatingScheduledExecutorService extends DelegatingExecutorService<ScheduledExecutorService> implements ScheduledExecutorService {
+public class DelegatingScheduledExecutorService extends DelegatingExecutorService<ScheduledExecutorService>
+        implements ScheduledExecutorService {
 
     /**
      * 
@@ -97,8 +98,8 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      * @since 2025. 8. 1.
      * @version 0.8.0
      *
-     * @see java.util.concurrent.ScheduledExecutorService#schedule(java.util.concurrent.Callable, long,
-     *      java.util.concurrent.TimeUnit)
+     * @see java.util.concurrent.ScheduledExecutorService#schedule(java.util.concurrent.Callable,
+     *      long, java.util.concurrent.TimeUnit)
      */
     @Override
     public <V> ScheduledFuture<V> schedule(Callable<V> callable, long delay, TimeUnit unit) {
@@ -115,8 +116,8 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      * @since 2025. 8. 1.
      * @version 0.8.0
      *
-     * @see java.util.concurrent.ScheduledExecutorService#schedule(java.lang.Runnable, long,
-     *      java.util.concurrent.TimeUnit)
+     * @see java.util.concurrent.ScheduledExecutorService#schedule(java.lang.Runnable,
+     *      long, java.util.concurrent.TimeUnit)
      */
     @Override
     public ScheduledFuture<?> schedule(Runnable command, long delay, TimeUnit unit) {
@@ -133,8 +134,8 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      * @since 2025. 8. 1.
      * @version 0.8.0
      *
-     * @see java.util.concurrent.ScheduledExecutorService#scheduleAtFixedRate(java.lang.Runnable, long, long,
-     *      java.util.concurrent.TimeUnit)
+     * @see java.util.concurrent.ScheduledExecutorService#scheduleAtFixedRate(java.lang.Runnable,
+     *      long, long, java.util.concurrent.TimeUnit)
      */
     @Override
     public ScheduledFuture<?> scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit) {
@@ -150,8 +151,8 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      * @since 2025. 8. 1.
      * @version 0.8.0
      *
-     * @see java.util.concurrent.ScheduledExecutorService#scheduleWithFixedDelay(java.lang.Runnable, long, long,
-     *      java.util.concurrent.TimeUnit)
+     * @see java.util.concurrent.ScheduledExecutorService#scheduleWithFixedDelay(java.lang.Runnable,
+     *      long, long, java.util.concurrent.TimeUnit)
      */
     @Override
     public ScheduledFuture<?> scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit) {
@@ -192,7 +193,8 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      * @since 2025. 8. 1.
      * @version 0.8.0
      *
-     * @see java.util.concurrent.ExecutorService#submit(java.lang.Runnable, java.lang.Object)
+     * @see java.util.concurrent.ExecutorService#submit(java.lang.Runnable,
+     *      java.lang.Object)
      */
     @Override
     public <T> Future<T> submit(Runnable task, T result) {
@@ -242,7 +244,8 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      */
     protected static String findSpecifiedThreadName(Runnable runnable) {
         // ReschedulingRunnable: @SCheduled#cron() 이 아닌 다른 설정인 경우
-        // DelegatingErrorHandlingRunnable: @Scheduled(initialDelay = 1, fixedDelay = 10, timeUnit = TimeUnit.SECONDS)
+        // DelegatingErrorHandlingRunnable: @Scheduled(initialDelay = 1,
+        // fixedDelay = 10, timeUnit = TimeUnit.SECONDS)
         if (runnable instanceof DelegatingErrorHandlingRunnable) {
             try {
                 Field delegateField = getFieldRecursively(runnable.getClass(), "delegate");

@@ -114,7 +114,8 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * @since 2025. 5. 28.
      * @version 0.8.0
      */
-    public DefaultGlobalExceptionHandler(@Qualifier(ExceptionHttpStatusBinder.BEAN_QUALIFIER) ExceptionHttpStatusBinder exceptionHttpStatusBinder) {
+    public DefaultGlobalExceptionHandler(
+            @Qualifier(ExceptionHttpStatusBinder.BEAN_QUALIFIER) ExceptionHttpStatusBinder exceptionHttpStatusBinder) {
         AssertUtils2.notNull(exceptionHttpStatusBinder);
 
         this(exceptionHttpStatusBinder, FN_CREATE_ENTITY_DEFAULT);
@@ -216,11 +217,13 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      * @version 0.2.3
      *
      * @see org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler#handleExceptionInternal(java.lang.Exception,
-     *      java.lang.Object, org.springframework.http.HttpHeaders, org.springframework.http.HttpStatus,
+     *      java.lang.Object, org.springframework.http.HttpHeaders,
+     *      org.springframework.http.HttpStatus,
      *      org.springframework.web.context.request.WebRequest)
      */
     @Override
-    protected @Nullable ResponseEntity<Object> handleExceptionInternal(Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+    protected @Nullable ResponseEntity<Object> handleExceptionInternal(Exception ex, @Nullable Object body,
+            HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         AssertUtils2.notNulls(ex, headers, status, request);
 
         if (body == null) {

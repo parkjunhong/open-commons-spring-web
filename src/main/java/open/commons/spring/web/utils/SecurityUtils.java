@@ -81,7 +81,8 @@ public class SecurityUtils {
      * 
      * @return 암호화된 문자열
      */
-    private static final Function<String, String> ENC_BY_SESSION_UUID = plainText -> SecurityUtils.encryptBySessionUUID(plainText);
+    private static final Function<String, String> ENC_BY_SESSION_UUID = plainText -> SecurityUtils
+            .encryptBySessionUUID(plainText);
 
     /**
      * {@link HttpSession}에 따라 변경되는 UUID 를 이용하여 암호화한 결과를 복호화화여 제공합니다.
@@ -91,7 +92,8 @@ public class SecurityUtils {
      * 
      * @return 암호화된 문자열
      */
-    private static final Function<String, String> DEC_BY_SESSION_UUID = cipherText -> SecurityUtils.decryptBySessionUUID(cipherText);
+    private static final Function<String, String> DEC_BY_SESSION_UUID = cipherText -> SecurityUtils
+            .decryptBySessionUUID(cipherText);
 
     // prevent to create new instance.
     private SecurityUtils() {
@@ -217,7 +219,8 @@ public class SecurityUtils {
      * @since 2025. 4. 18.
      * @version 0.8.0
      */
-    public static String decryptBySessionUUID(String encText, @NotBlank String encTextCharset) throws InternalServerException {
+    public static String decryptBySessionUUID(String encText, @NotBlank String encTextCharset)
+            throws InternalServerException {
         AssertUtils2.notNull(encText);
         AssertUtils2.notBlank(encTextCharset, "문자셋은 '빈 문자열'을 허용하지 않습니다.");
 
@@ -232,22 +235,29 @@ public class SecurityUtils {
                             , Base64.getUrlDecoder().decode(encText.getBytes()) //
                             , encTextCharset) //
             );
-        } catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidAlgorithmParameterException
-                | NullPointerException e) {
-            throw ExceptionUtils.newException(InternalServerException.class, e, "데이터 처리 도중에 오류가 발생하였습니다. 원인=%s", e.getMessage());
+        } catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException
+                | InvalidAlgorithmParameterException | NullPointerException e) {
+            throw ExceptionUtils.newException(InternalServerException.class, e, "데이터 처리 도중에 오류가 발생하였습니다. 원인=%s",
+                    e.getMessage());
         } catch (IllegalBlockSizeException | BadPaddingException | IllegalArgumentException e) {
             // 에러 발생 경우
             // #1. 암호화된 값이
-            // - 길때: Input byte array has incorrect ending byte at {길이} / IllegalArgumentException
+            // - 길때: Input byte array has incorrect ending byte at {길이} /
+            // IllegalArgumentException
             // - 짧을 때:
-            // + 첫 문자를 지울 때: Last unit does not have enough valid bits / IllegalArgumentException
-            // + 끝 문자를 지울 때: Input byte array has wrong 4-byte ending unit / IllegalArgumentException
+            // + 첫 문자를 지울 때: Last unit does not have enough valid bits /
+            // IllegalArgumentException
+            // + 끝 문자를 지울 때: Input byte array has wrong 4-byte ending unit /
+            // IllegalArgumentException
             // - 길이가 다를 때
-            // + Given final block not properly padded. Such issues can arise if a bad key is used during decryption /
+            // + Given final block not properly padded. Such issues can arise if
+            // a bad key is used during decryption /
             // javax.crypto.BadPaddingException
-            // + Input length must be multiple of 16 when decrypting with padded cipher /
+            // + Input length must be multiple of 16 when decrypting with padded
+            // cipher /
             // javax.crypto.IllegalBlockSizeException
-            throw ExceptionUtils.newException(BadRequestException.class, e, "잘못된 입력 데이터 입니다. 이로 인해 데이터가 처리 도중에 오류가 발생하였습니다. 원인은 다음과 같습니다. '%s'", e.getMessage());
+            throw ExceptionUtils.newException(BadRequestException.class, e,
+                    "잘못된 입력 데이터 입니다. 이로 인해 데이터가 처리 도중에 오류가 발생하였습니다. 원인은 다음과 같습니다. '%s'", e.getMessage());
         }
     }
 
@@ -296,7 +306,8 @@ public class SecurityUtils {
      * @since 2025. 4. 18.
      * @version 0.8.0
      */
-    public static String encryptBySessionUUID(String plainText, @NotBlank String plainTextCharset) throws InternalServerException {
+    public static String encryptBySessionUUID(String plainText, @NotBlank String plainTextCharset)
+            throws InternalServerException {
         AssertUtils2.notNull(plainText);
         AssertUtils2.notBlank(plainTextCharset, "문자셋은 '빈 문자열'을 허용하지 않습니다.");
 
@@ -311,11 +322,13 @@ public class SecurityUtils {
                             EncryptUtils.encrypt(encKey, ENCRYPTION_KEY_CHARSET, plainText, plainTextCharset) //
                     )//
             );
-        } catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException | InvalidAlgorithmParameterException
-                | NullPointerException e) {
-            throw ExceptionUtils.newException(InternalServerException.class, e, "데이터 처리 도중에 오류가 발생하였습니다. 원인=%s", e.getMessage());
+        } catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException | NoSuchPaddingException
+                | InvalidAlgorithmParameterException | NullPointerException e) {
+            throw ExceptionUtils.newException(InternalServerException.class, e, "데이터 처리 도중에 오류가 발생하였습니다. 원인=%s",
+                    e.getMessage());
         } catch (IllegalBlockSizeException | BadPaddingException | IllegalArgumentException e) {
-            throw ExceptionUtils.newException(BadRequestException.class, e, "데이터 처리 도중에 오류가 발생하였습니다. 원인=%s", e.getMessage());
+            throw ExceptionUtils.newException(BadRequestException.class, e, "데이터 처리 도중에 오류가 발생하였습니다. 원인=%s",
+                    e.getMessage());
         }
     }
 
@@ -381,8 +394,8 @@ public class SecurityUtils {
     }
 
     /**
-     * 현재 요청에 대한 {@link HttpSession}을 제공합니다. <code>create</code>가 <code>true</code>인 경우 새로운 {@link HttpSession}을 생성합니다.
-     * <br>
+     * 현재 요청에 대한 {@link HttpSession}을 제공합니다. <code>create</code>가
+     * <code>true</code>인 경우 새로운 {@link HttpSession}을 생성합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -408,8 +421,8 @@ public class SecurityUtils {
     }
 
     /**
-     * 주어진 요청에 대한 {@link HttpSession}을 제공합니다. <code>create</code>가 <code>true</code>인 경우 새로운 {@link HttpSession}을 생성합니다.
-     * <br>
+     * 주어진 요청에 대한 {@link HttpSession}을 제공합니다. <code>create</code>가
+     * <code>true</code>인 경우 새로운 {@link HttpSession}을 생성합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -432,8 +445,9 @@ public class SecurityUtils {
     }
 
     /**
-     * 현재 {@link HttpServletRequest} 정보를 제공하거나 현재 {@link RequestAttributes} 이 {@link ServletRequestAttributes}의 하위클래스가
-     * 아닌 경우 <code>null</code> 을 반환합니다. <br>
+     * 현재 {@link HttpServletRequest} 정보를 제공하거나 현재 {@link RequestAttributes} 이
+     * {@link ServletRequestAttributes}의 하위클래스가 아닌 경우 <code>null</code> 을 반환합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -628,7 +642,8 @@ public class SecurityUtils {
      * @version 0.8.0
      */
     public static void registerDecryptionConverter(Class<?> srcClass, Class<?> targetClass, String property) {
-        ObjectTransformer.registerPropertyConverter(srcClass, String.class, property, targetClass, String.class, DEC_BY_SESSION_UUID);
+        ObjectTransformer.registerPropertyConverter(srcClass, String.class, property, targetClass, String.class,
+                DEC_BY_SESSION_UUID);
     }
 
     /**
@@ -652,6 +667,7 @@ public class SecurityUtils {
      * @version 0.8.0
      */
     public static void registerEncryptionConverter(Class<?> srcClass, Class<?> targetClass, String property) {
-        ObjectTransformer.registerPropertyConverter(srcClass, String.class, property, targetClass, String.class, ENC_BY_SESSION_UUID);
+        ObjectTransformer.registerPropertyConverter(srcClass, String.class, property, targetClass, String.class,
+                ENC_BY_SESSION_UUID);
     }
 }

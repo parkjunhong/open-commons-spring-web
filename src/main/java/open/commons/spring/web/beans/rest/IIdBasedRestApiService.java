@@ -678,7 +678,8 @@ public interface IIdBasedRestApiService {
      */
     default <REQ, RES> Result<RES> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, null, null, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, null, responseType, null, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -778,7 +779,8 @@ public interface IIdBasedRestApiService {
      */
     default <REQ, RES> Result<RES> execute(@NotBlank String id, Class<RES> responseType //
             , @Nullable String fragment) {
-        return execute(id, null, null, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, null, responseType, null, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -872,8 +874,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType) {
-        return execute(id, pathVariables, null, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType) {
+        return execute(id, pathVariables, null, responseType, null, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -902,7 +906,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
@@ -935,7 +940,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, null, null, null, onSuccess, onError);
@@ -967,9 +973,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
-        return execute(id, pathVariables, null, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, headers, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -1000,7 +1008,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, headers, null, null, onSuccess, CallbackOn.error());
@@ -1036,7 +1045,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -1071,10 +1081,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, pathVariables, null, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, headers, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -1107,7 +1119,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -1146,7 +1159,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1184,10 +1198,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, pathVariables, null, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, headers, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -1222,7 +1238,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -1263,7 +1280,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1299,10 +1317,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
-        return execute(id, pathVariables, null, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, headers, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -1335,7 +1355,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -1374,7 +1395,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1408,9 +1430,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, pathVariables, null, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, null, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -1441,7 +1465,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, query, null, onSuccess, CallbackOn.error());
@@ -1477,7 +1502,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -1512,9 +1538,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, pathVariables, null, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, null, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -1547,7 +1575,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, query, fragment, onSuccess, CallbackOn.error());
@@ -1585,7 +1614,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -1618,9 +1648,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable String fragment) {
-        return execute(id, pathVariables, null, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, null, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -1651,7 +1683,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, null, fragment, onSuccess, CallbackOn.error());
@@ -1687,7 +1720,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -1724,8 +1758,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType) {
-        return execute(id, pathVariables, null, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType) {
+        return execute(id, pathVariables, null, responseType, null, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -1760,7 +1796,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
@@ -1799,7 +1836,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, null, responseType, null, null, null, onSuccess, onError);
@@ -1837,9 +1875,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
-        return execute(id, pathVariables, null, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, headers, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -1876,7 +1916,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, headers, null, null, onSuccess, CallbackOn.error());
@@ -1918,7 +1959,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -1959,10 +2001,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, pathVariables, null, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, headers, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -2001,7 +2045,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -2046,7 +2091,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -2090,10 +2136,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, pathVariables, null, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, headers, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -2134,7 +2182,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -2181,7 +2230,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -2223,10 +2273,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
-        return execute(id, pathVariables, null, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, headers, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -2265,7 +2317,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -2310,7 +2363,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -2350,9 +2404,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, pathVariables, null, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, null, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -2389,7 +2445,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, query, null, onSuccess, CallbackOn.error());
@@ -2431,7 +2488,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -2472,9 +2530,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, pathVariables, null, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, null, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -2513,7 +2573,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, query, fragment, onSuccess, CallbackOn.error());
@@ -2557,7 +2618,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -2596,9 +2658,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
-        return execute(id, pathVariables, null, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, null, responseType, null, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -2635,7 +2699,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, null, responseType, null, null, fragment, onSuccess, CallbackOn.error());
@@ -2677,7 +2742,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -2703,8 +2769,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2712,8 +2779,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType) {
-        return execute(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType) {
+        return execute(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -2735,8 +2804,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2746,7 +2816,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
@@ -2770,8 +2841,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2783,7 +2855,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, null, null, null, onSuccess, onError);
@@ -2808,8 +2881,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2819,9 +2893,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
-        return execute(id, pathVariables, requestBody, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -2843,8 +2919,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2856,10 +2933,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -2881,8 +2960,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2896,7 +2976,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -2922,8 +3003,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2935,10 +3017,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, pathVariables, requestBody, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -2960,8 +3044,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2975,11 +3060,13 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, headers, query, null, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, query, null, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -3001,8 +3088,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3018,7 +3106,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -3045,8 +3134,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3060,10 +3150,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -3085,8 +3177,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3102,11 +3195,13 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -3129,8 +3224,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3148,7 +3244,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -3173,8 +3270,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3186,9 +3284,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
-        return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -3210,8 +3310,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3225,10 +3326,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -3250,8 +3353,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3267,7 +3371,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -3293,8 +3398,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3306,9 +3412,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, pathVariables, requestBody, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, null, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -3330,8 +3438,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3345,7 +3454,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, query, null, onSuccess, CallbackOn.error());
@@ -3370,8 +3480,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3387,7 +3498,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -3413,8 +3525,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3428,9 +3541,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, pathVariables, requestBody, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, null, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -3452,8 +3567,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3469,10 +3585,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -3494,8 +3612,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3513,7 +3632,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -3539,8 +3659,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3550,9 +3671,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment) {
-        return execute(id, pathVariables, requestBody, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, null, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -3574,8 +3697,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3587,10 +3711,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -3612,8 +3738,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3627,7 +3754,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -3653,8 +3781,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3668,9 +3797,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType) {
-        return execute(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType) {
+        return execute(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -3692,8 +3822,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3709,8 +3840,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
@@ -3734,8 +3865,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3753,8 +3885,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
         return execute(id, pathVariables, requestBody, responseType, null, null, null, onSuccess, onError);
@@ -3779,8 +3911,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3796,9 +3929,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
-        return execute(id, pathVariables, requestBody, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -3820,8 +3955,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3839,11 +3975,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -3865,8 +4002,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3886,8 +4024,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -3913,8 +4051,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3932,10 +4071,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, pathVariables, requestBody, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -3957,8 +4098,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3978,12 +4120,13 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, headers, query, null, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, query, null, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -4005,8 +4148,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4028,8 +4172,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -4056,8 +4200,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4077,10 +4222,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -4102,8 +4249,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4125,12 +4273,13 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, query, fragment, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -4153,8 +4302,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4178,8 +4328,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -4204,8 +4354,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4223,9 +4374,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
-        return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -4247,8 +4400,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4268,11 +4422,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -4294,8 +4449,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4317,8 +4473,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -4344,8 +4500,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4363,9 +4520,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, pathVariables, requestBody, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, null, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -4387,8 +4546,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4408,8 +4568,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, pathVariables, requestBody, responseType, null, query, null, onSuccess, CallbackOn.error());
@@ -4434,8 +4594,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4457,8 +4618,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -4484,8 +4645,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4505,9 +4667,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, pathVariables, requestBody, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, null, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -4529,8 +4693,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4552,11 +4717,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -4578,8 +4744,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4603,8 +4770,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -4630,8 +4797,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4647,9 +4815,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
-        return execute(id, pathVariables, requestBody, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, null, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -4671,8 +4841,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4690,11 +4861,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
-        return execute(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess, CallbackOn.error());
+        return execute(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess,
+                CallbackOn.error());
     }
 
     /**
@@ -4716,8 +4888,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4737,8 +4910,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -5487,7 +5660,8 @@ public interface IIdBasedRestApiService {
      */
     default <REQ, RES> Result<RES> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, null, null, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, null, responseType, null, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -5605,7 +5779,8 @@ public interface IIdBasedRestApiService {
      */
     default <REQ, RES> Result<RES> execute(@NotBlank String id, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
-        return execute(id, null, null, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, null, responseType, null, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -5704,8 +5879,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -5714,7 +5890,8 @@ public interface IIdBasedRestApiService {
      * @since 2025. 7. 3.
      */
     default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType) {
-        return execute(id, null, requestBody, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, null, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -5734,8 +5911,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -5767,8 +5945,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -5803,8 +5982,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -5816,7 +5996,8 @@ public interface IIdBasedRestApiService {
      */
     default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
-        return execute(id, null, requestBody, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, headers, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -5836,8 +6017,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -5872,8 +6054,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -5911,8 +6094,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -5927,7 +6111,8 @@ public interface IIdBasedRestApiService {
     default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, null, requestBody, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, headers, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -5947,8 +6132,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -5986,8 +6172,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6028,8 +6215,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6046,7 +6234,8 @@ public interface IIdBasedRestApiService {
     default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, null, requestBody, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, headers, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -6066,8 +6255,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6108,8 +6298,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6152,8 +6343,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6167,7 +6359,8 @@ public interface IIdBasedRestApiService {
      */
     default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
-        return execute(id, null, requestBody, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, headers, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -6187,8 +6380,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6225,8 +6419,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6266,8 +6461,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6281,7 +6477,8 @@ public interface IIdBasedRestApiService {
      */
     default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, null, requestBody, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, null, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     // ==========================================================================================================================================
@@ -6304,8 +6501,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6342,8 +6540,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6383,8 +6582,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6400,7 +6600,8 @@ public interface IIdBasedRestApiService {
      */
     default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, null, requestBody, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, null, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -6420,8 +6621,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6460,8 +6662,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6503,8 +6706,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6516,7 +6720,8 @@ public interface IIdBasedRestApiService {
      */
     default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment) {
-        return execute(id, null, requestBody, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, null, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -6536,8 +6741,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6572,8 +6778,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6611,8 +6818,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6626,8 +6834,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType) {
-        return execute(id, null, requestBody, responseType, null, null, null, CallbackOn.success(null), CallbackOn.error());
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType) {
+        return execute(id, null, requestBody, responseType, null, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -6647,8 +6857,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6664,7 +6875,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, null, null, onSuccess, CallbackOn.error());
     }
@@ -6686,8 +6898,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6705,7 +6918,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
         return execute(id, null, requestBody, responseType, null, null, null, onSuccess, onError);
@@ -6728,8 +6942,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6745,9 +6960,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
-        return execute(id, null, requestBody, responseType, headers, null, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, headers, null, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -6767,8 +6984,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6786,7 +7004,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, headers, null, null, onSuccess, CallbackOn.error());
@@ -6809,8 +7028,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6830,7 +7050,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -6854,8 +7075,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6873,10 +7095,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, null, requestBody, responseType, headers, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, headers, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -6896,8 +7120,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6917,7 +7142,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -6941,8 +7167,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6964,7 +7191,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -6989,8 +7217,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7010,10 +7239,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, null, requestBody, responseType, headers, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, headers, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -7033,8 +7264,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7056,7 +7288,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
@@ -7081,8 +7314,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7106,7 +7340,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -7131,8 +7366,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7150,9 +7386,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
-        return execute(id, null, requestBody, responseType, headers, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, headers, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -7172,8 +7410,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7193,7 +7432,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, headers, null, fragment, onSuccess, CallbackOn.error());
@@ -7216,8 +7456,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7239,7 +7480,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -7263,8 +7505,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7282,9 +7525,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
-        return execute(id, null, requestBody, responseType, null, query, null, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, null, query, null, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -7304,8 +7549,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7325,7 +7571,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, query, null, onSuccess, CallbackOn.error());
@@ -7348,8 +7595,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7371,7 +7619,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -7395,8 +7644,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7416,9 +7666,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return execute(id, null, requestBody, responseType, null, query, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, null, query, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -7438,8 +7690,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7461,7 +7714,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, query, fragment, onSuccess, CallbackOn.error());
@@ -7484,8 +7738,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7509,7 +7764,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -7533,8 +7789,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7550,9 +7807,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> Result<RES> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
-        return execute(id, null, requestBody, responseType, null, null, fragment, CallbackOn.success(null), CallbackOn.error());
+        return execute(id, null, requestBody, responseType, null, null, fragment, CallbackOn.success(null),
+                CallbackOn.error());
     }
 
     /**
@@ -7572,8 +7831,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7591,7 +7851,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess) {
         return execute(id, null, requestBody, responseType, null, null, fragment, onSuccess, CallbackOn.error());
@@ -7614,8 +7875,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7635,7 +7897,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 3.
      */
-    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError) {
@@ -8174,7 +8437,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType) {
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, null, CallbackOn.successAsRaw(null));
     }
 
@@ -8204,7 +8468,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, null, onSuccess);
     }
@@ -8235,7 +8500,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, null, CallbackOn.successAsRaw(null));
     }
@@ -8268,7 +8534,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, null, onSuccess);
@@ -8302,7 +8569,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, query, null, CallbackOn.successAsRaw(null));
@@ -8338,7 +8606,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -8375,10 +8644,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, null, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, null, responseType, headers, query, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -8413,7 +8684,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -8448,10 +8720,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, null, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, null, responseType, headers, null, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -8484,7 +8758,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -8517,7 +8792,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, null, CallbackOn.successAsRaw(null));
     }
@@ -8550,7 +8826,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, null, onSuccess);
@@ -8584,9 +8861,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, null, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, null, responseType, null, query, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -8619,7 +8898,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, fragment, onSuccess);
@@ -8651,7 +8931,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -8684,7 +8965,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            Class<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, fragment, onSuccess);
@@ -8720,7 +9002,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType) {
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, null, CallbackOn.successAsRaw(null));
     }
 
@@ -8756,7 +9039,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, null, onSuccess);
     }
@@ -8793,7 +9077,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, null, CallbackOn.successAsRaw(null));
     }
@@ -8832,7 +9117,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, null, null, onSuccess);
@@ -8872,7 +9158,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, null, responseType, headers, query, null, CallbackOn.successAsRaw(null));
@@ -8914,7 +9201,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -8957,10 +9245,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, null, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, null, responseType, headers, query, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9001,7 +9291,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -9042,10 +9333,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, null, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, null, responseType, headers, null, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9084,7 +9377,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -9123,7 +9417,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, null, CallbackOn.successAsRaw(null));
     }
@@ -9162,7 +9457,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, null, onSuccess);
@@ -9202,9 +9498,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, null, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, null, responseType, null, query, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9243,7 +9541,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, query, fragment, onSuccess);
@@ -9281,7 +9580,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -9320,7 +9620,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, null, responseType, null, null, fragment, onSuccess);
@@ -9345,8 +9646,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9354,8 +9656,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.successAsRaw(null));
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType) {
+        return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, null,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9377,8 +9681,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9388,7 +9693,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, null, onSuccess);
     }
@@ -9412,8 +9718,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9423,9 +9730,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, null, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, null,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9447,8 +9756,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9460,7 +9770,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess);
@@ -9485,8 +9796,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9498,10 +9810,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, null, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, null,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9523,8 +9837,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9538,7 +9853,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -9564,8 +9880,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9579,10 +9896,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9605,8 +9924,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9622,7 +9942,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess //
@@ -9647,8 +9968,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9660,9 +9982,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9684,8 +10008,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9699,7 +10024,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess);
@@ -9724,8 +10050,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9737,9 +10064,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, null, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, null,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9761,8 +10090,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9776,7 +10106,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, null, onSuccess);
@@ -9801,8 +10132,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9816,9 +10148,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9840,8 +10174,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9857,7 +10192,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess);
@@ -9882,8 +10218,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9893,9 +10230,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9917,8 +10256,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9930,7 +10270,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, Class<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess);
@@ -9955,8 +10296,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -9970,8 +10312,10 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, null, CallbackOn.successAsRaw(null));
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType) {
+        return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, null,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -9993,8 +10337,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10010,8 +10355,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, null, onSuccess);
     }
@@ -10035,8 +10380,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10052,9 +10398,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, null, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, null,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -10076,8 +10424,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10095,8 +10444,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, null, onSuccess);
@@ -10121,8 +10470,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10140,10 +10490,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, null, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, null,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -10165,8 +10517,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10186,8 +10539,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -10213,8 +10566,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10234,10 +10588,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, query, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -10260,8 +10616,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10283,8 +10640,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess //
@@ -10309,8 +10666,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10328,9 +10686,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -10352,8 +10712,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10373,8 +10734,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, headers, null, fragment, onSuccess);
@@ -10399,8 +10760,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10418,9 +10780,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, null, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, null,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -10442,8 +10806,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10463,8 +10828,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, null, onSuccess);
@@ -10489,8 +10854,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10510,9 +10876,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -10534,8 +10902,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10557,8 +10926,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, query, fragment, onSuccess);
@@ -10583,8 +10952,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10600,9 +10970,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
-        return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -10624,8 +10996,9 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10643,8 +11016,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 8. 8..
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody,
-            ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, pathVariables, requestBody, responseType, null, null, fragment, onSuccess);
@@ -11271,8 +11644,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11301,8 +11675,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11334,8 +11709,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11367,8 +11743,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11403,8 +11780,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11439,8 +11817,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11478,8 +11857,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11496,7 +11876,8 @@ public interface IIdBasedRestApiService {
     default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return executeAsRaw(id, null, requestBody, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, null, requestBody, responseType, headers, query, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -11517,8 +11898,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11559,8 +11941,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11574,7 +11957,8 @@ public interface IIdBasedRestApiService {
      */
     default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, Class<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
-        return executeAsRaw(id, null, requestBody, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, null, requestBody, responseType, headers, null, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -11594,8 +11978,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11632,8 +12017,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11667,8 +12053,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11705,8 +12092,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11742,8 +12130,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11782,8 +12171,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11815,8 +12205,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11851,8 +12242,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -11866,7 +12258,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType) {
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, null, CallbackOn.successAsRaw(null));
     }
 
@@ -11887,8 +12280,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -11904,7 +12298,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, null, onSuccess);
     }
@@ -11926,8 +12321,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -11943,7 +12339,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers) {
         return executeAsRaw(id, null, requestBody, responseType, headers, null, null, CallbackOn.successAsRaw(null));
     }
@@ -11965,8 +12362,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -11984,7 +12382,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, headers, null, null, onSuccess);
@@ -12007,8 +12406,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12026,7 +12426,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, null, requestBody, responseType, headers, query, null, CallbackOn.successAsRaw(null));
@@ -12049,8 +12450,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12070,7 +12472,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
@@ -12094,8 +12497,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12115,10 +12519,12 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
-        return executeAsRaw(id, null, requestBody, responseType, headers, query, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, null, requestBody, responseType, headers, query, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -12139,8 +12545,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12162,7 +12569,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess //
@@ -12187,8 +12595,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12206,9 +12615,11 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment) {
-        return executeAsRaw(id, null, requestBody, responseType, headers, null, fragment, CallbackOn.successAsRaw(null));
+        return executeAsRaw(id, null, requestBody, responseType, headers, null, fragment,
+                CallbackOn.successAsRaw(null));
     }
 
     /**
@@ -12228,8 +12639,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12249,7 +12661,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable HttpHeaders headers, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, headers, null, fragment, onSuccess);
@@ -12272,8 +12685,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12291,7 +12705,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, null, CallbackOn.successAsRaw(null));
     }
@@ -12313,8 +12728,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12334,7 +12750,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, null, onSuccess);
@@ -12357,8 +12774,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12378,7 +12796,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, fragment, CallbackOn.successAsRaw(null));
     }
@@ -12400,8 +12819,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12423,7 +12843,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable MultiValueMap<String, Object> query, @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, query, fragment, onSuccess);
@@ -12446,8 +12867,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12463,7 +12885,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES> RES executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, fragment, CallbackOn.successAsRaw(null));
     }
@@ -12485,8 +12908,9 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는
-     *            경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12504,7 +12928,8 @@ public interface IIdBasedRestApiService {
      *
      * @since 2025. 7. 14.
      */
-    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody, ParameterizedTypeReference<RES> responseType //
+    default <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable REQ requestBody,
+            ParameterizedTypeReference<RES> responseType //
             , @Nullable String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         return executeAsRaw(id, null, requestBody, responseType, null, null, fragment, onSuccess);

@@ -51,7 +51,8 @@ import open.commons.spring.web.authority.AuthorizedRequest;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspectPointcuts implements IAuthorizedResource<T> {
+public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspectPointcuts
+        implements IAuthorizedResource<T> {
 
     private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("^\\$\\{\\s*([^:}]+)(?::([^}]*))?\\s*}$");
 
@@ -196,7 +197,8 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @param <T>
      * @param beanName
      *            Bean 이름.
-     * @return Bean 이름에 해당하는 Bean 객체. Bean 이름이 비어 있는 경우 {@link #providerType} 에 해당하는 Bean
+     * @return Bean 이름에 해당하는 Bean 객체. Bean 이름이 비어 있는 경우 {@link #providerType} 에
+     *         해당하는 Bean
      *
      * @throws NoSuchBeanDefinitionException
      *             Bean 이름에 해당하는 Bean이 존재하지 않는 경우

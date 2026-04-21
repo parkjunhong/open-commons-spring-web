@@ -78,13 +78,15 @@ public class AuthorizedFieldSerializer extends AbstractWrappingSerializer {
      * @param fieldHandler
      *            데이터 처리 서비스
      * @param authorizedResourcesMetadata
-     *            {@link AuthorizedObject}, {@link AuthorizedField} 외부 설정 정보 제공 서비스
+     *            {@link AuthorizedObject}, {@link AuthorizedField} 외부 설정 정보 제공
+     *            서비스
      * 
      * @since 2025. 5. 23.
      * @version 0.8.0
      */
-    public AuthorizedFieldSerializer(ApplicationContext context, Class<?> serializedType, AnnotatedField field, IFieldAccessAuthorityProvider authority,
-            IUnauthorizedFieldHandler fieldHandler, IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
+    public AuthorizedFieldSerializer(ApplicationContext context, Class<?> serializedType, AnnotatedField field,
+            IFieldAccessAuthorityProvider authority, IUnauthorizedFieldHandler fieldHandler,
+            IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
         super(context, serializedType, field, authority, fieldHandler, authorizedResourcesMetadata);
     }
 
@@ -95,7 +97,8 @@ public class AuthorizedFieldSerializer extends AbstractWrappingSerializer {
      * @since 2026. 4. 14.
      * @version 4.0.0
      *
-     * @see tools.jackson.databind.ValueSerializer#serialize(java.lang.Object, tools.jackson.core.JsonGenerator,
+     * @see tools.jackson.databind.ValueSerializer#serialize(java.lang.Object,
+     *      tools.jackson.core.JsonGenerator,
      *      tools.jackson.databind.SerializationContext)
      */
     @Override

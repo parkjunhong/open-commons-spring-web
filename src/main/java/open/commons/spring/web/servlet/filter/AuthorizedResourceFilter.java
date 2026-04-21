@@ -80,27 +80,31 @@ public class AuthorizedResourceFilter implements Filter {
      * @since 2025. 6. 24.
      * @version 0.8.0
      *
-     * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse,
-     *      javax.servlet.FilterChain)
+     * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest,
+     *      javax.servlet.ServletResponse, javax.servlet.FilterChain)
      */
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
         try {
             // #1. 요청 헤더 확인
             // #1-1. ServletRequest -> HttpServletRequest 로 캐스팅
             HttpServletRequest httpRequest = (HttpServletRequest) request;
             // #1-2. 헤더 조회
-            String headerDisableAuthorizedResources = httpRequest.getHeader(AuthorizedResourceContext.DISABLE_AUTHORIZED_RESOURCES);
+            String headerDisableAuthorizedResources = httpRequest
+                    .getHeader(AuthorizedResourceContext.DISABLE_AUTHORIZED_RESOURCES);
             if (headerDisableAuthorizedResources != null && "true".equalsIgnoreCase(headerDisableAuthorizedResources)) {
                 if (this.auth != null) {
                     Result<Boolean> resultAuth = auth.pause();
                     if (resultAuth.isError() || resultAuth.getData() == null) {
-                        logger.warn("'{}' 헤더를 검증하는 서비스 결과에 오류가 포함되어 있습니다. => {}", AuthorizedResourceContext.DISABLE_AUTHORIZED_RESOURCES, resultAuth.getMessage());
+                        logger.warn("'{}' 헤더를 검증하는 서비스 결과에 오류가 포함되어 있습니다. => {}",
+                                AuthorizedResourceContext.DISABLE_AUTHORIZED_RESOURCES, resultAuth.getMessage());
                     } else if (resultAuth.getData()) {
                         AuthorizedResourceContext.setDisableAuthentication();
                     }
                 } else {
-                    logger.warn("요청 헤더에 '{}'이 포함되어 있으나, 이를 검증하는 서비스({})가 등록되지 않았습니다.", AuthorizedResourceContext.DISABLE_AUTHORIZED_RESOURCES,
+                    logger.warn("요청 헤더에 '{}'이 포함되어 있으나, 이를 검증하는 서비스({})가 등록되지 않았습니다.",
+                            AuthorizedResourceContext.DISABLE_AUTHORIZED_RESOURCES,
                             IAuthorizedResourceAuthenticationPause.class.getName());
                 }
             }

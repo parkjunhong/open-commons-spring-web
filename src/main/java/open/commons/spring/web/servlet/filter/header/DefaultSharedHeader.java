@@ -87,7 +87,8 @@ public class DefaultSharedHeader implements SharedHeader {
      * @since 2025. 11. 7.
      * @version 2.1.0
      */
-    public DefaultSharedHeader(String header, BiPredicate<String, String> validator, BiConsumer<String, String> postAction) {
+    public DefaultSharedHeader(String header, BiPredicate<String, String> validator,
+            BiConsumer<String, String> postAction) {
         AssertUtils2.notNulls(header, validator, postAction);
 
         this.header = header;

@@ -113,8 +113,8 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      * @since 2025. 8. 8.
      * @version 0.8.0
      */
-    private @Nullable RestEndpoint createRestEndpoint(String id, @Nullable Map<String, String> pathVariables, @Nullable HttpHeaders headers,
-            @Nullable MultiValueMap<String, Object> queries) {
+    private @Nullable RestEndpoint createRestEndpoint(String id, @Nullable Map<String, String> pathVariables,
+            @Nullable HttpHeaders headers, @Nullable MultiValueMap<String, Object> queries) {
         AssertUtils2.notBlank(id, "API 식별정보는 '빈 문자열'을 허용하지 않습니다.");
 
         IdBasedRestApiDecl api = this.apiInfo.get(id);
@@ -132,7 +132,8 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
         Set<TwoValueObject<String, Boolean>> pathVarNames = NamedTemplate.getNames(path);
         if (MapUtils.isNullOrEmpty(pathVariables)) {
             if (pathVarNames.stream().filter(o -> o.second).findAny().isPresent()) {
-                throw new RequiredVariableNotFoundException(String.format("필수 'Path Variable'를 찾을 수 없습니다. path-variables=%s",
+                throw new RequiredVariableNotFoundException(String.format(
+                        "필수 'Path Variable'를 찾을 수 없습니다. path-variables=%s",
                         String.join(", ", StreamUtils.toList(pathVarNames.stream(), o -> o.second, o -> o.first))));
             }
         } else {
@@ -142,7 +143,8 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
                 if (!StringUtils.isNullOrEmptyString(variable)) {
                     finalPathVariables.put(o.first, variable);
                 } else if (o.second) {
-                    throw new RequiredVariableNotFoundException(String.format("필수 Path Variable ('%s')를 찾을 수 없거나 값이 올바르지 않습니다.", o.first, variable));
+                    throw new RequiredVariableNotFoundException(
+                            String.format("필수 Path Variable ('%s')를 찾을 수 없거나 값이 올바르지 않습니다.", o.first, variable));
                 }
             }
         }
@@ -158,9 +160,11 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
         Map<String, Boolean> queryParams = api.getQueries();
         if (MapUtils.isNullOrEmpty(queries)) {
             // REST API에 필수 쿼리파라미터가 있는지 확인
-            Set<String> requiredQueryNames = queryParams.entrySet().stream().filter(p -> p.getValue()).map(p -> p.getKey()).collect(Collectors.toSet());
+            Set<String> requiredQueryNames = queryParams.entrySet().stream().filter(p -> p.getValue())
+                    .map(p -> p.getKey()).collect(Collectors.toSet());
             if (requiredQueryNames.size() > 0) {
-                throw new RequiredVariableNotFoundException(String.format("필수 Query Parameters를 찾을 수 없습니다. query-names=%s", String.join(", ", requiredQueryNames)));
+                throw new RequiredVariableNotFoundException(String.format(
+                        "필수 Query Parameters를 찾을 수 없습니다. query-names=%s", String.join(", ", requiredQueryNames)));
             }
         } else {
             List<Object> params = null;
@@ -171,7 +175,8 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
                 }
                 // 전달받은 파라미터는 없지만, 해당 쿼리가 '필수'인 경우
                 else if (entry.getValue()) {
-                    throw new RequiredVariableNotFoundException(String.format("필수 Query Parameters ('%s')를 찾을 수 없습니다.", entry.getKey()));
+                    throw new RequiredVariableNotFoundException(
+                            String.format("필수 Query Parameters ('%s')를 찾을 수 없습니다.", entry.getKey()));
                 }
             }
         }
@@ -184,13 +189,15 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      * @since 2025. 8. 8.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#execute(java.lang.String, java.util.Map,
-     *      java.lang.Object, java.lang.Class, org.springframework.http.HttpHeaders,
-     *      org.springframework.util.MultiValueMap, java.lang.String, java.util.function.Function,
-     *      java.util.function.Function)
+     * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#execute(java.lang.String,
+     *      java.util.Map, java.lang.Object, java.lang.Class,
+     *      org.springframework.http.HttpHeaders,
+     *      org.springframework.util.MultiValueMap, java.lang.String,
+     *      java.util.function.Function, java.util.function.Function)
      */
     @Override
-    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody //
+    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody //
             , Class<RES> responseType, HttpHeaders headers, MultiValueMap<String, Object> query, String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess, Function<Exception, Result<RET>> onError) {
         RestEndpoint api = createRestEndpoint(id, pathVariables, headers, query);
@@ -200,7 +207,8 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
             return Result.error(errMsg);
         }
 
-        return execute(api.method, api.path, api.pathVariables, api.queries, api.headers, requestBody, responseType, onSuccess, onError, getRetryCount());
+        return execute(api.method, api.path, api.pathVariables, api.queries, api.headers, requestBody, responseType,
+                onSuccess, onError, getRetryCount());
     }
 
     /**
@@ -208,14 +216,18 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      * @since 2025. 8. 8.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#execute(java.lang.String, java.util.Map,
-     *      java.lang.Object, org.springframework.core.ParameterizedTypeReference, org.springframework.http.HttpHeaders,
-     *      org.springframework.util.MultiValueMap, java.lang.String, java.util.function.Function,
-     *      java.util.function.Function)
+     * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#execute(java.lang.String,
+     *      java.util.Map, java.lang.Object,
+     *      org.springframework.core.ParameterizedTypeReference,
+     *      org.springframework.http.HttpHeaders,
+     *      org.springframework.util.MultiValueMap, java.lang.String,
+     *      java.util.function.Function, java.util.function.Function)
      */
     @Override
-    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody //
-            , ParameterizedTypeReference<RES> responseType, HttpHeaders headers, MultiValueMap<String, Object> query, String fragment //
+    public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody //
+            , ParameterizedTypeReference<RES> responseType, HttpHeaders headers, MultiValueMap<String, Object> query,
+            String fragment //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess, Function<Exception, Result<RET>> onError) {
         RestEndpoint api = createRestEndpoint(id, pathVariables, headers, query);
 
@@ -224,7 +236,8 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
             return Result.error(errMsg);
         }
 
-        return execute(api.method, api.path, api.pathVariables, api.queries, api.headers, requestBody, responseType, onSuccess, onError, getRetryCount());
+        return execute(api.method, api.path, api.pathVariables, api.queries, api.headers, requestBody, responseType,
+                onSuccess, onError, getRetryCount());
     }
 
     /**
@@ -232,12 +245,15 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      * @since 2025. 8. 8.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#executeAsRaw(java.lang.String, java.util.Map,
-     *      java.lang.Object, java.lang.Class, org.springframework.http.HttpHeaders,
-     *      org.springframework.util.MultiValueMap, java.lang.String, java.util.function.Function)
+     * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#executeAsRaw(java.lang.String,
+     *      java.util.Map, java.lang.Object, java.lang.Class,
+     *      org.springframework.http.HttpHeaders,
+     *      org.springframework.util.MultiValueMap, java.lang.String,
+     *      java.util.function.Function)
      */
     @Override
-    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody //
+    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody //
             , Class<RES> responseType, HttpHeaders headers, MultiValueMap<String, Object> query, String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         RestEndpoint api = createRestEndpoint(id, pathVariables, headers, query);
@@ -247,7 +263,8 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
             throw new UnsupportedOperationException(errMsg);
         }
 
-        return executeAsRaw(api.method, api.path, api.pathVariables, api.queries, api.headers, requestBody, responseType, onSuccess, getRetryCount());
+        return executeAsRaw(api.method, api.path, api.pathVariables, api.queries, api.headers, requestBody,
+                responseType, onSuccess, getRetryCount());
     }
 
     /**
@@ -255,13 +272,18 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      * @since 2025. 8. 8.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#executeAsRaw(java.lang.String, java.util.Map,
-     *      java.lang.Object, org.springframework.core.ParameterizedTypeReference, org.springframework.http.HttpHeaders,
-     *      org.springframework.util.MultiValueMap, java.lang.String, java.util.function.Function)
+     * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#executeAsRaw(java.lang.String,
+     *      java.util.Map, java.lang.Object,
+     *      org.springframework.core.ParameterizedTypeReference,
+     *      org.springframework.http.HttpHeaders,
+     *      org.springframework.util.MultiValueMap, java.lang.String,
+     *      java.util.function.Function)
      */
     @Override
-    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables, @Nullable REQ requestBody //
-            , ParameterizedTypeReference<RES> responseType, HttpHeaders headers, MultiValueMap<String, Object> query, String fragment //
+    public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
+            @Nullable REQ requestBody //
+            , ParameterizedTypeReference<RES> responseType, HttpHeaders headers, MultiValueMap<String, Object> query,
+            String fragment //
             , Function<ResponseEntity<RES>, RET> onSuccess) {
         RestEndpoint api = createRestEndpoint(id, pathVariables, headers, query);
 
@@ -270,7 +292,8 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
             throw new UnsupportedOperationException(errMsg);
         }
 
-        return executeAsRaw(api.method, api.path, api.pathVariables, api.queries, api.headers, requestBody, responseType, onSuccess, getRetryCount());
+        return executeAsRaw(api.method, api.path, api.pathVariables, api.queries, api.headers, requestBody,
+                responseType, onSuccess, getRetryCount());
     }
 
     private class RestEndpoint {
@@ -280,7 +303,8 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
         private final HttpHeaders headers;
         private final MultiValueMap<String, Object> queries;
 
-        public RestEndpoint(HttpMethod method, String path, Map<String, String> pathVariables, HttpHeaders headers, MultiValueMap<String, Object> queries) {
+        public RestEndpoint(HttpMethod method, String path, Map<String, String> pathVariables, HttpHeaders headers,
+                MultiValueMap<String, Object> queries) {
             this.method = method;
             this.path = path;
             this.pathVariables = pathVariables;

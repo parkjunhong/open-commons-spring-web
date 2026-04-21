@@ -99,10 +99,12 @@ public class SimpleUrlAuthenticationFailureHttpStatusBinder extends SimpleUrlAut
      * @version 2.1.0
      *
      * @see org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler#onAuthenticationFailure(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse, org.springframework.security.core.AuthenticationException)
+     *      javax.servlet.http.HttpServletResponse,
+     *      org.springframework.security.core.AuthenticationException)
      */
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+            AuthenticationException exception) throws IOException, ServletException {
         // AuthenticationException 클래스에 연결된 HttpStatus 설정
         HttpStatusCode status = getStatus(exception);
         response.setStatus(status.value());

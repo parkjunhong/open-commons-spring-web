@@ -31,10 +31,11 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-import open.commons.spring.web.configure.ResourceConfiguration;
+import open.commons.spring.web.configure.properties.Const;
 
 /**
- * {@link RestTemplate}의 {@link HttpComponentsClientHttpRequestFactory} 설정을 위한 프로퍼티 레코드.
+ * {@link RestTemplate}의 {@link HttpComponentsClientHttpRequestFactory} 설정을 위한
+ * 프로퍼티 레코드.
  * 
  * <pre>
  * [개정이력]
@@ -47,10 +48,21 @@ import open.commons.spring.web.configure.ResourceConfiguration;
  * @version 4.0.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
-@ConfigurationProperties(prefix = ResourceConfiguration.PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH + ".resttemplate.requestfactory")
+@ConfigurationProperties(prefix = Const.PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH + ".resttemplate.requestfactory")
 public record RestTemplateProperties(
         /** 연결 요청 타임아웃 (ms) */
-        @DefaultValue("30000") int connectionRequestTimeout,
-        /** 읽기 타임아웃 (ms) */
+        @DefaultValue("30000") int connectionRequestTimeout, /** 읽기 타임아웃 (ms) */
         @DefaultValue("300000") int readTimeout) {
+    /**
+     * 속성값을 복사하여 새로운 레코드를 생성합니다. <br>
+     * 
+     * @param props
+     *            복사할 {@link RestTemplateProperties} 객체
+     *
+     * @since 2026. 4. 21.
+     * @version 4.0.0
+     */
+    public static RestTemplateProperties copyOf(RestTemplateProperties props) {
+        return new RestTemplateProperties(props.connectionRequestTimeout(), props.readTimeout());
+    }
 }

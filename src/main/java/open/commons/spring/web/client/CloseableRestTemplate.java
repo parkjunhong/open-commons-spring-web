@@ -39,8 +39,8 @@ import org.springframework.web.client.RestTemplate;
 import open.commons.spring.web.utils.CloseableUtils;
 
 /**
- * {@link RestTemplate}에 {@link Closeable} 인터페이스를 적용하여, 내부적으로 사용하는 {@link ClientHttpRequestFactory} 자원을 해제하는 기능을 지원하는
- * Wrapper 클래스.
+ * {@link RestTemplate}에 {@link Closeable} 인터페이스를 적용하여, 내부적으로 사용하는
+ * {@link ClientHttpRequestFactory} 자원을 해제하는 기능을 지원하는 Wrapper 클래스.
  * 
  * @since 2025. 8. 26.
  * @version 0.8.0

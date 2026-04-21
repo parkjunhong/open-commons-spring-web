@@ -43,7 +43,8 @@ import open.commons.spring.web.beans.authority.ResourceHandle;
 import open.commons.spring.web.beans.authority.ResourceHandle.Target;
 
 /**
- * {@link IUnauthorizedFieldHandler}, {@link IAuthorizedRequestDataHandler}를 하나의 서비스로 통합하여 제공하는 내부 컴포넌트
+ * {@link IUnauthorizedFieldHandler}, {@link IAuthorizedRequestDataHandler}를 하나의
+ * 서비스로 통합하여 제공하는 내부 컴포넌트
  * 
  * @since 2025. 9. 19.
  * @version 0.8.0
@@ -79,7 +80,8 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
      * @since 2025. 9. 19.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler#handleObject(String, java.lang.Object)
+     * @see open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler#handleObject(String,
+     *      java.lang.Object)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -88,7 +90,8 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
 
         Function<Object, Object> handler = (Function<Object, Object>) this.unauthorizedFieldHandlers.get(handle);
         if (handler == null) {
-            throw ExceptionUtils.newException(UnsupportedOperationException.class, "전달받은 핸들타입(%s)에 해당하는 기능이 존재하지 않습니다.", handle);
+            throw ExceptionUtils.newException(UnsupportedOperationException.class, "전달받은 핸들타입(%s)에 해당하는 기능이 존재하지 않습니다.",
+                    handle);
         }
         return handler.apply(data);
     }
@@ -98,7 +101,8 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
      * @since 2025. 9. 19.
      * @version 0.8.0
      *
-     * @see open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler#restoreValue(String, java.lang.Object)
+     * @see open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler#restoreValue(String,
+     *      java.lang.Object)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -107,7 +111,8 @@ public class AuthorizedResourceHandler implements IUnauthorizedFieldHandler, IAu
 
         Function<Object, Object> handler = (Function<Object, Object>) this.authorizedDataHandlers.get(handle);
         if (handler == null) {
-            throw ExceptionUtils.newException(UnsupportedOperationException.class, "전달받은 핸들타입(%s)에 해당하는 기능이 존재하지 않습니다.", handle);
+            throw ExceptionUtils.newException(UnsupportedOperationException.class, "전달받은 핸들타입(%s)에 해당하는 기능이 존재하지 않습니다.",
+                    handle);
         }
         return handler.apply(value);
     }

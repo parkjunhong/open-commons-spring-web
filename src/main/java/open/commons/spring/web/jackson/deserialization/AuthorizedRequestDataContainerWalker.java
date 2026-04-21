@@ -44,14 +44,16 @@ import open.commons.spring.web.utils.BeanUtils;
 import tools.jackson.databind.JavaType;
 
 /**
- * 컨테이너(배열 / {@link Collection} / {@link Map})로 역직렬화된 자바 객체를 재귀 순회하며 단순 타입( {@link String} / {@link Number} /
- * {@link Boolean} / {@link Character} 및 primitive)을 leaf 로 간주해 IAuthorizedRequestDataHandler.handleObject(handleType,
+ * 컨테이너(배열 / {@link Collection} / {@link Map})로 역직렬화된 자바 객체를 재귀 순회하며 단순 타입(
+ * {@link String} / {@link Number} / {@link Boolean} / {@link Character} 및
+ * primitive)을 leaf 로 간주해 IAuthorizedRequestDataHandler.handleObject(handleType,
  * value) 를 적용한다.
  *
  * <li>- Jackson 파서를 재사용/재소모하지 않음
  * <li>- 컨테이너 내부의 중첩 컨테이너(List<List<...>>, Map<String, List<...>> 등) 처리 지원
  * <li>- primitive 배열에 대해 안전한 타입 강제(coerce) 처리
- * <li>- POJO는 이 유틸에서 손대지 않고 그대로 반환 (POJO 필드의 {@link AuthorizedRequestData} 는 Bean/Field 단위 Deserializer가 처리)
+ * <li>- POJO는 이 유틸에서 손대지 않고 그대로 반환 (POJO 필드의 {@link AuthorizedRequestData} 는
+ * Bean/Field 단위 Deserializer가 처리)
  * 
  * <pre>
  * [개정이력]
@@ -141,8 +143,10 @@ public class AuthorizedRequestDataContainerWalker {
      *            핸들 타입(전략 식별자)
      * @return 변환된 객체(가능하면 원본 컬렉션/맵은 제자리 갱신, 배열은 새 배열 반환)
      */
-    public static Object processRecursively(Object rawValue, JavaType type, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType) {
-        AssertUtils2.isFalse(StringUtils.isNullOrEmptyString(handleType), "데이터 처리 식별정보는 반드시 설정되어야 합니다. handleType=" + handleType);
+    public static Object processRecursively(Object rawValue, JavaType type, IAuthorizedRequestDataHandler handler,
+            @NotEmpty String handleType) {
+        AssertUtils2.isFalse(StringUtils.isNullOrEmptyString(handleType),
+                "데이터 처리 식별정보는 반드시 설정되어야 합니다. handleType=" + handleType);
 
         if (rawValue == null || type == null) {
             return processRecursivelyRuntime(rawValue, handler, handleType);
@@ -157,7 +161,8 @@ public class AuthorizedRequestDataContainerWalker {
 
         // 배열
         if (type.isArrayType() && rawClass.isArray()) {
-            final JavaType elemType = type.getContentType(); // not null for arrays
+            final JavaType elemType = type.getContentType(); // not null for
+                                                             // arrays
             final int len = Array.getLength(rawValue);
             final Class<?> componentType = rawClass.getComponentType();
 
@@ -172,7 +177,8 @@ public class AuthorizedRequestDataContainerWalker {
 
         // Collection
         if (type.isCollectionLikeType() && (rawValue instanceof Collection)) {
-            final JavaType elemType = type.getContentType(); // may be null in rare cases
+            final JavaType elemType = type.getContentType(); // may be null in
+                                                             // rare cases
             @SuppressWarnings("unchecked")
             Collection<Object> col = (Collection<Object>) rawValue;
 
@@ -217,7 +223,8 @@ public class AuthorizedRequestDataContainerWalker {
      * <li>- 배열/Collection/Map 은 런타임 타입으로 재귀 처리
      * <li>- POJO 는 그대로 반환
      */
-    private static Object processRecursivelyRuntime(Object value, IAuthorizedRequestDataHandler handler, String handleType) {
+    private static Object processRecursivelyRuntime(Object value, IAuthorizedRequestDataHandler handler,
+            String handleType) {
         if (value == null)
             return null;
 

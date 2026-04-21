@@ -61,7 +61,8 @@ import open.commons.spring.web.mdc.MdcWrappedJob;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor> extends DelegatingTaskExecutor<S> implements TaskScheduler {
+public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor> extends DelegatingTaskExecutor<S>
+        implements TaskScheduler {
 
     /**
      * <br>
@@ -89,7 +90,8 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @since 2025. 8. 3.
      * @version 0.8.0
      *
-     * @see org.springframework.scheduling.TaskScheduler#schedule(java.lang.Runnable, java.util.Date)
+     * @see org.springframework.scheduling.TaskScheduler#schedule(java.lang.Runnable,
+     *      java.util.Date)
      * 
      * @deprecated {@link #schedule(Runnable, Instant)}를 사용하기 바랍니다.
      * 
@@ -97,7 +99,7 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
     @Override
     @Deprecated(since = "4.0.0", forRemoval = true)
     public ScheduledFuture<?> schedule(Runnable task, Date startTime) {
-        return this.delegate.schedule(wrap(task), startTime);
+        return this.delegate.schedule(wrap(task), startTime.toInstant());
     }
 
     /**
@@ -106,7 +108,8 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @since 2026. 4. 14.
      * @version 4.0.0
      *
-     * @see org.springframework.scheduling.TaskScheduler#schedule(java.lang.Runnable, java.time.Instant)
+     * @see org.springframework.scheduling.TaskScheduler#schedule(java.lang.Runnable,
+     *      java.time.Instant)
      */
     @Override
     public ScheduledFuture<?> schedule(Runnable task, Instant startTime) {
@@ -131,14 +134,16 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @since 2025. 8. 3.
      * @version 0.8.0
      *
-     * @see org.springframework.scheduling.TaskScheduler#scheduleAtFixedRate(java.lang.Runnable, java.util.Date, long)
+     * @see org.springframework.scheduling.TaskScheduler#scheduleAtFixedRate(java.lang.Runnable,
+     *      java.util.Date, long)
      * 
-     * @deprecated {@link #scheduleAtFixedRate(Runnable, Instant, Duration)}를 사용하기 바랍니다.
+     * @deprecated {@link #scheduleAtFixedRate(Runnable, Instant, Duration)}를
+     *             사용하기 바랍니다.
      */
     @Override
     @Deprecated(since = "4.0.0", forRemoval = true)
     public ScheduledFuture<?> scheduleAtFixedRate(Runnable task, Date startTime, long period) {
-        return this.delegate.scheduleAtFixedRate(wrap(task), startTime, period);
+        return this.delegate.scheduleAtFixedRate(wrap(task), startTime.toInstant(), Duration.ofMillis(period));
     }
 
     /**
@@ -147,7 +152,8 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @since 2026. 4. 14.
      * @version 4.0.0
      *
-     * @see org.springframework.scheduling.TaskScheduler#scheduleAtFixedRate(java.lang.Runnable, java.time.Duration)
+     * @see org.springframework.scheduling.TaskScheduler#scheduleAtFixedRate(java.lang.Runnable,
+     *      java.time.Duration)
      */
     @Override
     public ScheduledFuture<?> scheduleAtFixedRate(Runnable task, Duration period) {
@@ -160,8 +166,8 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @since 2026. 4. 14.
      * @version 4.0.0
      *
-     * @see org.springframework.scheduling.TaskScheduler#scheduleAtFixedRate(java.lang.Runnable, java.time.Instant,
-     *      java.time.Duration)
+     * @see org.springframework.scheduling.TaskScheduler#scheduleAtFixedRate(java.lang.Runnable,
+     *      java.time.Instant, java.time.Duration)
      */
     @Override
     public ScheduledFuture<?> scheduleAtFixedRate(Runnable task, Instant startTime, Duration period) {
@@ -173,14 +179,15 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @since 2025. 8. 3.
      * @version 0.8.0
      *
-     * @see org.springframework.scheduling.TaskScheduler#scheduleAtFixedRate(java.lang.Runnable, long)
+     * @see org.springframework.scheduling.TaskScheduler#scheduleAtFixedRate(java.lang.Runnable,
+     *      long)
      * 
      * @deprecated {@link #scheduleAtFixedRate(Runnable, Duration)}를 사용하기 바랍니다.
      */
     @Override
     @Deprecated(since = "4.0.0", forRemoval = true)
     public ScheduledFuture<?> scheduleAtFixedRate(Runnable task, long period) {
-        return this.delegate.scheduleAtFixedRate(wrap(task), period);
+        return this.delegate.scheduleAtFixedRate(wrap(task), Duration.ofMillis(period));
     }
 
     /**
@@ -188,15 +195,16 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @since 2025. 8. 3.
      * @version 0.8.0
      *
-     * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable, java.util.Date,
-     *      long)
+     * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable,
+     *      java.util.Date, long)
      * 
-     * @deprecated {@link #scheduleWithFixedDelay(Runnable, Instant, Duration)}를 사용하기 바랍니다.
+     * @deprecated {@link #scheduleWithFixedDelay(Runnable, Instant, Duration)}를
+     *             사용하기 바랍니다.
      */
     @Override
     @Deprecated(since = "4.0.0", forRemoval = true)
     public ScheduledFuture<?> scheduleWithFixedDelay(Runnable task, Date startTime, long delay) {
-        return this.delegate.scheduleWithFixedDelay(wrap(task), startTime, delay);
+        return this.delegate.scheduleWithFixedDelay(wrap(task), startTime.toInstant(), Duration.ofMillis(delay));
     }
 
     /**
@@ -205,7 +213,8 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @since 2026. 4. 14.
      * @version 4.0.0
      *
-     * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable, java.time.Duration)
+     * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable,
+     *      java.time.Duration)
      */
     @Override
     public ScheduledFuture<?> scheduleWithFixedDelay(Runnable task, Duration delay) {
@@ -218,8 +227,8 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @since 2026. 4. 14.
      * @version 4.0.0
      *
-     * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable, java.time.Instant,
-     *      java.time.Duration)
+     * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable,
+     *      java.time.Instant, java.time.Duration)
      */
     @Override
     public ScheduledFuture<?> scheduleWithFixedDelay(Runnable task, Instant startTime, Duration delay) {
@@ -231,14 +240,16 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @since 2025. 8. 3.
      * @version 0.8.0
      *
-     * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable, long)
+     * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable,
+     *      long)
      * 
-     * @deprecated {@link #scheduleWithFixedDelay(Runnable, Duration)}를 사용하기 바랍니다.
+     * @deprecated {@link #scheduleWithFixedDelay(Runnable, Duration)}를 사용하기
+     *             바랍니다.
      */
     @Override
     @Deprecated(since = "4.0.0", forRemoval = true)
     public ScheduledFuture<?> scheduleWithFixedDelay(Runnable task, long delay) {
-        return this.delegate.scheduleWithFixedDelay(wrap(task), delay);
+        return this.delegate.scheduleWithFixedDelay(wrap(task), Duration.ofMillis(delay));
     }
 
     /**

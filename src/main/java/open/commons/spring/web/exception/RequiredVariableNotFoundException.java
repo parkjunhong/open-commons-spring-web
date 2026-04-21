@@ -29,7 +29,8 @@ package open.commons.spring.web.exception;
 import open.commons.spring.web.beans.rest.IdBasedRestApiDecl;
 
 /**
- * REST API를 호출하는 경우 {@link IdBasedRestApiDecl}에서 필수로 지정된 '변수'를 찾지 못했을 때 발생하는 클래스.
+ * REST API를 호출하는 경우 {@link IdBasedRestApiDecl}에서 필수로 지정된 '변수'를 찾지 못했을 때 발생하는
+ * 클래스.
  * 
  * @since 2025. 7. 11.
  * @version 0.8.0
@@ -112,7 +113,8 @@ public class RequiredVariableNotFoundException extends RuntimeException {
      * @since 2025. 7. 11.
      * @version 0.8.0
      */
-    public RequiredVariableNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public RequiredVariableNotFoundException(String message, Throwable cause, boolean enableSuppression,
+            boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 

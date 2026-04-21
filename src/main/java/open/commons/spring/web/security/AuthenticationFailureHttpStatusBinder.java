@@ -40,13 +40,15 @@ import open.commons.spring.web.servlet.binder.AbstractExceptionStatusWriter;
 import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
 
 /**
- * 'Spring Security' 인증절차에서 발생하는 '폼 로그인 필터(UsernamePasswordAuthenticationFilter)의 실패'에 대한 처리.
+ * 'Spring Security' 인증절차에서 발생하는 '폼 로그인
+ * 필터(UsernamePasswordAuthenticationFilter)의 실패'에 대한 처리.
  * 
  * @since 2025. 10. 22.
  * @version 2.1.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
-public class AuthenticationFailureHttpStatusBinder extends AbstractExceptionStatusWriter implements AuthenticationFailureHandler {
+public class AuthenticationFailureHttpStatusBinder extends AbstractExceptionStatusWriter
+        implements AuthenticationFailureHandler {
 
     /**
      * <br>
@@ -86,10 +88,12 @@ public class AuthenticationFailureHttpStatusBinder extends AbstractExceptionStat
      * @version 2.1.0
      *
      * @see org.springframework.security.web.authentication.AuthenticationFailureHandler#onAuthenticationFailure(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse, org.springframework.security.core.AuthenticationException)
+     *      javax.servlet.http.HttpServletResponse,
+     *      org.springframework.security.core.AuthenticationException)
      */
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+            AuthenticationException exception) throws IOException, ServletException {
         writeExceptionResponse(request, response, exception);
     }
 }

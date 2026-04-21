@@ -59,7 +59,8 @@ import open.commons.core.function.Functions;
 import open.commons.core.utils.CollectionUtils;
 import open.commons.core.utils.MapUtils;
 import open.commons.core.utils.StreamUtils;
-import open.commons.spring.web.configure.ResourceConfiguration;
+import open.commons.spring.web.configure.properties.InterceptorIgnoreProperties;
+import open.commons.spring.web.configure.properties.OncePerRequestFilterProperties;
 import open.commons.spring.web.handler.DefaultGlobalInterceptor;
 import open.commons.spring.web.handler.HttpRequestProxyHeader;
 import open.commons.spring.web.handler.InterceptorIgnoreUrlProperties;
@@ -84,16 +85,12 @@ import open.commons.spring.web.utils.PathUtils;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(after = { OpenCommonsWebCoreAutoConfiguration.class })
+@AutoConfiguration(after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class GlobalServletAutoConfiguration {
 
     /** {@link HandlerInterceptor}에서 URL 기반으로 처리 대상에서 제외하는 URL 패턴 설정 */
     public static final String BEAN_QUALIFIER_PRIMARY_INTERCEPTOR_IGNORE_URL_PATTERNS = "open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration#INTERCEPTOR_IGNORE_URL_PATTERNS";
-    /** {@link HandlerInterceptor}에서 URL 기반으로 처리 대상에서 제외하는 URL 패턴 기본 설정 */
-    public static final String CONFIGURATION_BUILTIN_INTERCEPTOR_IGNORE_URL_PATTERNS = "open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration#CONFIGURATION_BUILTIN_INTERCEPTOR_IGNORE_URL_PATTERNS";
-    /** {@link HandlerInterceptor}에서 URL 기반으로 처리 대상에서 제외하는 URL 패턴 설정 기본 경로 */
-    public static final String PROPERTIES_INTERCEPTOR_IGNORE_URL_PATTERNS = ResourceConfiguration.PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH + ".interceptor-ignore-url-patterns";
 
     /** {@link OncePerRequestFilter}에서 제외시킬 {@link HttpServletRequest} 패턴 */
     public static final String BEAN_QUALIFIER_PRIMARY_ONCE_PER_REQUEST_SHOULD_NOT_PATTERNS = "open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration#REQUEST_FILTER_SHOULD_NOT_PATTERNS";
@@ -102,8 +99,6 @@ public class GlobalServletAutoConfiguration {
     public static final String BEAN_QUALIFIER_PRIMARY_HTTP_REQUEST_PROXY_HEADER = "open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration#PRIMAY_HTTP_REQUEST_PROXY_HEADER";
     /** Proxy 서버를 통해서 전달되는 실제 클라이언트의 Http 요청 정보 설정 */
     public static final String CONFIGURATION_BUILTIN_HTTP_REQUEST_PROXY_HEADER = "open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration#CONFIGURATION_BUILTIN_HTTP_REQUEST_PROXY_HEADER";
-    /** Proxy 서버를 통해서 전달되는 실제 클라이언트의 Http 요청 정보 경로 */
-    public static final String PROPERTIES_HTTP_REQUEST_PROXY_HEADER = ResourceConfiguration.PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH + ".proxy-header";
 
     /** 외부에서 전달되는 로그 분기 정보를 처리하는 {@link SharedHeader} 제공 */
     public static final String BEAN_QUALIFIER_PRIMARY_SHARED_HEADERS = "open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration#PRIMARY_SHARED_HEADERS";
@@ -158,7 +153,8 @@ public class GlobalServletAutoConfiguration {
     }
 
     /**
-     * {@link RequestThreadNameFilter} 이후에 위치시켜, {@link Thread} 이름 제어에 따르고 보안검증 이전에 Request 헤더 정보를 설정합니다. <br>
+     * {@link RequestThreadNameFilter} 이후에 위치시켜, {@link Thread} 이름 제어에 따르고 보안검증
+     * 이전에 Request 헤더 정보를 설정합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -183,7 +179,8 @@ public class GlobalServletAutoConfiguration {
     }
 
     /**
-     * {@link SecurityFilterChain} 보다 앞에 위치시켜, 보안검증 이전의 {@link HttpServletRequest}에 대해서도 감지를 합니다. <br>
+     * {@link SecurityFilterChain} 보다 앞에 위치시켜, 보안검증 이전의
+     * {@link HttpServletRequest}에 대해서도 감지를 합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -199,7 +196,8 @@ public class GlobalServletAutoConfiguration {
      * @version 0.8.0
      */
     @Bean
-    FilterRegistrationBean<RequestThreadNameFilter> beanFilterRegistrationThreadNamingFilter(RequestThreadNameFilter filter) {
+    FilterRegistrationBean<RequestThreadNameFilter> beanFilterRegistrationThreadNamingFilter(
+            RequestThreadNameFilter filter) {
         FilterRegistrationBean<RequestThreadNameFilter> registration = new FilterRegistrationBean<>();
         registration.setFilter(filter);
         registration.setOrder(RequestThreadNameFilter.ORDER); // 우선순위 최상단
@@ -261,22 +259,25 @@ public class GlobalServletAutoConfiguration {
         List<InterceptorIgnoreUrlProperties> merged = MapUtils.toList(single, multi);
 
         // 중복 검증
-        // key: FQCN 기반의 target 정보, value: 동일한 target 정보인 InterceptorIgnoreUrlProperties 객체들
-        MultiValueMap<String, InterceptorIgnoreUrlProperties> mayBeDuplicated = StreamUtils.toMap(merged.stream(), InterceptorIgnoreUrlProperties::getTarget,
-                Functions.Unary.identity(), LinkedMultiValueMap::new);
+        // key: FQCN 기반의 target 정보, value: 동일한 target 정보인
+        // InterceptorIgnoreProperties 객체들
+        MultiValueMap<String, InterceptorIgnoreUrlProperties> mayBeDuplicated = StreamUtils.toMap(merged.stream(),
+                InterceptorIgnoreUrlProperties::getTarget, Functions.Unary.identity(), LinkedMultiValueMap::new);
 
         mayBeDuplicated.forEach((k, v) -> {
             if (v.size() > 1) {
                 logger.debug("{}에 대한 설정이 {}개 존재합니다. 목록은 다음과 같습니다.\n\t{}\n" //
                         , k // FQCN 값
                         , v.size() // 중복 데이터 개수
-                        , String.join("\n\t", v.stream().map(Object::toString).collect(Collectors.toList())) // 모든 설정
+                        , String.join("\n\t", v.stream().map(Object::toString).collect(Collectors.toList())) // 모든
+                                                                                                             // 설정
                 );
 
             }
         });
 
-        Set<InterceptorIgnoreUrlProperties> result = CollectionUtils.toSet(merged, InterceptorIgnoreUrlProperties::getTarget //
+        Set<InterceptorIgnoreUrlProperties> result = CollectionUtils.toSet(merged,
+                InterceptorIgnoreUrlProperties::getTarget //
                 , // 설정 객체 데이터 변조 방지를 위해 새로운 객체 생성
                 p -> {
                     InterceptorIgnoreUrlProperties n = new InterceptorIgnoreUrlProperties();
@@ -380,7 +381,8 @@ public class GlobalServletAutoConfiguration {
         prop.setTarget("open.commons.spring.web.handler.*");
 
         // 웹서비스 개발시 정적 자원 경로: ${spring.mvc.static-path-pattern}
-        PathUtils.addEnvironmentProperty(this.environment, "spring.mvc.static-path-pattern", prop::addExcludePathPattern);
+        PathUtils.addEnvironmentProperty(this.environment, "spring.mvc.static-path-pattern",
+                prop::addExcludePathPattern);
         // --> begin: Swagger API
         // Swager Doc. API 경로: ${springdoc.api-docs.path}
         PathUtils.addEnvironmentProperty(this.environment, "springdoc.api-docs.path", v -> {
@@ -432,7 +434,8 @@ public class GlobalServletAutoConfiguration {
         List<PathPatternRequest> paths = new ArrayList<>();
 
         // 웹서비스 개발시 정적 자원 경로: ${spring.mvc.static-path-pattern}
-        PathUtils.addEnvironmentProperty(this.environment, "spring.mvc.static-path-pattern", PathPatternRequest::new, paths::add);
+        PathUtils.addEnvironmentProperty(this.environment, "spring.mvc.static-path-pattern", PathPatternRequest::new,
+                paths::add);
         // --> begin: Swagger API
         // Swager Doc. API 경로: ${springdoc.api-docs.path}
         PathUtils.addEnvironmentProperty(this.environment, "springdoc.api-docs.path", v -> {
@@ -467,5 +470,22 @@ public class GlobalServletAutoConfiguration {
     @Bean
     List<SharedHeader> configBuiltinSharedHeaders() {
         return SharedHeadersBuiltinProvider.load();
+    }
+
+    /**
+     * {@link HandlerInterceptor}에서 URL 기반으로 작업하는 경우, 대상에서 제외하는 URL 패턴 설정 경로
+     */
+    @Bean
+    List<InterceptorIgnoreUrlProperties> yamlInterceptorIgnoreUrlPatterns(InterceptorIgnoreProperties props) {
+        return props.interceptorIgnoreUrlPatterns();
+    }
+
+    /**
+     * {@link OncePerRequestFilter}에서 URL 기반으로 작업하는 경우, 대상에서 제외하는
+     * {@link PathPatternRequest} 패턴 설정 경로<br>
+     */
+    @Bean
+    List<PathPatternRequest> yamlOncePerRequestShouldNotFilters(OncePerRequestFilterProperties props) {
+        return props.oncePerRequestShouldNotFilters();
     }
 }

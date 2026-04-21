@@ -72,7 +72,8 @@ public class AbstractSshService extends AbstractGenericService {
      * <li>port: Port
      * </ul>
      */
-    protected static final TripleFunction<String, String, Integer, String> SSH_CONNECTION_KEY_GEN = (user, host, port) -> {
+    protected static final TripleFunction<String, String, Integer, String> SSH_CONNECTION_KEY_GEN = (user, host,
+            port) -> {
         return String.join(":", user, host, String.valueOf(port));
     };
 
@@ -138,8 +139,8 @@ public class AbstractSshService extends AbstractGenericService {
      * @since 2025. 7. 23.
      * @version 0.8.0
      */
-    protected final Result<Boolean> download(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String srcPath,
-            OutputStream dstOutput, boolean autoClose) {
+    protected final Result<Boolean> download(@NotBlank String host, @Min(1) int port, @NotBlank String username,
+            @NotBlank String password, @NotBlank String srcPath, OutputStream dstOutput, boolean autoClose) {
         AssertUtils2.notNull(dstOutput);
 
         Result<Boolean> resultExistSrcFile = existFile(host, port, username, password, srcPath);
@@ -192,8 +193,8 @@ public class AbstractSshService extends AbstractGenericService {
      * @since 2023. 11. 20.
      * @version 0.7.0
      */
-    protected final Result<Boolean> download(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String srcPath,
-            @NotBlank String dstPath) {
+    protected final Result<Boolean> download(@NotBlank String host, @Min(1) int port, @NotBlank String username,
+            @NotBlank String password, @NotBlank String srcPath, @NotBlank String dstPath) {
         AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
@@ -235,8 +236,8 @@ public class AbstractSshService extends AbstractGenericService {
      * @since 2025. 7. 23.
      * @version 0.8.0
      */
-    protected final <T> Result<T> execute(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, Function<FileTransfer, Result<T>> action,
-            @Nullable String job) {
+    protected final <T> Result<T> execute(@NotBlank String host, @Min(1) int port, @NotBlank String username,
+            @NotBlank String password, Function<FileTransfer, Result<T>> action, @Nullable String job) {
         AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
@@ -278,7 +279,8 @@ public class AbstractSshService extends AbstractGenericService {
      * @since 2025. 7. 23.
      * @version 0.8.0
      */
-    protected final Result<Boolean> existFile(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String srcFile) {
+    protected final Result<Boolean> existFile(@NotBlank String host, @Min(1) int port, @NotBlank String username,
+            @NotBlank String password, @NotBlank String srcFile) {
         AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
@@ -330,7 +332,8 @@ public class AbstractSshService extends AbstractGenericService {
      * @since 2023. 11. 20.
      * @version 0.8.0
      */
-    protected final SshConnection getConnection(@NotBlank String username, @NotBlank String password, @NotBlank String host, int port) {
+    protected final SshConnection getConnection(@NotBlank String username, @NotBlank String password,
+            @NotBlank String host, int port) {
         AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
@@ -339,9 +342,11 @@ public class AbstractSshService extends AbstractGenericService {
         try {
             lock.lock();
             Supplier<SshConnection> supplier = () -> new SshConnection(username, password, host, port);
-            return MapUtils.getOrDefault(this.sessions, SSH_CONNECTION_KEY_GEN.apply(username, host, port), supplier, true);
+            return MapUtils.getOrDefault(this.sessions, SSH_CONNECTION_KEY_GEN.apply(username, host, port), supplier,
+                    true);
         } catch (Exception e) {
-            logger.error("SSH 세션 생성 도중 에러가 발생하였습니다. username={}, host={}, port={}, 원인={}", username, host, port, e.getMessage(), e);
+            logger.error("SSH 세션 생성 도중 에러가 발생하였습니다. username={}, host={}, port={}, 원인={}", username, host, port,
+                    e.getMessage(), e);
             throw new InternalServerException(e);
         } finally {
             lock.unlock();
@@ -373,7 +378,8 @@ public class AbstractSshService extends AbstractGenericService {
      * @since 2025. 7. 23.
      * @version 0.8.0
      */
-    protected final Result<List<LsEntry>> list(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, @NotBlank String dir) {
+    protected final Result<List<LsEntry>> list(@NotBlank String host, @Min(1) int port, @NotBlank String username,
+            @NotBlank String password, @NotBlank String dir) {
         AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
@@ -420,8 +426,8 @@ public class AbstractSshService extends AbstractGenericService {
      * @since 2025. 7. 23.
      * @version 0.8.0
      */
-    protected final Result<Boolean> upload(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, InputStream srcInput,
-            @NotBlank String dstPath, boolean autoClose) {
+    protected final Result<Boolean> upload(@NotBlank String host, @Min(1) int port, @NotBlank String username,
+            @NotBlank String password, InputStream srcInput, @NotBlank String dstPath, boolean autoClose) {
         AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");
@@ -459,8 +465,8 @@ public class AbstractSshService extends AbstractGenericService {
      * @since 2023. 11. 20.
      * @version 0.7.0
      */
-    protected final Result<Boolean> upload(@NotBlank String host, @Min(1) int port, @NotBlank String username, @NotBlank String password, String srcPath,
-            @NotBlank String dstPath) {
+    protected final Result<Boolean> upload(@NotBlank String host, @Min(1) int port, @NotBlank String username,
+            @NotBlank String password, String srcPath, @NotBlank String dstPath) {
         AssertUtils2.notBlank(host, "접속정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(username, "사용자 정보는 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notBlank(password, "사용자 credential 정보는 '빈 문자열'을 허용하지 않습니다.");

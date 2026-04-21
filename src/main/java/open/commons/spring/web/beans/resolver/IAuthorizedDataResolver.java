@@ -69,7 +69,8 @@ public interface IAuthorizedDataResolver extends HandlerMethodArgumentResolver {
      * @since 2025. 9. 19.
      * @version 0.8.0
      */
-    default Object restoreValue(ApplicationContext context, String handleBean, @NotEmpty String handleType, Object rawValue) throws BeansException {
+    default Object restoreValue(ApplicationContext context, String handleBean, @NotEmpty String handleType,
+            Object rawValue) throws BeansException {
         if (rawValue == null) {
             return null;
         }

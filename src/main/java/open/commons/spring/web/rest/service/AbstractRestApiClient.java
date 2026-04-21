@@ -124,7 +124,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate}이 내부적으로 사용하는 {@link ClientHttpRequestFactory} 자원을 해제합니다. <br>
+     * {@link RestTemplate}이 내부적으로 사용하는 {@link ClientHttpRequestFactory} 자원을
+     * 해제합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -163,13 +164,16 @@ public abstract class AbstractRestApiClient {
      * @since 2025. 8. 26.
      * @version 0.8.0
      */
-    protected final URI createURI(@NotBlank String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment) {
+    protected final URI createURI(@NotBlank String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment) {
         return createURI(getBaseUrl(), path, pathVariables, convertToMultiValueMap(query), fragment);
     }
 
     /**
-     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code> 구조를 준수하는 {@link URI} 객체를 제공합니다.<br>
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을 지원.
+     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code>
+     * 구조를 준수하는 {@link URI} 객체를 제공합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
+     * 유사한 패턴으로 동작하는 것을 지원.
      * 
      * <pre>
      * [개정이력]
@@ -180,7 +184,8 @@ public abstract class AbstractRestApiClient {
      *
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷:
+     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @return
@@ -197,12 +202,15 @@ public abstract class AbstractRestApiClient {
 
         TemplateUriEncoder httpBasedPathEncoder = pathEncoder();
         TemplateUriEncoder queryEncoder = queryEncoder();
-        AssertUtils2.notNulls(String.format("URI encoder는 반드시 설정되어야 합니다. PathEncoder=%s, QueryEncoder=%s", httpBasedPathEncoder, queryEncoder), httpBasedPathEncoder, queryEncoder);
+        AssertUtils2.notNulls(String.format("URI encoder는 반드시 설정되어야 합니다. PathEncoder=%s, QueryEncoder=%s",
+                httpBasedPathEncoder, queryEncoder), httpBasedPathEncoder, queryEncoder);
 
         // 'path'
-        String encodedHttpBasePath = httpBasedPathEncoder.encode(UriComponent.PATH, urlSplit.path, new ByPassUriTemplateVariables(uriVariables));
+        String encodedHttpBasePath = httpBasedPathEncoder.encode(UriComponent.PATH, urlSplit.path,
+                new ByPassUriTemplateVariables(uriVariables));
         // 'query' + 'fragment'
-        String encodedQuery = queryEncoder.encode(UriComponent.QUERY, urlSplit.query, new ByPassUriTemplateVariables(uriVariables));
+        String encodedQuery = queryEncoder.encode(UriComponent.QUERY, urlSplit.query,
+                new ByPassUriTemplateVariables(uriVariables));
 
         // 모든 정보가 encoding 됨.
         StringBuilder pathAll = new StringBuilder(encodedHttpBasePath);
@@ -218,7 +226,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code> 구조를 준수하는 {@link URI} 객체를 제공합니다.<br>
+     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code>
+     * 구조를 준수하는 {@link URI} 객체를 제공합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -243,12 +252,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected final URI createURI(@NotBlank String scheme, @NotBlank String host, @Min(1) int port, String path, @Nullable MultiValueMap<String, String> query, String fragment) {
+    protected final URI createURI(@NotBlank String scheme, @NotBlank String host, @Min(1) int port, String path,
+            @Nullable MultiValueMap<String, String> query, String fragment) {
         return createURI(StringUtils.concatenate("", scheme, "://", host, ":", port), path, null, query, fragment);
     }
 
     /**
-     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code> 구조를 준수하는 {@link URI} 객체를 제공합니다.<br>
+     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code>
+     * 구조를 준수하는 {@link URI} 객체를 제공합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -271,12 +282,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected URI createURI(@NotBlank String baseHttpUrl, @NotBlank String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, String> queryVariables,
-            String fragment) {
+    protected URI createURI(@NotBlank String baseHttpUrl, @NotBlank String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, String> queryVariables, String fragment) {
 
         TemplateUriEncoder pathEncoder = pathEncoder();
         TemplateUriEncoder queryEncoder = queryEncoder();
-        AssertUtils2.notNulls(String.format("URI encoder는 반드시 설정되어야 합니다. PathEncoder=%s, QueryEncoder=%s", pathEncoder, queryEncoder), pathEncoder, queryEncoder);
+        AssertUtils2.notNulls(
+                String.format("URI encoder는 반드시 설정되어야 합니다. PathEncoder=%s, QueryEncoder=%s", pathEncoder, queryEncoder),
+                pathEncoder, queryEncoder);
 
         // 'path'
         String encodedPath = pathEncoder.encode(UriComponent.PATH, path, new ByPassUriTemplateVariables(pathVariables));
@@ -332,7 +345,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -346,14 +361,16 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query//
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query//
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, onError, retryCount);
+        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, onError, retryCount);
     }
 
     /**
@@ -385,7 +402,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -397,13 +416,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, CallbackOn.error(), retryCount);
+        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, CallbackOn.error(), retryCount);
     }
 
     /**
@@ -435,7 +456,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -445,13 +468,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers), responseType, CallbackOn.success(this.logger), CallbackOn.error(),
-                retryCount);
+        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
     }
 
     /**
@@ -483,7 +507,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -503,14 +529,16 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, onError, retryCount);
+        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, onError, retryCount);
     }
 
     /**
@@ -542,7 +570,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -560,13 +590,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, CallbackOn.error(), retryCount);
+        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, CallbackOn.error(), retryCount);
     }
 
     /**
@@ -598,7 +630,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -614,13 +648,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers), responseType, CallbackOn.success(this.logger), CallbackOn.error(),
-                retryCount);
+        return execute(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
     }
 
     /**
@@ -652,7 +687,9 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -666,14 +703,16 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return RestFacade.exchange(restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, onError, retryCount);
+        return RestFacade.exchange(restTemplate, method, createURI(path, pathVariables, query, fragment), entity,
+                responseType, onSuccess, onError, retryCount);
     }
 
     /**
@@ -705,7 +744,9 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -725,14 +766,16 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return RestFacade.exchange(restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, onError, retryCount);
+        return RestFacade.exchange(restTemplate, method, createURI(path, pathVariables, query, fragment), entity,
+                responseType, onSuccess, onError, retryCount);
     }
 
     /**
@@ -766,7 +809,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -780,14 +825,16 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, onError, retryCount);
+        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, onError, retryCount);
     }
 
     /**
@@ -821,7 +868,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -833,13 +882,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, CallbackOn.error(), retryCount);
+        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, CallbackOn.error(), retryCount);
     }
 
     /**
@@ -873,7 +924,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -883,13 +936,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType//
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers), responseType, CallbackOn.success(this.logger), CallbackOn.error(),
-                retryCount);
+        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers),
+                responseType, CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
     }
 
     /**
@@ -923,7 +977,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -943,14 +999,16 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, onError, retryCount);
+        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, onError, retryCount);
     }
 
     /**
@@ -984,7 +1042,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1002,13 +1062,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, CallbackOn.error(), retryCount);
+        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, CallbackOn.error(), retryCount);
     }
 
     /**
@@ -1042,7 +1104,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1058,17 +1122,19 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 3.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , int retryCount //
     ) {
-        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers), responseType, CallbackOn.success(this.logger), CallbackOn.error(),
-                retryCount);
+        return execute(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers),
+                responseType, CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
+     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1087,12 +1153,15 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷:
+     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형
      * @param onSuccess
@@ -1107,18 +1176,21 @@ public abstract class AbstractRestApiClient {
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl, Map<String, ? extends @Nullable Object> uriVariables //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl,
+            Map<String, ? extends @Nullable Object> uriVariables //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return RestFacade.exchange(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, onError, retryCount);
+        return RestFacade.exchange(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType,
+                onSuccess, onError, retryCount);
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
+     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1137,12 +1209,15 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷:
+     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형
      * @param onSuccess
@@ -1155,7 +1230,8 @@ public abstract class AbstractRestApiClient {
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl, Map<String, ? extends @Nullable Object> uriVariables //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl,
+            Map<String, ? extends @Nullable Object> uriVariables //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1165,7 +1241,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
+     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1184,12 +1261,15 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷:
+     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형
      * @param retryCount
@@ -1200,16 +1280,19 @@ public abstract class AbstractRestApiClient {
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl, Map<String, ? extends @Nullable Object> uriVariables //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl,
+            Map<String, ? extends @Nullable Object> uriVariables //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull Class<RES> responseType //
             , int retryCount //
     ) {
-        return execute(method, fqUrl, uriVariables, entity, responseType, CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
+        return execute(method, fqUrl, uriVariables, entity, responseType, CallbackOn.success(this.logger),
+                CallbackOn.error(), retryCount);
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
+     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1228,12 +1311,15 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷:
+     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1255,18 +1341,21 @@ public abstract class AbstractRestApiClient {
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl, Map<String, ? extends @Nullable Object> uriVariables //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl,
+            Map<String, ? extends @Nullable Object> uriVariables //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return RestFacade.exchange(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, onError, retryCount);
+        return RestFacade.exchange(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType,
+                onSuccess, onError, retryCount);
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
+     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1285,12 +1374,15 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷:
+     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1308,7 +1400,8 @@ public abstract class AbstractRestApiClient {
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl, Map<String, ? extends @Nullable Object> uriVariables //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl,
+            Map<String, ? extends @Nullable Object> uriVariables //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1318,7 +1411,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
+     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1337,12 +1431,15 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷:
+     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1363,12 +1460,14 @@ public abstract class AbstractRestApiClient {
      * 
      * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl, Map<String, ? extends @Nullable Object> uriVariables //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String fqUrl,
+            Map<String, ? extends @Nullable Object> uriVariables //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , int retryCount //
     ) {
-        return execute(method, fqUrl, uriVariables, entity, responseType, CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
+        return execute(method, fqUrl, uriVariables, entity, responseType, CallbackOn.success(this.logger),
+                CallbackOn.error(), retryCount);
     }
 
     /**
@@ -1398,7 +1497,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -1412,14 +1513,16 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query//
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query//
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, onError, retryCount);
+        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType,
+                onSuccess, onError, retryCount);
     }
 
     /**
@@ -1449,7 +1552,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -1461,13 +1566,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , int retryCount //
     ) {
-        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, CallbackOn.error(), retryCount);
+        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType,
+                onSuccess, CallbackOn.error(), retryCount);
     }
 
     /**
@@ -1497,7 +1604,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -1507,13 +1616,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , int retryCount //
     ) {
-        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType, CallbackOn.success(this.logger), CallbackOn.error(),
-                retryCount);
+        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType,
+                CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
     }
 
     /**
@@ -1543,7 +1653,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1563,14 +1675,16 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, onError, retryCount);
+        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType,
+                onSuccess, onError, retryCount);
     }
 
     /**
@@ -1600,7 +1714,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1618,13 +1734,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , int retryCount //
     ) {
-        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, CallbackOn.error(), retryCount);
+        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType,
+                onSuccess, CallbackOn.error(), retryCount);
     }
 
     /**
@@ -1654,7 +1772,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1670,13 +1790,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , int retryCount //
     ) {
-        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType, CallbackOn.success(this.logger), CallbackOn.error(),
-                retryCount);
+        return execute(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType,
+                CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
     }
 
     /**
@@ -1706,7 +1827,9 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -1720,7 +1843,8 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1757,7 +1881,9 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1777,7 +1903,8 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1816,7 +1943,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -1830,14 +1959,16 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, onError, retryCount);
+        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType,
+                onSuccess, onError, retryCount);
     }
 
     /**
@@ -1869,7 +2000,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -1881,13 +2014,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , int retryCount //
     ) {
-        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, CallbackOn.error(), retryCount);
+        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType,
+                onSuccess, CallbackOn.error(), retryCount);
     }
 
     /**
@@ -1919,7 +2054,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -1929,12 +2066,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType//
             , int retryCount //
     ) {
-        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType, CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
+        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType,
+                CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
     }
 
     /**
@@ -1966,7 +2105,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1986,14 +2127,16 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , @NotNull Function<Exception, Result<RET>> onError //
             , int retryCount //
     ) {
-        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, onError, retryCount);
+        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType,
+                onSuccess, onError, retryCount);
     }
 
     /**
@@ -2025,7 +2168,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2043,13 +2188,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, Result<RET>> onSuccess //
             , int retryCount //
     ) {
-        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, CallbackOn.error(), retryCount);
+        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType,
+                onSuccess, CallbackOn.error(), retryCount);
     }
 
     /**
@@ -2081,7 +2228,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2097,12 +2246,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> Result<RET> execute(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , int retryCount //
     ) {
-        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType, CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
+        return execute(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType,
+                CallbackOn.success(this.logger), CallbackOn.error(), retryCount);
     }
 
     /**
@@ -2134,7 +2285,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2146,13 +2299,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 14.
      */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query//
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query//
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
-        return executeAsRaw(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, retryCount);
+        return executeAsRaw(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, retryCount);
     }
 
     /**
@@ -2184,7 +2339,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2194,12 +2351,695 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 14.
      */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , int retryCount //
     ) {
-        return executeAsRaw(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers), responseType, CallbackOn.successAsRaw(this.logger),
+        return executeAsRaw(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, CallbackOn.successAsRaw(this.logger), retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param path
+     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
+     * @param pathVariables
+     *            <code>path</code>에 사용되는 정보
+     * @param query
+     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
+     * @param headers
+     *            요청 헤더 정보.
+     * @param requestBody
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
+     * 
+     *            <pre>
+     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
+     *            };
+     *            </pre>
+     * 
+     * @param onSuccess
+     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query //
+            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
+            , @NotNull ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        return executeAsRaw(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param path
+     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
+     * @param pathVariables
+     *            <code>path</code>에 사용되는 정보
+     * @param query
+     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
+     * @param headers
+     *            요청 헤더 정보.
+     * @param requestBody
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
+     * 
+     *            <pre>
+     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
+     *            };
+     *            </pre>
+     * 
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query //
+            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
+            , @NotNull ParameterizedTypeReference<RES> responseType //
+            , int retryCount //
+    ) {
+        return executeAsRaw(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, CallbackOn.successAsRaw(this.logger), retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param path
+     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
+     * @param pathVariables
+     *            <code>path</code>에 사용되는 정보
+     * @param query
+     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
+     * @param fragment
+     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
+     * @param entity
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 단일 데이터일 경우 사용
+     * @param onSuccess
+     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
+            , @Nullable HttpEntity<REQ> entity //
+            , @NotNull Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(path, pathVariables, query, fragment),
+                entity, responseType, onSuccess, retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param path
+     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
+     * @param pathVariables
+     *            <code>path</code>에 사용되는 정보
+     * @param query
+     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
+     * @param fragment
+     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
+     * @param entity
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
+     * 
+     *            <pre>
+     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
+     *            };
+     *            </pre>
+     * 
+     * @param onSuccess
+     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
+            , @Nullable HttpEntity<REQ> entity //
+            , @NotNull ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(path, pathVariables, query, fragment),
+                entity, responseType, onSuccess, retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param path
+     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
+     * @param pathVariables
+     *            <code>path</code>에 사용되는 정보
+     * @param query
+     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
+     * @param fragment
+     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
+     * @param headers
+     *            요청 헤더 정보.
+     * @param requestBody
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 단일 데이터일 경우 사용
+     * @param onSuccess
+     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
+            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
+            , @NotNull Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        return executeAsRaw(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param path
+     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
+     * @param pathVariables
+     *            <code>path</code>에 사용되는 정보
+     * @param query
+     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
+     * @param fragment
+     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
+     * @param headers
+     *            요청 헤더 정보.
+     * @param requestBody
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 단일 데이터일 경우 사용
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
+            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
+            , @NotNull Class<RES> responseType//
+            , int retryCount //
+    ) {
+        return executeAsRaw(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers),
+                responseType, CallbackOn.successAsRaw(this.logger), retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param path
+     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
+     * @param pathVariables
+     *            <code>path</code>에 사용되는 정보
+     * @param query
+     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
+     * @param fragment
+     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
+     * @param headers
+     *            요청 헤더 정보.
+     * @param requestBody
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
+     * 
+     *            <pre>
+     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
+     *            };
+     *            </pre>
+     * 
+     * @param onSuccess
+     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
+            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
+            , @NotNull ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        return executeAsRaw(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param path
+     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
+     * @param pathVariables
+     *            <code>path</code>에 사용되는 정보
+     * @param query
+     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
+     * @param fragment
+     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
+     * @param headers
+     *            요청 헤더 정보.
+     * @param requestBody
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
+     * 
+     *            <pre>
+     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
+     *            };
+     *            </pre>
+     * 
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
+            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
+            , @NotNull ParameterizedTypeReference<RES> responseType //
+            , int retryCount //
+    ) {
+        return executeAsRaw(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers),
+                responseType, CallbackOn.successAsRaw(this.logger), retryCount);
+    }
+
+    /**
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
+     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param fqUrl
+     *            Full Qualified URL.<br>
+     *            포맷:
+     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     * @param uriVariables
+     *            <code>fqUrl</code>에 사용되는 정보
+     * @param entity
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param onSuccess
+     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 28.
+     * 
+     * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String fqUrl,
+            Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
+            , @NotNull Class<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+
+        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType,
+                onSuccess, retryCount);
+    }
+
+    /**
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
+     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param fqUrl
+     *            Full Qualified URL.<br>
+     *            포맷:
+     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     * @param uriVariables
+     *            <code>fqUrl</code>에 사용되는 정보
+     * @param entity
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 28.
+     * 
+     * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String fqUrl,
+            Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
+            , @NotNull Class<RES> responseType //
+            , int retryCount //
+    ) {
+        return executeAsRaw(method, fqUrl, uriVariables, entity, responseType, CallbackOn.successAsRaw(this.logger),
+                retryCount);
+    }
+
+    /**
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
+     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param fqUrl
+     *            Full Qualified URL.<br>
+     *            포맷:
+     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     * @param uriVariables
+     *            <code>fqUrl</code>에 사용되는 정보
+     * @param entity
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
+     * 
+     *            <pre>
+     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
+     *            };
+     *            </pre>
+     * 
+     * @param onSuccess
+     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 28.
+     * 
+     * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String fqUrl,
+            Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
+            , @NotNull ParameterizedTypeReference<RES> responseType //
+            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
+            , int retryCount //
+    ) {
+        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType,
+                onSuccess, retryCount);
+    }
+
+    /**
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
+     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param fqUrl
+     *            Full Qualified URL.<br>
+     *            포맷:
+     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     * @param uriVariables
+     *            <code>fqUrl</code>에 사용되는 정보
+     * @param entity
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
+     * 
+     *            <pre>
+     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
+     *            };
+     *            </pre>
+     * 
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 8. 28.
+     * 
+     * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String fqUrl,
+            Map<String, ? extends @Nullable Object> uriVariables //
+            , @Nullable HttpEntity<REQ> entity //
+            , @NotNull ParameterizedTypeReference<RES> responseType //
+            , int retryCount //
+    ) {
+        return executeAsRaw(method, fqUrl, uriVariables, entity, responseType, CallbackOn.successAsRaw(this.logger),
                 retryCount);
     }
 
@@ -2224,125 +3064,15 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param path
      *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param pathVariables
-     *            <code>path</code>에 사용되는 정보
      * @param query
      *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
      * @param headers
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
-     * 
-     *            <pre>
-     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
-     *            };
-     *            </pre>
-     * 
-     * @param onSuccess
-     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 7. 14.
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
-            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
-            , @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, retryCount);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param path
-     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param pathVariables
-     *            <code>path</code>에 사용되는 정보
-     * @param query
-     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param headers
-     *            요청 헤더 정보.
-     * @param requestBody
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
-     * 
-     *            <pre>
-     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
-     *            };
-     *            </pre>
-     * 
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 7. 14.
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query //
-            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
-            , @NotNull ParameterizedTypeReference<RES> responseType //
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, path, pathVariables, query, (String) null, createHttpEntity(requestBody, headers), responseType, CallbackOn.successAsRaw(this.logger),
-                retryCount);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param path
-     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param pathVariables
-     *            <code>path</code>에 사용되는 정보
-     * @param query
-     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param fragment
-     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
-     * @param entity
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2354,13 +3084,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 14.
      */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
-            , @Nullable HttpEntity<REQ> entity //
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query//
+            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
-        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, retryCount);
+        return executeAsRaw(method, path, null, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, retryCount);
     }
 
     /**
@@ -2384,15 +3116,64 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param path
      *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param pathVariables
-     *            <code>path</code>에 사용되는 정보
      * @param query
      *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param fragment
-     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
-     * @param entity
+     * @param headers
+     *            요청 헤더 정보.
+     * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 단일 데이터일 경우 사용
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query //
+            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
+            , @NotNull Class<RES> responseType //
+            , int retryCount //
+    ) {
+        return executeAsRaw(method, path, null, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, CallbackOn.successAsRaw(this.logger), retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param path
+     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
+     * @param query
+     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
+     * @param headers
+     *            요청 헤더 정보.
+     * @param requestBody
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2410,13 +3191,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 14.
      */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
-            , @Nullable HttpEntity<REQ> entity //
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query //
+            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
-        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(path, pathVariables, query, fragment), entity, responseType, onSuccess, retryCount);
+        return executeAsRaw(method, path, null, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, onSuccess, retryCount);
     }
 
     /**
@@ -2440,17 +3223,70 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param path
      *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param pathVariables
-     *            <code>path</code>에 사용되는 정보
      * @param query
      *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param fragment
-     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param headers
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
+     * @param responseType
+     *            연동 서비스가 제공하는 데이터 유형<br>
+     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
+     * 
+     *            <pre>
+     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
+     *            };
+     *            </pre>
+     * 
+     * @param retryCount
+     *            오류 발생시 재시도 횟수
+     * @return
+     *
+     * @since 2025. 7. 14.
+     */
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query //
+            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
+            , @NotNull ParameterizedTypeReference<RES> responseType //
+            , int retryCount //
+    ) {
+        return executeAsRaw(method, path, null, query, (String) null, createHttpEntity(requestBody, headers),
+                responseType, CallbackOn.successAsRaw(this.logger), retryCount);
+    }
+
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param <REQ>
+     *            요청 데이터 유형
+     * @param <RES>
+     *            연동 서비스가 제공하는 데이터 유형
+     * @param <RET>
+     *            실제 제공하는 데이터 유형
+     * @param method
+     *            Http 요청 방식
+     * @param path
+     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
+     * @param query
+     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
+     * @param fragment
+     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
+     * @param entity
+     *            요청 데이터. <br>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2462,612 +3298,8 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 14.
      */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
-            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
-            , @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, retryCount);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param path
-     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param pathVariables
-     *            <code>path</code>에 사용되는 정보
-     * @param query
-     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param fragment
-     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
-     * @param headers
-     *            요청 헤더 정보.
-     * @param requestBody
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 단일 데이터일 경우 사용
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 7. 14.
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
-            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
-            , @NotNull Class<RES> responseType//
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers), responseType, CallbackOn.successAsRaw(this.logger), retryCount);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param path
-     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param pathVariables
-     *            <code>path</code>에 사용되는 정보
-     * @param query
-     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param fragment
-     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
-     * @param headers
-     *            요청 헤더 정보.
-     * @param requestBody
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
-     * 
-     *            <pre>
-     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
-     *            };
-     *            </pre>
-     * 
-     * @param onSuccess
-     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 7. 14.
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
-            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
-            , @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, retryCount);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param path
-     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param pathVariables
-     *            <code>path</code>에 사용되는 정보
-     * @param query
-     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param fragment
-     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
-     * @param headers
-     *            요청 헤더 정보.
-     * @param requestBody
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
-     * 
-     *            <pre>
-     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
-     *            };
-     *            </pre>
-     * 
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 7. 14.
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, Map<String, ?> pathVariables, @Nullable MultiValueMap<String, ?> query, String fragment //
-            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
-            , @NotNull ParameterizedTypeReference<RES> responseType //
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, path, pathVariables, query, fragment, createHttpEntity(requestBody, headers), responseType, CallbackOn.successAsRaw(this.logger), retryCount);
-    }
-
-    /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을 지원합니다.<br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param fqUrl
-     *            Full Qualified URL.<br>
-     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
-     * @param uriVariables
-     *            <code>fqUrl</code>에 사용되는 정보
-     * @param entity
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param onSuccess
-     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 8. 28.
-     * 
-     * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String fqUrl, Map<String, ? extends @Nullable Object> uriVariables //
-            , @Nullable HttpEntity<REQ> entity //
-            , @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
-            , int retryCount //
-    ) {
-
-        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, retryCount);
-    }
-
-    /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을 지원합니다.<br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param fqUrl
-     *            Full Qualified URL.<br>
-     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
-     * @param uriVariables
-     *            <code>fqUrl</code>에 사용되는 정보
-     * @param entity
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 8. 28.
-     * 
-     * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String fqUrl, Map<String, ? extends @Nullable Object> uriVariables //
-            , @Nullable HttpEntity<REQ> entity //
-            , @NotNull Class<RES> responseType //
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, fqUrl, uriVariables, entity, responseType, CallbackOn.successAsRaw(this.logger), retryCount);
-    }
-
-    /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을 지원합니다.<br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param fqUrl
-     *            Full Qualified URL.<br>
-     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
-     * @param uriVariables
-     *            <code>fqUrl</code>에 사용되는 정보
-     * @param entity
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
-     * 
-     *            <pre>
-     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
-     *            };
-     *            </pre>
-     * 
-     * @param onSuccess
-     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 8. 28.
-     * 
-     * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String fqUrl, Map<String, ? extends @Nullable Object> uriVariables //
-            , @Nullable HttpEntity<REQ> entity //
-            , @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
-            , int retryCount //
-    ) {
-        return RestFacade.exchangeAsRaw(this.restTemplate, method, createURI(fqUrl, uriVariables), entity, responseType, onSuccess, retryCount);
-    }
-
-    /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을 지원합니다.<br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 8. 28.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param fqUrl
-     *            Full Qualified URL.<br>
-     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
-     * @param uriVariables
-     *            <code>fqUrl</code>에 사용되는 정보
-     * @param entity
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
-     * 
-     *            <pre>
-     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
-     *            };
-     *            </pre>
-     * 
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 8. 28.
-     * 
-     * @see RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String fqUrl, Map<String, ? extends @Nullable Object> uriVariables //
-            , @Nullable HttpEntity<REQ> entity //
-            , @NotNull ParameterizedTypeReference<RES> responseType //
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, fqUrl, uriVariables, entity, responseType, CallbackOn.successAsRaw(this.logger), retryCount);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param path
-     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param query
-     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param headers
-     *            요청 헤더 정보.
-     * @param requestBody
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 단일 데이터일 경우 사용
-     * @param onSuccess
-     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 7. 14.
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query//
-            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
-            , @NotNull Class<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, retryCount);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param path
-     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param query
-     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param headers
-     *            요청 헤더 정보.
-     * @param requestBody
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 단일 데이터일 경우 사용
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 7. 14.
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
-            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
-            , @NotNull Class<RES> responseType //
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType, CallbackOn.successAsRaw(this.logger), retryCount);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param path
-     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param query
-     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param headers
-     *            요청 헤더 정보.
-     * @param requestBody
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
-     * 
-     *            <pre>
-     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
-     *            };
-     *            </pre>
-     * 
-     * @param onSuccess
-     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 7. 14.
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
-            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
-            , @NotNull ParameterizedTypeReference<RES> responseType //
-            , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType, onSuccess, retryCount);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param path
-     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param query
-     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param headers
-     *            요청 헤더 정보.
-     * @param requestBody
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
-     * 
-     *            <pre>
-     *            ParameterizedTypeReference&lt;List&lt;UserInfo&gt;&gt; restype = new ParameterizedTypeReference&lt;&gt;() {
-     *            };
-     *            </pre>
-     * 
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 7. 14.
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query //
-            , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
-            , @NotNull ParameterizedTypeReference<RES> responseType //
-            , int retryCount //
-    ) {
-        return executeAsRaw(method, path, null, query, (String) null, createHttpEntity(requestBody, headers), responseType, CallbackOn.successAsRaw(this.logger), retryCount);
-    }
-
-    /**
-     * 
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 14.      parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param <REQ>
-     *            요청 데이터 유형
-     * @param <RES>
-     *            연동 서비스가 제공하는 데이터 유형
-     * @param <RET>
-     *            실제 제공하는 데이터 유형
-     * @param method
-     *            Http 요청 방식
-     * @param path
-     *            서버 상의 자원의 경로. 일반적으로 연동하는 REST API URL 정보
-     * @param query
-     *            <code>?</code> 뒤에 위치하며, key=value 형식의 파라미터.
-     * @param fragment
-     *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
-     * @param entity
-     *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
-     * @param responseType
-     *            연동 서비스가 제공하는 데이터 유형<br>
-     *            제공하는 데이터가 단일 데이터일 경우 사용
-     * @param onSuccess
-     *            &lt;RES&gt; 데이터를 Result&lt;RET&gt; 데이터를 변환하는 함수
-     * @param retryCount
-     *            오류 발생시 재시도 횟수
-     * @return
-     *
-     * @since 2025. 7. 14.
-     */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
@@ -3103,7 +3335,9 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3121,7 +3355,8 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 14.
      */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpEntity<REQ> entity //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
@@ -3159,7 +3394,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3171,13 +3408,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 14.
      */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
-        return executeAsRaw(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, retryCount);
+        return executeAsRaw(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType,
+                onSuccess, retryCount);
     }
 
     /**
@@ -3209,7 +3448,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3219,12 +3460,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 14.
      */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull Class<RES> responseType//
             , int retryCount //
     ) {
-        return executeAsRaw(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType, CallbackOn.successAsRaw(this.logger), retryCount);
+        return executeAsRaw(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType,
+                CallbackOn.successAsRaw(this.logger), retryCount);
     }
 
     /**
@@ -3256,7 +3499,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3274,13 +3519,15 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 14.
      */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , @NotNull Function<ResponseEntity<RES>, RET> onSuccess //
             , int retryCount //
     ) {
-        return executeAsRaw(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType, onSuccess, retryCount);
+        return executeAsRaw(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType,
+                onSuccess, retryCount);
     }
 
     /**
@@ -3312,7 +3559,9 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
+     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
+     *            <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3328,12 +3577,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 14.
      */
-    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path, @Nullable MultiValueMap<String, ?> query, String fragment //
+    protected <REQ, RES, RET> RET executeAsRaw(@NotNull HttpMethod method, String path,
+            @Nullable MultiValueMap<String, ?> query, String fragment //
             , @Nullable HttpHeaders headers, @Nullable REQ requestBody //
             , @NotNull ParameterizedTypeReference<RES> responseType //
             , int retryCount //
     ) {
-        return executeAsRaw(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType, CallbackOn.successAsRaw(this.logger), retryCount);
+        return executeAsRaw(method, path, null, query, fragment, createHttpEntity(requestBody, headers), responseType,
+                CallbackOn.successAsRaw(this.logger), retryCount);
     }
 
     @SuppressWarnings("unused")
@@ -3368,7 +3619,8 @@ public abstract class AbstractRestApiClient {
      * <li>scheme: 필수 ( [http|https] )
      * <li>userinfo: 옵션
      * <li>host: 필수 (IP 또는 Domain)
-     * <li>port: 옵션, 설정되지 않은 경우 <code>scheme</code>값이 'http' 인 경우 80, 'https' 인 경우 443으로 처리됩니다.
+     * <li>port: 옵션, 설정되지 않은 경우 <code>scheme</code>값이 'http' 인 경우 80, 'https' 인
+     * 경우 443으로 처리됩니다.
      * 
      * <pre>
      * [개정이력]
@@ -3385,8 +3637,10 @@ public abstract class AbstractRestApiClient {
     protected abstract String getBaseUrl();
 
     /**
-     * {@link NoHttpResponseException} 또는 {@link ResourceAccessException} 예외상황이 발생한 경우 재시도 횟수를 반환합니다. <br>
-     * {@link HttpClientErrorException} 또는 {@link HttpServerErrorException} 예외상황이 발생한 경우는 재시도를 하지 않습니다.
+     * {@link NoHttpResponseException} 또는 {@link ResourceAccessException} 예외상황이
+     * 발생한 경우 재시도 횟수를 반환합니다. <br>
+     * {@link HttpClientErrorException} 또는 {@link HttpServerErrorException}
+     * 예외상황이 발생한 경우는 재시도를 하지 않습니다.
      * 
      * <pre>
      * [개정이력]
@@ -3498,7 +3752,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를 {@link MultiValueMap}로 변환하여 제공합니다. <br>
+     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를
+     * {@link MultiValueMap}로 변환하여 제공합니다. <br>
      * 일반적으로 'Query Parameters'를 생성하는데 유용합니다.
      * 
      * <pre>
@@ -3533,7 +3788,8 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected static final MultiValueMap<String, String> convertToMultiValueMap(@Nullable MultiValueMap<String, ?> data) {
+    protected static final MultiValueMap<String, String> convertToMultiValueMap(
+            @Nullable MultiValueMap<String, ?> data) {
 
         if (data == null) {
             return new LinkedMultiValueMap<>();
@@ -3569,7 +3825,8 @@ public abstract class AbstractRestApiClient {
      * @since 2026. 4. 14.
      * @version 4.0.0
      */
-    protected static final <REQ> HttpEntity<REQ> createHttpEntity(@Nullable REQ requestBody, @Nullable HttpHeaders headers) {
+    protected static final <REQ> HttpEntity<REQ> createHttpEntity(@Nullable REQ requestBody,
+            @Nullable HttpHeaders headers) {
         return new HttpEntity<REQ>(requestBody, headers);
     }
 
@@ -3591,7 +3848,8 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected static final <REQ> HttpEntity<REQ> createHttpEntity(@Nullable REQ requestBody, MultiValueMap<String, String> headers) {
+    protected static final <REQ> HttpEntity<REQ> createHttpEntity(@Nullable REQ requestBody,
+            MultiValueMap<String, String> headers) {
         AssertUtils2.notNull(headers);
 
         return createHttpEntity(requestBody, new HttpHeaders(headers));
@@ -3615,12 +3873,14 @@ public abstract class AbstractRestApiClient {
      *
      * @since 2025. 7. 2.
      */
-    protected static final <REQ> HttpEntity<REQ> createHttpEntity(@Nullable REQ requestBody, String @Nullable... headers) {
+    protected static final <REQ> HttpEntity<REQ> createHttpEntity(@Nullable REQ requestBody,
+            String @Nullable... headers) {
         return new HttpEntity<REQ>(requestBody, new HttpHeaders(toMultiValueMap(headers)));
     }
 
     /**
-     * <code>param</code>이 <code>null</code>이 아닌 경우 <code>action</code>을 실행합니다. <br>
+     * <code>param</code>이 <code>null</code>이 아닌 경우 <code>action</code>을 실행합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -3642,7 +3902,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * <code>param</code>이 <code>null</code>이 아닌 경우 <code>action</code>을 실행합니다. <br>
+     * <code>param</code>이 <code>null</code>이 아닌 경우 <code>action</code>을 실행합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -3665,7 +3926,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를 {@link HttpHeaders}로 변환하여 제공합니다. <br>
+     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를
+     * {@link HttpHeaders}로 변환하여 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -3705,7 +3967,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를 {@link HttpHeaders}로 변환하여 제공합니다. <br>
+     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를
+     * {@link HttpHeaders}로 변환하여 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -3724,7 +3987,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를 {@link MultiValueMap}로 변환하여 제공합니다. <br>
+     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를
+     * {@link MultiValueMap}로 변환하여 제공합니다. <br>
      * 일반적으로 'Query Parameters'를 생성하는데 유용합니다.
      * 
      * <pre>
@@ -3744,13 +4008,16 @@ public abstract class AbstractRestApiClient {
             return new LinkedMultiValueMap<>();
         }
         if (data.length != 2) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "올바르지 않은 파라미터 입니다. data=%s", Arrays.toString(data));
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "올바르지 않은 파라미터 입니다. data=%s",
+                    Arrays.toString(data));
         }
-        return toMultiValueMap(Stream.of(data).map(d -> d != null ? d.toString() : (String) null).toArray(String[]::new));
+        return toMultiValueMap(
+                Stream.of(data).map(d -> d != null ? d.toString() : (String) null).toArray(String[]::new));
     }
 
     /**
-     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를 {@link MultiValueMap}로 변환하여 제공합니다. <br>
+     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를
+     * {@link MultiValueMap}로 변환하여 제공합니다. <br>
      * 일반적으로 'Query Parameters'를 생성하는데 유용합니다.
      * 
      * <pre>
@@ -3770,7 +4037,8 @@ public abstract class AbstractRestApiClient {
             return new LinkedMultiValueMap<>();
         }
         if (data.length % 2 != 0) {
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "올바르지 않은 파라미터 입니다. data=%s", Arrays.toString(data));
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "올바르지 않은 파라미터 입니다. data=%s",
+                    Arrays.toString(data));
         }
 
         LinkedMultiValueMap<String, String> m = new LinkedMultiValueMap<>();

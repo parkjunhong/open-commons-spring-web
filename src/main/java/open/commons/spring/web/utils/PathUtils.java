@@ -105,7 +105,8 @@ public class PathUtils {
      * @since 2025. 9. 25.
      * @version 0.8.0
      */
-    public static <V> void addEnvironmentProperty(Environment env, String propName, Function<String, V> converter, Consumer<V> actor) {
+    public static <V> void addEnvironmentProperty(Environment env, String propName, Function<String, V> converter,
+            Consumer<V> actor) {
         AssertUtils2.notNulls(env, propName, converter, actor);
 
         String value = env.getProperty(propName);

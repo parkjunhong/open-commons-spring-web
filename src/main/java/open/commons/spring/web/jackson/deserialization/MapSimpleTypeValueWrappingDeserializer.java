@@ -84,7 +84,8 @@ public class MapSimpleTypeValueWrappingDeserializer extends ValueDeserializer<Ob
      * @since 2025. 9. 23.
      * @version 0.8.0
      */
-    public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType) {
+    public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler,
+            @NotEmpty String handleType) {
         this(mapType, handler, handleType, null);
     }
 
@@ -109,7 +110,8 @@ public class MapSimpleTypeValueWrappingDeserializer extends ValueDeserializer<Ob
      * @since 2025. 9. 23.
      * @version 0.8.0
      */
-    public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler, @NotEmpty String handleType, ValueDeserializer<?> delegate) {
+    public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler,
+            @NotEmpty String handleType, ValueDeserializer<?> delegate) {
         this.mapType = mapType;
         this.handler = handler;
         this.handleType = handleType;
@@ -127,12 +129,14 @@ public class MapSimpleTypeValueWrappingDeserializer extends ValueDeserializer<Ob
      *      tools.jackson.databind.BeanProperty)
      */
     @Override
-    public ValueDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) throws JacksonException {
+    public ValueDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property)
+            throws JacksonException {
         if (this.delegate != null) {
             return this; // 이미 contextual-resolved
         }
         // Map 타입 자체로 표준 delegate 획득
-        ValueDeserializer<Object> std = (ValueDeserializer<Object>) ctxt.findContextualValueDeserializer(this.mapType, property);
+        ValueDeserializer<Object> std = (ValueDeserializer<Object>) ctxt.findContextualValueDeserializer(this.mapType,
+                property);
         if (std == null) {
             std = (ValueDeserializer<Object>) ctxt.findRootValueDeserializer(this.mapType);
         }
@@ -158,6 +162,7 @@ public class MapSimpleTypeValueWrappingDeserializer extends ValueDeserializer<Ob
         }
 
         // 그 다음 자바 객체를 재귀 후처리 (값/value만 대상)
-        return AuthorizedRequestDataContainerWalker.processRecursively(mapObj, this.mapType, this.handler, this.handleType);
+        return AuthorizedRequestDataContainerWalker.processRecursively(mapObj, this.mapType, this.handler,
+                this.handleType);
     }
 }

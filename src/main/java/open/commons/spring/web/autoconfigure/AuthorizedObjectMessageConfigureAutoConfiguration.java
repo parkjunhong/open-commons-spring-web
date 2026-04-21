@@ -48,7 +48,8 @@ import open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConvert
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(after = { OpenCommonsWebCoreAutoConfiguration.class, AuthorizedObjectMessageConverterAutoConfiguration.class })
+@AutoConfiguration(after = { OpenCommonsSpringWebCoreAutoConfiguration.class,
+        AuthorizedObjectMessageConverterAutoConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedObjectMessageConfigureAutoConfiguration {
 
@@ -73,7 +74,8 @@ public class AuthorizedObjectMessageConfigureAutoConfiguration {
     @Bean
     @ConditionalOnBean(name = { AuthorizedObjectJacksonHttpMessageConverter.BEAN_QUALIFIER })
     WebMvcConfigurer authorizedObjectMessageConfigure(Environment environment //
-            , @Qualifier(AuthorizedObjectJacksonHttpMessageConverter.BEAN_QUALIFIER) @NotNull AuthorizedObjectJacksonHttpMessageConverter messageConverter //
+            ,
+            @Qualifier(AuthorizedObjectJacksonHttpMessageConverter.BEAN_QUALIFIER) @NotNull AuthorizedObjectJacksonHttpMessageConverter messageConverter //
             , AuthorizedModelAndViewHandlerInterceptor authorizedModelAndViewHandlerInterceptor) {
         WebMvcConfigurer configure = new AuthorizedObjectMessageConfiguration(messageConverter);
         logger.info("[authorized-resources] authorized-object-message-configure={}", configure);

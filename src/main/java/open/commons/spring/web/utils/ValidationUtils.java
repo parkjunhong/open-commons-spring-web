@@ -97,7 +97,8 @@ public class ValidationUtils {
      * @param object
      *            검증 대상 객체
      * @param nested
-     *            내부 필드 검증 여부 (true 지원 안 함 - 호출 시 UnsupportedOperationException 발생)
+     *            내부 필드 검증 여부 (true 지원 안 함 - 호출 시 UnsupportedOperationException
+     *            발생)
      * @param groups
      *            적용할 검증 그룹 배열 (배열 자체 및 배열 내 요소 모두 null을 허용하지 않음)
      * 
@@ -226,7 +227,8 @@ public class ValidationUtils {
      * @since 2019. 6. 18.
      * @see Validator#validateProperty(Object, String, Class...)
      */
-    public static <T> Set<ConstraintViolation<T>> validateProperty(T object, @NotBlank String propertyName, Class<?>... groups) {
+    public static <T> Set<ConstraintViolation<T>> validateProperty(T object, @NotBlank String propertyName,
+            Class<?>... groups) {
         AssertUtils2.notNull(object);
         AssertUtils2.notBlank(propertyName, "속성이름은 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notNulls((Object[]) groups);
@@ -259,7 +261,8 @@ public class ValidationUtils {
      * @since 2019. 6. 18.
      * @see Validator#validateProperty(Object, String, Class...)
      */
-    public static <T> Collection<String> validatePropertyAndErrorMsg(T object, @NotBlank String propertyName, Class<?>... groups) {
+    public static <T> Collection<String> validatePropertyAndErrorMsg(T object, @NotBlank String propertyName,
+            Class<?>... groups) {
         return makeErrorMessage(validateProperty(object, propertyName, groups));
     }
 
@@ -289,7 +292,8 @@ public class ValidationUtils {
      * @since 2019. 6. 18.
      * @see Validator#validateValue(Class, String, Object, Class...)
      */
-    public static <T> Set<ConstraintViolation<T>> validateValue(Class<T> beanType, @NotBlank String propertyName, Object value, Class<?>... groups) {
+    public static <T> Set<ConstraintViolation<T>> validateValue(Class<T> beanType, @NotBlank String propertyName,
+            Object value, Class<?>... groups) {
         AssertUtils2.notNull(beanType);
         AssertUtils2.notBlank(propertyName, "속성이름은 '빈 문자열'을 허용하지 않습니다.");
         AssertUtils2.notNulls((Object[]) groups);
@@ -325,7 +329,8 @@ public class ValidationUtils {
      * @since 2019. 6. 18.
      * @see Validator#validateValue(Class, String, Object, Class...)
      */
-    public static <T> Collection<String> validateValueAndErrorMsg(Class<T> beanType, @NotBlank String propertyName, Object value, Class<?>... groups) {
+    public static <T> Collection<String> validateValueAndErrorMsg(Class<T> beanType, @NotBlank String propertyName,
+            Object value, Class<?>... groups) {
         return makeErrorMessage(validateValue(beanType, propertyName, value, groups));
     }
 }

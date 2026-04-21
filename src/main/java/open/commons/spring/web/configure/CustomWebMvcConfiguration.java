@@ -68,7 +68,8 @@ import open.commons.spring.web.handler.PostProcessingHandlerInterceptor;
 /**
  * 사용자 정의 설정을 자동으로 등록해주는 클래스.
  * 
- * <h1>사용자 정의 Enum 클래스 등 import open.commons.spring.web.enums.EnumConverterFactory;록</h1>
+ * <h1>사용자 정의 Enum 클래스 등 import
+ * open.commons.spring.web.enums.EnumConverterFactory;록</h1>
  * <h2>1. {@link Enum} 클래스 정보가 있는 패키지 정의</h2>
  * 
  * import open.commons.spring.web.enums.EnumPackages;
@@ -140,8 +141,8 @@ import open.commons.spring.web.handler.PostProcessingHandlerInterceptor;
  *             }
  *         }
  * 
- *         throw new IllegalArgumentException(
- *                 "Unexpected 'service' value of 'Service'. expected: " + values0() + " & Ignore case-sensitive: " + ignoreCase + ", input: " + service);
+ *         throw new IllegalArgumentException("Unexpected 'service' value of 'Service'. expected: " + values0()
+ *                 + " & Ignore case-sensitive: " + ignoreCase + ", input: " + service);
  *     }
  * 
  *     private static List<String> values0() {
@@ -211,7 +212,8 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
     private static final String SPRING_WEB_RESOURCES_STATIC_LOCATIONS = "spring.web.resources.static-locations";
 
     /** 기본 정적 자원 실제 경로 */
-    private static final String[] DEFAULTS_STATIC_LOCATIONS = { "classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/" };
+    private static final String[] DEFAULTS_STATIC_LOCATIONS = { "classpath:/META-INF/resources/",
+            "classpath:/resources/", "classpath:/static/", "classpath:/public/" };
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -387,8 +389,10 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
                     }
                     for (InterceptorIgnoreUrlProperties p : this.interceptorIgnoreUrlConfigurations) {
                         if (InterceptorIgnoreValidator.isAvailable(p, intcptr)) {
-                            addIncludePatternsToInterceptor(intcptrReg, p.getIncludePathPatterns().stream().collect(Collectors.toList()));
-                            addExcludePatternsToInterceptor(intcptrReg, p.getExcludePathPatterns().stream().collect(Collectors.toList()));
+                            addIncludePatternsToInterceptor(intcptrReg,
+                                    p.getIncludePathPatterns().stream().collect(Collectors.toList()));
+                            addExcludePatternsToInterceptor(intcptrReg,
+                                    p.getExcludePathPatterns().stream().collect(Collectors.toList()));
                         }
                     }
                     logger.info("[handler-interceptor] interceptor={}", intcptr);
@@ -428,7 +432,8 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
      */
     protected void addResourceHandlers(ResourceHandlerRegistry registry, String handler, String[] locations) {
         registry.addResourceHandler(handler).addResourceLocations(locations);
-        logger.info("[resource-handler-registry] resource.handler={}, resource.locations={}", handler, Arrays.toString(locations));
+        logger.info("[resource-handler-registry] resource.handler={}, resource.locations={}", handler,
+                Arrays.toString(locations));
     }
 
     /**
@@ -452,7 +457,8 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
      */
     protected void addResourceHandlers(ResourceHandlerRegistry registry, String[] handlers, String[] locations) {
         registry.addResourceHandler(handlers).addResourceLocations(locations);
-        logger.info("[resource-handler-registry] resource.handler={}, resource.locations={}", Arrays.toString(handlers), Arrays.toString(locations));
+        logger.info("[resource-handler-registry] resource.handler={}, resource.locations={}", Arrays.toString(handlers),
+                Arrays.toString(locations));
     }
 
     /**
@@ -472,15 +478,18 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
      * @version 0.8.0
      */
     protected void addStaticResourceHandlers(ResourceHandlerRegistry registry) {
-        String springMvcStaticPathPattern = bindProperties(this.environment, SPRING_MVC_STATIC_PATH_PATTERN, String.class, "/static/**");
+        String springMvcStaticPathPattern = bindProperties(this.environment, SPRING_MVC_STATIC_PATH_PATTERN,
+                String.class, "/static/**");
         // 사용자 정의 패턴
-        String[] customStaticPathPatterns = bindProperties(this.environment, SPRING_MVC_STATIC_PATH_PATTERN_X, String[].class, null);
+        String[] customStaticPathPatterns = bindProperties(this.environment, SPRING_MVC_STATIC_PATH_PATTERN_X,
+                String[].class, null);
         // '정적 자원 요청 패턴 검증'
         String[] handlers = Stream.of(ArrayUtils.add(customStaticPathPatterns, springMvcStaticPathPattern)) //
                 .filter(new AntPathMatcher()::isPattern) //
                 .toArray(String[]::new);
         // '정적 자원 경로'
-        String[] locations = bindProperties(this.environment, SPRING_WEB_RESOURCES_STATIC_LOCATIONS, String[].class, DEFAULTS_STATIC_LOCATIONS);
+        String[] locations = bindProperties(this.environment, SPRING_WEB_RESOURCES_STATIC_LOCATIONS, String[].class,
+                DEFAULTS_STATIC_LOCATIONS);
         addResourceHandlers(registry, handlers, locations);
     }
 
@@ -509,10 +518,13 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
     public void configureMessageConverters(ServerBuilder builder) {
         WebMvcConfigurer.super.configureMessageConverters(builder);
 
-        // context.getBeansOfType(HttpMessageConverter.class) // Bean 중에서 HttpMessageConverter 를 구현한 객체를찾아서.
+        // context.getBeansOfType(HttpMessageConverter.class) // Bean 중에서
+        // HttpMessageConverter 를 구현한 객체를찾아서.
         // .values() //
         // .stream() //
-        // // .filter(p -> p.getClass().getAnnotation(CustomHttpMessageConverter.class) != null) // 사용자 정의
+        // // .filter(p ->
+        // p.getClass().getAnnotation(CustomHttpMessageConverter.class) != null)
+        // // 사용자 정의
         // // CustomHttpMessageConverter
         // .forEach(converter -> {
         // converters.add(converter);
@@ -539,13 +551,15 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
      * @version 0.8.0
      */
     @Autowired
-    public void setAuthorizedDataResolver(@Qualifier(CustomWebMvcAutoConfiguration.BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS) List<IAuthorizedDataResolver> resolvers) {
+    public void setAuthorizedDataResolver(
+            @Qualifier(CustomWebMvcAutoConfiguration.BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS) List<IAuthorizedDataResolver> resolvers) {
         this.argumentResolvers.addAll(resolvers);
     }
 
     /**
      * {@link HandlerInterceptor}에서 처리하지 않을 URL 패턴 설정을 등록합니다. <br>
-     * {@link InterceptorRegistration#excludePathPatterns(String...)}에 사용될 정보입니다.
+     * {@link InterceptorRegistration#excludePathPatterns(String...)}에 사용될
+     * 정보입니다.
      * 
      * <pre>
      * [개정이력]

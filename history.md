@@ -1,3 +1,12 @@
+[2026/04/21]
+- 변경
+  + open.commons.spring.web.configure.ResourceConfiguration 클래스 세분화 및 **'deprepcated'**
+    + open.commons.spring.web.configure.concurrent 패키지
+    + open.commons.spring.web.configure.exception 패키지
+    + open.commons.spring.web.configure.properties 패키지
+    + open.commons.spring.web.configure.resttemplate 패키지
+  + open-commons-spring-web.yml 에 포함된 기본 설정 타입을 'record'로 전환.
+
 [2026/04/20]
 - 삭제
   + 'open.commons.spring.web' Marker 클래스 삭제

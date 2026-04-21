@@ -83,12 +83,14 @@ public class BeanUtils {
      * @param beanType
      *            Bean 유형
      * @param beanImplType
-     *            Bean 이름이 비어있는 경우, {beanType}에 해당하는 사용자 정의 bean이 없는 경우 제공할 bean 구현 클래스. (일반적으로 시스템 Bean을 제공할 목적으로 사용)
+     *            Bean 이름이 비어있는 경우, {beanType}에 해당하는 사용자 정의 bean이 없는 경우 제공할 bean
+     *            구현 클래스. (일반적으로 시스템 Bean을 제공할 목적으로 사용)
      * @param required
      *            Bean 객체 반환 필수 여부
      * 
      * @return Bean 이름에 해당하는 Bean 객체. <br>
-     *         Bean 이름이 비어 있는 경우 기본값을 반환. 단, 기본값이 null 인 경우 <code>beanType(Bean 유형)</code> 에 해당하는 Bean
+     *         Bean 이름이 비어 있는 경우 기본값을 반환. 단, 기본값이 null 인 경우
+     *         <code>beanType(Bean 유형)</code> 에 해당하는 Bean
      * 
      * @throws NoSuchBeanDefinitionException
      *             Bean 이름에 해당하는 Bean이 존재하지 않는 경우
@@ -105,7 +107,8 @@ public class BeanUtils {
      * @see ApplicationContext#getBeansOfType(Class)
      * @see #findExplicitBean(Class)
      */
-    public final <T, E extends T> @Nullable T findBean(@Nullable String beanName, Class<T> beanType, @Nullable Class<E> beanImplType, boolean required) throws BeansException {
+    public final <T, E extends T> @Nullable T findBean(@Nullable String beanName, Class<T> beanType,
+            @Nullable Class<E> beanImplType, boolean required) throws BeansException {
         AssertUtils2.notNull(beanType);
 
         T bean = null;
@@ -125,7 +128,8 @@ public class BeanUtils {
                 }
 
                 if (count > 1) {
-                    throw new NoUniqueBeanDefinitionException(beanType, count, "Bean 이름이 설정되지 않았는데, Bean 인스턴스가 여러 개 존재합니다. Bean 이름을 명확히 설정하기 바랍니다.");
+                    throw new NoUniqueBeanDefinitionException(beanType, count,
+                            "Bean 이름이 설정되지 않았는데, Bean 인스턴스가 여러 개 존재합니다. Bean 이름을 명확히 설정하기 바랍니다.");
                 }
 
                 if (bean != null) {
@@ -139,7 +143,8 @@ public class BeanUtils {
             }
 
             if (required && bean == null) {
-                throw ExceptionUtils.newException(NoSuchBeanDefinitionException.class, "'%s'에 해당하는 Bean 이 존재하지 않습니다.", beanType);
+                throw ExceptionUtils.newException(NoSuchBeanDefinitionException.class, "'%s'에 해당하는 Bean 이 존재하지 않습니다.",
+                        beanType);
             }
             return bean;
         } catch (BeansException e) {
@@ -182,7 +187,8 @@ public class BeanUtils {
             }
         }
         if (count > 1) {
-            throw ExceptionUtils.newException(NoUniqueBeanDefinitionException.class, "Bean 이름을 사용하지 않고 구현클래스(%s) 정보로만 조회시 여러 개(%s) 이상의 인스턴스가 존재합니다.", beanExplicitImplType, count);
+            throw ExceptionUtils.newException(NoUniqueBeanDefinitionException.class,
+                    "Bean 이름을 사용하지 않고 구현클래스(%s) 정보로만 조회시 여러 개(%s) 이상의 인스턴스가 존재합니다.", beanExplicitImplType, count);
         }
         return bean;
     }
@@ -205,12 +211,14 @@ public class BeanUtils {
      * @param beanType
      *            Bean 유형
      * @param defaultBean
-     *            Bean 이름이 비어있는 경우, {beanType}에 해당하는 사용자 정의 bean이 없는 경우 제공할 bean 유형
+     *            Bean 이름이 비어있는 경우, {beanType}에 해당하는 사용자 정의 bean이 없는 경우 제공할 bean
+     *            유형
      * @param required
      *            Bean 객체 반환 필수 여부
      * 
      * @return Bean 이름에 해당하는 Bean 객체. <br>
-     *         Bean 이름이 비어 있는 경우 기본값을 반환. 단, 기본값이 null 인 경우 <code>beanType(Bean 유형)</code> 에 해당하는 Bean
+     *         Bean 이름이 비어 있는 경우 기본값을 반환. 단, 기본값이 null 인 경우
+     *         <code>beanType(Bean 유형)</code> 에 해당하는 Bean
      * 
      * @throws NoSuchBeanDefinitionException
      *             Bean 이름에 해당하는 Bean이 존재하지 않는 경우
@@ -225,7 +233,8 @@ public class BeanUtils {
      * @see ApplicationContext#getBean(String)
      * @see ApplicationContext#getBean(String, Class)
      */
-    public final <T> @Nullable T getBean(@Nullable String beanName, Class<T> beanType, @Nullable T defaultBean, boolean required) throws BeansException {
+    public final <T> @Nullable T getBean(@Nullable String beanName, Class<T> beanType, @Nullable T defaultBean,
+            boolean required) throws BeansException {
         AssertUtils2.notNull(beanType);
 
         T bean = null;
@@ -240,7 +249,8 @@ public class BeanUtils {
             }
 
             if (required && bean == null) {
-                throw ExceptionUtils.newException(NoSuchBeanDefinitionException.class, "'%s'에 해당하는 Bean 이 존재하지 않습니다.", beanType);
+                throw ExceptionUtils.newException(NoSuchBeanDefinitionException.class, "'%s'에 해당하는 Bean 이 존재하지 않습니다.",
+                        beanType);
             }
 
             return bean;

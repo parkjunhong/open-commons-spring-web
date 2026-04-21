@@ -44,7 +44,8 @@ import org.springframework.context.ApplicationEvent;
  * @version 0.4.0
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
-public abstract class AbstractEventObject<T, E extends IEventStatus> extends ApplicationEvent implements IEventObject<T, E> {
+public abstract class AbstractEventObject<T, E extends IEventStatus> extends ApplicationEvent
+        implements IEventObject<T, E> {
 
     private static final long serialVersionUID = -1077392713769446688L;
 

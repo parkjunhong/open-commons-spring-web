@@ -57,11 +57,13 @@ public @interface AuthorizedRequestData {
     public static final String NO_ASSINGED_HANDLE_TYPE = "open.commons.spring.web.authority.AuthorizedRequestData.NO_ASSINGED_HANDLE_TYPE";
 
     /**
-     * {@link AuthorizedField#fieldHandleBean()}를 통해서 처리된 데이터를 원복하는 기능을 제공하는 {@link Bean} 이름. <br>
-     * 설정되는 {@link Bean}은 반드시 {@link IAuthorizedRequestDataHandler}를 구현해야 합니다.<br>
+     * {@link AuthorizedField#fieldHandleBean()}를 통해서 처리된 데이터를 원복하는 기능을 제공하는
+     * {@link Bean} 이름. <br>
+     * 설정되는 {@link Bean}은 반드시 {@link IAuthorizedRequestDataHandler}를 구현해야
+     * 합니다.<br>
      * 별도로 설정하지 않는 경우 기본값 {@link AuthorizedHandles}이 적용됩니다.<br>
-     * 이 경우 {@link #handleType()}에 사용하는 값으 {@link AuthorizedHandles}에서 제공하는 값을 사용하거나 {@link ResourceHandle}를 추가 등록해서 사용할
-     * 수 있습니다.
+     * 이 경우 {@link #handleType()}에 사용하는 값으 {@link AuthorizedHandles}에서 제공하는 값을
+     * 사용하거나 {@link ResourceHandle}를 추가 등록해서 사용할 수 있습니다.
      * 
      * <pre>
      * [개정이력]

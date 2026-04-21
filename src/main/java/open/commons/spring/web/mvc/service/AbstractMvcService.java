@@ -108,7 +108,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @version 0.4.0
      */
     @SuppressWarnings("unchecked")
-    private <E> Result<Page<E>> executePagination(Supplier<Result<List<E>>> data, Supplier<Result<Integer>> count, int offset, int limit, String[] orderByArgs) {
+    private <E> Result<Page<E>> executePagination(Supplier<Result<List<E>>> data, Supplier<Result<Integer>> count,
+            int offset, int limit, String[] orderByArgs) {
         AssertUtils2.notNulls(data, count, orderByArgs);
 
         final String propData = "content";
@@ -136,7 +137,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
         int totalCount = resultCount.getData();
 
         // #3. Pagination 정보 생성
-        Pageable p = PageRequest.of(offset / limit, limit, orderByArgs != null ? Sort.by(orderBy(orderByArgs)) : Sort.unsorted());
+        Pageable p = PageRequest.of(offset / limit, limit,
+                orderByArgs != null ? Sort.by(orderBy(orderByArgs)) : Sort.unsorted());
 
         return Result.success(new PageImpl<E>(resultData.getData(), p, totalCount));
     }
@@ -292,14 +294,16 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * @version 0.4.0
      */
     @SuppressWarnings("unchecked")
-    protected <D, E> Result<Integer> save(@Nullable List<D> data, Class<E> entityType, Function<List<E>, Result<Integer>> funcSave) {
+    protected <D, E> Result<Integer> save(@Nullable List<D> data, Class<E> entityType,
+            Function<List<E>, Result<Integer>> funcSave) {
         if (data == null || data.size() < 1) {
             return Result.success(0);
         }
 
         AssertUtils2.notNull(funcSave);
 
-        return funcSave.apply(convertMultiResult(data, ObjectUtils.getTransformer((Class<D>) data.get(0).getClass(), true, entityType, true)));
+        return funcSave.apply(convertMultiResult(data,
+                ObjectUtils.getTransformer((Class<D>) data.get(0).getClass(), true, entityType, true)));
     }
 
     /**
@@ -481,7 +485,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
         }
 
-        return selectMulti(type, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
+        return selectMulti(type, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable),
+                converter);
     }
 
     /**
@@ -590,7 +595,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int limit //
             , String[] orderByArgs //
             , Function<E, D> converter) {
-        return convertMultiResult(selectMulti(type, param, funcAll, funcPagination, offset, limit, orderByArgs), converter);
+        return convertMultiResult(selectMulti(type, param, funcAll, funcPagination, offset, limit, orderByArgs),
+                converter);
     }
 
     /**
@@ -683,7 +689,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
         }
 
-        return selectMulti(type, param, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
+        return selectMulti(type, param, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable),
+                converter);
     }
 
     /**
@@ -966,7 +973,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int limit //
             , String[] orderByArgs //
             , Function<E, D> converter) {
-        return convertMultiPaginationResult(selectMultiPagination(param, funcCount, funcPagination, offset, limit, orderByArgs), converter);
+        return convertMultiPaginationResult(
+                selectMultiPagination(param, funcCount, funcPagination, offset, limit, orderByArgs), converter);
     }
 
     /**
@@ -1001,7 +1009,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , Function<P, Result<Integer>> funcCount //
             , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable) {
-        return selectMultiPagination(param, funcCount, funcPagination, offset(pageable), limit(pageable), orderBy(pageable));
+        return selectMultiPagination(param, funcCount, funcPagination, offset(pageable), limit(pageable),
+                orderBy(pageable));
     }
 
     /**
@@ -1039,7 +1048,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , QuadFunction<P, Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable //
             , Function<E, D> converter) {
-        return selectMultiPagination(param, funcCount, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
+        return selectMultiPagination(param, funcCount, funcPagination, offset(pageable), limit(pageable),
+                orderBy(pageable), converter);
     }
 
     /**
@@ -1127,7 +1137,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int offset//
             , int limit //
             , Function<E, D> converter) {
-        return convertMultiPaginationResult(selectMultiPagination(param, funcCount, funcPagination, offset, limit), converter);
+        return convertMultiPaginationResult(selectMultiPagination(param, funcCount, funcPagination, offset, limit),
+                converter);
     }
 
     /**
@@ -1250,7 +1261,9 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int limit //
             , String[] orderByArgs //
             , Function<E, D> converter) {
-        return convertMultiPaginationResult(selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset, limit, orderByArgs), converter);
+        return convertMultiPaginationResult(
+                selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset, limit, orderByArgs),
+                converter);
     }
 
     /**
@@ -1303,7 +1316,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
         }
 
-        return selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
+        return selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset(pageable), limit(pageable),
+                orderBy(pageable), converter);
     }
 
     /**
@@ -1413,7 +1427,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int offset//
             , int limit //
             , Function<E, D> converter) {
-        return convertMultiPaginationResult(selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset, limit), converter);
+        return convertMultiPaginationResult(
+                selectMultiPagination(type, param, funcCount, funcAll, funcPagination, offset, limit), converter);
     }
 
     /**
@@ -1525,7 +1540,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int limit //
             , String[] orderByArgs //
             , Function<E, D> converter) {
-        return convertMultiPaginationResult(selectMultiPagination(type, funcCount, funcAll, funcPagination, offset, limit, orderByArgs), converter);
+        return convertMultiPaginationResult(
+                selectMultiPagination(type, funcCount, funcAll, funcPagination, offset, limit, orderByArgs), converter);
     }
 
     /**
@@ -1572,7 +1588,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             pageable = PageRequest.of(0, Integer.MAX_VALUE, pageable.getSort());
         }
 
-        return selectMultiPagination(type, funcCount, funcAll, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
+        return selectMultiPagination(type, funcCount, funcAll, funcPagination, offset(pageable), limit(pageable),
+                orderBy(pageable), converter);
     }
 
     /**
@@ -1672,7 +1689,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int offset//
             , int limit //
             , Function<E, D> converter) {
-        return convertMultiPaginationResult(selectMultiPagination(type, funcCount, funcAll, funcPagination, offset, limit), converter);
+        return convertMultiPaginationResult(
+                selectMultiPagination(type, funcCount, funcAll, funcPagination, offset, limit), converter);
     }
 
     /**
@@ -1841,7 +1859,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , int limit //
             , String[] orderByArgs //
             , Function<E, D> converter) {
-        return convertMultiPaginationResult(selectMultiPagination(funcCount, funcPagination, offset, limit, orderByArgs), converter);
+        return convertMultiPaginationResult(
+                selectMultiPagination(funcCount, funcPagination, offset, limit, orderByArgs), converter);
     }
 
     /**
@@ -1876,11 +1895,13 @@ public abstract class AbstractMvcService extends AbstractGenericService {
             , TripleFunction<Integer, Integer, String[], Result<List<E>>> funcPagination //
             , Pageable pageable //
             , Function<E, D> converter) {
-        return selectMultiPagination(funcCount, funcPagination, offset(pageable), limit(pageable), orderBy(pageable), converter);
+        return selectMultiPagination(funcCount, funcPagination, offset(pageable), limit(pageable), orderBy(pageable),
+                converter);
     }
 
     /**
-     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다. <br>
+     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -1908,12 +1929,14 @@ public abstract class AbstractMvcService extends AbstractGenericService {
      * 
      * @see ObjectUtils#getTransformer(Object, boolean, Class, boolean)
      */
-    protected static <S, T> T transform(S srcObj, boolean lookupSrcSupper, Class<T> targetType, boolean lookupTargetSupper) {
+    protected static <S, T> T transform(S srcObj, boolean lookupSrcSupper, Class<T> targetType,
+            boolean lookupTargetSupper) {
         return ObjectUtils.getTransformer(srcObj, lookupSrcSupper, targetType, lookupTargetSupper).apply(srcObj);
     }
 
     /**
-     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다. <br>
+     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -1944,7 +1967,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
     }
 
     /**
-     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다. <br>
+     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -1973,7 +1997,8 @@ public abstract class AbstractMvcService extends AbstractGenericService {
     }
 
     /**
-     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다. <br>
+     * {@link Getter}, {@link Setter} 어노테이션이 적용된 객체를 변환하여 새로운 타입의 객체로 제공합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]

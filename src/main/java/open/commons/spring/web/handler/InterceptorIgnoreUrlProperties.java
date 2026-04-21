@@ -74,7 +74,8 @@ public class InterceptorIgnoreUrlProperties {
                     + "(?i)(" + SCHEME_PACKAGE + "):([a-zA-Z_][\\w]*(?:\\.[a-zA-Z_][\\w]*)*)\\.\\*" //
                     + "|"
                     // CASE 2: class|instance:<fqcn>.<ClassName>
-                    + "(?i)(" + SCHEME_CLASS + "|" + SCHEME_INSTANCE + "):([a-zA-Z_][\\w]*(?:\\.[a-zA-Z_][\\w]*)*)\\.([$_a-zA-Z][\\w$]*)" //
+                    + "(?i)(" + SCHEME_CLASS + "|" + SCHEME_INSTANCE
+                    + "):([a-zA-Z_][\\w]*(?:\\.[a-zA-Z_][\\w]*)*)\\.([$_a-zA-Z][\\w$]*)" //
                     + "|"
                     // CASE 3: no scheme, just <fqcn>.*
                     + "([a-zA-Z_][\\w]*(?:\\.[a-zA-Z_][\\w]*)*)\\.\\*" //
@@ -105,7 +106,8 @@ public class InterceptorIgnoreUrlProperties {
     private Set<String> includePathPatterns = new HashSet<>();
     /**
      * {@link HandlerInterceptor}에서 처리하지 않을 URL<br>
-     * {@link #includePathPatterns}과 함께 처리되면, {@link #excludePathPatterns}의 적용 순위가 높음.
+     * {@link #includePathPatterns}과 함께 처리되면, {@link #excludePathPatterns}의 적용
+     * 순위가 높음.
      */
     private Set<String> excludePathPatterns = new HashSet<>();
 
@@ -133,7 +135,8 @@ public class InterceptorIgnoreUrlProperties {
         if (PathUtils.isValidPathPattern(excludePathPattern)) {
             this.excludePathPatterns.add(excludePathPattern);
         } else {
-            logger.warn("{}, fqcn={}, exclude.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn, excludePathPattern);
+            logger.warn("{}, fqcn={}, exclude.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn,
+                    excludePathPattern);
         }
         return this;
     }
@@ -159,7 +162,8 @@ public class InterceptorIgnoreUrlProperties {
         if (PathUtils.isValidPathPattern(excludePathPatterns)) {
             this.excludePathPatterns.addAll(excludePathPatterns);
         } else {
-            logger.warn("{}, fqcn={}, exclude.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn, excludePathPatterns.toString());
+            logger.warn("{}, fqcn={}, exclude.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn,
+                    excludePathPatterns.toString());
         }
         return this;
     }
@@ -185,7 +189,8 @@ public class InterceptorIgnoreUrlProperties {
         if (PathUtils.isValidPathPattern(includePathPattern)) {
             this.includePathPatterns.add(includePathPattern);
         } else {
-            logger.warn("{}, fqcn={}, include.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn, includePathPattern);
+            logger.warn("{}, fqcn={}, include.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn,
+                    includePathPattern);
         }
         return this;
     }
@@ -211,7 +216,8 @@ public class InterceptorIgnoreUrlProperties {
         if (PathUtils.isValidPathPattern(includePathPatterns)) {
             this.includePathPatterns.addAll(includePathPatterns);
         } else {
-            logger.warn("{}, fqcn={}, include.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn, includePathPatterns.toArray());
+            logger.warn("{}, fqcn={}, include.invalid={}", InvalidPathPatternUrlException.class.getName(), this.fqcn,
+                    includePathPatterns.toArray());
         }
         return this;
     }
@@ -359,7 +365,8 @@ public class InterceptorIgnoreUrlProperties {
      */
     public InterceptorIgnoreUrlProperties setExcludePathPatterns(@NotNull Set<String> excludePathPatterns) {
         if (!PathUtils.isValidPathPattern(excludePathPatterns)) {
-            throw ExceptionUtils.newException(InvalidPathPatternUrlException.class, "fqcn=%s, exclude.invalid=%s", this.fqcn, excludePathPatterns.toString());
+            throw ExceptionUtils.newException(InvalidPathPatternUrlException.class, "fqcn=%s, exclude.invalid=%s",
+                    this.fqcn, excludePathPatterns.toString());
         }
         this.excludePathPatterns = excludePathPatterns;
 
@@ -386,7 +393,8 @@ public class InterceptorIgnoreUrlProperties {
      */
     public InterceptorIgnoreUrlProperties setIncludePathPatterns(@NotNull Set<String> includePathPatterns) {
         if (!PathUtils.isValidPathPattern(includePathPatterns)) {
-            throw ExceptionUtils.newException(InvalidPathPatternUrlException.class, "fqcn=%s, include.invalid=%s", this.fqcn, includePathPatterns.toString());
+            throw ExceptionUtils.newException(InvalidPathPatternUrlException.class, "fqcn=%s, include.invalid=%s",
+                    this.fqcn, includePathPatterns.toString());
         }
         this.includePathPatterns = includePathPatterns;
 
@@ -460,7 +468,7 @@ public class InterceptorIgnoreUrlProperties {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("InterceptorIgnoreUrlProperties [scheme=");
+        builder.append("InterceptorIgnoreProperties [scheme=");
         builder.append(scheme);
         builder.append(", fqcn=");
         builder.append(fqcn);
@@ -496,7 +504,8 @@ public class InterceptorIgnoreUrlProperties {
                 }
             }
 
-            throw ExceptionUtils.newException(IllegalArgumentException.class, "'%s'에 해당하는 %s이 존재하지 않습니다.", scheme, Scheme.class.getName());
+            throw ExceptionUtils.newException(IllegalArgumentException.class, "'%s'에 해당하는 %s이 존재하지 않습니다.", scheme,
+                    Scheme.class.getName());
         }
     }
 }

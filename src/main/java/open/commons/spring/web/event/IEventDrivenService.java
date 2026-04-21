@@ -86,7 +86,8 @@ public interface IEventDrivenService {
      * @since 2021. 9. 9.
      * @version 0.4.0
      */
-    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> void registerEventProvider(@NotNull Class<C> eventType, @NotNull Function<P, C> provider);
+    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> void registerEventProvider(
+            @NotNull Class<C> eventType, @NotNull Function<P, C> provider);
 
     /**
      * 이벤트 구독 신청을 한다. <br>
@@ -115,7 +116,8 @@ public interface IEventDrivenService {
      * @since 2021. 9. 9.
      * @version 0.4.0
      */
-    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> Result<Boolean> subscribe(@NotNull Class<C> eventType, @NotNull P parameter);
+    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> Result<Boolean> subscribe(
+            @NotNull Class<C> eventType, @NotNull P parameter);
 
     /**
      * 이벤트 구독을 취소한다. <br>
@@ -144,5 +146,6 @@ public interface IEventDrivenService {
      * @since 2021. 9. 9.
      * @version 0.4.0
      */
-    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> Result<Boolean> unsubscribe(@NotNull Class<C> eventType, @NotNull P parameter);
+    public <T, E extends IEventStatus, C extends IEventObject<T, E>, P> Result<Boolean> unsubscribe(
+            @NotNull Class<C> eventType, @NotNull P parameter);
 }
