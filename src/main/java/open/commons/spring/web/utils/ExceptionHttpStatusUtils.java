@@ -35,8 +35,7 @@ import open.commons.core.utils.AssertUtils2;
 import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
 
 /**
- * 발생한 예외 클래스(<code> ? extends {@link Throwable})과 {@link HttpStatus} 매핑에 관한 기능을
- * 제공
+ * 발생한 예외 클래스(<code> ? extends {@link Throwable})과 {@link HttpStatus} 매핑에 관한 기능을 제공
  * 
  * 
  * <br>

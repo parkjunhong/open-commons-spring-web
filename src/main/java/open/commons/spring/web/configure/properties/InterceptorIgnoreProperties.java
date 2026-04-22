@@ -33,8 +33,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import open.commons.spring.web.handler.InterceptorIgnoreUrlProperties;
 
 /**
- * {@link org.springframework.web.servlet.HandlerInterceptor}의 처리 대상에서 제외할 URL
- * 패턴 설정 정보 레코드.
+ * {@link org.springframework.web.servlet.HandlerInterceptor}의 처리 대상에서 제외할 URL 패턴 설정 정보 레코드.
  *
  * @param interceptorIgnoreUrlPatterns
  *            대상별 제외/포함 URL 패턴 목록입니다.

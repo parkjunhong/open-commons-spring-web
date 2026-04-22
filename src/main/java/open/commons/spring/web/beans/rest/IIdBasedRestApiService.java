@@ -2769,9 +2769,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2804,9 +2803,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2841,9 +2839,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2881,9 +2878,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2919,9 +2915,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2960,9 +2955,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3003,9 +2997,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3044,9 +3037,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3088,9 +3080,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3134,9 +3125,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3177,9 +3167,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3224,9 +3213,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3270,9 +3258,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3310,9 +3297,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3353,9 +3339,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3398,9 +3383,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3438,9 +3422,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3480,9 +3463,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3525,9 +3507,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3567,9 +3548,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3612,9 +3592,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3659,9 +3638,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3697,9 +3675,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3738,9 +3715,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3781,9 +3757,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3822,9 +3797,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3865,9 +3839,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3911,9 +3884,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3955,9 +3927,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4002,9 +3973,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4051,9 +4021,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4098,9 +4067,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4148,9 +4116,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4200,9 +4167,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4249,9 +4215,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4302,9 +4267,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4354,9 +4318,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4400,9 +4363,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4449,9 +4411,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4500,9 +4461,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4546,9 +4506,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4594,9 +4553,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4645,9 +4603,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4693,9 +4650,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4744,9 +4700,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4797,9 +4752,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4841,9 +4795,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -4888,9 +4841,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -5879,9 +5831,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -5911,9 +5862,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -5945,9 +5895,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -5982,9 +5931,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6017,9 +5965,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6054,9 +6001,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6094,9 +6040,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6132,9 +6077,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6172,9 +6116,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6215,9 +6158,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6255,9 +6197,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6298,9 +6239,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6343,9 +6283,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6380,9 +6319,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6419,9 +6357,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6461,9 +6398,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6501,9 +6437,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6540,9 +6475,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6582,9 +6516,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6621,9 +6554,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6662,9 +6594,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6706,9 +6637,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6741,9 +6671,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6778,9 +6707,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -6818,9 +6746,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6857,9 +6784,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6898,9 +6824,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6942,9 +6867,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -6984,9 +6908,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7028,9 +6951,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7075,9 +6997,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7120,9 +7041,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7167,9 +7087,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7217,9 +7136,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7264,9 +7182,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7314,9 +7231,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7366,9 +7282,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7410,9 +7325,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7456,9 +7370,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7505,9 +7418,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7549,9 +7461,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7595,9 +7506,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7644,9 +7554,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7690,9 +7599,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7738,9 +7646,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7789,9 +7696,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7831,9 +7737,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -7875,9 +7780,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -9646,9 +9550,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9681,9 +9584,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9718,9 +9620,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9756,9 +9657,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9796,9 +9696,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9837,9 +9736,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9880,9 +9778,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9924,9 +9821,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -9968,9 +9864,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -10008,9 +9903,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -10050,9 +9944,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -10090,9 +9983,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -10132,9 +10024,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -10174,9 +10065,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -10218,9 +10108,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -10256,9 +10145,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -10296,9 +10184,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10337,9 +10224,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10380,9 +10266,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10424,9 +10309,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10470,9 +10354,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10517,9 +10400,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10566,9 +10448,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10616,9 +10497,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10666,9 +10546,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10712,9 +10591,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10760,9 +10638,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10806,9 +10683,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10854,9 +10730,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10902,9 +10777,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10952,9 +10826,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -10996,9 +10869,8 @@ public interface IIdBasedRestApiService {
      *            URL 경로에 설정된 변수에 대한 값
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -11644,9 +11516,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11675,9 +11546,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11709,9 +11579,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11743,9 +11612,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11780,9 +11648,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11817,9 +11684,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11857,9 +11723,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11898,9 +11763,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11941,9 +11805,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -11978,9 +11841,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -12017,9 +11879,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -12053,9 +11914,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -12092,9 +11952,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -12130,9 +11989,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -12171,9 +12029,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -12205,9 +12062,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -12242,9 +12098,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12280,9 +12135,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12321,9 +12175,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12362,9 +12215,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12406,9 +12258,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12450,9 +12301,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12497,9 +12347,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12545,9 +12394,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12595,9 +12443,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12639,9 +12486,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12685,9 +12531,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12728,9 +12573,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12774,9 +12618,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12819,9 +12662,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12867,9 +12709,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -12908,9 +12749,8 @@ public interface IIdBasedRestApiService {
      *            연동 API 식별정보
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>

@@ -39,8 +39,7 @@ import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.ValueDeserializer;
 
 /**
- * {@link AuthorizedRequestData}가 선언된 {@link Field} 또는 데이터의 'deserialization'을
- * 처리하는 클래스. *
+ * {@link AuthorizedRequestData}가 선언된 {@link Field} 또는 데이터의 'deserialization'을 처리하는 클래스. *
  * 
  * <pre>
  * [개정이력]

@@ -39,8 +39,7 @@ import open.commons.core.lang.ThreadLocalContextService;
 import open.commons.spring.web.servlet.filter.RequestThreadNameFilter;
 
 /**
- * Http 요청 정보를 {@link Thread} 이름으로 적용하고 응답완료시 기존 {@link Thread}이름으로 반환하는 기능을
- * 제공.<br>
+ * Http 요청 정보를 {@link Thread} 이름으로 적용하고 응답완료시 기존 {@link Thread}이름으로 반환하는 기능을 제공.<br>
  * 
  * <br>
  * 
@@ -88,8 +87,7 @@ public class DefaultGlobalInterceptor implements AsyncHandlerInterceptor {
      * @version 0.8.0
      *
      * @see org.springframework.web.servlet.HandlerInterceptor#afterCompletion(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse, java.lang.Object,
-     *      java.lang.Exception)
+     *      javax.servlet.http.HttpServletResponse, java.lang.Object, java.lang.Exception)
      */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)

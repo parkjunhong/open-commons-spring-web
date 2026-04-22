@@ -368,8 +368,7 @@ public class RestFacade {
     }
 
     /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다.
-     * <br>
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -421,8 +420,7 @@ public class RestFacade {
     }
 
     /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다.
-     * <br>
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -477,8 +475,7 @@ public class RestFacade {
     }
 
     /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다.
-     * <br>
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -530,8 +527,7 @@ public class RestFacade {
     }
 
     /**
-     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다.
-     * <br>
+     * Template 형태의 <code>Full Qualified URL</code>를 기반으로 REST API 연동을 지원합니다. <br>
      * 
      * <pre>
      * [개정이력]

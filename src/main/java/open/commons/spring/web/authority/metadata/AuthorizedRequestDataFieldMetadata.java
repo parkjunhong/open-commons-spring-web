@@ -54,8 +54,7 @@ public class AuthorizedRequestDataFieldMetadata extends AuthorizedMetadata {
     private String handleBean;
 
     /**
-     * {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)} 에서 첫번째
-     * 파라미터로 사용<br>
+     * {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)} 에서 첫번째 파라미터로 사용<br>
      * 
      * @see {@link AuthorizedRequestData#handleType()}
      */

@@ -42,8 +42,7 @@ package open.commons.spring.web.configure.properties;
  */
 public class Const {
     /**
-     * <b><i>{@code /META-INF/open-commons/open-commons-spring-web.yml}</i></b>
-     * 파일 내에서의 루트 경로.
+     * <b><i>{@code /META-INF/open-commons/open-commons-spring-web.yml}</i></b> 파일 내에서의 루트 경로.
      * 
      * <pre>
      * open-commons:

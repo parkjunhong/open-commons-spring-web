@@ -40,8 +40,7 @@ import org.aspectj.lang.annotation.Pointcut;
 public interface IAuthorizedResource<T> {
 
     /**
-     * {@link Pointcut} 정보를 이용하여, {@link Around}, {@link Before} 등을 이용하여 설정되는
-     * 메소드를 처리합니다. <br>
+     * {@link Pointcut} 정보를 이용하여, {@link Around}, {@link Before} 등을 이용하여 설정되는 메소드를 처리합니다. <br>
      * 
      * <pre>
      * [개정이력]

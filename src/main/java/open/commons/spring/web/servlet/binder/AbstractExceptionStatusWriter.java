@@ -33,8 +33,7 @@ import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 
 /**
- * 'Spring Security' 인증절차에서 발생하는 {@link Exception} 객체에 대한 {@link HttpStatus} 정보를
- * 제공합니다.
+ * 'Spring Security' 인증절차에서 발생하는 {@link Exception} 객체에 대한 {@link HttpStatus} 정보를 제공합니다.
  * 
  * @since 2025. 10. 23.
  * @version 2.1.0

@@ -130,8 +130,7 @@ public abstract class AbstractPropertyCondition<T> extends SpringBootCondition {
     }
 
     /**
-     * 응용프로그램 설정에 {@link #prefix}에 해당하는 값이 존재하지 않거나 객체가 유효하지 않은 경우에 제공하는 메시지.
-     * <br>
+     * 응용프로그램 설정에 {@link #prefix}에 해당하는 값이 존재하지 않거나 객체가 유효하지 않은 경우에 제공하는 메시지. <br>
      * 
      * <pre>
      * [개정이력]
@@ -150,8 +149,8 @@ public abstract class AbstractPropertyCondition<T> extends SpringBootCondition {
     }
 
     /**
-     * {@link #getMatchOutcome(ConditionContext, AnnotatedTypeMetadata)}를 통해서
-     * 생성한 객체를 검증하여 최종 결과를 제공합니다. <br>
+     * {@link #getMatchOutcome(ConditionContext, AnnotatedTypeMetadata)}를 통해서 생성한 객체를 검증하여 최종 결과를
+     * 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]

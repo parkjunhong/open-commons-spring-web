@@ -41,8 +41,7 @@ import open.commons.spring.web.authority.AuthorizedRequestData;
 public interface IAuthorizedRequestDataHandler {
 
     /**
-     * 데이터 처리 방식에 따라서 {@link AuthorizedField#fieldHandleBean()}에 의해서 처리된 데이터를
-     * 원복하여 제공합니다. <br>
+     * 데이터 처리 방식에 따라서 {@link AuthorizedField#fieldHandleBean()}에 의해서 처리된 데이터를 원복하여 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]

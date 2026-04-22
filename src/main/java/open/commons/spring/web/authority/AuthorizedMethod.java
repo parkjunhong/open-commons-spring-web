@@ -42,8 +42,7 @@ import open.commons.spring.web.beans.authority.IMethodAccessAuthorityProvider;
 /**
  * 메소드를 사용하기 위한 접근 권한을 정의하는 클래스.<br>
  *
- * {@link ElementType#TYPE}에 설정하는 경우는, 해당 클래스의 모든 <code>public</code> 메소드에 일괄적으로
- * 적용하기 위해서입니다.
+ * {@link ElementType#TYPE}에 설정하는 경우는, 해당 클래스의 모든 <code>public</code> 메소드에 일괄적으로 적용하기 위해서입니다.
  * 
  * @since 2025. 5. 16.
  * @version 0.8.0

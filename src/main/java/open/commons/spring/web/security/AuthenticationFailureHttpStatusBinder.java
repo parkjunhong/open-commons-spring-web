@@ -40,8 +40,7 @@ import open.commons.spring.web.servlet.binder.AbstractExceptionStatusWriter;
 import open.commons.spring.web.servlet.binder.ExceptionHttpStatusBinder;
 
 /**
- * 'Spring Security' 인증절차에서 발생하는 '폼 로그인
- * 필터(UsernamePasswordAuthenticationFilter)의 실패'에 대한 처리.
+ * 'Spring Security' 인증절차에서 발생하는 '폼 로그인 필터(UsernamePasswordAuthenticationFilter)의 실패'에 대한 처리.
  * 
  * @since 2025. 10. 22.
  * @version 2.1.0

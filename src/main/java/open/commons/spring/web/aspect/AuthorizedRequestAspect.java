@@ -88,9 +88,8 @@ public class AuthorizedRequestAspect extends AbstractAuthorizedResourceAspect<IR
     }
 
     /**
-     * 메소드에 정의된 {@link RequestMapping} 및 확장 어노테이션 ({@link DeleteMapping},
-     * {@link GetMapping}, {@link PatchMapping}, {@link PostMapping},
-     * {@link PutMapping}) 에서에서 경로 정보를 찾아 제공합니다. <br>
+     * 메소드에 정의된 {@link RequestMapping} 및 확장 어노테이션 ({@link DeleteMapping}, {@link GetMapping},
+     * {@link PatchMapping}, {@link PostMapping}, {@link PutMapping}) 에서에서 경로 정보를 찾아 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]

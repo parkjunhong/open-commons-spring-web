@@ -97,8 +97,7 @@ public class ValidationUtils {
      * @param object
      *            검증 대상 객체
      * @param nested
-     *            내부 필드 검증 여부 (true 지원 안 함 - 호출 시 UnsupportedOperationException
-     *            발생)
+     *            내부 필드 검증 여부 (true 지원 안 함 - 호출 시 UnsupportedOperationException 발생)
      * @param groups
      *            적용할 검증 그룹 배열 (배열 자체 및 배열 내 요소 모두 null을 허용하지 않음)
      * 

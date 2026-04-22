@@ -124,8 +124,7 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate}이 내부적으로 사용하는 {@link ClientHttpRequestFactory} 자원을
-     * 해제합니다. <br>
+     * {@link RestTemplate}이 내부적으로 사용하는 {@link ClientHttpRequestFactory} 자원을 해제합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -170,10 +169,10 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code>
-     * 구조를 준수하는 {@link URI} 객체를 제공합니다.<br>
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
-     * 유사한 패턴으로 동작하는 것을 지원.
+     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code> 구조를 준수하는
+     * {@link URI} 객체를 제공합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을
+     * 지원.
      * 
      * <pre>
      * [개정이력]
@@ -184,8 +183,7 @@ public abstract class AbstractRestApiClient {
      *
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷:
-     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @return
@@ -226,8 +224,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code>
-     * 구조를 준수하는 {@link URI} 객체를 제공합니다.<br>
+     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code> 구조를 준수하는
+     * {@link URI} 객체를 제공합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -258,8 +256,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code>
-     * 구조를 준수하는 {@link URI} 객체를 제공합니다.<br>
+     * <code>[scheme:][//[userinfo@]host[:port]][/path][?query][#fragment]</code> 구조를 준수하는
+     * {@link URI} 객체를 제공합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -345,9 +343,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -402,9 +399,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -456,9 +452,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -507,9 +502,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -570,9 +564,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -630,9 +623,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -687,9 +679,8 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -744,9 +735,8 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -809,9 +799,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -868,9 +857,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -924,9 +912,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -977,9 +964,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1042,9 +1028,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1104,9 +1089,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1133,8 +1117,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
-     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을
+     * 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1153,15 +1137,13 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷:
-     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형
      * @param onSuccess
@@ -1189,8 +1171,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
-     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을
+     * 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1209,15 +1191,13 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷:
-     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형
      * @param onSuccess
@@ -1241,8 +1221,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
-     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을
+     * 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1261,15 +1241,13 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷:
-     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형
      * @param retryCount
@@ -1291,8 +1269,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
-     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을
+     * 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1311,15 +1289,13 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷:
-     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1354,8 +1330,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
-     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을
+     * 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1374,15 +1350,13 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷:
-     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1411,8 +1385,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
-     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을
+     * 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -1431,15 +1405,13 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷:
-     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1497,9 +1469,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -1552,9 +1523,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -1604,9 +1574,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -1653,9 +1622,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1714,9 +1682,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1772,9 +1739,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1827,9 +1793,8 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -1881,9 +1846,8 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -1943,9 +1907,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2000,9 +1963,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2054,9 +2016,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2105,9 +2066,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2168,9 +2128,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2228,9 +2187,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2285,9 +2243,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2339,9 +2296,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2390,9 +2346,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2450,9 +2405,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2507,9 +2461,8 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2561,9 +2514,8 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2623,9 +2575,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2679,9 +2630,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -2732,9 +2682,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2794,9 +2743,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2823,8 +2771,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
-     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을
+     * 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -2843,15 +2791,13 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷:
-     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형
      * @param onSuccess
@@ -2877,8 +2823,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
-     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을
+     * 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -2897,15 +2843,13 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷:
-     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형
      * @param retryCount
@@ -2927,8 +2871,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
-     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을
+     * 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -2947,15 +2891,13 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷:
-     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -2987,8 +2929,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과
-     * 유사한 패턴으로 동작하는 것을 지원합니다.<br>
+     * {@link RestTemplate#exchange(String, HttpMethod, HttpEntity, Class, Map)}과 유사한 패턴으로 동작하는 것을
+     * 지원합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -3007,15 +2949,13 @@ public abstract class AbstractRestApiClient {
      *            Http 요청 방식
      * @param fqUrl
      *            Full Qualified URL.<br>
-     *            포맷:
-     *            {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
+     *            포맷: {scheme}://({userinfo@})?{host}(:{port})?(/{path}(\?{query})?(#{fragment})?)?
      * @param uriVariables
      *            <code>fqUrl</code>에 사용되는 정보
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3070,9 +3010,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3122,9 +3061,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3171,9 +3109,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3229,9 +3166,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3284,9 +3220,8 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3335,9 +3270,8 @@ public abstract class AbstractRestApiClient {
      *            <code>#</code> 뒤에 위치하며, 문서 내의 특정 위치를 지정 (HTML 문서의 anchor 등)
      * @param entity
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3394,9 +3328,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3448,9 +3381,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 단일 데이터일 경우 사용
@@ -3499,9 +3431,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3559,9 +3490,8 @@ public abstract class AbstractRestApiClient {
      *            요청 헤더 정보.
      * @param requestBody
      *            요청 데이터. <br>
-     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET},
-     *            {@link HttpMethod#DELETE} 처럼 {@code RequestBody}가 없는 경우
-     *            <b><i>{@code null}</i></b>
+     *            <b>{@code 'method'}</b>가 {@link HttpMethod#GET}, {@link HttpMethod#DELETE} 처럼
+     *            {@code RequestBody}가 없는 경우 <b><i>{@code null}</i></b>
      * @param responseType
      *            연동 서비스가 제공하는 데이터 유형<br>
      *            제공하는 데이터가 ({@link List}) 형태일 경우 사용<br>
@@ -3619,8 +3549,7 @@ public abstract class AbstractRestApiClient {
      * <li>scheme: 필수 ( [http|https] )
      * <li>userinfo: 옵션
      * <li>host: 필수 (IP 또는 Domain)
-     * <li>port: 옵션, 설정되지 않은 경우 <code>scheme</code>값이 'http' 인 경우 80, 'https' 인
-     * 경우 443으로 처리됩니다.
+     * <li>port: 옵션, 설정되지 않은 경우 <code>scheme</code>값이 'http' 인 경우 80, 'https' 인 경우 443으로 처리됩니다.
      * 
      * <pre>
      * [개정이력]
@@ -3637,10 +3566,10 @@ public abstract class AbstractRestApiClient {
     protected abstract String getBaseUrl();
 
     /**
-     * {@link NoHttpResponseException} 또는 {@link ResourceAccessException} 예외상황이
-     * 발생한 경우 재시도 횟수를 반환합니다. <br>
-     * {@link HttpClientErrorException} 또는 {@link HttpServerErrorException}
-     * 예외상황이 발생한 경우는 재시도를 하지 않습니다.
+     * {@link NoHttpResponseException} 또는 {@link ResourceAccessException} 예외상황이 발생한 경우 재시도 횟수를
+     * 반환합니다. <br>
+     * {@link HttpClientErrorException} 또는 {@link HttpServerErrorException} 예외상황이 발생한 경우는 재시도를 하지
+     * 않습니다.
      * 
      * <pre>
      * [개정이력]
@@ -3752,8 +3681,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를
-     * {@link MultiValueMap}로 변환하여 제공합니다. <br>
+     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를 {@link MultiValueMap}로 변환하여 제공합니다.
+     * <br>
      * 일반적으로 'Query Parameters'를 생성하는데 유용합니다.
      * 
      * <pre>
@@ -3879,8 +3808,7 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * <code>param</code>이 <code>null</code>이 아닌 경우 <code>action</code>을 실행합니다.
-     * <br>
+     * <code>param</code>이 <code>null</code>이 아닌 경우 <code>action</code>을 실행합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -3902,8 +3830,7 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * <code>param</code>이 <code>null</code>이 아닌 경우 <code>action</code>을 실행합니다.
-     * <br>
+     * <code>param</code>이 <code>null</code>이 아닌 경우 <code>action</code>을 실행합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -3926,8 +3853,7 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를
-     * {@link HttpHeaders}로 변환하여 제공합니다. <br>
+     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를 {@link HttpHeaders}로 변환하여 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -3967,8 +3893,7 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를
-     * {@link HttpHeaders}로 변환하여 제공합니다. <br>
+     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를 {@link HttpHeaders}로 변환하여 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -3987,8 +3912,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를
-     * {@link MultiValueMap}로 변환하여 제공합니다. <br>
+     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를 {@link MultiValueMap}로 변환하여 제공합니다.
+     * <br>
      * 일반적으로 'Query Parameters'를 생성하는데 유용합니다.
      * 
      * <pre>
@@ -4016,8 +3941,8 @@ public abstract class AbstractRestApiClient {
     }
 
     /**
-     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를
-     * {@link MultiValueMap}로 변환하여 제공합니다. <br>
+     * 2개의 데이터(i, i+1)로 <code>key=value</code> 형태의 관계를 갖는 데이터를 {@link MultiValueMap}로 변환하여 제공합니다.
+     * <br>
      * 일반적으로 'Query Parameters'를 생성하는데 유용합니다.
      * 
      * <pre>

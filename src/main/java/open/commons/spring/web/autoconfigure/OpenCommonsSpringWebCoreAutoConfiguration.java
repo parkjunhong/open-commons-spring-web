@@ -46,17 +46,16 @@ import open.commons.spring.web.configure.exception.ExceptionHttpStatusBinderConf
 import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
 
 /**
- * <b><i>{@code open.commons.spring.web.autoconfigure}</i></b> 패키지에 선언된
- * {@link AutoConfiguration}이 적용된 클래스 이외에 {@link ComponentScan}의 대상이 되는 '빈'을
- * 포함하는 <b><i>{@code package}</i></b>를 로딩하여 자동으로 등록하는 클래스.<br>
+ * <b><i>{@code open.commons.spring.web.autoconfigure}</i></b> 패키지에 선언된 {@link AutoConfiguration}이
+ * 적용된 클래스 이외에 {@link ComponentScan}의 대상이 되는 '빈'을 포함하는 <b><i>{@code package}</i></b>를 로딩하여 자동으로 등록하는
+ * 클래스.<br>
  * 
  * <p>
  * <b>🎯 @ComponentScan이 찾아내는 핵심 어노테이션</b>
  * </p>
  * 
  * <p>
- * 스프링 프레임워크에서 컴포넌트 스캔의 대상이 되는 어노테이션들은 기본적으로 <code>@Component</code>를 메타 어노테이션으로
- * 포함하고 있습니다.
+ * 스프링 프레임워크에서 컴포넌트 스캔의 대상이 되는 어노테이션들은 기본적으로 <code>@Component</code>를 메타 어노테이션으로 포함하고 있습니다.
  * </p>
  * 
  * <p>
@@ -65,33 +64,33 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
  * <ul>
  * <li><code>@Component</code>: 스프링이 관리할 모든 빈의 가장 기본이 되는 어노테이션입니다.</li>
  * <li><code>@Service</code>: 비즈니스 로직을 담당하는 클래스에 부여합니다.</li>
- * <li><code>@Repository</code>: 데이터베이스 접근 계층의 예외를 스프링의
- * <code>DataAccessException</code>으로 변환하는 기능이 포함된 어노테이션입니다.</li>
- * <li><code>@Controller</code>, <code>@RestController</code>: 웹 프레젠테이션 계층에서
- * HTTP 요청을 처리하는 클래스에 부여합니다.</li>
+ * <li><code>@Repository</code>: 데이터베이스 접근 계층의 예외를 스프링의 <code>DataAccessException</code>으로 변환하는 기능이
+ * 포함된 어노테이션입니다.</li>
+ * <li><code>@Controller</code>, <code>@RestController</code>: 웹 프레젠테이션 계층에서 HTTP 요청을 처리하는 클래스에
+ * 부여합니다.</li>
  * </ul>
  * 
  * <p>
  * <b>2. 설정 및 확장 어노테이션</b>
  * </p>
  * <ul>
- * <li><code>@Configuration</code>: <code>@Bean</code> 메서드를 포함하는 설정 클래스입니다. 이
- * 어노테이션도 내부적으로 <code>@Component</code>를 포함하므로 컴포넌트 스캔 대상입니다.
+ * <li><code>@Configuration</code>: <code>@Bean</code> 메서드를 포함하는 설정 클래스입니다. 이 어노테이션도 내부적으로
+ * <code>@Component</code>를 포함하므로 컴포넌트 스캔 대상입니다.
  * <ul>
- * <li>🚨 주의: 일반 <code>@Configuration</code>은 스캔 대상이지만,
- * <code>@AutoConfiguration</code>은 일반적인 컴포넌트 스캔 대상으로 다루지 않아야 합니다.</li>
+ * <li>🚨 주의: 일반 <code>@Configuration</code>은 스캔 대상이지만, <code>@AutoConfiguration</code>은 일반적인 컴포넌트
+ * 스캔 대상으로 다루지 않아야 합니다.</li>
  * </ul>
  * </li>
- * <li><code>@ControllerAdvice</code>, <code>@RestControllerAdvice</code>: 전역 예외
- * 처리를 담당하며, 정상 동작하려면 스캔 경로에 포함되어야 합니다.</li>
+ * <li><code>@ControllerAdvice</code>, <code>@RestControllerAdvice</code>: 전역 예외 처리를 담당하며, 정상 동작하려면
+ * 스캔 경로에 포함되어야 합니다.</li>
  * </ul>
  * 
  * <p>
  * <b>3. AOP 관련 어노테이션</b>
  * </p>
  * <ul>
- * <li><code>@Aspect</code>: AOP를 위한 어노테이션입니다. 다만 <code>@Aspect</code> 자체만으로는
- * 컴포넌트 스캔 대상이 아니므로, 스프링 빈으로 등록하려면 보통 <code>@Component</code>를 함께 선언해야 합니다.</li>
+ * <li><code>@Aspect</code>: AOP를 위한 어노테이션입니다. 다만 <code>@Aspect</code> 자체만으로는 컴포넌트 스캔 대상이 아니므로, 스프링
+ * 빈으로 등록하려면 보통 <code>@Component</code>를 함께 선언해야 합니다.</li>
  * </ul>
  * 
  * <pre>

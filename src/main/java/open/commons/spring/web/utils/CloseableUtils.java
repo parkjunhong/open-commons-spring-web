@@ -136,8 +136,7 @@ public class CloseableUtils {
     }
 
     /**
-     * {@link RestTemplate}가 사용하는 {@link ClientHttpRequestFactory} 자원을 해제합니다.
-     * <br>
+     * {@link RestTemplate}가 사용하는 {@link ClientHttpRequestFactory} 자원을 해제합니다. <br>
      * 
      * <pre>
      * [개정이력]

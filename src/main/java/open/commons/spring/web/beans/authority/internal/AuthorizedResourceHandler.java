@@ -43,8 +43,8 @@ import open.commons.spring.web.beans.authority.ResourceHandle;
 import open.commons.spring.web.beans.authority.ResourceHandle.Target;
 
 /**
- * {@link IUnauthorizedFieldHandler}, {@link IAuthorizedRequestDataHandler}를 하나의
- * 서비스로 통합하여 제공하는 내부 컴포넌트
+ * {@link IUnauthorizedFieldHandler}, {@link IAuthorizedRequestDataHandler}를 하나의 서비스로 통합하여 제공하는 내부
+ * 컴포넌트
  * 
  * @since 2025. 9. 19.
  * @version 0.8.0

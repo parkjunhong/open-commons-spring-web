@@ -153,8 +153,8 @@ public class GlobalServletAutoConfiguration {
     }
 
     /**
-     * {@link RequestThreadNameFilter} 이후에 위치시켜, {@link Thread} 이름 제어에 따르고 보안검증
-     * 이전에 Request 헤더 정보를 설정합니다. <br>
+     * {@link RequestThreadNameFilter} 이후에 위치시켜, {@link Thread} 이름 제어에 따르고 보안검증 이전에 Request 헤더 정보를
+     * 설정합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -179,8 +179,8 @@ public class GlobalServletAutoConfiguration {
     }
 
     /**
-     * {@link SecurityFilterChain} 보다 앞에 위치시켜, 보안검증 이전의
-     * {@link HttpServletRequest}에 대해서도 감지를 합니다. <br>
+     * {@link SecurityFilterChain} 보다 앞에 위치시켜, 보안검증 이전의 {@link HttpServletRequest}에 대해서도 감지를 합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -481,8 +481,8 @@ public class GlobalServletAutoConfiguration {
     }
 
     /**
-     * {@link OncePerRequestFilter}에서 URL 기반으로 작업하는 경우, 대상에서 제외하는
-     * {@link PathPatternRequest} 패턴 설정 경로<br>
+     * {@link OncePerRequestFilter}에서 URL 기반으로 작업하는 경우, 대상에서 제외하는 {@link PathPatternRequest} 패턴 설정
+     * 경로<br>
      */
     @Bean
     List<PathPatternRequest> yamlOncePerRequestShouldNotFilters(OncePerRequestFilterProperties props) {

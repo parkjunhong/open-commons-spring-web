@@ -141,8 +141,8 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      *
      * @param standards
      * @param rule
-     *            {@link Environment#getActiveProfiles()}(+추가설정)과
-     *            {@link ProfilesOn#standards()} 값을 비교하는 규칙
+     *            {@link Environment#getActiveProfiles()}(+추가설정)과 {@link ProfilesOn#standards()} 값을
+     *            비교하는 규칙
      * @return
      *
      * @since 2025. 11. 24.

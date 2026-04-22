@@ -69,8 +69,7 @@ import open.commons.spring.web.utils.ClassInspector;
 
 /**
  * "{@link AuthorizedRequestData} && ({@link ModelAttribute} ||
- * {@link ModelAttributeMethodProcessor#annotationNotRequired} )"가 선언된 파라미터를
- * 처리합니다.<br>
+ * {@link ModelAttributeMethodProcessor#annotationNotRequired} )"가 선언된 파라미터를 처리합니다.<br>
  * {@link CustomWebMvcAutoConfiguration}을 통해서 {@link Bean}으로 제공됩니다.
  * 
  * @since 2025. 9. 18.
@@ -145,8 +144,8 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
 
     /**
      * {@link AuthorizedRequestData} 정보와 TODO ( ) 정보를 확인하여,
-     * {@link AuthorizedRequestData#handleBean()},
-     * {@link AuthorizedRequestData#handleType()}에 해당하는 정보를 제공합니다. <br>
+     * {@link AuthorizedRequestData#handleBean()}, {@link AuthorizedRequestData#handleType()}에 해당하는
+     * 정보를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -307,8 +306,7 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
     }
 
     /**
-     * "{@link AuthorizedRequestData} && {@link ModelAttribute}"가 선언된 파라미터만
-     * 지원합니다.
+     * "{@link AuthorizedRequestData} && {@link ModelAttribute}"가 선언된 파라미터만 지원합니다.
      *
      * @since 2025. 9. 18.
      * @version 0.8.0

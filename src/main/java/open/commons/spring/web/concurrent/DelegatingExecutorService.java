@@ -43,6 +43,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.mdc.MdcWrappedJob;
 
@@ -79,6 +80,8 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      * @version 0.8.0
      */
     public DelegatingExecutorService(S delegate, @Nullable String symbol) {
+        AssertUtils2.notNull(delegate);
+
         this.delegate = delegate;
         this.symbol = symbol;
     }
@@ -93,6 +96,8 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      */
     @Override
     public boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
+        AssertUtils2.notNull(unit);
+
         return this.delegate.awaitTermination(timeout, unit);
     }
 
@@ -105,6 +110,8 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      */
     @Override
     public void execute(Runnable command) {
+        AssertUtils2.notNull(command);
+
         if (command instanceof MdcWrappedJob //
                 || command instanceof RunnableFuture) {
             logger.trace("Skipping wrap for already-wrapped or FutureTask: {}", command.getClass());
@@ -156,8 +163,8 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      * @since 2025. 7. 31.
      * @version 0.8.0
      *
-     * @see java.util.concurrent.AbstractExecutorService#invokeAny(java.util.Collection,
-     *      long, java.util.concurrent.TimeUnit)
+     * @see java.util.concurrent.AbstractExecutorService#invokeAny(java.util.Collection, long,
+     *      java.util.concurrent.TimeUnit)
      */
     @Override
     public <T> T invokeAny(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit)
@@ -239,8 +246,7 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
     }
 
     /**
-     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable}
-     * 객체를 제공합니다. <br>
+     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable} 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -257,12 +263,13 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      * @version 0.8.0
      */
     protected <T> Callable<T> wrap(Callable<T> callable) {
+        AssertUtils2.notNull(callable);
+
         return MdcWrappedJob.wrap(getCopyOfContextMap(this.symbol), callable);
     }
 
     /**
-     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable}
-     * 객체를 제공합니다. <br>
+     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable} 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -279,12 +286,13 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      * @version 0.8.0
      */
     protected <T> Collection<? extends Callable<T>> wrap(Collection<? extends Callable<T>> tasks) {
+        AssertUtils2.notNull(tasks);
+
         return MdcWrappedJob.wrap(getCopyOfContextMap(this.symbol), tasks);
     }
 
     /**
-     * 전달받은 {@link Runnable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Runnable}
-     * 객체를 제공합니다. <br>
+     * 전달받은 {@link Runnable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Runnable} 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -300,6 +308,8 @@ public class DelegatingExecutorService<S extends ExecutorService> extends Abstra
      * @version 0.8.0
      */
     protected Runnable wrap(Runnable runnable) {
+        AssertUtils2.notNull(runnable);
+
         return MdcWrappedJob.wrap(getCopyOfContextMap(this.symbol), runnable, false);
     }
 

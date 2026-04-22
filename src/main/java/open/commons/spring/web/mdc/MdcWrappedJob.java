@@ -84,8 +84,7 @@ public abstract class MdcWrappedJob<V> {
     private int runtimeTaskNumber = Integer.MIN_VALUE;
 
     /**
-     * {@link TaskScheduler} 또는 {@link ScheduledExecutorService} 에 의해서 실행되는지
-     * 여부<br>
+     * {@link TaskScheduler} 또는 {@link ScheduledExecutorService} 에 의해서 실행되는지 여부<br>
      * {@link Runnable}를 반복적으로 생성하지 않기 때문에, 전달받은 {@link MDC} 복제 데이터를 유지해야 함.
      */
     private boolean byScheduler;
@@ -138,8 +137,8 @@ public abstract class MdcWrappedJob<V> {
     }
 
     /**
-     * 동작하는 시점 {@link Thread}의 {@link MDC} 정보를 백업하고, 외부 {@link MDC} 정보를 현재
-     * {@link MDC} 정보로 설정합니다. <br>
+     * 동작하는 시점 {@link Thread}의 {@link MDC} 정보를 백업하고, 외부 {@link MDC} 정보를 현재 {@link MDC} 정보로 설정합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -188,8 +187,8 @@ public abstract class MdcWrappedJob<V> {
     }
 
     /**
-     * 현재 {@link Thread} {@link MDC} 정보를 복제하고,
-     * {@link #MDC_PROPERTY_THREAD_SYMBOL} 값을 추가하여 반환합니다. <br>
+     * 현재 {@link Thread} {@link MDC} 정보를 복제하고, {@link #MDC_PROPERTY_THREAD_SYMBOL} 값을 추가하여 반환합니다.
+     * <br>
      * 
      * <pre>
      * [개정이력]
@@ -214,8 +213,7 @@ public abstract class MdcWrappedJob<V> {
     }
 
     /**
-     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable}
-     * 객체를 제공합니다. <br>
+     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable} 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -235,12 +233,13 @@ public abstract class MdcWrappedJob<V> {
      * @version 0.8.0
      */
     public static <T> Callable<T> wrap(@Nullable Map<String, String> context, Callable<T> callable) {
+        AssertUtils2.notNull(callable);
+
         return new MdcWrappedCallable<T>(context != null ? new HashMap<>(context) : null, callable);
     }
 
     /**
-     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable}
-     * 객체를 제공합니다. <br>
+     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable} 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -262,12 +261,13 @@ public abstract class MdcWrappedJob<V> {
      */
     public static <T> Collection<? extends Callable<T>> wrap(Map<String, String> context,
             Collection<? extends Callable<T>> tasks) {
+        AssertUtils2.notNull(tasks);
+
         return tasks.stream().map(task -> MdcWrappedJob.wrap(context, task)).collect(Collectors.toList());
     }
 
     /**
-     * 전달받은 {@link Runnable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Runnable}
-     * 객체를 제공합니다. <br>
+     * 전달받은 {@link Runnable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Runnable} 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -281,8 +281,7 @@ public abstract class MdcWrappedJob<V> {
      * @param runnable
      *            작업 객체
      * @param byScheduler
-     *            {@link TaskScheduler} 또는 {@link ScheduledExecutorService}에 의해서
-     *            실행되는지 여부
+     *            {@link TaskScheduler} 또는 {@link ScheduledExecutorService}에 의해서 실행되는지 여부
      * @return
      *
      * @since 2025. 7. 31.
@@ -353,8 +352,7 @@ public abstract class MdcWrappedJob<V> {
          * @param runnable
          *            작업 객체
          * @param byScheduler
-         *            {@link TaskScheduler} 또는 {@link ScheduledExecutorService}에
-         *            의해서 실행되는지 여부
+         *            {@link TaskScheduler} 또는 {@link ScheduledExecutorService}에 의해서 실행되는지 여부
          * @since 2025. 8. 1.
          * @version 0.8.0
          */

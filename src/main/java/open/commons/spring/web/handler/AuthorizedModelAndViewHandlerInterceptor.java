@@ -290,8 +290,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
 
     /**
      * {@link AuthorizedRequestData} 정보와 TODO ( ) 정보를 확인하여,
-     * {@link AuthorizedRequestData#handleBean()},
-     * {@link AuthorizedRequestData#handleType()}에 해당하는 정보를 제공합니다. <br>
+     * {@link AuthorizedRequestData#handleBean()}, {@link AuthorizedRequestData#handleType()}에 해당하는
+     * 정보를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -457,8 +457,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      * @param fromRoot
      *            {@link #postHandle(HttpServletRequest, HttpServletResponse, Object, ModelAndView)}에서
      *            호출한지 여부.<br>
-     *            {@link ModelAndView#getModel()}의 값에 해당하는 정보를 처리하는 것이기 때문에,
-     *            'simple type'인 경우 값을 반환하기 위함.
+     *            {@link ModelAndView#getModel()}의 값에 해당하는 정보를 처리하는 것이기 때문에, 'simple type'인 경우 값을
+     *            반환하기 위함.
      * @return
      *
      * @since 2025. 9. 25.

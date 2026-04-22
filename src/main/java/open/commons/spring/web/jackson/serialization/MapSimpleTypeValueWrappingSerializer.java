@@ -103,8 +103,7 @@ public class MapSimpleTypeValueWrappingSerializer extends AbstractWrappingSerial
      * @version 4.0.0
      *
      * @see tools.jackson.databind.ValueSerializer#serialize(java.lang.Object,
-     *      tools.jackson.core.JsonGenerator,
-     *      tools.jackson.databind.SerializationContext)
+     *      tools.jackson.core.JsonGenerator, tools.jackson.databind.SerializationContext)
      */
     @Override
     public void serialize(Object value, JsonGenerator gen, SerializationContext context) throws JacksonException {

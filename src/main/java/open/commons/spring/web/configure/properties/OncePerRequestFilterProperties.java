@@ -33,8 +33,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import open.commons.spring.web.servlet.filter.PathPatternRequest;
 
 /**
- * {@link org.springframework.web.filter.OncePerRequestFilter}의 처리 대상에서 제외할 요청
- * 패턴 설정 정보 레코드.
+ * {@link org.springframework.web.filter.OncePerRequestFilter}의 처리 대상에서 제외할 요청 패턴 설정 정보 레코드.
  *
  * @param oncePerRequestShouldNotFilters
  *            HTTP 메서드와 URL 경로 기반의 필터 제외 패턴 목록입니다.

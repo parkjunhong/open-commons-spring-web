@@ -45,8 +45,7 @@ import open.commons.spring.web.handler.HttpRequestProxyHeader;
 import open.commons.spring.web.handler.ProxyHeaderUtil;
 
 /**
- * {@link HttpServletRequest} 정보를 기반으로 '요청 -> 응답'을 처리하는 {@link Thread} 이름을 제공하는
- * 클래스.
+ * {@link HttpServletRequest} 정보를 기반으로 '요청 -> 응답'을 처리하는 {@link Thread} 이름을 제공하는 클래스.
  * 
  * @since 2025. 8. 4.
  * @version 0.8.0

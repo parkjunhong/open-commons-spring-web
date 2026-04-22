@@ -394,8 +394,8 @@ public class SecurityUtils {
     }
 
     /**
-     * 현재 요청에 대한 {@link HttpSession}을 제공합니다. <code>create</code>가
-     * <code>true</code>인 경우 새로운 {@link HttpSession}을 생성합니다. <br>
+     * 현재 요청에 대한 {@link HttpSession}을 제공합니다. <code>create</code>가 <code>true</code>인 경우 새로운
+     * {@link HttpSession}을 생성합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -421,8 +421,8 @@ public class SecurityUtils {
     }
 
     /**
-     * 주어진 요청에 대한 {@link HttpSession}을 제공합니다. <code>create</code>가
-     * <code>true</code>인 경우 새로운 {@link HttpSession}을 생성합니다. <br>
+     * 주어진 요청에 대한 {@link HttpSession}을 제공합니다. <code>create</code>가 <code>true</code>인 경우 새로운
+     * {@link HttpSession}을 생성합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -446,8 +446,7 @@ public class SecurityUtils {
 
     /**
      * 현재 {@link HttpServletRequest} 정보를 제공하거나 현재 {@link RequestAttributes} 이
-     * {@link ServletRequestAttributes}의 하위클래스가 아닌 경우 <code>null</code> 을 반환합니다.
-     * <br>
+     * {@link ServletRequestAttributes}의 하위클래스가 아닌 경우 <code>null</code> 을 반환합니다. <br>
      * 
      * <pre>
      * [개정이력]

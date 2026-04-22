@@ -63,8 +63,7 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
 public class ResourceConfiguration {
 
     /**
-     * <b><i>{@code /META-INF/open-commons/open-commons-spring-web.yml}</i></b>
-     * 파일 내에서의 루트 경로.
+     * <b><i>{@code /META-INF/open-commons/open-commons-spring-web.yml}</i></b> 파일 내에서의 루트 경로.
      * 
      * <pre>
      * open-commons:
@@ -72,8 +71,7 @@ public class ResourceConfiguration {
      *     web:
      * </pre>
      * 
-     * @deprecated {@link Const#PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH}를
-     *             사용하세요.
+     * @deprecated {@link Const#PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH}를 사용하세요.
      */
     @Deprecated(since = "4.0.0", forRemoval = true)
     public static final String PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH = "open-commons.spring.web";
@@ -83,8 +81,7 @@ public class ResourceConfiguration {
      * 기본 {@link RestTemplate}<br>
      * <li>공인 인증서만 허용
      * 
-     * @deprecated {@link RestTemplateConfiguration#BEAN_QUALIFIER_RESTTEMPLATE}
-     *             를 사용하세요.
+     * @deprecated {@link RestTemplateConfiguration#BEAN_QUALIFIER_RESTTEMPLATE} 를 사용하세요.
      */
     @Deprecated(since = "4.0.0", forRemoval = true)
     public static final String BEAN_QUALIFIER_RESTTEMPLATE = RestTemplateConfiguration.BEAN_QUALIFIER_RESTTEMPLATE;
@@ -92,8 +89,8 @@ public class ResourceConfiguration {
      * 기본 {@link RestTemplate}<br>
      * <li>'공인 + 비공인' 인증서 허용
      * 
-     * @deprecated {@link RestTemplateConfiguration#BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA}
-     *             를 사용하세요.
+     * @deprecated {@link RestTemplateConfiguration#BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA} 를
+     *             사용하세요.
      */
     @Deprecated(since = "4.0.0", forRemoval = true)
     public static final String BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA = RestTemplateConfiguration.BEAN_QUALIFIER_RESTTEMPLATE_ALLOW_PRIVATE_CA;
@@ -101,8 +98,7 @@ public class ResourceConfiguration {
      * 기본 {@link RestTemplate}<br>
      * <li>공인 인증서만 허용
      * 
-     * @deprecated {@link RestTemplateConfiguration#BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE}
-     *             를 사용하세요.
+     * @deprecated {@link RestTemplateConfiguration#BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE} 를 사용하세요.
      */
     @Deprecated(since = "4.0.0", forRemoval = true)
     public static final String BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE = RestTemplateConfiguration.BEAN_QUALIFIER_RESTTEMPLATE_PROXY_MODE;
@@ -148,16 +144,15 @@ public class ResourceConfiguration {
     /**
      * 기본적으로 제공되는 {@link ThreadPoolTaskScheduler}
      * 
-     * @deprecated {@link TaskSchedulerConfiguration#BEAN_QUALIFIER_DEFAULT_TASK_SCHEDULER}
-     *             를 사용하세요.
+     * @deprecated {@link TaskSchedulerConfiguration#BEAN_QUALIFIER_DEFAULT_TASK_SCHEDULER} 를 사용하세요.
      */
     @Deprecated(since = "4.0.0", forRemoval = true)
     public static final String BEAN_QUALIFIER_DEFAULT_THREAD_POOL_TASK_SCHEDULER = TaskSchedulerConfiguration.BEAN_QUALIFIER_DEFAULT_TASK_SCHEDULER;
     /**
      * 내부적으로 사용되는 {@link ThreadPoolTaskExecutor} 설정
      * 
-     * @deprecated {@link TaskSchedulerConfiguration#CONFIGURATION_TASK_SCHEDULER_PROPERTIES}
-     *             를 사용하세요.
+     * @deprecated {@link TaskSchedulerConfiguration#CONFIGURATION_TASK_SCHEDULER_PROPERTIES} 를
+     *             사용하세요.
      */
     @Deprecated(since = "4.0.0", forRemoval = true)
     public static final String CONFIGURATION_THREAD_POOL_TASK_SCHEDULER_CONFIG_ON_MDC = TaskSchedulerConfiguration.CONFIGURATION_TASK_SCHEDULER_PROPERTIES;
@@ -181,6 +176,7 @@ public class ResourceConfiguration {
      * @deprecated {@link ScheduledExecutorConfiguration#CONFIGURATION_SCHEDULED_EXECUTOR_PROPERTIES}를
      *             사용하세요.
      */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     public static final String CONFIGURATION_SCHEDULED_THREAD_POOL_EXECUTOR_CONFIG_ON_MDC = ScheduledExecutorConfiguration.CONFIGURATION_SCHEDULED_EXECUTOR_PROPERTIES;
     // --------------------------------------------------------------------------
     // //
@@ -189,16 +185,14 @@ public class ResourceConfiguration {
     /**
      * 기본적으로 제공되는 {@link ThreadPoolExecutor}
      * 
-     * @deprecated {@link ExecutorConfiguration#BEAN_QUALIFIER_DEFAULT_EXECUTOR}
-     *             를 사용하세요.
+     * @deprecated {@link ExecutorConfiguration#BEAN_QUALIFIER_DEFAULT_EXECUTOR} 를 사용하세요.
      */
     @Deprecated(since = "4.0.0", forRemoval = true)
     public static final String BEAN_QUALIFIER_DEFAULT_THREAD_POOL_EXECUTOR = ExecutorConfiguration.BEAN_QUALIFIER_DEFAULT_EXECUTOR;
     /**
      * 내부적으로 사용되는 {@link ThreadPoolExecutor}
      * 
-     * @deprecated {@link ExecutorConfiguration#CONFIGURATION_EXECUTOR_PROPERTIES}
-     *             를 사용하세요.
+     * @deprecated {@link ExecutorConfiguration#CONFIGURATION_EXECUTOR_PROPERTIES} 를 사용하세요.
      */
     @Deprecated(since = "4.0.0", forRemoval = true)
     public static final String CONFIGURATION_THREAD_POOL_EXECUTOR_CONFIG_ON_MDC = ExecutorConfiguration.CONFIGURATION_EXECUTOR_PROPERTIES;
@@ -208,16 +202,16 @@ public class ResourceConfiguration {
     /**
      * {@link Throwable} 과 그에 따르는 {@link HttpStatus} 매핑 제공 서비스
      * 
-     * @deprecated '식별자' 기반의 참조가 아닌 단일 객체 (
-     *             {@link ExceptionHttpStatusProperties} 를 참조하는 방식으로 변경되었습니다.
+     * @deprecated '식별자' 기반의 참조가 아닌 단일 객체 ( {@link ExceptionHttpStatusProperties} 를 참조하는 방식으로
+     *             변경되었습니다.
      */
     @Deprecated(since = "4.0.0", forRemoval = true)
     public static final String CONFIGURATION_DEFAULT_EXCETPION_HTTPSTATUS_PROPERTIES = "open.commons.spring.web.config.ResourceConfiguration#EXCETPION_HTTPSTATUS_PROPERTIES";
     /**
      * {@link Throwable} 과 그에 따르는 {@link HttpStatus} 매핑 설정 경로
      * 
-     * @deprecated '식별자' 기반의 참조가 아닌 단일 객체 (
-     *             {@link ExceptionHttpStatusProperties} 를 참조하는 방식으로 변경되었습니다.
+     * @deprecated '식별자' 기반의 참조가 아닌 단일 객체 ( {@link ExceptionHttpStatusProperties} 를 참조하는 방식으로
+     *             변경되었습니다.
      */
     @Deprecated(since = "4.0.0", forRemoval = true)
     public static final String PROPERTIES_DEFAULT_EXCETPION_HTTPSTATUS_PROPERTIES = PROPERTIES_OPEN_COMMONS_SPRING_WEB_ROOT_PATH
@@ -235,6 +229,7 @@ public class ResourceConfiguration {
      *
      * @since 2019. 6. 27.
      */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     public ResourceConfiguration() {
     }
 }

@@ -46,8 +46,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
  *            (@see {@link ThreadPoolTaskScheduler#setPoolSize(int)})
  * @param removeOnCancelPolicy
  *            작업 취소 시 해당 작업을 큐에서 즉시 제거할지 여부입니다. (기본값: false)<br>
- *            (@see
- *            {@link ThreadPoolTaskScheduler#setRemoveOnCancelPolicy(boolean)})
+ *            (@see {@link ThreadPoolTaskScheduler#setRemoveOnCancelPolicy(boolean)})
  * @param continueExistingPeriodicTasksAfterShutdownPolicy
  *            스케줄러 종료(shutdown) 후에도 기존의 주기적인 작업을 계속 실행할지 여부입니다. (기본값: false)<br>
  *            (@see
@@ -70,8 +69,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
  *            {@link org.springframework.scheduling.concurrent.ExecutorConfigurationSupport#setWaitForTasksToCompleteOnShutdown(boolean)})
  * @param daemon
  *            생성된 스레드를 데몬 스레드로 설정할지 여부입니다. (기본값: true) <br>
- *            (@see
- *            {@link org.springframework.util.CustomizableThreadCreator#setDaemon(boolean)})
+ *            (@see {@link org.springframework.util.CustomizableThreadCreator#setDaemon(boolean)})
  * @param threadGroupName
  *            스레드가 속할 스레드 그룹의 이름입니다.<br>
  *            (@see

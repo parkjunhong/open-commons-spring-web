@@ -44,16 +44,15 @@ import open.commons.spring.web.utils.BeanUtils;
 import tools.jackson.databind.JavaType;
 
 /**
- * 컨테이너(배열 / {@link Collection} / {@link Map})로 역직렬화된 자바 객체를 재귀 순회하며 단순 타입(
- * {@link String} / {@link Number} / {@link Boolean} / {@link Character} 및
- * primitive)을 leaf 로 간주해 IAuthorizedRequestDataHandler.handleObject(handleType,
- * value) 를 적용한다.
+ * 컨테이너(배열 / {@link Collection} / {@link Map})로 역직렬화된 자바 객체를 재귀 순회하며 단순 타입( {@link String} /
+ * {@link Number} / {@link Boolean} / {@link Character} 및 primitive)을 leaf 로 간주해
+ * IAuthorizedRequestDataHandler.handleObject(handleType, value) 를 적용한다.
  *
  * <li>- Jackson 파서를 재사용/재소모하지 않음
  * <li>- 컨테이너 내부의 중첩 컨테이너(List<List<...>>, Map<String, List<...>> 등) 처리 지원
  * <li>- primitive 배열에 대해 안전한 타입 강제(coerce) 처리
- * <li>- POJO는 이 유틸에서 손대지 않고 그대로 반환 (POJO 필드의 {@link AuthorizedRequestData} 는
- * Bean/Field 단위 Deserializer가 처리)
+ * <li>- POJO는 이 유틸에서 손대지 않고 그대로 반환 (POJO 필드의 {@link AuthorizedRequestData} 는 Bean/Field 단위
+ * Deserializer가 처리)
  * 
  * <pre>
  * [개정이력]

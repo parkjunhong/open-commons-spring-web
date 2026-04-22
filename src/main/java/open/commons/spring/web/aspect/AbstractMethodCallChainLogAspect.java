@@ -54,9 +54,8 @@ import open.commons.spring.web.log.LogFeature;
 import open.commons.spring.web.thread.MethodLogContext;
 
 /**
- * {@link Controller}, {@link RestController}, {@link Service},
- * {@link Repository} 어노테이션이 설정된 클래스의 <code>public</code> 메소드의 실행 전/후에 로그를 기록하는
- * 기능을 제공합니다.<br>
+ * {@link Controller}, {@link RestController}, {@link Service}, {@link Repository} 어노테이션이 설정된 클래스의
+ * <code>public</code> 메소드의 실행 전/후에 로그를 기록하는 기능을 제공합니다.<br>
  * </p>
  * 
  * <p>
@@ -64,8 +63,7 @@ import open.commons.spring.web.thread.MethodLogContext;
  * </p>
  * 
  * 어노테이션별로 AOP가 적용되는 메소드를 아래와 같습니다.
- * <li>{@link Controller}, {@link RestController}:
- * {@link #handleController(ProceedingJoinPoint)}
+ * <li>{@link Controller}, {@link RestController}: {@link #handleController(ProceedingJoinPoint)}
  * <li>{@link Service}: {@link #handleServicve(ProceedingJoinPoint)}
  * <li>{@link Repository}: {@link #handleRespository(ProceedingJoinPoint)}
  * </p>
@@ -127,8 +125,7 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
     /** 메소드 호출이 {@link Controller}에서부터 시작된 경우에만 AOP 적용 여부 */
     private final boolean handleIfOriginatedFromController;
     /**
-     * {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에 따라서 로그 분기
-     * 적용 여부
+     * {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에 따라서 로그 분기 적용 여부
      */
     private final boolean enableLogRouting;
     /** 들여쓰기 적용 여부 */
@@ -214,8 +211,7 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      * @param handleIfOriginatedFromController
      *            메소드 호출이 {@link Controller}에서부터 시작된 경우에만 AOP 적용 여부
      * @param enableLogRouting
-     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에
-     *            따라서 로그 분기 적용 여부
+     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에 따라서 로그 분기 적용 여부
      *
      * @since 2025. 8. 12.
      * @version 0.8.0
@@ -243,8 +239,7 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      * @param handleIfOriginatedFromController
      *            메소드 호출이 {@link Controller}에서부터 시작된 경우에만 AOP 적용 여부
      * @param enableLogRouting
-     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에
-     *            따라서 로그 분기 적용 여부
+     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에 따라서 로그 분기 적용 여부
      * @param enableIndentation
      *            들여쓰기 적용 여부
      *
@@ -277,8 +272,7 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
      * @param handleIfOriginatedFromController
      *            메소드 호출이 {@link Controller}에서부터 시작된 경우에만 AOP 적용 여부
      * @param enableLogRouting
-     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에
-     *            따라서 로그 분기 적용 여부
+     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에 따라서 로그 분기 적용 여부
      * @param enableIndentation
      *            들여쓰기 적용 여부
      * @since 2025. 6. 23.
@@ -541,8 +535,7 @@ public abstract class AbstractMethodCallChainLogAspect extends AbstractAspectPoi
     }
 
     /**
-     * {@link Controller}, {@link RestController} 어노테이션이 적용된 클래스의 메소드를 처리합니다.
-     * <br>
+     * {@link Controller}, {@link RestController} 어노테이션이 적용된 클래스의 메소드를 처리합니다. <br>
      * 
      * <pre>
      * [개정이력]

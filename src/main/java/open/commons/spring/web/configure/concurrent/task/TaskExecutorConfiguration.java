@@ -143,8 +143,7 @@ public class TaskExecutorConfiguration {
     public static ThreadPoolTaskExecutor createTaskExecutor(TaskExecutorProperties props, String threadNameSymbol) {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 
-        // --- org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
-        // --- //
+        // ---- org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor --- //
         executor.setCorePoolSize(props.corePoolSize());
         executor.setKeepAliveSeconds(props.keepAliveSeconds());
         executor.setMaxPoolSize(props.maxPoolSize());
@@ -154,9 +153,7 @@ public class TaskExecutorConfiguration {
         // Runnable 에 대한 decoration 적용.
         executor.setTaskDecorator(new MdcTaskDecorator(threadNameSymbol));
         // -------------------------------------------------- //
-        // ---
-        // org.springframework.scheduling.concurrent.ExecutorConfigurationSupport
-        // --- //
+        // --- org.springframework.scheduling.concurrent.ExecutorConfigurationSupport --- //
         executor.setAwaitTerminationMillis(props.awaitTerminationMillis());
         executor.setWaitForTasksToCompleteOnShutdown(props.waitForTasksToCompleteOnShutdown());
         executor.setWaitForTasksToCompleteOnShutdown(props.waitForTasksToCompleteOnShutdown());

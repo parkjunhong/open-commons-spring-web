@@ -57,8 +57,7 @@ public class LogFeatureDecorationConsolidator implements ILogFeatureDecorationCo
     private final Logger logger = LoggerFactory.getLogger(LogFeatureDecorationConsolidator.class);
 
     /**
-     * <li>key: 'feature'({@link LogFeature#feature()})와
-     * 'marker'({@link LogFeature#marker()})의 조합
+     * <li>key: 'feature'({@link LogFeature#feature()})와 'marker'({@link LogFeature#marker()})의 조합
      * <li>value: 'marker' 값을 처리하는 함수.
      */
     private final ConcurrentSkipListMap<String, Function<String, String>> decorators = new ConcurrentSkipListMap<>();

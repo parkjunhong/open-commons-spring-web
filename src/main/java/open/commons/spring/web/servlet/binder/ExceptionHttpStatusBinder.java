@@ -70,8 +70,7 @@ public class ExceptionHttpStatusBinder {
 
     /**
      * 읽어들인 설정 정보. (검증 대상).<br>
-     * 예: java.lang.NullPointerException:
-     * org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR
+     * 예: java.lang.NullPointerException: org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR
      */
     private Map<String, HttpStatus> properties;
 

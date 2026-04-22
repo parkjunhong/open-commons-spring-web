@@ -40,8 +40,7 @@ import tools.jackson.databind.introspect.AnnotatedField;
 
 /**
  * 배열/Collection의 단순타입 원소에 AuthorizedField 처리를 적용하는 Serializer.
- * <li>- Jackson 2.12+ 권장 API 사용(writeStartArray(Object,int) /
- * writeStartArray(Object))
+ * <li>- Jackson 2.12+ 권장 API 사용(writeStartArray(Object,int) / writeStartArray(Object))
  * <li>- 요소 출력은 serializers.defaultSerializeValue(...) 사용
  * <li>- 내부가 컨테이너일 경우 ContextualSerializer로 '중첩 래퍼 체인'을 구성하여 재귀 처리.
  * 
@@ -105,8 +104,7 @@ public class ContainerSimpleTypeElementWrappingSerializer extends AbstractWrappi
      * @version 4.0.0
      *
      * @see tools.jackson.databind.ValueSerializer#serialize(java.lang.Object,
-     *      tools.jackson.core.JsonGenerator,
-     *      tools.jackson.databind.SerializationContext)
+     *      tools.jackson.core.JsonGenerator, tools.jackson.databind.SerializationContext)
      */
     @Override
     public void serialize(Object value, JsonGenerator gen, SerializationContext context) throws JacksonException {

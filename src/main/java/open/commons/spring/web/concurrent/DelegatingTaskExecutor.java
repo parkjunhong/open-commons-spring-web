@@ -31,11 +31,13 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.core.task.AsyncTaskExecutor;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.mdc.MdcWrappedJob;
 
@@ -77,7 +79,9 @@ public class DelegatingTaskExecutor<S extends AsyncTaskExecutor> implements Asyn
      * @since 2025. 8. 6.
      * @version 0.8.0
      */
-    public DelegatingTaskExecutor(S delegate, String symbol) {
+    public DelegatingTaskExecutor(S delegate, @Nullable String symbol) {
+        AssertUtils2.notNull(delegate);
+
         this.delegate = delegate;
         this.symbol = symbol;
     }
@@ -110,7 +114,7 @@ public class DelegatingTaskExecutor<S extends AsyncTaskExecutor> implements Asyn
      * @since 2025. 8. 6.
      * @version 0.8.0
      */
-    protected final Map<String, String> getCopyOfContextMap(String symbol) {
+    protected final Map<String, String> getCopyOfContextMap(@Nullable String symbol) {
         Map<String, String> copiedMDC = MDC.getCopyOfContextMap();
         if (copiedMDC != null && !StringUtils.isNullOrEmptyString(symbol)) {
             copiedMDC.put(MdcWrappedJob.MDC_PROPERTY_THREAD_SYMBOL, symbol);
@@ -172,8 +176,7 @@ public class DelegatingTaskExecutor<S extends AsyncTaskExecutor> implements Asyn
     }
 
     /**
-     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable}
-     * 객체를 제공합니다. <br>
+     * 전달받은 {@link Callable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Callable} 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -194,8 +197,7 @@ public class DelegatingTaskExecutor<S extends AsyncTaskExecutor> implements Asyn
     }
 
     /**
-     * 전달받은 {@link Runnable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Runnable}
-     * 객체를 제공합니다. <br>
+     * 전달받은 {@link Runnable} 객체가 {@link MDC} 정보를 사용할 수 있도록 감싼 {@link Runnable} 객체를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]

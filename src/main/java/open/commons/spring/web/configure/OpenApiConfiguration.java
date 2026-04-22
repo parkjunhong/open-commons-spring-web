@@ -53,14 +53,12 @@ import open.commons.spring.web.oas.GroupOpenApiRegistrar;
 import open.commons.spring.web.oas.GroupedOpenApiProperties;
 
 /**
- * <a href="https://springdoc.org/">Spring Docs</a> {@link OpenAPI}를 사용하기 위한
- * 설정.<br>
+ * <a href="https://springdoc.org/">Spring Docs</a> {@link OpenAPI}를 사용하기 위한 설정.<br>
  * 
  * <p>
  * application.yml 내 속성정의는 다음과 같습니다.<br>
  * 
- * 설정 내용 중에 "open-commons.springdoc.open-api.info.contact.[email, name]"은
- * 필수항목입니다.<br>
+ * 설정 내용 중에 "open-commons.springdoc.open-api.info.contact.[email, name]"은 필수항목입니다.<br>
  * 
  * <pre>
  * open-commons:
@@ -169,7 +167,7 @@ public class OpenApiConfiguration {
      */
     @Bean
     @ConditionalOnProperty(prefix = PROPERTIES_OPEN_API_INFO, name = { "contact.email", "contact.name" })
-    public OpenAPI createOpenAPIInfo() {
+    OpenAPI createOpenAPIInfo() {
 
         OpenAPI api = new OpenAPI();
 
@@ -207,7 +205,7 @@ public class OpenApiConfiguration {
     @Bean(name = BEAN_QUALIFIER_OPEN_API_EXT_DOCS)
     @ConditionalOnProperty(prefix = PROPERTIES_OPEN_API_EXT_DOCS, name = "url")
     @ConfigurationProperties(PROPERTIES_OPEN_API_EXT_DOCS)
-    public ExternalDocumentation getOpenAPIExternalDocumentation() {
+    ExternalDocumentation getOpenAPIExternalDocumentation() {
         return new ExternalDocumentation();
     }
 
@@ -232,7 +230,7 @@ public class OpenApiConfiguration {
     @Bean(name = BEAN_QUALIFIER_OPEN_API_INFO)
     @ConditionalOnProperty(prefix = PROPERTIES_OPEN_API_INFO, name = { "contact.email", "contact.name" })
     @ConfigurationProperties(PROPERTIES_OPEN_API_INFO)
-    public Info getOpenAPIInfo() {
+    Info getOpenAPIInfo() {
         return new Info();
     }
 
@@ -254,7 +252,7 @@ public class OpenApiConfiguration {
      */
     @Bean(BEAN_QUALIFIER_GROUPED_OPEN_API_PROPERTIES)
     @ConfigurationProperties(PROPERTIES_GROUPED_OPEN_API)
-    public Map<String, GroupedOpenApiProperties> loadGroupedOpenApiProperties() {
+    Map<String, GroupedOpenApiProperties> loadGroupedOpenApiProperties() {
         return new ConcurrentLinkedHashMap<String, GroupedOpenApiProperties>();
     }
 
@@ -309,8 +307,7 @@ public class OpenApiConfiguration {
     }
 
     /**
-     * {@link GroupedOpenApiProperties} 설정을 {@link GroupedOpenApi} 객체로 변환합니다.
-     * <br>
+     * {@link GroupedOpenApiProperties} 설정을 {@link GroupedOpenApi} 객체로 변환합니다. <br>
      * 
      * <pre>
      * [개정이력]

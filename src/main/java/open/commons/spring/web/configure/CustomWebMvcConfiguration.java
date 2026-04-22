@@ -68,8 +68,7 @@ import open.commons.spring.web.handler.PostProcessingHandlerInterceptor;
 /**
  * 사용자 정의 설정을 자동으로 등록해주는 클래스.
  * 
- * <h1>사용자 정의 Enum 클래스 등 import
- * open.commons.spring.web.enums.EnumConverterFactory;록</h1>
+ * <h1>사용자 정의 Enum 클래스 등 import open.commons.spring.web.enums.EnumConverterFactory;록</h1>
  * <h2>1. {@link Enum} 클래스 정보가 있는 패키지 정의</h2>
  * 
  * import open.commons.spring.web.enums.EnumPackages;
@@ -558,8 +557,7 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
 
     /**
      * {@link HandlerInterceptor}에서 처리하지 않을 URL 패턴 설정을 등록합니다. <br>
-     * {@link InterceptorRegistration#excludePathPatterns(String...)}에 사용될
-     * 정보입니다.
+     * {@link InterceptorRegistration#excludePathPatterns(String...)}에 사용될 정보입니다.
      * 
      * <pre>
      * [개정이력]

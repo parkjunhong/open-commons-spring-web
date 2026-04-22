@@ -55,12 +55,10 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
  *            (@see {@link ThreadPoolTaskExecutor#setQueueCapacity(int)})
  * @param allowCoreThreadTimeOut
  *            코어 스레드에 대해 타임아웃 종료를 허용할지 여부입니다. (기본값: false)<br>
- *            (@see
- *            {@link ThreadPoolTaskExecutor#setAllowCoreThreadTimeOut(boolean)})
+ *            (@see {@link ThreadPoolTaskExecutor#setAllowCoreThreadTimeOut(boolean)})
  * @param prestartAllCoreThreads
  *            모든 코어 스레드를 미리 시작할지 여부입니다. (기본값: false)<br>
- *            (@see
- *            {@link ThreadPoolTaskExecutor#setPrestartAllCoreThreads(boolean)})
+ *            (@see {@link ThreadPoolTaskExecutor#setPrestartAllCoreThreads(boolean)})
  * @param awaitTerminationMillis
  *            종료(shutdown) 시 작업 완료를 기다릴 최대 밀리초 시간입니다. (기본값: 0)<br>
  *            (@see
@@ -75,8 +73,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
  *            {@link org.springframework.scheduling.concurrent.ExecutorConfigurationSupport#setWaitForTasksToCompleteOnShutdown(boolean)})
  * @param daemon
  *            이 실행기가 데몬 스레드를 생성할지 여부입니다. (기본값: true)<br>
- *            (@see
- *            {@link org.springframework.util.CustomizableThreadCreator#setDaemon(boolean)})
+ *            (@see {@link org.springframework.util.CustomizableThreadCreator#setDaemon(boolean)})
  * @param threadGroupName
  *            생성된 스레드가 속할 스레드 그룹의 이름입니다. (기본값: "async")<br>
  *            (@see

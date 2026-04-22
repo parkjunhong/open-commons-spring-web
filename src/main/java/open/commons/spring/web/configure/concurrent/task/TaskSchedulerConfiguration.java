@@ -95,8 +95,7 @@ public class TaskSchedulerConfiguration {
     }
 
     /**
-     * {@link Scheduled} 어노테이션이 적용된 메소드를 실행하는 내부
-     * {@link ThreadPoolTaskScheduler}의 설정값을 제공합니다.<br>
+     * {@link Scheduled} 어노테이션이 적용된 메소드를 실행하는 내부 {@link ThreadPoolTaskScheduler}의 설정값을 제공합니다.<br>
      * 
      * <pre>
      * [개정이력]

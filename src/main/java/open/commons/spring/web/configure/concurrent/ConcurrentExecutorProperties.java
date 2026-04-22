@@ -36,8 +36,7 @@ import open.commons.spring.web.configure.concurrent.task.TaskSchedulerProperties
 import open.commons.spring.web.configure.properties.Const;
 
 /**
- * 'open-commons.spring.web.concurrent' 하위의 모든 병렬 처리 및 비동기 실행기 설정을 통합 관리하는 레코드.
- * <br>
+ * 'open-commons.spring.web.concurrent' 하위의 모든 병렬 처리 및 비동기 실행기 설정을 통합 관리하는 레코드. <br>
  * *
  * 
  * <pre>
@@ -48,27 +47,22 @@ import open.commons.spring.web.configure.properties.Const;
  * </pre>
  * 
  * @param executor
- *            기본 스레드 풀 실행기({@link java.util.concurrent.ThreadPoolExecutor}) 설정
- *            정보입니다.
+ *            기본 스레드 풀 실행기({@link java.util.concurrent.ThreadPoolExecutor}) 설정 정보입니다.
  * @param scheduledExecutor
- *            지연 및 주기적 작업
- *            실행기({@link java.util.concurrent.ScheduledThreadPoolExecutor}) 설정
- *            정보입니다.
+ *            지연 및 주기적 작업 실행기({@link java.util.concurrent.ScheduledThreadPoolExecutor}) 설정 정보입니다.
  * @param taskExecutor
  *            스프링의 비동기 작업
- *            실행기({@link org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor})
- *            설정 정보입니다.
+ *            실행기({@link org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor}) 설정
+ *            정보입니다.
  * @param taskScheduler
  *            스프링의 스케줄링 작업
- *            실행기({@link org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler})
- *            설정 정보입니다.
+ *            실행기({@link org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler}) 설정
+ *            정보입니다.
  * @param virtualTaskExecutor
- *            가상 스레드 기반의 비동기 작업
- *            실행기({@link org.springframework.core.task.SimpleAsyncTaskExecutor})
+ *            가상 스레드 기반의 비동기 작업 실행기({@link org.springframework.core.task.SimpleAsyncTaskExecutor})
  *            설정 정보입니다.
  * @param virtualTaskScheduler
- *            가상 스레드 기반의 스케줄링 작업
- *            실행기({@link org.springframework.core.task.SimpleAsyncTaskScheduler})
+ *            가상 스레드 기반의 스케줄링 작업 실행기({@link org.springframework.core.task.SimpleAsyncTaskScheduler})
  *            설정 정보입니다.
  *
  * @since 2026. 4. 21.

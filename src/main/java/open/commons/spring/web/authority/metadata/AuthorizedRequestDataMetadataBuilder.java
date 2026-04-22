@@ -94,8 +94,7 @@ public class AuthorizedRequestDataMetadataBuilder {
         ObjectBuilder object();
 
         /**
-         * 여러 개의 {@link AuthorizedRequestDataObjectMetadata}를 생성하는 빌더를 제공합니다.
-         * <br>
+         * 여러 개의 {@link AuthorizedRequestDataObjectMetadata}를 생성하는 빌더를 제공합니다. <br>
          * <br>
          * 
          * <pre>
@@ -420,8 +419,7 @@ public class AuthorizedRequestDataMetadataBuilder {
         AuthorizedRequestDataFieldMetadata build();
 
         /**
-         * {@link AuthorizedRequestDataFieldMetadata#handleBean()}에 해당하는 값을
-         * 설정합니다.
+         * {@link AuthorizedRequestDataFieldMetadata#handleBean()}에 해당하는 값을 설정합니다.
          * 
          * <pre>
         * [개정이력]
@@ -440,8 +438,7 @@ public class AuthorizedRequestDataMetadataBuilder {
         FieldBuilder handleBean(String handleBean);
 
         /**
-         * {@link AuthorizedRequestDataFieldMetadata#handleType()}에 해당하는 값을
-         * 설정합니다.<br>
+         * {@link AuthorizedRequestDataFieldMetadata#handleType()}에 해당하는 값을 설정합니다.<br>
          * 
          * <pre>
         * [개정이력]
@@ -536,8 +533,7 @@ public class AuthorizedRequestDataMetadataBuilder {
         ObjectBuilder fieldHandleBean(String fieldHandleBean);
 
         /**
-         * {@link AuthorizedRequestData}가 적용된 {@link Field}를 소유한 데이터 유형을
-         * 설정합니다.<br>
+         * {@link AuthorizedRequestData}가 적용된 {@link Field}를 소유한 데이터 유형을 설정합니다.<br>
          * 
          * <pre>
         * [개정이력]

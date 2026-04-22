@@ -58,8 +58,7 @@ public class RestApiGroup {
     private String description;
 
     /**
-     * {@link Controller}, {@link RestController} 클래스에 선언된
-     * {@link RequestMapping#path()} 값
+     * {@link Controller}, {@link RestController} 클래스에 선언된 {@link RequestMapping#path()} 값
      */
     private String groupPath;
 

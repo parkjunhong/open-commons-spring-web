@@ -66,8 +66,8 @@ public interface IConvertingService {
      * @param resultSrc
      *            변환 이전 데이터 조회 결과
      * @param converter
-     *            변환 함수. (<b><i>{@code resultSrc}</i></b>의
-     *            {@link Result#isSuccess()} == <b><i>{@code true}</i></b>인 경우
+     *            변환 함수. (<b><i>{@code resultSrc}</i></b>의 {@link Result#isSuccess()} ==
+     *            <b><i>{@code true}</i></b>인 경우
      *            <font color="red"><b><i>{@code NOT NULL}</i></b></font>)
      * @return
      *
@@ -167,8 +167,8 @@ public interface IConvertingService {
      * @param resultSrc
      *            변환 이전 데이터 조회 결과
      * @param converter
-     *            변환 함수. (<b><i>{@code resultSrc}</i></b>의
-     *            {@link Result#isSuccess()} == <b><i>{@code true}</i></b>인 경우
+     *            변환 함수. (<b><i>{@code resultSrc}</i></b>의 {@link Result#isSuccess()} ==
+     *            <b><i>{@code true}</i></b>인 경우
      *            <font color="red"><b><i>{@code NOT NULL}</i></b></font>)
      * @return
      *
@@ -263,8 +263,8 @@ public interface IConvertingService {
      * @param resultSrc
      *            변환 이전 데이터 조회 결과
      * @param converter
-     *            변환 함수. (<b><i>{@code resultSrc}</i></b>의
-     *            {@link Result#isSuccess()} == <b><i>{@code true}</i></b>인 경우
+     *            변환 함수. (<b><i>{@code resultSrc}</i></b>의 {@link Result#isSuccess()} ==
+     *            <b><i>{@code true}</i></b>인 경우
      *            <font color="red"><b><i>{@code NOT NULL}</i></b></font>)
      * @return
      *

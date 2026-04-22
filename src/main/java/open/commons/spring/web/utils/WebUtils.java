@@ -584,8 +584,7 @@ public class WebUtils {
      */
     public static class TemplateUrlSplit {
         /**
-         * ({scheme}://)?({authority}@)?{host}:{port} 정보 ({query}, {fragment}
-         * 제외)
+         * ({scheme}://)?({authority}@)?{host}:{port} 정보 ({query}, {fragment} 제외)
          */
         public final String path;
         /** {query}(#{fragment}) 정보 */

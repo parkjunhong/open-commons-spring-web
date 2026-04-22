@@ -73,8 +73,7 @@ import open.commons.spring.web.authority.AuthorizedRequest;
 
 /**
  * Spring기반 어플리케이션이 제공하는 REST API 정보를 제공합니다.<br>
- * {@link Controller}, {@link RestController} 를 구현한 클래스에는 {@link Tag#name()}
- * 어노테이션이 설정되어야 하며,<br>
+ * {@link Controller}, {@link RestController} 를 구현한 클래스에는 {@link Tag#name()} 어노테이션이 설정되어야 하며,<br>
  * 메소드에는 {@link Operation#summary()} 어노테이션 정보가 설정되어야 합니다.<br>
  * 
  * 설정파일(yaml 파일 기준)에는 아래와 같이 설정하여 기본 Path 정보를 수정할 수 있습니다.

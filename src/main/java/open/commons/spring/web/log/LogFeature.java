@@ -39,8 +39,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.Controller;
 
 /**
- * {@link RestController}/{@link Controller}, {@link Service},
- * {@link Component}에서 제공하는 기능을 구분하여 별도의 로그파일 저장하기 위한 정보를 제공합니다.
+ * {@link RestController}/{@link Controller}, {@link Service}, {@link Component}에서 제공하는 기능을 구분하여 별도의
+ * 로그파일 저장하기 위한 정보를 제공합니다.
  * 
  * @since 2025. 7. 28.
  * @version 0.8.0

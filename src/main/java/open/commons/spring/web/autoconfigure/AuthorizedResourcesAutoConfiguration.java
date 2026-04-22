@@ -98,8 +98,7 @@ public class AuthorizedResourcesAutoConfiguration {
     }
 
     /**
-     * 기본 JsonMapper의 설정을 그대로 상속받으면서, 데이터 보안(난독/암복호화) 모듈만 추가된 특수 목적의 JsonMapper를
-     * 생성합니다. <br>
+     * 기본 JsonMapper의 설정을 그대로 상속받으면서, 데이터 보안(난독/암복호화) 모듈만 추가된 특수 목적의 JsonMapper를 생성합니다. <br>
      * 
      * <pre>
      * [개정이력]

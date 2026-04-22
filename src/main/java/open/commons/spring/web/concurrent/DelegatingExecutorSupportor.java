@@ -35,8 +35,7 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.TaskScheduler;
 
 /**
- * {@link ExecutorService} 구현 객체를 'delegate'로써 사용하는 'Delegating'
- * {@link ExecutorService}를 제공하는 클래스.
+ * {@link ExecutorService} 구현 객체를 'delegate'로써 사용하는 'Delegating' {@link ExecutorService}를 제공하는 클래스.
  * 
  * <pre>
  * [개정이력]

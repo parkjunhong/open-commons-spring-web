@@ -38,8 +38,7 @@ import open.commons.core.Result;
 public interface IAuthorizedResourceAuthenticationPause {
 
     /**
-     * 현재 로그인한 사용자 정보를 기반으로 권한기반 데이터 제어(Authorized-Resources) 비활성화 여부를 판단합니다.
-     * <br>
+     * 현재 로그인한 사용자 정보를 기반으로 권한기반 데이터 제어(Authorized-Resources) 비활성화 여부를 판단합니다. <br>
      * 
      * <pre>
      * [개정이력]

@@ -81,8 +81,7 @@ public interface IExceptionResponseWriter {
     }
 
     /**
-     * 요청정보({@link HttpServletRequest})와 오류 정보({@link Exception})를 이용하여 응답 데이터를
-     * 생성합니다. <br>
+     * 요청정보({@link HttpServletRequest})와 오류 정보({@link Exception})를 이용하여 응답 데이터를 생성합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -105,8 +104,7 @@ public interface IExceptionResponseWriter {
     }
 
     /**
-     * {@link Exception}에 연결된 {@link HttpStatus}가 없는 경우 사용할 {@link HttpStatus}를
-     * 제공합니다. <br>
+     * {@link Exception}에 연결된 {@link HttpStatus}가 없는 경우 사용할 {@link HttpStatus}를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]

@@ -339,8 +339,7 @@ public class AbstractComponent {
     }
 
     /**
-     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다.
-     * <br>
+     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -379,8 +378,7 @@ public class AbstractComponent {
     }
 
     /**
-     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다.
-     * <br>
+     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -416,8 +414,7 @@ public class AbstractComponent {
     }
 
     /**
-     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다.
-     * <br>
+     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -455,8 +452,7 @@ public class AbstractComponent {
     }
 
     /**
-     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다.
-     * <br>
+     * {@link SpringBootApplication} 클래스의 main 함수에 전달된 파라미터에서 필요한 정보를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]

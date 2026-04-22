@@ -77,8 +77,8 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
     }
 
     /**
-     * {@link AuthorizedFieldMetadata}는 {@link AuthorizedObjectMetadata} 내에서 동일한
-     * {@link #name}값을 가질 수가 없습니다. 이 내용을 기준으로 동일 여부를 {@link #name}으로만 비교합니다.
+     * {@link AuthorizedFieldMetadata}는 {@link AuthorizedObjectMetadata} 내에서 동일한 {@link #name}값을 가질
+     * 수가 없습니다. 이 내용을 기준으로 동일 여부를 {@link #name}으로만 비교합니다.
      * 
      * @since 2025. 6. 13.
      * @version 0.8.0
@@ -190,8 +190,8 @@ public class AuthorizedFieldMetadata extends AuthorizedMetadata {
     }
 
     /**
-     * {@link AuthorizedFieldMetadata}는 {@link AuthorizedObjectMetadata} 내에서 동일한
-     * {@link #name}값을 가질 수가 없습니다. 이 내용을 기준으로 해시코드 생성을 {@link #name}으로만 비교합니다.
+     * {@link AuthorizedFieldMetadata}는 {@link AuthorizedObjectMetadata} 내에서 동일한 {@link #name}값을 가질
+     * 수가 없습니다. 이 내용을 기준으로 해시코드 생성을 {@link #name}으로만 비교합니다.
      * 
      * @since 2025. 6. 13.
      * @version 0.8.0

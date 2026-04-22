@@ -44,22 +44,20 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
  * </pre>
  * 
  * @param corePoolSize
- *            풀에 유지할 기본 스레드 수입니다. 유휴 상태여도 유지되지만, allowCoreThreadTimeOut이 설정된 경우
- *            예외입니다. (기본값: 8)<br>
+ *            풀에 유지할 기본 스레드 수입니다. 유휴 상태여도 유지되지만, allowCoreThreadTimeOut이 설정된 경우 예외입니다. (기본값: 8)<br>
  *            (@see {@link ThreadPoolExecutor#setCorePoolSize(int)})
  * @param maximumPoolSize
  *            풀에 허용되는 최대 스레드 수입니다. (기본값: 1024)<br>
  *            (@see {@link ThreadPoolExecutor#setMaximumPoolSize(int)})
  * @param keepAliveTime
- *            코어 스레드 수를 초과하여 생성된 유휴 스레드가 종료 전까지 새 작업을 기다리는 최대 시간입니다. (기본값:
- *            60)<br>
+ *            코어 스레드 수를 초과하여 생성된 유휴 스레드가 종료 전까지 새 작업을 기다리는 최대 시간입니다. (기본값: 60)<br>
  *            (@see {@link ThreadPoolExecutor#setKeepAliveTime(long, TimeUnit)})
  * @param timeUnit
  *            keepAliveTime 값의 시간 단위입니다. (기본값: "SECOND")<br>
  *            (@see {@link ThreadPoolExecutor#setKeepAliveTime(long, TimeUnit)})
  * @param allowCoreThreadTimeOut
- *            기본값은 false이며 코어 스레드는 유휴 상태여도 유지됩니다. true이면 코어 스레드도 keepAliveTime을
- *            적용받아 유휴 시 종료됩니다. (기본값: false)<br>
+ *            기본값은 false이며 코어 스레드는 유휴 상태여도 유지됩니다. true이면 코어 스레드도 keepAliveTime을 적용받아 유휴 시 종료됩니다.
+ *            (기본값: false)<br>
  *            (@see {@link ThreadPoolExecutor#allowCoreThreadTimeOut(boolean)})
  * @param continueExistingPeriodicTasksAfterShutdown
  *            종료(shutdown) 후에도 기존 주기적 작업을 계속 실행할지 여부입니다. (기본값: false)<br>
@@ -71,8 +69,7 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
  *            {@link ScheduledThreadPoolExecutor#setExecuteExistingDelayedTasksAfterShutdownPolicy(boolean)})
  * @param removeOnCancel
  *            작업 취소 시 큐에서 즉시 제거할지 여부입니다. (기본값: false)<br>
- *            (@see
- *            {@link ScheduledThreadPoolExecutor#setRemoveOnCancelPolicy(boolean)})
+ *            (@see {@link ScheduledThreadPoolExecutor#setRemoveOnCancelPolicy(boolean)})
  *
  * @since 2026. 4. 21.
  * @version 4.0.0

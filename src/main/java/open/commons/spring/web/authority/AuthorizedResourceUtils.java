@@ -36,8 +36,7 @@ import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.utils.BeanUtils;
 
 /**
- * {@link AuthorizedObject}, {@link AuthorizedField},
- * {@link AuthorizedRequestData} 관련 기능을 제공하는 클래스.
+ * {@link AuthorizedObject}, {@link AuthorizedField}, {@link AuthorizedRequestData} 관련 기능을 제공하는 클래스.
  * 
  * @since 2025. 9. 25.
  * @version 0.8.0

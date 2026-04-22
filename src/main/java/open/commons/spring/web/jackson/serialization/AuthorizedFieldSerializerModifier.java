@@ -71,8 +71,7 @@ public class AuthorizedFieldSerializerModifier extends ValueSerializerModifier {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 메타데이터 형태로 기술된 {@link AuthorizedObject}, {@link AuthorizedField} 설정 정보 제공
-     * 서비스
+     * 메타데이터 형태로 기술된 {@link AuthorizedObject}, {@link AuthorizedField} 설정 정보 제공 서비스
      */
     private final IAuthorizedResourcesMetadata authorizedResourcesMetadata;
 

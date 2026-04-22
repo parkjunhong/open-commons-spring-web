@@ -83,14 +83,14 @@ public class BeanUtils {
      * @param beanType
      *            Bean 유형
      * @param beanImplType
-     *            Bean 이름이 비어있는 경우, {beanType}에 해당하는 사용자 정의 bean이 없는 경우 제공할 bean
-     *            구현 클래스. (일반적으로 시스템 Bean을 제공할 목적으로 사용)
+     *            Bean 이름이 비어있는 경우, {beanType}에 해당하는 사용자 정의 bean이 없는 경우 제공할 bean 구현 클래스. (일반적으로 시스템
+     *            Bean을 제공할 목적으로 사용)
      * @param required
      *            Bean 객체 반환 필수 여부
      * 
      * @return Bean 이름에 해당하는 Bean 객체. <br>
-     *         Bean 이름이 비어 있는 경우 기본값을 반환. 단, 기본값이 null 인 경우
-     *         <code>beanType(Bean 유형)</code> 에 해당하는 Bean
+     *         Bean 이름이 비어 있는 경우 기본값을 반환. 단, 기본값이 null 인 경우 <code>beanType(Bean 유형)</code> 에 해당하는
+     *         Bean
      * 
      * @throws NoSuchBeanDefinitionException
      *             Bean 이름에 해당하는 Bean이 존재하지 않는 경우
@@ -211,14 +211,13 @@ public class BeanUtils {
      * @param beanType
      *            Bean 유형
      * @param defaultBean
-     *            Bean 이름이 비어있는 경우, {beanType}에 해당하는 사용자 정의 bean이 없는 경우 제공할 bean
-     *            유형
+     *            Bean 이름이 비어있는 경우, {beanType}에 해당하는 사용자 정의 bean이 없는 경우 제공할 bean 유형
      * @param required
      *            Bean 객체 반환 필수 여부
      * 
      * @return Bean 이름에 해당하는 Bean 객체. <br>
-     *         Bean 이름이 비어 있는 경우 기본값을 반환. 단, 기본값이 null 인 경우
-     *         <code>beanType(Bean 유형)</code> 에 해당하는 Bean
+     *         Bean 이름이 비어 있는 경우 기본값을 반환. 단, 기본값이 null 인 경우 <code>beanType(Bean 유형)</code> 에 해당하는
+     *         Bean
      * 
      * @throws NoSuchBeanDefinitionException
      *             Bean 이름에 해당하는 Bean이 존재하지 않는 경우

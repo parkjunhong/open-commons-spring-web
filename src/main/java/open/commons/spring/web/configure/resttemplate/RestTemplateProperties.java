@@ -34,8 +34,7 @@ import org.springframework.web.client.RestTemplate;
 import open.commons.spring.web.configure.properties.Const;
 
 /**
- * {@link RestTemplate}의 {@link HttpComponentsClientHttpRequestFactory} 설정을 위한
- * 프로퍼티 레코드.
+ * {@link RestTemplate}의 {@link HttpComponentsClientHttpRequestFactory} 설정을 위한 프로퍼티 레코드.
  * 
  * <pre>
  * [개정이력]

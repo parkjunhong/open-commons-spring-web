@@ -167,8 +167,7 @@ public class AuthorizedResourcesMetadataConfiguration {
     }
 
     /**
-     * <code>open-commons.application.authorized-object-metadata</code> 항목으로 설정된
-     * 값을 제공합니다. <br>
+     * <code>open-commons.application.authorized-object-metadata</code> 항목으로 설정된 값을 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]

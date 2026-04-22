@@ -37,8 +37,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * {@link Controller}, {@link RestController} 이 설정된 'controller' 클래스의 메소드에
- * 설정하여,<br>
+ * {@link Controller}, {@link RestController} 이 설정된 'controller' 클래스의 메소드에 설정하여,<br>
  * 'active profile'이나 기타 설정(추후 개발)과 함께 메소드의 실행 여부를 제어하는 정보. <br>
  * 
  * <pre>
@@ -58,8 +57,7 @@ import org.springframework.web.bind.annotation.RestController;
 public @interface ProfilesOn {
 
     /**
-     * {@link Environment#getActiveProfiles()}(+추가설정) 과 {@link #standards()} 을
-     * 비교/판단하는 방법
+     * {@link Environment#getActiveProfiles()}(+추가설정) 과 {@link #standards()} 을 비교/판단하는 방법
      */
     DecisionRule rule();
 
@@ -70,39 +68,37 @@ public @interface ProfilesOn {
     Strategy strategy();
 
     /**
-     * {@link Environment#getActiveProfiles()}(+추가설정)과
-     * {@link ProfilesOn#standards()} 값을 비교하는 규칙
+     * {@link Environment#getActiveProfiles()}(+추가설정)과 {@link ProfilesOn#standards()} 값을 비교하는 규칙
      * 
      * @since 2025. 11. 21.
      * @version 2.1.0
      */
     public static enum DecisionRule {
         /**
-         * {@link Environment#getActiveProfiles()}(+추가설정) 중 하나와
-         * {@link ProfilesOn#standards()} 중 하나가 정확히 일치하는지
+         * {@link Environment#getActiveProfiles()}(+추가설정) 중 하나와 {@link ProfilesOn#standards()} 중 하나가
+         * 정확히 일치하는지
          */
         EQ,
         /**
-         * {@link Environment#getActiveProfiles()}(+추가설정)가
-         * {@link ProfilesOn#standards()} 중 하나로 '시작'하는지
+         * {@link Environment#getActiveProfiles()}(+추가설정)가 {@link ProfilesOn#standards()} 중 하나로
+         * '시작'하는지
          */
         BEGIN,
         /**
-         * {@link Environment#getActiveProfiles()}(+추가설정)가
-         * {@link ProfilesOn#standards()} 중 하나로 '끝'나는지
+         * {@link Environment#getActiveProfiles()}(+추가설정)가 {@link ProfilesOn#standards()} 중 하나로
+         * '끝'나는지
          */
         END,
         /**
-         * {@link Environment#getActiveProfiles()}(+추가설정)가
-         * {@link ProfilesOn#standards()} 중 하나의 정규식에 매칭되는지
+         * {@link Environment#getActiveProfiles()}(+추가설정)가 {@link ProfilesOn#standards()} 중 하나의 정규식에
+         * 매칭되는지
          */
         REGEX
     }
 
     /**
-     * {@link Environment#getActiveProfiles()}(+추가설정)과
-     * "{@link ProfilesOn#standards()} x {@link ProfilesOn#rule()}"의 비교/판단 결과를
-     * 적용하는 방식.
+     * {@link Environment#getActiveProfiles()}(+추가설정)과 "{@link ProfilesOn#standards()} x
+     * {@link ProfilesOn#rule()}"의 비교/판단 결과를 적용하는 방식.
      * 
      * @since 2025. 11. 21.
      * @version 2.1.0

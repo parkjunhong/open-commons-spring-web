@@ -43,6 +43,7 @@ import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.Trigger;
 import org.springframework.scheduling.support.ScheduledMethodRunnable;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.aspect.LogFeatureAspect;
 import open.commons.spring.web.log.LogFeature;
@@ -137,8 +138,7 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @see org.springframework.scheduling.TaskScheduler#scheduleAtFixedRate(java.lang.Runnable,
      *      java.util.Date, long)
      * 
-     * @deprecated {@link #scheduleAtFixedRate(Runnable, Instant, Duration)}를
-     *             사용하기 바랍니다.
+     * @deprecated {@link #scheduleAtFixedRate(Runnable, Instant, Duration)}를 사용하기 바랍니다.
      */
     @Override
     @Deprecated(since = "4.0.0", forRemoval = true)
@@ -198,8 +198,7 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable,
      *      java.util.Date, long)
      * 
-     * @deprecated {@link #scheduleWithFixedDelay(Runnable, Instant, Duration)}를
-     *             사용하기 바랍니다.
+     * @deprecated {@link #scheduleWithFixedDelay(Runnable, Instant, Duration)}를 사용하기 바랍니다.
      */
     @Override
     @Deprecated(since = "4.0.0", forRemoval = true)
@@ -243,8 +242,7 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @see org.springframework.scheduling.TaskScheduler#scheduleWithFixedDelay(java.lang.Runnable,
      *      long)
      * 
-     * @deprecated {@link #scheduleWithFixedDelay(Runnable, Duration)}를 사용하기
-     *             바랍니다.
+     * @deprecated {@link #scheduleWithFixedDelay(Runnable, Duration)}를 사용하기 바랍니다.
      */
     @Override
     @Deprecated(since = "4.0.0", forRemoval = true)
@@ -269,6 +267,8 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
      * @version 0.8.0
      */
     protected Runnable wrap(Runnable runnable) {
+        AssertUtils2.notNull(runnable);
+
         if (!isAnnotatedByLogFeature(runnable, LogFeature.class)) {
             return runnable;
         }
@@ -287,9 +287,10 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
     }
 
     protected static String findSpecifiedThreadName(Runnable runnable) {
+        AssertUtils2.notNull(runnable);
+
         // ScheduledMethodRunnable
-        if (runnable instanceof ScheduledMethodRunnable) {
-            ScheduledMethodRunnable r = (ScheduledMethodRunnable) runnable;
+        if (runnable instanceof ScheduledMethodRunnable r) {
             LogFeature anno = AnnotationUtils.findAnnotation(r.getMethod(), LogFeature.class);
             if (anno != null) {
                 return StringUtils.isNullOrEmptyString(anno.thread()) ? null : anno.thread().trim();
@@ -302,9 +303,10 @@ public class DelegatingTaskScheduler<S extends TaskScheduler & AsyncTaskExecutor
     }
 
     protected static <A extends Annotation> boolean isAnnotatedByLogFeature(Runnable runnable, Class<A> annotation) {
+        AssertUtils2.notNulls(runnable, annotation);
+
         // ScheduledMethodRunnable
-        if (runnable instanceof ScheduledMethodRunnable) {
-            ScheduledMethodRunnable r = (ScheduledMethodRunnable) runnable;
+        if (runnable instanceof ScheduledMethodRunnable r) {
             A anno = AnnotationUtils.findAnnotation(r.getMethod(), annotation);
             return anno != null;
         } else {

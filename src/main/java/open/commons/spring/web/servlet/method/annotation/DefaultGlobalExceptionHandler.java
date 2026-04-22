@@ -218,8 +218,7 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *
      * @see org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler#handleExceptionInternal(java.lang.Exception,
      *      java.lang.Object, org.springframework.http.HttpHeaders,
-     *      org.springframework.http.HttpStatus,
-     *      org.springframework.web.context.request.WebRequest)
+     *      org.springframework.http.HttpStatus, org.springframework.web.context.request.WebRequest)
      */
     @Override
     protected @Nullable ResponseEntity<Object> handleExceptionInternal(Exception ex, @Nullable Object body,

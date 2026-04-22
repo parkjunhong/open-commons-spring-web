@@ -440,8 +440,7 @@ public class AuthorizedMetadataBuilder {
          * </pre>
          *
          * @param authorityBean
-         *            {@link IFieldAccessAuthorityProvider}를 구현함 {@link Bean}
-         *            이름.
+         *            {@link IFieldAccessAuthorityProvider}를 구현함 {@link Bean} 이름.
          * @return
          *
          * @since 2025. 6. 18.
@@ -541,8 +540,7 @@ public class AuthorizedMetadataBuilder {
          * </pre>
          *
          * @param authorityBean
-         *            {@link IFieldAccessAuthorityProvider}를 구현함 {@link Bean}
-         *            이름.
+         *            {@link IFieldAccessAuthorityProvider}를 구현함 {@link Bean} 이름.
          * @return
          *
          * @since 2025. 6. 18.

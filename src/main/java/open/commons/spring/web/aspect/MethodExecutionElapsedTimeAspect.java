@@ -136,8 +136,7 @@ public abstract class MethodExecutionElapsedTimeAspect extends AbstractMethodCal
      * @param handleIfOriginatedFromController
      *            메소드 호출이 {@link Controller}에서부터 시작된 경우에만 AOP 적용 여부
      * @param enableLogRouting
-     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에
-     *            따라서 로그 분기 적용 여부
+     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에 따라서 로그 분기 적용 여부
      *
      * @since 2025. 8. 12.
      * @version 0.8.0
@@ -165,8 +164,7 @@ public abstract class MethodExecutionElapsedTimeAspect extends AbstractMethodCal
      * @param handleIfOriginatedFromController
      *            메소드 호출이 {@link Controller}에서부터 시작된 경우에만 AOP 적용 여부
      * @param enableLogRouting
-     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에
-     *            따라서 로그 분기 적용 여부
+     *            {@link MDC} 에 {@link LogFeature#PROP_FEATURE} 값이 존재하는 경우 해당 값에 따라서 로그 분기 적용 여부
      * @param enableIndentation
      *            들여쓰기 적용 여부
      *

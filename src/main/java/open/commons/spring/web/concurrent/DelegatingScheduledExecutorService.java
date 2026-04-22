@@ -44,6 +44,7 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.scheduling.support.DelegatingErrorHandlingRunnable;
 
+import open.commons.core.utils.AssertUtils2;
 import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.aspect.LogFeatureAspect;
 import open.commons.spring.web.log.LogFeature;
@@ -103,6 +104,8 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      */
     @Override
     public <V> ScheduledFuture<V> schedule(Callable<V> callable, long delay, TimeUnit unit) {
+        AssertUtils2.notNulls(callable, unit);
+
         if (!(callable instanceof MdcWrappedJob //
                 || callable instanceof RunnableFuture)) {
             callable = wrap(callable);
@@ -116,11 +119,13 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      * @since 2025. 8. 1.
      * @version 0.8.0
      *
-     * @see java.util.concurrent.ScheduledExecutorService#schedule(java.lang.Runnable,
-     *      long, java.util.concurrent.TimeUnit)
+     * @see java.util.concurrent.ScheduledExecutorService#schedule(java.lang.Runnable, long,
+     *      java.util.concurrent.TimeUnit)
      */
     @Override
     public ScheduledFuture<?> schedule(Runnable command, long delay, TimeUnit unit) {
+        AssertUtils2.notNulls(command, unit);
+
         if (!(command instanceof MdcWrappedJob //
                 || command instanceof RunnableFuture)) {
             command = wrap(command);
@@ -139,6 +144,8 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      */
     @Override
     public ScheduledFuture<?> scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit) {
+        AssertUtils2.notNulls(command, unit);
+
         if (!(command instanceof MdcWrappedJob //
                 || command instanceof RunnableFuture)) {
             command = wrap(command);
@@ -156,6 +163,8 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      */
     @Override
     public ScheduledFuture<?> scheduleWithFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit) {
+        AssertUtils2.notNulls(command, unit);
+
         if (!(command instanceof MdcWrappedJob //
                 || command instanceof RunnableFuture)) {
             logger.trace("Wrap {} to forward MDC.", command);
@@ -193,8 +202,7 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      * @since 2025. 8. 1.
      * @version 0.8.0
      *
-     * @see java.util.concurrent.ExecutorService#submit(java.lang.Runnable,
-     *      java.lang.Object)
+     * @see java.util.concurrent.ExecutorService#submit(java.lang.Runnable, java.lang.Object)
      */
     @Override
     public <T> Future<T> submit(Runnable task, T result) {
@@ -243,6 +251,8 @@ public class DelegatingScheduledExecutorService extends DelegatingExecutorServic
      * @version 0.8.0
      */
     protected static String findSpecifiedThreadName(Runnable runnable) {
+        AssertUtils2.notNull(runnable);
+
         // ReschedulingRunnable: @SCheduled#cron() 이 아닌 다른 설정인 경우
         // DelegatingErrorHandlingRunnable: @Scheduled(initialDelay = 1,
         // fixedDelay = 10, timeUnit = TimeUnit.SECONDS)

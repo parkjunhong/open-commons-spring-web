@@ -100,10 +100,9 @@ import tools.jackson.databind.json.JsonMapper;
 import tools.jackson.databind.ser.FilterProvider;
 
 /**
- * 사용자 권한에 기반하여 {@link RestController} 또는 {@link Controller}에서 반환하는 데이터(VO)의 값을
- * 제어하는 클래스.<br>
- * 이 클래스를 사용하기 위해서는 {@link IFieldAccessAuthorityProvider}와
- * {@link IUnauthorizedFieldHandler}를 구현한 {@link Bean}이 제공되어야 합니다.
+ * 사용자 권한에 기반하여 {@link RestController} 또는 {@link Controller}에서 반환하는 데이터(VO)의 값을 제어하는 클래스.<br>
+ * 이 클래스를 사용하기 위해서는 {@link IFieldAccessAuthorityProvider}와 {@link IUnauthorizedFieldHandler}를 구현한
+ * {@link Bean}이 제공되어야 합니다.
  * 
  * <pre>
  * [개정이력]
@@ -126,14 +125,12 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
     public static final String BEAN_QUALIFIER = "open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConverter";
 
     /**
-     * {@link AbstractJacksonHttpMessageConverter}의
-     * <b><i>{@code JSON_VIEW_HINT}</i></b>가
+     * {@link AbstractJacksonHttpMessageConverter}의 <b><i>{@code JSON_VIEW_HINT}</i></b>가
      * <font color="red"><b><i>{@code private}</i></b></font>이어서 자체 설정.
      */
     private static final String JSON_VIEW_HINT = JsonView.class.getName();
     /**
-     * {@link AbstractJacksonHttpMessageConverter}의
-     * <b><i>{@code FILTER_PROVIDER_HINT}</i></b>가
+     * {@link AbstractJacksonHttpMessageConverter}의 <b><i>{@code FILTER_PROVIDER_HINT}</i></b>가
      * <font color="red"><b><i>{@code private}</i></b></font>이어서 자체 설정.
      */
     private static final String FILTER_PROVIDER_HINT = FilterProvider.class.getName();
@@ -151,8 +148,7 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
     private final @NonNull IAuthorizedResourcesMetadata authorizedResourcesMetadata;
 
     /**
-     * {@link AbstractJacksonHttpMessageConverter}의
-     * <b><i>{@code mapperRegistrations}</i></b>가
+     * {@link AbstractJacksonHttpMessageConverter}의 <b><i>{@code mapperRegistrations}</i></b>가
      * <font color="red"><b><i>{@code private}</i></b></font>이어서 자체 설정.
      */
     private @Nullable Map<Class<?>, Map<MediaType, JsonMapper>> mapperRegistrations;
@@ -226,8 +222,7 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
 
     /**
      * <p>
-     * {@link AbstractJacksonHttpMessageConverter} 클래스의
-     * <b><i>{@code ENCODINGS}</i></b> 및
+     * {@link AbstractJacksonHttpMessageConverter} 클래스의 <b><i>{@code ENCODINGS}</i></b> 및
      * <b><i>{@code mapperRegistrations}</i></b>가
      * <font color="red"><b><i>{@code private}</i></b></font>이어서 overriding 함.
      * </p>
@@ -250,8 +245,7 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
 
     /**
      * <p>
-     * {@link AbstractJacksonHttpMessageConverter} 클래스의
-     * <b><i>{@code ENCODINGS}</i></b> 및
+     * {@link AbstractJacksonHttpMessageConverter} 클래스의 <b><i>{@code ENCODINGS}</i></b> 및
      * <b><i>{@code mapperRegistrations}</i></b>가
      * <font color="red"><b><i>{@code private}</i></b></font>이어서 overriding 함.
      * </p>
@@ -284,8 +278,7 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
 
     /**
      * <p>
-     * {@link AbstractJacksonHttpMessageConverter} 클래스의
-     * <b><i>{@code ENCODINGS}</i></b> 가
+     * {@link AbstractJacksonHttpMessageConverter} 클래스의 <b><i>{@code ENCODINGS}</i></b> 가
      * <font color="red"><b><i>{@code private}</i></b></font>이어서 overriding 함.
      * </p>
      * {@inheritDoc}
@@ -308,8 +301,8 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
     }
 
     /**
-     * {@link AbstractJacksonHttpMessageConverter} 클래스가 {@link OjectMapper}를
-     * 선택하는 메커니즘을 최대한 따르기 위해서 {@link AbstractJacksonHttpMessageConverter} 클래스의
+     * {@link AbstractJacksonHttpMessageConverter} 클래스가 {@link OjectMapper}를 선택하는 메커니즘을 최대한 따르기 위해서
+     * {@link AbstractJacksonHttpMessageConverter} 클래스의
      * <b><i>{@code org.springframework.http.converter.AbstractJacksonHttpMessageConverter.getMapperRegistrations()}</i></b>를
      * 이관한 메소드입니다. <br>
      * 
@@ -331,9 +324,8 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
 
     /**
      * <p>
-     * {@link AbstractJacksonHttpMessageConverter} 클래스의
-     * <b><i>{@code mapperRegistrations}</i></b> 정보를 제공하는
-     * <b><i>{@code getMapperRegistrations()}</i></b> 메소드가
+     * {@link AbstractJacksonHttpMessageConverter} 클래스의 <b><i>{@code mapperRegistrations}</i></b>
+     * 정보를 제공하는 <b><i>{@code getMapperRegistrations()}</i></b> 메소드가
      * <font color="red"><b><i>{@code private}</i></b></font>이어서 overriding 함.
      * </p>
      * 
@@ -356,9 +348,8 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
 
     /**
      * <p>
-     * {@link AbstractJacksonHttpMessageConverter} 클래스의
-     * <b><i>{@code mapperRegistrations}</i></b> 정보를 제공하는
-     * <b><i>{@code getMapperRegistrations()}</i></b> 메소드가
+     * {@link AbstractJacksonHttpMessageConverter} 클래스의 <b><i>{@code mapperRegistrations}</i></b>
+     * 정보를 제공하는 <b><i>{@code getMapperRegistrations()}</i></b> 메소드가
      * <font color="red"><b><i>{@code private}</i></b></font>이어서 overriding 함.
      * </p>
      * 
@@ -395,9 +386,8 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
     /**
      * <p>
      * {@link AbstractJacksonHttpMessageConverter} 클래스의
-     * <i>{@code readJavaType(JavaType, HttpInputMessage, Map<String, Object>)}</i>
-     * 메소드가 <font color="red"><b><i>{@code private}</i></b></font>이어서 overriding
-     * 함.
+     * <i>{@code readJavaType(JavaType, HttpInputMessage, Map<String, Object>)}</i> 메소드가
+     * <font color="red"><b><i>{@code private}</i></b></font>이어서 overriding 함.
      * </p>
      * 
      * {@inheritDoc}
@@ -420,9 +410,8 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
     /**
      * <p>
      * {@link AbstractJacksonHttpMessageConverter} 클래스의
-     * <i>{@code readJavaType(JavaType, HttpInputMessage, Map<String, Object>)}</i>
-     * 메소드가 <font color="red"><b><i>{@code private}</i></b></font>이어서 overriding
-     * 함.
+     * <i>{@code readJavaType(JavaType, HttpInputMessage, Map<String, Object>)}</i> 메소드가
+     * <font color="red"><b><i>{@code private}</i></b></font>이어서 overriding 함.
      * </p>
      * 
      * {@inheritDoc}
@@ -506,9 +495,9 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
 
     /**
      * <p>
-     * {@link AbstractJacksonHttpMessageConverter} 클래스의 <b>{@code ENCODINGS}</b>
-     * 및 <b>{@code mapperRegistrations}</b>가
-     * <font color="red"><b><i>{@code private}</i></b></font>이어서 overriding 함.
+     * {@link AbstractJacksonHttpMessageConverter} 클래스의 <b>{@code ENCODINGS}</b> 및
+     * <b>{@code mapperRegistrations}</b>가 <font color="red"><b><i>{@code private}</i></b></font>이어서
+     * overriding 함.
      * </p>
      * 
      * {@inheritDoc}
@@ -532,8 +521,8 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
     /**
      * {@link AbstractJacksonHttpMessageConverter#write(Object, ResolvableType, MediaType, HttpOutputMessage, Map)}
      * 를 로직을 그대로 차용하기 위해서 내부적으로 사용되는
-     * <b><i>{@code private ObjectMapper selectMapper(Class<?>, MediaType))}</i></b>
-     * 메소드에 대한 Wrapper 메소드입니다.<br>
+     * <b><i>{@code private ObjectMapper selectMapper(Class<?>, MediaType))}</i></b> 메소드에 대한 Wrapper
+     * 메소드입니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -605,10 +594,9 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
 
     /**
      * <p>
-     * {@link AbstractJacksonHttpMessageConverter}가 {@link ObjectMapper}를 선택하는
-     * 메커니즘을 최대한 따르기 위해서
-     * {@link AbstractJacksonHttpMessageConverter#canRead(ResolvableType, MediaType)}
-     * 코드를 거의 그대로 차용한 메소드입니다.<br>
+     * {@link AbstractJacksonHttpMessageConverter}가 {@link ObjectMapper}를 선택하는 메커니즘을 최대한 따르기 위해서
+     * {@link AbstractJacksonHttpMessageConverter#canRead(ResolvableType, MediaType)} 코드를 거의 그대로 차용한
+     * 메소드입니다.<br>
      * 다른 부분은 {@link JsonMapper}( {@link AbstractJacksonHttpMessageConverter}에서는
      * <b><i>{@code T}</i></b>)를 선택하는 부분입니다.<br>
      * <ul>
@@ -625,8 +613,8 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
      * @version 4.0.0
      *
      * @see org.springframework.http.converter.AbstractJacksonHttpMessageConverter#writeInternal(java.lang.Object,
-     *      org.springframework.core.ResolvableType,
-     *      org.springframework.http.HttpOutputMessage, java.util.Map)
+     *      org.springframework.core.ResolvableType, org.springframework.http.HttpOutputMessage,
+     *      java.util.Map)
      */
     @Override
     protected void writeInternal(Object object, ResolvableType resolvableType, HttpOutputMessage outputMessage,

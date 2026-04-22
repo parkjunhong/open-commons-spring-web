@@ -74,8 +74,7 @@ public class RestApiDecl {
     private String path;
 
     /**
-     * {@link Controller}, {@link RestController} 클래스에 선언된
-     * {@link RequestMapping#path()} 값
+     * {@link Controller}, {@link RestController} 클래스에 선언된 {@link RequestMapping#path()} 값
      */
     private String classPath;
 

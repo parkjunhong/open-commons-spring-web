@@ -155,8 +155,7 @@ public class LogFeatureBuilder {
             }
 
             /**
-             * 'marker'({@link LogFeature#marker()}) 항목에 해당하는 값을 처리하는 함수를 설정합니다.
-             * <br>
+             * 'marker'({@link LogFeature#marker()}) 항목에 해당하는 값을 처리하는 함수를 설정합니다. <br>
              * 
              * <pre>
              * [개정이력]
@@ -324,8 +323,7 @@ public class LogFeatureBuilder {
         ILogFeatureDecorator build();
 
         /**
-         * 'marker'({@link LogFeature#marker()}) 항목에 해당하는 값을 처리하는 함수를 설정합니다.
-         * <br>
+         * 'marker'({@link LogFeature#marker()}) 항목에 해당하는 값을 처리하는 함수를 설정합니다. <br>
          * <br>
          * 
          * <pre>

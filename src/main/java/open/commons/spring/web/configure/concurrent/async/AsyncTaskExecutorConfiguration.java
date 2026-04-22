@@ -102,8 +102,7 @@ public class AsyncTaskExecutorConfiguration implements AsyncConfigurer {
     }
 
     /**
-     * {@link Async} 어노테이션이 적용된 메소드에 사용할 'platform thread' 기반 {@link Executor}을
-     * 제공합니다. <br>
+     * {@link Async} 어노테이션이 적용된 메소드에 사용할 'platform thread' 기반 {@link Executor}을 제공합니다. <br>
      * 
      * @since 2025. 7. 30.
      * @version 0.8.0
@@ -123,8 +122,7 @@ public class AsyncTaskExecutorConfiguration implements AsyncConfigurer {
     }
 
     /**
-     * {@link Async} 어노테이션이 적용된 메소드에 사용할 'virtual thread' 기반 {@link Executor}을
-     * 제공합니다. <br>
+     * {@link Async} 어노테이션이 적용된 메소드에 사용할 'virtual thread' 기반 {@link Executor}을 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]

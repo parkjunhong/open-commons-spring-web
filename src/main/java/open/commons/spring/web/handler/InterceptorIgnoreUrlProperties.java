@@ -106,8 +106,7 @@ public class InterceptorIgnoreUrlProperties {
     private Set<String> includePathPatterns = new HashSet<>();
     /**
      * {@link HandlerInterceptor}에서 처리하지 않을 URL<br>
-     * {@link #includePathPatterns}과 함께 처리되면, {@link #excludePathPatterns}의 적용
-     * 순위가 높음.
+     * {@link #includePathPatterns}과 함께 처리되면, {@link #excludePathPatterns}의 적용 순위가 높음.
      */
     private Set<String> excludePathPatterns = new HashSet<>();
 

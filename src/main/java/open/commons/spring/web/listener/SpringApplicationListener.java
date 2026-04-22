@@ -47,8 +47,7 @@ import org.springframework.web.context.support.ServletRequestHandledEvent;
 /**
  * {@link ApplicationEvent}를 구현한 이벤트 타입을 처리하는 클래스. <br>
  * 
- * 추가적으로 지원할 이벤트 타입은 {@link #onApplicationEvent(ApplicationEvent)} 메소드를 수정하여
- * 구현한다.
+ * 추가적으로 지원할 이벤트 타입은 {@link #onApplicationEvent(ApplicationEvent)} 메소드를 수정하여 구현한다.
  * 
  * @since 2019. 6. 11.
  * @version

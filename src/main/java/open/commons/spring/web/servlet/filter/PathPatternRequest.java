@@ -63,8 +63,8 @@ public class PathPatternRequest {
     private @Nullable HttpMethod httpMethod;
 
     /**
-     * * URL 패턴 대/소문자 구분 여부 (참고: Spring 7.0의 PathPatternRequestMatcher는 기본적으로
-     * MVC 글로벌 설정을 따르는 것을 권장합니다.)
+     * * URL 패턴 대/소문자 구분 여부 (참고: Spring 7.0의 PathPatternRequestMatcher는 기본적으로 MVC 글로벌 설정을 따르는 것을
+     * 권장합니다.)
      */
     private boolean caseSensitive = false;
 
@@ -228,8 +228,7 @@ public class PathPatternRequest {
     }
 
     /**
-     * @return the HTTP method string representation, or null if not set
-     *         * @since 2025. 8. 4.
+     * @return the HTTP method string representation, or null if not set * @since 2025. 8. 4.
      * @version 4.0.0
      */
     public @Nullable String getHttpMethodString() {

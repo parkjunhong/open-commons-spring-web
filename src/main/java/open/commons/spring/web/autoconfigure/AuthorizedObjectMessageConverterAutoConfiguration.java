@@ -57,7 +57,8 @@ import tools.jackson.databind.json.JsonMapper;
  * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(after = { OpenCommonsSpringWebCoreAutoConfiguration.class, AuthorizedResourcesAutoConfiguration.class })
+@AutoConfiguration(after = { OpenCommonsSpringWebCoreAutoConfiguration.class,
+        AuthorizedResourcesAutoConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedObjectMessageConverterAutoConfiguration {
 

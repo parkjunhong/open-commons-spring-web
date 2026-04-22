@@ -44,8 +44,7 @@ import open.commons.spring.web.configure.concurrent.task.TaskSchedulerConfigurat
 import open.commons.spring.web.configure.concurrent.task.TaskSchedulerProperties;
 
 /**
- * {@link Scheduled} 어노테이션이 적용된 메소드가 실행될 때 기본값으로 사용되는 {@link TaskScheduler}를
- * 설정하는 클래스.
+ * {@link Scheduled} 어노테이션이 적용된 메소드가 실행될 때 기본값으로 사용되는 {@link TaskScheduler}를 설정하는 클래스.
  * 
  * @since 2025. 8. 1.
  * @version 0.8.0

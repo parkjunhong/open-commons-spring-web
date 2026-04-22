@@ -77,8 +77,7 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
     public static final String FORWARDED_THREAD_NAME = RequestThreadNameFilter.THREAD_NAME_INTERCEPTED_URL;
     /**
      * {@link OncePerRequestFilter}와 {@link ThreadLocal} 정보를 공유하는 객체 <br>
-     * {@link OncePerRequestFilter} -> {@link LogFeatureAspect} 까지 동일한
-     * {@link Thread} 로 연결되고 있음.
+     * {@link OncePerRequestFilter} -> {@link LogFeatureAspect} 까지 동일한 {@link Thread} 로 연결되고 있음.
      */
     private static final IThreadLocalContext REQUEST_THREAD_NAME_FILTER_CONTEXT = ThreadLocalContextService
             .context(RequestThreadNameFilter.class);
@@ -145,9 +144,8 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
     }
 
     /**
-     * {@link HandlerInterceptor} 이후에 실행되는 {@link RestController},
-     * {@link Controller} 어노테이션이 선언된 클래스 중에 {@link LogFeature} 어노테이션이 클래스에
-     * 선언되었거나 메소드에 선언된 경우에 대해서 처리합니다.<br>
+     * {@link HandlerInterceptor} 이후에 실행되는 {@link RestController}, {@link Controller} 어노테이션이 선언된 클래스
+     * 중에 {@link LogFeature} 어노테이션이 클래스에 선언되었거나 메소드에 선언된 경우에 대해서 처리합니다.<br>
      * 
      * <pre>
      * [개정이력]
@@ -217,8 +215,8 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
     }
 
     /**
-     * {@link Component} 어노테이션이 설정된 클래스의 메소드 중에 {@link Scheduled}와
-     * {@link LogFeature}가 모두 선언된 메소드를 처리합니다. <br>
+     * {@link Component} 어노테이션이 설정된 클래스의 메소드 중에 {@link Scheduled}와 {@link LogFeature}가 모두 선언된 메소드를
+     * 처리합니다. <br>
      * 
      * <pre>
      * [개정이력]

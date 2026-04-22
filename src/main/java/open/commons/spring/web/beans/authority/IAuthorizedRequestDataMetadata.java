@@ -38,8 +38,7 @@ import open.commons.spring.web.authority.metadata.AuthorizedRequestDataFieldMeta
 import open.commons.spring.web.authority.metadata.AuthorizedRequestDataObjectMetadata;
 
 /**
- * {@link AuthorizedRequestData}를 POJO 클래스에 직접 선언하지 않거나, 3rd POJO 클래스에 적용하고자 할때
- * 사용되메타데이터 클래스
+ * {@link AuthorizedRequestData}를 POJO 클래스에 직접 선언하지 않거나, 3rd POJO 클래스에 적용하고자 할때 사용되메타데이터 클래스
  * 
  * @since 2025. 9. 22.
  * @version 0.8.0
@@ -48,8 +47,7 @@ import open.commons.spring.web.authority.metadata.AuthorizedRequestDataObjectMet
 public interface IAuthorizedRequestDataMetadata {
 
     /**
-     * 주어진 클래스의 {@link Field}에 선언된 {@link AuthorizedRequestDataFieldMetadata}
-     * 정보를 제공합니다. <br>
+     * 주어진 클래스의 {@link Field}에 선언된 {@link AuthorizedRequestDataFieldMetadata} 정보를 제공합니다. <br>
      * 
      * <pre>
      * [개정이력]
@@ -70,8 +68,8 @@ public interface IAuthorizedRequestDataMetadata {
     public AuthorizedRequestDataFieldMetadata getFieldMetadat(Class<?> targetClass, @NotBlank String fieldName);
 
     /**
-     * 주어진 클래스의 {@link Field}에 선언된 {@link IAuthorizedRequestDataHandler}를 구현한
-     * {@link Bean} 이름을 제공합니다.<br>
+     * 주어진 클래스의 {@link Field}에 선언된 {@link IAuthorizedRequestDataHandler}를 구현한 {@link Bean} 이름을
+     * 제공합니다.<br>
      * {@link AuthorizedRequestData#handleBean()} 값과 매칭됩니다.
      * 
      * <pre>
@@ -96,8 +94,8 @@ public interface IAuthorizedRequestDataMetadata {
 
     /**
      * 주어진 클래스의 {@link Field}에 선언된
-     * {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}에 사용될
-     * '데이터 처리방식 식별정보'를 제공합니다.<br>
+     * {@link IAuthorizedRequestDataHandler#restoreValue(String, Object)}에 사용될 '데이터 처리방식 식별정보'를
+     * 제공합니다.<br>
      * {@link AuthorizedRequestData#handleType()} 값과 매칭됩니다.
      * 
      * <pre>

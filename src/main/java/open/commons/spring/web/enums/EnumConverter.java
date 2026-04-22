@@ -41,8 +41,8 @@ import open.commons.spring.web.annotation.RequestValueConverter;
 import open.commons.spring.web.annotation.RequestValueSupported;
 
 /**
- * {@link RequestValueSupported}, {@link RequestValueConverter} 가 적용된
- * {@link Enum}를 위한 {@link Converter} 클래스.
+ * {@link RequestValueSupported}, {@link RequestValueConverter} 가 적용된 {@link Enum}를 위한
+ * {@link Converter} 클래스.
  * 
  * @since 2019. 6. 3.
  * @version

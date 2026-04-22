@@ -190,10 +190,9 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      * @version 0.8.0
      *
      * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#execute(java.lang.String,
-     *      java.util.Map, java.lang.Object, java.lang.Class,
-     *      org.springframework.http.HttpHeaders,
-     *      org.springframework.util.MultiValueMap, java.lang.String,
-     *      java.util.function.Function, java.util.function.Function)
+     *      java.util.Map, java.lang.Object, java.lang.Class, org.springframework.http.HttpHeaders,
+     *      org.springframework.util.MultiValueMap, java.lang.String, java.util.function.Function,
+     *      java.util.function.Function)
      */
     @Override
     public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
@@ -217,11 +216,9 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      * @version 0.8.0
      *
      * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#execute(java.lang.String,
-     *      java.util.Map, java.lang.Object,
-     *      org.springframework.core.ParameterizedTypeReference,
-     *      org.springframework.http.HttpHeaders,
-     *      org.springframework.util.MultiValueMap, java.lang.String,
-     *      java.util.function.Function, java.util.function.Function)
+     *      java.util.Map, java.lang.Object, org.springframework.core.ParameterizedTypeReference,
+     *      org.springframework.http.HttpHeaders, org.springframework.util.MultiValueMap,
+     *      java.lang.String, java.util.function.Function, java.util.function.Function)
      */
     @Override
     public <REQ, RES, RET> Result<RET> execute(@NotBlank String id, @Nullable Map<String, String> pathVariables,
@@ -246,10 +243,8 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      * @version 0.8.0
      *
      * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#executeAsRaw(java.lang.String,
-     *      java.util.Map, java.lang.Object, java.lang.Class,
-     *      org.springframework.http.HttpHeaders,
-     *      org.springframework.util.MultiValueMap, java.lang.String,
-     *      java.util.function.Function)
+     *      java.util.Map, java.lang.Object, java.lang.Class, org.springframework.http.HttpHeaders,
+     *      org.springframework.util.MultiValueMap, java.lang.String, java.util.function.Function)
      */
     @Override
     public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
@@ -273,11 +268,9 @@ public abstract class AbstractIdBasedRestApiService extends AbstractRestApiClien
      * @version 0.8.0
      *
      * @see open.commons.spring.web.beans.rest.IIdBasedRestApiService#executeAsRaw(java.lang.String,
-     *      java.util.Map, java.lang.Object,
-     *      org.springframework.core.ParameterizedTypeReference,
-     *      org.springframework.http.HttpHeaders,
-     *      org.springframework.util.MultiValueMap, java.lang.String,
-     *      java.util.function.Function)
+     *      java.util.Map, java.lang.Object, org.springframework.core.ParameterizedTypeReference,
+     *      org.springframework.http.HttpHeaders, org.springframework.util.MultiValueMap,
+     *      java.lang.String, java.util.function.Function)
      */
     @Override
     public <REQ, RES, RET> RET executeAsRaw(@NotBlank String id, @Nullable Map<String, String> pathVariables,
