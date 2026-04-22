@@ -36,7 +36,10 @@ import open.commons.core.utils.AssertUtils2;
  * @since 2025. 8. 13.
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
+ * 
+ * @deprecated 'record' 기반으로 변경됨에 따라 더 이상 사용하지 않습니다.
  */
+@Deprecated(since = "4.0.0", forRemoval = true)
 public class ThreadPoolExecutorConfig {
 
     // -- java.util.concurrent.ThreadPoolExecutor -- //
