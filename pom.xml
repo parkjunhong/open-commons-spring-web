@@ -9,6 +9,7 @@
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <artifactId>open-commons-spring-web</artifactId>
+  <version>0.8.0</version>
   <name>Open Commons for Spring Web</name>
   <description>Open Commons Spring Web Project</description>
   <url>https://github.com/open-commons/open-commons-spring-web</url>

@@ -1,3 +1,6 @@
+[2026/04/21]
+- Release 0.8.0
+
 [2025/11/24]
 - New
   + open.commons.spring.web.aspect.AspectOrder: 'OCSW'에서 제공하는 Bean 우선순위 관리 클래스.
