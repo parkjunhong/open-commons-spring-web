@@ -85,11 +85,29 @@
   <dependencies>
     <!-- ********************** -->
     <!-- begin: spring boot -->
+    <!-- Web MVC -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-webmvc</artifactId>
+    </dependency>
+    
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
     <!-- `@ConfigurationProperties` 메타데이터 생성용 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
+    </dependency>
+
+    <!-- jackson -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-jackson</artifactId>
+    </dependency>
+
+    <!-- Aspect -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aop</artifactId>
     </dependency>
     <!-- end: spring boot -->
     <!-- ********************** -->
@@ -155,32 +173,32 @@
     <!-- end: Pagination -->
     <!-- ************** -->
 
-       <!-- ************** -->
-      <!-- >>> begin: Validation -->
-      <!--
+    <!-- ************** -->
+    <!-- >>> begin: Validation -->
+    <!--
       https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
-      <dependency>
-        <groupId>jakarta.validation</groupId>
-        <artifactId>jakarta.validation-api</artifactId>
-      </dependency>
-      <!-- <<< end: Validation -->
-      <!-- ************** -->
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
+    <!-- <<< end: Validation -->
+    <!-- ************** -->
 
-      <!-- ************** -->
-      <!-- >>> begin: Annotation -->
-      <!-- Source: https://mvnrepository.com/artifact/org.jspecify/jspecify -->
-      <dependency>
-        <groupId>org.jspecify</groupId>
-        <artifactId>jspecify</artifactId>
-      </dependency>
-      <!--
+    <!-- ************** -->
+    <!-- >>> begin: Annotation -->
+    <!-- Source: https://mvnrepository.com/artifact/org.jspecify/jspecify -->
+    <dependency>
+      <groupId>org.jspecify</groupId>
+      <artifactId>jspecify</artifactId>
+    </dependency>
+    <!--
       https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
-      <dependency>
-        <groupId>jakarta.annotation</groupId>
-        <artifactId>jakarta.annotation-api</artifactId>
-      </dependency>
-      <!-- <<< end: Annotation -->
-      <!-- ************** -->
+    <dependency>
+      <groupId>jakarta.annotation</groupId>
+      <artifactId>jakarta.annotation-api</artifactId>
+    </dependency>
+    <!-- <<< end: Annotation -->
+    <!-- ************** -->
 
     <!-- ********************** -->
     <!-- begin: refletions -->
@@ -219,26 +237,17 @@
     </dependency>
     <!-- Source:
     https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webflux-ui -->
-    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
-    </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>org.springdoc</groupId>-->
+    <!--      <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>-->
+    <!--    </dependency>-->
     <!-- Source:
     https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webflux-api -->
-    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-starter-webflux-api</artifactId>
-    </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>org.springdoc</groupId>-->
+    <!--      <artifactId>springdoc-openapi-starter-webflux-api</artifactId>-->
+    <!--    </dependency>-->
     <!-- end: REST API Documentation -->
-    <!-- ************** -->
-
-    <!-- ************** -->
-    <!-- begin: Aspect -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-aop</artifactId>
-    </dependency>
-    <!-- end: Aspect -->
     <!-- ************** -->
 
     <!-- ************** -->
