@@ -1,3 +1,14 @@
+[2026/04/22]
+- 갱신
+  + POM.xml에 'dependency' 항목 갱신
+    + org.springframework.boot:spring-boot-starter-web: 삭제
+    + 로그 관련 항목 명시적 추가 (다른 의존성에 의해서 유입되는 방식에서 탈피)
+      + com.lmax:disruptor
+      + org.apache.logging.log4j:log4j-core
+      + org.apache.logging.log4j:log4j-api
+      + org.apache.logging.log4j:log4j-slfj2-impl
+      + jakarta.annotation:jakarta.annotation-api
+      
 [2026/04/21]
 - 변경
   + open.commons.spring.web.configure.ResourceConfiguration 클래스 세분화 및 **'deprepcated'**
