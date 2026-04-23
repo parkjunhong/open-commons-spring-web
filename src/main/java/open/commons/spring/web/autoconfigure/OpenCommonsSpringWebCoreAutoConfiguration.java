@@ -106,7 +106,9 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
  */
 @AutoConfiguration
 // 1. 설정 레코드들이 모여있는 패키지를 스캔하도록 지정합니다.
-@ConfigurationPropertiesScan(basePackages = "open.commons.spring.web.configure")
+@ConfigurationPropertiesScan(basePackages = { //
+        "open.commons.spring.web.configure" //
+})
 // 2. [명시적 로드] 순서와 조건부 평가가 중요한 @Configuration 클래스들은 @Import로 관리합니다.
 @Import({ //
         AuthorizedHandlesConfiguration.class //
