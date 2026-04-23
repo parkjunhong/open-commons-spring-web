@@ -34,7 +34,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-import open.commons.spring.web.configure.ResourceConfiguration;
 import open.commons.spring.web.configure.concurrent.ConcurrentExecutorProperties;
 
 /**
@@ -44,7 +43,7 @@ import open.commons.spring.web.configure.concurrent.ConcurrentExecutorProperties
  * [개정이력]
  *     날짜        | 작성자                   |   내용
  * -----------------------------------------------------
- * 2026. 4. 20.     parkjunhong77@gmail.com     최초 작성. (기존 {@link ResourceConfiguration}에서 분리)
+ * 2026. 4. 20.     parkjunhong77@gmail.com     최초 작성. 
  * </pre>
  *
  * @since 2026. 4. 20.

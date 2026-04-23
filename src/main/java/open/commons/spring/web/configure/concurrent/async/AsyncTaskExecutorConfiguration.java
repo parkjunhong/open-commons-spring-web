@@ -32,13 +32,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import open.commons.spring.web.async.MdcTaskDecorator;
-import open.commons.spring.web.configure.ResourceConfiguration;
 import open.commons.spring.web.configure.concurrent.ConcurrentExecutorProperties;
 import open.commons.spring.web.configure.concurrent.task.TaskExecutorConfiguration;
 import open.commons.spring.web.configure.concurrent.task.TaskExecutorProperties;
@@ -50,7 +50,7 @@ import open.commons.spring.web.configure.concurrent.task.TaskExecutorProperties;
  * [개정이력]
  *      날짜       | 작성자                   |   내용
  * -----------------------------------------------------
- * 2026. 4. 21.		parkjunohng77@gmail.com    최초 작성.(기존 {@link ResourceConfiguration}에서 분리)
+ * 2026. 4. 21.		parkjunohng77@gmail.com    최초 작성.
  * </pre>
  * 
  * @since 2025. 7. 30.
@@ -60,6 +60,10 @@ import open.commons.spring.web.configure.concurrent.task.TaskExecutorProperties;
 @Configuration
 public class AsyncTaskExecutorConfiguration implements AsyncConfigurer {
 
+    /**
+     * 'virtual thread'로 동작하는 {@link AsyncTaskExecutor} (구현객체는 {@link SimpleAsyncTaskExecutor}) 를
+     * 제공합니다.
+     */
     public static final String BEAN_QUALIFIER_VIRTUAL_THREAD_TASK_EXECUTEOR = "open.commons.spring.web.configure.concurrent.async.AsyncTaskExecutorConfiguration#VIRTUAL_THREAD_TASK_EXECUTEOR";
 
     private final Logger logger = LoggerFactory.getLogger(AsyncTaskExecutorConfiguration.class);
@@ -137,7 +141,7 @@ public class AsyncTaskExecutorConfiguration implements AsyncConfigurer {
      * @version 4.0.0
      */
     @Bean(name = BEAN_QUALIFIER_VIRTUAL_THREAD_TASK_EXECUTEOR)
-    Executor virtualThreadAsyncTaskExecutor() {
+    AsyncTaskExecutor virtualThreadAsyncTaskExecutor() {
 
         SimpleAsyncTaskExecutor executor = new SimpleAsyncTaskExecutor();
         executor.setTaskDecorator(new MdcTaskDecorator("virtual"));

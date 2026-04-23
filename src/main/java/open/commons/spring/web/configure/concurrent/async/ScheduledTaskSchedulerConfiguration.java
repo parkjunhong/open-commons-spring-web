@@ -53,6 +53,10 @@ import open.commons.spring.web.configure.concurrent.task.TaskSchedulerProperties
 @Configuration
 public class ScheduledTaskSchedulerConfiguration implements SchedulingConfigurer {
 
+    /**
+     * 'virtual thread'로 동작하는 {@link TaskScheduler} (구현객체는 {@link SimpleAsyncTaskScheduler}) 를
+     * 제공합니다.
+     */
     public static final String BEAN_QUALIFIER_VIRTUAL_THREAD_TASK_SCHEDULER = "open.commons.spring.web.configure.concurrent.async.ScheduledTaskSchedulerConfiguration#VIRTUAL_THREAD_TASK_SCHEDULER";
 
     private final Logger logger = LoggerFactory.getLogger(ScheduledTaskSchedulerConfiguration.class);
