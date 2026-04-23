@@ -88,9 +88,15 @@
     <!-- Web MVC -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-webmvc</artifactId>
+      <artifactId>spring-boot-starter-web</artifactId>
+       <exclusions>
+          <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+          </exclusion>
+        </exclusions>
     </dependency>
-    
+
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
     <!-- `@ConfigurationProperties` 메타데이터 생성용 -->
     <dependency>
@@ -98,17 +104,11 @@
       <artifactId>spring-boot-configuration-processor</artifactId>
     </dependency>
 
-    <!-- jackson -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-jackson</artifactId>
-    </dependency>
-
     <!-- Aspect -->
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-aop</artifactId>
-    </dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-aop</artifactId>
+      </dependency>
     <!-- end: spring boot -->
     <!-- ********************** -->
 
