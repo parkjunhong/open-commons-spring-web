@@ -42,7 +42,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity.
 import org.springframework.security.config.annotation.web.configurers.AnonymousConfigurer;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer.AuthorizationManagerRequestMatcherRegistry;
-import org.springframework.security.config.annotation.web.configurers.ChannelSecurityConfigurer;
 import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer;
@@ -831,36 +830,6 @@ public abstract class AbstractHttpSecurityConfig {
      * @see HttpSecurity#requestMatchers(org.springframework.security.config.Customizer)
      */
     protected void requestMatchers(RequestMatcherConfigurer configurer) {
-    }
-
-    /**
-     * {@link HttpSecurity#requiresChannel(org.springframework.security.config.Customizer)}에 전달되는
-     * 정보를 제공합니다. <br>
-     * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 10. 23.    parkjunhong77@gmail.com     최초 작성
-     * 2026. 4. 14.     parkjunhong77@gmail.com     {@link HttpSecurity}::7.0.3의 내부 구현 변경에 따른 수정. 더 이상 {@link #configure(HttpSecurity)} 메소드에서 {@link HttpSecurity#requiresChannel(Customizer)}를 호출하지 않음.
-     * </pre>
-     *
-     * @param configurer
-     * @return
-     * @throws Exception
-     *
-     * @since 2025. 10. 23.
-     * @version 2.1.0
-     * 
-     * @see HttpSecurity#requiresChannel(org.springframework.security.config.Customizer)
-     * 
-     * @deprecated {@link HttpSecurity#requiresChannel(Customizer)} 메소드가 {@code deprecated} 되었고, 대체
-     *             메소드로 제시한 {@link HttpSecurity#redirectToHttps(Customizer)} 메소드를 위한
-     *             {@link #redirectToHttps(HttpsRedirectConfigurer)} 를 사용하기 바랍니다.
-     */
-    @Deprecated(since = "4.0.0", forRemoval = true)
-    protected void requiresChannel(ChannelSecurityConfigurer<HttpSecurity>.ChannelRequestMatcherRegistry configurer) {
     }
 
     /**
