@@ -1,3 +1,9 @@
+[2026/04/23]
+- 'dependencies' 추가
+  + org.springframework.security:spring-security-access:<managed_version>
+    + SB 2.x -> SB 4.x 로 변화되면서 deprecated 된 클래스가 포함됨.  
+    + org.springframework.boot:spring-boot-starter-security 에 포함되지 않기 때문에 명시적으로 추가
+
 [2026/04/22]
 - 갱신
   + POM.xml에 'dependency' 항목 갱신
