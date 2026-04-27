@@ -89,12 +89,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-logging</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
@@ -118,12 +112,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
       <optional>true</optional>
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-logging</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <dependency>
@@ -135,28 +123,28 @@
 
     <!-- ********************** -->
     <!-- >>> begin: logging -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-log4j2</artifactId>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
     <!-- for llog4j-2.x: making all asynchronous loggers -->
     <dependency>
       <groupId>com.lmax</groupId>
       <artifactId>disruptor</artifactId>
     </dependency>
-
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-slf4j2-impl</artifactId>
-    </dependency>
     <!-- <<< end: logging -->
     <!-- ********************** -->
 
+    <!-- ************** -->
+    <!-- begin: Pagination -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-data-commons</artifactId>
+    </dependency>
+    <!-- end: Pagination -->
+    <!-- ************** -->
 
     <!-- ************** -->
     <!-- begin: servlet -->
@@ -165,17 +153,6 @@
       <artifactId>jakarta.servlet-api</artifactId>
     </dependency>
     <!-- end: servlet -->
-    <!-- ************** -->
-
-    <!-- ************** -->
-    <!-- begin: Pagination -->
-    <!--
-    https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons -->
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-commons</artifactId>
-    </dependency>
-    <!-- end: Pagination -->
     <!-- ************** -->
 
     <!-- ************** -->
@@ -314,6 +291,12 @@
         <artifactId>maven-javadoc-plugin</artifactId>
       </plugin>
       <!-- <<< end: javadoc -->
+      <!-- >>> begin: enforce-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+      <!-- <<< end: enforce-->
       <!-- Maven Central Deployment plugin -->
       <plugin>
         <groupId>org.sonatype.central</groupId>
