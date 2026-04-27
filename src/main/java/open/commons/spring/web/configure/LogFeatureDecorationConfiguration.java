@@ -49,8 +49,10 @@ import open.commons.spring.web.log.LogFeatureDecorationConsolidator;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@Configuration
+@Configuration(value = LogFeatureDecorationConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
 public class LogFeatureDecorationConfiguration {
+
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.LogFeatureDecorationConfiguration";
 
     private final Logger logger = LoggerFactory.getLogger(LogFeatureDecorationConfiguration.class);
 

@@ -104,7 +104,7 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
  * @version 4.0.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
-@AutoConfiguration
+@AutoConfiguration(value = OpenCommonsSpringWebCoreAutoConfiguration.BEAN_QUALIFIER)
 // 1. 설정 레코드들이 모여있는 패키지를 스캔하도록 지정합니다.
 @ConfigurationPropertiesScan(basePackages = { //
         "open.commons.spring.web.configure" //
@@ -133,6 +133,9 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
         , "open.commons.spring.web.beans.factory" //
         , "open.commons.spring.web.servlet.method.annotation" })
 public class OpenCommonsSpringWebCoreAutoConfiguration {
+    
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.OpenCommonsSpringWebCoreAutoConfiguration";
+
     public OpenCommonsSpringWebCoreAutoConfiguration() {
     }
 }

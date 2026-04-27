@@ -40,8 +40,10 @@ import open.commons.spring.web.beans.authority.internal.AuthorizedHandles;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@Configuration
+@Configuration(value = AuthorizedHandlesConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
 public class AuthorizedHandlesConfiguration {
+
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.AuthorizedHandlesConfiguration";
 
     /**
      * <br>

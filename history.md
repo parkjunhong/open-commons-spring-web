@@ -1,3 +1,7 @@
+[2026/04/27]
+- 수정
+  + `@AutoConfiguration, @Configuration`이 적용된 클래스에 명시적으로 '빈'이름을 적용함.
+
 [2026/04/23]
 - 'dependencies' 추가
   + org.springframework.security:spring-security-access:<managed_version>

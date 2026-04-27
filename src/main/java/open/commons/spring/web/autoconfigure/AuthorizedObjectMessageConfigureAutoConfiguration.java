@@ -48,10 +48,13 @@ import open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConvert
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(after = { OpenCommonsSpringWebCoreAutoConfiguration.class,
-        AuthorizedObjectMessageConverterAutoConfiguration.class })
+@AutoConfiguration(value = AuthorizedObjectMessageConfigureAutoConfiguration.BEAN_QUALIFIER //
+        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class,
+                AuthorizedObjectMessageConverterAutoConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedObjectMessageConfigureAutoConfiguration {
+    
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConfigureAutoConfiguration";
 
     private Logger logger = LoggerFactory.getLogger(AuthorizedObjectMessageConfigureAutoConfiguration.class);
 

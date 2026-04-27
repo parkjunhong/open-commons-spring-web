@@ -76,10 +76,13 @@ import tools.jackson.databind.module.SimpleModule;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(after = { JacksonAutoConfiguration.class, OpenCommonsSpringWebCoreAutoConfiguration.class,
+@AutoConfiguration(value = AuthorizedResourcesAutoConfiguration.BEAN_QUALIFIER, after = {
+        JacksonAutoConfiguration.class, OpenCommonsSpringWebCoreAutoConfiguration.class,
         AuthorizedResourceBuiltinHandlerAutoConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedResourcesAutoConfiguration {
+
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.AuthorizedResourcesAutoConfiguration";
 
     public static final String BEAN_QUALIFIER_AUTHORIZED_JSON_MAPPER = "open.commons.spring.web.autoconfigure.AuthorizedResourcesConfiguration#AUTHORIZED_JSON_MAPPER";
 
@@ -95,6 +98,18 @@ public class AuthorizedResourcesAutoConfiguration {
         AuthorizedMethodAspect aspect = new AuthorizedMethodAspect(context);
         logger.info("[Registered] authorized-method-aspect={}", aspect);
         return aspect;
+    }
+
+    @Bean
+    @Primary
+    @ConditionalOnBean({ IFieldAccessAuthorityProvider.class, IUnauthorizedFieldHandler.class })
+    AuthorizedModelAndViewHandlerInterceptor authorizedModelAndViewHandlerInterceptor(ApplicationContext context //
+            , @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata //
+    ) {
+        AuthorizedModelAndViewHandlerInterceptor h = new AuthorizedModelAndViewHandlerInterceptor(context,
+                authorizedResourcesMetadata);
+        logger.info("[authorized-resources] authorized-model_and_view-handler-interceptor={}", h);
+        return h;
     }
 
     /**
@@ -174,18 +189,6 @@ public class AuthorizedResourcesAutoConfiguration {
         AuthorizedResourceHandler h = new AuthorizedResourceHandler();
         h.setAuthorizedResourceHandlers(handlers);
         logger.info("[authorized-resource-handlers] authorized-resources-handlers={}", h);
-        return h;
-    }
-
-    @Bean
-    @Primary
-    @ConditionalOnBean({ IFieldAccessAuthorityProvider.class, IUnauthorizedFieldHandler.class })
-    AuthorizedModelAndViewHandlerInterceptor authorizedModelAndViewHandlerInterceptor(ApplicationContext context //
-            , @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata //
-    ) {
-        AuthorizedModelAndViewHandlerInterceptor h = new AuthorizedModelAndViewHandlerInterceptor(context,
-                authorizedResourcesMetadata);
-        logger.info("[authorized-resources] authorized-model_and_view-handler-interceptor={}", h);
         return h;
     }
 }

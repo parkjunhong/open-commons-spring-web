@@ -53,9 +53,12 @@ import open.commons.spring.web.log.ILogFeatureDecorationConsolidator;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
+@AutoConfiguration(value = LogFeatureAutoConfiguration.BEAN_QUALIFIER //
+        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class LogFeatureAutoConfiguration {
+
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.LogFeatureAutoConfiguration";
 
     private final Logger logger = LoggerFactory.getLogger(LogFeatureAutoConfiguration.class);
 

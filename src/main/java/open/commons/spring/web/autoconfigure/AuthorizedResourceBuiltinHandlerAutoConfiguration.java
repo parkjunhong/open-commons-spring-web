@@ -68,9 +68,12 @@ import open.commons.spring.web.exception.BeanMergeFailedException;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
+@AutoConfiguration(value = AuthorizedResourceBuiltinHandlerAutoConfiguration.BEAN_QUALIFIER //
+        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class AuthorizedResourceBuiltinHandlerAutoConfiguration {
+
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.AuthorizedResourceBuiltinHandlerAutoConfiguration";
 
     public static final String BEAN_QUALIFIER_AUTHORIZED_RESOURCE_HANDLERS = "open.commons.spring.web.autoconfigure.configuration.AuthorizedResourceBuiltinHandlerConfiguration#AUTHORIZED_RESOURCE_HANDLERS";
 

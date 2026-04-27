@@ -41,6 +41,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.validation.annotation.Validated;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -94,12 +95,14 @@ import open.commons.spring.web.oas.GroupedOpenApiProperties;
  * @author parkjunhong77@gmail.com
  * @see <a href="https://springdoc.org/">springdoc.org</a>
  */
-@Configuration(OpenApiConfiguration.BEAN_QUALIFIER)
+@Configuration(value = OpenApiConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
 @Import(GroupOpenApiRegistrar.class)
+@Validated
 public class OpenApiConfiguration {
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.OpenApiConfiguration";
+
     private static Logger logger = LoggerFactory.getLogger(OpenApiConfiguration.class);
 
-    public static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.OpenApiConfiguration";
     public static final String BEAN_QUALIFIER_OPEN_API_INFO = "open.commons.spring.web.configure.OpenApiConfiguration#OPEN_API_INFO";
     public static final String BEAN_QUALIFIER_OPEN_API_EXT_DOCS = "open.commons.spring.web.configure.OpenApiConfiguration#OPEN_API_EXT_DOCS";
     /**

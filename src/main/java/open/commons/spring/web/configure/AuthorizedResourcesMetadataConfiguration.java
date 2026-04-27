@@ -41,6 +41,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
+import org.springframework.validation.annotation.Validated;
 
 import open.commons.core.utils.MapUtils;
 import open.commons.spring.web.authority.metadata.AuthorizedObjectMetadata;
@@ -57,8 +58,11 @@ import open.commons.spring.web.utils.BeanUtils;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@Configuration
+@Configuration(value = AuthorizedResourcesMetadataConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
+@Validated
 public class AuthorizedResourcesMetadataConfiguration {
+
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.AuthorizedResourcesMetadataConfiguration";
 
     private static final String PREFIX_OPEN_COMMONS_APPLICATION = "open-commons.application";
     private static final String NAME_AUTHORIZED_OBJECT_METADATA = "authorized-object-metadata[0].type";

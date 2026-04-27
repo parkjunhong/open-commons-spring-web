@@ -85,9 +85,12 @@ import open.commons.spring.web.utils.PathUtils;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
+@AutoConfiguration(value = GlobalServletAutoConfiguration.BEAN_QUALIFIER //
+        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class GlobalServletAutoConfiguration {
+
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.GlobalServletAutoConfiguration";
 
     /** {@link HandlerInterceptor}에서 URL 기반으로 처리 대상에서 제외하는 URL 패턴 설정 */
     public static final String BEAN_QUALIFIER_PRIMARY_INTERCEPTOR_IGNORE_URL_PATTERNS = "open.commons.spring.web.autoconfigure.configuration.GlobalServletConfiguration#INTERCEPTOR_IGNORE_URL_PATTERNS";

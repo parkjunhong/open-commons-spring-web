@@ -53,7 +53,7 @@ import open.commons.spring.web.jackson.serialization.AuthorizedFieldSerializerMo
  * @author parkjunhong77@gmail.com
  */
 public class AuthorizedObjectMessageConfiguration implements WebMvcConfigurer {
-
+    
     private final AuthorizedObjectJacksonHttpMessageConverter authorizeObjectMessageConverter;
 
     public AuthorizedObjectMessageConfiguration(

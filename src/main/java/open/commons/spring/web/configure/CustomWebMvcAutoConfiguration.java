@@ -46,6 +46,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
@@ -62,10 +63,13 @@ import open.commons.spring.web.beans.resolver.IAuthorizedDataResolver;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@Configuration(proxyBeanMethods = false)
+@Configuration(value = CustomWebMvcAutoConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
 // 하위 클래스가 @Configuration/@Bean으로 등록돼 있으면 이 빈은 건너뜀
 @ConditionalOnMissingBean(CustomWebMvcConfiguration.class)
+@Validated
 public class CustomWebMvcAutoConfiguration {
+
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.CustomWebMvcAutoConfiguration";
 
     public static final String BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS = "open.commons.spring.web.config.CustomWebMvcAutoConfiguration#AUTHORIZED_DATA_RESOLVERS";
 
