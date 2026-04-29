@@ -54,9 +54,9 @@ import open.commons.spring.web.authority.AuthorizedRequest;
 public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspectPointcuts
         implements IAuthorizedResource<T> {
 
-    private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("^\\$\\{\\s*([^:}]+)(?::([^}]*))?\\s*}$");
+    private static Pattern PLACEHOLDER_PATTERN = Pattern.compile("^\\$\\{\\s*([^:}]+)(?::([^}]*))?\\s*}$");
 
-    protected final Class<T> providerType;
+    protected Class<T> providerType;
 
     /**
      * <br>
@@ -98,7 +98,7 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @version 0.8.0
      */
     @Pointcut("@annotation(open.commons.spring.web.authority.AuthorizedMethod)")
-    public final void annotationAuthorizedMethod() {
+    public void annotationAuthorizedMethod() {
     }
 
     /**
@@ -115,7 +115,7 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @version 0.8.0
      */
     @Pointcut("@annotation(open.commons.spring.web.authority.AuthorizedRequest)")
-    public final void annotationAuthorizedRequest() {
+    public void annotationAuthorizedRequest() {
     }
 
     /**
@@ -140,7 +140,7 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @since 2025. 5. 19.
      * @version 0.8.0
      */
-    protected final <A extends Annotation> @Nullable A decideAnnotation(Class<A> annoType, Class<?> o, Method m) {
+    protected <A extends Annotation> @Nullable A decideAnnotation(Class<A> annoType, Class<?> o, Method m) {
         AssertUtils2.notNulls(annoType, o, m);
 
         A annoM = AnnotationUtils.getAnnotation(m, annoType);
@@ -165,7 +165,7 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @since 2025. 9. 29.
      * @version 0.8.0
      */
-    protected final @Nullable String findConfigurationValue(String input) {
+    protected @Nullable String findConfigurationValue(String input) {
         Objects.requireNonNull(input);
 
         Matcher matcher = PLACEHOLDER_PATTERN.matcher(input);
@@ -209,7 +209,7 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @since 2025. 5. 19.
      * @version 0.8.0
      */
-    protected final @Nullable T getAuthorityBean(@Nullable String beanName) throws BeansException {
+    protected @Nullable T getAuthorityBean(@Nullable String beanName) throws BeansException {
         return BEAN_UTILS.getBean(beanName, providerType, null, true);
     }
 
@@ -227,7 +227,7 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @version 0.8.0
      */
     @Pointcut("@within(open.commons.spring.web.authority.AuthorizedMethod)")
-    public final void withinAuthorizedMethod() {
+    public void withinAuthorizedMethod() {
     }
 
     /**
@@ -244,6 +244,6 @@ public abstract class AbstractAuthorizedResourceAspect<T> extends AbstractAspect
      * @version 0.8.0
      */
     @Pointcut("@within(open.commons.spring.web.authority.AuthorizedRequest)")
-    public final void withinAuthorizedRequest() {
+    public void withinAuthorizedRequest() {
     }
 }

@@ -104,7 +104,7 @@ public class ProfilesOnAspect extends AbstractAspectPointcuts {
      * @version 2.1.0
      */
     @Pointcut("@annotation(open.commons.spring.web.context.annotation.ProfilesOn)")
-    public final void annotationProfilesOn() {
+    public void annotationProfilesOn() {
     }
 
     /**

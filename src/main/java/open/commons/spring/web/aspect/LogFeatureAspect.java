@@ -74,18 +74,18 @@ import open.commons.spring.web.servlet.filter.header.SharedHeadersBuiltinProvide
 public class LogFeatureAspect extends AbstractAspectPointcuts {
 
     /** {@link MDC}에 공유하고자 하는 Thread 이름을 위한 속성 */
-    public static final String FORWARDED_THREAD_NAME = RequestThreadNameFilter.THREAD_NAME_INTERCEPTED_URL;
+    public static String FORWARDED_THREAD_NAME = RequestThreadNameFilter.THREAD_NAME_INTERCEPTED_URL;
     /**
      * {@link OncePerRequestFilter}와 {@link ThreadLocal} 정보를 공유하는 객체 <br>
      * {@link OncePerRequestFilter} -> {@link LogFeatureAspect} 까지 동일한 {@link Thread} 로 연결되고 있음.
      */
-    private static final IThreadLocalContext REQUEST_THREAD_NAME_FILTER_CONTEXT = ThreadLocalContextService
+    private static IThreadLocalContext REQUEST_THREAD_NAME_FILTER_CONTEXT = ThreadLocalContextService
             .context(RequestThreadNameFilter.class);
     /** Request 헤더의 정보를 공유하는 컨텍스트 */
-    private static final IThreadLocalContext REQUEST_HEADER_FILTER_CONTEXT = ThreadLocalContextService
+    private static IThreadLocalContext REQUEST_HEADER_FILTER_CONTEXT = ThreadLocalContextService
             .context(RequestHeaderFilter.class);
     /** {@link LogFeature#marker()} 값을 'pretty'하게 출력하는 정보 */
-    private final ILogFeatureDecorationConsolidator logDecorator;
+    private ILogFeatureDecorationConsolidator logDecorator;
 
     /**
      * <br>
@@ -122,7 +122,7 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * @version 0.8.0
      */
     @Pointcut("@annotation(open.commons.spring.web.log.LogFeature)")
-    public final void annotationLogFeature() {
+    public void annotationLogFeature() {
     }
 
     /**
@@ -139,7 +139,7 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * @version 0.8.0
      */
     @Pointcut("@annotation(org.springframework.scheduling.annotation.Scheduled)")
-    public final void annotationScheduled() {
+    public void annotationScheduled() {
 
     }
 
@@ -168,7 +168,7 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      */
     @Around(" ( withinAllControllerStereotypeComponent() || withinComponentStereotypeComponent() ) " //
             + " && ( annotationLogFeature() || withinLogFeature() ) ")
-    public final Object handleExternalRequest(ProceedingJoinPoint pjp) throws Throwable {
+    public Object handleExternalRequest(ProceedingJoinPoint pjp) throws Throwable {
         try {
             Object target = pjp.getTarget();
             Method invokedMethod = ((MethodSignature) pjp.getSignature()).getMethod();
@@ -239,7 +239,7 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
     @Around(" withinComponentStereotypeComponent() " //
             + " && annotationScheduled() " //
             + " && annotationLogFeature() ")
-    public final Object handleInternalTrigger(ProceedingJoinPoint pjp) throws Throwable {
+    public Object handleInternalTrigger(ProceedingJoinPoint pjp) throws Throwable {
         try {
             Method invokedMethod = ((MethodSignature) pjp.getSignature()).getMethod();
             // #1. 메소드에 설정된 정보
@@ -316,6 +316,6 @@ public class LogFeatureAspect extends AbstractAspectPointcuts {
      * @version 0.8.0
      */
     @Pointcut("@within(open.commons.spring.web.log.LogFeature)")
-    public final void withinLogFeature() {
+    public void withinLogFeature() {
     }
 }

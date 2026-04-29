@@ -192,7 +192,7 @@ public class ResourceHandleImpl implements ResourceHandle {
      * @see #isBuiltin
      */
 
-    public final boolean isBuiltin() {
+    public boolean isBuiltin() {
         return isBuiltin;
     }
 
