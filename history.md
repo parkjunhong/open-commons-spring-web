@@ -1,3 +1,8 @@
+[2026/04/29]
+- 수정
+  + open.commons.spring.web.beans.resolver.AuthorizedDataModelAttributeResolver
+    + 부모 클래스 변경. (org.springframework.web.servlet.mvc.method.annotation.ServletModelAttributeMethodProcessor)
+
 [2026/04/27]
 - 수정
   + `@AutoConfiguration, @Configuration`이 적용된 클래스에 명시적으로 '빈'이름을 적용함.

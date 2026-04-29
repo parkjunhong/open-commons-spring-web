@@ -54,6 +54,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.support.WebRequestDataBinder;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.annotation.ModelAttributeMethodProcessor;
+import org.springframework.web.servlet.mvc.method.annotation.ServletModelAttributeMethodProcessor;
 import org.springframework.web.servlet.support.ExtendedServletRequestDataBinder;
 
 import open.commons.core.TwoValueObject;
@@ -76,7 +77,7 @@ import open.commons.spring.web.utils.ClassInspector;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodProcessor
+public class AuthorizedDataModelAttributeResolver extends ServletModelAttributeMethodProcessor
         implements IAuthorizedDataResolver {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -102,17 +103,19 @@ public class AuthorizedDataModelAttributeResolver extends ModelAttributeMethodPr
 
     @Override
     protected void bindRequestParameters(WebDataBinder binder, NativeWebRequest request) {
-        HttpServletRequest servletRequest = request.getNativeRequest(HttpServletRequest.class);
-        if (binder instanceof ExtendedServletRequestDataBinder) {
-            ((ExtendedServletRequestDataBinder) binder).bind(servletRequest);
-        } else if (binder instanceof ServletRequestDataBinder) {
-            ((ServletRequestDataBinder) binder).bind(servletRequest);
-        } else if (binder instanceof WebRequestDataBinder) {
-            ((WebRequestDataBinder) binder).bind(request);
-        } else {
-            throw ExceptionUtils.newException(InternalServerException.class, "지원하는 않는 WebDataBinder('%s') 구현 클래스 입니다.",
-                    binder.getClass());
-        }
+//        HttpServletRequest servletRequest = request.getNativeRequest(HttpServletRequest.class);
+//        if (binder instanceof ExtendedServletRequestDataBinder) {
+//            ((ExtendedServletRequestDataBinder) binder).bind(servletRequest);
+//        } else if (binder instanceof ServletRequestDataBinder) {
+//            ((ServletRequestDataBinder) binder).bind(servletRequest);
+//        } else if (binder instanceof WebRequestDataBinder) {
+//            ((WebRequestDataBinder) binder).bind(request);
+//        } else {
+//            throw ExceptionUtils.newException(InternalServerException.class, "지원하는 않는 WebDataBinder('%s') 구현 클래스 입니다.",
+//                    binder.getClass());
+//        }
+        
+        super.bindRequestParameters(binder, request);
 
         Object target = binder.getTarget();
         if (target == null) {
