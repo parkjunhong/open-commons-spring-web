@@ -29,7 +29,6 @@ package open.commons.spring.web.servlet.method.annotation;
 import jakarta.validation.ConstraintViolationException;
 
 import org.jspecify.annotations.Nullable;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -246,30 +245,4 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
     protected HttpStatusCode resolveAnnotatedResponseStatus(Exception ex, HttpStatusCode defaultStatus) {
         return ExceptionHttpStatusUtils.resolveResponseStatus(this.exceptionHttpStatusBinder, ex, defaultStatus);
     }
-
-    /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 5. 28.    parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
-     * @param exceptionHttpStatusBinders
-     *            the exceptionHttpStatusBinder to set
-     *
-     * @since 2025. 5. 28.
-     * @version 0.8.0
-     *
-     * @see #exceptionHttpStatusBinder
-     */
-//    @Qualifier(ExceptionHttpStatusBinder.BEAN_QUALIFIER)
-//    @Autowired
-//    public void setExceptionHttpStatusBinder(ExceptionHttpStatusBinder exceptionHttpStatusBinder) {
-//        AssertUtils2.notNull(exceptionHttpStatusBinder);
-//
-//        this.exceptionHttpStatusBinder = exceptionHttpStatusBinder;
-//    }
 }
