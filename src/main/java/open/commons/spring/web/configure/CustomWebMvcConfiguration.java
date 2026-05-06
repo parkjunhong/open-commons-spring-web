@@ -551,7 +551,7 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
      */
     @Autowired
     public void setAuthorizedDataResolver(
-            @Qualifier(CustomWebMvcAutoConfiguration.BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS) List<IAuthorizedDataResolver> resolvers) {
+            @Qualifier(CustomWebMvcExtensionConfiguration.BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS) List<IAuthorizedDataResolver> resolvers) {
         this.argumentResolvers.addAll(resolvers);
     }
 

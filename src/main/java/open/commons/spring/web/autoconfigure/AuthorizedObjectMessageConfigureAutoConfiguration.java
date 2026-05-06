@@ -36,6 +36,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import open.commons.spring.web.configure.AuthorizedObjectMessageConfiguration;
@@ -49,11 +50,13 @@ import open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConvert
  * @author parkjunhong77@gmail.com
  */
 @AutoConfiguration(value = AuthorizedObjectMessageConfigureAutoConfiguration.BEAN_QUALIFIER //
-        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class,
-                AuthorizedObjectMessageConverterAutoConfiguration.class })
+        , after = {OpenCommonsSpringWebCoreAutoConfiguration.class,
+        AuthorizedObjectMessageConverterAutoConfiguration.class} //
+)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+@Validated
 public class AuthorizedObjectMessageConfigureAutoConfiguration {
-    
+
     static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConfigureAutoConfiguration";
 
     private Logger logger = LoggerFactory.getLogger(AuthorizedObjectMessageConfigureAutoConfiguration.class);

@@ -1,6 +1,9 @@
 [2026/05/06]
 - 버그수정
   + open.commons.spring.web.beans.authority.FieldAccessAuthorityDecision.FieldAccessAuthorityDecision(boolean, String, String): `handleBean` 데이터 제한조건 변경 (org.jspecify.annotations.Nullable)
+- 구조개선
+  + `open.commons.spring.web.autoconfigure.OpenCommonsSpringWebCoreAutoConfiguration`을 통한 '빈' 생성 방식 개선
+    + `org.springframework.context.annotation.ComponentScan`을 제거하고 별도의 `커스텀 org.springframework.context.annotation.Configuration` 클래스를 생성하여 제공
   
   
 [2026/04/29]

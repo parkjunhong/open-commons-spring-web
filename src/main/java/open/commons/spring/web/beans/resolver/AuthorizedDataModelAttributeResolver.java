@@ -63,7 +63,7 @@ import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.authority.AuthorizedRequestData;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata;
-import open.commons.spring.web.configure.CustomWebMvcAutoConfiguration;
+import open.commons.spring.web.configure.CustomWebMvcExtensionConfiguration;
 import open.commons.spring.web.servlet.exception.InternalServerException;
 import open.commons.spring.web.utils.BeanUtils;
 import open.commons.spring.web.utils.ClassInspector;
@@ -71,7 +71,7 @@ import open.commons.spring.web.utils.ClassInspector;
 /**
  * "{@link AuthorizedRequestData} && ({@link ModelAttribute} ||
  * {@link ModelAttributeMethodProcessor#annotationNotRequired} )"가 선언된 파라미터를 처리합니다.<br>
- * {@link CustomWebMvcAutoConfiguration}을 통해서 {@link Bean}으로 제공됩니다.
+ * {@link CustomWebMvcExtensionConfiguration}을 통해서 {@link Bean}으로 제공됩니다.
  * 
  * @since 2025. 9. 18.
  * @version 0.8.0

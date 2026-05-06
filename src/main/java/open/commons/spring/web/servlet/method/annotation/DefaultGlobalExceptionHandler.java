@@ -80,23 +80,6 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
     /** {@link Throwable}과 {@link HttpStatus} 매핑 정보 */
     private @Nullable ExceptionHttpStatusBinder exceptionHttpStatusBinder;
 
-    /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2020. 1. 17.    parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     * 
-     * @since 2020. 1. 17.
-     * @version 0.2.3
-     */
-    public DefaultGlobalExceptionHandler() {
-        this(null, FN_CREATE_ENTITY_DEFAULT);
-    }
-
     /***
      * 
      * <br>
@@ -282,11 +265,11 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
      *
      * @see #exceptionHttpStatusBinder
      */
-    @Qualifier(ExceptionHttpStatusBinder.BEAN_QUALIFIER)
-    @Autowired
-    public void setExceptionHttpStatusBinder(ExceptionHttpStatusBinder exceptionHttpStatusBinder) {
-        AssertUtils2.notNull(exceptionHttpStatusBinder);
-
-        this.exceptionHttpStatusBinder = exceptionHttpStatusBinder;
-    }
+//    @Qualifier(ExceptionHttpStatusBinder.BEAN_QUALIFIER)
+//    @Autowired
+//    public void setExceptionHttpStatusBinder(ExceptionHttpStatusBinder exceptionHttpStatusBinder) {
+//        AssertUtils2.notNull(exceptionHttpStatusBinder);
+//
+//        this.exceptionHttpStatusBinder = exceptionHttpStatusBinder;
+//    }
 }

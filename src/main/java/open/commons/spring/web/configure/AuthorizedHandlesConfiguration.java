@@ -28,6 +28,7 @@ package open.commons.spring.web.configure;
 
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -41,20 +42,12 @@ import open.commons.spring.web.beans.authority.internal.AuthorizedHandles;
  * @author parkjunhong77@gmail.com
  */
 @Configuration(value = AuthorizedHandlesConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
+@ConditionalOnProperty(prefix = "open-commons.spring.web.configuration.enabled", name = "authorized-handles", matchIfMissing = true)
 public class AuthorizedHandlesConfiguration {
 
     static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.AuthorizedHandlesConfiguration";
 
     /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 9. 29.    parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
      * @since 2025. 9. 29.
      * @version 0.8.0
      */

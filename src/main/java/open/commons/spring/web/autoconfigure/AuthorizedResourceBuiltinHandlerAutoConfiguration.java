@@ -42,6 +42,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.validation.annotation.Validated;
 
 import open.commons.core.function.Functions;
 import open.commons.core.utils.ExceptionUtils;
@@ -69,8 +70,10 @@ import open.commons.spring.web.exception.BeanMergeFailedException;
  * @author parkjunhong77@gmail.com
  */
 @AutoConfiguration(value = AuthorizedResourceBuiltinHandlerAutoConfiguration.BEAN_QUALIFIER //
-        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
+        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class } //
+)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+@Validated
 public class AuthorizedResourceBuiltinHandlerAutoConfiguration {
 
     static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.AuthorizedResourceBuiltinHandlerAutoConfiguration";

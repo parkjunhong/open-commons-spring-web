@@ -33,6 +33,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplicat
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
+import org.springframework.validation.annotation.Validated;
 
 import open.commons.spring.web.aspect.LogFeatureAspect;
 import open.commons.spring.web.log.ILogFeatureDecorationConsolidator;
@@ -54,8 +55,10 @@ import open.commons.spring.web.log.ILogFeatureDecorationConsolidator;
  * @author parkjunhong77@gmail.com
  */
 @AutoConfiguration(value = LogFeatureAutoConfiguration.BEAN_QUALIFIER //
-        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
+        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class } //
+)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+@Validated
 public class LogFeatureAutoConfiguration {
 
     static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.LogFeatureAutoConfiguration";

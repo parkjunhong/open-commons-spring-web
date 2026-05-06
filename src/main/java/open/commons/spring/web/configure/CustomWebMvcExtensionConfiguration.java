@@ -39,6 +39,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -63,38 +64,28 @@ import open.commons.spring.web.beans.resolver.IAuthorizedDataResolver;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@Configuration(value = CustomWebMvcAutoConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
-// 하위 클래스가 @Configuration/@Bean으로 등록돼 있으면 이 빈은 건너뜀
-@ConditionalOnMissingBean(CustomWebMvcConfiguration.class)
+@Configuration(value = CustomWebMvcExtensionConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
+@ConditionalOnProperty(prefix = "open-commons.spring.web.configuration.enabled", name = "web-mvc-configurer", matchIfMissing = true)
 @Validated
-public class CustomWebMvcAutoConfiguration {
+public class CustomWebMvcExtensionConfiguration {
 
-    static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.CustomWebMvcAutoConfiguration";
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.CustomWebMvcExtensionConfiguration";
 
-    public static final String BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS = "open.commons.spring.web.config.CustomWebMvcAutoConfiguration#AUTHORIZED_DATA_RESOLVERS";
+    public static final String BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS = "open.commons.spring.web.configure.CustomWebMvcExtensionConfiguration#AUTHORIZED_DATA_RESOLVERS";
 
-    private final Logger logger = LoggerFactory.getLogger(CustomWebMvcAutoConfiguration.class);
+    private final Logger logger = LoggerFactory.getLogger(CustomWebMvcExtensionConfiguration.class);
 
     private final ApplicationContext context;
     private final Environment environment;
 
     /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 8. 11.    parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
      * @param context
      * @param environment
      *
      * @since 2025. 8. 11.
      * @version 0.8.0
      */
-    public CustomWebMvcAutoConfiguration(ApplicationContext context, Environment environment) {
+    public CustomWebMvcExtensionConfiguration(ApplicationContext context, Environment environment) {
         super();
         this.context = context;
         this.environment = environment;
@@ -131,6 +122,7 @@ public class CustomWebMvcAutoConfiguration {
 
     @Bean
     @Order(CustomWebMvcConfiguration.ORDER)
+    @ConditionalOnMissingBean(CustomWebMvcConfiguration.class)
     CustomWebMvcConfiguration customWebMvcConfigurer() {
         CustomWebMvcConfiguration c = new CustomWebMvcConfiguration(this.context, this.environment);
         logger.info("[web-mvc-configurer] custom-web-mvc-configurer={}", c);

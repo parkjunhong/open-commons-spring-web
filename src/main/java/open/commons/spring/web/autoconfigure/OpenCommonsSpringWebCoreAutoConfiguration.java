@@ -28,14 +28,16 @@ package open.commons.spring.web.autoconfigure;
 
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
+import open.commons.spring.web.configure.AspectConfiguration;
 import open.commons.spring.web.configure.AuthorizedHandlesConfiguration;
 import open.commons.spring.web.configure.AuthorizedResourcesMetadataConfiguration;
-import open.commons.spring.web.configure.CustomWebMvcAutoConfiguration;
+import open.commons.spring.web.configure.BeansConfiguration;
+import open.commons.spring.web.configure.CustomWebMvcExtensionConfiguration;
 import open.commons.spring.web.configure.LogFeatureDecorationConfiguration;
 import open.commons.spring.web.configure.OpenApiConfiguration;
+import open.commons.spring.web.configure.ServletConfiguration;
 import open.commons.spring.web.configure.concurrent.async.AsyncTaskExecutorConfiguration;
 import open.commons.spring.web.configure.concurrent.async.ScheduledTaskSchedulerConfiguration;
 import open.commons.spring.web.configure.concurrent.executor.ExecutorConfiguration;
@@ -46,58 +48,39 @@ import open.commons.spring.web.configure.exception.ExceptionHttpStatusBinderConf
 import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
 
 /**
- * <b><i>{@code open.commons.spring.web.autoconfigure}</i></b> 패키지에 선언된 {@link AutoConfiguration}이
- * 적용된 클래스 이외에 {@link ComponentScan}의 대상이 되는 '빈'을 포함하는 <b><i>{@code package}</i></b>를 로딩하여 자동으로 등록하는
- * 클래스.<br>
+ * <b><i>{@code open.commons.spring.web.autoconfigure}</i></b> 패키지에 선언된 공통 라이브러리(Starter)의 메인
+ * {@link AutoConfiguration} 진입점 클래스.<br>
  * 
  * <p>
- * <b>🎯 @ComponentScan이 찾아내는 핵심 어노테이션</b>
+ * <b>🎯 Spring Boot Starter 아키텍처 설계 원칙 (Best Practice)</b>
  * </p>
  * 
  * <p>
- * 스프링 프레임워크에서 컴포넌트 스캔의 대상이 되는 어노테이션들은 기본적으로 <code>@Component</code>를 메타 어노테이션으로 포함하고 있습니다.
+ * 이 자동 구성 클래스는 블랙박스 형태의 무분별한 컴포넌트 스캔(Component Scan)을 배제하고, 프레임워크의 생명주기 안정성과 라이브러리 사용자의 제어권을 보장하기
+ * 위해 다음과 같은 설계 원칙을 따릅니다.
  * </p>
  * 
- * <p>
- * <b>1. 기본 및 계층형 어노테이션</b>
- * </p>
  * <ul>
- * <li><code>@Component</code>: 스프링이 관리할 모든 빈의 가장 기본이 되는 어노테이션입니다.</li>
- * <li><code>@Service</code>: 비즈니스 로직을 담당하는 클래스에 부여합니다.</li>
- * <li><code>@Repository</code>: 데이터베이스 접근 계층의 예외를 스프링의 <code>DataAccessException</code>으로 변환하는 기능이
- * 포함된 어노테이션입니다.</li>
- * <li><code>@Controller</code>, <code>@RestController</code>: 웹 프레젠테이션 계층에서 HTTP 요청을 처리하는 클래스에
- * 부여합니다.</li>
- * </ul>
+ * <li><b>1. 명시적 컴포넌트 조립 (Explicit Component Assembly)</b><br>
+ * 자동 스캔으로 인한 빈(Bean) 생명주기 충돌 및 의도치 않은 중복 등록을 원천 차단하기 위해, 모든 공통 빈은 용도별(Aspect, WebMvc, Async 등) 커스텀
+ * {@code @Configuration} 클래스에 명시적으로 선언되며 {@link Import}를 통해 중앙에서 안전하게 조립됩니다.</li>
  * 
- * <p>
- * <b>2. 설정 및 확장 어노테이션</b>
- * </p>
- * <ul>
- * <li><code>@Configuration</code>: <code>@Bean</code> 메서드를 포함하는 설정 클래스입니다. 이 어노테이션도 내부적으로
- * <code>@Component</code>를 포함하므로 컴포넌트 스캔 대상입니다.
- * <ul>
- * <li>🚨 주의: 일반 <code>@Configuration</code>은 스캔 대상이지만, <code>@AutoConfiguration</code>은 일반적인 컴포넌트
- * 스캔 대상으로 다루지 않아야 합니다.</li>
- * </ul>
- * </li>
- * <li><code>@ControllerAdvice</code>, <code>@RestControllerAdvice</code>: 전역 예외 처리를 담당하며, 정상 동작하려면
- * 스캔 경로에 포함되어야 합니다.</li>
- * </ul>
+ * <li><b>2. 관심사의 분리 및 조건부 평가 최적화 (Conditional Evaluation)</b><br>
+ * 논리적인 도메인 단위로 분리된 설정 클래스들은 클래스 레벨에서 {@code @ConditionalOnProperty} 등을 통해 평가됩니다. 이를 통해 라이브러리 사용자는
+ * {@code application.yml} 속성 하나만으로 거대한 모듈의 구동 여부를 손쉽게 On/Off 할 수 있으며, 불필요한 빈 로드를 막아 애플리케이션 기동 속도를
+ * 최적화합니다.</li>
  * 
- * <p>
- * <b>3. AOP 관련 어노테이션</b>
- * </p>
- * <ul>
- * <li><code>@Aspect</code>: AOP를 위한 어노테이션입니다. 다만 <code>@Aspect</code> 자체만으로는 컴포넌트 스캔 대상이 아니므로, 스프링
- * 빈으로 등록하려면 보통 <code>@Component</code>를 함께 선언해야 합니다.</li>
+ * <li><b>3. 사용자 주도권 보장 (Safe Overriding)</b><br>
+ * 제공되는 핵심 빈들은 {@code @ConditionalOnMissingBean}을 동반하여 등록됩니다. 라이브러리를 도입하는 각 서비스에서 고유한 커스텀 빈을 등록할 경우,
+ * 프레임워크가 제공하는 기본값은 우아하게 양보되어 충돌(NoUniqueBeanDefinitionException) 없이 완벽한 유연성을 제공합니다.</li>
  * </ul>
  * 
  * <pre>
  * [개정이력]
- *      날짜       | 작성자                   |   내용
+ * 날짜       | 작성자                   |   내용
  * -----------------------------------------------------
- * 2026. 4. 20.		parkjunohng77@gmail.com    최초 작성 (@Import 및 @ComponentScan 하이브리드 구조 적용)
+ * 2026. 4. 20.     parkjunhong77@gmail.com    최초 작성
+ * 2026. 5. 6.      parkjunhong77@gmail.com    Spring Boot Starter 아키텍처 정석에 따른 ComponentScan 제거 및 기능별 Configuration 명시적 Import 구조로 전면 리팩토링
  * </pre>
  * 
  * @since 2026. 4. 20.
@@ -111,9 +94,11 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
 })
 // 2. [명시적 로드] 순서와 조건부 평가가 중요한 @Configuration 클래스들은 @Import로 관리합니다.
 @Import({ //
-        AuthorizedHandlesConfiguration.class //
+        AspectConfiguration.class //
+        , AuthorizedHandlesConfiguration.class //
         , AuthorizedResourcesMetadataConfiguration.class //
-        , CustomWebMvcAutoConfiguration.class //
+        , BeansConfiguration.class //
+        , CustomWebMvcExtensionConfiguration.class //
         , LogFeatureDecorationConfiguration.class //
         , OpenApiConfiguration.class //
         , AsyncTaskExecutorConfiguration.class //
@@ -124,16 +109,10 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
         , TaskSchedulerConfiguration.class //
         , ExceptionHttpStatusBinderConfiguration.class //
         , RestTemplateConfiguration.class //
+        , ServletConfiguration.class //
 })
-// 3. [일괄 스캔 로드] 개수가 많고 로드 순서가 독립적인 일반 @Component, @Service 등을 스캔합니다.
-@ComponentScan(basePackages = { //
-        "open.commons.spring.web.aspect" //
-        , "open.commons.spring.web.async" //
-        , "open.commons.spring.web.beans.controller" //
-        , "open.commons.spring.web.beans.factory" //
-        , "open.commons.spring.web.servlet.method.annotation" })
 public class OpenCommonsSpringWebCoreAutoConfiguration {
-    
+
     static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.OpenCommonsSpringWebCoreAutoConfiguration";
 
     public OpenCommonsSpringWebCoreAutoConfiguration() {

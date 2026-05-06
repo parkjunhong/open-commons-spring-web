@@ -61,6 +61,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -108,12 +109,13 @@ import open.commons.spring.web.authority.AuthorizedRequest;
  * @author parkjunhong77@gmail.com
  */
 @Tag(name = "REST API 제공 서비스", description = "서비스가 제공하는 REST API 정보를 제공합니다.")
-@RestController
 @RequestMapping("${" + RequestMappingProvider.PROPERTIES_PREFIX + ":" + RequestMappingProvider.PROPERTIES_PREFIX_VALUE
         + "}")
 @Validated
 @AuthorizedRequest
 public class RequestMappingProvider implements ApplicationListener<ApplicationReadyEvent> {
+
+    public static final String BEAN_QUALIFIER = "open.commons.spring.web.beans.controller.RequestMappingProvider";
 
     /** REST API Metadata 제공 'controll'의 {@link RequestMapping#path()} 항목명 */
     public static final String PROPERTIES_PREFIX = "open-commons.spring.web.beans.controller.request-mapping-provider.prefix";
@@ -458,6 +460,7 @@ public class RequestMappingProvider implements ApplicationListener<ApplicationRe
      */
     @Operation(summary = "REST API Metadata 제공", description = "")
     @GetMapping(path = "${open-commons.spring.web.beans.controller.request-mapping-provider.get-all:}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
     public ResponseEntity<RestApiMetadataDTO> getRestApiMetadata(
             @RequestParam(name = "groupOrder", defaultValue = "name") OrderBy groupOrder,
             @RequestParam(name = "apiOrder", defaultValue = "name") OrderBy apiOrder) {

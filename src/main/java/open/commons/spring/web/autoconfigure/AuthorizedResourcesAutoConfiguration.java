@@ -43,6 +43,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
+import org.springframework.validation.annotation.Validated;
 
 import open.commons.spring.web.aspect.AuthorizedMethodAspect;
 import open.commons.spring.web.aspect.AuthorizedRequestAspect;
@@ -76,10 +77,12 @@ import tools.jackson.databind.module.SimpleModule;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(value = AuthorizedResourcesAutoConfiguration.BEAN_QUALIFIER, after = {
-        JacksonAutoConfiguration.class, OpenCommonsSpringWebCoreAutoConfiguration.class,
-        AuthorizedResourceBuiltinHandlerAutoConfiguration.class })
+@AutoConfiguration(value = AuthorizedResourcesAutoConfiguration.BEAN_QUALIFIER //
+        , after = { JacksonAutoConfiguration.class, OpenCommonsSpringWebCoreAutoConfiguration.class,
+                AuthorizedResourceBuiltinHandlerAutoConfiguration.class } //
+)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+@Validated
 public class AuthorizedResourcesAutoConfiguration {
 
     static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.AuthorizedResourcesAutoConfiguration";

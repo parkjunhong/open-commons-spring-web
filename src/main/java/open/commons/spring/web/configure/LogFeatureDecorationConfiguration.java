@@ -33,6 +33,7 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -50,6 +51,7 @@ import open.commons.spring.web.log.LogFeatureDecorationConsolidator;
  * @author parkjunhong77@gmail.com
  */
 @Configuration(value = LogFeatureDecorationConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
+@ConditionalOnProperty(prefix = "open-commons.spring.web.configuration.enabled", name = "log-feature-decoration", matchIfMissing = true)
 public class LogFeatureDecorationConfiguration {
 
     static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.LogFeatureDecorationConfiguration";
@@ -57,15 +59,6 @@ public class LogFeatureDecorationConfiguration {
     private final Logger logger = LoggerFactory.getLogger(LogFeatureDecorationConfiguration.class);
 
     /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 7. 29.    parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
      * @since 2025. 7. 29.
      * @version 0.8.0
      */

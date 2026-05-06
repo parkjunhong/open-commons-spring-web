@@ -38,7 +38,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.stereotype.Component;
 
 import open.commons.spring.web.authority.AuthorizedMethod;
 import open.commons.spring.web.authority.AuthorizedRequest;
@@ -50,8 +49,9 @@ import open.commons.spring.web.authority.AuthorizedRequest;
  * @version 0.8.0
  * @author parkjunhong77@gmail.com
  */
-@Component
 public class AuthorizedResourceAnnotationValidator implements BeanFactoryPostProcessor {
+
+    public static final String BEAN_QUALIFIER = "open.commons.spring.web.beans.factory.AuthorizedResourceAnnotationValidator";
 
     private final Logger logger = LoggerFactory.getLogger(AuthorizedResourceAnnotationValidator.class);
 

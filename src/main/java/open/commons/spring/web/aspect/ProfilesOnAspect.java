@@ -46,7 +46,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Component;
 
 import open.commons.core.utils.ObjectUtils;
 import open.commons.spring.web.context.annotation.ProfilesOn;
@@ -63,8 +62,9 @@ import open.commons.spring.web.exception.ProfileOnDeniedException;
  */
 @Aspect
 @Order(AspectOrder.PROFILES_ON)
-@Component
 public class ProfilesOnAspect extends AbstractAspectPointcuts {
+
+    public static final String BEAN_QUALIFIER = "open.commons.spring.web.aspect.ProfilesOnAspect";
 
     private final String[] currentProfiles;
 

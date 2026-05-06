@@ -52,6 +52,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -86,8 +87,10 @@ import open.commons.spring.web.utils.PathUtils;
  * @author parkjunhong77@gmail.com
  */
 @AutoConfiguration(value = GlobalServletAutoConfiguration.BEAN_QUALIFIER //
-        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class })
+        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class } //
+)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+@Validated
 public class GlobalServletAutoConfiguration {
 
     static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.GlobalServletAutoConfiguration";

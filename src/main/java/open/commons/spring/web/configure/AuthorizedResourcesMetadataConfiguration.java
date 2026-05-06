@@ -59,6 +59,7 @@ import open.commons.spring.web.utils.BeanUtils;
  * @author parkjunhong77@gmail.com
  */
 @Configuration(value = AuthorizedResourcesMetadataConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
+@ConditionalOnProperty(prefix = "open-commons.spring.web.configuration.enabled", name = "authorized-resources-metadata", matchIfMissing = true)
 @Validated
 public class AuthorizedResourcesMetadataConfiguration {
 
@@ -70,15 +71,6 @@ public class AuthorizedResourcesMetadataConfiguration {
     private final Logger logger = LoggerFactory.getLogger(AuthorizedResourcesMetadataConfiguration.class);
 
     /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2025. 6. 12.    parkjunhong77@gmail.com     최초 작성
-     * </pre>
-     *
      * @since 2025. 6. 12.
      * @version 0.8.0
      */

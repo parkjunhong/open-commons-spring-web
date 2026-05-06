@@ -37,6 +37,7 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.validation.annotation.Validated;
 
 import open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata;
 import open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConverter;
@@ -58,8 +59,10 @@ import tools.jackson.databind.json.JsonMapper;
  * @author parkjunhong77@gmail.com
  */
 @AutoConfiguration(value = AuthorizedObjectMessageConverterAutoConfiguration.BEAN_QUALIFIER //
-        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class, AuthorizedResourcesAutoConfiguration.class })
+        , after = { OpenCommonsSpringWebCoreAutoConfiguration.class, AuthorizedResourcesAutoConfiguration.class } //
+)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+@Validated
 public class AuthorizedObjectMessageConverterAutoConfiguration {
 
     static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConverterAutoConfiguration";

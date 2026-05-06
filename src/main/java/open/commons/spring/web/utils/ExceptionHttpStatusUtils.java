@@ -26,6 +26,7 @@
 
 package open.commons.spring.web.utils;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -81,7 +82,7 @@ public class ExceptionHttpStatusUtils {
      * 
      * @see ResponseStatus
      */
-    public static HttpStatusCode resolveResponseStatus(ExceptionHttpStatusBinder binder, Exception ex,
+    public static HttpStatusCode resolveResponseStatus(@Nullable ExceptionHttpStatusBinder binder, Exception ex,
             HttpStatusCode defaultStatus) {
         AssertUtils2.notNulls(ex, defaultStatus);
 

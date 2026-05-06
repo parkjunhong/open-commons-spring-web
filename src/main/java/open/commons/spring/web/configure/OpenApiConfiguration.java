@@ -97,6 +97,7 @@ import open.commons.spring.web.oas.GroupedOpenApiProperties;
  */
 @Configuration(value = OpenApiConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
 @Import(GroupOpenApiRegistrar.class)
+@ConditionalOnProperty(prefix = "open-commons.spring.web.configuration.enabled", name = "open-api", matchIfMissing = true)
 @Validated
 public class OpenApiConfiguration {
     static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.OpenApiConfiguration";
@@ -135,14 +136,6 @@ public class OpenApiConfiguration {
     private ApplicationContext context;
 
     /**
-     * <br>
-     * 
-     * <pre>
-     * [개정이력]
-     *     날짜        | 작성자                   |   내용
-     * -----------------------------------------------------
-     * 2023. 7. 19.    parkjunhong77@gmail.com     최초 작성
-     * </pre>
      * 
      * @param context
      *
