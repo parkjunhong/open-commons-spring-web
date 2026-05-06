@@ -28,6 +28,8 @@ package open.commons.spring.web.beans.authority;
 
 import jakarta.validation.constraints.NotBlank;
 
+import org.jspecify.annotations.Nullable;
+
 import open.commons.core.utils.AssertUtils2;
 
 /**
@@ -46,7 +48,7 @@ public class FieldAccessAuthorityDecision {
      * 데이터 처리 빈<br>
      * {@link IUnauthorizedFieldHandler} 를 구현한 객체여야 함.
      */
-    public final String handleBean;
+    public final @Nullable String handleBean;
 
     /**
      * 
@@ -70,9 +72,8 @@ public class FieldAccessAuthorityDecision {
      * @since 2025. 10. 1.
      * @version 0.8.0
      */
-    public FieldAccessAuthorityDecision(boolean accessible, @NotBlank String handleType, @NotBlank String handleBean) {
+    public FieldAccessAuthorityDecision(boolean accessible, @NotBlank String handleType, @Nullable String handleBean) {
         AssertUtils2.notBlank(handleType);
-        AssertUtils2.notBlank(handleBean);
 
         this.accessible = accessible;
         this.handleType = handleType;

@@ -26,6 +26,7 @@
 
 package open.commons.spring.web.jackson.serialization;
 
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -140,7 +141,7 @@ public abstract class AbstractWrappingSerializer extends ValueSerializer<Object>
         return AuthorizedFieldDecisionUtil.isSimpleType(type);
     }
 
-    private IUnauthorizedFieldHandler resolveFieldHandler(String handleBean) {
+    private IUnauthorizedFieldHandler resolveFieldHandler(@Nullable String handleBean) {
         if (StringUtils.isNullOrEmptyString(handleBean)) {
             return this.fieldHandler;
         } else {

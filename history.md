@@ -1,3 +1,8 @@
+[2026/05/06]
+- 버그수정
+  + open.commons.spring.web.beans.authority.FieldAccessAuthorityDecision.FieldAccessAuthorityDecision(boolean, String, String): `handleBean` 데이터 제한조건 변경 (org.jspecify.annotations.Nullable)
+  
+  
 [2026/04/29]
 - 수정
   + open.commons.spring.web.beans.resolver.AuthorizedDataModelAttributeResolver
