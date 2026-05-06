@@ -36,10 +36,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -65,7 +65,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
  * @version 0.2.3
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)
  */
-@ControllerAdvice
+@RestControllerAdvice
 @Order(Ordered.LOWEST_PRECEDENCE)
 public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -206,6 +206,8 @@ public class DefaultGlobalExceptionHandler extends ResponseEntityExceptionHandle
     protected @Nullable ResponseEntity<Object> handleExceptionInternal(Exception ex, @Nullable Object body,
             HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         AssertUtils2.notNulls(ex, headers, status, request);
+
+        logger.error(status, ex);
 
         if (body == null) {
             body = this.FN_CREATE_ENTITY.apply(request, ex, status);

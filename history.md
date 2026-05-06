@@ -4,6 +4,8 @@
 - 구조개선
   + `open.commons.spring.web.autoconfigure.OpenCommonsSpringWebCoreAutoConfiguration`을 통한 '빈' 생성 방식 개선
     + `org.springframework.context.annotation.ComponentScan`을 제거하고 별도의 `커스텀 org.springframework.context.annotation.Configuration` 클래스를 생성하여 제공
+- 추가
+  + open.commons.spring.web.servlet.method.annotation.DefaultGlobalExceptionHandler.handleExceptionInternal(Exception, Object, HttpHeaders, HttpStatusCode, WebRequest): 예외 정보 출력
   
   
 [2026/04/29]
