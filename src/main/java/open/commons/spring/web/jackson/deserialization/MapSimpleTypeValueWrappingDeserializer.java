@@ -28,7 +28,7 @@ package open.commons.spring.web.jackson.deserialization;
 
 import java.util.Map;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 
@@ -85,7 +85,7 @@ public class MapSimpleTypeValueWrappingDeserializer extends ValueDeserializer<Ob
      * @version 0.8.0
      */
     public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler,
-            @NotEmpty String handleType) {
+            @NotBlank String handleType) {
         this(mapType, handler, handleType, null);
     }
 
@@ -111,7 +111,7 @@ public class MapSimpleTypeValueWrappingDeserializer extends ValueDeserializer<Ob
      * @version 0.8.0
      */
     public MapSimpleTypeValueWrappingDeserializer(JavaType mapType, IAuthorizedRequestDataHandler handler,
-            @NotEmpty String handleType, ValueDeserializer<?> delegate) {
+            @NotBlank String handleType, ValueDeserializer<?> delegate) {
         this.mapType = mapType;
         this.handler = handler;
         this.handleType = handleType;

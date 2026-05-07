@@ -26,7 +26,7 @@
 
 package open.commons.spring.web.beans.authority;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 import open.commons.core.Result;
 import open.commons.core.TwoValueObject;
@@ -62,6 +62,6 @@ public interface IFieldAccessAuthorityProvider extends IResourceAccessAuthorityP
      * @since 2025. 5. 26.
      * @version 0.8.0
      */
-    Result<FieldAccessAuthorityDecision> isAllowed(@NotEmpty String type, @NotEmpty String fieldName);
+    Result<FieldAccessAuthorityDecision> isAllowed(@NotBlank String type, @NotBlank String fieldName);
 
 }

@@ -28,7 +28,7 @@ package open.commons.spring.web.jackson.deserialization;
 
 import java.lang.reflect.Field;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 import open.commons.spring.web.authority.AuthorizedRequestData;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
@@ -58,7 +58,7 @@ public class AuthorizedFieldDeserializer extends ValueDeserializer<Object> {
     private final IAuthorizedRequestDataHandler handle;
     private final String handleType;
 
-    public AuthorizedFieldDeserializer(IAuthorizedRequestDataHandler handle, @NotEmpty String handleType) {
+    public AuthorizedFieldDeserializer(IAuthorizedRequestDataHandler handle, @NotBlank String handleType) {
         this.handle = handle;
         this.handleType = handleType;
     }

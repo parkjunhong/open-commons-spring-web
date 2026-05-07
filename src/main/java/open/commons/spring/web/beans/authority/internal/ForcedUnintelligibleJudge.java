@@ -28,7 +28,7 @@ package open.commons.spring.web.beans.authority.internal;
 
 import java.lang.reflect.Field;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 import open.commons.core.Result;
 import open.commons.core.utils.ExceptionUtils;
@@ -72,7 +72,7 @@ public class ForcedUnintelligibleJudge implements IFieldAccessAuthorityProvider 
      *      java.lang.String)
      */
     @Override
-    public Result<FieldAccessAuthorityDecision> isAllowed(@NotEmpty String type, @NotEmpty String fieldName) {
+    public Result<FieldAccessAuthorityDecision> isAllowed(@NotBlank String type, @NotBlank String fieldName) {
         try {
             Class<?> typeClass = Class.forName(type);
             Field field = typeClass.getDeclaredField(fieldName);

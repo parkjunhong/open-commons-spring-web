@@ -38,7 +38,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -226,7 +225,7 @@ public class AuthorizedHandles {
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    public static ResourceHandle createResourceHandle(Target target, @NotEmpty String handleType,
+    public static ResourceHandle createResourceHandle(Target target, @NotBlank String handleType,
             Function<?, ?> handle) {
         return createResourceHandle(false, target, handleType, handle, false);
     }
@@ -256,7 +255,7 @@ public class AuthorizedHandles {
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    public static ResourceHandle createResourceHandle(Target target, @NotEmpty String handleType, Function<?, ?> handle,
+    public static ResourceHandle createResourceHandle(Target target, @NotBlank String handleType, Function<?, ?> handle,
             boolean preemptive) {
         return createResourceHandle(false, target, handleType, handle, preemptive);
     }
@@ -286,7 +285,7 @@ public class AuthorizedHandles {
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    static Collection<ResourceHandle> createResourceHandles(boolean isBuiltin, @NotEmpty String handleType,
+    static Collection<ResourceHandle> createResourceHandles(boolean isBuiltin, @NotBlank String handleType,
             Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle, boolean preemptive) {
 
         assertUsableHandleType(handleType, Target.UNAUTHORIZED, preemptive);
@@ -320,7 +319,7 @@ public class AuthorizedHandles {
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    public static Collection<ResourceHandle> createResourceHandles(@NotEmpty String handleType,
+    public static Collection<ResourceHandle> createResourceHandles(@NotBlank String handleType,
             Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle) {
         return createResourceHandles(false, handleType, unauthorizedHandle, authorizedHandle, false);
     }
@@ -348,7 +347,7 @@ public class AuthorizedHandles {
      * @since 2025. 10. 13.
      * @version 0.8.0
      */
-    public static Collection<ResourceHandle> createResourceHandles(@NotEmpty String handleType,
+    public static Collection<ResourceHandle> createResourceHandles(@NotBlank String handleType,
             Function<?, ?> unauthorizedHandle, Function<?, ?> authorizedHandle, boolean preemptive) {
         return createResourceHandles(false, handleType, unauthorizedHandle, authorizedHandle, preemptive);
     }

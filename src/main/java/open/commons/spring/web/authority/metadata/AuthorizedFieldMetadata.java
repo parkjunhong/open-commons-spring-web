@@ -30,7 +30,6 @@ import java.lang.reflect.Field;
 import java.util.Objects;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 
 import org.springframework.context.annotation.Bean;
 
@@ -51,7 +50,7 @@ import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
 public class AuthorizedFieldMetadata extends AuthorizedMetadata {
 
     /** bind to {@link AuthorizedField#name()} */
-    @NotEmpty
+    @NotBlank
     private String name;
     /** bind to {@link AuthorizedField#authorityBean()} */
     private String authorityBean;

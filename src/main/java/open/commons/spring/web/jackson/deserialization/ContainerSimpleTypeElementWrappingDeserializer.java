@@ -29,7 +29,7 @@ package open.commons.spring.web.jackson.deserialization;
 import java.lang.reflect.Array;
 import java.util.Collection;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 
@@ -85,7 +85,7 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends ValueDeseria
      * @version 0.8.0
      */
     public ContainerSimpleTypeElementWrappingDeserializer(JavaType containerType, IAuthorizedRequestDataHandler handler,
-            @NotEmpty String handleType) {
+            @NotBlank String handleType) {
         this(containerType, handler, handleType, null);
     }
 
@@ -111,7 +111,7 @@ public class ContainerSimpleTypeElementWrappingDeserializer extends ValueDeseria
      * @version 0.8.0
      */
     public ContainerSimpleTypeElementWrappingDeserializer(JavaType containerType, IAuthorizedRequestDataHandler handler,
-            @NotEmpty String handleType, ValueDeserializer<?> delegate) {
+            @NotBlank String handleType, ValueDeserializer<?> delegate) {
         this.containerType = containerType;
         this.handler = handler;
         this.handleType = handleType;

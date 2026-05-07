@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -93,7 +94,7 @@ public class IdBasedRestApiDecl {
     private final Logger logger = LoggerFactory.getLogger(IdBasedRestApiDecl.class);
 
     /** REST API 식별정보 */
-    @NotEmpty
+    @NotBlank
     private String id;
     /** REST API 설명 */
     private String title;
@@ -101,7 +102,7 @@ public class IdBasedRestApiDecl {
     @NotNull
     private HttpMethod method;
     /** REST API Endpoint Path */
-    @NotEmpty
+    @NotBlank
     private String path;
     /** headers */
     private MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
@@ -308,7 +309,7 @@ public class IdBasedRestApiDecl {
      *
      * @see #id
      */
-    public void setId(@NotEmpty String id) {
+    public void setId(@NotBlank String id) {
         this.id = id;
     }
 
@@ -352,7 +353,7 @@ public class IdBasedRestApiDecl {
      *
      * @see #path
      */
-    public void setPath(@NotEmpty String path) {
+    public void setPath(@NotBlank String path) {
         this.path = path;
     }
 

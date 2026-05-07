@@ -30,7 +30,6 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 
 import org.jspecify.annotations.Nullable;
 
@@ -77,7 +76,7 @@ public class MethodLogContext {
         return internalGetAndIncrement();
     }
 
-    private static void initialize(@NotEmpty String holder, @Nullable Class<?> originClass) {
+    private static void initialize(@NotBlank String holder, @Nullable Class<?> originClass) {
         AssertUtils2.notBlank(holder, "Thread Context Holder MUST not be null and not the empty string.");
 
         if (CONTEXT.containsNot(HOLDER)) {

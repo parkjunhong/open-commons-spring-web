@@ -44,7 +44,7 @@ import java.util.function.Supplier;
 
 import javax.net.ssl.SSLContext;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 import org.apache.hc.client5.http.DnsResolver;
 import org.apache.hc.client5.http.SchemePortResolver;
@@ -698,7 +698,7 @@ public class RestFacade {
      * @version 0.4.0
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path //
             , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -751,7 +751,7 @@ public class RestFacade {
      * @version 0.5.0
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path //
             , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -863,7 +863,7 @@ public class RestFacade {
      * @version 0.4.0
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path //
             , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -917,7 +917,7 @@ public class RestFacade {
      * @version 0.5.0
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path //
             , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1031,7 +1031,7 @@ public class RestFacade {
      * @version 0.4.0
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path, String query //
             , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1094,7 +1094,7 @@ public class RestFacade {
      * @version 0.5.0
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path, String query //
             , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1216,7 +1216,7 @@ public class RestFacade {
      * @version 0.4.0
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path, String query //
             , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1279,7 +1279,7 @@ public class RestFacade {
      * @version 0.5.0
      */
     public static <REQ, RES, RET> Result<RET> exchange(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path, String query //
             , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, Result<RET>> onSuccess //
@@ -1742,7 +1742,7 @@ public class RestFacade {
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path //
             , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess //
@@ -1794,7 +1794,7 @@ public class RestFacade {
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path //
             , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess //
@@ -1846,7 +1846,7 @@ public class RestFacade {
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path //
             , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess //
@@ -1899,7 +1899,7 @@ public class RestFacade {
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path //
             , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess //
@@ -1952,7 +1952,7 @@ public class RestFacade {
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path, String query //
             , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess //
@@ -2014,7 +2014,7 @@ public class RestFacade {
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path, String query //
             , @Nullable HttpEntity<REQ> entity //
             , Class<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess //
@@ -2074,7 +2074,7 @@ public class RestFacade {
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path, String query //
             , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess //
@@ -2135,7 +2135,7 @@ public class RestFacade {
      * @throws URISyntaxException
      */
     public static <REQ, RES, RET> RET exchangeAsRaw(RestTemplate restTemplate //
-            , HttpMethod method, @NotEmpty String scheme, @NotEmpty String host, int port, String path, String query //
+            , HttpMethod method, @NotBlank String scheme, @NotBlank String host, int port, String path, String query //
             , @Nullable HttpEntity<REQ> entity //
             , ParameterizedTypeReference<RES> responseType //
             , Function<ResponseEntity<RES>, RET> onSuccess //

@@ -28,7 +28,7 @@ package open.commons.spring.web.oas;
 
 import java.util.List;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 import org.springdoc.core.models.GroupedOpenApi;
 
@@ -426,7 +426,7 @@ public class GroupedOpenApiProperties {
      *
      * @see #displayName
      */
-    public void setDisplayName(@NotEmpty String displayName) {
+    public void setDisplayName(@NotBlank String displayName) {
         this.displayName = displayName;
     }
 
@@ -470,7 +470,7 @@ public class GroupedOpenApiProperties {
      *
      * @see #group
      */
-    public void setGroup(@NotEmpty String group) {
+    public void setGroup(@NotBlank String group) {
         this.group = group;
     }
 

@@ -28,7 +28,7 @@ package open.commons.spring.web.configure;
 
 import java.util.Map;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
@@ -292,7 +292,7 @@ public class OpenApiConfiguration {
      * @version 0.8.0
      */
     public static GroupedOpenApi loadGroupedOpenApi(@NotNull Map<String, GroupedOpenApiProperties> props,
-            @NotEmpty String apiName) {
+            @NotBlank String apiName) {
         GroupedOpenApiProperties prop = props.get(apiName);
         if (prop == null) {
             logger.warn("'{}'를 위한 설정이 존재하지 않습니다.", apiName);

@@ -26,7 +26,7 @@
 
 package open.commons.spring.web.beans.authority.internal;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
 
@@ -65,7 +65,7 @@ public class ForcedUnintelligibleHandler implements IUnauthorizedFieldHandler {
      *      java.lang.Object)
      */
     @Override
-    public Object handleObject(@NotEmpty String handle, Object data) {
+    public Object handleObject(@NotBlank String handle, Object data) {
         if (data == null) {
             return null;
         }

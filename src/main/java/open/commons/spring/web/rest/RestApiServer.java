@@ -15,7 +15,7 @@ import java.util.Map;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * 
@@ -26,10 +26,10 @@ import jakarta.validation.constraints.NotEmpty;
 public class RestApiServer {
 
     /** 통신 프로포콜 */
-    @NotEmpty
+    @NotBlank
     private String scheme;
     /** 서버 IP */
-    @NotEmpty
+    @NotBlank
     private String host;
     /** 서버 포트 */
     @Min(1)
@@ -240,7 +240,7 @@ public class RestApiServer {
      * 
      * @see #host
      */
-    public void setHost(@NotEmpty String host) {
+    public void setHost(@NotBlank String host) {
         this.host = host;
     }
 
@@ -282,7 +282,7 @@ public class RestApiServer {
      * 
      * @see #scheme
      */
-    public void setScheme(@NotEmpty String scheme) {
+    public void setScheme(@NotBlank String scheme) {
         this.scheme = scheme;
     }
 

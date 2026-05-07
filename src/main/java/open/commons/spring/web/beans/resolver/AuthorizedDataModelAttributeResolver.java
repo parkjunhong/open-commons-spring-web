@@ -38,8 +38,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
@@ -48,14 +47,11 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.MethodParameter;
-import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.support.WebRequestDataBinder;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.annotation.ModelAttributeMethodProcessor;
 import org.springframework.web.servlet.mvc.method.annotation.ServletModelAttributeMethodProcessor;
-import org.springframework.web.servlet.support.ExtendedServletRequestDataBinder;
 
 import open.commons.core.TwoValueObject;
 import open.commons.core.utils.ExceptionUtils;
@@ -252,7 +248,7 @@ public class AuthorizedDataModelAttributeResolver extends ServletModelAttributeM
         }
     }
 
-    private Object resolveRawValue(Object rawValue, String handleBean, @NotEmpty String handleType,
+    private Object resolveRawValue(Object rawValue, String handleBean, @NotBlank String handleType,
             Set<Object> visited) {
         if (rawValue == null || visited.contains(rawValue)) {
             return rawValue;

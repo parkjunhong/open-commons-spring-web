@@ -34,7 +34,6 @@ import java.util.List;
 import java.util.function.Function;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import org.jspecify.annotations.Nullable;
@@ -158,7 +157,7 @@ public class ClassInspector {
      * 
      * @see Class#getField(String)
      */
-    public static @Nullable Field getFieldIfExist(@NotNull Class<?> clazz, @NotEmpty String fieldName) {
+    public static @Nullable Field getFieldIfExist(@NotNull Class<?> clazz, @NotBlank String fieldName) {
         AssertUtils2.notNulls(clazz, fieldName);
         AssertUtils2.notBlank(fieldName, "변수이름은 '빈 문자열'을 허용하지 않습니다.");
 
@@ -191,7 +190,7 @@ public class ClassInspector {
      * 
      * @see Class#getDeclaredField(String)
      */
-    public static boolean hasDeclaredField(@NotNull Class<?> clazz, @NotEmpty String fieldName) {
+    public static boolean hasDeclaredField(@NotNull Class<?> clazz, @NotBlank String fieldName) {
         return getDeclaredFieldIfExist(clazz, fieldName) != null;
     }
 
@@ -214,7 +213,7 @@ public class ClassInspector {
      * 
      * @see Class#getField(String)
      */
-    public static boolean hasField(@NotNull Class<?> clazz, @NotEmpty String fieldName) {
+    public static boolean hasField(@NotNull Class<?> clazz, @NotBlank String fieldName) {
         return getFieldIfExist(clazz, fieldName) != null;
     }
 }

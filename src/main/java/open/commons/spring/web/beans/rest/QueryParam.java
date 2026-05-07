@@ -28,7 +28,7 @@ package open.commons.spring.web.beans.rest;
 
 import java.util.Objects;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 
 import open.commons.core.utils.AssertUtils2;
 
@@ -40,7 +40,7 @@ import open.commons.core.utils.AssertUtils2;
  */
 public class QueryParam implements Comparable<QueryParam> {
     /** 파라미터 이름 */
-    @NotEmpty
+    @NotBlank
     private String name;
     /** 파리미터 필수 여부 */
     private boolean required;
@@ -89,7 +89,7 @@ public class QueryParam implements Comparable<QueryParam> {
      * @since 2025. 7. 10.
      * @version 0.8.0
      */
-    public QueryParam(@NotEmpty String name, boolean required) {
+    public QueryParam(@NotBlank String name, boolean required) {
         super();
         this.name = name;
         this.required = required;
@@ -189,7 +189,7 @@ public class QueryParam implements Comparable<QueryParam> {
      *
      * @see #name
      */
-    public void setName(@NotEmpty String name) {
+    public void setName(@NotBlank String name) {
         this.name = name;
     }
 

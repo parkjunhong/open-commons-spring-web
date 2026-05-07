@@ -120,7 +120,7 @@ public class ResourceHandleImpl implements ResourceHandle {
      * @since 2025. 9. 19.
      * @version 0.8.0
      */
-    ResourceHandleImpl(Target target, @NotEmpty String handleType, Function<?, ?> handle) {
+    ResourceHandleImpl(Target target, @NotBlank String handleType, Function<?, ?> handle) {
         this(false, target, handleType, handle, false);
     }
 

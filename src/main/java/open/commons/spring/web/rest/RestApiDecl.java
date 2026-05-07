@@ -10,7 +10,7 @@
 
 package open.commons.spring.web.rest;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import org.springframework.http.HttpMethod;
@@ -30,7 +30,7 @@ public class RestApiDecl {
 
     @NotNull
     private HttpMethod method;
-    @NotEmpty
+    @NotBlank
     private String url;
     private LinkedMultiValueMap<String, String> headers;
     private LinkedMultiValueMap<String, Object> body;
@@ -197,7 +197,7 @@ public class RestApiDecl {
      * 
      * @see #method
      */
-    public void setMethod(@NotNull @NotEmpty String method) {
+    public void setMethod(@NotNull @NotBlank String method) {
         this.method = HttpMethod.valueOf(method.toUpperCase());
     }
 
@@ -219,7 +219,7 @@ public class RestApiDecl {
      * @see #url
      * @see NamedTemplate
      */
-    public void setUrl(@NotNull @NotEmpty String url) {
+    public void setUrl(@NotNull @NotBlank String url) {
         this.url = url;
     }
 

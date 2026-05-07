@@ -1,3 +1,7 @@
+[2026/05/07]
+- 개선
+  + '@NotEmpty String' 를 '@NotBlak String'로 개선
+
 [2026/05/06]
 - 버그수정
   + open.commons.spring.web.beans.authority.FieldAccessAuthorityDecision.FieldAccessAuthorityDecision(boolean, String, String): `handleBean` 데이터 제한조건 변경 (org.jspecify.annotations.Nullable)

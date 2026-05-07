@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
@@ -565,7 +565,7 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
          * @version 0.8.0
          */
         public AnnotatedContext(Class<?> targetClass, IFieldAccessAuthorityProvider authority,
-                IUnauthorizedFieldHandler unauthorized, @NotEmpty String handleType) {
+                IUnauthorizedFieldHandler unauthorized, @NotBlank String handleType) {
             this.targetClass = targetClass;
             this.authority = authority;
             this.unauthorized = unauthorized;
