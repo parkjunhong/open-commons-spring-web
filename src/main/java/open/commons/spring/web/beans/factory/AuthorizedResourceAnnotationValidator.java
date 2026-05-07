@@ -87,47 +87,63 @@ public class AuthorizedResourceAnnotationValidator implements BeanFactoryPostPro
             if (beanType == null || beanType.isSynthetic())
                 continue;
 
+            // 1: Spring Boot 내부 클래스, Springdoc 등은 권한 검사 대상이 아니므로 스킵합니다.
+            String packageName = beanType.getPackageName();
+            if (packageName.startsWith("org.springframework") //
+                    || packageName.startsWith("org.springdoc") //
+                    || packageName.startsWith("io.swagger") //
+            ) {
+                continue;
+            }
+
             // (1) 클래스 레벨 어노테이션 검사 (상속 고려)
             AuthorizedMethod classAM = AnnotationUtils.findAnnotation(beanType, AuthorizedMethod.class);
             AuthorizedRequest classAR = AnnotationUtils.findAnnotation(beanType, AuthorizedRequest.class);
 
-            if (classAM != null && classAR != null) {
-                throw new IllegalStateException(
-                        String.format("[권한 설정 오류] 클래스 '%s'에 @AuthorizedMethod 와 @AuthorizedRequest 를 동시에 사용할 수 없습니다.",
-                                beanType.getName()));
-            }
+            try {
 
-            noAnnoOnClass = classAM == null && classAR == null;
-
-            // (2) 모든 메서드 검사 (interface default 메서드 포함)
-            Collection<Method> methods = getAllDeclaredMethods(beanType);
-
-            boolean noAnnoOnMethod = false;
-            for (Method method : methods) {
-                // (3) 메서드에 직접 붙었거나, 메서드 상속 및 메타 어노테이션 고려
-                AuthorizedMethod methodAM = AnnotationUtils.findAnnotation(method, AuthorizedMethod.class);
-                AuthorizedRequest methodAR = AnnotationUtils.findAnnotation(method, AuthorizedRequest.class);
-
-                noAnnoOnMethod = methodAM == null && methodAR == null;
-
-                if (noAnnoOnClass && noAnnoOnMethod) {
-                    continue;
-                }
-
-                if (methodAM != null && methodAR != null) {
+                if (classAM != null && classAR != null) {
                     throw new IllegalStateException(String.format(
-                            "[권한 설정 오류] 메서드 '%s.%s()'에 @AuthorizedMethod 와 @AuthorizedRequest 를 동시에 사용할 수 없습니다.",
-                            beanType.getName(), method.getName()));
+                            "[권한 설정 오류] 클래스 '%s'에 @AuthorizedMethod 와 @AuthorizedRequest 를 동시에 사용할 수 없습니다.",
+                            beanType.getName()));
                 }
 
-                if ((classAM != null && methodAR != null) || (classAR != null && methodAM != null)) {
-                    throw new IllegalStateException(String.format(
-                            "[권한 설정 오류] '%s.%s()'는 클래스와 메서드에 @AuthorizedMethod / @AuthorizedRequest 가 교차 사용되었습니다.",
-                            beanType.getName(), method.getName()));
+                noAnnoOnClass = classAM == null && classAR == null;
+
+                // (2) 모든 메서드 검사 (interface default 메서드 포함)
+                Collection<Method> methods = getAllDeclaredMethods(beanType);
+
+                boolean noAnnoOnMethod = false;
+                for (Method method : methods) {
+                    // (3) 메서드에 직접 붙었거나, 메서드 상속 및 메타 어노테이션 고려
+                    AuthorizedMethod methodAM = AnnotationUtils.findAnnotation(method, AuthorizedMethod.class);
+                    AuthorizedRequest methodAR = AnnotationUtils.findAnnotation(method, AuthorizedRequest.class);
+
+                    noAnnoOnMethod = methodAM == null && methodAR == null;
+
+                    if (noAnnoOnClass && noAnnoOnMethod) {
+                        continue;
+                    }
+
+                    if (methodAM != null && methodAR != null) {
+                        throw new IllegalStateException(String.format(
+                                "[권한 설정 오류] 메서드 '%s.%s()'에 @AuthorizedMethod 와 @AuthorizedRequest 를 동시에 사용할 수 없습니다.",
+                                beanType.getName(), method.getName()));
+                    }
+
+                    if ((classAM != null && methodAR != null) || (classAR != null && methodAM != null)) {
+                        throw new IllegalStateException(String.format(
+                                "[권한 설정 오류] '%s.%s()'는 클래스와 메서드에 @AuthorizedMethod / @AuthorizedRequest 가 교차 사용되었습니다.",
+                                beanType.getName(), method.getName()));
+                    }
+
+                    logger.trace("bean.name={}, bean.type={}, method={}", beanName, beanType, method);
+
                 }
-
-                logger.trace("bean.name={}, bean.type={}, method={}", beanName, beanType, method);
-
+            } catch (NoClassDefFoundError e) {
+                // 2: 선택적 의존성 누락으로 인한 리플렉션 에러 발생 시, 서버가 죽지 않도록 경고만 남기고 해당 빈 검사를 부드럽게 스킵합니다.
+                logger.debug("선택적 의존성 누락으로 인해 빈 리플렉션 검사를 스킵합니다. beanName: {}, cause: {}", beanName, e.getMessage());
+                continue;
             }
         }
     }
