@@ -1,6 +1,9 @@
 [2026/05/07]
 - 개선
   + '@NotEmpty String' 를 '@NotBlak String'로 개선
+- 수정
+  + `open.commons.spring.web.beans.controller.RequestMappingProvider`에 `org.springframework.web.bind.annotation.RestController` 복원
+    + Spring Boot 4.x: 보안과 명확성을 위해 규칙이 엄격해졌습니다. 클래스 레벨에 반드시 @Controller 또는 @RestController가 명시되어 있어야만 Spring MVC가 이를 웹 핸들러로 취급
 
 [2026/05/06]
 - 버그수정
