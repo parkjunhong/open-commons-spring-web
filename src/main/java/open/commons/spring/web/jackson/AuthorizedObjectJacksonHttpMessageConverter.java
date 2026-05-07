@@ -261,6 +261,25 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
     @Override
     @SuppressWarnings("removal")
     public boolean canWrite(ResolvableType type, Class<?> valueClass, @Nullable MediaType mediaType) {
+
+        // Jackson이 건드리면 안 되는 Spring 고유 타입 및 순수 데이터 타입은 무조건 우회(Bypass)시킵니다.
+        if (
+        // org.springframework.http.converter.ByteArrayHttpMessageConverter
+        byte[].class.isAssignableFrom(valueClass)
+                // org.springframework.http.converter.StringHttpMessageConverter
+                || String.class.isAssignableFrom(valueClass)
+                // org.springframework.http.converter.ResourceHttpMessageConverter
+                || org.springframework.core.io.Resource.class.isAssignableFrom(valueClass)
+                // org.springframework.http.converter.ResourceRegionHttpMessageConverter
+                || org.springframework.core.io.support.ResourceRegion.class.isAssignableFrom(valueClass)
+                // org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter
+                // -> org.springframework.http.converter.FormHttpMessageConverter
+                || org.springframework.util.MultiValueMap.class.isAssignableFrom(valueClass)
+        //
+        ) {
+            return false;
+        }
+
         if (!canWrite(mediaType)) {
             return false;
         }

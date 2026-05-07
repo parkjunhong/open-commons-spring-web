@@ -4,6 +4,13 @@
 - 수정
   + `open.commons.spring.web.beans.controller.RequestMappingProvider`에 `org.springframework.web.bind.annotation.RestController` 복원
     + Spring Boot 4.x: 보안과 명확성을 위해 규칙이 엄격해졌습니다. 클래스 레벨에 반드시 @Controller 또는 @RestController가 명시되어 있어야만 Spring MVC가 이를 웹 핸들러로 취급
+- 버그 수정
+  + Spring Boot 4.x 에서는 커스텀 {@link HttpMessageConverter}가 Spring 내부에서 제공하는 것보다 앞에 위치시킴에 따라, 기본 `Message Converter`보다 데이터를 먼저 처리하는 현상 수정.
+    - open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConverter.canWrite(ResolvableType, Class<?>, MediaType) 메소드 내부 방어코드 추가
+    - deprecated 
+      + open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConfigureAutoConfiguration
+      + open.commons.spring.web.configure.AuthorizedObjectMessageConfiguration
+    
 
 [2026/05/06]
 - 버그수정

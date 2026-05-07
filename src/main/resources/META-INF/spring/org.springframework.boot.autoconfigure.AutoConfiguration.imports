@@ -1,4 +1,3 @@
-open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConfigureAutoConfiguration
 open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConverterAutoConfiguration
 open.commons.spring.web.autoconfigure.AuthorizedResourceBuiltinHandlerAutoConfiguration
 open.commons.spring.web.autoconfigure.AuthorizedResourcesAutoConfiguration

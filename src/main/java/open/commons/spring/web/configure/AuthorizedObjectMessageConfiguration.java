@@ -44,24 +44,32 @@ import open.commons.spring.web.jackson.serialization.AuthorizedFieldSerializerMo
  * [개정이력]
  * 날짜        | 작성자                   | 내용
  * -----------------------------------------------------
- * 2025. 5. 26.    parkjunhong77@gmail.com     최초 작성 (Jackson 2.x)
- * 2026. 4. 15.    parkjunhong77@gmail.com     Spring Boot 4.0 / SF 7.0 현행화: ServerBuilder 기반 configureMessageConverters 적용
+ * 2025. 5. 26.     parkjunhong77@gmail.com     최초 작성 (Jackson 2.x)
+ * 2026. 4. 15.     parkjunhong77@gmail.com     Spring Boot 4.0 / SF 7.0 현행화: ServerBuilder 기반 configureMessageConverters 적용
+ * 2026. 5. 7.      parkjunohng77@gmail.com     Spring Boot 4.x 에서는 커스텀 {@link HttpMessageConverter}가 Spring 내부에서 제공하는 것보다 앞에 위치시킴에 따라
+ *                                              수동으로 커스텀 {@link HttpMessageConverter}의 위치를 변경할 필요가 없어짐.
  * </pre>
  *
  * @since 2025. 5. 26.
  * @version 4.0.0
  * @author parkjunhong77@gmail.com
+ * 
+ * @deprecated Spring Boot 4.x 에서는 커스텀 {@link HttpMessageConverter}가 Spring 내부에서 제공하는 것보다 앞에 위치시킴에
+ *             따라 수동으로 커스텀 {@link HttpMessageConverter}의 위치를 변경할 필요가 없어짐.
  */
+@Deprecated(since = "4.0.0", forRemoval = true)
 public class AuthorizedObjectMessageConfiguration implements WebMvcConfigurer {
-    
+
     private final AuthorizedObjectJacksonHttpMessageConverter authorizeObjectMessageConverter;
 
+    @Deprecated(since = "4.0.0", forRemoval = true)
     public AuthorizedObjectMessageConfiguration(
             @NotNull AuthorizedObjectJacksonHttpMessageConverter authorizeObjectMessageConverter) {
         this.authorizeObjectMessageConverter = authorizeObjectMessageConverter;
     }
 
     /**
+     * <strike>
      * <p>
      * 내부 로직은 Spring 기반 웹 서비스 구동시 내부적으로 생성되는 기본 {@link HttpMessageConverter} 목록을 기반으로 합니다.<br>
      * {@link AuthorizedObjectJacksonHttpMessageConverter}는 {@link JacksonJsonHttpMessageConverter}를
@@ -75,12 +83,17 @@ public class AuthorizedObjectMessageConfiguration implements WebMvcConfigurer {
      * 기본 컨버터보다 앞에 위치해야 {@link AuthorizedObject} 어노테이션이 설정된 데이터 유형을 먼저 가로채어
      * {@link AuthorizedFieldSerializerModifier}를 통해 권한 기반 처리를 수행할 수 있습니다.
      * </p>
+     * </strike>
      * 
      * @param builder
      *            Spring 7.0부터 제공되는 HttpMessageConverters 빌더 객체
      * 
      * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurer#configureMessageConverters(org.springframework.http.converter.HttpMessageConverters.ServerBuilder)
+     * 
+     * @deprecated Spring Boot 4.x 에서는 커스텀 {@link HttpMessageConverter}가 Spring 내부에서 제공하는 것보다 앞에
+     *             위치시킴에 따라 수동으로 커스텀 {@link HttpMessageConverter}의 위치를 변경할 필요가 없어짐.
      */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     @Override
     public void configureMessageConverters(HttpMessageConverters.ServerBuilder builder) {
 
@@ -98,6 +111,6 @@ public class AuthorizedObjectMessageConfiguration implements WebMvcConfigurer {
         // });
 
         // #2. 'application/json' Converter로 설정
-        builder.withJsonConverter(this.authorizeObjectMessageConverter);
+        // builder.withJsonConverter(this.authorizeObjectMessageConverter);
     }
 }
