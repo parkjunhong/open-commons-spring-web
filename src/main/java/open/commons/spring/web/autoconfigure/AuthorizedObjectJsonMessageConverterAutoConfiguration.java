@@ -122,15 +122,11 @@ public class AuthorizedObjectJsonMessageConverterAutoConfiguration {
 
         logger.info("[authorized-resources] 제외 후 순수 커스텀 매퍼 개수: {}", customJsonMappersOnly.size());
 
-        // 3. WebMvcConfigurer를 익명 클래스(또는 별도 클래스)로 반환
+        // 3. WebMvcConfigurer를 '빈'으로 제공
         return new WebMvcConfigurer() {
             @Override
             public void configureMessageConverters(HttpMessageConverters.ServerBuilder builder) {
-                builder.configureMessageConvertersList(configurer -> {
-                    System.out.println(configurer);
-                });
                 // 4. JsonConverter를 스왑(Swap)
-                // Spring의 안전한 순서(byte[], String 뒤)를 그대로 유지하면서 대체됨!
                 builder.withJsonConverter(customConverter);
             }
         };
