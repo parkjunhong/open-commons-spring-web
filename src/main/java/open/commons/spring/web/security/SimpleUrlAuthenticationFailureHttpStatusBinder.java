@@ -98,8 +98,8 @@ public class SimpleUrlAuthenticationFailureHttpStatusBinder extends SimpleUrlAut
      * @since 2025. 10. 24.
      * @version 2.1.0
      *
-     * @see org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler#onAuthenticationFailure(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse,
+     * @see org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler#onAuthenticationFailure(jakarta.servlet.http.HttpServletRequest,
+     *      jakarta.servlet.http.HttpServletResponse,
      *      org.springframework.security.core.AuthenticationException)
      */
     @Override

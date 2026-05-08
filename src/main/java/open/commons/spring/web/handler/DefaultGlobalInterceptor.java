@@ -86,8 +86,8 @@ public class DefaultGlobalInterceptor implements AsyncHandlerInterceptor {
      * @since 2025. 6. 23.
      * @version 0.8.0
      *
-     * @see org.springframework.web.servlet.HandlerInterceptor#afterCompletion(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse, java.lang.Object, java.lang.Exception)
+     * @see org.springframework.web.servlet.HandlerInterceptor#afterCompletion(jakarta.servlet.http.HttpServletRequest,
+     *      jakarta.servlet.http.HttpServletResponse, java.lang.Object, java.lang.Exception)
      */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
@@ -97,8 +97,8 @@ public class DefaultGlobalInterceptor implements AsyncHandlerInterceptor {
     }
 
     /**
-     * @see org.springframework.web.servlet.HandlerInterceptor#preHandle(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse, java.lang.Object)
+     * @see org.springframework.web.servlet.HandlerInterceptor#preHandle(jakarta.servlet.http.HttpServletRequest,
+     *      jakarta.servlet.http.HttpServletResponse, java.lang.Object)
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

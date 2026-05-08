@@ -37,10 +37,12 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.converter.HttpMessageConverters;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata;
-import open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConverter;
+import open.commons.spring.web.http.converter.json.AuthorizedObjectJsonHttpMessageConverter;
 
 import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.json.JsonMapper;
@@ -58,16 +60,16 @@ import tools.jackson.databind.json.JsonMapper;
  * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(value = AuthorizedObjectMessageConverterAutoConfiguration.BEAN_QUALIFIER //
+@AutoConfiguration(value = AuthorizedObjectJsonMessageConverterAutoConfiguration.BEAN_QUALIFIER //
         , after = { OpenCommonsSpringWebCoreAutoConfiguration.class, AuthorizedResourcesAutoConfiguration.class } //
 )
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @Validated
-public class AuthorizedObjectMessageConverterAutoConfiguration {
+public class AuthorizedObjectJsonMessageConverterAutoConfiguration {
 
-    static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConverterAutoConfiguration";
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.AuthorizedObjectJsonMessageConverterAutoConfiguration";
 
-    private Logger logger = LoggerFactory.getLogger(AuthorizedObjectMessageConverterAutoConfiguration.class);
+    private Logger logger = LoggerFactory.getLogger(AuthorizedObjectJsonMessageConverterAutoConfiguration.class);
 
     /**
      * <br>
@@ -82,7 +84,7 @@ public class AuthorizedObjectMessageConverterAutoConfiguration {
      * @since 2025. 6. 10.
      * @version 0.8.0
      */
-    public AuthorizedObjectMessageConverterAutoConfiguration() {
+    public AuthorizedObjectJsonMessageConverterAutoConfiguration() {
     }
 
     /**
@@ -103,24 +105,34 @@ public class AuthorizedObjectMessageConverterAutoConfiguration {
      * @since 2025. 6. 10.
      * @version 4.0.0
      */
-    @Bean(name = AuthorizedObjectJacksonHttpMessageConverter.BEAN_QUALIFIER)
+    @Bean
     @ConditionalOnBean({ JsonMapper.class, IAuthorizedResourcesMetadata.class })
-    AuthorizedObjectJacksonHttpMessageConverter authorizedObjectMessageConverter(@NotNull JsonMapper defaultJsonMapper //
+    WebMvcConfigurer authorizedObjectMessageConverter(@NotNull JsonMapper defaultJsonMapper //
             , @NotNull Map<String, JsonMapper> allJsonMappers //
             , @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadataProvider) {
 
-        // [PATCH] defaultJsonMapper 객체와 참조(Reference)가 동일한 엔트리만 완벽하게 제외하여 새로운
-        // Map 생성
+        // 1. defaultJsonMapper 객체와 참조(Reference)가 동일한 엔트리만 완벽하게 제외하여 새로운 Map 생성
         Map<String, JsonMapper> customJsonMappersOnly = allJsonMappers.entrySet().stream() //
                 .filter(entry -> entry.getValue() != defaultJsonMapper) // 객체
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-        // 필터링된 맵(customJsonMappersOnly)을 생성자에 전달
-        AuthorizedObjectJacksonHttpMessageConverter converter = new AuthorizedObjectJacksonHttpMessageConverter(
+        // 2. 필터링된 맵(customJsonMappersOnly)을 생성자에 전달
+        AuthorizedObjectJsonHttpMessageConverter customConverter = new AuthorizedObjectJsonHttpMessageConverter(
                 defaultJsonMapper, customJsonMappersOnly, authorizedResourcesMetadataProvider);
 
         logger.info("[authorized-resources] 제외 후 순수 커스텀 매퍼 개수: {}", customJsonMappersOnly.size());
 
-        return converter;
+        // 3. WebMvcConfigurer를 익명 클래스(또는 별도 클래스)로 반환
+        return new WebMvcConfigurer() {
+            @Override
+            public void configureMessageConverters(HttpMessageConverters.ServerBuilder builder) {
+                builder.configureMessageConvertersList(configurer -> {
+                    System.out.println(configurer);
+                });
+                // 4. JsonConverter를 스왑(Swap)
+                // Spring의 안전한 순서(byte[], String 뒤)를 그대로 유지하면서 대체됨!
+                builder.withJsonConverter(customConverter);
+            }
+        };
     }
 }

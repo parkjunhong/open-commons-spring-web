@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.spring.web.jackson;
+package open.commons.spring.web.http.converter.json;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -120,9 +120,7 @@ import tools.jackson.databind.ser.FilterProvider;
  * @see IUnauthorizedFieldHandler
  * @see AuthorizedResourcesMetadataConfiguration
  */
-public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttpMessageConverter {
-
-    public static final String BEAN_QUALIFIER = "open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConverter";
+public class AuthorizedObjectJsonHttpMessageConverter extends JacksonJsonHttpMessageConverter {
 
     /**
      * {@link AbstractJacksonHttpMessageConverter}의 <b><i>{@code JSON_VIEW_HINT}</i></b>가
@@ -177,7 +175,7 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
      * @since 2025. 5. 26.
      * @version 4.0.0
      */
-    public AuthorizedObjectJacksonHttpMessageConverter(@NotNull JsonMapper defaultJsonMapper //
+    public AuthorizedObjectJsonHttpMessageConverter(@NotNull JsonMapper defaultJsonMapper //
             , @NotNull Map<String, JsonMapper> allJsonMappers,
             @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadata) {
         AssertUtils2.notNulls(defaultJsonMapper, allJsonMappers, authorizedResourcesMetadata);
@@ -237,6 +235,7 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
      */
     @Override
     public boolean canRead(ResolvableType type, @Nullable MediaType mediaType) {
+
         if (!canRead(mediaType)) {
             return false;
         }
@@ -261,24 +260,6 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
     @Override
     @SuppressWarnings("removal")
     public boolean canWrite(ResolvableType type, Class<?> valueClass, @Nullable MediaType mediaType) {
-
-        // Jackson이 건드리면 안 되는 Spring 고유 타입 및 순수 데이터 타입은 무조건 우회(Bypass)시킵니다.
-        if (
-        // org.springframework.http.converter.ByteArrayHttpMessageConverter
-        byte[].class.isAssignableFrom(valueClass)
-                // org.springframework.http.converter.StringHttpMessageConverter
-                || String.class.isAssignableFrom(valueClass)
-                // org.springframework.http.converter.ResourceHttpMessageConverter
-                || org.springframework.core.io.Resource.class.isAssignableFrom(valueClass)
-                // org.springframework.http.converter.ResourceRegionHttpMessageConverter
-                || org.springframework.core.io.support.ResourceRegion.class.isAssignableFrom(valueClass)
-                // org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter
-                // -> org.springframework.http.converter.FormHttpMessageConverter
-                || org.springframework.util.MultiValueMap.class.isAssignableFrom(valueClass)
-        //
-        ) {
-            return false;
-        }
 
         if (!canWrite(mediaType)) {
             return false;
@@ -621,7 +602,7 @@ public class AuthorizedObjectJacksonHttpMessageConverter extends JacksonJsonHttp
      * <ul>
      * <li>{@link AbstractJacksonHttpMessageConverter#write(Object, ResolvableType, MediaType, HttpOutputMessage, Map)}:
      * selectMapper(Class<?>, MediaType)
-     * <li>{@link AuthorizedObjectJacksonHttpMessageConverter#writeInternal(Object, Type, HttpOutputMessage)}:
+     * <li>{@link AuthorizedObjectJsonHttpMessageConverter#writeInternal(Object, Type, HttpOutputMessage)}:
      * {@link #resolveMapper(Object, Class, MediaType)}
      * </ul>
      * </p>

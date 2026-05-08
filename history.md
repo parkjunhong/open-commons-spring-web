@@ -1,3 +1,12 @@
+[2026/05/08]
+- 개선
+  + `open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConverter` 관련 내용 변경
+    1. FQCN 변경: `open.commons.spring.web.http.converter.json.AuthorizedObjectJsonHttpMessageConverter`
+    2. 제공방식 변경: '빈' 제공 해제. `org.springframework.web.servlet.config.annotation.WebMvcConfigurer`에서 직접 사용할 수 있도록 변경
+  + 삭제
+    + `open.commons.spring.web.configure.AuthorizedObjectMessageConfiguration`: `WebMvcConfigurer`를 상속받은 클래스였으나, 직접 annonymous `WebMvcConfigurer` 객체로 처리함.
+    + `open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConfigureAutoConfiguration`: `open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConverterAutoConfiguration`에서 직접 `AuthorizedObjectJsonHttpMessageConverter`, `WebMvcConfigurer` 처리함.
+
 [2026/05/07]
 - 개선
   + '@NotEmpty String' 를 '@NotBlak String'로 개선

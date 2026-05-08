@@ -262,8 +262,8 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
      * @since 2025. 9. 24.
      * @version 0.8.0
      *
-     * @see org.springframework.web.servlet.HandlerInterceptor#postHandle(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse, java.lang.Object,
+     * @see org.springframework.web.servlet.HandlerInterceptor#postHandle(jakarta.servlet.http.HttpServletRequest,
+     *      jakarta.servlet.http.HttpServletResponse, java.lang.Object,
      *      org.springframework.web.servlet.ModelAndView)
      */
     @Override
@@ -275,7 +275,7 @@ public class AuthorizedModelAndViewHandlerInterceptor implements PostProcessingH
         }
 
         Map<String, Object> model = modelAndView.getModel();
-        // 'jsonView'는 데이터를 'MappingJackson2HttpMessageConverter'를 통해서 변환함.
+        // 'jsonView'는 데이터를 '{@link JacksonJsonHttpMessageConverter}'를 통해서 변환함.
         if (VIEW_NAME_JSON_VIEW.equals(modelAndView.getViewName())) {
             return;
         }

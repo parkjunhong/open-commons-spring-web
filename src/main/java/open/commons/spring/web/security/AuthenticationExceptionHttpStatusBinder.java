@@ -74,8 +74,8 @@ public class AuthenticationExceptionHttpStatusBinder extends AbstractExceptionSt
      * @since 2025. 10. 22.
      * @version 2.1.0
      *
-     * @see org.springframework.security.web.AuthenticationEntryPoint#commence(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse,
+     * @see org.springframework.security.web.AuthenticationEntryPoint#commence(jakarta.servlet.http.HttpServletRequest,
+     *      jakarta.servlet.http.HttpServletResponse,
      *      org.springframework.security.core.AuthenticationException)
      */
     @Override

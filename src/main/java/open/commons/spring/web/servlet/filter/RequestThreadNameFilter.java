@@ -85,8 +85,8 @@ public class RequestThreadNameFilter extends AbstractOncePerRequestFilter {
      * @since 2025. 8. 4.
      * @version 0.8.0
      *
-     * @see org.springframework.web.filter.OncePerRequestFilter#doFilterInternal(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse, javax.servlet.FilterChain)
+     * @see org.springframework.web.filter.OncePerRequestFilter#doFilterInternal(jakarta.servlet.http.HttpServletRequest,
+     *      jakarta.servlet.http.HttpServletResponse, javax.servlet.FilterChain)
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

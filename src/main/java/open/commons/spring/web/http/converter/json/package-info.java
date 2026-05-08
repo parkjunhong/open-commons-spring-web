@@ -10,4 +10,4 @@
  * @since 2026. 4. 8.
  */
 @org.jspecify.annotations.NullMarked
-package open.commons.spring.web.jackson;
+package open.commons.spring.web.http.converter.json;

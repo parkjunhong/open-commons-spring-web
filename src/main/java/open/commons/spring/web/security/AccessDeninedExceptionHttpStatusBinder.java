@@ -86,8 +86,8 @@ public class AccessDeninedExceptionHttpStatusBinder extends AbstractExceptionSta
      * @since 2025. 10. 22.
      * @version 2.1.0
      *
-     * @see org.springframework.security.web.access.AccessDeniedHandler#handle(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse,
+     * @see org.springframework.security.web.access.AccessDeniedHandler#handle(jakarta.servlet.http.HttpServletRequest,
+     *      jakarta.servlet.http.HttpServletResponse,
      *      org.springframework.security.access.AccessDeniedException)
      */
     @Override

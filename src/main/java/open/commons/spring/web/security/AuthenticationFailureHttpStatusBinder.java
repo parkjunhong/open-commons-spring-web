@@ -86,8 +86,8 @@ public class AuthenticationFailureHttpStatusBinder extends AbstractExceptionStat
      * @since 2025. 10. 22.
      * @version 2.1.0
      *
-     * @see org.springframework.security.web.authentication.AuthenticationFailureHandler#onAuthenticationFailure(javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse,
+     * @see org.springframework.security.web.authentication.AuthenticationFailureHandler#onAuthenticationFailure(jakarta.servlet.http.HttpServletRequest,
+     *      jakarta.servlet.http.HttpServletResponse,
      *      org.springframework.security.core.AuthenticationException)
      */
     @Override

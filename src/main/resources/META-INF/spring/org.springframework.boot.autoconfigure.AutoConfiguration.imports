@@ -1,6 +1,18 @@
-open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConverterAutoConfiguration
+# ===================================================================
+# [Open Commons Spring Web] Starter Auto-Configurations
+# 
+# Description: 공통 웹 프레임워크 자동 구성 요소 등록
+# Author     : Park Jun-Hong
+# ===================================================================
+
+# --- 1. 공통 코어 (Core Configurations) ---
+open.commons.spring.web.autoconfigure.OpenCommonsSpringWebCoreAutoConfiguration
+
+# --- 2. 권한 제어 (Authorization & Message Conversion) ---
+open.commons.spring.web.autoconfigure.AuthorizedObjectJsonMessageConverterAutoConfiguration
 open.commons.spring.web.autoconfigure.AuthorizedResourceBuiltinHandlerAutoConfiguration
 open.commons.spring.web.autoconfigure.AuthorizedResourcesAutoConfiguration
+
+# --- 3. 서블릿 및 로깅 (Servlet & Logging) --- 
 open.commons.spring.web.autoconfigure.GlobalServletAutoConfiguration
 open.commons.spring.web.autoconfigure.LogFeatureAutoConfiguration
-open.commons.spring.web.autoconfigure.OpenCommonsSpringWebCoreAutoConfiguration
