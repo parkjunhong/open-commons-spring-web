@@ -77,14 +77,20 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
  * [개정이력]
  * 날짜       | 작성자                   |   내용
  * -----------------------------------------------------
- * 2026. 4. 20.     parkjunhong77@gmail.com    최초 작성
- * 2026. 5. 6.      parkjunhong77@gmail.com    Spring Boot Starter 아키텍처 정석에 따른 ComponentScan 제거 및 기능별 Configuration 명시적 Import 구조로 전면 리팩토링
+ * 2026. 4. 20.     parkjunhong77@gmail.com     최초 작성
+ * 2026. 5. 6.      parkjunhong77@gmail.com     Spring Boot Starter 아키텍처 정석에 따른 ComponentScan 제거 및 기능별 Configuration 명시적 Import 구조로 전면 리팩토링
  * 2026. 5. 11.     parkjunohng77@gmail.com     `Authorized` 관련 설정 이관.
  * </pre>
  * 
  * @since 2026. 4. 20.
  * @version 4.0.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
+ * 
+ * @see AuthorizedObjectJsonMessageConverterAutoConfiguration
+ * @see AuthorizedResourceBuiltinHandlerAutoConfiguration
+ * @see AuthorizedResourcesAutoConfiguration
+ * @see GlobalServletAutoConfiguration
+ * @see LogFeatureAutoConfiguration
  */
 @AutoConfiguration(value = OpenCommonsSpringWebCoreAutoConfiguration.BEAN_QUALIFIER)
 // 1. 설정 레코드들이 모여있는 패키지를 스캔하도록 지정합니다.
