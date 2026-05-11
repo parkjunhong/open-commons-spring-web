@@ -393,14 +393,17 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
                     if (intcptr instanceof PostProcessingHandlerInterceptor) {
                         ((PostProcessingHandlerInterceptor) intcptr).afterRegistered(intcptrReg);
                     }
-                    for (InterceptorIgnoreUrlProperties p : this.interceptorIgnoreUrlConfigurations) {
-                        if (InterceptorIgnoreValidator.isAvailable(p, intcptr)) {
-                            addIncludePatternsToInterceptor(intcptrReg,
-                                    p.getIncludePathPatterns().stream().collect(Collectors.toList()));
-                            addExcludePatternsToInterceptor(intcptrReg,
-                                    p.getExcludePathPatterns().stream().collect(Collectors.toList()));
+                    if (this.interceptorIgnoreUrlConfigurations != null) {
+                        for (InterceptorIgnoreUrlProperties p : this.interceptorIgnoreUrlConfigurations) {
+                            if (InterceptorIgnoreValidator.isAvailable(p, intcptr)) {
+                                addIncludePatternsToInterceptor(intcptrReg,
+                                        p.getIncludePathPatterns().stream().collect(Collectors.toList()));
+                                addExcludePatternsToInterceptor(intcptrReg,
+                                        p.getExcludePathPatterns().stream().collect(Collectors.toList()));
+                            }
                         }
                     }
+
                     logger.info("[handler-interceptor] interceptor={}", intcptr);
                 });
     }
@@ -584,7 +587,7 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
      *
      * @see #interceptorIgnoreUrlConfigurations
      */
-    @Autowired
+    @Autowired(required = false)
     public void setInterceptorIgnoreUrlConfigurations(
             @Qualifier(GlobalServletAutoConfiguration.BEAN_QUALIFIER_PRIMARY_INTERCEPTOR_IGNORE_URL_PATTERNS) Set<InterceptorIgnoreUrlProperties> interceptorIgnoreUrlConfigurations) {
         this.interceptorIgnoreUrlConfigurations = interceptorIgnoreUrlConfigurations;
