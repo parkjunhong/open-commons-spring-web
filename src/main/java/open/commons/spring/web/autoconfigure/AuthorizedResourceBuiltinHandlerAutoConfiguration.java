@@ -39,6 +39,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Primary;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -54,6 +55,7 @@ import open.commons.spring.web.beans.authority.ResourceHandle;
 import open.commons.spring.web.beans.authority.internal.ForcedUnintelligibleHandler;
 import open.commons.spring.web.beans.authority.internal.ForcedUnintelligibleJudge;
 import open.commons.spring.web.beans.authority.internal.ResourceHandleImpl;
+import open.commons.spring.web.configure.AuthorizedHandlesConfiguration;
 import open.commons.spring.web.exception.BeanMergeFailedException;
 
 /**
@@ -63,6 +65,7 @@ import open.commons.spring.web.exception.BeanMergeFailedException;
  * -----------------------------------------------------
  * 2025. 6. 12.     parkjunhong77@gmail.com     최초 작성
  * 2026. 4. 15.     parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5.
+ * 2026. 5. 11.     parkjunohng77@gmail.com     `Authorized` 관련 설정 이관. ( {@link AuthorizedHandlesConfiguration} )
  * </pre>
  * 
  * @since 2025. 6. 12.
@@ -72,6 +75,7 @@ import open.commons.spring.web.exception.BeanMergeFailedException;
 @AutoConfiguration(value = AuthorizedResourceBuiltinHandlerAutoConfiguration.BEAN_QUALIFIER //
         , after = { OpenCommonsSpringWebCoreAutoConfiguration.class } //
 )
+@Import({ AuthorizedHandlesConfiguration.class })
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @Validated
 public class AuthorizedResourceBuiltinHandlerAutoConfiguration {

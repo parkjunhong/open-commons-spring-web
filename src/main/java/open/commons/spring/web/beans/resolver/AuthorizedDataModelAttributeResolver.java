@@ -45,7 +45,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -59,7 +58,6 @@ import open.commons.core.utils.StringUtils;
 import open.commons.spring.web.authority.AuthorizedRequestData;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata;
-import open.commons.spring.web.configure.CustomWebMvcExtensionConfiguration;
 import open.commons.spring.web.servlet.exception.InternalServerException;
 import open.commons.spring.web.utils.BeanUtils;
 import open.commons.spring.web.utils.ClassInspector;
@@ -67,7 +65,6 @@ import open.commons.spring.web.utils.ClassInspector;
 /**
  * "{@link AuthorizedRequestData} && ({@link ModelAttribute} ||
  * {@link ModelAttributeMethodProcessor#annotationNotRequired} )"가 선언된 파라미터를 처리합니다.<br>
- * {@link CustomWebMvcExtensionConfiguration}을 통해서 {@link Bean}으로 제공됩니다.
  * 
  * @since 2025. 9. 18.
  * @version 0.8.0

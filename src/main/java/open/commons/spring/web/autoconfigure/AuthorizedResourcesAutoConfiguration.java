@@ -41,6 +41,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplicat
 import org.springframework.boot.jackson.autoconfigure.JacksonAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
 import org.springframework.validation.annotation.Validated;
@@ -56,6 +57,8 @@ import open.commons.spring.web.beans.authority.IRequestAccessAuthorityProvider;
 import open.commons.spring.web.beans.authority.IUnauthorizedFieldHandler;
 import open.commons.spring.web.beans.authority.ResourceHandle;
 import open.commons.spring.web.beans.authority.internal.AuthorizedResourceHandler;
+import open.commons.spring.web.configure.AuthorizedDataResolverConfiguration;
+import open.commons.spring.web.configure.AuthorizedResourcesMetadataConfiguration;
 import open.commons.spring.web.handler.AuthorizedModelAndViewHandlerInterceptor;
 import open.commons.spring.web.jackson.deserialization.AuthorizedFieldDeserializerModifier;
 import open.commons.spring.web.jackson.serialization.AuthorizedFieldSerializerModifier;
@@ -71,6 +74,7 @@ import tools.jackson.databind.module.SimpleModule;
  * -----------------------------------------------------
  * 2025. 5. 19.     parkjunhong77@gmail.com     최초 작성
  * 2026. 4. 15.     parkjunhong77@gmail.com     Spring Boot:2.7.15 -> 4.0.3, Spring Framework: 5.3.29 -> 7.0.5.
+ * 2026. 5. 11.     parkjunohng77@gmail.com     `Authorized` 관련 설정 이관. ( {@link AuthorizedDataResolverConfiguration}, {@link AuthorizedResourcesMetadataConfiguration} )
  * </pre>
  * 
  * @since 2025. 5. 19.
@@ -81,6 +85,9 @@ import tools.jackson.databind.module.SimpleModule;
         , after = { JacksonAutoConfiguration.class, OpenCommonsSpringWebCoreAutoConfiguration.class,
                 AuthorizedResourceBuiltinHandlerAutoConfiguration.class } //
 )
+@Import({ AuthorizedDataResolverConfiguration.class //
+        , AuthorizedResourcesMetadataConfiguration.class //
+})
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @Validated
 public class AuthorizedResourcesAutoConfiguration {

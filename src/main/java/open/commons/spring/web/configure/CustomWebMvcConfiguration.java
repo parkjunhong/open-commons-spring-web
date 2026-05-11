@@ -40,8 +40,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackages;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.bind.Binder;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
@@ -195,7 +197,12 @@ import open.commons.spring.web.handler.PostProcessingHandlerInterceptor;
  * @version 0.0.3
  * @author Park_Jun_Hong_(parkjunhong77@gmail.com)S
  */
+@Configuration(value = CustomWebMvcConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
+@ConditionalOnProperty(prefix = "open-commons.spring.web.configuration.enabled", name = "web-mvc-configurer", matchIfMissing = true)
 public class CustomWebMvcConfiguration implements WebMvcConfigurer {
+
+    public static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.CustomWebMvcConfiguration";
+
     /** 사용자 정의 {@link WebMvcConfigurer} 들 중에서 가장 마지막으로 실행하기 위한 설정값 */
     public static final int ORDER = Ordered.LOWEST_PRECEDENCE;
 
@@ -549,10 +556,13 @@ public class CustomWebMvcConfiguration implements WebMvcConfigurer {
      * @since 2025. 9. 18.
      * @version 0.8.0
      */
-    @Autowired
+    @Autowired(required = false)
     public void setAuthorizedDataResolver(
-            @Qualifier(CustomWebMvcExtensionConfiguration.BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS) List<IAuthorizedDataResolver> resolvers) {
-        this.argumentResolvers.addAll(resolvers);
+            @Qualifier(AuthorizedDataResolverConfiguration.BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS) List<IAuthorizedDataResolver> resolvers) {
+        if (resolvers != null && !resolvers.isEmpty()) {
+            this.argumentResolvers.addAll(resolvers);
+            logger.info("[authorized-resources] {} 개의 리졸버가 주입되었습니다.", resolvers.size());
+        }
     }
 
     /**

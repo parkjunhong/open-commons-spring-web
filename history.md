@@ -1,3 +1,12 @@
+[2026/05/11]
+- 개선
+  + 'Authorized' 관련 기능을 제공하는 'configuration' 클래스 로딩 제어 변경
+    + `open.commons.spring.web.autoconfigure.AuthorizedResourcesAutoConfiguration`으로 이관
+      + open.commons.spring.web.configure.AuthorizedDataResolverConfiguration
+      + open.commons.spring.web.configure.AuthorizedResourcesMetadataConfiguration
+    + `open.commons.spring.web.autoconfigure.AuthorizedResourceBuiltinHandlerAutoConfiguration` 으로 이관.
+      + open.commons.spring.web.configure.AuthorizedHandlesConfiguration
+  
 [2026/05/08]
 - 개선
   + `open.commons.spring.web.jackson.AuthorizedObjectJacksonHttpMessageConverter` 관련 내용 변경

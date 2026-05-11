@@ -38,15 +38,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.core.env.Environment;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
@@ -60,35 +57,30 @@ import open.commons.spring.web.beans.resolver.IAuthorizedDataResolver;
 
 /**
  * 
- * @since 2025. 8. 11.
- * @version 0.8.0
- * @author parkjunhong77@gmail.com
+ * <br>
+ * 
+ * <pre>
+ * [개정이력]
+ *     날짜        | 작성자                   |   내용
+ * -----------------------------------------------------
+ * 2026. 5. 11.     parkjunhong77@gmail.com     최초 작성
+ * </pre>
+ *
+ * @since 2026. 5. 11.
+ * @version 4.0.0
+ * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
-@Configuration(value = CustomWebMvcExtensionConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
-@ConditionalOnProperty(prefix = "open-commons.spring.web.configuration.enabled", name = "web-mvc-configurer", matchIfMissing = true)
+@Configuration(value = AuthorizedDataResolverConfiguration.BEAN_QUALIFIER, proxyBeanMethods = false)
 @Validated
-public class CustomWebMvcExtensionConfiguration {
+public class AuthorizedDataResolverConfiguration {
 
-    static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.CustomWebMvcExtensionConfiguration";
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.AuthorizedDataResolverConfiguration";
 
-    public static final String BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS = "open.commons.spring.web.configure.CustomWebMvcExtensionConfiguration#AUTHORIZED_DATA_RESOLVERS";
+    public static final String BEAN_QUALIFIER_AUTHORIZED_DATA_RESOLVERS = "open.commons.spring.web.configure.AuthorizedDataResolverConfiguration#AUTHORIZED_DATA_RESOLVERS";
 
-    private final Logger logger = LoggerFactory.getLogger(CustomWebMvcExtensionConfiguration.class);
+    private final Logger logger = LoggerFactory.getLogger(AuthorizedDataResolverConfiguration.class);
 
-    private final ApplicationContext context;
-    private final Environment environment;
-
-    /**
-     * @param context
-     * @param environment
-     *
-     * @since 2025. 8. 11.
-     * @version 0.8.0
-     */
-    public CustomWebMvcExtensionConfiguration(ApplicationContext context, Environment environment) {
-        super();
-        this.context = context;
-        this.environment = environment;
+    public AuthorizedDataResolverConfiguration() {
     }
 
     @Bean
@@ -118,15 +110,6 @@ public class CustomWebMvcExtensionConfiguration {
         List<IAuthorizedDataResolver> resolvers = MapUtils.toList(single, multi);
         logger.info("[authorized-resources] authorized-data-resolvers={}", resolvers);
         return resolvers;
-    }
-
-    @Bean
-    @Order(CustomWebMvcConfiguration.ORDER)
-    @ConditionalOnMissingBean(CustomWebMvcConfiguration.class)
-    CustomWebMvcConfiguration customWebMvcConfigurer() {
-        CustomWebMvcConfiguration c = new CustomWebMvcConfiguration(this.context, this.environment);
-        logger.info("[web-mvc-configurer] custom-web-mvc-configurer={}", c);
-        return c;
     }
 
     @Bean

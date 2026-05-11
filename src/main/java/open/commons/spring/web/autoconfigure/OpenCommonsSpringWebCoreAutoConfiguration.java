@@ -31,10 +31,8 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Import;
 
 import open.commons.spring.web.configure.AspectConfiguration;
-import open.commons.spring.web.configure.AuthorizedHandlesConfiguration;
-import open.commons.spring.web.configure.AuthorizedResourcesMetadataConfiguration;
 import open.commons.spring.web.configure.BeansConfiguration;
-import open.commons.spring.web.configure.CustomWebMvcExtensionConfiguration;
+import open.commons.spring.web.configure.CustomWebMvcConfiguration;
 import open.commons.spring.web.configure.LogFeatureDecorationConfiguration;
 import open.commons.spring.web.configure.OpenApiConfiguration;
 import open.commons.spring.web.configure.ServletConfiguration;
@@ -81,6 +79,7 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
  * -----------------------------------------------------
  * 2026. 4. 20.     parkjunhong77@gmail.com    최초 작성
  * 2026. 5. 6.      parkjunhong77@gmail.com    Spring Boot Starter 아키텍처 정석에 따른 ComponentScan 제거 및 기능별 Configuration 명시적 Import 구조로 전면 리팩토링
+ * 2026. 5. 11.     parkjunohng77@gmail.com     `Authorized` 관련 설정 이관.
  * </pre>
  * 
  * @since 2026. 4. 20.
@@ -95,10 +94,8 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
 // 2. [명시적 로드] 순서와 조건부 평가가 중요한 @Configuration 클래스들은 @Import로 관리합니다.
 @Import({ //
         AspectConfiguration.class //
-        , AuthorizedHandlesConfiguration.class //
-        , AuthorizedResourcesMetadataConfiguration.class //
         , BeansConfiguration.class //
-        , CustomWebMvcExtensionConfiguration.class //
+        , CustomWebMvcConfiguration.class//
         , LogFeatureDecorationConfiguration.class //
         , OpenApiConfiguration.class //
         , AsyncTaskExecutorConfiguration.class //
