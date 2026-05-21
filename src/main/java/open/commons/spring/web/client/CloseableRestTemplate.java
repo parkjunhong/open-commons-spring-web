@@ -27,13 +27,18 @@
 package open.commons.spring.web.client;
 
 import java.io.Closeable;
+import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 import jakarta.annotation.PreDestroy;
 import jakarta.validation.constraints.NotEmpty;
 
+import org.jspecify.annotations.Nullable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import open.commons.spring.web.utils.CloseableUtils;
@@ -48,8 +53,7 @@ import open.commons.spring.web.utils.CloseableUtils;
  */
 public class CloseableRestTemplate extends RestTemplate implements Closeable {
 
-    /** {@link RestTemplate}에서 내부적으로 사용하는 객체에 대한 참조. */
-    private ClientHttpRequestFactory requestFactory;
+    private boolean closed = false;
 
     /**
      * <br>
@@ -116,15 +120,123 @@ public class CloseableRestTemplate extends RestTemplate implements Closeable {
     @Override
     @PreDestroy
     public void close() {
-        CloseableUtils.close(this.requestFactory);
+        CloseableUtils.close(getRequestFactory());
+        this.closed = true;
     }
 
     /**
-     * @see #requestFactory
+     * {@inheritDoc}
+     *
+     * @since 2026. 5. 20.
+     * @version 4.0.0
+     *
+     * @see org.springframework.web.client.RestTemplate#getForEntity(java.lang.String,
+     *      java.lang.Class, java.util.Map)
      */
     @Override
-    public void setRequestFactory(ClientHttpRequestFactory requestFactory) {
-        super.setRequestFactory(requestFactory);
-        this.requestFactory = getRequestFactory();
+    public <T> ResponseEntity<T> getForEntity(String url, Class<T> responseType,
+            Map<String, ? extends @Nullable Object> uriVariables) throws RestClientException {
+
+        if (closed) {
+            throw new IllegalStateException("CloseableRestTemplate이 이미 종료되었습니다.");
+        }
+
+        return super.getForEntity(url, responseType, uriVariables);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 2026. 5. 20.
+     * @version 4.0.0
+     *
+     * @see org.springframework.web.client.RestTemplate#getForEntity(java.lang.String,
+     *      java.lang.Class, java.lang.Object[])
+     */
+    @Override
+    public <T> ResponseEntity<T> getForEntity(String url, Class<T> responseType, @Nullable Object... uriVariables)
+            throws RestClientException {
+
+        if (closed) {
+            throw new IllegalStateException("CloseableRestTemplate이 이미 종료되었습니다.");
+        }
+
+        return super.getForEntity(url, responseType, uriVariables);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 2026. 5. 20.
+     * @version 4.0.0
+     *
+     * @see org.springframework.web.client.RestTemplate#getForEntity(java.net.URI, java.lang.Class)
+     */
+    @Override
+    public <T> ResponseEntity<T> getForEntity(URI url, Class<T> responseType) throws RestClientException {
+
+        if (closed) {
+            throw new IllegalStateException("CloseableRestTemplate이 이미 종료되었습니다.");
+        }
+
+        return super.getForEntity(url, responseType);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 2026. 5. 20.
+     * @version 4.0.0
+     *
+     * @see org.springframework.web.client.RestTemplate#getForObject(java.lang.String,
+     *      java.lang.Class, java.util.Map)
+     */
+    @Override
+    public <T> @Nullable T getForObject(String url, Class<T> responseType, Map<String, ?> uriVariables)
+            throws RestClientException {
+
+        if (closed) {
+            throw new IllegalStateException("CloseableRestTemplate이 이미 종료되었습니다.");
+        }
+
+        return super.getForObject(url, responseType, uriVariables);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 2026. 5. 20.
+     * @version 4.0.0
+     *
+     * @see org.springframework.web.client.RestTemplate#getForObject(java.lang.String,
+     *      java.lang.Class, java.lang.Object[])
+     */
+    @Override
+    public <T> @Nullable T getForObject(String url, Class<T> responseType, @Nullable Object... uriVariables)
+            throws RestClientException {
+
+        if (closed) {
+            throw new IllegalStateException("CloseableRestTemplate이 이미 종료되었습니다.");
+        }
+
+        return super.getForObject(url, responseType, uriVariables);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @since 2026. 5. 20.
+     * @version 4.0.0
+     *
+     * @see org.springframework.web.client.RestTemplate#getForObject(java.net.URI, java.lang.Class)
+     */
+    @Override
+    public <T> @Nullable T getForObject(URI url, Class<T> responseType) throws RestClientException {
+
+        if (closed) {
+            throw new IllegalStateException("CloseableRestTemplate이 이미 종료되었습니다.");
+        }
+
+        return super.getForObject(url, responseType);
     }
 }
