@@ -11,7 +11,7 @@ open.commons.spring.web.autoconfigure.OpenCommonsSpringWebCoreAutoConfiguration
 # --- 2. 권한 제어 (Authorization & Message Conversion) ---
 open.commons.spring.web.autoconfigure.AuthorizedResourceBuiltinHandlerAutoConfiguration
 open.commons.spring.web.autoconfigure.AuthorizedResourcesAutoConfiguration
-open.commons.spring.web.autoconfigure.AuthorizedObjectJsonMessageConverterAutoConfiguration
+open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConverterAutoConfiguration
 
 # --- 3. 서블릿 및 로깅 (Servlet & Logging) --- 
 open.commons.spring.web.autoconfigure.GlobalServletAutoConfiguration

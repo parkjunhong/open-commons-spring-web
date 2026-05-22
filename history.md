@@ -1,3 +1,21 @@
+[2026/05/22]
+- 삭제 
+  + `open.commons.spring.web.autoconfigure.AuthorizedObjectJsonMessageConverterAutoConfiguration`
+- 추가
+  + `open.commons.spring.web.http.converter.form.AuthorizedObjectFormHttpMessageConverter`: `application/x-www-form-urlencoded`, `multipart/form-data` 유형의 데이터에 `AuthorizedObject` 처리 지원.
+  + `open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConverterAutoConfiguration`: 삭제된 `open.commons.spring.web.autoconfigure.AuthorizedObjectJsonMessageConverterAutoConfiguration` 기능 수행
+- 개선
+  + `open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConverterAutoConfiguration`
+    + `open.commons.spring.web.http.converter.form.AuthorizedObjectFormHttpMessageConverter` 객체를 'FormConverter'로 추가 적용
+  + `open.commons.spring.web.beans.resolver.AuthorizedDataModelAttributeResolver`
+    + 명시적으로 `org.springframework.web.bind.annotation.ModelAttribute`가 설정되지 않아도 처리.
+    + `supportsParameter(MethodParameter)`: 명시적으로 `open.commons.spring.web.authority.AuthorizedObject` 어노테이션이 있는 것만 지원
+    + `resolvePojo(Object, Set<Object>)`: `open.commons.spring.web.authority.AuthorizedRequestData` 어노테이션 적용여부와 데이터 유형을 보고 `resolveRawValue(Object, String, String, Set<Object>)` 호출 여부 결정
+- 변경
+  + `/open-commons-spring-web/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports`
+    + `open.commons.spring.web.autoconfigure.AuthorizedObjectJsonMessageConverterAutoConfiguration`: 삭제
+    + `open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConverterAutoConfiguration`: 추가
+
 [2026/05/11]
 - 개선
   + 'Authorized' 관련 기능을 제공하는 'configuration' 클래스 로딩 제어 변경

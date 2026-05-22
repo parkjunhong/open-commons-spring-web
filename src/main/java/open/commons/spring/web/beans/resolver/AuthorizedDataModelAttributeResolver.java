@@ -26,6 +26,7 @@
 
 package open.commons.spring.web.beans.resolver;
 
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Collections;
@@ -46,15 +47,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.MethodParameter;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.annotation.ModelAttributeMethodProcessor;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.ServletModelAttributeMethodProcessor;
 
 import open.commons.core.TwoValueObject;
 import open.commons.core.utils.ExceptionUtils;
 import open.commons.core.utils.StringUtils;
+import open.commons.spring.web.authority.AuthorizedObject;
 import open.commons.spring.web.authority.AuthorizedRequestData;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataHandler;
 import open.commons.spring.web.beans.authority.IAuthorizedRequestDataMetadata;
@@ -89,25 +93,13 @@ public class AuthorizedDataModelAttributeResolver extends ServletModelAttributeM
     public AuthorizedDataModelAttributeResolver(ApplicationContext applicationContext,
             IAuthorizedRequestDataMetadata authorizedRequestDataMetadata //
     ) {
-        super(false);
+        super(true);
         this.applicationContext = applicationContext;
         this.authorizedRequestDataMetadata = authorizedRequestDataMetadata;
     }
 
     @Override
     protected void bindRequestParameters(WebDataBinder binder, NativeWebRequest request) {
-//        HttpServletRequest servletRequest = request.getNativeRequest(HttpServletRequest.class);
-//        if (binder instanceof ExtendedServletRequestDataBinder) {
-//            ((ExtendedServletRequestDataBinder) binder).bind(servletRequest);
-//        } else if (binder instanceof ServletRequestDataBinder) {
-//            ((ServletRequestDataBinder) binder).bind(servletRequest);
-//        } else if (binder instanceof WebRequestDataBinder) {
-//            ((WebRequestDataBinder) binder).bind(request);
-//        } else {
-//            throw ExceptionUtils.newException(InternalServerException.class, "지원하는 않는 WebDataBinder('%s') 구현 클래스 입니다.",
-//                    binder.getClass());
-//        }
-        
         super.bindRequestParameters(binder, request);
 
         Object target = binder.getTarget();
@@ -220,11 +212,12 @@ public class AuthorizedDataModelAttributeResolver extends ServletModelAttributeM
                 }
                 TwoValueObject<String, String> annotatedValue = resolveAnnotatedContext(targetClass, field.getName(),
                         field.getAnnotation(AuthorizedRequestData.class));
-                if (annotatedValue == null) {
+                if (annotatedValue != null) {
+                    handleBean = annotatedValue.first;
+                    handleType = annotatedValue.second;
+                } else if (BeanUtils.isSimpleValueType(field.getType())) {
                     continue;
                 }
-                handleBean = annotatedValue.first;
-                handleType = annotatedValue.second;
                 Object value = resolveRawValue(rawValue, handleBean, handleType, visited);
                 field.set(targetValue, value);
             } catch (BeansException e) {
@@ -245,12 +238,40 @@ public class AuthorizedDataModelAttributeResolver extends ServletModelAttributeM
         }
     }
 
+    /**
+     * 
+     * <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 18.     parkjunhong77@gmail.com     최초 작성
+     * 2026. 5. 22.     parkjunhong77@gmail.com
+     * </pre>
+     *
+     * @param rawValue
+     * @param handleBean
+     * @param handleType
+     * @param visited
+     * @return
+     *
+     * @since 2026. 5. 22.
+     * @version 4.0.0
+     */
     private Object resolveRawValue(Object rawValue, String handleBean, @NotBlank String handleType,
             Set<Object> visited) {
         if (rawValue == null || visited.contains(rawValue)) {
             return rawValue;
         }
         Class<?> rawValueClass = rawValue.getClass();
+
+        // MultipartFile, Resource, InputStream 등 바이너리/파일 스트림 타입은
+        // 하위 필드가 존재하지 않는 순수 데이터이므로 재귀 탐색(resolvePojo)을 수행하지 않고 즉시 반환(Bypass)합니다.
+        if (MultipartFile.class.isAssignableFrom(rawValueClass) || Resource.class.isAssignableFrom(rawValueClass)
+                || InputStream.class.isAssignableFrom(rawValueClass)) {
+            return rawValue;
+        }
 
         if (BeanUtils.isSimpleValueType(rawValueClass)) {
             return restoreValue(applicationContext, handleBean, handleType, rawValue);
@@ -311,7 +332,13 @@ public class AuthorizedDataModelAttributeResolver extends ServletModelAttributeM
      */
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return super.supportsParameter(parameter);
+        // #1. Spring의 기본 ModelAttribute 매칭 조건 확인
+        if (!super.supportsParameter(parameter)) {
+            return false;
+        }
+
+        // #2. [명시적 계약 확인] 요청 파라미터의 최상위 루트 클래스에 @AuthorizedObject가 명시되어 있는지만 확인
+        return parameter.getParameterType().isAnnotationPresent(AuthorizedObject.class);
     }
 
     /**

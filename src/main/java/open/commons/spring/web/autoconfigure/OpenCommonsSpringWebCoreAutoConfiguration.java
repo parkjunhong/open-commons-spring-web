@@ -86,7 +86,7 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
  * @version 4.0.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  * 
- * @see AuthorizedObjectJsonMessageConverterAutoConfiguration
+ * @see AuthorizedObjectMessageConverterAutoConfiguration
  * @see AuthorizedResourceBuiltinHandlerAutoConfiguration
  * @see AuthorizedResourcesAutoConfiguration
  * @see GlobalServletAutoConfiguration

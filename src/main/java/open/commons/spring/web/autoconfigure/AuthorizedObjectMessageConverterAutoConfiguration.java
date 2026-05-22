@@ -38,10 +38,12 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverters;
+import org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import open.commons.spring.web.beans.authority.IAuthorizedResourcesMetadata;
+import open.commons.spring.web.http.converter.form.AuthorizedObjectFormHttpMessageConverter;
 import open.commons.spring.web.http.converter.json.AuthorizedObjectJsonHttpMessageConverter;
 
 import tools.jackson.databind.ObjectMapper;
@@ -60,16 +62,16 @@ import tools.jackson.databind.json.JsonMapper;
  * @version 4.0.0
  * @author parkjunhong77@gmail.com
  */
-@AutoConfiguration(value = AuthorizedObjectJsonMessageConverterAutoConfiguration.BEAN_QUALIFIER //
+@AutoConfiguration(value = AuthorizedObjectMessageConverterAutoConfiguration.BEAN_QUALIFIER //
         , after = { OpenCommonsSpringWebCoreAutoConfiguration.class, AuthorizedResourcesAutoConfiguration.class } //
 )
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @Validated
-public class AuthorizedObjectJsonMessageConverterAutoConfiguration {
+public class AuthorizedObjectMessageConverterAutoConfiguration {
 
-    static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.AuthorizedObjectJsonMessageConverterAutoConfiguration";
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.autoconfigure.AuthorizedObjectMessageConverterAutoConfiguration";
 
-    private Logger logger = LoggerFactory.getLogger(AuthorizedObjectJsonMessageConverterAutoConfiguration.class);
+    private Logger logger = LoggerFactory.getLogger(AuthorizedObjectMessageConverterAutoConfiguration.class);
 
     /**
      * <br>
@@ -84,7 +86,7 @@ public class AuthorizedObjectJsonMessageConverterAutoConfiguration {
      * @since 2025. 6. 10.
      * @version 0.8.0
      */
-    public AuthorizedObjectJsonMessageConverterAutoConfiguration() {
+    public AuthorizedObjectMessageConverterAutoConfiguration() {
     }
 
     /**
@@ -111,14 +113,18 @@ public class AuthorizedObjectJsonMessageConverterAutoConfiguration {
             , @NotNull Map<String, JsonMapper> allJsonMappers //
             , @NotNull IAuthorizedResourcesMetadata authorizedResourcesMetadataProvider) {
 
-        // 1. defaultJsonMapper 객체와 참조(Reference)가 동일한 엔트리만 완벽하게 제외하여 새로운 Map 생성
+        // #1. defaultJsonMapper 객체와 참조(Reference)가 동일한 엔트리만 완벽하게 제외하여 새로운 Map 생성
         Map<String, JsonMapper> customJsonMappersOnly = allJsonMappers.entrySet().stream() //
                 .filter(entry -> entry.getValue() != defaultJsonMapper) // 객체
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
-        // 2. 필터링된 맵(customJsonMappersOnly)을 생성자에 전달
-        AuthorizedObjectJsonHttpMessageConverter customConverter = new AuthorizedObjectJsonHttpMessageConverter(
+        // #2. 커스텀 JacksonJsonHttpMessageConverter 생성
+        AuthorizedObjectJsonHttpMessageConverter customJacksonJsonConverter = new AuthorizedObjectJsonHttpMessageConverter(
                 defaultJsonMapper, customJsonMappersOnly, authorizedResourcesMetadataProvider);
+
+        // #3. 커스텀 AllEncompassingFormHttpMessageConverter 생성
+        AuthorizedObjectFormHttpMessageConverter customFormConverter = new AuthorizedObjectFormHttpMessageConverter(
+                customJacksonJsonConverter);
 
         logger.info("[authorized-resources] 제외 후 순수 커스텀 매퍼 개수: {}", customJsonMappersOnly.size());
 
@@ -126,8 +132,17 @@ public class AuthorizedObjectJsonMessageConverterAutoConfiguration {
         return new WebMvcConfigurer() {
             @Override
             public void configureMessageConverters(HttpMessageConverters.ServerBuilder builder) {
-                // 4. JsonConverter를 스왑(Swap)
-                builder.withJsonConverter(customConverter);
+                // #4-1. JsonConverter 대체
+                builder.withJsonConverter(customJacksonJsonConverter);
+                // #4-2. FomrConverter 대체
+                builder.configureMessageConvertersList(converters -> {
+                    for (int i = 0; i < converters.size(); i++) {
+                        if (converters.get(i) instanceof AllEncompassingFormHttpMessageConverter) {
+                            converters.set(i, customFormConverter);
+                            break;
+                        }
+                    }
+                });
             }
         };
     }
