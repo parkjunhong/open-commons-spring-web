@@ -186,6 +186,11 @@ public class AuthorizedFieldDeserializerModifier extends ValueDeserializerModifi
                 continue;
             }
 
+            // 실제 멤버 변수(Field)가 없는 가짜 프로퍼티(편의성 Setter 등)는 권한 처리 패스
+            if (def.getField() == null) {
+                continue;
+            }
+
             // 필드/메서드 등 우선 멤버에서 어노테이션 탐색
             AuthorizedRequestData anno = findAuthorizedAnnotation(def);
             fieldName = prop.getName();
@@ -274,19 +279,28 @@ public class AuthorizedFieldDeserializerModifier extends ValueDeserializerModifi
 
     private static AuthorizedRequestData findAuthorizedAnnotation(BeanPropertyDefinition def) {
         return AUTHORIZED_REQUEST_DATA_CACHE.computeIfAbsent(def, _def -> {
-            // 필드/Setter/Getter 등 우선순위 멤버에서 탐색
             AnnotatedMember m = _def.getPrimaryMember();
-            AuthorizedRequestData annotation = null;
-            return m != null //
-                    ? (annotation = getAnnotation(_def.getField(), AuthorizedRequestData.class)) != null //
-                            ? annotation //
-                            : (annotation = getAnnotation(_def.getSetter(), AuthorizedRequestData.class)) != null //
-                                    ? annotation //
-                                    : (annotation = getAnnotation(_def.getGetter(),
-                                            AuthorizedRequestData.class)) != null //
-                                                    ? annotation //
-                                                    : null //
-                    : null;
+            if (m == null) {
+                return null;
+            }
+
+            AuthorizedRequestData annotation;
+            // 1. 필드에서 탐색
+            annotation = getAnnotation(_def.getField(), AuthorizedRequestData.class);
+            if (annotation != null)
+                return annotation;
+
+            // 2. Setter에서 탐색
+            annotation = getAnnotation(_def.getSetter(), AuthorizedRequestData.class);
+            if (annotation != null)
+                return annotation;
+
+            // 3. Getter에서 탐색
+            annotation = getAnnotation(_def.getGetter(), AuthorizedRequestData.class);
+            if (annotation != null)
+                return annotation;
+
+            return null;
         });
     }
 
@@ -299,6 +313,9 @@ public class AuthorizedFieldDeserializerModifier extends ValueDeserializerModifi
     }
 
     private static <A extends Annotation> A getAnnotation(Annotated annotated, Class<A> annoClass) {
+        if (annotated == null || annoClass == null) {
+            return null;
+        }
         return annotated.getAnnotation(annoClass);
     }
 }

@@ -1,3 +1,9 @@
+[2026/05/260]
+- 개선
+  + open.commons.spring.web.jackson.deserialization.AuthorizedFieldDeserializerModifier
+    + updateBuilder(DeserializationConfig, Supplier, BeanDeserializerBuilder): `Non-Json` Property 방어코드 추가
+    + getAnnotation(Annotated, Class&lt;A&gt;): 파라미터 `null` 확인 추가
+
 [2026/05/22]
 - 삭제 
   + `open.commons.spring.web.autoconfigure.AuthorizedObjectJsonMessageConverterAutoConfiguration`
