@@ -66,6 +66,7 @@ import org.springframework.security.config.annotation.web.configurers.saml2.Saml
 import org.springframework.security.config.annotation.web.configurers.saml2.Saml2LogoutConfigurer;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.ClassUtils;
+import org.springframework.util.ReflectionUtils;
 
 import open.commons.core.function.ThrowableFunction;
 import open.commons.core.utils.AssertUtils2;
@@ -315,6 +316,9 @@ public abstract class AbstractHttpSecurityConfig {
         AssertUtils2.notNull(http);
 
         // #1. (선택) 체인 범위/요청 매처 — 필요 시 사용
+        applyIfOverridden(this::securityMatcher, http::securityMatchers, "securityMatcher",
+                RequestMatcherConfigurer.class);
+        // #1-1. 추후 제거될 예정
         applyIfOverridden(this::requestMatchers, http::securityMatchers, "requestMatchers",
                 RequestMatcherConfigurer.class);
 
@@ -506,13 +510,16 @@ public abstract class AbstractHttpSecurityConfig {
      * @version 2.1.0
      */
     private final Method getMethod(String methodName, Class<?>... argTypes) {
+
         Class<?> userClass = ClassUtils.getUserClass(this);
-        try {
-            return userClass.getDeclaredMethod(methodName, argTypes);
-        } catch (NoSuchMethodException e) {
-            throw ExceptionUtils.newException(RuntimeException.class, "'%s'클래스에 '%s' 메소드가 존재하지 않습니다.",
-                    userClass.getName(), methodName, e);
+
+        Method method = ReflectionUtils.findMethod(userClass, methodName, argTypes);
+        if (method == null) {
+            throw ExceptionUtils.newException(RuntimeException.class, "'%s'클래스 계층 구조에 '%s' 메소드가 존재하지 않습니다.",
+                    userClass.getName(), methodName);
         }
+
+        return method;
     }
 
     /**
@@ -837,6 +844,7 @@ public abstract class AbstractHttpSecurityConfig {
      *     날짜        | 작성자                   |   내용
      * -----------------------------------------------------
      * 2025. 10. 23.    parkjunhong77@gmail.com     최초 작성
+     * 2026. 5. 27.     parkjunohng77@gmail.com     Spring Boot 4.0.3 로 현행화하면서 메소드 변경에 따른 <code>deprecated</code>
      * </pre>
      *
      * @param configurer
@@ -847,7 +855,10 @@ public abstract class AbstractHttpSecurityConfig {
      * @version 2.1.0
      * 
      * @see HttpSecurity#requestMatchers(org.springframework.security.config.Customizer)
+     * 
+     * @deprecated {@link #securityMatcher(RequestMatcherConfigurer)} 를 사용하기 바랍니다. 더 이상 작용 적용되지 않음.
      */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected void requestMatchers(RequestMatcherConfigurer configurer) {
     }
 
@@ -864,8 +875,8 @@ public abstract class AbstractHttpSecurityConfig {
      * </pre>
      *
      * @param configurer
+     *
      * @return
-     * @throws Exception
      *
      * @since 2025. 10. 23.
      * @version 2.1.0
@@ -921,6 +932,26 @@ public abstract class AbstractHttpSecurityConfig {
      * @see HttpSecurity#securityContext(org.springframework.security.config.Customizer)
      */
     protected void securityContext(SecurityContextConfigurer<HttpSecurity> configurer) {
+    }
+
+    /**
+     * {@link HttpSecurity#securityContext(org.springframework.security.config.Customizer)}에 전달되는
+     * 정보를 제공합니다.<br>
+     * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다. <br>
+     * 
+     * <pre>
+     * [개정이력]
+     *     날짜        | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2026. 5. 27.     parkjunhong77@gmail.com     최초 작성
+     * </pre>
+     *
+     * @param configurer
+     *
+     * @since 2026. 5. 27.
+     * @version 4.0.0
+     */
+    protected void securityMatcher(RequestMatcherConfigurer configurer) {
     }
 
     /**

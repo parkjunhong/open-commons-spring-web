@@ -1,6 +1,7 @@
 [2026/05/27]
 - 개선
   + open.commons.spring.web.security.AbstractHttpSecurityConfig.configure(HttpSecurity): `override` 기반 적용과 자동적용 분류 개선
+  + open.commons.spring.web.security.AbstractHttpSecurityConfig.getMethod(String, Class<?>...): 분류 개선에 따른 메소드 로직 수정
 
 [2026/05/26]
 - SnapShot 배포정보를 내부 도메인으로 변경 (외부 도메인 업로드 기능 차단)
