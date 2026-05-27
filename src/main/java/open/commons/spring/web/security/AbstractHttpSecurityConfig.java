@@ -81,9 +81,19 @@ public abstract class AbstractHttpSecurityConfig {
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
-    /** @see #httpBasic(HttpBasicConfigurer) */
+    /**
+     * @see #httpBasic(HttpBasicConfigurer)
+     * @deprecated {@link #httpBasic(HttpBasicConfigurer)} 메소드 <b><i>{@code override}</i></b> 여부로
+     *             판단함.
+     */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected boolean enableHttpBasic;
-    /** @see #formLogin(FormLoginConfigurer) */
+    /**
+     * @see #formLogin(FormLoginConfigurer)
+     * @deprecated {@link #formLogin(FormLoginConfigurer)} 메소드 <b><i>{@code override}</i></b> 여부로
+     *             판단함.
+     */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected boolean enableFormLogin;
     /**
      * 이 옵션을 <code>true</code>로 설정하는 경우
@@ -91,7 +101,11 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link Bean}이 필요할 수 있습니다.
      * 
      * @see #oauth2Login(OAuth2LoginConfigurer)
+     * 
+     * @deprecated {@link #oauth2Login(OAuth2LoginConfigurer)} 메소드 <b><i>{@code override}</i></b>
+     *             여부로 판단함.
      */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected boolean enableOauth2Login;
     /**
      * 이 옵션을 <code>true</code>로 설정하는 경우
@@ -99,17 +113,35 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link Bean}이 필요할 수 있습니다.
      * 
      * @see #oauth2Client(OAuth2ClientConfigurer)
+     * 
+     * @deprecated {@link #oauth2Client(OAuth2ClientConfigurer)} 메소드 <b><i>{@code override}</i></b>
+     *             여부로 판단함.
      */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected boolean enableOauth2Client;
     /**
      * 이 옵션을 <code>true</code>로 설정하는 경우 기능에 필요한 {@link Bean}을 확인하기 바랍니다.
      * 
      * @see #oauth2ResourceServer(OAuth2ResourceServerConfigurer)
+     * 
+     * @deprecated {@link #oauth2ResourceServer(OAuth2ResourceServerConfigurer)} 메소드
+     *             <b><i>{@code override}</i></b> 여부로 판단함.
      */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected boolean enableOauth2ResourceServer;
-    /** @see #x509(X509Configurer) */
+    /**
+     * @see #x509(X509Configurer)
+     * 
+     * @deprecated {@link #x509(X509Configurer)} 메소드 <b><i>{@code override}</i></b> 여부로 판단함.
+     */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected boolean enableX509;
-    /** @see #jee(JeeConfigurer) */
+    /**
+     * @see #jee(JeeConfigurer)
+     * 
+     * @deprecated {@link #jee(JeeConfigurer)} 메소드 <b><i>{@code override}</i></b> 여부로 판단함.
+     */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected boolean enableJee;
 
     // [PATCH] enableAuthorizeHttpRequests 플래그 제거 (SS 7.0에서는 항상
@@ -119,28 +151,45 @@ public abstract class AbstractHttpSecurityConfig {
      * 이 옵션을 <code>true</code>로 설정하는 경우 기능에 필요한 {@link Bean}을 확인하기 바랍니다.
      * 
      * @see #passwordManagement(PasswordManagementConfigurer)
+     * 
+     * @deprecated {@link #passwordManagement(PasswordManagementConfigurer)} 메소드
+     *             <b><i>{@code override}</i></b> 여부로 판단함.
      */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected boolean enablePasswordManagement;
 
     /**
      * 이 옵션을 <code>true</code>로 설정하는 경우 기능에 필요한 {@link Bean}을 확인하기 바랍니다.
      * 
      * @see #portMapper(PortMapperConfigurer)
+     * 
+     * @deprecated {@link #portMapper(PortMapperConfigurer)} 메소드 <b><i>{@code override}</i></b> 여부로
+     *             판단함.
      */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected boolean enablePortMapper;
 
     /**
      * 이 옵션을 <code>true</code>로 설정하는 경우 기능에 필요한 {@link Bean}을 확인하기 바랍니다.
      * 
      * @see #rememberMe(RememberMeConfigurer)
+     * 
+     * @deprecated {@link #rememberMe(RememberMeConfigurer)} 메소드 <b><i>{@code override}</i></b> 여부로
+     *             판단함.
      */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected boolean enableRememberMe;
     /**
      * 이 옵션을 <code>true</code>로 설정하는 경우 기능에 필요한 {@link Bean}을 확인하기 바랍니다.
      * 
      * @see #saml2Login(Saml2LoginConfigurer)
      * @see #saml2Logout(Saml2LogoutConfigurer)
+     * 
+     * @deprecated {@link #saml2Login(Saml2LoginConfigurer)},
+     *             {@link #saml2Logout(Saml2LogoutConfigurer)} 메소드 <b><i>{@code override}</i></b>
+     *             여부로 판단함.
      */
+    @Deprecated(since = "4.0.0", forRemoval = true)
     protected boolean enableSaml2;
 
     /**
@@ -181,6 +230,18 @@ public abstract class AbstractHttpSecurityConfig {
      * @see HttpSecurity#anonymous(org.springframework.security.config.Customizer)
      */
     protected void anonymous(AnonymousConfigurer<HttpSecurity> configurer) {
+    }
+
+    private final <T> void applyIfOverridden(Customizer<T> configurer,
+            ThrowableFunction<Customizer<T>, HttpSecurity> applier, String methodName, Class<?>... argTypes)
+            throws Exception {
+        if (isOverrided(methodName, argTypes)) {
+            try {
+                applier.apply(configurer);
+            } catch (Throwable e) {
+                throw new Exception("", e);
+            }
+        }
     }
 
     /**
@@ -241,6 +302,7 @@ public abstract class AbstractHttpSecurityConfig {
      * -----------------------------------------------------
      * 2025. 10. 23.    parkjunhong77@gmail.com     최초 작성
      * 2026. 4. 14.     parkjunhong77@gmail.com     {@link HttpSecurity}::7.0.3의 내부 구현 변경 및 {@link AntPathMatcher} 미지원에 따른 수정
+     * 2026. 5. 27.     parkjunohng77@gmail.com     <code>override</code> 기반 적용과 자동 적용 분류 개선.
      * </pre>
      *
      * @param http
@@ -253,38 +315,28 @@ public abstract class AbstractHttpSecurityConfig {
         AssertUtils2.notNull(http);
 
         // #1. (선택) 체인 범위/요청 매처 — 필요 시 사용
-        http.securityMatchers(this::requestMatchers);
+        applyIfOverridden(this::requestMatchers, http::securityMatchers, "requestMatchers",
+                RequestMatcherConfigurer.class);
 
         // #2. 인증 메커니즘
-        if (this.enableHttpBasic) {
-            executeIfOverride(this::httpBasic, http::httpBasic, "httpBasic", HttpBasicConfigurer.class);
-        }
-        if (this.enableFormLogin) {
-            executeIfOverride(this::formLogin, http::formLogin, "formLogin", FormLoginConfigurer.class);
-        }
-        if (this.enableOauth2Login) {
-            executeIfOverride(this::oauth2Login, http::oauth2Login, "oauth2Login", OAuth2LoginConfigurer.class);
-        }
-        if (this.enableOauth2Client) {
-            executeIfOverride(this::oauth2Client, http::oauth2Client, "oauth2Client", OAuth2ClientConfigurer.class);
-        }
-        if (this.enableOauth2ResourceServer) {
-            executeIfOverride(this::oauth2ResourceServer, http::oauth2ResourceServer, "oauth2ResourceServer",
-                    OAuth2ResourceServerConfigurer.class);
-        }
-        if (this.enableX509) {
-            executeIfOverride(this::x509, http::x509, "x509", X509Configurer.class);
-        }
-        if (this.enableJee) {
-            executeIfOverride(this::jee, http::jee, "jee", JeeConfigurer.class);
-        }
+        applyIfOverridden(this::httpBasic, http::httpBasic, "httpBasic", HttpBasicConfigurer.class);
+        applyIfOverridden(this::formLogin, http::formLogin, "formLogin", FormLoginConfigurer.class);
+        applyIfOverridden(this::oauth2Login, http::oauth2Login, "oauth2Login", OAuth2LoginConfigurer.class);
+        applyIfOverridden(this::oauth2Client, http::oauth2Client, "oauth2Client", OAuth2ClientConfigurer.class);
+        applyIfOverridden(this::oauth2ResourceServer, http::oauth2ResourceServer, "oauth2ResourceServer",
+                OAuth2ResourceServerConfigurer.class);
+        applyIfOverridden(this::x509, http::x509, "x509", X509Configurer.class);
+        applyIfOverridden(this::jee, http::jee, "jee", JeeConfigurer.class);
+        applyIfOverridden(this::saml2Login, http::saml2Login, "saml2Login", Saml2LoginConfigurer.class);
+        applyIfOverridden(this::saml2Logout, http::saml2Logout, "saml2Logout", Saml2LogoutConfigurer.class);
+
         http.logout(this::logout);
 
         // #3. 예외처리 (전역 EntryPoint/DeniedHandler 통일)
         http.exceptionHandling(this::exceptionHandling);
 
         // #4. 권한 규칙 (좁은 규칙 -> 넓은 규칙)
-        executeIfOverride(this::authorizeHttpRequests, http::authorizeHttpRequests, "authorizeHttpRequests",
+        applyIfOverridden(this::authorizeHttpRequests, http::authorizeHttpRequests, "authorizeHttpRequests",
                 AuthorizationManagerRequestMatcherRegistry.class);
 
         // #5. AuthentationProvider, AuthenticationManager 'Hook'
@@ -294,31 +346,24 @@ public abstract class AbstractHttpSecurityConfig {
         this.filters(http);
 
         // #7. 익명 사용자 처리
-        http.anonymous(this::anonymous);
+        applyIfOverridden(this::anonymous, http::anonymous, "anonymous", AnonymousConfigurer.class);
 
         // #7. 이하
-        http.sessionManagement(this::sessionManagement);
-        http.headers(this::headers);
-        http.csrf(this::csrf);
-        http.cors(this::cors);
-        http.servletApi(this::servletApi);
-        if (enablePasswordManagement) {
-            executeIfOverride(this::passwordManagement, http::passwordManagement, "passwordManagement",
-                    PasswordManagementConfigurer.class);
-        }
-        http.requestCache(this::requestCache);
-        if (enablePortMapper) {
-            executeIfOverride(this::portMapper, http::portMapper, "portMapper", PortMapperConfigurer.class);
-        }
-        if (enableRememberMe) {
-            executeIfOverride(this::rememberMe, http::rememberMe, "rememberMe", RememberMeConfigurer.class);
-        }
-        http.securityContext(this::securityContext);
-        http.redirectToHttps(this::redirectToHttps);
-        if (enableSaml2) {
-            executeIfOverride(this::saml2Login, http::saml2Login, "saml2Login", Saml2LoginConfigurer.class);
-            executeIfOverride(this::saml2Logout, http::saml2Logout, "saml2Logout", Saml2LogoutConfigurer.class);
-        }
+        applyIfOverridden(this::sessionManagement, http::sessionManagement, "sessionManagement",
+                SessionManagementConfigurer.class);
+        applyIfOverridden(this::headers, http::headers, "headers", HeadersConfigurer.class);
+        applyIfOverridden(this::csrf, http::csrf, "csrf", CsrfConfigurer.class);
+        applyIfOverridden(this::cors, http::cors, "cors", CorsConfigurer.class);
+        applyIfOverridden(this::servletApi, http::servletApi, "servletApi", ServletApiConfigurer.class);
+        applyIfOverridden(this::passwordManagement, http::passwordManagement, "passwordManagement",
+                PasswordManagementConfigurer.class);
+        applyIfOverridden(this::requestCache, http::requestCache, "requestCache", RequestCacheConfigurer.class);
+        applyIfOverridden(this::portMapper, http::portMapper, "portMapper", PortMapperConfigurer.class);
+        applyIfOverridden(this::rememberMe, http::rememberMe, "rememberMe", RememberMeConfigurer.class);
+        applyIfOverridden(this::securityContext, http::securityContext, "securityContext",
+                SecurityContextConfigurer.class);
+        applyIfOverridden(this::redirectToHttps, http::redirectToHttps, "redirectToHttps",
+                HttpsRedirectConfigurer.class);
     }
 
     /**
@@ -393,21 +438,6 @@ public abstract class AbstractHttpSecurityConfig {
     protected void exceptionHandling(ExceptionHandlingConfigurer<HttpSecurity> configurer) {
     }
 
-    private final <T> void executeIfOverride(Customizer<T> configurer,
-            ThrowableFunction<Customizer<T>, HttpSecurity> applier, String methodName, Class<?>... argTypes)
-            throws Exception {
-        if (isOverrided(methodName, argTypes)) {
-            try {
-                applier.apply(configurer);
-            } catch (Throwable e) {
-                throw new Exception("", e);
-            }
-        } else {
-            logger.warn("'{}' 옵션을 활성화(true) 시켰으나, '{}' 메소드를 'overriding' 하지 않았습니다.", methodName,
-                    getMethod(methodName, argTypes));
-        }
-    }
-
     /**
      * {@link HttpSecurity}에서 {@link Filter}를 설정합니다.<br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.
@@ -438,8 +468,6 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link HttpSecurity#formLogin(org.springframework.security.config.Customizer)}에 전달되는 정보를
      * 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableFormLogin} 값을 <code>true</code>로
-     * 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -515,8 +543,6 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link HttpSecurity#httpBasic(org.springframework.security.config.Customizer)}에 전달되는 정보를
      * 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableHttpBasic} 값을 <code>true</code>로
-     * 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -564,8 +590,6 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link HttpSecurity#jee(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다.
      * <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableJee} 값을 <code>true</code>로
-     * 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -614,8 +638,8 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link HttpSecurity#oauth2Client(org.springframework.security.config.Customizer)}에 전달되는 정보를
      * 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableOauth2Client} 값을
-     * <code>true</code>로 설정합니다.</font>
+     * "org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager" 등을 구현한
+     * {@link Bean}이 필요할 수 있습니다.
      * 
      * <pre>
      * [개정이력]
@@ -640,8 +664,9 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link HttpSecurity#oauth2Login(org.springframework.security.config.Customizer)}에 전달되는 정보를
      * 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableOauth2Login} 값을
-     * <code>true</code>로 설정합니다.</font>
+     * "org.springframework.security.oauth2.client.registration.ClientRegistrationRepository" 등을 구현한
+     * {@link Bean}이 필요할 수 있습니다.
+     * 
      * 
      * <pre>
      * [개정이력]
@@ -666,8 +691,6 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link HttpSecurity#oauth2ResourceServer(org.springframework.security.config.Customizer)}에
      * 전달되는 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableOauth2ResourceServer} 값을
-     * <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -692,8 +715,6 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link HttpSecurity#passwordManagement(org.springframework.security.config.Customizer)}에 전달되는
      * 정보를 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enablePasswordManagement} 값을
-     * <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -762,8 +783,6 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link HttpSecurity#rememberMe(org.springframework.security.config.Customizer)}에 전달되는 정보를
      * 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableRememberMe} 값을
-     * <code>true</code>로 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -836,8 +855,6 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link HttpSecurity#saml2Login(org.springframework.security.config.Customizer)}에 전달되는 정보를
      * 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableSaml2} 값을 <code>true</code>로
-     * 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -862,8 +879,6 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link HttpSecurity#saml2Logout(org.springframework.security.config.Customizer)}에 전달되는 정보를
      * 제공합니다. <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableSaml2} 값을 <code>true</code>로
-     * 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
@@ -960,8 +975,6 @@ public abstract class AbstractHttpSecurityConfig {
      * {@link HttpSecurity#x509(org.springframework.security.config.Customizer)}에 전달되는 정보를 제공합니다.
      * <br>
      * 하위 클래스는 필요에 따라서 이 메소드를 <code>overriding</code> 합니다.<br>
-     * <font color="red">'overriding'한 메소드를 사용하기 위해서는 {@link #enableX509} 값을 <code>true</code>로
-     * 설정합니다.</font>
      * 
      * <pre>
      * [개정이력]
