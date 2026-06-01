@@ -93,7 +93,7 @@ public class AuthorizedDataModelAttributeResolver extends ServletModelAttributeM
     public AuthorizedDataModelAttributeResolver(ApplicationContext applicationContext,
             IAuthorizedRequestDataMetadata authorizedRequestDataMetadata //
     ) {
-        super(true);
+        super(false);
         this.applicationContext = applicationContext;
         this.authorizedRequestDataMetadata = authorizedRequestDataMetadata;
     }
@@ -324,6 +324,14 @@ public class AuthorizedDataModelAttributeResolver extends ServletModelAttributeM
 
     /**
      * "{@link AuthorizedRequestData} && {@link ModelAttribute}"가 선언된 파라미터만 지원합니다.
+     * 
+     * 
+     * <pre>
+     * [개정이력]
+     *      날짜       | 작성자                   |   내용
+     * -----------------------------------------------------
+     * 2025. 9. 18.     parkjunhong77@gmail.com     최초 작성
+     * </pre>
      *
      * @since 2025. 9. 18.
      * @version 0.8.0
