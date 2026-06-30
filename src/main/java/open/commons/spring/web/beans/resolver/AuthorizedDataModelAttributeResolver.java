@@ -234,6 +234,9 @@ public class AuthorizedDataModelAttributeResolver extends ServletModelAttributeM
                 logger.error("{}", errMsg, e);
 
                 throw ExceptionUtils.newException(InternalServerException.class, e, errMsg);
+            } finally {
+                handleBean = null;
+                handleType = AuthorizedRequestData.NO_ASSINGED_HANDLE_TYPE;
             }
         }
     }

@@ -1,3 +1,10 @@
+[2026/06/30]
+- 버그수정
+  + open.commons.spring.web.beans.resolver.AuthorizedDataModelAttributeResolver
+    + resolvePojo(Object, Set<Object>): `handleBean`, `handleType` 초기화 누락 오류 수정
+  + open.commons.spring.web.beans.resolver.IAuthorizedDataResolver
+    + restoreValue(ApplicationContext, String, String, Object): `handleBean` 파라미터에 `org.jspecify.annotations.Nullable` 적용
+
 [2026/05/27]
 - 개선
   + open.commons.spring.web.security.AbstractHttpSecurityConfig.configure(HttpSecurity): `override` 기반 적용과 자동적용 분류 개선
