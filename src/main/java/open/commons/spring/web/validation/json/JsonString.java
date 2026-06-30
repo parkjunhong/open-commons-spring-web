@@ -36,7 +36,8 @@ import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
 /**
- * <br>
+ * 대상 문자열이 유효한 JSON 형식인지 검증하는 어노테이션입니다.<br>
+ * 1개의 문자열 및 Collection 내부의 문자열들에 대해 일괄 적용 가능합니다. <br>
  * 
  * <pre>
  * [개정이력]
