@@ -1,4 +1,6 @@
 [2026/06/30]
+- 추가
+  + open.commons.spring.web.validation.json: `JSON` 문자열 Validation 추가.
 - 버그수정
   + open.commons.spring.web.beans.resolver.AuthorizedDataModelAttributeResolver
     + resolvePojo(Object, Set<Object>): `handleBean`, `handleType` 초기화 누락 오류 수정
