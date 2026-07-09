@@ -181,3 +181,6 @@ open-commons:
           description:
           # {string}
           url:
+  docker:
+    extra_hosts:
+      host_gateway: host.docker.internal
