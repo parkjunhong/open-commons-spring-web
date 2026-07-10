@@ -37,7 +37,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyAccessorFactory;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.annotation.Validated;
 
 import open.commons.spring.web.environment.resolve.EnvironmentResolver;
 import open.commons.spring.web.environment.resolve.strategy.DockerHostGatewayStrategy;
@@ -56,29 +55,29 @@ import open.commons.spring.web.environment.resolve.strategy.DockerHostGatewayStr
  * @version 4.0.0
  * @author Park Jun-Hong (parkjunhong77@gmail.com)
  */
-@Component(DataSourceUrlProcessor.BEAN_QUALIFIER)
-public class DataSourceUrlProcessor implements BeanPostProcessor {
+@Component(DataSourcePostProcessor.BEAN_QUALIFIER)
+public class DataSourcePostProcessor implements BeanPostProcessor {
 
-    static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.jdbc.DataSourceUrlProcessor";
+    static final String BEAN_QUALIFIER = "open.commons.spring.web.configure.jdbc.DataSourcePostProcessor";
 
     // 라이브러리 기본값 (하드코딩)
-    private static final List<String> DEFAULT_SETTERS = List.of("url", "jdbcUrl", "connectionUrl");
-    private final EnvironmentResolver resolver;
+    public static final List<String> DEFAULT_URL_SETTERS = List.of("url", "jdbcUrl", "connectionUrl");
 
-    private final JdbcDataSourceSettersProperties properties;
+    private final EnvironmentResolver resolver;
+    private final DataSourceUrlProperties additionalUrlProperties;
 
     /**
      * 
      * @param resolver
      *            환경설정 리졸버
-     * @param properties
+     * @param additionalUrlProperties
      *
      * @since 2026. 7. 9.
      * @version 4.0.0
      */
-    public DataSourceUrlProcessor(EnvironmentResolver resolver, JdbcDataSourceSettersProperties properties) {
+    public DataSourcePostProcessor(EnvironmentResolver resolver, DataSourceUrlProperties additionalUrlProperties) {
         this.resolver = resolver;
-        this.properties = properties;
+        this.additionalUrlProperties = additionalUrlProperties;
     }
 
     /**
@@ -96,17 +95,15 @@ public class DataSourceUrlProcessor implements BeanPostProcessor {
             BeanWrapper wrapper = PropertyAccessorFactory.forBeanPropertyAccess(bean);
 
             // 기본값과 사용자가 추가한 값을 합쳐서 리스트 생성
-            var allSetters = new ArrayList<>(DEFAULT_SETTERS);
-            if (properties.getAdditionalSetters() != null) {
-                allSetters.addAll(properties.getAdditionalSetters());
-            }
+            var defaultUrlProperties = new ArrayList<>(DEFAULT_URL_SETTERS);
+            defaultUrlProperties.addAll(this.additionalUrlProperties.urlProperties());
 
-            for (String propName : allSetters) {
+            for (String propName : defaultUrlProperties) {
                 if (wrapper.isWritableProperty(propName)) {
                     Object originalValue = wrapper.getPropertyValue(propName);
 
                     if (originalValue instanceof String originalUrl) {
-                        String resolvedUrl = resolver.resolve(DockerHostGatewayStrategy.NAME, originalUrl);
+                        String resolvedUrl = this.resolver.resolve(DockerHostGatewayStrategy.NAME, originalUrl);
                         if (!originalUrl.equals(resolvedUrl)) {
                             wrapper.setPropertyValue(propName, resolvedUrl);
                         }

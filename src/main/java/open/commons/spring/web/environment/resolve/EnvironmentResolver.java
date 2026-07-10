@@ -31,10 +31,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBooleanProperty;
 import org.springframework.stereotype.Component;
-
-import open.commons.spring.web.environment.resolve.strategy.ResolveStrategy;
 
 /**
  * 주입받은 ResolveStrategy 빈(Bean)들을 이용하여 데이터를 변환하는 환경 리졸버 <br>

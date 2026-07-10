@@ -24,7 +24,7 @@
  * 
  */
 
-package open.commons.spring.web.environment.resolve.strategy;
+package open.commons.spring.web.environment.resolve;
 
 import java.util.function.Function;
 

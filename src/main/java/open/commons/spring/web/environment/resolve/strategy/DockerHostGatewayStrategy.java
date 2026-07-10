@@ -34,6 +34,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
+import open.commons.spring.web.environment.resolve.ResolveStrategy;
+
 /**
  * 서비스가 'docker 환경'에서 구동될 때, 연결정보에 <code>localhost</code> 또는 <code>127.0.0.1</code>을
  * <code>host-gateway</code>에 의해서 설정된 <code>docker bridge</code> 네트워크의 Gateway IP 에 해당하는 '도메인'으로
@@ -95,7 +97,7 @@ public class DockerHostGatewayStrategy implements ResolveStrategy {
      * @since 2026. 7. 9.
      * @version 4.0.0
      *
-     * @see open.commons.spring.web.environment.resolve.strategy.ResolveStrategy#getResolver()
+     * @see open.commons.spring.web.environment.resolve.ResolveStrategy#getResolver()
      */
     @Override
     public Function<String, String> getResolver() {
@@ -108,7 +110,7 @@ public class DockerHostGatewayStrategy implements ResolveStrategy {
      * @since 2026. 7. 9.
      * @version 4.0.0
      *
-     * @see open.commons.spring.web.environment.resolve.strategy.ResolveStrategy#getStrategy()
+     * @see open.commons.spring.web.environment.resolve.ResolveStrategy#getStrategy()
      */
     @Override
     public String getStrategy() {
