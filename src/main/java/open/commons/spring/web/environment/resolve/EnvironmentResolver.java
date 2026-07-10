@@ -50,7 +50,7 @@ import org.springframework.stereotype.Component;
 @Component(EnvironmentResolver.BEAN_QUALIFIER)
 public class EnvironmentResolver {
 
-    static final String BEAN_QUALIFIER = "open.commons.spring.web.environment.resolve.EnvironmentResolver";
+    public static final String BEAN_QUALIFIER = "open.commons.spring.web.environment.resolve.EnvironmentResolver";
 
     /** 식별정보(Type)를 Key로, 변환함수(Function)를 Value로 가지는 불변 맵 */
     private final Map<String, Function<String, String>> strategyRegistry;
