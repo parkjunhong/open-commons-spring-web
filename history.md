@@ -1,3 +1,8 @@
+[2026/07/09]
+- 추가
+  - resource/META-INF/open-commons/open-commons-spring-web.yml
+    - `open-commons.docker.extra_hosts.host_gateway`: 'docker bridge' 네트워크의 Gateway IP 를 갖는 '도메인' 정보.
+
 [2026/06/30]
 - 추가
   + open.commons.spring.web.validation.json: `JSON` 문자열 Validation 추가.

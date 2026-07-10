@@ -1,16 +1,6 @@
 open-commons:
   spring:
     web:
-      resttemplate:
-        # RestTemplate Http 연결 설정
-        requestfactory:
-          connectionRequestTimeout: 300000
-          readTimeout: 300000
-      exception-httpstatus-binder:
-        # key: Throwable 하위 클래스, value: org.springframework.http.HttpStatus 의 인스턴스 이름 (예: BAD_REQUEST)
-        properties:
-          java.lang.UnsupportedOperationException: SERVICE_UNAVAILABLE
-          jakarta.validation.ConstraintViolationException: BAD_REQUEST
       concurrent:
         # for 'java.util.concurrent.ThreadPoolExecutor'
         executor:
@@ -94,6 +84,16 @@ open-commons:
             rejectTasksWhenLimitReached: false
             # 기본값: 0 (기다리지 않음)
             taskTerminationTimeout: 0
+      environment:
+        resolve:
+          strategy:
+            docker-host-gateway:
+              enable: true
+      exception-httpstatus-binder:
+        # key: Throwable 하위 클래스, value: org.springframework.http.HttpStatus 의 인스턴스 이름 (예: BAD_REQUEST)
+        properties:
+          java.lang.UnsupportedOperationException: SERVICE_UNAVAILABLE
+          jakarta.validation.ConstraintViolationException: BAD_REQUEST
       # {@link HandlerInterceptor}에서 URL 기반으로 {@link Thread} 이름을 설정하는 대상에서 제외하는 URL 패턴
       interceptor-ignore-url-patterns:
         - # FQCN 기반 Java 정규식
@@ -116,6 +116,11 @@ open-commons:
           # org.springframework.http.HttpMethod, @Nullable
           httpMethod: GET # default: null
           caseSensitive: false #default: false
+      resttemplate:
+        # RestTemplate Http 연결 설정
+        requestfactory:
+          connectionRequestTimeout: 300000
+          readTimeout: 300000
   springdoc:
     # Open Commons Spring Web이 제공하는 REST API 노출 여부
     show-builtin-api: true

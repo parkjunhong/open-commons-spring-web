@@ -43,7 +43,10 @@ import open.commons.spring.web.configure.concurrent.executor.ScheduledExecutorCo
 import open.commons.spring.web.configure.concurrent.task.TaskExecutorConfiguration;
 import open.commons.spring.web.configure.concurrent.task.TaskSchedulerConfiguration;
 import open.commons.spring.web.configure.exception.ExceptionHttpStatusBinderConfiguration;
+import open.commons.spring.web.configure.jdbc.DataSourceUrlProcessor;
 import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
+import open.commons.spring.web.environment.resolve.EnvironmentResolver;
+import open.commons.spring.web.environment.resolve.strategy.DockerHostGatewayStrategy;
 
 /**
  * <b><i>{@code open.commons.spring.web.autoconfigure}</i></b> 패키지에 선언된 공통 라이브러리(Starter)의 메인
@@ -113,6 +116,9 @@ import open.commons.spring.web.configure.resttemplate.RestTemplateConfiguration;
         , ExceptionHttpStatusBinderConfiguration.class //
         , RestTemplateConfiguration.class //
         , ServletConfiguration.class //
+        , DockerHostGatewayStrategy.class //
+        , DataSourceUrlProcessor.class //
+        , EnvironmentResolver.class //
 })
 public class OpenCommonsSpringWebCoreAutoConfiguration {
 
