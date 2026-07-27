@@ -242,12 +242,6 @@
       <groupId>io.github.open-commons</groupId>
       <artifactId>open-commons-ssh</artifactId>
     </dependency>
-
-    <dependency>
-      <groupId>com.github.mwiede</groupId>
-      <artifactId>jsch</artifactId>
-      <version>2.28.0</version>
-    </dependency>
     <!-- end: open.commons -->
     <!-- ************** -->
 
